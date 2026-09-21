@@ -1,0 +1,120 @@
+{
+  "module": "psspy",
+  "function_name": "dist_3phase_bus_fault",
+  "category": "Set Disturbance",
+  "description": "Use this API to apply a three phase fault at a bus during dynamic simulations. This API routine was first introduced in release 35.1.0. ierr = dist_3phase_bus_fault(ibus, node, units, basekv, values)",
+  "python_syntax": "ierr = dist_3phase_bus_fault(ibus, node, units, basekv, values)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number of the bus at which the fault is to be placed. (input; no default allowed)."
+    },
+    {
+      "name": "node",
+      "description": "Node number of a substation node connected to the specified bus; this defines the bus section to be faulted. if 0 is specified for a bus in a substation, the ‘parent’ bus is faulted; 0 must be specified for a bus that is not in a substation. (input; 0 by default)."
+    },
+    {
+      "name": "units",
+      "description": "Units in which fault admittance or impedance is specified in values. (input; 1 by default)."
+    },
+    {
+      "name": "basekv",
+      "description": "Base voltage in kv used to calculate the per unit fault admittance if units is 2 or 3; ignored if units is 1. if basekv is specified as 0.0, the base voltage of bus ibus is used. (input; 0.0 by default)."
+    },
+    {
+      "name": "values",
+      "description": "An array of two elementsNone. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "units": [
+      {
+        "value": "= 1",
+        "description": "admittance in MVA."
+      },
+      {
+        "value": "= 2",
+        "description": "admittance in mhos."
+      },
+      {
+        "value": "= 3",
+        "description": "impedance in ohms."
+      }
+    ],
+    "values": [
+      {
+        "value": "VALUES(1)",
+        "description": "real component of the complex fault admittance or impedance according to the value specified for UNITS (0.0 by default)."
+      },
+      {
+        "value": "VALUES(2)",
+        "description": "reactive component of the complex fault admittance or impedance according to the value specified for UNITS (-2.0E11 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "STRT or MSTR has not been successfully executed."
+    },
+    {
+      "value": "= 2",
+      "description": "fixed bus shunt table is full."
+    },
+    {
+      "value": "= 3",
+      "description": "bus is out-of-service."
+    },
+    {
+      "value": "= 4",
+      "description": "invalid UNITS value."
+    },
+    {
+      "value": "= 5",
+      "description": "invalid BASEKV value (<0.0)."
+    },
+    {
+      "value": "= 6",
+      "description": "both BASEKV and the base voltage of bus IBUS are 0.0."
+    },
+    {
+      "value": "= 7",
+      "description": "invalid bus number."
+    },
+    {
+      "value": "= 8",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 9",
+      "description": "invalid node number."
+    },
+    {
+      "value": "= 10",
+      "description": "bus does not belong to a substation."
+    },
+    {
+      "value": "= 11",
+      "description": "node not found in the substation of this bus."
+    },
+    {
+      "value": "= 12",
+      "description": "node is not connected to any bus section of this bus."
+    },
+    {
+      "value": "= 13",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

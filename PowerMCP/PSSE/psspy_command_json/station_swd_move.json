@@ -1,0 +1,78 @@
+{
+  "module": "psspy",
+  "function_name": "station_swd_move",
+  "category": "Node Breaker Data",
+  "description": "Use this API to move the “to” node of an existing substation switching device in the working case. This API routine was first introduced in release 34.0.0. ierr = station_swd_move(station, inode, jnode, cktarg, knode, cktnew)",
+  "python_syntax": "ierr = station_swd_move(station, inode, jnode, cktarg, knode, cktnew)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "station",
+      "description": "Substation number. (input)."
+    },
+    {
+      "name": "inode",
+      "description": "From node number. (input)."
+    },
+    {
+      "name": "jnode",
+      "description": "To node number. (input)."
+    },
+    {
+      "name": "cktarg",
+      "description": "Circuit identifier. (input)."
+    },
+    {
+      "name": "knode",
+      "description": "New to node number. (input)."
+    },
+    {
+      "name": "cktnew",
+      "description": "New circuit identifier. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "substation is not found."
+    },
+    {
+      "value": "= 2",
+      "description": "node not found in substation."
+    },
+    {
+      "value": "= 3",
+      "description": "switching device not found in substation."
+    },
+    {
+      "value": "= 4",
+      "description": "switching device from node to itself."
+    },
+    {
+      "value": "= 5",
+      "description": "cannot place substation switching device between nodes belonging to two different buses in the same substation."
+    },
+    {
+      "value": "= 6",
+      "description": "switching device already exists."
+    },
+    {
+      "value": "= 7",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

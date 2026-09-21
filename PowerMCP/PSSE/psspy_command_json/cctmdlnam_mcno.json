@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "cctmdlnam_mcno",
+  "category": "Single Element Data",
+  "description": "Use this API to return model name of the CCT machine other models. This API routine was first introduced in release 35.0.0. ierr, model = cctmdlnam_mcno(ibus, id)",
+  "python_syntax": "ierr, model = cctmdlnam_mcno(ibus, id)",
+  "return_type": "error_and_model",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    },
+    {
+      "name": "id",
+      "description": "Machine identifier. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "model",
+      "description": "Model name. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; MODEL name is returned."
+    },
+    {
+      "value": "= 1",
+      "description": "machine not in case."
+    },
+    {
+      "value": "= 2",
+      "description": "No CCT models in case."
+    },
+    {
+      "value": "= 3",
+      "description": "No machine other model attached to the specified machine."
+    },
+    {
+      "value": "= 4",
+      "description": "Dynamics data not present in working memory."
+    }
+  ]
+}

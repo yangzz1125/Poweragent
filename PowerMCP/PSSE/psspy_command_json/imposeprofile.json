@@ -1,0 +1,126 @@
+{
+  "module": "psspy",
+  "function_name": "imposeprofile",
+  "category": "Time Series Power Flow Operation",
+  "description": "Use this API to impose generation/load at the given time point on profile curves. This API routine was first introduced in release 35.4.0. ierr = imposeprofile(profilename,options,chaarg, dfaxfile, infile)",
+  "python_syntax": "ierr = imposeprofile(profilename,options,chaarg, dfaxfile, infile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "profilename",
+      "description": "Is the name of the profile. (input)."
+    },
+    {
+      "name": "options",
+      "description": "An array of 2 elements specifying integer options. (input; 1 by default)."
+    },
+    {
+      "name": "chaarg",
+      "description": "Generation dispatch system. (input)."
+    },
+    {
+      "name": "dfaxfile",
+      "description": "Name of the distribution factor data file (input; no default allowed). (input)."
+    },
+    {
+      "name": "infile",
+      "description": "Name of the unit inertia and governor data file (input; blank by default). (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Is the error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "options": [
+      {
+        "value": "OPTIONS(1)",
+        "description": "time point (1 by default)."
+      },
+      {
+        "value": "OPTIONS(2)",
+        "description": "generation dispatch flag."
+      },
+      {
+        "value": "= 0",
+        "description": "disable generation dispatch."
+      },
+      {
+        "value": "= 1",
+        "description": "enable generation dispatch."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Invalid OPTIONS."
+    },
+    {
+      "value": "= 2",
+      "description": "Generators are converted."
+    },
+    {
+      "value": "= 3",
+      "description": "Topology error: bus(es) with bus type code and series element status inconsistencies."
+    },
+    {
+      "value": "= 4",
+      "description": "buses in island(s) without a swing bus; use activity TREE."
+    },
+    {
+      "value": "= 5",
+      "description": "No profile curve sets defined."
+    },
+    {
+      "value": "= 6",
+      "description": "Profile curve set not found."
+    },
+    {
+      "value": "= 7",
+      "description": "No profile curves defined in profile curve set."
+    },
+    {
+      "value": "= 8",
+      "description": "Time point not found in the profile curve set."
+    },
+    {
+      "value": "= 9",
+      "description": "Profiles not defined."
+    },
+    {
+      "value": "= 10",
+      "description": "Dispatch system not defined."
+    },
+    {
+      "value": "= 11",
+      "description": "Too many islands in base case."
+    },
+    {
+      "value": "= 21",
+      "description": "file DFXFILE is not in the form of a PSSE 25 or later DFAX file; run DFAX."
+    },
+    {
+      "value": "= 22",
+      "description": "monitored elements exceed limit when adding multi-section line members."
+    },
+    {
+      "value": "= 52",
+      "description": "Error opening Distribution Factor Data File."
+    },
+    {
+      "value": "= 54",
+      "description": "Error opening Unit Inertia and Governor Data File."
+    },
+    {
+      "value": "= 56",
+      "description": "Prerequisite requirements for API are not met."
+    }
+  ]
+}

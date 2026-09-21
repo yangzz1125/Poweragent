@@ -1,0 +1,132 @@
+{
+  "module": "psspy",
+  "function_name": "bus_chng_4",
+  "category": "Power Flow Data",
+  "description": "Use this API routine to modify the data of an existing bus in the working case (see PSSE Program Operation Manual, Bus Data). This API routine was first introduced in release 34.2.0. ierr = bus_chng_4(ibus, inode, intgar, realar, name)",
+  "python_syntax": "ierr = bus_chng_4(ibus, inode, intgar, realar, name)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input; no default allowed)."
+    },
+    {
+      "name": "inode",
+      "description": "Bus section node number. (input; no default allowed)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of four elementsNone. (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of seven elementsNone. (input)."
+    },
+    {
+      "name": "name",
+      "description": "Bus name. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "IDE, bus type code (1 by default)."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "AREA, area number (1 by default)."
+      },
+      {
+        "value": "INTGAR(3)",
+        "description": "ZONE, zone number (1 by default)."
+      },
+      {
+        "value": "INTGAR(4)",
+        "description": "OWNER, owner number (1 by default)."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "BASKV, bus base voltage in kV (0.0 by default)."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "VM, bus voltage magnitude in pu (1.0 by default)."
+      },
+      {
+        "value": "REALAR(3)",
+        "description": "VA, bus voltage phase angle (0.0 by default)."
+      },
+      {
+        "value": "REALAR(4)",
+        "description": "NMAXV, normal bus voltage magnitude high limit in pu (1.1 by default)."
+      },
+      {
+        "value": "REALAR(5)",
+        "description": "NMINV, normal bus voltage magnitude low limit in pu (0.9 by default)."
+      },
+      {
+        "value": "REALAR(6)",
+        "description": "EMAXV, emergency bus voltage magnitude high limit in pu (1.1 by default)."
+      },
+      {
+        "value": "REALAR(7)",
+        "description": "EMINV, emergency bus voltage magnitude low limit in pu (0.9 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid bus number."
+    },
+    {
+      "value": "= 3",
+      "description": "working case is not initialized."
+    },
+    {
+      "value": "= 4",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 5",
+      "description": "invalid node number."
+    },
+    {
+      "value": "= 6",
+      "description": "bus does not belong to a substation."
+    },
+    {
+      "value": "= 7",
+      "description": "inode is not found in the substation."
+    },
+    {
+      "value": "= 8",
+      "description": "inode is not connected to any bus section of bus."
+    },
+    {
+      "value": "= 10",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - Invalid base voltage. - Invalid bus type code. - Invalid area, zone or owner number. - Bus name is more than 12 characters. - New area number but bus is the area swing for its old area. - Bus type code is 3 but is not the swing bus for its area. - Area table is full. - Zone table is full. - Owner table is full. - High voltage limit is not greater than the low voltage limit. - Normal voltage limit is less restrictive than the emergency limit."
+    }
+  ]
+}

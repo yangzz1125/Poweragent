@@ -1,0 +1,74 @@
+{
+  "module": "psspy",
+  "function_name": "mcre",
+  "category": "Power Flow Operation",
+  "description": "Use this API to read a Machine Impedance Data File and add the data specified in it to the working case. This API routine was first introduced in release 28.0.0. ierr = mcre(status, ifile)",
+  "python_syntax": "ierr = mcre(status, ifile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "status",
+      "description": "An array of two elements specifying options. (input)."
+    },
+    {
+      "name": "ifile",
+      "description": "Name of machine impedance data file. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "status": [
+      {
+        "value": "STATUS(1)",
+        "description": "new machine status option (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "set from STAT field on input record."
+      },
+      {
+        "value": "= 1",
+        "description": "set from status of other machines at the bus."
+      },
+      {
+        "value": "STATUS(2)",
+        "description": "option for treatment of machines with no data record specified and other machines at the bus with record specified (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "place out-of-service."
+      },
+      {
+        "value": "= 1",
+        "description": "delete."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid STATUS value."
+    },
+    {
+      "value": "= 2",
+      "description": "generators are converted."
+    },
+    {
+      "value": "= 3",
+      "description": "error opening IFILE."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

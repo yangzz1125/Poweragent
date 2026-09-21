@@ -1,0 +1,30 @@
+{
+  "module": "psspy",
+  "function_name": "scenariounzip",
+  "category": "Scenarios",
+  "description": "Use this API to unzip a zipped Scenario. This API routine was first introduced in release 33.0.0. ierr = scenariounzip(sfile)",
+  "python_syntax": "ierr = scenariounzip(sfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sfile",
+      "description": "Full file path of the scenario archive to unzip. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no conflicts occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "conflicts occurred."
+    }
+  ]
+}

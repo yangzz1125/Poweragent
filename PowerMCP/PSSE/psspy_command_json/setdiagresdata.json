@@ -1,0 +1,355 @@
+{
+  "module": "psspy",
+  "function_name": "setdiagresdata",
+  "category": "Diagram View",
+  "description": "This API routine is obsolete. It has been replaced by the API routine setdiagresdata_2, and is implemented by a call to setdiagresdata_2. Use this API to specify the impedance data voltage and range checking annotation options in the active Slider Diagram. This API routine was first introduced in release 30.0.0. setdiagresdata(usevlt, vlnwdt, vlnsty, vltval, vlnclrr, vlnclrg, vlnclrb, outwdt, outsty, outclr, busann, brnann, eqpann, busvlt)",
+  "python_syntax": "setdiagresdata(usevlt, vlnwdt, vlnsty, vltval, vlnclrr, vlnclrg, vlnclrb, outwdt, outsty, outclr, busann, brnann, eqpann, busvlt)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "usevlt",
+      "description": "Option to apply voltage level annotation to the diagram elements. (input)."
+    },
+    {
+      "name": "vlnwdt",
+      "description": "An array of eight elements specifying used to set the width of Diagram elements that fall in the appropriate voltage range. (input)."
+    },
+    {
+      "name": "vlnsty",
+      "description": "An array of eight elements specifying used to set the line style of Diagram elements that fall in the appropriate voltage range. (input)."
+    },
+    {
+      "name": "vltval",
+      "description": "An array of 7 elements specifying used to set the voltage ranges used to assign annotation Diagram. Base voltage values should be in ascending order. (input)."
+    },
+    {
+      "name": "vlnclrr",
+      "description": "An array of eight elements specifying used to set the Red color component of Diagram elements that fall in the appropriate voltage range, 0->255. (input)."
+    },
+    {
+      "name": "vlnclrg",
+      "description": "An array of eight elements specifying used to set Green color component of Diagram elements that fall in the appropriate voltage range, 0->255. (input)."
+    },
+    {
+      "name": "vlnclrb",
+      "description": "An array of eight elements specifying used to set Blue color component of Diagram elements that fall in the appropriate voltage range, 0->255. (input)."
+    },
+    {
+      "name": "outwdt",
+      "description": "Line width applied to out of service diagram items, >= 1. (input)."
+    },
+    {
+      "name": "outsty",
+      "description": "Line style applied to out of service diagram items. (input)."
+    },
+    {
+      "name": "outclr",
+      "description": "An array of three elements specifying color of Diagram items that are out of service. (input)."
+    },
+    {
+      "name": "busann",
+      "description": "Bus id annotation. (input)."
+    },
+    {
+      "name": "brnann",
+      "description": "Branch annotation. (input)."
+    },
+    {
+      "name": "eqpann",
+      "description": "Equipment annotation. (input)."
+    },
+    {
+      "name": "busvlt",
+      "description": "Bus voltage annotation. (input)."
+    }
+  ],
+  "return_values": [],
+  "allowed_values": {
+    "usevlt": [
+      {
+        "value": "= 0",
+        "description": "don’t apply voltage level annotation."
+      },
+      {
+        "value": "= 1",
+        "description": "apply voltage level annotation."
+      }
+    ],
+    "vlnwdt": [
+      {
+        "value": "VLNWDT(1)",
+        "description": "base voltage < VLTVAL(1)."
+      },
+      {
+        "value": "VLNWDT(2)",
+        "description": "VLTVAL(1) >= base voltage < VLTVAL(2)."
+      },
+      {
+        "value": "VLNWDT(3)",
+        "description": "VLTVAL(2) >= base voltage < VLTVAL(3)."
+      },
+      {
+        "value": "VLNWDT(4)",
+        "description": "VLTVAL(3) >= base voltage < VLTVAL(4)."
+      },
+      {
+        "value": "VLNWDT(5)",
+        "description": "VLTVAL(4) >= base voltage < VLTVAL(5)."
+      },
+      {
+        "value": "VLNWDT(6)",
+        "description": "VLTVAL(5) >= base voltage < VLTVAL(6)."
+      },
+      {
+        "value": "VLNWDT(7)",
+        "description": "VLTVAL(6) >= base voltage < VLTVAL(7)."
+      },
+      {
+        "value": "VLNWDT(8)",
+        "description": "base voltage >= VLTVAL(7)."
+      }
+    ],
+    "vlnsty": [
+      {
+        "value": "VLNSTY(1)",
+        "description": "base voltage < VLTVAL(1)."
+      },
+      {
+        "value": "VLNSTY(2)",
+        "description": "VLTVAL(1) >= base voltage < VLTVAL(2)."
+      },
+      {
+        "value": "VLNSTY(3)",
+        "description": "VLTVAL(2) >= base voltage < VLTVAL(3)."
+      },
+      {
+        "value": "VLNSTY(4)",
+        "description": "VLTVAL(3) >= base voltage < VLTVAL(4)."
+      },
+      {
+        "value": "VLNSTY(5)",
+        "description": "VLTVAL(4) >= base voltage < VLTVAL(5)."
+      },
+      {
+        "value": "VLNSTY(6)",
+        "description": "VLTVAL(5) >= base voltage < VLTVAL(6)."
+      },
+      {
+        "value": "VLNSTY(7)",
+        "description": "VLTVAL(6) >= base voltage < VLTVAL(7)."
+      },
+      {
+        "value": "VLNSTY(8)",
+        "description": "base voltage >= VLTVAL(7)."
+      }
+    ],
+    "vlnclrr": [
+      {
+        "value": "VLNCLRR(1)",
+        "description": "base voltage < VLTVAL(1)."
+      },
+      {
+        "value": "VLNCLRR(2)",
+        "description": "VLTVAL(1) >= base voltage < VLTVAL(2)."
+      },
+      {
+        "value": "VLNCLRR(3)",
+        "description": "VLTVAL(2) >= base voltage < VLTVAL(3)."
+      },
+      {
+        "value": "VLNCLRR(4)",
+        "description": "VLTVAL(3) >= base voltage < VLTVAL(4)."
+      },
+      {
+        "value": "VLNCLRR(5)",
+        "description": "VLTVAL(4) >= base voltage < VLTVAL(5)."
+      },
+      {
+        "value": "VLNCLRR(6)",
+        "description": "VLTVAL(5) >= base voltage < VLTVAL(6)."
+      },
+      {
+        "value": "VLNCLRR(7)",
+        "description": "VLTVAL(6) >= base voltage < VLTVAL(7)."
+      },
+      {
+        "value": "VLNCLRR(8)",
+        "description": "base voltage >= VLTVAL(7)."
+      }
+    ],
+    "vlnclrg": [
+      {
+        "value": "VLNCLRG(1)",
+        "description": "base voltage < VLTVAL(1)."
+      },
+      {
+        "value": "VLNCLRG(2)",
+        "description": "VLTVAL(1) >= base voltage < VLTVAL(2)."
+      },
+      {
+        "value": "VLNCLRG(3)",
+        "description": "VLTVAL(2) >= base voltage < VLTVAL(3)."
+      },
+      {
+        "value": "VLNCLRG(4)",
+        "description": "VLTVAL(3) >= base voltage < VLTVAL(4)."
+      },
+      {
+        "value": "VLNCLRG(5)",
+        "description": "VLTVAL(4) >= base voltage < VLTVAL(5)."
+      },
+      {
+        "value": "VLNCLRG(6)",
+        "description": "VLTVAL(5) >= base voltage < VLTVAL(6)."
+      },
+      {
+        "value": "VLNCLRG(7)",
+        "description": "VLTVAL(6) >= base voltage < VLTVAL(7)."
+      },
+      {
+        "value": "VLNCLRG(8)",
+        "description": "base voltage >= VLTVAL(7)."
+      }
+    ],
+    "vlnclrb": [
+      {
+        "value": "VLNCLRB(1)",
+        "description": "base voltage < VLTVAL(1)."
+      },
+      {
+        "value": "VLNCLRB(2)",
+        "description": "VLTVAL(1) >= base voltage < VLTVAL(2)."
+      },
+      {
+        "value": "VLNCLRB(3)",
+        "description": "VLTVAL(2) >= base voltage < VLTVAL(3)."
+      },
+      {
+        "value": "VLNCLRB(4)",
+        "description": "VLTVAL(3) >= base voltage < VLTVAL(4)."
+      },
+      {
+        "value": "VLNCLRB(5)",
+        "description": "VLTVAL(4) >= base voltage < VLTVAL(5)."
+      },
+      {
+        "value": "VLNCLRB(6)",
+        "description": "VLTVAL(5) >= base voltage < VLTVAL(6)."
+      },
+      {
+        "value": "VLNCLRB(7)",
+        "description": "VLTVAL(6) >= base voltage < VLTVAL(7)."
+      },
+      {
+        "value": "VLNCLRB(8)",
+        "description": "base voltage >= VLTVAL(7)."
+      }
+    ],
+    "outclr": [
+      {
+        "value": "OUTCLR(1)",
+        "description": "0->255 Red component."
+      },
+      {
+        "value": "OUTCLR(2)",
+        "description": "0->255 Blue component."
+      },
+      {
+        "value": "OUTCLR(3)",
+        "description": "0->255 Green component."
+      }
+    ],
+    "busann": [
+      {
+        "value": "= 0",
+        "description": "number, no name."
+      },
+      {
+        "value": "= 1",
+        "description": "name, no number."
+      },
+      {
+        "value": "= 2",
+        "description": "number and name."
+      },
+      {
+        "value": "= 3",
+        "description": "no number, no name."
+      }
+    ],
+    "brnann": [
+      {
+        "value": "= 0",
+        "description": "MW/MVAR flows."
+      },
+      {
+        "value": "= 1",
+        "description": "MVA."
+      },
+      {
+        "value": "= 2",
+        "description": "MVA/% rating."
+      },
+      {
+        "value": "= 3",
+        "description": "Amps/pu current."
+      },
+      {
+        "value": "= 4",
+        "description": "MW/%rating."
+      },
+      {
+        "value": "= 5",
+        "description": "Amps/% rating."
+      },
+      {
+        "value": "= 6",
+        "description": "None."
+      }
+    ],
+    "eqpann": [
+      {
+        "value": "= 0",
+        "description": "MW/MVAR."
+      },
+      {
+        "value": "= 2",
+        "description": "none."
+      }
+    ],
+    "busvlt": [
+      {
+        "value": "= 0",
+        "description": "magnitude (pu)."
+      },
+      {
+        "value": "= 1",
+        "description": "magnitude (kV)."
+      },
+      {
+        "value": "= 2",
+        "description": "angle (degrees)."
+      },
+      {
+        "value": "= 3",
+        "description": "magnitude (pu) and angle (degrees)."
+      },
+      {
+        "value": "= 4",
+        "description": "magnitude (pu) and magnitude (kV)."
+      },
+      {
+        "value": "= 5",
+        "description": "magnitude (kV) and angle (degrees)."
+      },
+      {
+        "value": "= 7",
+        "description": "magnitude (pu), magnitude (kV) and angle (degrees)."
+      },
+      {
+        "value": "= 8",
+        "description": "none."
+      }
+    ]
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "module": "psspy",
+  "function_name": "appendrecording",
+  "category": "Non-Engineering",
+  "description": "Start recording program operation at end of specified file. This API routine was first introduced in release 35.4.0. ierr = appendrecording(iopt,string)",
+  "python_syntax": "ierr = appendrecording(iopt,string)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "iopt",
+      "description": "Type of format to be recorded. (input)."
+    },
+    {
+      "name": "string",
+      "description": "Filename. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "iopt": [
+      {
+        "value": "= 0",
+        "description": "record in batch (BAT_*) format."
+      },
+      {
+        "value": "= 1",
+        "description": "record in python format."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 2",
+      "description": "unable to open file."
+    }
+  ]
+}

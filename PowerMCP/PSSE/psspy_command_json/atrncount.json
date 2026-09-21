@@ -1,0 +1,126 @@
+{
+  "module": "psspy",
+  "function_name": "atrncount",
+  "category": "Two-Winding Transformer Data",
+  "description": "Use this API to return the number of array entries required to accommodate the data to be returned by the remaining members of the two-winding transformer data family. This API routine was first introduced in release 30.2.0. ierr, brnchs = atrncount(sid, owner, ties, flag, entry)",
+  "python_syntax": "ierr, brnchs = atrncount(sid, owner, ties, flag, entry)",
+  "return_type": "error_and_count",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the bus subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "owner",
+      "description": "A flag indicating owner usage if ownership is a subsystem selection criterion (ignored if sid is negative). (input; 1 by default)."
+    },
+    {
+      "name": "ties",
+      "description": "A flag indicating which subsystem two-winding transformers to include (ignored if sid is negative). (input; 1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem two-winding transformers to include. (input; 1 by default)."
+    },
+    {
+      "name": "entry",
+      "description": "A flag indicating organization. (input; 1 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "brnchs",
+      "description": "Number of array entries required for the subsystem indicated by sid and owner that meet the editing criteria indicated by ties, flag and entry. (output)."
+    }
+  ],
+  "allowed_values": {
+    "sid": [
+      {
+        "value": "< 0",
+        "description": "to instruct the API to assume a subsystem containing all buses in the working case."
+      },
+      {
+        "value": ">= 0",
+        "description": "valid bus subsystem identifier. Valid subsystem identifiers range from 0 to 11. Subsystem SID must have been previously defined."
+      }
+    ],
+    "owner": [
+      {
+        "value": "= 1",
+        "description": "to use bus ownership."
+      },
+      {
+        "value": "= 2",
+        "description": "to use transformer ownership."
+      }
+    ],
+    "ties": [
+      {
+        "value": "= 1",
+        "description": "for interior subsystem two-winding transformers only."
+      },
+      {
+        "value": "= 2",
+        "description": "for subsystem tie two-winding transformers only."
+      },
+      {
+        "value": "= 3",
+        "description": "for both interior subsystem and tie two-winding transformers."
+      }
+    ],
+    "flag": [
+      {
+        "value": "= 1",
+        "description": "for only in-service two-winding transformers."
+      },
+      {
+        "value": "= 2",
+        "description": "for all two-winding transformers."
+      }
+    ],
+    "entry": [
+      {
+        "value": "= 1",
+        "description": "for single entry (each branch once)."
+      },
+      {
+        "value": "= 2",
+        "description": "for double entry (each branch in both directions)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error, BRNCHS returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty; BRNCHS returned as 0."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value; BRNCHS returned as 0."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid OWNER value; BRNCHS returned as 0."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid TIES value; BRNCHS returned as 0."
+    },
+    {
+      "value": "= 5",
+      "description": "Invalid FLAG value; BRNCHS returned as 0."
+    },
+    {
+      "value": "= 6",
+      "description": "Invalid ENTRY value; BRNCHS returned as 0."
+    }
+  ]
+}

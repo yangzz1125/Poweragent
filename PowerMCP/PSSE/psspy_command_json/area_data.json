@@ -1,0 +1,70 @@
+{
+  "module": "psspy",
+  "function_name": "area_data",
+  "category": "Power Flow Data",
+  "description": "Use this API to modify area data in the working case (see PSSE Program Operation Manual, Areas, Zones and Owners). This API routine was first introduced in release 28.0.0. ierr = area_data(iarea, ibus, realar, arname)",
+  "python_syntax": "ierr = area_data(iarea, ibus, realar, arname)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "iarea",
+      "description": "Area number between 1 and 9999. (input; no default allowed)."
+    },
+    {
+      "name": "ibus",
+      "description": "Area slack bus number. (input; no default allowed)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of two elementsNone. (input)."
+    },
+    {
+      "name": "arname",
+      "description": "Area name. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "PDES, desired MW area interchange (0.0 by default)."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "PTOL, desired MW interchange tolerance (0.1 * SBASE by default; for example, when system base MVA is 100.0, the default value of PTOL is 10 MW)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid area number."
+    },
+    {
+      "value": "= 2",
+      "description": "area table is full."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - Area slack bus not found. - Slack bus is not in this area. - No plant at slack bus. - Type code of slack bus is not 2 or 3. - A Type 3 bus is in the area but it is not the area slack bus. - No equipment is assigned to area."
+    }
+  ]
+}

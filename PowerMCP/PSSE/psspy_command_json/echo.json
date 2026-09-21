@@ -1,0 +1,34 @@
+{
+  "module": "psspy",
+  "function_name": "echo",
+  "category": "Power Flow Operation",
+  "description": "Use this API to enable or disable response echoing (activity ECHO). This API routine was first introduced in release 29.0.0. ierr = echo(idvfil)",
+  "python_syntax": "ierr = echo(idvfil)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "idvfil",
+      "description": "Name of response file to be constructed (blank to disable). (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "error opening IDVFIL."
+    },
+    {
+      "value": "= 2",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

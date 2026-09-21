@@ -1,0 +1,65 @@
+{
+  "module": "psspy",
+  "function_name": "scenariogetattrs",
+  "category": "Scenarios",
+  "description": "Use this API to retrieve the attributes of the Scenario. This API routine was first introduced in release 33.0.0. ierr, rootpath, startupgroup, creationdate, createdby, changedate, changedby, name, version, versionpsse = scenariogetattrs()",
+  "python_syntax": "ierr, rootpath, startupgroup, creationdate, createdby, changedate, changedby, name, version, versionpsse = scenariogetattrs()",
+  "return_type": "error_and_multi_value",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "rootpath",
+      "description": "Root path of the scenario. (output)."
+    },
+    {
+      "name": "startupgroup",
+      "description": "Name of the startup group. (output)."
+    },
+    {
+      "name": "creationdate",
+      "description": "Date of creation. (output)."
+    },
+    {
+      "name": "createdby",
+      "description": "Username of the creator. (output)."
+    },
+    {
+      "name": "changedate",
+      "description": "Last date of modification. (output)."
+    },
+    {
+      "name": "changedby",
+      "description": "Username of the last modifier. (output)."
+    },
+    {
+      "name": "name",
+      "description": "Name of the scenario. (output)."
+    },
+    {
+      "name": "version",
+      "description": "Version of scenario the file was saved under. (output)."
+    },
+    {
+      "name": "versionpsse",
+      "description": "Version of psse the file was saved under. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "no Scenario in memory."
+    }
+  ]
+}

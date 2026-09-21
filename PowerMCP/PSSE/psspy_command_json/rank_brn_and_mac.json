@@ -1,0 +1,190 @@
+{
+  "module": "psspy",
+  "function_name": "rank_brn_and_mac",
+  "category": "Power Flow Operation",
+  "description": "Use this API to estimate the severity of designated single element outage contingencies and builds a contingency description data file with contingencies specified in decreasing order of their estimated severities. This API routine was first introduced in release 30.2.0. ierr = rank_brn_and_mac(sid, all, ival, rval, ssfile, mnfile, accfile)",
+  "python_syntax": "ierr = rank_brn_and_mac(sid, all, ival, rval, ssfile, mnfile, accfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid subsystem identifier. valid subsystem identifiers range from 0 to 11. subsystem sid must have been previously defined. (input; 0 by default)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem flag. (input; 1 by default)."
+    },
+    {
+      "name": "ival",
+      "description": "An array of eight elements specifying ranking options. (input)."
+    },
+    {
+      "name": "rval",
+      "description": "An array of four elements specifying ranking parameters. (input)."
+    },
+    {
+      "name": "ssfile",
+      "description": "Name of the subsystem description file, or blank for no subsystem. (input; blank by default)."
+    },
+    {
+      "name": "mnfile",
+      "description": "Name of the monitored element description file (if ival(2) > 0 (i.e., if the branch outage overload ranker is enabled) or if ival(8) > 0 (i.e., if the machine outage overload ranker is enabled) ). (input; no default allowed)."
+    },
+    {
+      "name": "accfile",
+      "description": "Name of the contingency description data file, or blank for output to the progress window. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 0",
+        "description": "process only buses in subsystem SID."
+      },
+      {
+        "value": "= 1",
+        "description": "process all buses."
+      }
+    ],
+    "ival": [
+      {
+        "value": "IVAL(1)",
+        "description": "allow ties from specified subsystem as contingencies (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no."
+      },
+      {
+        "value": "= 1",
+        "description": "yes."
+      },
+      {
+        "value": "IVAL(2)",
+        "description": "number of branch contingencies from overload ranking to include (>= 0) (0 by default)."
+      },
+      {
+        "value": "IVAL(3)",
+        "description": "rating set (1=RATEA, 2=RATEB, 3=RATEC) (rating set program option setting by default)."
+      },
+      {
+        "value": "IVAL(4)",
+        "description": "convert ratings to estimated MW ratings (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no."
+      },
+      {
+        "value": "= 1",
+        "description": "yes."
+      },
+      {
+        "value": "IVAL(5)",
+        "description": "number of voltage depression contingencies to include (>=0) (0 by default)."
+      },
+      {
+        "value": "IVAL(6)",
+        "description": "code indicating the set of branches to include in the voltage depression performance index (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "include all branches."
+      },
+      {
+        "value": "= 1",
+        "description": "include only those with a nonzero rating."
+      },
+      {
+        "value": "IVAL(7)",
+        "description": "include contingencies that create swingless islands (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no."
+      },
+      {
+        "value": "= 1",
+        "description": "yes."
+      },
+      {
+        "value": "IVAL(8)",
+        "description": "number of machine contingencies from overload ranking to include (>=0) (0 by default)."
+      }
+    ],
+    "rval": [
+      {
+        "value": "RVAL(1)",
+        "description": "MW mismatch threshold (>= 0.0) (Newton solution convergence tolerance, TOLN, by default)."
+      },
+      {
+        "value": "RVAL(2)",
+        "description": "small reactance threshold (THRSHZ <= RVAL(2) <= 0.005) (0.0005 by default)."
+      },
+      {
+        "value": "RVAL(3)",
+        "description": "percent of rating (0.0 <= RVAL(3) <= 200.0) (100.0 by default)."
+      },
+      {
+        "value": "RVAL(4)",
+        "description": "MW threshold for islanding contingencies (>= 0.0) (100.0 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ALL value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid IVAL value."
+    },
+    {
+      "value": "= 4",
+      "description": "invalid RVAL value."
+    },
+    {
+      "value": "= 5",
+      "description": "MNFILE is blank."
+    },
+    {
+      "value": "= 6",
+      "description": "no contingency types enabled."
+    },
+    {
+      "value": "= 7",
+      "description": "error opening SSFILE or MNFILE."
+    },
+    {
+      "value": "= 8",
+      "description": "generators are converted."
+    },
+    {
+      "value": "= 9",
+      "description": "buses in island(s) without a swing bus; use activity TREE."
+    },
+    {
+      "value": "= 10",
+      "description": "largest mismatch exceeds mismatch tolerance."
+    },
+    {
+      "value": "= 11",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

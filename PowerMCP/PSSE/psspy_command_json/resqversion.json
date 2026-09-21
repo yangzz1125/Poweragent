@@ -1,0 +1,54 @@
+{
+  "module": "psspy",
+  "function_name": "resqversion",
+  "category": "Power Flow Operation",
+  "description": "Use this API to read a network sequence data file and add all the data specified in it to the working case. Allowed seq file formats are PSSE-15 through the current format. This API routine was first introduced in release 32.0.0. ierr = resqversion(vernum, ifile)",
+  "python_syntax": "ierr = resqversion(vernum, ifile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "vernum",
+      "description": "Version number corresponding to the format of the ifile. vernum is in the format of a psse release number. example: if ifile format is of psse-29.5.1: vernum = ‘29’ or = ‘29.5’ or = ‘29.5.1’. (input; no default allowed)."
+    },
+    {
+      "name": "ifile",
+      "description": "Name of the power flow sequence data file. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid VERNUM value."
+    },
+    {
+      "value": "= 3",
+      "description": "unable to convert file."
+    },
+    {
+      "value": "= 4",
+      "description": "error opening temporary file."
+    },
+    {
+      "value": "= 5",
+      "description": "invalid revision number."
+    },
+    {
+      "value": "= 10",
+      "description": "error opening IFILE."
+    },
+    {
+      "value": "= 11",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

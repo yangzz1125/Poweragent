@@ -1,0 +1,54 @@
+{
+  "module": "psspy",
+  "function_name": "tap_adjustment",
+  "category": "Power Flow Operation",
+  "description": "Use this API to specify or return the option for the default tap adjustment setting; either disabled, stepping or direct. This API routine was first introduced in release 29.0.0. ierr = tap_adjustment(ival) ierr, ival = tap_adjustment()",
+  "python_syntax": "ierr = tap_adjustment(ival) ierr, ival = tap_adjustment()",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ival",
+      "description": "Value of the option setting. (input; if Batch command, or for Python if specified as an argument, or for Fortran if IOCODE is 0, 0 by default; else output)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "ival": [
+      {
+        "value": "= 0",
+        "description": "locked (i.e., tap adjustment is disabled)."
+      },
+      {
+        "value": "= 1",
+        "description": "tap adjustment using the stepping method enabled."
+      },
+      {
+        "value": "= 2",
+        "description": "tap adjustment using the direct method enabled."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid IVAL value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid IOCODE value."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

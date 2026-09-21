@@ -1,0 +1,156 @@
+{
+  "module": "psspy",
+  "function_name": "check_powerflow_data",
+  "category": "Power Flow Operation",
+  "description": "Use this API routine to perform data checks on the selected categories of powerflow data for all buses in the working case or for all buses in a specified subsystem. This API routine was first introduced in release 33.1.0. ierr = check_powerflow_data(sid, all, opt)",
+  "python_syntax": "ierr = check_powerflow_data(sid, all, opt)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid subsystem identifier. valid subsystem identifiers range from 0 to 11. subsystem sid must have been previously defined . (input; 0 by default)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem flag. (input; 1 by default)."
+    },
+    {
+      "name": "opt",
+      "description": "Powerflow data category to be checked . (input; 0 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 0",
+        "description": "process only buses in subsystem SID."
+      },
+      {
+        "value": "= 1",
+        "description": "process all buses."
+      }
+    ],
+    "opt": [
+      {
+        "value": "= 0",
+        "description": "all data categories."
+      },
+      {
+        "value": "= 1",
+        "description": "bus data."
+      },
+      {
+        "value": "= 2",
+        "description": "load data."
+      },
+      {
+        "value": "= 3",
+        "description": "plant data."
+      },
+      {
+        "value": "= 4",
+        "description": "generator unit data."
+      },
+      {
+        "value": "= 5",
+        "description": "induction machine data."
+      },
+      {
+        "value": "= 6",
+        "description": "fixed bus shunt data."
+      },
+      {
+        "value": "= 7",
+        "description": "switched shunt data."
+      },
+      {
+        "value": "= 8",
+        "description": "non-transformer branch data."
+      },
+      {
+        "value": "= 9",
+        "description": "two-winding transformer data."
+      },
+      {
+        "value": "= 10",
+        "description": "three-winding transformer data."
+      },
+      {
+        "value": "= 11",
+        "description": "transformer impedance table correction data."
+      },
+      {
+        "value": "= 12",
+        "description": "multi-section line data."
+      },
+      {
+        "value": "= 13",
+        "description": "two-terminal dc line data."
+      },
+      {
+        "value": "= 14",
+        "description": "multi-terminal dc line data."
+      },
+      {
+        "value": "= 15",
+        "description": "VSC dc line data."
+      },
+      {
+        "value": "= 16",
+        "description": "FACTS device data."
+      },
+      {
+        "value": "= 17",
+        "description": "GNE device data."
+      },
+      {
+        "value": "= 18",
+        "description": "area interchange data."
+      },
+      {
+        "value": "= 19",
+        "description": "owner data."
+      },
+      {
+        "value": "= 20",
+        "description": "zone data."
+      },
+      {
+        "value": "= 21",
+        "description": "capability curve data."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ALL value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid OPT value."
+    },
+    {
+      "value": "= 4",
+      "description": "capability curve data is not in the working case."
+    },
+    {
+      "value": "= 5",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

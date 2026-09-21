@@ -1,0 +1,42 @@
+{
+  "module": "psspy",
+  "function_name": "purge_opf_gen_rcap_indv",
+  "category": "Optimal Power Flow Data",
+  "description": "Use this API to purge an individual OPF generation reactive capability data record from the working case. This API routine was first introduced in release 30.0.0. ierr = purge_opf_gen_rcap_indv(eibus, genid)",
+  "python_syntax": "ierr = purge_opf_gen_rcap_indv(eibus, genid)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "eibus",
+      "description": "Bus number. (input; no default allowed)."
+    },
+    {
+      "name": "genid",
+      "description": "Machine identifier. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid bus number specified."
+    },
+    {
+      "value": "= 2",
+      "description": "specified machine does not exist."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

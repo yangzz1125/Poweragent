@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "purge_opf_bus_indv_3",
+  "category": "Optimal Power Flow Data",
+  "description": "Use this API to purge (re-initialize) OPF bus voltage magnitude data for an individual bus or bus section record in the working case. This API routine was first introduced in release 34.2.0. ierr = purge_opf_bus_indv_3(eibus, enod)",
+  "python_syntax": "ierr = purge_opf_bus_indv_3(eibus, enod)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "eibus",
+      "description": "Bus number. (input; no default allowed)."
+    },
+    {
+      "name": "enod",
+      "description": "The bus section number or the external node number of one of the nodes in the bus sections of interest. specify 0 if bus is represented by a single bus section. if 0 is specified and bus is represented by multiple bus sections, then the data of parent bus and not that of one of the bus sections is changed. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid bus number specified."
+    },
+    {
+      "value": "= 2",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

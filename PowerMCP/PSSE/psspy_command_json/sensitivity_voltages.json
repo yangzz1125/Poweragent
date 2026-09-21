@@ -1,0 +1,254 @@
+{
+  "module": "psspy",
+  "function_name": "sensitivity_voltages",
+  "category": "Power Flow Operation",
+  "description": "This API is used to calculate sensitivity factors of bus voltages in a subsystem to MW and MVar power at buses, MW power at generator buses, MW and MVar at load buses, phase angle of phase shifters, tap postion of tap changing transformers as well as admittance of switched shunts. This API routine was first introduced in release 32.1.0. ierr = sensitivity_voltages(options,values,labels,dfxfile)",
+  "python_syntax": "ierr = sensitivity_voltages(options,values,labels,dfxfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "options",
+      "description": "An array of nine elements specifying options for sensitvity analysis to a branch flow. (input)."
+    },
+    {
+      "name": "values",
+      "description": "An array of two elements specifying sensitivity analysis parameters. (input)."
+    },
+    {
+      "name": "labels",
+      "description": "An array of three elements specifying subsystem labels. (input)."
+    },
+    {
+      "name": "dfxfile",
+      "description": "Dfax file name. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "options": [
+      {
+        "value": "OPTIONS(1)",
+        "description": "flag to calculate sensitivity factors at buses."
+      },
+      {
+        "value": "= 0",
+        "description": "Disable, do not calculate sensitivity factors at buses."
+      },
+      {
+        "value": "= 1",
+        "description": "Enable, calculate sensitivity factors at buses."
+      },
+      {
+        "value": "OPTIONS(2)",
+        "description": "flag to calculate sensitivity factors at generator buses."
+      },
+      {
+        "value": "= 0",
+        "description": "Disable."
+      },
+      {
+        "value": "= 1",
+        "description": "Enable."
+      },
+      {
+        "value": "OPTIONS(3)",
+        "description": "flag to calculate sensitivity factors at load buses."
+      },
+      {
+        "value": "= 0",
+        "description": "Disable."
+      },
+      {
+        "value": "= 1",
+        "description": "Enable."
+      },
+      {
+        "value": "OPTIONS(4)",
+        "description": "flag to calculate sensitivity factors of the branch flow to phase shifters."
+      },
+      {
+        "value": "= 0",
+        "description": "Disable."
+      },
+      {
+        "value": "= 1",
+        "description": "Enable."
+      },
+      {
+        "value": "OPTIONS(5)",
+        "description": "flag to calculate sensitivity factors of the branch flow to tap changing transformers (ignore if DC network model is used)."
+      },
+      {
+        "value": "= 0",
+        "description": "Disable."
+      },
+      {
+        "value": "= 1",
+        "description": "Enable."
+      },
+      {
+        "value": "OPTIONS(6)",
+        "description": "flag to calculate sensitivity factors of the branch flow to switched shunts (ignore if DC network model is used)."
+      },
+      {
+        "value": "= 0",
+        "description": "Disable."
+      },
+      {
+        "value": "= 1",
+        "description": "Enable."
+      },
+      {
+        "value": "OPTIONS(7)",
+        "description": "flag to specifiy the transfer from the components to which sensitivity factors of the branch flow are calculated to the opposing subsystem (the flag is ignored if none of the bus, generator, or load sensitivity calculation flags is selected)."
+      },
+      {
+        "value": "= 0",
+        "description": "Import. The positive transfer is from the components to the opposing subsystem."
+      },
+      {
+        "value": "= 1",
+        "description": "Export. The positive transfer is from the opposing subsystem to the components."
+      },
+      {
+        "value": "OPTIONS(8)",
+        "description": "opposing subsystem type."
+      },
+      {
+        "value": "= 0",
+        "description": "Slack bus."
+      },
+      {
+        "value": "= 1",
+        "description": "Single bus."
+      },
+      {
+        "value": "= 2",
+        "description": "Subsystem."
+      },
+      {
+        "value": "OPTIONS(9)",
+        "description": "ignored if opposing subsystem type is slack bus. It is a bus number when opposing subsystem type is a single bus, or one of the following seven dispatch modes if the opposing subsystem type is a subsystem (1 by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "Buses & participating factors from DFAX file for buses with positive MW machines."
+      },
+      {
+        "value": "= 2",
+        "description": "Buses & participating factors from DFAX file for buses with positive MW constant MVA load."
+      },
+      {
+        "value": "= 3",
+        "description": "Buses & participating factors from DFAX file for buses with either positive MW machines or positive MW constant MVA load."
+      },
+      {
+        "value": "= 4",
+        "description": "Subsystem buses with positive MW constant MVA load in proportion to their MW load."
+      },
+      {
+        "value": "= 5",
+        "description": "Subsystem buses with positive MW machines in proportion to their MW output."
+      },
+      {
+        "value": "= 6",
+        "description": "Subsystem buses with positive MW machines in proportion to their MBASE."
+      },
+      {
+        "value": "= 7",
+        "description": "Subsystem buses with positive MW machines in proportion to their reserves (Pmaxmc-Pgenmc)."
+      }
+    ],
+    "values": [
+      {
+        "value": "VALUES(1)",
+        "description": "mismatch tolerance for continuing sensitivity analysis in AC mode, ignored in DC mode."
+      },
+      {
+        "value": "VALUES(2)",
+        "description": "sensitivity cutoff. Sensitivity factors less than the cutoff are not presented."
+      }
+    ],
+    "labels": [
+      {
+        "value": "LABELS(1)",
+        "description": "label of the subsystem containing components to which the sensitivity factors of the branch flow are calcualted."
+      },
+      {
+        "value": "LABELS(2)",
+        "description": "label of opposing subsystem when the opposing subsystem type is a subsystem."
+      },
+      {
+        "value": "LABELS(3)",
+        "description": "label of the subsystem including branches for which sensitivity factors are calculated."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Invalid OPTIONS value."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid VALUES value."
+    },
+    {
+      "value": "= 3",
+      "description": "The bus does not exist."
+    },
+    {
+      "value": "= 4",
+      "description": "Generators are converted."
+    },
+    {
+      "value": "= 5",
+      "description": "Buses in island(s) without a swing bus–use activity TREE."
+    },
+    {
+      "value": "= 6",
+      "description": "Dispatch bus does not exist."
+    },
+    {
+      "value": "= 7",
+      "description": "No Distribution Factor Data input file specified."
+    },
+    {
+      "value": "= 8",
+      "description": "Subsystem containing components to which sensitivity factors are calculated is not specified."
+    },
+    {
+      "value": "= 9",
+      "description": "Opposing subsystem is not specified."
+    },
+    {
+      "value": "= 10",
+      "description": "Largest mismatch exceeds mismatch tolerance."
+    },
+    {
+      "value": "= 21",
+      "description": "file DFXFILE is not in the form of a PSSE-25 or later DFAX file, run DFAX."
+    },
+    {
+      "value": "= 22",
+      "description": "Error linearizing Jacobian matrix in AC network model."
+    },
+    {
+      "value": "= 51",
+      "description": "error opening Distribution Factor Data File."
+    },
+    {
+      "value": "= 52",
+      "description": "prerequisite requirements for function not met."
+    }
+  ]
+}

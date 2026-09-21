@@ -1,0 +1,54 @@
+{
+  "module": "psspy",
+  "function_name": "moveshunts",
+  "category": "Power Flow Operation",
+  "description": "Use this API to disconnect all of the fixed shunts from the specified bus and reconnect them to a designated bus. Bus TOBUS must not have any fixed shunt connected to it at the time this API is called. This API routine was first introduced in release 31.0.0. ierr = moveshunts(ibus, newbus)",
+  "python_syntax": "ierr = moveshunts(ibus, newbus)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus on which one or more fixed shunts currently exist. (input; no default allowed)."
+    },
+    {
+      "name": "newbus",
+      "description": "Bus to which the fixed shunts on bus ibus are to be moved. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "no fixed shunts at bus IBUS."
+    },
+    {
+      "value": "= 3",
+      "description": "IBUS and NEWBUS are the same bus."
+    },
+    {
+      "value": "= 4",
+      "description": "NEWBUS already has fixed shunts (move individual shunts)."
+    },
+    {
+      "value": "= 5",
+      "description": "node-breaker terminal connection table is full."
+    },
+    {
+      "value": "= 6",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

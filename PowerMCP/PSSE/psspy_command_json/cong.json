@@ -1,0 +1,66 @@
+{
+  "module": "psspy",
+  "function_name": "cong",
+  "category": "Power Flow Operation",
+  "description": "Use this API to convert generators from their power flow representation in preparation for switching studies and dynamic simulations (activity CONG). This API routine was first introduced in release 28.0.0. ierr = cong(opt)",
+  "python_syntax": "ierr = cong(opt)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "opt",
+      "description": "Machine impedance option. (input; 0 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "opt": [
+      {
+        "value": "= 0",
+        "description": "use ZSORCE and IMZSRC."
+      },
+      {
+        "value": "= 1",
+        "description": "use fault analysis subtransient impedance and IMZPOS."
+      },
+      {
+        "value": "= 2",
+        "description": "use fault analysis transient impedance and IMZPOS."
+      },
+      {
+        "value": "= 3",
+        "description": "use fault analysis synchronous impedance and IMZPOS."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid OPT value."
+    },
+    {
+      "value": "= 2",
+      "description": "generators are already converted."
+    },
+    {
+      "value": "= 3",
+      "description": "generator conversion failed due to a machine impedance of zero."
+    },
+    {
+      "value": "= 4",
+      "description": "generator conversion failed due to the presence of in-service induction machines that are in the “stalled” or “tripped” state."
+    },
+    {
+      "value": "= 5",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "module": "psspy",
+  "function_name": "ttdcauxmod_remove",
+  "category": "Auxiliary Signal Models",
+  "description": "Use this API to remove an auxiliary signal model from the specified injection point of the designated two-terminal dc line. This API routine was first introduced in release 30.2.0. ierr = ttdcauxmod_remove(dc, isgndx)",
+  "python_syntax": "ierr = ttdcauxmod_remove(dc, isgndx)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "dc",
+      "description": "Quoted name of the two-terminal dc line receiving the of the auxiliary signal model; if an unquoted integer value is specified, the api converts it to a left- justified name. (input; no default allowed)."
+    },
+    {
+      "name": "isgndx",
+      "description": "Auxiliary signal injection point number, or the auxiliary signal index. (input; 1 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "dc line not found."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ISGNDX value for a two-terminal dc line."
+    },
+    {
+      "value": "= 3",
+      "description": "no auxiliary signal model at this index for this two-terminal dc line."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "module": "psspy",
+  "function_name": "purge_all_opf_data",
+  "category": "Optimal Power Flow Data",
+  "description": "Use this API to purge and re-initialize all OPF data records in the working case. Unlike the NEWOPF_API call, any OPF data in the working case will be purged and re-initialized. This API routine was first introduced in release 30.0.0. ierr = purge_all_opf_data()",
+  "python_syntax": "ierr = purge_all_opf_data()",
+  "return_type": "error_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": ""
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

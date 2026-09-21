@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "print_outaged_branches",
+  "category": "Power Flow Operation",
+  "description": "Use this API to specify or return the option to enable or disable whether to print out-of- service branches. This API routine was first introduced in release 31.0.0. ierr = print_outaged_branches(ival) ierr, ival = print_outaged_branches()",
+  "python_syntax": "ierr = print_outaged_branches(ival) ierr, ival = print_outaged_branches()",
+  "return_type": "error_only_report",
+  "parameters": [
+    {
+      "name": "ival",
+      "description": "Value of the option setting. (input; if Batch command, or for Python if specified as an argument, or for Fortran if IOCODE is 0, 0 by default; else output)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "ival": [
+      {
+        "value": "= 0",
+        "description": "do not print out-of-service branches."
+      },
+      {
+        "value": "= 1",
+        "description": "print out-of-service branches."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid IVAL value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid IOCODE value."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

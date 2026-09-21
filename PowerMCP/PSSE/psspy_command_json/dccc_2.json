@@ -1,0 +1,188 @@
+{
+  "module": "psspy",
+  "function_name": "dccc_2",
+  "category": "Power Flow Operation",
+  "description": "Use this API to run contingency case solutions using a linear network (dc) model (activity DCCC). This API routine was first introduced in release 34.0.0. ierr = dccc_2(options, values, dfxfile)",
+  "python_syntax": "ierr = dccc_2(options, values, dfxfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "options",
+      "description": "An array of 8 elements specifying calculation and reporting options. The value of each element is as follows. (input)."
+    },
+    {
+      "name": "values",
+      "description": "An array of 3 elements specifying tolerances and thresholds. The value of each element is as follows. (input)."
+    },
+    {
+      "name": "dfxfile",
+      "description": "Is the name of distribution factor data file. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Is the error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "options": [
+      {
+        "value": "OPTIONS(1)",
+        "description": "is the loss estimate option (1 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "exclude loss estimate."
+      },
+      {
+        "value": "= 1",
+        "description": "use the present voltage vector to estimate losses and apply them as “hidden loads”."
+      },
+      {
+        "value": "OPTIONS(2)",
+        "description": "is the regulating phase shifter code. (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "fixed phase shift angles in the base case and the contingency cases."
+      },
+      {
+        "value": "= 1",
+        "description": "fixed MW in the base case, fixed phase shift angles in the contingency cases."
+      },
+      {
+        "value": "= 2",
+        "description": "fixed MW in the base case and the contingency cases."
+      },
+      {
+        "value": "OPTIONS(3)",
+        "description": "contingency case rating set; 1 through 12 (rating set program option setting by default)."
+      },
+      {
+        "value": "OPTIONS(4)",
+        "description": "base case line flow code (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "dc base case."
+      },
+      {
+        "value": "= 1",
+        "description": "ac base case."
+      },
+      {
+        "value": "OPTIONS(5)",
+        "description": "output format code (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "overload output."
+      },
+      {
+        "value": "= 1",
+        "description": "full output."
+      },
+      {
+        "value": "OPTIONS(6)",
+        "description": "exclude cases with no overloads from the overload report (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no."
+      },
+      {
+        "value": "= 1",
+        "description": "yes."
+      },
+      {
+        "value": "OPTIONS(7)",
+        "description": "convert MVA ratings to estimated MW ratings. (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no."
+      },
+      {
+        "value": "= 1",
+        "description": "yes."
+      },
+      {
+        "value": "OPTIONS(8)",
+        "description": "code to discontinue activity if MW mismatch exceeds VALUES(1). (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "discontinue."
+      },
+      {
+        "value": "= 1",
+        "description": "continue."
+      }
+    ],
+    "values": [
+      {
+        "value": "VALUES(1)",
+        "description": "required MW mismatch tolerance for continuing (Newton solution convergence tolerance, TOLN, , by default)."
+      },
+      {
+        "value": "VALUES(2)",
+        "description": "percent of rating for reporting an element as overloaded. (100 by default)."
+      },
+      {
+        "value": "VALUES(3)",
+        "description": "minimum contingency case flow change for including an element in the overload report. (0.0 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid OPTIONS value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid VALUES value."
+    },
+    {
+      "value": "= 3",
+      "description": "no Distribution Factor Data File specified."
+    },
+    {
+      "value": "= 4",
+      "description": "generators are converted."
+    },
+    {
+      "value": "= 5",
+      "description": "buses in island(s) without a swing bus; use activity TREE."
+    },
+    {
+      "value": "= 6",
+      "description": "largest mismatch exceeds mismatch tolerance."
+    },
+    {
+      "value": "= 7",
+      "description": "error opening DFXFILE."
+    },
+    {
+      "value": "= 8",
+      "description": "file DFXFILE is not in the form of a PSSE 25 or later DFAX file; run DFAX."
+    },
+    {
+      "value": "= 9",
+      "description": "file DFXFILE does not contain distribution factors; run DFAX with distribution factor option enabled."
+    },
+    {
+      "value": "= 10",
+      "description": "no monitored branches or interfaces defined."
+    },
+    {
+      "value": "= 11",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

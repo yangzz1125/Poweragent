@@ -1,0 +1,10 @@
+{
+  "module": "psspy",
+  "function_name": "nextdiagfiledataset",
+  "category": "Diagram View",
+  "description": "This API is used to display the next element in the active data set on the active Slider diagram. Currently, this API is only used with ACCC results. This API routine was first introduced in release 32.0.0. nextdiagfileset()",
+  "python_syntax": "nextdiagfileset()",
+  "return_type": "void",
+  "parameters": [],
+  "return_values": []
+}

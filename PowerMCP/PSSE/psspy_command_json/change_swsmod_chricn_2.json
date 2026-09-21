@@ -1,0 +1,74 @@
+{
+  "module": "psspy",
+  "function_name": "change_swsmod_chricn_2",
+  "category": "Switched Shunt Models",
+  "description": "Use this API to change the value of a character ICON (i.e., an element of the CHRICN array) of the switched shunt model of a specified switched shunt device. The corresponding integer ICON is set to 0. This API routine was first introduced in release 35.0.0. ierr = change_swsmod_chricn_2(ibus, id, model, j, chdata)",
+  "python_syntax": "ierr = change_swsmod_chricn_2(ibus, id, model, j, chdata)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Switched shunt bus number. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Switched shunt identifier. (input)."
+    },
+    {
+      "name": "model",
+      "description": "Model name. (input; no default allowed)."
+    },
+    {
+      "name": "j",
+      "description": "Icon number to change relative to the start of the block of icons assigned to this model (1 for icon(i), 2 for icon(i+1), etc.). (input; no default allowed)."
+    },
+    {
+      "name": "chdata",
+      "description": "New character icon value. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "unknown model name."
+    },
+    {
+      "value": "= 2",
+      "description": "no model at this switched shunt device."
+    },
+    {
+      "value": "= 3",
+      "description": "model at this switched shunt is aaa not xxx."
+    },
+    {
+      "value": "= 4",
+      "description": "no input ICONs used in model."
+    },
+    {
+      "value": "= 5",
+      "description": "ICON number outside of the ICON range of this model."
+    },
+    {
+      "value": "= 6",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 7",
+      "description": "switched shunt not found."
+    },
+    {
+      "value": "= 8",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

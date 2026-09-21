@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "avoltagedroopchar",
+  "category": "Multiple Element Data",
+  "description": "Use this API to return an array of character values for the voltage droop controls. This API routine was first introduced in release 35.3.0. ierr, carray = avoltagedroopchar(string)",
+  "python_syntax": "ierr, carray = avoltagedroopchar(string)",
+  "return_type": "error_and_array",
+  "parameters": [
+    {
+      "name": "string",
+      "description": "An array of NSTR elements specifying NSTR of the following strings indicating the voltage droop quantities desired. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "carray",
+      "description": "An array of NSTR*DIM elements specifying Is an array of at least NSTR columns, each of which contains DIM elements. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= DROOPNAME",
+        "description": "voltage droop name (40 characters)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid NSTR value."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid STRING value."
+    }
+  ]
+}

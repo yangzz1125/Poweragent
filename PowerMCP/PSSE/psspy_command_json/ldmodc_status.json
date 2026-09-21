@@ -1,0 +1,158 @@
+{
+  "module": "psspy",
+  "function_name": "ldmodc_status",
+  "category": "Load Related Models",
+  "description": "Use this API to change the status of a load related model of a designated type for all subsystem loads at which it is applied. This API routine was first introduced in release 35.5. ierr = ldmodc_status(mtype, ibus, ltypname, id, ltype, status)",
+  "python_syntax": "ierr = ldmodc_status(mtype, ibus, ltypname, id, ltype, status)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "mtype",
+      "description": "Subsystem type. (input; 0 by default)."
+    },
+    {
+      "name": "ibus",
+      "description": "Bus, owner, zone or area number. ignored when mtype is 4 (when mtype is less than 4). (input; no default allowed)."
+    },
+    {
+      "name": "ltypname",
+      "description": "Load type, or “ “ if the model is not applied to applied to “load type”subsystem. (input; blank by default)."
+    },
+    {
+      "name": "id",
+      "description": "Load identifier, or “*” if the model is applied to all loads in the subsystem. (input; blank by default)."
+    },
+    {
+      "name": "ltype",
+      "description": "Load model type. (input; no default allowed)."
+    },
+    {
+      "name": "status",
+      "description": "New model status. (input; 1 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "mtype": [
+      {
+        "value": "= 0",
+        "description": "bus model."
+      },
+      {
+        "value": "= 1",
+        "description": "owner model."
+      },
+      {
+        "value": "= 2",
+        "description": "zone model."
+      },
+      {
+        "value": "= 3",
+        "description": "area model."
+      },
+      {
+        "value": "= 4",
+        "description": "all model."
+      }
+    ],
+    "ltype": [
+      {
+        "value": "= 11",
+        "description": "load main component model."
+      },
+      {
+        "value": "= 12",
+        "description": "load distribution component model."
+      },
+      {
+        "value": "= 21",
+        "description": "Component # 1 load Individual component model."
+      },
+      {
+        "value": "= 22",
+        "description": "Component # 2 load Individual component model."
+      },
+      {
+        "value": "= 23",
+        "description": "Component # 3 load Individual component model."
+      },
+      {
+        "value": "= 24",
+        "description": "Component # 4 load Individual component model."
+      },
+      {
+        "value": "= 25",
+        "description": "Component # 5 load Individual component model."
+      },
+      {
+        "value": "= 26",
+        "description": "Component # 6 load Individual component model."
+      },
+      {
+        "value": "= 27",
+        "description": "Component # 7 load Individual component model."
+      },
+      {
+        "value": "= 28",
+        "description": "Component # 8 load Individual component model."
+      },
+      {
+        "value": "= 29",
+        "description": "Component # 9 load Individual component model."
+      },
+      {
+        "value": "= 30",
+        "description": "Component # 10 load Individual component model."
+      }
+    ],
+    "status": [
+      {
+        "value": "= 0",
+        "description": "out-of-service."
+      },
+      {
+        "value": "= 1",
+        "description": "in-service."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid number specified for IBUS."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid LTYPE value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid MTYPE value."
+    },
+    {
+      "value": "= 4",
+      "description": "no all type LTYPE model for this id in tables."
+    },
+    {
+      "value": "= 5",
+      "description": "no MTYPE type LTYPE model for this id in tables for MTYPE IBUS."
+    },
+    {
+      "value": "= 6",
+      "description": "invalid STATUS value."
+    },
+    {
+      "value": "= 7",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

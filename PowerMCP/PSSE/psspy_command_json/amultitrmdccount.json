@@ -1,0 +1,90 @@
+{
+  "module": "psspy",
+  "function_name": "amultitrmdccount",
+  "category": "Multi-Terminal Dc Line Data",
+  "description": "Use this API to return the number of array entries required to accommodate the data to be returned by the remaining members of the multi-terminal dc line data family. This API routine was first introduced in release 30.3.0. ierr, brnchs = amultitrmdccount(sid, ties, flag)",
+  "python_syntax": "ierr, brnchs = amultitrmdccount(sid, ties, flag)",
+  "return_type": "error_and_count",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the bus subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "ties",
+      "description": "A flag indicating which subsystem multi-terminal dc lines to include (ignored if sid is negative). (input; 1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem multi-terminal dc lines to include. (input; 1 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "brnchs",
+      "description": "Number of array entries required for the subsystem indicated by sid that meet the editing criteria indicated by ties and flag. (output)."
+    }
+  ],
+  "allowed_values": {
+    "sid": [
+      {
+        "value": "< 0",
+        "description": "to instruct the API to assume a subsystem containing all buses in the working case."
+      },
+      {
+        "value": ">= 0",
+        "description": "valid bus subsystem identifier. Valid subsystem identifiers range from 0 to 11. Subsystem SID must have been previously defined."
+      }
+    ],
+    "ties": [
+      {
+        "value": "= 1",
+        "description": "for interior subsystem multi-terminal dc lines only."
+      },
+      {
+        "value": "= 2",
+        "description": "for subsystem tie multi-terminal dc lines only."
+      },
+      {
+        "value": "= 3",
+        "description": "for both interior subsystem multi-terminal dc lines and tie multi-terminal dc lines."
+      }
+    ],
+    "flag": [
+      {
+        "value": "= 1",
+        "description": "for only in-service multi-terminal dc lines."
+      },
+      {
+        "value": "= 2",
+        "description": "for all multi-terminal dc lines."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error, BRNCHS returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty; BRNCHS returned as 0."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value; BRNCHS returned as 0."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid TIES value; BRNCHS returned as 0."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid FLAG value; BRNCHS returned as 0."
+    }
+  ]
+}

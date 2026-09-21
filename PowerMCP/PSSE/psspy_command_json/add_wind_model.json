@@ -1,0 +1,146 @@
+{
+  "module": "psspy",
+  "function_name": "add_wind_model",
+  "category": "Wind Related Models",
+  "description": "Use this API to add a renewable related model of a designated type to a specified renewable machine. If a model of the designated type already exists at the machine, it is replaced. This API routine was first introduced in release 31.0.0. ierr = add_wind_model(ibus, id, mtype, name, nicn, idata, chdata, ncon, rdata)",
+  "python_syntax": "ierr = add_wind_model(ibus, id, mtype, name, nicn, idata, chdata, ncon, rdata)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Renewable machine bus number. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Renewable machine identifier. (input)."
+    },
+    {
+      "name": "mtype",
+      "description": "Model type. (input; 1 by default).MTYPE = 1 wind generator model)."
+    },
+    {
+      "name": "name",
+      "description": "Model name. (input; no default allowed)."
+    },
+    {
+      "name": "nicn",
+      "description": "Number of icons required by the model. (input; no default allowed)."
+    },
+    {
+      "name": "idata",
+      "description": "An array of NICN elements specifying ICON data. (input; 0 by default). When a character value is intended for an ICON value, the corresponding IDATA entry is ignored and the integer ICON is set to 0)."
+    },
+    {
+      "name": "chdata",
+      "description": "An array of NICN elements specifying character ICON data (no default allowed for an ICON for which a character value is to be specified). When an integer value is intended for an ICON value, the corresponding CHDATA entry must be either defaulted or specified as either ‘$$’ or ‘ ‘; the character ICON is set to ‘$$’. (input; blank by default)."
+    },
+    {
+      "name": "ncon",
+      "description": "Number of cons required by the model. (input; no default allowed)."
+    },
+    {
+      "name": "rdata",
+      "description": "An array of NCON elements specifying CON data. (input; 0.0 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "mtype": [
+      {
+        "value": "= 2",
+        "description": "renewable electrical control model."
+      },
+      {
+        "value": "= 3",
+        "description": "renewable mechanical system model."
+      },
+      {
+        "value": "= 4",
+        "description": "renewable pitch control model."
+      },
+      {
+        "value": "= 5",
+        "description": "renewable aerodynamic model."
+      },
+      {
+        "value": "= 6",
+        "description": "renewable gust model."
+      },
+      {
+        "value": "= 7",
+        "description": "renewable auxiliary control model."
+      },
+      {
+        "value": "= 8",
+        "description": "renewable torque control model."
+      },
+      {
+        "value": "= 9",
+        "description": "renewable weak grid control model."
+      },
+      {
+        "value": "= 10",
+        "description": "renewable paux control model."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "renewable machine model connection tables full–use pack renewable model tables function."
+    },
+    {
+      "value": "= 2",
+      "description": "renewable model tables are corrupt."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid MTYPE value."
+    },
+    {
+      "value": "= 4",
+      "description": "unknown model NAME."
+    },
+    {
+      "value": "= 5",
+      "description": "model is not consistent with MTYPE."
+    },
+    {
+      "value": "= 6",
+      "description": "# CONs specified is not the number expected."
+    },
+    {
+      "value": "= 7",
+      "description": "# ICONs specified is not the number expected."
+    },
+    {
+      "value": "= 8",
+      "description": "maximum number of array elements exceeded."
+    },
+    {
+      "value": "= 9",
+      "description": "machine is not designated as a renewable machine in power flow."
+    },
+    {
+      "value": "= 10",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 11",
+      "description": "machine not found."
+    },
+    {
+      "value": "= 12",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

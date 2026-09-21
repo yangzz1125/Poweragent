@@ -1,0 +1,76 @@
+{
+  "module": "psspy",
+  "function_name": "readrawx",
+  "category": "Power Flow Operation",
+  "description": "Use this API to read an extended raw data file and add all the data specified to the working case. This API routine was first introduced in release 35.4.0. ierr = readrawx(sfile, domains, mode)",
+  "python_syntax": "ierr = readrawx(sfile, domains, mode)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sfile",
+      "description": "Filename of the extended power flow raw data file. (input)."
+    },
+    {
+      "name": "domains",
+      "description": "Comma separated string of rawx domains to read. (input; all domains by default)."
+    },
+    {
+      "name": "mode",
+      "description": "Mode to operate in. (input; new by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "domains": [
+      {
+        "value": "= all",
+        "description": "all domains present in file."
+      },
+      {
+        "value": "= network",
+        "description": "network data."
+      },
+      {
+        "value": "= timeseries",
+        "description": "time series power flow data."
+      },
+      {
+        "value": "= harmonics",
+        "description": "harmonics data."
+      }
+    ],
+    "mode": [
+      {
+        "value": "= new",
+        "description": "base."
+      },
+      {
+        "value": "= update",
+        "description": "update."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 2",
+      "description": "rawx read error."
+    },
+    {
+      "value": "= 3",
+      "description": "error opening SFILE."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

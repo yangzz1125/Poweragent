@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "duplicate_cntlabel_check",
+  "category": "Power Flow Operation",
+  "description": "Use this API to specify or return the option to enable or disable the duplicated contingency labels check when Distribution Factor Data File (.dfx) or Contingency Description Data File (.con) files are used. This API routine was first introduced in release 33.10.0 and 34.2.0. ierr = duplicate_cntlabel_check(status) ierr, status = duplicate_cntlabel_check()",
+  "python_syntax": "ierr = duplicate_cntlabel_check(status) ierr, status = duplicate_cntlabel_check()",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "status",
+      "description": "Value of the option setting. (input; if Batch command, or for Python if specified as an argument, or for Fortran if IOCODE is 0, no default allowed; else output)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "status": [
+      {
+        "value": "= 0",
+        "description": "disable checking duplicated contingency labels in DFAX or CON file."
+      },
+      {
+        "value": "= 1",
+        "description": "enable checking duplicated contingency labels in DFAX or CON file."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "Invalid STATUS value."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid IOCODE value."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

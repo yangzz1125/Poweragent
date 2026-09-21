@@ -1,0 +1,82 @@
+{
+  "module": "psspy",
+  "function_name": "change_wnmod_var",
+  "category": "Wind Related Models",
+  "description": "Use this API to change the value of a VAR of a designated renewable machine related model at a specified renewable machine. This API routine was first introduced in release 32.0.0. ierr = change_wnmod_var(ibus, id, name, j, rdata)",
+  "python_syntax": "ierr = change_wnmod_var(ibus, id, name, j, rdata)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Renewable machine bus number. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Renewable machine identifier. (input)."
+    },
+    {
+      "name": "name",
+      "description": "Model name. (input; no default allowed)."
+    },
+    {
+      "name": "j",
+      "description": "Var number to change relative to the start of the block of vars assigned to this model (1 for var(j), 2 for var(j+1), etc.). (input; no default allowed)."
+    },
+    {
+      "name": "rdata",
+      "description": "New var value. (input; unchanged by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "unknown model NAME."
+    },
+    {
+      "value": "= 2",
+      "description": "model NAME is not a renewable machine model."
+    },
+    {
+      "value": "= 3",
+      "description": "no <model type> model at this machine."
+    },
+    {
+      "value": "= 4",
+      "description": "the <model type> model at this machine is aaa not NAME."
+    },
+    {
+      "value": "= 5",
+      "description": "no input VARs used in model NAME."
+    },
+    {
+      "value": "= 6",
+      "description": "VAR number outside of the VAR range of this model."
+    },
+    {
+      "value": "= 7",
+      "description": "machine is not designated as a renewable machine in power flow."
+    },
+    {
+      "value": "= 8",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 9",
+      "description": "machine not found."
+    },
+    {
+      "value": "= 10",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

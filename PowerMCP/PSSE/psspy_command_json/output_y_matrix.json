@@ -1,0 +1,98 @@
+{
+  "module": "psspy",
+  "function_name": "output_y_matrix",
+  "category": "Power Flow Operation",
+  "description": "Use this API to display the network admittance matrix for a subsystem of the working case in the form of a list of matrix terms. This API routine was first introduced in release 30.1.0. ierr = output_y_matrix(sid, all, ties, out, ofile)",
+  "python_syntax": "ierr = output_y_matrix(sid, all, ties, out, ofile)",
+  "return_type": "error_only_listing",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid subsystem identifier. valid subsystem identifiers range from 0 to 11. subsystem sid must have been previously defined. (input; 0 by default)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem flag. (input; 1 by default)."
+    },
+    {
+      "name": "ties",
+      "description": "Option for the omission or inclusion of off-diagonal terms corresponding to ties from the specified subsystem; ignored if all is 1. (input; 0 by default)."
+    },
+    {
+      "name": "out",
+      "description": "Destination selection. (input; 1 by default)."
+    },
+    {
+      "name": "ofile",
+      "description": "Name of the file to which data records are to be written (when out is 0). (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 0",
+        "description": "process only rows corresponding to buses in subsystem SID."
+      },
+      {
+        "value": "= 1",
+        "description": "process the complete case."
+      }
+    ],
+    "ties": [
+      {
+        "value": "= 0",
+        "description": "omit ties."
+      },
+      {
+        "value": "= 1",
+        "description": "include ties."
+      }
+    ],
+    "out": [
+      {
+        "value": "= 0",
+        "description": "direct output to a data file specified by OFILE."
+      },
+      {
+        "value": "= 1",
+        "description": "direct output to the current report device."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ALL value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid TIES value."
+    },
+    {
+      "value": "= 4",
+      "description": "invalid OUT value."
+    },
+    {
+      "value": "= 5",
+      "description": "error opening OFILE."
+    },
+    {
+      "value": "= 6",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

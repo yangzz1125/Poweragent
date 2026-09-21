@@ -1,0 +1,42 @@
+{
+  "module": "psspy",
+  "function_name": "gettspfprofiledatabyset",
+  "category": "Multiple Element Data",
+  "description": "Use this API to return an array of real values for Time Series Power Flow profile data for given curve set id. This API routine was first introduced in release 35.4.0. ierr, rarray = gettspfprofiledatabyset(curvesetid,indexcount)",
+  "python_syntax": "ierr, rarray = gettspfprofiledatabyset(curvesetid,indexcount)",
+  "return_type": "error_and_array",
+  "parameters": [
+    {
+      "name": "curvesetid",
+      "description": "Curve id. (input; no default allowed)."
+    },
+    {
+      "name": "indexcount",
+      "description": "Number of elements in rarray. count must be as least as large as the value of pdcount returned by the gettspfprofiledatacount api when it is called. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "The error code . (output)."
+    },
+    {
+      "name": "rarray",
+      "description": "An array of COUNT*INDEXCOUNT elements specifying Is an array of at least COUNT elements. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Invalid input for non-optional field."
+    },
+    {
+      "value": "= 2",
+      "description": "Internal database error."
+    }
+  ]
+}

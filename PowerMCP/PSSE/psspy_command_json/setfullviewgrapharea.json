@@ -1,0 +1,309 @@
+{
+  "module": "psspy",
+  "function_name": "setfullviewgrapharea",
+  "category": "Graphical Analysis Output",
+  "description": "Use this API to specify the parameters of the scales used for plotting the results of PV and QV analysis. This API routine was first introduced in release 30.0.0. setfullviewgrapharea(area, vaxisshow, vaxisstyle, vaxisclr, vgridshow, vgridstyle, vgridclr, haxisshow, haxisstyle, haxisclr, hgridshow, hgridstyle, hgridclr, bordershow, borderstyle, borderclr, setareaclr, areaclr)",
+  "python_syntax": "setfullviewgrapharea(area, vaxisshow, vaxisstyle, vaxisclr, vgridshow, vgridstyle, vgridclr, haxisshow, haxisstyle, haxisclr, hgridshow, hgridstyle, hgridclr, bordershow, borderstyle, borderclr, setareaclr, areaclr)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "area",
+      "description": "Number of the plotting area. (input)."
+    },
+    {
+      "name": "vaxisshow",
+      "description": "Show (or not) the vertical axis. (input)."
+    },
+    {
+      "name": "vaxisstyle",
+      "description": "Style of the vertical axis. valid only if vaxisshow=1. (input)."
+    },
+    {
+      "name": "vaxisclr",
+      "description": "An array of three elements specifying color of the vertical axis. Valid only if VAXISSHOW=1. (input)."
+    },
+    {
+      "name": "vgridshow",
+      "description": "Show (or not) the vertical grid. (input)."
+    },
+    {
+      "name": "vgridstyle",
+      "description": "Style of the vertical grid. valid only if vgridshow =1. (input)."
+    },
+    {
+      "name": "vgridclr",
+      "description": "An array of three elements specifying color of the vertical grid. Valid only if VGRIDSHOW =1. (input)."
+    },
+    {
+      "name": "haxisshow",
+      "description": "Show (or not) the horizontal axis. (input)."
+    },
+    {
+      "name": "haxisstyle",
+      "description": "Style of the horizontal axis. valid only if haxisshow=1. (input)."
+    },
+    {
+      "name": "haxisclr",
+      "description": "An array of three elements specifying color of the horizontal axis. Valid only if HAXISSHOW=1. (input)."
+    },
+    {
+      "name": "hgridshow",
+      "description": "Show (or not) the horizontal grid. (input)."
+    },
+    {
+      "name": "hgridstyle",
+      "description": "Style of the horizontal grid. valid only if hgridshow =1. (input)."
+    },
+    {
+      "name": "hgridclr",
+      "description": "An array of three elements specifying color of the horizontal grid. Valid only if HGRIDSHOW =1. (input)."
+    },
+    {
+      "name": "bordershow",
+      "description": "Show (or not) the border around the plot. (input)."
+    },
+    {
+      "name": "borderstyle",
+      "description": "Style of the border. valid only if bordershow =1. (input)."
+    },
+    {
+      "name": "borderclr",
+      "description": "An array of three elements specifying color of the border. Valid only if BORDERSHOW =1. (input)."
+    },
+    {
+      "name": "setareaclr",
+      "description": "Set (or not) the back color of the plotting area. (input)."
+    },
+    {
+      "name": "areaclr",
+      "description": "An array of three elements specifying color of the plotting area. Valid only if SETAREACLR =1. (input)."
+    }
+  ],
+  "return_values": [],
+  "allowed_values": {
+    "area": [
+      {
+        "value": "= 0",
+        "description": "QV analysis, area for Q(V) plot."
+      },
+      {
+        "value": "= 1",
+        "description": "QV analysis, area for mismatch plot."
+      },
+      {
+        "value": "= 2",
+        "description": "PV analysis, area for bus voltage."
+      },
+      {
+        "value": "= 3",
+        "description": "PV analysis, area for generator MW."
+      },
+      {
+        "value": "= 4",
+        "description": "PV analysis, area for branch MVA flow."
+      },
+      {
+        "value": "= 5",
+        "description": "PV analysis, area for interface MW flow."
+      },
+      {
+        "value": "= 6",
+        "description": "PV analysis, area for bus voltage against interface flow."
+      }
+    ],
+    "vaxisstyle": [
+      {
+        "value": "= 0",
+        "description": "solid line."
+      },
+      {
+        "value": "= 1",
+        "description": "dash - dash - dash line."
+      },
+      {
+        "value": "= 2",
+        "description": "dot - dot - dot line."
+      },
+      {
+        "value": "= 3",
+        "description": "dash - dot line."
+      },
+      {
+        "value": "= 4",
+        "description": "dash - dot - dot line."
+      }
+    ],
+    "vaxisclr": [
+      {
+        "value": "VAXISCLR(1)",
+        "description": "Red component; the value between 0 and 255."
+      },
+      {
+        "value": "VAXISCLR(2)",
+        "description": "Green component; the value between 0 and 255."
+      },
+      {
+        "value": "VAXISCLR(3)",
+        "description": "Blue component; the value between 0 and 255."
+      }
+    ],
+    "vgridstyle": [
+      {
+        "value": "= 0",
+        "description": "solid line."
+      },
+      {
+        "value": "= 1",
+        "description": "dash - dash - dash line."
+      },
+      {
+        "value": "= 2",
+        "description": "dot - dot - dot line."
+      },
+      {
+        "value": "= 3",
+        "description": "dash - dot line."
+      },
+      {
+        "value": "= 4",
+        "description": "dash - dot - dot line."
+      }
+    ],
+    "vgridclr": [
+      {
+        "value": "VGRIDCLR(1)",
+        "description": "Red component; the value between 0 and 255."
+      },
+      {
+        "value": "VGRIDCLR(2)",
+        "description": "Green component; the value between 0 and 255."
+      },
+      {
+        "value": "VGRIDCLR(3)",
+        "description": "Blue component; the value between 0 and 255."
+      }
+    ],
+    "haxisstyle": [
+      {
+        "value": "= 0",
+        "description": "solid line."
+      },
+      {
+        "value": "= 1",
+        "description": "dash - dash - dash line."
+      },
+      {
+        "value": "= 2",
+        "description": "dot - dot - dot line."
+      },
+      {
+        "value": "= 3",
+        "description": "dash - dot line."
+      },
+      {
+        "value": "= 4",
+        "description": "dash - dot - dot line."
+      }
+    ],
+    "haxisclr": [
+      {
+        "value": "HAXISCLR(1)",
+        "description": "Red component; the value between 0 and 255."
+      },
+      {
+        "value": "HAXISCLR(2)",
+        "description": "Green component; the value between 0 and 255."
+      },
+      {
+        "value": "HAXISCLR(3)",
+        "description": "Blue component; the value between 0 and 255."
+      }
+    ],
+    "hgridstyle": [
+      {
+        "value": "= 0",
+        "description": "solid line."
+      },
+      {
+        "value": "= 1",
+        "description": "dash - dash - dash line."
+      },
+      {
+        "value": "= 2",
+        "description": "dot - dot - dot line."
+      },
+      {
+        "value": "= 3",
+        "description": "dash - dot line."
+      },
+      {
+        "value": "= 4",
+        "description": "dash - dot - dot line."
+      }
+    ],
+    "hgridclr": [
+      {
+        "value": "HGRIDCLR(1)",
+        "description": "Red component; the value between 0 and 255."
+      },
+      {
+        "value": "HGRIDCLR(2)",
+        "description": "Green component; the value between 0 and 255."
+      },
+      {
+        "value": "HGRIDCLR(3)",
+        "description": "Blue component; the value between 0 and 255."
+      }
+    ],
+    "borderstyle": [
+      {
+        "value": "= 0",
+        "description": "solid line."
+      },
+      {
+        "value": "= 1",
+        "description": "dash - dash - dash line."
+      },
+      {
+        "value": "= 2",
+        "description": "dot - dot - dot line."
+      },
+      {
+        "value": "= 3",
+        "description": "dash - dot line."
+      },
+      {
+        "value": "= 4",
+        "description": "dash - dot - dot line."
+      }
+    ],
+    "borderclr": [
+      {
+        "value": "BORDERCLR(1)",
+        "description": "Red component; the value between 0 and 255."
+      },
+      {
+        "value": "BORDERCLR(2)",
+        "description": "Green component; the value between 0 and 255."
+      },
+      {
+        "value": "BORDERCLR(3)",
+        "description": "Blue component; the value between 0 and 255."
+      }
+    ],
+    "areaclr": [
+      {
+        "value": "AREACLR(1)",
+        "description": "Red component; the value between 0 and 255."
+      },
+      {
+        "value": "AREACLR(2)",
+        "description": "Green component; the value between 0 and 255."
+      },
+      {
+        "value": "AREACLR(3)",
+        "description": "Blue component; the value between 0 and 255."
+      }
+    ]
+  }
+}

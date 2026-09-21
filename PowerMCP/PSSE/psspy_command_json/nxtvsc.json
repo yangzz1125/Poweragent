@@ -1,0 +1,37 @@
+{
+  "module": "psspy",
+  "function_name": "nxtvsc",
+  "category": "Single Element Data",
+  "description": "Returns the next VSC dc line in dc line name alphabetical order. The routine INIVSC must be called first. This API routine was first introduced in release 31.0.0. ierr, string = nxtvsc()",
+  "python_syntax": "ierr, string = nxtvsc()",
+  "return_type": "error_and_string",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "string",
+      "description": "Vsc dc line name. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘STRING’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "No more VSC dc lines; ‘STRING’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "‘INIVSC’ was not called; ‘STRING’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "‘STRING’ not long enough to contain entire dc line name; ‘STRING’ returned but contains a truncated dc line name."
+    }
+  ]
+}

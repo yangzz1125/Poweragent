@@ -1,0 +1,15 @@
+{
+  "module": "psspy",
+  "function_name": "saveeventstudyfile",
+  "category": "Event Studies",
+  "description": "Use this API to save existing event studies in an event study file. This API routine was first introduced in release 32.0.0. saveeventstudyfile(sfile)",
+  "python_syntax": "saveeventstudyfile(sfile)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "sfile",
+      "description": ""
+    }
+  ],
+  "return_values": []
+}

@@ -1,0 +1,46 @@
+{
+  "module": "psspy",
+  "function_name": "cctmdlnam_buso",
+  "category": "Single Element Data",
+  "description": "Use this API to return model name of CCT Bus other models. This API routine was first introduced in release 35.0.0. ierr, model = cctmdlnam_buso(ibus)",
+  "python_syntax": "ierr, model = cctmdlnam_buso(ibus)",
+  "return_type": "error_and_model",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "model",
+      "description": "Model name. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; MODEL name is returned."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not in case."
+    },
+    {
+      "value": "= 2",
+      "description": "No CCT models in case."
+    },
+    {
+      "value": "= 3",
+      "description": "No bus other model attached to the specified bus."
+    },
+    {
+      "value": "= 4",
+      "description": "Dynamics data not present in working memory."
+    }
+  ]
+}

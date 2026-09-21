@@ -1,0 +1,31 @@
+{
+  "module": "psspy",
+  "function_name": "exportbuslocfile_2",
+  "category": "Diagram View",
+  "description": "Use this API to export the bus location from the active Slider Diagram in the GUI to a file. This API routine was first introduced in release 34.8.0 and 35.1.0. exportbuslocfile_2(buslocfile, exportgeo)",
+  "python_syntax": "exportbuslocfile_2(buslocfile, exportgeo)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "buslocfile",
+      "description": "Name of the bus location data file to be written. (input)."
+    },
+    {
+      "name": "exportgeo",
+      "description": "Export geophysical coordinates or cartesian coordinates. (input; 1 by default)."
+    }
+  ],
+  "return_values": [],
+  "allowed_values": {
+    "exportgeo": [
+      {
+        "value": "= 1",
+        "description": "export in geophysical coordinates."
+      },
+      {
+        "value": "= 0",
+        "description": "export in Cartesian coordinates."
+      }
+    ]
+  }
+}

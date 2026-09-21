@@ -1,0 +1,46 @@
+{
+  "module": "psspy",
+  "function_name": "bsysrcl",
+  "category": "Bus Subsystems",
+  "description": "Use this API to recall a specified bus subsystem saved in a bus subsystem file. This API routine was first introduced in release 28.0.0. ierr = bsysrcl(sid, sfile)",
+  "python_syntax": "ierr = bsysrcl(sid, sfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid bus subsystem id. valid bus subsystem ids range from 0 to 11. (input)."
+    },
+    {
+      "name": "sfile",
+      "description": "Bus subsystem filename. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error return. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "SID is not valid."
+    },
+    {
+      "value": "= 2",
+      "description": "error opening SFILE."
+    },
+    {
+      "value": "= 3",
+      "description": "not a valid bus subsystem file."
+    },
+    {
+      "value": "= 4",
+      "description": "items in bus subsystem file not found in working case."
+    }
+  ]
+}

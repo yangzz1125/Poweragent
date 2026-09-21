@@ -1,0 +1,30 @@
+{
+  "module": "psspy",
+  "function_name": "text",
+  "category": "Power Flow Operation",
+  "description": "This API does nothing. Its purpose is to provide recordable documentation. This API routine was first introduced in release 30.0.0. ierr = text(carg)",
+  "python_syntax": "ierr = text(carg)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "carg",
+      "description": "String of text. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

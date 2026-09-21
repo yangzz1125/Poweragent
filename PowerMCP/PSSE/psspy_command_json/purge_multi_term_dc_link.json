@@ -1,0 +1,66 @@
+{
+  "module": "psspy",
+  "function_name": "purge_multi_term_dc_link",
+  "category": "Power Flow Data",
+  "description": "Use this API to delete the specified dc link from the specified multi-terminal dc line in the working case. This API routine was first introduced in release 30.0.0. ierr = purge_multi_term_dc_link(dc, ibus, jbus, ckt)",
+  "python_syntax": "ierr = purge_multi_term_dc_link(dc, ibus, jbus, ckt)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "dc",
+      "description": "Quoted name of the multi-terminal dc line from which a dc link is to be removed; if an unquoted integer value is specified, the api converts it to a left- justified name. (input; no default allowed)."
+    },
+    {
+      "name": "ibus",
+      "description": "One of the dc buses connected by the dc link to be removed. (input)."
+    },
+    {
+      "name": "jbus",
+      "description": "Other dc bus connected by the dc link. (input)."
+    },
+    {
+      "name": "ckt",
+      "description": "Circuit identifier of the dc link to be deleted. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "dc line not found."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid dc bus number."
+    },
+    {
+      "value": "= 3",
+      "description": "dc bus not present in this multi-terminal dc line."
+    },
+    {
+      "value": "= 4",
+      "description": "circuit identifier is more than one character."
+    },
+    {
+      "value": "= 5",
+      "description": "dc link not found in this multi-terminal dc line."
+    },
+    {
+      "value": "= 6",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

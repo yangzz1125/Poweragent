@@ -1,0 +1,10 @@
+{
+  "module": "psspy",
+  "function_name": "rundynamiceventstudy",
+  "category": "Event Studies",
+  "description": "Use this API to run a dynamic study using the active event study in the open event study file. This API routine was first introduced in release 32.0.0. rundynamiceventstudy()",
+  "python_syntax": "rundynamiceventstudy()",
+  "return_type": "void",
+  "parameters": [],
+  "return_values": []
+}

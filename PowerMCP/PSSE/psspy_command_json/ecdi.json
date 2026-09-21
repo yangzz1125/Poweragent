@@ -1,0 +1,144 @@
+{
+  "module": "psspy",
+  "function_name": "ecdi",
+  "category": "Power Flow Operation",
+  "description": "Use this API to place machines in a specified subsystem on- or off-line to satisfy a given subsystem minimum capacity; the in-service machines in the subsystem are then dispatched on the basis of incremental cost to meet a specified total subsystem generation (activity ECDI). This API must be referenced using one of the following procedures: - One reference with APIOPT=1, followed by one reference with APIOPT=2, followed by one or more references with APIOPT=3, followed by one reference with APIOPT=4. - One reference with APIOPT=0. This automatically combines the processing of one APIOPT 1 reference, followed by one APIOPT 2 reference, followed by one APIOPT 3 reference, followed by one APIOPT 4 reference. This API routine was first introduced in release 28.0.0. ierr = ecdi(sid, all, apiopt, cfile, status, values)",
+  "python_syntax": "ierr = ecdi(sid, all, apiopt, cfile, status, values)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid subsystem identifier. valid subsystem identifiers range from 0 to 11. subsystem sid must have been previously defined. (input; used only when APIOPT is 0 or 2; 0 by default)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem flag. (input; used only when APIOPT is 0 or 2; 1 by default)."
+    },
+    {
+      "name": "apiopt",
+      "description": "Mode of operation of the api. (input; 0 by default)."
+    },
+    {
+      "name": "cfile",
+      "description": "Name of the economic dispatch data file (when apiopt is 0 or 1). (input; no default allowed)."
+    },
+    {
+      "name": "status",
+      "description": "Unit commitment option. (input; used only when APIOPT is 0 or 2; 0 by default)."
+    },
+    {
+      "name": "values",
+      "description": "An array of two elements specifying (used only when APIOPT is 0 or 3). (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 1",
+        "description": "process all buses."
+      },
+      {
+        "value": "= 0",
+        "description": "process only buses in subsystem SID."
+      }
+    ],
+    "apiopt": [
+      {
+        "value": "= 0",
+        "description": "initialize, specify subsystem, process, and clean up."
+      },
+      {
+        "value": "= 1",
+        "description": "initialize for dispatch."
+      },
+      {
+        "value": "= 2",
+        "description": "specify subsystem."
+      },
+      {
+        "value": "= 3",
+        "description": "apply calculation."
+      },
+      {
+        "value": "= 4",
+        "description": "postprocessing housekeeping."
+      }
+    ],
+    "status": [
+      {
+        "value": "= 0",
+        "description": "start from current commitment profile."
+      },
+      {
+        "value": "= 1",
+        "description": "new commitment profile (start with all units off-line)."
+      },
+      {
+        "value": "= 2",
+        "description": "unit commitment disabled."
+      }
+    ],
+    "values": [
+      {
+        "value": "VALUES(1)",
+        "description": "desired loading (present loading by default)."
+      },
+      {
+        "value": "VALUES(2)",
+        "description": "desired minimum capacity of units being dispatched (0 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid APIOPT value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid ALL value."
+    },
+    {
+      "value": "= 4",
+      "description": "invalid STATUS value."
+    },
+    {
+      "value": "= 5",
+      "description": "dispatch unable to meet desired power and capacity."
+    },
+    {
+      "value": "= 6",
+      "description": "no dispatch data for any subsystem machines."
+    },
+    {
+      "value": "= 7",
+      "description": "negative VALUES value."
+    },
+    {
+      "value": "= 8",
+      "description": "unexpected APIOPT value."
+    },
+    {
+      "value": "= 9",
+      "description": "error opening CFILE."
+    },
+    {
+      "value": "= 10",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

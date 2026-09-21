@@ -1,0 +1,10 @@
+{
+  "module": "psspy",
+  "function_name": "refreshdiagfile",
+  "category": "Diagram View",
+  "description": "Use this API to refresh the results and styles in the active Slider diagram in the GUI. It requires a current network case. This API would be used in an automation file to force a results refresh that wouldn’t normally take place until the automation file completed. This API routine was first introduced in release 31.0.0. refreshdiagfile()",
+  "python_syntax": "refreshdiagfile()",
+  "return_type": "void",
+  "parameters": [],
+  "return_values": []
+}

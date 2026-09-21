@@ -1,0 +1,20 @@
+{
+  "mcpServers": {
+    "powermcp_pandapower": {
+      "command": "powermcp",
+      "args": ["run", "pandapower"]
+    },
+    "powermcp_pypsa": {
+      "command": "powermcp",
+      "args": ["run", "pypsa"]
+    },
+    "powermcp_powerio": {
+      "command": "powermcp",
+      "args": ["run", "powerio"]
+    },
+    "powermcp_psse": {
+      "command": "powermcp",
+      "args": ["run", "psse"]
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "module": "psspy",
+  "function_name": "change_ttdcauxmod_chricn",
+  "category": "Auxiliary Signal Models",
+  "description": "Use this API to change the value of a character ICON (i.e., an element of the CHRICN array) of an auxiliary signal model of a specified two-terminal dc line. The corresponding integer ICON is set to 0. This API routine was first introduced in release 30.2.0. ierr = change_ttdcauxmod_chricn(dc, isgndx, model, j, chdata)",
+  "python_syntax": "ierr = change_ttdcauxmod_chricn(dc, isgndx, model, j, chdata)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "dc",
+      "description": "Quoted name of the two-terminal dc line receiving the of the auxiliary signal model; if an unquoted integer value is specified, the api converts it to a left- justified name. (input; no default allowed)."
+    },
+    {
+      "name": "isgndx",
+      "description": "Auxiliary signal injection point number, or the auxiliary signal index. (input; 1 by default)."
+    },
+    {
+      "name": "model",
+      "description": "Model name. (input; no default allowed)."
+    },
+    {
+      "name": "j",
+      "description": "Icon number to change relative to the start of the block of icons assigned to this model (1 for icon(i), 2 for icon(i+1), etc.). (input; no default allowed)."
+    },
+    {
+      "name": "chdata",
+      "description": "New character icon value. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "dc line not found."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ISGNDX value for a two-terminal dc line."
+    },
+    {
+      "value": "= 3",
+      "description": "unknown model name."
+    },
+    {
+      "value": "= 4",
+      "description": "no auxiliary signal model at this index for this two-terminal dc line."
+    },
+    {
+      "value": "= 5",
+      "description": "model at this index for this two-terminal dc line is aaa not xxx."
+    },
+    {
+      "value": "= 6",
+      "description": "no input ICONs used in model."
+    },
+    {
+      "value": "= 7",
+      "description": "ICON number outside of the ICON range of this model."
+    },
+    {
+      "value": "= 8",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

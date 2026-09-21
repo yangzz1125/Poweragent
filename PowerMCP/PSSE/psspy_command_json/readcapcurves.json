@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "readcapcurves",
+  "category": "Power Flow Operation",
+  "description": "Use this API to read data contained in a Machine Capability Curve Data File into the working case. This API routine was first introduced in release 35.0.0. ierr = readcapcurves(file)",
+  "python_syntax": "ierr = readcapcurves(file)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "file",
+      "description": "Filename of the machine capability curve data file. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "error opening FILE."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid revision number."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,148 @@
+{
+  "module": "psspy",
+  "function_name": "conl",
+  "category": "Power Flow Operation",
+  "description": "Use this API to convert the constant MVA load for a specified grouping of network loads to a specified mixture of the constant MVA, constant current, and constant admittance load characteristics (activity CONL). This API routine was first introduced in release 28.0.0. ierr, rlods = conl(sid, all, apiopt, status, loadin)",
+  "python_syntax": "ierr, rlods = conl(sid, all, apiopt, status, loadin)",
+  "return_type": "error_and_count",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid subsystem identifier. valid subsystem identifiers range from 0 to 11. subsystem sid must have been previously defined. (input; used only when APIOPT is 2; 0 by default)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem flag. (input; used only when APIOPT is 2; 0 by default)."
+    },
+    {
+      "name": "apiopt",
+      "description": "Mode of operation in the api. (input; no default allowed)."
+    },
+    {
+      "name": "status",
+      "description": "An array of two elements specifying The value of each element is as follows. (input)."
+    },
+    {
+      "name": "loadin",
+      "description": "An array of four elementsNone. (input; used only when APIOPT is 2; 0.0 by default). The value of each element is percent of the load being converted in this step to be represented by the corresponding load characteristic as follows)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "rlods",
+      "description": "Returned as the number of unconverted loads remaining in the working case. if the value is nonzero after a call with apiopt = 2, and the remaining loads are to be converted, the api is called again with all = 1 and apiopt = 2. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 1",
+        "description": "process all buses."
+      },
+      {
+        "value": "= 0",
+        "description": "process only buses in subsystem SID."
+      }
+    ],
+    "apiopt": [
+      {
+        "value": "= 1",
+        "description": "initialize for load conversion."
+      },
+      {
+        "value": "= 2",
+        "description": "convert loads."
+      },
+      {
+        "value": "= 3",
+        "description": "postprocessing housekeeping."
+      }
+    ],
+    "status": [
+      {
+        "value": "STATUS(1)",
+        "description": "method of conversion (used only when APIOPT is 1; 0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "convert existing constant MVA load."
+      },
+      {
+        "value": "= 1",
+        "description": "reconstruct loads using present voltage, then convert."
+      },
+      {
+        "value": "= 2",
+        "description": "reconstruct loads using unity voltage, then convert."
+      },
+      {
+        "value": "STATUS(2)",
+        "description": "a special OPF bus type code flag (used only when APIOPT is 2; 0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "all buses in subsystem."
+      },
+      {
+        "value": "= 1",
+        "description": "only Type 1 buses in subsystem."
+      },
+      {
+        "value": "= 2",
+        "description": "only Type 2 and 3 buses in subsystem."
+      }
+    ],
+    "loadin": [
+      {
+        "value": "LOADIN(1)",
+        "description": "percent of active power load to be converted to the constant current characteristic."
+      },
+      {
+        "value": "LOADIN(2)",
+        "description": "percent of active power load to be converted to the constant admittance characteristic."
+      },
+      {
+        "value": "LOADIN(3)",
+        "description": "percent of reactive power load to be converted to the constant current characteristic."
+      },
+      {
+        "value": "LOADIN(4)",
+        "description": "percent of reactive power load to be converted to the constant admittance characteristic."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ALL value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid APIOPT value."
+    },
+    {
+      "value": "= 4",
+      "description": "invalid STATUS value."
+    },
+    {
+      "value": "= 5",
+      "description": "unexpected APIOPT value."
+    },
+    {
+      "value": "= 6",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "module": "psspy",
+  "function_name": "purgzone",
+  "category": "Power Flow Data",
+  "description": "Use this API to delete zones with no equipment assigned to them from the working case. This API routine was first introduced in release 32.0.0. ierr = purgzone(sid, all)",
+  "python_syntax": "ierr = purgzone(sid, all)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid zone subsystem identifier. valid subsystem identifiers range from 0 to 11. zone subsystem sid must have been previously defined. (input; 0 by default)."
+    },
+    {
+      "name": "all",
+      "description": "All zones or specified subsystem flag. (input; 1 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 0",
+        "description": "delete only zones in zone subsystem SID with no equipment assigned to them."
+      },
+      {
+        "value": "= 1",
+        "description": "delete all zones with no equipment assigned to them."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ALL value."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

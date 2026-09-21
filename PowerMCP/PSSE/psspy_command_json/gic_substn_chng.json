@@ -1,0 +1,56 @@
+{
+  "module": "psspy",
+  "function_name": "gic_substn_chng",
+  "category": "Gic Data",
+  "description": "Use this API to modify GIC sub station data to the working case. This API routine was first introduced in release 34.8.0. ierr = gic_substn_chng(subnum,realar,charar,earthmdl)",
+  "python_syntax": "ierr = gic_substn_chng(subnum,realar,charar,earthmdl)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "subnum",
+      "description": "Sub station number. (input; no default allowed)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of one elementsNone. (input)."
+    },
+    {
+      "name": "charar",
+      "description": "An array of one elementsNone. (input)."
+    },
+    {
+      "name": "earthmdl",
+      "description": "Sub station earth conductivity model name. (input; ‘’ by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "Substation grounding DC resistance in ohms. For ungrounded substation RG <=0 or RG >=99 (0.1 by default), can also be specified with keyword ‘rg’."
+      }
+    ],
+    "charar": [
+      {
+        "value": "CHARAR(1)",
+        "description": "Method used to specify RG value, RGFLAG may be up to 40 characters. It is used for informational purposes only., can also be specified with keyword ‘rgflag’."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

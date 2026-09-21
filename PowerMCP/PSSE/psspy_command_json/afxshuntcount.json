@@ -1,0 +1,76 @@
+{
+  "module": "psspy",
+  "function_name": "afxshuntcount",
+  "category": "Fixed Shunt Data",
+  "description": "Use this API to return the number of array entries required to accommodate the data to be returned by the remaining members of the fixed shunt data family. This API routine was first introduced in release 31.0.0. ierr, shunts = afxshuntcount(sid, flag)",
+  "python_syntax": "ierr, shunts = afxshuntcount(sid, flag)",
+  "return_type": "error_and_count",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the bus subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem fixed bus shunts to include. (input; 1 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "shunts",
+      "description": "Number of fixed bus shunts in the subsystem indicated by sid that meet the editing criteria indicated by flag. (output)."
+    }
+  ],
+  "allowed_values": {
+    "sid": [
+      {
+        "value": "< 0",
+        "description": "to instruct the API to assume a subsystem containing all buses in the working case."
+      },
+      {
+        "value": ">= 0",
+        "description": "valid bus subsystem identifier. Valid subsystem identifiers range from 0 to 11. Subsystem SID must have been previously defined."
+      }
+    ],
+    "flag": [
+      {
+        "value": "= 1",
+        "description": "for only in-service fixed shunts at in-service buses (type code < 4)."
+      },
+      {
+        "value": "= 2",
+        "description": "for all fixed shunts at in-service buses (type code < 4)."
+      },
+      {
+        "value": "= 3",
+        "description": "for only in-service fixed shunts, including those at type 4 buses."
+      },
+      {
+        "value": "= 4",
+        "description": "for all fixed bus shunts."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error, SHUNTS returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty; SHUNTS returned as 0."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value; SHUNTS returned as 0."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid FLAG value; SHUNTS returned as 0."
+    }
+  ]
+}

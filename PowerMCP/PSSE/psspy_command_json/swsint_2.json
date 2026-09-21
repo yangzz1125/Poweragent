@@ -1,0 +1,102 @@
+{
+  "module": "psspy",
+  "function_name": "swsint_2",
+  "category": "Single Element Data",
+  "description": "Use this API to return switched shunt integer parameters. This API routine was first introduced in release 35.0.0. ierr, ival = swsint_2(ibus, id, string)",
+  "python_syntax": "ierr, ival = swsint_2(ibus, id, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    },
+    {
+      "name": "id",
+      "description": "Switched shunt identifier. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the switched shunt quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "ival",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= STATION",
+        "description": "Bus IBUS substation number (returned as 0 if bus IBUS is not in a substation)."
+      },
+      {
+        "value": "= SECTION",
+        "description": "Bus IBUS bus section number (returned as 0 if bus IBUS is not represented by multiple bus sections)."
+      },
+      {
+        "value": "= NODE",
+        "description": "Number of the node to which the switched shunt is connected (returned as 0 if bus IBUS is not represented by multiple bus sections)."
+      },
+      {
+        "value": "= MODE",
+        "description": "Control mode."
+      },
+      {
+        "value": "= STATUS",
+        "description": "Status flag."
+      },
+      {
+        "value": "= ADJM",
+        "description": "Adjustment method."
+      },
+      {
+        "value": "= REMOTE",
+        "description": "Bus number of regulated bus; zero for none."
+      },
+      {
+        "value": "= IREG",
+        "description": "Bus number of regulated bus; zero for none."
+      },
+      {
+        "value": "= NREG",
+        "description": "Node number of regulated node."
+      },
+      {
+        "value": "= BLOCKS",
+        "description": "Number of blocks."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Bus not found; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Switched shunt not found; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "Bad value of ‘STRING’; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 4",
+      "description": "Bus type code greater than or equal to 4; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 5",
+      "description": "Status is 0; ‘IVAL’ returned."
+    }
+  ]
+}

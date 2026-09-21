@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "tspfprofilechr",
+  "category": "Single Element Data",
+  "description": "Use this API to return string parameters of Time Series Power Flow profile. This API routine was first introduced in release 35.4.0. ierr, astring = tspfprofilechr(name,string)",
+  "python_syntax": "ierr, astring = tspfprofilechr(name,string)",
+  "return_type": "error_and_value",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Profile name. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating name of the string parameter desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "The error code . (output)."
+    },
+    {
+      "name": "astring",
+      "description": "Value indicated by input string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= ELEMENT",
+        "description": "Element key."
+      },
+      {
+        "value": "= FIELD",
+        "description": "Field key."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘STRING’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Profile not found; ‘STRING’ unchanged."
+    }
+  ]
+}

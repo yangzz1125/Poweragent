@@ -1,0 +1,118 @@
+{
+  "module": "psspy",
+  "function_name": "zndat",
+  "category": "Single Element Data",
+  "description": "Use this API to return zone totals. This API routine was first introduced in release 28.0.0. ierr, cmpval = zndat(iar, string)",
+  "python_syntax": "ierr, cmpval = zndat(iar, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "iar",
+      "description": "Zone number. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the zone total desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "cmpval",
+      "description": "Desired complex power. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= LOAD",
+        "description": "Total zone load by bus zone assignment (net of load plus in-service distributed generation on load feeder)."
+      },
+      {
+        "value": "= LOADLD",
+        "description": "Total zone load by load zone assignment."
+      },
+      {
+        "value": "= LDGN",
+        "description": "Total distributed generation on load feeder by bus zone assignment."
+      },
+      {
+        "value": "= LDGNLD",
+        "description": "Total distributed generation on load feeder by load zone assignment."
+      },
+      {
+        "value": "= GEN",
+        "description": "Total zone generation."
+      },
+      {
+        "value": "= LOSS",
+        "description": "Total zone losses; I**2 * (R + jX) for ac branches with non-metered end in the zone."
+      },
+      {
+        "value": "= XFRMAG",
+        "description": "Magnetizing admittance powers for transformers with winding 1 bus in the zone."
+      },
+      {
+        "value": "= LNSHNT",
+        "description": "Powers flowing into line shunts of non-transformer branches with non-metered end in the zone."
+      },
+      {
+        "value": "= CHARGE",
+        "description": "Powers flowing from line charging of non-transformer branches with non-metered end in the zone."
+      },
+      {
+        "value": "= INT",
+        "description": "Net zone interchange."
+      },
+      {
+        "value": "= INDMAC",
+        "description": "Total zone induction machine powers by bus zone assignment."
+      },
+      {
+        "value": "= INDMACMC",
+        "description": "Total zone induction machine powers by machine zone assignment."
+      },
+      {
+        "value": "= INDGEN",
+        "description": "Total zone induction generator powers by bus zone assignment."
+      },
+      {
+        "value": "= INDGENMC",
+        "description": "Total zone induction generator powers by machine zone assignment."
+      },
+      {
+        "value": "= INDMOT",
+        "description": "Total zone induction motor powers by bus zone assignment."
+      },
+      {
+        "value": "= INDMOTMC",
+        "description": "Total zone induction motor powers by machine zone assignment."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘P’ and ‘Q’ or ‘CMPVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Zone number < 0 or > largest allowable zone number; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "No in-service buses with in-service loads (for ‘LOAD’), no in-service loads (for ‘LOADLD’), no type 2 or type 3 buses (for ‘GEN’), no branches (for LOSS’), or no ties (for ‘INT’) in zone; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "Zone not found; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    },
+    {
+      "value": "= 4",
+      "description": "Bad ‘STRING’ value; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    }
+  ]
+}

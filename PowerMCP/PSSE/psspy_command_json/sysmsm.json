@@ -1,0 +1,15 @@
+{
+  "module": "psspy",
+  "function_name": "sysmsm",
+  "category": "Single Element Data",
+  "description": "Use this API to return the total system MVA mismatch. This API routine was first introduced in release 28.0.0. mva = sysmsm()",
+  "python_syntax": "mva = sysmsm()",
+  "return_type": "value_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "mva",
+      "description": ""
+    }
+  ]
+}

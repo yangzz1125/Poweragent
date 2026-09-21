@@ -1,0 +1,142 @@
+{
+  "module": "psspy",
+  "function_name": "aloadint",
+  "category": "Load Data",
+  "description": "Use this API to return an array of integer values for subsystem loads. This API routine was first introduced in release 30.2.0. ierr, iarray = aloadint(sid, flag, string)",
+  "python_syntax": "ierr, iarray = aloadint(sid, flag, string)",
+  "return_type": "error_and_array",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the bus subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem loads to include. (input; 1 by default)."
+    },
+    {
+      "name": "string",
+      "description": "An array of NSTR elements specifying NSTR of the following strings indicating the bus and/or load quantities desired. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "iarray",
+      "description": "An array of NSTR*DIM elements specifying Is an array of at least NSTR columns, each of which contains DIM elements. (output)."
+    }
+  ],
+  "allowed_values": {
+    "sid": [
+      {
+        "value": "< 0",
+        "description": "to instruct the API to assume a subsystem containing all buses in the working case."
+      },
+      {
+        "value": ">= 0",
+        "description": "valid bus subsystem identifier. Valid subsystem identifiers range from 0 to 11. Subsystem SID must have been previously defined."
+      }
+    ],
+    "flag": [
+      {
+        "value": "= 1",
+        "description": "for only in-service loads at in-service buses (type code < 4)."
+      },
+      {
+        "value": "= 2",
+        "description": "for all loads at in-service buses (type code < 4)."
+      },
+      {
+        "value": "= 3",
+        "description": "for only in-service loads, including those at type 4 buses."
+      },
+      {
+        "value": "= 4",
+        "description": "for all loads."
+      }
+    ],
+    "string": [
+      {
+        "value": "= NUMBER",
+        "description": "Bus number."
+      },
+      {
+        "value": "= STATION",
+        "description": "Substation number (0 if bus is not in a substation)."
+      },
+      {
+        "value": "= SECTION",
+        "description": "Bus section number (0 if bus is not represented by multiple bus sections)."
+      },
+      {
+        "value": "= NODE",
+        "description": "Node number (0 if bus is not in a substation)."
+      },
+      {
+        "value": "= AREA",
+        "description": "Load area number."
+      },
+      {
+        "value": "= ZONE",
+        "description": "Load zone number."
+      },
+      {
+        "value": "= OWNER",
+        "description": "Load owner number."
+      },
+      {
+        "value": "= STATUS",
+        "description": "Load status."
+      },
+      {
+        "value": "= SCALE",
+        "description": "Scalable load flag."
+      },
+      {
+        "value": "= INTRPT",
+        "description": "Interruptible load flag (1 for interruptible, 0 for non-interruptible)."
+      },
+      {
+        "value": "= CGR",
+        "description": "Grounding code (0 for an ungrounded load, 1 for a grounded load)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid FLAG value."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid NSTR value."
+    },
+    {
+      "value": "= 5",
+      "description": "DIM, and hence the size of IARRAY, is not large enough."
+    },
+    {
+      "value": "= 6",
+      "description": "Invalid STRING value."
+    },
+    {
+      "value": "= 7",
+      "description": "Sequence data not in case (when STRING = ‘CGR’)."
+    }
+  ]
+}

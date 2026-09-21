@@ -1,0 +1,170 @@
+{
+  "module": "psspy",
+  "function_name": "crctrun",
+  "category": "Dynamic Simulation Operation",
+  "description": "Use this API to run critical clearing time calculation in dynamic simulations. This API routine was first introduced in release 35.5.0. ierr, crct_val = crctrun(initial_fd, total_sim_t, stp_srch_flg, stp_srch_fd, genang_thr, ibusex, id, fd_unit)",
+  "python_syntax": "ierr, crct_val = crctrun(initial_fd, total_sim_t, stp_srch_flg, stp_srch_fd, genang_thr, ibusex, id, fd_unit)",
+  "return_type": "error_and_value",
+  "parameters": [
+    {
+      "name": "initial_fd",
+      "description": "Initial fault duration while starting critical clearing time calculation (unit depends on ‘fd_unit’ argument). (input; 5.0 by default)."
+    },
+    {
+      "name": "total_sim_t",
+      "description": "Total simulation time (second). (input; 10.0 by default)."
+    },
+    {
+      "name": "stp_srch_flg",
+      "description": "Flag for stop searching critical clearing time calculation (if network remain stable after stp_srch_fd duration). (input; TRUE by default)."
+    },
+    {
+      "name": "stp_srch_fd",
+      "description": "Stop searching critical clearing time calculation, if network remain stable after stp_srch_fd duration (unit depends on ‘fd_unit’ argument). (input; 30.0 by default)."
+    },
+    {
+      "name": "genang_thr",
+      "description": "Value of the deviation threshold for conventional generators to determine stability (degree). (input; 180.0 by default)."
+    },
+    {
+      "name": "ibusex",
+      "description": "Relative angle calculation to be applied. (input; if batch command; unchanged by default))."
+    },
+    {
+      "name": "id",
+      "description": "Machine identifier. (input; if batch command; ‘1’ by default))."
+    },
+    {
+      "name": "fd_unit",
+      "description": "Unit for ‘initial_fd’, ‘stp_srch_fd’, and ‘crct_val’ arguments. (input; 1 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "crct_val",
+      "description": "Critical clearing time output value. (output)."
+    }
+  ],
+  "allowed_values": {
+    "ibusex": [
+      {
+        "value": "> 0",
+        "description": "use machine ID at bus IBUSEX as the reference machine."
+      },
+      {
+        "value": "= 0",
+        "description": "use system average angle."
+      },
+      {
+        "value": "= -1",
+        "description": "use system weighted average angle."
+      }
+    ],
+    "fd_unit": [
+      {
+        "value": "= 1",
+        "description": "cycle."
+      },
+      {
+        "value": "= 2",
+        "description": "second."
+      }
+    ],
+    "crct_val": [
+      {
+        "value": "> 0",
+        "description": "Critical Clearing Time output value (unit depends on ‘FD_UNIT’ argument)."
+      },
+      {
+        "value": "= -1.0",
+        "description": "CrCT search stopped because CrCT is longer than (Total Simulation Time - Contingency Starting Time)."
+      },
+      {
+        "value": "= -2.0",
+        "description": "CrCT search stopped because of ‘STP_SRCH_FLG’ being Active."
+      },
+      {
+        "value": "= -3.0",
+        "description": "CrCT can not be found, there is no stable fault duration."
+      },
+      {
+        "value": "= -4.0",
+        "description": "CrCT Calculation aborted."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "fault definition not found."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid INITIAL_FD value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid TOTAL_SIM_T value."
+    },
+    {
+      "value": "= 4",
+      "description": "invalid STP_SRCH_FD value."
+    },
+    {
+      "value": "= 5",
+      "description": "invalid GENANG_THR value."
+    },
+    {
+      "value": "= 6",
+      "description": "invalid IBUSEX value."
+    },
+    {
+      "value": "= 7",
+      "description": "Invalid FD_UNIT value."
+    },
+    {
+      "value": "= 8",
+      "description": "bus not found (for relative angle calculation)."
+    },
+    {
+      "value": "= 9",
+      "description": "bus is not a type 2 bus (for relative angle calculation)."
+    },
+    {
+      "value": "= 10",
+      "description": "machine does not have a synchronous machine model (for relative angle calculation)."
+    },
+    {
+      "value": "= 11",
+      "description": "machine not found (for relative angle calculation)."
+    },
+    {
+      "value": "= 12",
+      "description": "machine is out of service (for relative angle calculation)."
+    },
+    {
+      "value": "= 13",
+      "description": "RUN has already been executed."
+    },
+    {
+      "value": "= 14",
+      "description": "fault already been applied."
+    },
+    {
+      "value": "= 15",
+      "description": "an internal error occured, please check messages."
+    },
+    {
+      "value": "= 16",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

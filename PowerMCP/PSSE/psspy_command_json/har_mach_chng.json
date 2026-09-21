@@ -1,0 +1,78 @@
+{
+  "module": "psspy",
+  "function_name": "har_mach_chng",
+  "category": "Harmonics Data",
+  "description": "Use this API to modify harmonics machine data to the working case. This API routine was first introduced in release 35.4.0. ierr = har_mach_chng(ibus,id,intgar,realar,charar)",
+  "python_syntax": "ierr = har_mach_chng(ibus,id,intgar,realar,charar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Machine identifier. (input; ‘1’ by default)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of two elementsNone. (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of one elementsNone. (input)."
+    },
+    {
+      "name": "charar",
+      "description": "An array of three elementsNone. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "Harmonics Mode (1 by default)."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "Harmonics Type (1 by default)."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "Harmonics Quality (1.0 by default)."
+      }
+    ],
+    "charar": [
+      {
+        "value": "CHARAR(1)",
+        "description": "Harmonics Impedance Characteristics Name."
+      },
+      {
+        "value": "CHARAR(2)",
+        "description": "Harmonics Voltage Source Table Name."
+      },
+      {
+        "value": "CHARAR(3)",
+        "description": "Harmonics Current Source Table Name."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

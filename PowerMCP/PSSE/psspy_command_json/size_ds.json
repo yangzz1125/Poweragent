@@ -1,0 +1,25 @@
+{
+  "module": "psspy",
+  "function_name": "size_ds",
+  "category": "Dynamic Simulation Operation",
+  "description": "Use this API to obtain a summary of utilization in the general purpose dynamics data storage arrays as well as in the various model connection and allocation tables contained in dynamics working memory. This API routine was first introduced in release 30.2.0. ierr = size_ds()",
+  "python_syntax": "ierr = size_ds()",
+  "return_type": "error_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": ""
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

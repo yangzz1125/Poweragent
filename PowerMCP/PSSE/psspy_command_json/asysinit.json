@@ -1,0 +1,30 @@
+{
+  "module": "psspy",
+  "function_name": "asysinit",
+  "category": "Area Subsystems",
+  "description": "Use this API to initialize or re-initialize an area subsystem. This API routine was first introduced in release 31.0.0. ierr = asysinit(sid)",
+  "python_syntax": "ierr = asysinit(sid)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Valid area subsystem id. valid area subsystem ids range from 0 to 11. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error return. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "SID is not valid."
+    }
+  ]
+}

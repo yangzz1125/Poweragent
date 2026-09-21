@@ -1,0 +1,74 @@
+{
+  "module": "psspy",
+  "function_name": "rdchrawversion",
+  "category": "Power Flow Operation",
+  "description": "Use this API to read a Power Flow Change Raw Data File into the working case. Allowed raw file formats are PSSE-15 through current format. This API routine was first introduced in release 31.0.0. ierr = rdchrawversion(numnam, vernum, ifile)",
+  "python_syntax": "ierr = rdchrawversion(numnam, vernum, ifile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "numnam",
+      "description": "Flag for bus number or name specification on records. (input; 0 by default)."
+    },
+    {
+      "name": "vernum",
+      "description": "Version number corresponding to the format of ifile vernum is in the format of a psse release number. example: if ifile format is of psse-29.5.1: vernum = ‘29’ or = ‘29.5’ or = ‘29.5.1’. (input; no default allowed)."
+    },
+    {
+      "name": "ifile",
+      "description": "Name of power flow raw data file. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "numnam": [
+      {
+        "value": "= 0",
+        "description": "bus numbers."
+      },
+      {
+        "value": "= 1",
+        "description": "bus names."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid NUMNAM value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid VERNUM value."
+    },
+    {
+      "value": "= 3",
+      "description": "unable to convert file."
+    },
+    {
+      "value": "= 4",
+      "description": "error opening temporary file."
+    },
+    {
+      "value": "= 5",
+      "description": "invalid revision number."
+    },
+    {
+      "value": "= 10",
+      "description": "error opening IFILE."
+    },
+    {
+      "value": "= 11",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "module": "psspy",
+  "function_name": "gic_new",
+  "category": "Gic Operation",
+  "description": "Use this API to initialize all data records required for GIC analysis. It must be called prior to introducing any GIC data records. It has no effect if GIC data already exists in the working case. This API routine was first introduced in release 34.8.0. ierr = gic_new()",
+  "python_syntax": "ierr = gic_new()",
+  "return_type": "error_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": ""
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= 2",
+      "description": "error initializing GIC data."
+    }
+  ]
+}

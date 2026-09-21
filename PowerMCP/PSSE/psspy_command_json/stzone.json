@@ -1,0 +1,30 @@
+{
+  "module": "psspy",
+  "function_name": "stzone",
+  "category": "Single Element Data",
+  "description": "Use this API to restrict ‘NXTBUS’ to a single zone. It must be called after INIBUS / INIBUX / ININAM / ININAX. This API routine was first introduced in release 28.0.0. ierr = stzone(iar)",
+  "python_syntax": "ierr = stzone(iar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "iar",
+      "description": "Zone number. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Invalid zone number."
+    }
+  ]
+}

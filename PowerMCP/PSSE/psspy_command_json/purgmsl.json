@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "purgmsl",
+  "category": "Power Flow Data",
+  "description": "Use this API to delete the specified multi-section line grouping from the working case. This API routine was first introduced in release 28.0.0. ierr = purgmsl(ibus, jbus, ckt)",
+  "python_syntax": "ierr = purgmsl(ibus, jbus, ckt)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "One of the endpoint buses of the multi-section line. (input; no default allowed)."
+    },
+    {
+      "name": "jbus",
+      "description": "Other endpoint bus of the multi-section line. (input; no default allowed)."
+    },
+    {
+      "name": "ckt",
+      "description": "Circuit identifier of the multi-section line to be deleted; the first character must be an ampersand. (input; ‘&1’ by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "multi-section line not found."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid multi-section line identifier (first character not &)."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

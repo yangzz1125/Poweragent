@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "apply_alternate_step_size",
+  "category": "Optimal Power Flow Operation",
+  "description": "Use this API to specify or return the value of the OPF solution option for applying an alternate lambda mismatch step size. This option works in conjunction with the OPF_BARRIER_STEP_LENGTH option setting (Section 3.1.25), which specifies the alternate barrier step length value. This API routine was first introduced in release 30.0.0. ierr = apply_alternate_step_size(ival) ierr, ival = apply_alternate_step_size()",
+  "python_syntax": "ierr = apply_alternate_step_size(ival) ierr, ival = apply_alternate_step_size()",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ival",
+      "description": "Indicates whether to limit the step size taken during the opf solution. (input; if Batch command, or for Python if specified as an argument, or for Fortran if IOCODE is 0, then input of 0 by default; else output)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "ival": [
+      {
+        "value": "= 0",
+        "description": "do not limit the step size."
+      },
+      {
+        "value": "= 1",
+        "description": "limit the step size."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid IVAL value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid IOCODE value."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

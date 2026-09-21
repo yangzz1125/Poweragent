@@ -1,0 +1,36 @@
+{
+  "module": "psspy",
+  "function_name": "showtable",
+  "category": "Power Flow Operation",
+  "description": "Directs a report table to output console. Use API_NAME instead to redirect report table output to the Progress Window or Report Window. This API routine was first introduced in release 35.0.0. ierr = showtable(tblnam, direction)",
+  "python_syntax": "ierr = showtable(tblnam, direction)",
+  "return_type": "error_only_report",
+  "parameters": [
+    {
+      "name": "tblnam",
+      "description": "(input)."
+    },
+    {
+      "name": "direction",
+      "description": "(input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "direction": [
+      {
+        "value": "= 1",
+        "description": "Progress window."
+      },
+      {
+        "value": "= 2",
+        "description": "Report window."
+      }
+    ]
+  }
+}

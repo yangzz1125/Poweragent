@@ -1,0 +1,84 @@
+{
+  "module": "psspy",
+  "function_name": "ldmod_status2",
+  "category": "Load Related Models",
+  "description": "Use this API to change the status of a load related model of a designated type at a specified load. This API routine was first introduced in release 28.0.0. ierr = ldmod_status2(ibus, id, ltype, status)",
+  "python_syntax": "ierr = ldmod_status2(ibus, id, ltype, status)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Load bus number. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Load identifier. (input; ‘1’ by default)."
+    },
+    {
+      "name": "ltype",
+      "description": "Load model type. (input; 1 by default)."
+    },
+    {
+      "name": "status",
+      "description": "New model status. (input; 1 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "ltype": [
+      {
+        "value": "= 1",
+        "description": "load characteristic model."
+      },
+      {
+        "value": "= 2",
+        "description": "load relay model."
+      }
+    ],
+    "status": [
+      {
+        "value": "= 0",
+        "description": "out-of-service."
+      },
+      {
+        "value": "= 1",
+        "description": "in-service."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid LTYPE value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid STATUS value."
+    },
+    {
+      "value": "= 3",
+      "description": "no LTYPE model at this load."
+    },
+    {
+      "value": "= 4",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 5",
+      "description": "load not found."
+    },
+    {
+      "value": "= 6",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

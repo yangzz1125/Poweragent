@@ -1,0 +1,25 @@
+{
+  "module": "psspy",
+  "function_name": "remove_unused_chan_models",
+  "category": "Dynamic Simulation Output Channel Operation",
+  "description": "Use this API to delete from the output channel monitoring model table those model references indicating equipment that is not present in the power flow working case. This API routine was first introduced in release 30.2.0. ierr = remove_unused_chan_models()",
+  "python_syntax": "ierr = remove_unused_chan_models()",
+  "return_type": "error_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": ""
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

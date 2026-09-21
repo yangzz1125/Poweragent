@@ -1,0 +1,60 @@
+rating  1 2  
+
+# 1 isolate buses in islands having no swing bus / 2 dynamic swing bus
+isol2 1
+
+# Redispatch tolerance : Redispatch if pickup need exceeds this value
+rdtol 20
+
+# Redispatch Option 1 : inertial pickup, 2 reserve margin based pickup
+rdopt 1 
+
+# Inertial pickup options 
+#0 : pgen, 1 : pmax, 2 : mva base, 3 : prf, 
+#4 : agc + prf, 5 : agc + area prf + gen prf, 6 agc + ba prf + gen prf
+#7 : agc + prf, 8 : agc + area prf + gen prf, 9 agc + ba prf + gen prf
+rdinopt 0 
+
+# Participating Generators  from     to      min base
+redisp gens bus             200      200       0        
+redisp gens area              1       8        0
+redisp gens zone              1       8        0
+
+# Obey baseload_flag of units during redispatch
+rdbl  1
+
+# 0 (estimated : traditional way), 1 (to use actual mismatches)
+mism_opt 0
+
+# monitor zone/area      from  to   kv range   base pu      cont pu      delta  abs     delta
+#                                                                               toler   toler                                                                                       
+monitor voltage   area      1   8     1  100   0.96 1.04    0.92  1.05   0.025  0.0     0.0
+monitor voltage   area      1   8   100  300   0.95 1.05    0.90  1.05   0.050  0.0     0.0
+monitor voltage   area      1   8   300  900   0.95 1.05    0.93  1.06   0.050  0.0     0.0
+
+# flows          area      from to   kv   kv  tolerance    closing	overloadper 	prectgc pstctgc
+#							   angle			rating	rating
+monitor flows     area      1   8    1   900   0.0	   30.0		100.0		1	2
+
+# flows                    from to   overloadper   prectgc 	pstctgc
+#						   rating	rating
+monitor interface           1   1	100.0		1	2
+
+monitor svd       area      1   8    1   900
+
+monitor load      area      1   8
+monitor gens      area      1   8    1 
+monitor           area      1   8    
+monitor           zone      1   1
+
+# option to save post contingency power flow
+# 0 don't save, 1 save
+#savcasepstctgc 0	
+
+LTC      1 0       LTC  solution option                      
+SVD      1 0       SVD  solution option  (0) disabled, (1) enabled 
+PAR      1 0       PhSh solution option                      
+dctap    1 0       DC   solution option                      
+area     0 0       AI   solution option                      
+
+

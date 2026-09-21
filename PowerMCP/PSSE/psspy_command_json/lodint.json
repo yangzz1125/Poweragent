@@ -1,0 +1,102 @@
+{
+  "module": "psspy",
+  "function_name": "lodint",
+  "category": "Single Element Data",
+  "description": "Use this API to return integer load quantities. This API routine was first introduced in release 28.0.0. ierr, ival = lodint(ibus, id, string)",
+  "python_syntax": "ierr, ival = lodint(ibus, id, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    },
+    {
+      "name": "id",
+      "description": "Load identifier. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the load quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "ival",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= STATION",
+        "description": "Bus IBUS substation number (returned as 0 if bus IBUS is not in a substation)."
+      },
+      {
+        "value": "= SECTION",
+        "description": "Bus IBUS bus section number (returned as 0 if bus IBUS is not in a substation)."
+      },
+      {
+        "value": "= NODE",
+        "description": "Node number (0 if bus IBUS is not in a substation)."
+      },
+      {
+        "value": "= STATUS",
+        "description": "Load status; 1 (one) for in-service else 0 (zero)."
+      },
+      {
+        "value": "= AREA",
+        "description": "Load area number."
+      },
+      {
+        "value": "= ZONE",
+        "description": "Load zone number."
+      },
+      {
+        "value": "= OWNER",
+        "description": "Load owner number."
+      },
+      {
+        "value": "= SCALE",
+        "description": "Scalable load flag."
+      },
+      {
+        "value": "= CGR",
+        "description": "Load grounding code (0 for ungrounded 1 for grounded)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Bus not found; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Load not found; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "Bus type code is not 1, 2 or 3; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 4",
+      "description": "Load out-of-service; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 5",
+      "description": "Invalid value of ‘STRING’; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 6",
+      "description": "Sequence data not in case for ‘STRING1’ = ‘CGR’; ‘IVAL’ unchanged."
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "module": "psspy",
+  "function_name": "mbidmdc",
+  "category": "Power Flow Data",
+  "description": "Use this API to change the name of the specified multi-terminal dc line. This API routine was first introduced in release 28.0.0. ierr = mbidmdc(dc, dcnew)",
+  "python_syntax": "ierr = mbidmdc(dc, dcnew)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "dc",
+      "description": "Quoted name of the multi-terminal dc line for which the dc line name is to be changed; if an unquoted integer value is specified, the api converts it to a left- justified name. (input; no default allowed)."
+    },
+    {
+      "name": "dcnew",
+      "description": "Quoted new name to be assigned to the multi-terminal dc line; if an unquoted integer value is specified, the api converts it to a left-justified name. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "dc line DC not found."
+    },
+    {
+      "value": "= 2",
+      "description": "dc line DCNEW already exists."
+    },
+    {
+      "value": "= 3",
+      "description": "a non-blank new identifier must be specified."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "module": "psspy",
+  "function_name": "osysinit",
+  "category": "Owner Subsystems",
+  "description": "Use this API to initialize or re-initialize an owner subsystem. This API routine was first introduced in release 31.0.0. ierr = osysinit(sid)",
+  "python_syntax": "ierr = osysinit(sid)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid owner subsystem id. valid owner subsystem ids range from 0 to 11. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error return. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "SID is not valid."
+    }
+  ]
+}

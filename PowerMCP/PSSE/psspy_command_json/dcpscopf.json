@@ -1,0 +1,270 @@
+{
+  "module": "psspy",
+  "function_name": "dcpscopf",
+  "category": "Power Flow Operation",
+  "description": "This API is the DC based Preventive Security Constrained Optimal Power Flow solution (DCPSCOPF). This API is used to find the settings of controls for a system to comply with base case and contingency case operation limits. The API is implemented with DC preventive security constrained optimal power flow method (DCPSCOPF). The objective of the DCPSCOPF is to minimize control adjustments subject to operation limits constraints. The available controls are generation MW outputs of on-line and off-line generators, loads, phase shifters. This API routine was first introduced in release 35.2.0. ierr = dcpscopf(options, values, labels, dfxfile, inlfile, thrfile)",
+  "python_syntax": "ierr = dcpscopf(options, values, labels, dfxfile, inlfile, thrfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "options",
+      "description": "An array of 7 elements specifying power flow options. (input)."
+    },
+    {
+      "name": "values",
+      "description": "An array of 6 elements specifying power flow options. (input)."
+    },
+    {
+      "name": "labels",
+      "description": "An array of 5 elements specifying labels. (input)."
+    },
+    {
+      "name": "dfxfile",
+      "description": "Is the name of the distribution factor data file . (input)."
+    },
+    {
+      "name": "inlfile",
+      "description": "Is the name of load throwover data file (input, blank for none). (input)."
+    },
+    {
+      "name": "thrfile",
+      "description": "Is the name of unit inertia data file (input, blank for none). (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Is the error code . (output)."
+    }
+  ],
+  "allowed_values": {
+    "options": [
+      {
+        "value": "OPTIONS(1)",
+        "description": "dispatch mode (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "subsystem machines (RESERVE)."
+      },
+      {
+        "value": "= 2",
+        "description": "subsystem machines (PMAX)."
+      },
+      {
+        "value": "= 3",
+        "description": "subsystem machines (INERTIA)."
+      },
+      {
+        "value": "= 4",
+        "description": "subsystem machines (GOVERNOR DROOP)."
+      },
+      {
+        "value": "OPTIONS(2)",
+        "description": "Ignore initial violations in the base case (1 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "No."
+      },
+      {
+        "value": "= 1",
+        "description": "Yes."
+      },
+      {
+        "value": "OPTIONS(3)",
+        "description": "Abort if MW mismatch exceeds tolerance (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "No."
+      },
+      {
+        "value": "= 1",
+        "description": "Yes."
+      },
+      {
+        "value": "OPTIONS(4)",
+        "description": "generator control flag (1 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable generation MW dispatch."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTIONS(5)",
+        "description": "load control flag (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable load shedding control."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTIONS(6)",
+        "description": "phase shifter control flag (1 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable phase shifter control."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTIONS(7)",
+        "description": "off-line generator control flag (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable generation MW dispatch of off-line generators."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      }
+    ],
+    "values": [
+      {
+        "value": "VALUES(1)",
+        "description": "Mismatch tolerance (TOLN by default)."
+      },
+      {
+        "value": "VALUES(2)",
+        "description": "Flow tolerance in linear programming."
+      },
+      {
+        "value": "VALUES(3)",
+        "description": "Weighting factor of generation MW dispatch (1.0 by default)."
+      },
+      {
+        "value": "VALUES(4)",
+        "description": "Weighting factor of load control (1.0 by default)."
+      },
+      {
+        "value": "VALUES(5)",
+        "description": "Weighting factor of phase shifter control (1.0 by default)."
+      },
+      {
+        "value": "VALUES(6)",
+        "description": "Weighting factor of generation MW dispatch of off-line generators (1.0 by default)."
+      }
+    ],
+    "labels": [
+      {
+        "value": "LABELS(1)",
+        "description": "The label of generation dispatch system, required if the dispatch mode of OPTIONS(15) is not zero. The dispatch mode and the system provide for a default dispatch method for contingencies causing unbalance between load demand and generation output (blank for none)."
+      },
+      {
+        "value": "LABELS(2)",
+        "description": "The label of generation dispatch control system. MW injections of the generators within the system are available for dispatch in the corrective action mode or preventive security constrained optimal power flow mode (blank for none)."
+      },
+      {
+        "value": "LABELS(3)",
+        "description": "The label of load control system. Loads in the load control system are available for curtailment in the corrective action mode or preventive security constrained optimal power flow mode (blank for none)."
+      },
+      {
+        "value": "LABELS(4)",
+        "description": "The label of phase shifter adjustment system. The phase angles of phase shifters in the system are regulated either by corrective action or preventive security constrained optimal power flow (blank for none)."
+      },
+      {
+        "value": "LABELS(5)",
+        "description": "The label of generation MW control of off-line generator control system. MW injections of the off-line generators within the system are available for dispatch in the corrective action mode or preventive security constrained optimal power flow mode (blank for none)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= -1",
+      "description": "PSCOPF terminates with active constraints."
+    },
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid OPTIONS value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid VALUES value."
+    },
+    {
+      "value": "= 3",
+      "description": "generators are converted."
+    },
+    {
+      "value": "= 4",
+      "description": "buses in island(s) without a swing bus; use activity TREE."
+    },
+    {
+      "value": "= 5",
+      "description": "largest mismatch exceeds mismatch tolerance."
+    },
+    {
+      "value": "= 6",
+      "description": "Generation subsystem not specified."
+    },
+    {
+      "value": "= 7",
+      "description": "too many islands in base case."
+    },
+    {
+      "value": "= 8",
+      "description": "buses with bus type code and series element status inconsistencies."
+    },
+    {
+      "value": "= 9",
+      "description": "no Distribution Factor Data File specified."
+    },
+    {
+      "value": "= 10",
+      "description": "No controls are specified."
+    },
+    {
+      "value": "= 11",
+      "description": "No constraints are specified."
+    },
+    {
+      "value": "= 12",
+      "description": "Simulation STOP. Duplicated contingency labels in DFAX file."
+    },
+    {
+      "value": "= 21",
+      "description": "file DFXFILE is not in the form of a PSSE 25 or later DFAX file; run DFAX."
+    },
+    {
+      "value": "= 22",
+      "description": "monitored elements exceed limit when adding multi-section line members."
+    },
+    {
+      "value": "= 51",
+      "description": "error opening Distribution Factor Data File."
+    },
+    {
+      "value": "= 52",
+      "description": "error opening Load Throwover Data File."
+    },
+    {
+      "value": "= 53",
+      "description": "error opening Unit Inertia and Governor Data File."
+    },
+    {
+      "value": "= 54",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

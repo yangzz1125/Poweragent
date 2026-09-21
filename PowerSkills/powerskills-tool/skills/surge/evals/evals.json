@@ -1,0 +1,92 @@
+[
+  {
+    "id": "positive_base_case",
+    "query": "Using Surge, load the IEEE 118-bus built-in case, solve AC power flow, and tell me whether it converged and how many iterations it took.",
+    "should_trigger": true,
+    "notes": "Exercises load_builtin_case + run_ac_power_flow. Explicit Surge mention should trigger cleanly."
+  },
+  {
+    "id": "positive_ptdf",
+    "query": "Load Surge's built-in case300 and compute PTDF. Report the shape and the three most-sensitive buses for the single most-sensitive monitored branch.",
+    "should_trigger": true,
+    "notes": "Exercises compute_ptdf in summary format."
+  },
+  {
+    "id": "positive_n1",
+    "query": "Run N-1 branch contingency analysis on the IEEE 118-bus case with Surge. Summarize the critical contingencies and tell me which mitigation skill I should look at next.",
+    "should_trigger": true,
+    "notes": "Exercises run_n1_branch_contingency plus escalation to mitigation skills."
+  },
+  {
+    "id": "positive_open_source_opf",
+    "query": "Run DC-OPF on Surge's built-in case118 using only open-source solvers. Report the total cost.",
+    "should_trigger": true,
+    "notes": "Exercises run_dc_opf with lp_solver='highs'."
+  },
+  {
+    "id": "positive_nerc_atc",
+    "query": "Compute NERC ATC between the two largest areas of Surge's built-in case300. Use the default TRM of 5%.",
+    "should_trigger": true,
+    "notes": "Exercises get_network_info + list_buses + compute_nerc_atc."
+  },
+  {
+    "id": "positive_no_surge_name",
+    "query": "Load the IEEE 118-bus transmission network and run an AC power flow on it. I want to know if it converges.",
+    "should_trigger": true,
+    "notes": "Positive test WITHOUT the word 'Surge' — description should match intent (power flow on a transmission network) and still trigger."
+  },
+  {
+    "id": "positive_contingency_generic",
+    "query": "I have a 118-bus transmission network. Can you run N-1 contingency analysis and tell me which outages cause violations?",
+    "should_trigger": true,
+    "notes": "Positive test for N-1 phrasing without Surge branding."
+  },
+  {
+    "id": "positive_dispatch",
+    "query": "Solve a unit-commitment / economic dispatch on the market30 test system.",
+    "should_trigger": true,
+    "notes": "Positive test for SCED / SCUC phrasing."
+  },
+  {
+    "id": "positive_build_from_scratch",
+    "query": "Build a 3-bus transmission system from scratch: slack at bus 1 (138 kV), PV at bus 2 (138 kV), PQ at bus 3 (138 kV, 100 MW / 30 MVAr load). Add a 50 km line between bus 1 and bus 2, then run AC power flow.",
+    "should_trigger": true,
+    "notes": "Exercises create_empty_network + add_bus + add_line + run_ac_power_flow."
+  },
+  {
+    "id": "positive_outage_simulation",
+    "query": "Load IEEE 118-bus and take the line between buses 8 and 9 out of service, then re-solve AC power flow and report any overloads.",
+    "should_trigger": true,
+    "notes": "Exercises set_branch_in_service scenario edit."
+  },
+  {
+    "id": "positive_load_scaling",
+    "query": "Scale all loads on Surge's case118 by 110% (10% uplift) and run AC power flow to see if it still converges.",
+    "should_trigger": true,
+    "notes": "Exercises scale_loads."
+  },
+  {
+    "id": "negative_weather",
+    "query": "What is the weather like in San Francisco today?",
+    "should_trigger": false,
+    "notes": "Unrelated to power systems. Should NOT trigger."
+  },
+  {
+    "id": "negative_python_help",
+    "query": "How do I write a Python list comprehension that filters even numbers?",
+    "should_trigger": false,
+    "notes": "Generic programming question. Should NOT trigger."
+  },
+  {
+    "id": "negative_dynamics",
+    "query": "Run a transient-stability time-domain simulation on the IEEE 39-bus case and plot rotor angles over 10 seconds.",
+    "should_trigger": false,
+    "notes": "Dynamics / transient stability is outside Surge's scope (steady-state only). Should route to ANDES, not Surge. Surge skill should NOT trigger."
+  },
+  {
+    "id": "negative_distribution",
+    "query": "Run a harmonic power flow on a 3-phase unbalanced distribution feeder with non-linear loads.",
+    "should_trigger": false,
+    "notes": "Harmonic / unbalanced distribution is outside Surge's scope. Should route to OpenDSS. Surge skill should NOT trigger."
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "module": "psspy",
+  "function_name": "exportbuslocfile",
+  "category": "Diagram View",
+  "description": "This API routine is obsolete. It has been replaced by the API routine exportbuslocfile_2, and is implemented by a call to exportbuslocfile_2. Use this API to export the bus location from the active Slider Diagram in the GUI to a file. This API routine was first introduced in release 30.2.0. exportbuslocfile(buslocfile)",
+  "python_syntax": "exportbuslocfile(buslocfile)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "buslocfile",
+      "description": ""
+    }
+  ],
+  "return_values": []
+}

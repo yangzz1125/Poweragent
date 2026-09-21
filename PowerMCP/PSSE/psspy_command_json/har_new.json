@@ -1,0 +1,25 @@
+{
+  "module": "psspy",
+  "function_name": "har_new",
+  "category": "Harmonics Operation",
+  "description": "Use this API to initialize all data records required for Harmonics analysis. It must be called prior to introducing any Harmonics data records. It has no effect if Harmonics data already exists in the working case. This API routine was first introduced in release 35.4.0. ierr = har_new()",
+  "python_syntax": "ierr = har_new()",
+  "return_type": "error_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": ""
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

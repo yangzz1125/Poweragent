@@ -1,0 +1,30 @@
+{
+  "module": "psspy",
+  "function_name": "gic_earth1d_usr_purg",
+  "category": "Gic Operation",
+  "description": "Use this API to purge GIC User 1D Earth Model data from the working case. This API routine was first introduced in release 34.8.0. ierr = gic_earth1d_usr_purg(name)",
+  "python_syntax": "ierr = gic_earth1d_usr_purg(name)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "1d earth model name. the non-blank alphanumeric identifier assigned to earth model. the name should be unique and different than standard earth model names defined in tpl-007. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

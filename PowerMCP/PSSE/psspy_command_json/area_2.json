@@ -1,0 +1,76 @@
+{
+  "module": "psspy",
+  "function_name": "area_2",
+  "category": "Power Flow Operation",
+  "description": "Use this API to tabulate area totals by area, as well as the desired area net interchange (activity AREA). This API routine was first introduced in release 32.0.0. ierr = area_2(sid, all, opt)",
+  "python_syntax": "ierr = area_2(sid, all, opt)",
+  "return_type": "error_only_report",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid area subsystem identifier. valid subsystem identifiers range from 0 to 11. area subsystem sid must have been previously defined. (input; 0 by default)."
+    },
+    {
+      "name": "all",
+      "description": "All areas or specified subsystem flag. (input; 1 by default)."
+    },
+    {
+      "name": "opt",
+      "description": "Load and induction machine reporting option. (input; 2 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 1",
+        "description": "process all areas."
+      },
+      {
+        "value": "= 0",
+        "description": "process only areas in area subsystem SID."
+      }
+    ],
+    "opt": [
+      {
+        "value": "= 1",
+        "description": "tabulate loads, induction generators and induction motors connected to area buses."
+      },
+      {
+        "value": "= 2",
+        "description": "tabulate loads, induction generators and induction motors assigned to the area."
+      },
+      {
+        "value": "= 3",
+        "description": "tabulate three load and induction machine subtotals for each area: -area load and induction machines connected to area buses -area load and induction machines connected to non-area buses -non-area load and induction machines connected to area buses."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ALL value."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid OPT value."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

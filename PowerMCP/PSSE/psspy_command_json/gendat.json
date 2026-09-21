@@ -1,0 +1,46 @@
+{
+  "module": "psspy",
+  "function_name": "gendat",
+  "category": "Single Element Data",
+  "description": "Use this API to return plant total power output. This API routine was first introduced in release 28.0.0. ierr, cmpval = gendat(ibus)",
+  "python_syntax": "ierr, cmpval = gendat(ibus)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "cmpval",
+      "description": "Complex generation. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘P’ and ‘Q’ or ‘CMPVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Bus not found; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Bus type code is not 2 or 3; ‘P’ and ‘Q’ or ‘CMPVAL’ returned."
+    },
+    {
+      "value": "= 3",
+      "description": "No machines at bus; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    },
+    {
+      "value": "= 4",
+      "description": "No online machines; ‘P’ and ‘Q’ of 0.0 or ‘CMPVAL’ of (0.0,0.0) returned."
+    }
+  ]
+}

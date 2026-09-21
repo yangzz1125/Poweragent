@@ -1,0 +1,112 @@
+{
+  "module": "psspy",
+  "function_name": "dist_scmu_fault_2",
+  "category": "Set Disturbance",
+  "description": "This API routine is obsolete. It has been replaced by the API routine dist_scmu_fault_3, and is implemented by a call to dist_scmu_fault_3. Use this API to calculate an unbalanced fault and apply the equivalent positive sequence fault admittance at a bus during dynamic simulations. This API routine was first introduced in release 34.0.0. ierr = dist_scmu_fault_2(options, values)",
+  "python_syntax": "ierr = dist_scmu_fault_2(options, values)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "options",
+      "description": "An array of five elements specifying options and values. The first two elements of OPTIONS define options to be used in the construction of the sequence admittance matrices; the remaining entries define the fault to be applied. (input)."
+    },
+    {
+      "name": "values",
+      "description": "An array of four elements specifying values used to define the fault. They are dependent on the value specified for OPTIONS(3). (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "options": [
+      {
+        "value": "OPTIONS(1)",
+        "description": "dc line and FACTS device option (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "block and ignore."
+      },
+      {
+        "value": "= 1",
+        "description": "convert to constant admittance load."
+      },
+      {
+        "value": "OPTIONS(2)",
+        "description": "transformer impedance correction option (1 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "do not apply to zero sequence."
+      },
+      {
+        "value": "= 1",
+        "description": "apply to zero sequence."
+      },
+      {
+        "value": "OPTIONS(3)",
+        "description": "unbalanced type (1 by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "line-to-ground fault."
+      },
+      {
+        "value": "= 2",
+        "description": "line-to-line or line-to-line-to-ground fault."
+      },
+      {
+        "value": "OPTIONS(4)",
+        "description": "bus to be faulted (no default allowed)."
+      },
+      {
+        "value": "OPTIONS(5)",
+        "description": "exceptional phase (1 by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "phase A."
+      },
+      {
+        "value": "= 2",
+        "description": "phase B."
+      },
+      {
+        "value": "= 3",
+        "description": "phase C."
+      }
+    ],
+    "values": [
+      {
+        "value": "VALUES(1)",
+        "description": "resistance of the complex L-G (if OPTIONS(3) is 1) or L-L (if OPTIONS(3) is 2) fault impedance in pu (0.0 by default)."
+      },
+      {
+        "value": "VALUES(2)",
+        "description": "reactance of the complex L-G (if OPTIONS(3) is 1) or L-L (if OPTIONS(3) is 2) fault impedance in pu (0.0 by default)."
+      },
+      {
+        "value": "VALUES(3)",
+        "description": "resistance of the complex L-G fault impedance in pu (if OPTIONS(3) is 2) (0.0 by default)."
+      },
+      {
+        "value": "VALUES(4)",
+        "description": "reactance of the complex L-G fault impedance in pu (if OPTIONS(3) is 2) (0.0 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "as in DIST_SCMU_FAULT_3."
+    }
+  ]
+}

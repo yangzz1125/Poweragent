@@ -1,0 +1,117 @@
+{
+  "module": "psspy",
+  "function_name": "enablediagcontour",
+  "category": "Diagram View",
+  "description": "Use this API to specify the contour parameters and display a contour in the active Slider Diagram in the GUI. Requires a current network case. This API routine was first introduced in release 31.0.0. enablediagcontour(element, quantity, method, color, enable, res, influence, bound, max, min)",
+  "python_syntax": "enablediagcontour(element, quantity, method, color, enable, res, influence, bound, max, min)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "element",
+      "description": "Item to be contoured e.g. buses, branches, machines. (input)."
+    },
+    {
+      "name": "quantity",
+      "description": "Element quantity to generate the contour on. (input)."
+    },
+    {
+      "name": "method",
+      "description": "Algorithm used to generate the contour. (input)."
+    },
+    {
+      "name": "color",
+      "description": "Color gradiant to use for the contour. (input)."
+    },
+    {
+      "name": "enable",
+      "description": "“switch” used to toggle the contour on/off. (input)."
+    },
+    {
+      "name": "res",
+      "description": "Is the resolution of the contour (10 to 2000). a higher resolution will result in greater computation times. . (input)."
+    },
+    {
+      "name": "influence",
+      "description": "Influence range (1 to 100). a larger range will result in greater blending. (input)."
+    },
+    {
+      "name": "bound",
+      "description": "A value that controls how far beyond the outermost elements on the diagram the contour extends. (input)."
+    },
+    {
+      "name": "max",
+      "description": "Maximum “quantity” value associated with the “high” color. (input)."
+    },
+    {
+      "name": "min",
+      "description": "Minimum “quantity” value associated with the “low” color. (input)."
+    }
+  ],
+  "return_values": [],
+  "allowed_values": {
+    "element": [
+      {
+        "value": "= 1",
+        "description": "Bus."
+      },
+      {
+        "value": "= 2",
+        "description": "Branch."
+      },
+      {
+        "value": "= 3",
+        "description": "Machine."
+      }
+    ],
+    "method": [
+      {
+        "value": "= 1",
+        "description": "Linear method."
+      },
+      {
+        "value": "= 2",
+        "description": "Linear approximation method."
+      },
+      {
+        "value": "= 3",
+        "description": "Quad tree method."
+      }
+    ],
+    "color": [
+      {
+        "value": "= 0",
+        "description": "Red scale."
+      },
+      {
+        "value": "= 1",
+        "description": "Green scale."
+      },
+      {
+        "value": "= 2",
+        "description": "Blue scale."
+      },
+      {
+        "value": "= 3",
+        "description": "Gray scale."
+      },
+      {
+        "value": "= 4",
+        "description": "Blue/low to Red/high."
+      },
+      {
+        "value": "= 5",
+        "description": "Red/low to Blue/high."
+      }
+    ],
+    "enable": [
+      {
+        "value": "= 0",
+        "description": "Off."
+      },
+      {
+        "value": "= 1",
+        "description": "On."
+      }
+    ]
+  }
+}

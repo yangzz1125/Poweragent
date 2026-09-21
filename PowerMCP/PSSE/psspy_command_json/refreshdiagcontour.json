@@ -1,0 +1,10 @@
+{
+  "module": "psspy",
+  "function_name": "refreshdiagcontour",
+  "category": "Diagram View",
+  "description": "Use this API to refresh the contour in the active Slider diagram in the GUI. Requires a current network case. This API would be used in an automation file to force a contour refresh that wouldn’t normally take place until the automation file completed. This API routine was first introduced in release 31.0.0. refreshdiagcontour()",
+  "python_syntax": "refreshdiagcontour()",
+  "return_type": "void",
+  "parameters": [],
+  "return_values": []
+}

@@ -1,0 +1,114 @@
+{
+  "module": "psspy",
+  "function_name": "aswshcplx",
+  "category": "Switched Shunt Data",
+  "description": "Use this API to return an array of complex values for subsystem switched shunts. This API routine was first introduced in release 30.2.0. ierr, xarray = aswshcplx(sid, flag, string)",
+  "python_syntax": "ierr, xarray = aswshcplx(sid, flag, string)",
+  "return_type": "error_and_array",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the bus subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem switched shunts to include. (input; 1 by default)."
+    },
+    {
+      "name": "string",
+      "description": "An array of NSTR elements specifying NSTR of the following strings indicating the bus and/or switched shunt quantities desired. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "xarray",
+      "description": "An array of NSTR*DIM elements specifying Is an array of at least NSTR columns, each of which contains DIM elements. (output)."
+    }
+  ],
+  "allowed_values": {
+    "sid": [
+      {
+        "value": "< 0",
+        "description": "to instruct the API to assume a subsystem containing all buses in the working case."
+      },
+      {
+        "value": ">= 0",
+        "description": "valid bus subsystem identifier. Valid subsystem identifiers range from 0 to 11. Subsystem SID must have been previously defined."
+      }
+    ],
+    "flag": [
+      {
+        "value": "= 1",
+        "description": "for only in-service switched shunts at in-service buses (type code < 4)."
+      },
+      {
+        "value": "= 2",
+        "description": "for all switched shunts at in-service buses (type code < 4)."
+      },
+      {
+        "value": "= 3",
+        "description": "for only in-service switched shunts, including those at type 4 buses."
+      },
+      {
+        "value": "= 4",
+        "description": "for all switched shunts."
+      }
+    ],
+    "string": [
+      {
+        "value": "= VOLTAGE",
+        "description": "Actual bus voltage in pu rectangular coordinates."
+      },
+      {
+        "value": "= YSWACT",
+        "description": "Present shunt switched on."
+      },
+      {
+        "value": "= MISMATCH",
+        "description": "Bus mismatch (0.0 if bus type code > 3)."
+      },
+      {
+        "value": "= O_YSWACT",
+        "description": "Present shunt switched on (units determined by power output options)."
+      },
+      {
+        "value": "= O_MISMATCH",
+        "description": "Bus mismatch (0.0 if bus type code > 3) (units determined by power output options)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid FLAG value."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid NSTR value."
+    },
+    {
+      "value": "= 5",
+      "description": "DIM, and hence the size of XARRAY, is not large enough."
+    },
+    {
+      "value": "= 6",
+      "description": "Invalid STRING value."
+    }
+  ]
+}

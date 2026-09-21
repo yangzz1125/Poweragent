@@ -1,0 +1,15 @@
+{
+  "module": "psspy",
+  "function_name": "setdiagautofile",
+  "category": "Diagram View",
+  "description": "Use this API to specify an automation file that is run each time results are updated on the active Slider diagram. This API routine was first introduced in release 33.0.0. setdiagautofile(autoname)",
+  "python_syntax": "setdiagautofile(autoname)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "autoname",
+      "description": ""
+    }
+  ],
+  "return_values": []
+}

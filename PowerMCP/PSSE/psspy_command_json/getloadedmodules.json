@@ -1,0 +1,10 @@
+{
+  "module": "psspy",
+  "function_name": "getloadedmodules",
+  "category": "Non-Engineering",
+  "description": "get list of all modules currently loaded",
+  "python_syntax": "",
+  "return_type": "void",
+  "parameters": [],
+  "return_values": []
+}

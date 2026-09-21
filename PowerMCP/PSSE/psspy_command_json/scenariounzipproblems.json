@@ -1,0 +1,61 @@
+{
+  "module": "psspy",
+  "function_name": "scenariounzipproblems",
+  "category": "Scenarios",
+  "description": "Use this API to retrieve the problems that occurred during the last unzip attempt. This API routine was first introduced in release 33.0.0. ierr, indexes, problems, paths, types = scenariounzipproblems()",
+  "python_syntax": "ierr, indexes, problems, paths, types = scenariounzipproblems()",
+  "return_type": "error_and_multi_value",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "indexes",
+      "description": "An array of ERRCNT elements specifying internal problem index which will be used in SCENARIOUNZIPSOLUTIONS. (output)."
+    },
+    {
+      "name": "problems",
+      "description": "An array of ERRCNT elements specifying problems that were encountered. (output)."
+    },
+    {
+      "name": "paths",
+      "description": "An array of ERRCNT elements specifying full file paths of all files that had problems being extracted. (output)."
+    },
+    {
+      "name": "types",
+      "description": "An array of ERRCNT elements specifying file types associated with each file. (output)."
+    }
+  ],
+  "allowed_values": {
+    "problems": [
+      {
+        "value": "= 0",
+        "description": "file already exists."
+      },
+      {
+        "value": "= 1",
+        "description": "path does not exist."
+      },
+      {
+        "value": "= 2",
+        "description": "a file with the specified name does not exist in the archive."
+      },
+      {
+        "value": "= 3",
+        "description": "a directory with the specified file name already exists."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no conflicts occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "conflicts occurred."
+    }
+  ]
+}

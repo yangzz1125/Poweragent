@@ -1,0 +1,15 @@
+{
+  "module": "psspy",
+  "function_name": "runiplanfile",
+  "category": "Non-Engineering",
+  "description": "Execute an IPLAN program. This API routine was first introduced in release 30.0.0. runiplanfile(iplname)",
+  "python_syntax": "runiplanfile(iplname)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "iplname",
+      "description": ""
+    }
+  ],
+  "return_values": []
+}

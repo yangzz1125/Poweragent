@@ -1,0 +1,168 @@
+{
+  "module": "psspy",
+  "function_name": "machine_data",
+  "category": "Power Flow Data",
+  "description": "This API routine is obsolete. It has been replaced by the API routine machine_data_2, and is implemented by a call to machine_data_2. Use this API to modify the data of an existing machine in the working case or to add a new machine to a plant bus in the working case. This API routine was first introduced in release 28.0.0. ierr = machine_data(ibus, id, intgar, realar)",
+  "python_syntax": "ierr = machine_data(ibus, id, intgar, realar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    },
+    {
+      "name": "id",
+      "description": "Machine identifier. (input)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of five elementsNone. (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of sixteen elementsNone. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "STAT, machine status."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "O1, first owner number."
+      },
+      {
+        "value": "INTGAR(3)",
+        "description": "O2, second owner number."
+      },
+      {
+        "value": "INTGAR(4)",
+        "description": "O3, third owner number."
+      },
+      {
+        "value": "INTGAR(5)",
+        "description": "O4, fourth owner number."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "PG, machine active power."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "QG, machine reactive power."
+      },
+      {
+        "value": "REALAR(3)",
+        "description": "QT, machine reactive power upper limit."
+      },
+      {
+        "value": "REALAR(4)",
+        "description": "QB, machine reactive power lower limit."
+      },
+      {
+        "value": "REALAR(5)",
+        "description": "PT, machine active power upper limit."
+      },
+      {
+        "value": "REALAR(6)",
+        "description": "PB, machine active power lower limit."
+      },
+      {
+        "value": "REALAR(7)",
+        "description": "MBASE, machine MVA base."
+      },
+      {
+        "value": "REALAR(8)",
+        "description": "ZR, machine resistance."
+      },
+      {
+        "value": "REALAR(9)",
+        "description": "ZX, machine reactance."
+      },
+      {
+        "value": "REALAR(10)",
+        "description": "RT, step-up transformer resistance."
+      },
+      {
+        "value": "REALAR(11)",
+        "description": "XT, step-up transformer reactance."
+      },
+      {
+        "value": "REALAR(12)",
+        "description": "GTAP, step-up transformer tap ratio."
+      },
+      {
+        "value": "REALAR(13)",
+        "description": "F1, first owner fraction."
+      },
+      {
+        "value": "REALAR(14)",
+        "description": "F2, second owner fraction."
+      },
+      {
+        "value": "REALAR(15)",
+        "description": "F3, third owner fraction."
+      },
+      {
+        "value": "REALAR(16)",
+        "description": "F4, fourth owner fraction."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "machine identifier is more than two characters."
+    },
+    {
+      "value": "= 3",
+      "description": "no plant data at bus."
+    },
+    {
+      "value": "= 4",
+      "description": "blank machine identifier is invalid."
+    },
+    {
+      "value": "= 5",
+      "description": "machine table full."
+    },
+    {
+      "value": "= 6",
+      "description": "machine ownership table full."
+    },
+    {
+      "value": "= 7",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= 8",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - invalid machine status - invalid ZSORCE reactance - invalid ZSORCE: (0.0,0.0) - invalid owner number - invalid ownership fraction - no ownership data is specified - QMAX is less than QMIN - PMAX is less than PMIN - MBASE is not positive - machine ownership table is full–only first n owners retained - owner table is full."
+    }
+  ]
+}

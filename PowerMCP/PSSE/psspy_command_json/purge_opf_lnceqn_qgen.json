@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "purge_opf_lnceqn_qgen",
+  "category": "Optimal Power Flow Data",
+  "description": "Use this API to remove a participating reactive power dispatch variable from a specified OPF linear constraint dependency equation in the working case. This API routine was first introduced in release 31.0.0. ierr = purge_opf_lnceqn_qgen(iqid, eibus, genid)",
+  "python_syntax": "ierr = purge_opf_lnceqn_qgen(iqid, eibus, genid)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "iqid",
+      "description": "Linear constraint equation identification number. (input; no default allowed)."
+    },
+    {
+      "name": "eibus",
+      "description": "Bus number. (input; no default allowed)."
+    },
+    {
+      "name": "genid",
+      "description": "Machine identifier. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "specified linear constraint equation does not exist."
+    },
+    {
+      "value": "= 2",
+      "description": "specified bus does not exist."
+    },
+    {
+      "value": "= 3",
+      "description": "specified machine does not exist at bus."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

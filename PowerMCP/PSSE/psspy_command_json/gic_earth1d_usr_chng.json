@@ -1,0 +1,62 @@
+{
+  "module": "psspy",
+  "function_name": "gic_earth1d_usr_chng",
+  "category": "Gic Data",
+  "description": "Use this API to modify GIC User 1D Earth Model data from the working case. This API routine was first introduced in release 34.8.0. ierr = gic_earth1d_usr_chng(name,desc,realar,layers,rho,thickness)",
+  "python_syntax": "ierr = gic_earth1d_usr_chng(name,desc,realar,layers,rho,thickness)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "1d earth model name. the non-blank alphanumeric identifier assigned to earth model. the name should be unique and different than standard earth model names defined in tpl-007. (input; no default allowed)."
+    },
+    {
+      "name": "desc",
+      "description": "Earth model description. it is used for information purpose only.. (input; blank by default)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of two elementsNone. (input)."
+    },
+    {
+      "name": "layers",
+      "description": "Number of layers of earth model rho and thickness. (input)."
+    },
+    {
+      "name": "rho",
+      "description": "An array of layers elements specifying array of ‘layers’ values specifying earth model layer resistivity in ohm-m. All values must be > 0. (input; no default allowed)."
+    },
+    {
+      "name": "thickness",
+      "description": "An array of layers elements specifying array of ‘layers’ values specifying earth model layer thickness in km. All values must be > 0 except last layer. The last layer thickness is infinity, specified as any number < 0. . (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "Benchmark event scaling factor (1.0 by default), can also be specified with keyword ‘beta’."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "Supplemental event scaling factor (1.0 by default), can also be specified with keyword ‘betas’."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

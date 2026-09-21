@@ -1,0 +1,58 @@
+{
+  "module": "psspy",
+  "function_name": "plant_bus_section_chng",
+  "category": "Node Breaker Data",
+  "description": "This API routine is obsolete. It has been replaced by the API routine plant_chng_3, and is implemented by a call to plant_chng_3. Use this API routine to modify the data of an existing plant in the working case (see PSSE Data Formats Reference Manual, Generator Data). This API routine was first introduced in release 34.0.1. ierr = plant_bus_section_chng(i, node, intgar, realar)",
+  "python_syntax": "ierr = plant_bus_section_chng(i, node, intgar, realar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "i",
+      "description": "Bus number. (input; no default allowed)."
+    },
+    {
+      "name": "node",
+      "description": "Node number. (input; no default allowed)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of 1 elements specifying one element. See the PLANT_DATA_3 API routine for details. (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of 2 elements specifying See the PLANT_DATA_3 API routine for details. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 3",
+      "description": "no plant at bus."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - invalid scheduled voltage - regulated bus not found - plant specified as remotely regulating itself - type code of regulated bus is not 1 or 2 - RMPCT is not positive."
+    }
+  ]
+}

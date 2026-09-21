@@ -1,0 +1,148 @@
+{
+  "module": "psspy",
+  "function_name": "ldclist",
+  "category": "Dynamic Simulation Operation",
+  "description": "Use this API to list load models connected to subsystem loads along with their storage locations in the dynamics data arrays. This API routine was first introduced in release 35.x.0. ierr = ldclist(sid, all, status)",
+  "python_syntax": "ierr = ldclist(sid, all, status)",
+  "return_type": "error_only_listing",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Valid subsystem identifier. valid subsystem identifiers range from 0 to 11. subsystem sid must have been previously defined. (input; 0 by default)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem flag. (input; 1 by default)."
+    },
+    {
+      "name": "status",
+      "description": "An array of three elements specifying a three-element array. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 1",
+        "description": "process all buses."
+      },
+      {
+        "value": "= 0",
+        "description": "process only buses in subsystem SID."
+      }
+    ],
+    "status": [
+      {
+        "value": "STATUS(1)",
+        "description": "active/bypassed flag (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "active and bypassed models."
+      },
+      {
+        "value": "= 1",
+        "description": "active models only."
+      },
+      {
+        "value": "= 2",
+        "description": "bypassed models only."
+      },
+      {
+        "value": "STATUS(2)",
+        "description": "model connection report option (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "list models connected to loads."
+      },
+      {
+        "value": "= 1",
+        "description": "list loads connected to model."
+      },
+      {
+        "value": "STATUS(3)",
+        "description": "load component model type (1 by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "all load component models."
+      },
+      {
+        "value": "= 10",
+        "description": "main component models."
+      },
+      {
+        "value": "= 11",
+        "description": "distribution component models."
+      },
+      {
+        "value": "= 21",
+        "description": "individual component 1 models."
+      },
+      {
+        "value": "= 22",
+        "description": "individual component 2 models."
+      },
+      {
+        "value": "= 23",
+        "description": "individual component 3 models."
+      },
+      {
+        "value": "= 24",
+        "description": "individual component 4 models."
+      },
+      {
+        "value": "= 25",
+        "description": "individual component 5 models."
+      },
+      {
+        "value": "= 26",
+        "description": "individual component 6 models."
+      },
+      {
+        "value": "= 27",
+        "description": "individual component 7 models."
+      },
+      {
+        "value": "= 28",
+        "description": "individual component 8 models."
+      },
+      {
+        "value": "= 29",
+        "description": "individual component 9 models."
+      },
+      {
+        "value": "= 30",
+        "description": "individual component 10 models."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ALL value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid STATUS value."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

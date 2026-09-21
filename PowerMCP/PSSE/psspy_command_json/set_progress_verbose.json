@@ -1,0 +1,46 @@
+{
+  "module": "psspy",
+  "function_name": "set_progress_verbose",
+  "category": "Power Flow Operation",
+  "description": "Use this API to to set the option progress message verbose value. This value is used to show or not show some repetitive progress messages when reading sequence data file. This API routine was first introduced in release 34.8.0 and 35.2.0. ierr = set_progress_verbose(ival)",
+  "python_syntax": "ierr = set_progress_verbose(ival)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ival",
+      "description": "Value of the option setting. (input; -1 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "ival": [
+      {
+        "value": "= -1",
+        "description": "show all messages."
+      },
+      {
+        "value": "= 0",
+        "description": "do not show repetitive messages."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid IVAL value."
+    },
+    {
+      "value": "= 2",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

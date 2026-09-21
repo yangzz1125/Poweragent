@@ -1,0 +1,119 @@
+{
+  "module": "psspy",
+  "function_name": "pv_print",
+  "category": "Graphical Analysis Output",
+  "description": "Use this API to print the results of PV analysis from the .pv results file This API routine was first introduced in release 30.0.0. pv_print(resfile, restype, nconting, contingarray, noutputs, outputsarray, interface, enforcescale, uselinestyles, numberlines, prtparams)",
+  "python_syntax": "pv_print(resfile, restype, nconting, contingarray, noutputs, outputsarray, interface, enforcescale, uselinestyles, numberlines, prtparams)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "resfile",
+      "description": "Name of the existing .pv file. (input)."
+    },
+    {
+      "name": "restype",
+      "description": "Type of the results. (input)."
+    },
+    {
+      "name": "nconting",
+      "description": "Number of specified contingencies. (input)."
+    },
+    {
+      "name": "contingarray",
+      "description": "An array of NCONTING elements specifying an array of the numbers of specified contingencies. The base case is marked by 0. The size of the array is equal to NCONTING. (input)."
+    },
+    {
+      "name": "noutputs",
+      "description": "Number of specified outputs. (input)."
+    },
+    {
+      "name": "outputsarray",
+      "description": "An array of NOUTPUTS elements specifying an array of the numbers of specified outputs. The count starts from 0. The size of the array is equal to NOUTPUTS. (input)."
+    },
+    {
+      "name": "interface",
+      "description": "Number of specified interface. valid only in case of bus voltage against interface flow (restype = 4). (input)."
+    },
+    {
+      "name": "enforcescale",
+      "description": "Allows to print the results with the different scales. (input)."
+    },
+    {
+      "name": "uselinestyles",
+      "description": "Use (or not) different line styles for plotting. (input)."
+    },
+    {
+      "name": "numberlines",
+      "description": "Put the numbers (or not) on the graphs. (input)."
+    },
+    {
+      "name": "prtparams",
+      "description": "Print (or not) the set of parameters used for calculations. (input)."
+    }
+  ],
+  "return_values": [],
+  "allowed_values": {
+    "restype": [
+      {
+        "value": "= 0",
+        "description": "bus voltage."
+      },
+      {
+        "value": "= 1",
+        "description": "generator MW."
+      },
+      {
+        "value": "= 2",
+        "description": "branch MVA flow."
+      },
+      {
+        "value": "= 3",
+        "description": "interface MW flow."
+      },
+      {
+        "value": "= 4",
+        "description": "bus voltage against interface flow."
+      }
+    ],
+    "enforcescale": [
+      {
+        "value": "= 0",
+        "description": "the scales will be not changed according with the results; this allows to print the results from different files in the same scales."
+      },
+      {
+        "value": "= 1",
+        "description": "the maximum and minimum values for the used scales will be taken from the file of results, and the printing will be done according with these values."
+      }
+    ],
+    "uselinestyles": [
+      {
+        "value": "= 0",
+        "description": "all the lines will be solid."
+      },
+      {
+        "value": "= 1",
+        "description": "five different (standard) styles of lines will be used: Solid, Dash-Dash, Dot-Dot, Dash-Dot, Dash-Dot-Dot."
+      }
+    ],
+    "numberlines": [
+      {
+        "value": "= 0",
+        "description": "no numbering of the graphs."
+      },
+      {
+        "value": "= 1",
+        "description": "each graph will have its number for better recognition."
+      }
+    ],
+    "prtparams": [
+      {
+        "value": "= 0",
+        "description": "no printing of parameters."
+      },
+      {
+        "value": "= 1",
+        "description": "the set of parameters will be printed."
+      }
+    ]
+  }
+}

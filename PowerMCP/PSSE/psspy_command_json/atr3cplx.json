@@ -1,0 +1,268 @@
+{
+  "module": "psspy",
+  "function_name": "atr3cplx",
+  "category": "Three-Winding Transformer Data",
+  "description": "Use this API to return an array of complex values for subsystem three-winding transformers. This API routine was first introduced in release 30.3.2. ierr, xarray = atr3cplx(sid, owner, ties, flag, entry, string)",
+  "python_syntax": "ierr, xarray = atr3cplx(sid, owner, ties, flag, entry, string)",
+  "return_type": "error_and_array",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the bus subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "owner",
+      "description": "A flag indicating owner usage if ownership is a subsystem selection criterion (ignored if sid is negative). (input; 1 by default)."
+    },
+    {
+      "name": "ties",
+      "description": "A flag indicating which subsystem three-winding transformers to include (ignored if sid is negative). (input; 1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem three-winding transformers to include. (input; 1 by default)."
+    },
+    {
+      "name": "entry",
+      "description": "A flag indicating organization. (input; 1 by default)."
+    },
+    {
+      "name": "string",
+      "description": "An array of NSTR elements specifying NSTR of the following strings indicating the transformer quantities desired. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "xarray",
+      "description": "An array of NSTR*DIM elements specifying Is an array of at least NSTR columns, each of which contains DIM elements. (output)."
+    }
+  ],
+  "allowed_values": {
+    "sid": [
+      {
+        "value": "< 0",
+        "description": "to instruct the API to assume a subsystem containing all buses in the working case."
+      },
+      {
+        "value": ">= 0",
+        "description": "valid bus subsystem identifier. Valid subsystem identifiers range from 0 to 11. Subsystem SID must have been previously defined."
+      }
+    ],
+    "owner": [
+      {
+        "value": "= 1",
+        "description": "to use bus ownership."
+      },
+      {
+        "value": "= 2",
+        "description": "to use transformer ownership."
+      }
+    ],
+    "ties": [
+      {
+        "value": "= 1",
+        "description": "for interior subsystem three-winding transformers only."
+      },
+      {
+        "value": "= 2",
+        "description": "for subsystem tie three-winding transformers only."
+      },
+      {
+        "value": "= 3",
+        "description": "for both interior subsystem and tie three-winding transformers."
+      }
+    ],
+    "flag": [
+      {
+        "value": "= 1",
+        "description": "for only in-service three-winding transformers."
+      },
+      {
+        "value": "= 2",
+        "description": "for all three-winding transformers."
+      }
+    ],
+    "entry": [
+      {
+        "value": "= 1",
+        "description": "for winding 1 bus order."
+      },
+      {
+        "value": "= 2",
+        "description": "for transformer name order."
+      }
+    ],
+    "string": [
+      {
+        "value": "= RX1-2ACT",
+        "description": "Actual measured impedance between the winding 1 and winding 2 buses in pu."
+      },
+      {
+        "value": "= RX1-2ACTCZ",
+        "description": "Actual measured impedance between the winding 1 and winding 2 buses in units governed by CZ."
+      },
+      {
+        "value": "= RX1-2NOM",
+        "description": "Nominal measured impedance between the winding 1 and winding 2 buses in pu."
+      },
+      {
+        "value": "= RX1-2NOMCZ",
+        "description": "Nominal measured impedance between the winding 1 and winding 2 buses in units governed by CZ."
+      },
+      {
+        "value": "= RX2-3ACT",
+        "description": "Actual measured impedance between the winding 2 and winding 3 buses in pu."
+      },
+      {
+        "value": "= RX2-3ACTCZ",
+        "description": "Actual measured impedance between the winding 2 and winding 3 buses in units governed by CZ."
+      },
+      {
+        "value": "= RX2-3NOM",
+        "description": "Nominal measured impedance between the winding 2 and winding 3 buses in pu."
+      },
+      {
+        "value": "= RX2-3NOMCZ",
+        "description": "Nominal measured impedance between the winding 2 and winding 3 buses in units governed by CZ."
+      },
+      {
+        "value": "= RX3-1ACT",
+        "description": "Actual measured impedance between the winding 3 and winding 1 buses in pu."
+      },
+      {
+        "value": "= RX3-1ACTCZ",
+        "description": "Actual measured impedance between the winding 3 and winding 1 buses in units governed by CZ."
+      },
+      {
+        "value": "= RX3-1NOM",
+        "description": "Nominal measured impedance between the winding 3 and winding 1 buses in pu."
+      },
+      {
+        "value": "= RX3-1NOMCZ",
+        "description": "Nominal measured impedance between the winding 3 and winding 1 buses in units governed by CZ."
+      },
+      {
+        "value": "= YMAG",
+        "description": "Magnetizing admittance in pu."
+      },
+      {
+        "value": "= YMAGCM",
+        "description": "Magnetizing admittance in units governed by CM."
+      },
+      {
+        "value": "= ZG1",
+        "description": "ZGRND’ Zero sequence winding 1 grounding impedance in pu."
+      },
+      {
+        "value": "= ZG1CZG",
+        "description": "Zero sequence winding 1 grounding impedance in units governed by CZG."
+      },
+      {
+        "value": "= ZG2",
+        "description": "‘ZGRND2’ Zero sequence winding 2 grounding impedance in pu."
+      },
+      {
+        "value": "= ZG2CZG",
+        "description": "Zero sequence winding 2 grounding impedance in units governed by CZG."
+      },
+      {
+        "value": "= ZG3",
+        "description": "‘ZGRND3’ Zero sequence winding 3 grounding impedance in pu."
+      },
+      {
+        "value": "= ZG3CZG",
+        "description": "Zero sequence winding 3 grounding impedance in units governed by CZG."
+      },
+      {
+        "value": "= Z01",
+        "description": "Zero sequence winding 1 or bus 1 to bus 2 leakage impedance in pu."
+      },
+      {
+        "value": "= Z01CZ0",
+        "description": "Zero sequence winding 1 or bus 1 to bus 2 leakage impedance in units governed by CZ0."
+      },
+      {
+        "value": "= Z02",
+        "description": "Zero sequence winding 2 or bus 2 to bus 3 leakage impedance in pu."
+      },
+      {
+        "value": "= Z02CZ0",
+        "description": "Zero sequence winding 2 or bus 2 to bus 3 leakage impedance in units governed by CZ0."
+      },
+      {
+        "value": "= Z03",
+        "description": "Zero sequence winding 3 or bus 3 to bus 1 leakage impedance in pu."
+      },
+      {
+        "value": "= Z03CZ0",
+        "description": "Zero sequence winding 3 or bus 3 to bus 1 leakage impedance in units governed by CZ0."
+      },
+      {
+        "value": "= ZNUTRL",
+        "description": "Zero sequence common neutral grounding impedance in pu."
+      },
+      {
+        "value": "= ZNUTRLCZG",
+        "description": "Zero sequence common neutral grounding impedance in units governed by CZG."
+      },
+      {
+        "value": "= PQLOSS",
+        "description": "Losses (in MW and Mvar)."
+      },
+      {
+        "value": "= O_PQLOSS",
+        "description": "Losses (units determined by power output options)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid OWNER value."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid TIES value."
+    },
+    {
+      "value": "= 5",
+      "description": "Invalid FLAG value."
+    },
+    {
+      "value": "= 6",
+      "description": "Invalid ENTRY value."
+    },
+    {
+      "value": "= 7",
+      "description": "Invalid NSTR value."
+    },
+    {
+      "value": "= 8",
+      "description": "DIM, and hence the size of XARRAY, is not large enough."
+    },
+    {
+      "value": "= 9",
+      "description": "Invalid STRING value."
+    },
+    {
+      "value": "= 10",
+      "description": "Sequence data not in case (when STRING = ‘ZGRND’, ‘ZG1’, ‘ZG1CZG’, ‘ZG2’, ‘ZG2CZG’, ‘ZG3’, ‘ZG3CZG’, ‘Z01’, ‘Z01CZ0’, ‘Z02’, ‘Z02CZ0’, ‘Z03’, ‘Z03CZ0’, ‘ZNUTRL’, or ‘ZNUTRLCZG’)."
+    }
+  ]
+}

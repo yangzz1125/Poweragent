@@ -1,0 +1,62 @@
+{
+  "module": "psspy",
+  "function_name": "seqd",
+  "category": "Fault Analysis Operation",
+  "description": "This API routine is obsolete. It has been replaced by the API routine seqd_2, and is implemented by a call to seqd_2. Use this API to factorize the sequence matrices in preparation for unbalanced fault calculations. This API routine was first introduced in release 29.0.0. ierr = seqd(options)",
+  "python_syntax": "ierr = seqd(options)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "options",
+      "description": "An array of two elements specifying options to be used in constructing the sequence matrices. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "options": [
+      {
+        "value": "OPTIONS(1)",
+        "description": "dc line and FACTS device option (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "block and ignore."
+      },
+      {
+        "value": "= 1",
+        "description": "convert to constant admittance load."
+      },
+      {
+        "value": "OPTIONS(2)",
+        "description": "transformer impedance correction option (1 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "do not apply to zero sequence."
+      },
+      {
+        "value": "= 1",
+        "description": "apply to zero sequence."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid OPTIONS value."
+    },
+    {
+      "value": "= 2",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

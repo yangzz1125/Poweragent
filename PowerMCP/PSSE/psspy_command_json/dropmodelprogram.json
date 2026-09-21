@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "dropmodelprogram",
+  "category": "Dynamic Simulation Operation",
+  "description": "Use this API to remove a model from the list of known library models; library models are added to this list the first time that they are called. This API routine was first introduced in release 30.3.0. ierr = dropmodelprogram(programname)",
+  "python_syntax": "ierr = dropmodelprogram(programname)",
+  "return_type": "error_only_listing",
+  "parameters": [
+    {
+      "name": "programname",
+      "description": "Name of the model program. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "program not found."
+    },
+    {
+      "value": "= 2",
+      "description": "program unload failed."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

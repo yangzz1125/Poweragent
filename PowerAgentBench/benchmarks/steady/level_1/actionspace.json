@@ -1,0 +1,217 @@
+{
+  "schema_version": "1.0",
+  "task_id": "steady_level_1_case39_easy",
+  "name": "IEEE 39-bus Level 1 Easy Steady-State Task",
+  "network_file": "case39_level1.nc",
+  "power_flow": {
+    "solver": "PyPSA AC non-linear power flow",
+    "slack_behavior": "Residual active power mismatch is absorbed by the slack generator G0 during evaluation."
+  },
+  "operating_limits": {
+    "base_case": {
+      "line_loading_pct_max": 100.0,
+      "bus_voltage_pu_min": 0.95,
+      "bus_voltage_pu_max": 1.06
+    },
+    "contingency": {
+      "line_loading_pct_max": 110.0,
+      "bus_voltage_pu_min": 0.94,
+      "bus_voltage_pu_max": 1.08
+    }
+  },
+  "contingencies": [
+    {
+      "id": "L7_outage",
+      "component_type": "Line",
+      "component_id": "L7",
+      "description": "N-1 outage of line L7 between bus 3 and bus 13."
+    },
+    {
+      "id": "L12_outage",
+      "component_type": "Line",
+      "component_id": "L12",
+      "description": "N-1 outage of line L12 between bus 6 and bus 7."
+    },
+    {
+      "id": "L20_outage",
+      "component_type": "Line",
+      "component_id": "L20",
+      "description": "N-1 outage of line L20 between bus 15 and bus 16."
+    }
+  ],
+  "actions": [
+    {
+      "id": "redispatch_G7_up",
+      "category": "generator_active_power",
+      "type": "generator_active_power_delta_mw",
+      "component_type": "Generator",
+      "component_id": "G7",
+      "bus": "36",
+      "description": "Increase active dispatch of generator G7 at bus 36.",
+      "unit": "MW",
+      "min_value": 0.0,
+      "max_value": 20.0,
+      "step": 20.0,
+      "initial_p_set_mw": 520.0,
+      "hard_limits": {
+        "p_min_mw": 0.0,
+        "p_max_mw": 564.0,
+        "q_min_mvar": 0.0,
+        "q_max_mvar": 250.0
+      }
+    },
+    {
+      "id": "redispatch_G8_up",
+      "category": "generator_active_power",
+      "type": "generator_active_power_delta_mw",
+      "component_type": "Generator",
+      "component_id": "G8",
+      "bus": "37",
+      "description": "Increase active dispatch of generator G8 at bus 37.",
+      "unit": "MW",
+      "min_value": 0.0,
+      "max_value": 50.0,
+      "step": 50.0,
+      "initial_p_set_mw": 730.0,
+      "hard_limits": {
+        "p_min_mw": 0.0,
+        "p_max_mw": 865.0,
+        "q_min_mvar": -150.0,
+        "q_max_mvar": 300.0
+      }
+    },
+    {
+      "id": "redispatch_G9_up",
+      "category": "generator_active_power",
+      "type": "generator_active_power_delta_mw",
+      "component_type": "Generator",
+      "component_id": "G9",
+      "bus": "38",
+      "description": "Increase active dispatch of generator G9 at bus 38.",
+      "unit": "MW",
+      "min_value": 0.0,
+      "max_value": 100.0,
+      "step": 50.0,
+      "initial_p_set_mw": 820.0,
+      "hard_limits": {
+        "p_min_mw": 0.0,
+        "p_max_mw": 1100.0,
+        "q_min_mvar": -100.0,
+        "q_max_mvar": 300.0
+      }
+    },
+    {
+      "id": "vm_support_south",
+      "category": "generator_voltage_setpoint",
+      "type": "coordinated_bus_voltage_setpoint_delta_pu",
+      "description": "Raise the AVR setpoints of G7, G8, and G9 together to mobilize additional reactive support in the southern area.",
+      "unit": "pu",
+      "min_value": 0.0,
+      "max_value": 0.01,
+      "step": 0.01,
+      "targets": [
+        {
+          "generator_id": "G7",
+          "bus": "36"
+        },
+        {
+          "generator_id": "G8",
+          "bus": "37"
+        },
+        {
+          "generator_id": "G9",
+          "bus": "38"
+        }
+      ],
+      "hard_limits": {
+        "bus_voltage_setpoint_min_pu": 0.95,
+        "bus_voltage_setpoint_max_pu": 1.06
+      }
+    },
+    {
+      "id": "tap_T1_up",
+      "category": "transformer_tap",
+      "type": "transformer_tap_step",
+      "component_type": "Transformer",
+      "component_id": "T1",
+      "description": "Raise transformer T1 by one tap step to support the weak load pocket.",
+      "unit": "tap_step",
+      "min_value": 0.0,
+      "max_value": 1.0,
+      "step": 1.0,
+      "tap_ratio_per_step": 0.0125,
+      "initial_tap_ratio": 1.07,
+      "hard_limits": {
+        "tap_ratio_min": 1.07,
+        "tap_ratio_max": 1.0825
+      }
+    },
+    {
+      "id": "switch_shunt_bus7",
+      "category": "switchable_shunt",
+      "type": "switchable_shunt_mvar",
+      "description": "Switch in the 50 Mvar capacitor bank at bus 7.",
+      "bus": "7",
+      "unit": "Mvar",
+      "min_value": 0.0,
+      "max_value": 50.0,
+      "step": 50.0,
+      "hard_limits": {
+        "shunt_step_mvar": 50.0,
+        "max_installed_mvar": 50.0
+      }
+    },
+    {
+      "id": "shed_load_L20",
+      "category": "load_shedding",
+      "type": "load_shed_percent",
+      "component_type": "Load",
+      "component_id": "L20",
+      "bus": "38",
+      "description": "Curtail the large load at bus 38 while keeping its power factor constant.",
+      "unit": "percent",
+      "min_value": 0.0,
+      "max_value": 5.0,
+      "step": 2.5,
+      "initial_p_set_mw": 1380.0,
+      "initial_q_set_mvar": 312.5,
+      "hard_limits": {
+        "max_curtailment_percent": 5.0
+      }
+    },
+    {
+      "id": "shed_load_L10",
+      "category": "load_shedding",
+      "type": "load_shed_percent",
+      "component_type": "Load",
+      "component_id": "L10",
+      "bus": "19",
+      "description": "Curtail the industrial load at bus 19 while keeping its power factor constant.",
+      "unit": "percent",
+      "min_value": 0.0,
+      "max_value": 5.0,
+      "step": 2.5,
+      "initial_p_set_mw": 850.0,
+      "initial_q_set_mvar": 128.75,
+      "hard_limits": {
+        "max_curtailment_percent": 5.0
+      }
+    },
+    {
+      "id": "phase_shift_T9",
+      "category": "phase_shifting_transformer",
+      "type": "transformer_phase_shift_delta_deg",
+      "component_type": "Transformer",
+      "component_id": "T9",
+      "description": "Adjust transformer T9 phase shift to steer power around the lower-right corridor.",
+      "unit": "degrees",
+      "min_value": -2.0,
+      "max_value": 2.0,
+      "step": 2.0,
+      "hard_limits": {
+        "phase_shift_min_deg": -2.0,
+        "phase_shift_max_deg": 2.0
+      }
+    }
+  ]
+}

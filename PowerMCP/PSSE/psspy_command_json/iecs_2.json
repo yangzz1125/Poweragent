@@ -1,0 +1,248 @@
+{
+  "module": "psspy",
+  "function_name": "iecs_2",
+  "category": "Fault Analysis Operation",
+  "description": "This API routine is obsolete. It has been replaced by the API routine iecs_3, and is implemented by a call to iecs_3. This API executes the second release of the IEC short circuit calculations function. This API is used to apply a series of faults at various locations in the working case to compute short circuit currents according to IEC 60909 standard. This API routine was first introduced in release 32.0.0. ierr = iecs_2(sid, all, status, brktim, iecfile, fcdfile, scfile)",
+  "python_syntax": "ierr = iecs_2(sid, all, status, brktim, iecfile, fcdfile, scfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid subsystem identifier. valid subsystem identifiers range from 0 to 11. subsystem sid must have been previously defined. (input; 0 by default)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem flag. (input; 1 by default)."
+    },
+    {
+      "name": "status",
+      "description": "An array of fourteen elements specifying integer options. (input)."
+    },
+    {
+      "name": "brktim",
+      "description": "Breaker contact parting time in seconds. (input; 5/BaseFrequency by default)."
+    },
+    {
+      "name": "iecfile",
+      "description": "Iec fault calculation data (.iec) file. (input; blank by default)."
+    },
+    {
+      "name": "fcdfile",
+      "description": "Fault control (.fcd) file. (input; blank by default)."
+    },
+    {
+      "name": "scfile",
+      "description": "Results (.sc) file. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 1",
+        "description": "process all buses."
+      },
+      {
+        "value": "= 0",
+        "description": "process only buses in subsystem SID."
+      }
+    ],
+    "status": [
+      {
+        "value": "STATUS(1)",
+        "description": "three phase faults (0 by default), can also be specified with keyword ‘flt3ph’."
+      },
+      {
+        "value": "= 0",
+        "description": "omit."
+      },
+      {
+        "value": "= 1",
+        "description": "include."
+      },
+      {
+        "value": "STATUS(2)",
+        "description": "line-to-ground faults (0 by default), can also be specified with keyword ‘fltlg’."
+      },
+      {
+        "value": "= 0",
+        "description": "omit."
+      },
+      {
+        "value": "= 1",
+        "description": "include."
+      },
+      {
+        "value": "STATUS(3)",
+        "description": "line-line-to-ground faults (0 by default), can also be specified with keyword ‘fltllg’."
+      },
+      {
+        "value": "= 0",
+        "description": "omit."
+      },
+      {
+        "value": "= 1",
+        "description": "include."
+      },
+      {
+        "value": "STATUS(4)",
+        "description": "line-to-line faults (0 by default), can also be specified with keyword ‘fltll’."
+      },
+      {
+        "value": "= 0",
+        "description": "omit."
+      },
+      {
+        "value": "= 1",
+        "description": "include."
+      },
+      {
+        "value": "STATUS(5)",
+        "description": "report option (1 by default), can also be specified with keyword ‘rptop’."
+      },
+      {
+        "value": "= 1",
+        "description": "total fault currents."
+      },
+      {
+        "value": "= 2",
+        "description": "fault contributions to N levels away."
+      },
+      {
+        "value": "= 3",
+        "description": "total fault currents and fault contributions to N levels away."
+      },
+      {
+        "value": "STATUS(6)",
+        "description": "number of levels back for contributions (0 by default), can also be specified with keyword ‘rptlvl’."
+      },
+      {
+        "value": ">= 0",
+        "description": "used if STATUS(5) = 2 or 3."
+      },
+      {
+        "value": "STATUS(7)",
+        "description": "location of fault (1 by default), can also be specified with keyword ‘fltloc’."
+      },
+      {
+        "value": "= 1",
+        "description": "fault at network bus."
+      },
+      {
+        "value": "= 2",
+        "description": "fault at LV bus of Power Station Unit (PSU)."
+      },
+      {
+        "value": "= 3",
+        "description": "fault at auxiliary transformer (connected to PSU) LV bus."
+      },
+      {
+        "value": "STATUS(8)",
+        "description": "line-out faults (0 by default), can also be specified with keyword ‘linout’."
+      },
+      {
+        "value": "= 0",
+        "description": "omit."
+      },
+      {
+        "value": "= 1",
+        "description": "include."
+      },
+      {
+        "value": "STATUS(9)",
+        "description": "line-end faults (0 by default), can also be specified with keyword ‘linend’."
+      },
+      {
+        "value": "= 0",
+        "description": "omit."
+      },
+      {
+        "value": "= 1",
+        "description": "include."
+      },
+      {
+        "value": "STATUS(10)",
+        "description": "transformer tap ratios and phase angles option (0 by default), can also be specified with keyword ‘tpunty’."
+      },
+      {
+        "value": "= 0",
+        "description": "leave tap ratios and phase angles unchanged."
+      },
+      {
+        "value": "= 1",
+        "description": "set tap ratios 1.0 pu and phase angles to 0.0 deg."
+      },
+      {
+        "value": "STATUS(11)",
+        "description": "line charging option (1 by default), can also be specified with keyword ‘lnchrg’."
+      },
+      {
+        "value": "= 1",
+        "description": "set to 0.0 in positive and negative sequences."
+      },
+      {
+        "value": "= 2",
+        "description": "set to 0.0 in all sequences."
+      },
+      {
+        "value": "= 3",
+        "description": "leave line charging unchanged."
+      },
+      {
+        "value": "STATUS(12)",
+        "description": "loads, fixed and switched shunts and and magnetizing admittance option (1 by default), can also be specified with keyword ‘shntop’."
+      },
+      {
+        "value": "= 1",
+        "description": "set to 0.0 in the positive and negative sequences."
+      },
+      {
+        "value": "= 2",
+        "description": "set to 0.0 in all sequences."
+      },
+      {
+        "value": "= 3",
+        "description": "leave unchanged."
+      },
+      {
+        "value": "STATUS(13)",
+        "description": "dc line and FACTS device option (0 by default), can also be specified with keyword ‘dcload’."
+      },
+      {
+        "value": "= 0",
+        "description": "blocked."
+      },
+      {
+        "value": "= 1",
+        "description": "represent as load."
+      },
+      {
+        "value": "STATUS(14)",
+        "description": "zero sequence transformer impedance correction option (0 by default), can also be specified with keyword ‘zcorec’."
+      },
+      {
+        "value": "= 0",
+        "description": "ignore."
+      },
+      {
+        "value": "= 1",
+        "description": "apply."
+      }
+    ],
+    "scfile": [
+      {
+        "value": "=",
+        "description": "temporary file created."
+      },
+      {
+        "value": "= nooutput",
+        "description": "no file created."
+      }
+    ]
+  }
+}

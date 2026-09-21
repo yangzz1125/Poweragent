@@ -1,0 +1,152 @@
+{
+  "module": "psspy",
+  "function_name": "mdlind",
+  "category": "Single Element Data",
+  "description": "Use this API to return plant-related model starting array indices and status. This API routine was first introduced in release 28.0.0. ierr, ival = mdlind(ibus, id, string1, string2)",
+  "python_syntax": "ierr, ival = mdlind(ibus, id, string1, string2)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    },
+    {
+      "name": "id",
+      "description": "Machine identifier. (input)."
+    },
+    {
+      "name": "string1",
+      "description": "String indicating the type of plant-related model. (input)."
+    },
+    {
+      "name": "string2",
+      "description": "String indicating the plant-related model quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "ival",
+      "description": "Value indicated by string integer. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string1": [
+      {
+        "value": "= GEN",
+        "description": "Generator model."
+      },
+      {
+        "value": "= COMP",
+        "description": "Compensator model."
+      },
+      {
+        "value": "= STAB",
+        "description": "Stabilizer model."
+      },
+      {
+        "value": "= EXC",
+        "description": "Excitation system model."
+      },
+      {
+        "value": "= GOV",
+        "description": "Turbine governor model."
+      },
+      {
+        "value": "= TLC",
+        "description": "Turbine Load Controller model."
+      },
+      {
+        "value": "= MINXL",
+        "description": "Minimum excitation limiter model."
+      },
+      {
+        "value": "= MAXXL",
+        "description": "Maximum excitation limiter model."
+      },
+      {
+        "value": "= SCL",
+        "description": "Stator Current Limiter model."
+      },
+      {
+        "value": "= PFC",
+        "description": "Power Factor/Var Controller model."
+      }
+    ],
+    "string2": [
+      {
+        "value": "= CON",
+        "description": "Starting CON index."
+      },
+      {
+        "value": "= STATE",
+        "description": "Starting STATE index."
+      },
+      {
+        "value": "= VAR",
+        "description": "Starting VAR index."
+      },
+      {
+        "value": "= ICON",
+        "description": "Starting ICON index."
+      },
+      {
+        "value": "= NCON",
+        "description": "Number of CON values used by the model."
+      },
+      {
+        "value": "= NSTATE",
+        "description": "Number of STATE values used by the model."
+      },
+      {
+        "value": "= NVAR",
+        "description": "Number of VAR values used by the model."
+      },
+      {
+        "value": "= NICON",
+        "description": "Number of ICON values used by the model."
+      },
+      {
+        "value": "= STATUS",
+        "description": "Bypassed flag: 0 = bypassed; 1 = not bypassed. Does not reflect machine status. For a model to be called during simulations the machine must be in service the type code of the bus must be 2 and the model’s bypassed flag must be not bypassed."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Machine not in network but in model tables; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 2",
+      "description": "Machine not in network or in model tables; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid value of ‘STRING1’, ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 4",
+      "description": "No model of type ‘STRING1’ for this machine; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 5",
+      "description": "Invalid value of ‘STRING2’; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 6",
+      "description": "Model does not use any of this data type; ‘IVAL’ = 0 returned."
+    },
+    {
+      "value": "= 9",
+      "description": "Dynamics data not present in working memory; ‘IVAL’ unchanged."
+    }
+  ]
+}

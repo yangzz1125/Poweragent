@@ -1,0 +1,172 @@
+{
+  "module": "psspy",
+  "function_name": "flat_2",
+  "category": "Fault Analysis Operation",
+  "description": "This API routine is the second release of the flat conditions function. Use this API routine to specify various levels of flat conditions in preparation for fault analysis calculations (activity FLAT) This API routine was first introduced in release 33.0.0. ierr = flat_2(options, values)",
+  "python_syntax": "ierr = flat_2(options, values)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "options",
+      "description": "An array of eight elements specifying boundary condition options. (input)."
+    },
+    {
+      "name": "values",
+      "description": "An array of two elements specifying boundary condition values (ignored unless OPTIONS(1) is 2). (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "options": [
+      {
+        "value": "OPTIONS(1)",
+        "description": "flat option (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "only change voltages (activity FLAT)."
+      },
+      {
+        "value": "= 1",
+        "description": "set classical fault analysis conditions (activity FLAT,CL)."
+      },
+      {
+        "value": "= 2",
+        "description": "set conditions in preparation for IEC standard 909 calculations (activity FLAT,IEC)."
+      },
+      {
+        "value": "OPTIONS(2)",
+        "description": "tap ratio treatment flag (ignored if OPTIONS(1) is 0) (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "leave tap ratios unchanged."
+      },
+      {
+        "value": "= 1",
+        "description": "set tap ratios to 1.0."
+      },
+      {
+        "value": "OPTIONS(3)",
+        "description": "charging treatment flag (ignored if OPTIONS(1) is 0) (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "leave charging unchanged."
+      },
+      {
+        "value": "= 1",
+        "description": "set charging to 0.0."
+      },
+      {
+        "value": "OPTIONS(4)",
+        "description": "fixed bus shunt treatment flag (ignored if OPTIONS(1) is 0) (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "leave fixed bus shunts unchanged."
+      },
+      {
+        "value": "= 1",
+        "description": "set fixed bus shunts to 0.0 in the positive (and hence negative) sequence."
+      },
+      {
+        "value": "= 2",
+        "description": "set fixed bus shunts to 0.0 in all sequence networks."
+      },
+      {
+        "value": "OPTIONS(5)",
+        "description": "switched shunt treatment flag (ignored if OPTIONS(1) is 0) (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "leave switched shunts unchanged."
+      },
+      {
+        "value": "= 1",
+        "description": "set switched shunts to 0.0 in all sequence networks."
+      },
+      {
+        "value": "OPTIONS(6)",
+        "description": "line shunt treatment flag (ignored if OPTIONS(1) is 0) (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "leave line shunts unchanged."
+      },
+      {
+        "value": "= 1",
+        "description": "set line shunts to 0.0 in the positive (and hence negative) sequence."
+      },
+      {
+        "value": "= 2",
+        "description": "set line shunts to 0.0 in all sequence networks."
+      },
+      {
+        "value": "OPTIONS(7)",
+        "description": "transformer magnetizing admittance treatment flag (ignored if OPTIONS(1) is 0) (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "leave transformer magnetizing admittances unchanged."
+      },
+      {
+        "value": "= 1",
+        "description": "set transformer magnetizing admittances to 0.0 in the positive (and hence negative) sequence."
+      },
+      {
+        "value": "OPTIONS(8)",
+        "description": "load treatment flag; this option applies to the constant power, current, and admittance load characteristic data (specified on Load Data records in the Power Flow Raw Data File), and to the exceptional negative and zero sequence load data (specified on Load Data records in the Sequence Data File) (ignored if OPTIONS(1) is 0) (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "leave loads unchanged."
+      },
+      {
+        "value": "= 1",
+        "description": "set the constant power, current and admittance load to 0.0 in all sequence networks; model (GNEG + j BNEG) in the negative sequence, and (GZERO + j BZERO) in the zero sequence."
+      },
+      {
+        "value": "= 2",
+        "description": "set the constant power, current and admittance load to 0.0 in all sequence networks, and (GNEG + j BNEG) to 0.0 in the negative sequence; model (GZERO + j BZERO) in the zero sequence."
+      },
+      {
+        "value": "= 3",
+        "description": "set the constant power, current and admittance load to 0.0 in all sequence networks, (GNEG + j BNEG) to 0.0 in the negative sequence, and (GZERO + j BZERO) to 0.0 in the zero sequence."
+      }
+    ],
+    "values": [
+      {
+        "value": "VALUES(1)",
+        "description": "voltage magnitude for all buses, or 0.0 to use present voltage magnitudes (0.0 by default)."
+      },
+      {
+        "value": "VALUES(2)",
+        "description": "generator power factor, or 0.0 to leave generator Mvar unchanged (0.0 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid OPTIONS value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid VALUES value."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

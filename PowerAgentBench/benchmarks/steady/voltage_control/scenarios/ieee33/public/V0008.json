@@ -1,0 +1,518 @@
+{
+  "bess": [
+    {
+      "bess_id": "BESS_1",
+      "bus": 8,
+      "p_max_mw": 1.5,
+      "p_min_mw": -1.5,
+      "step_mw": 0.25
+    },
+    {
+      "bess_id": "BESS_2",
+      "bus": 17,
+      "p_max_mw": 1.5,
+      "p_min_mw": -1.5,
+      "step_mw": 0.25
+    },
+    {
+      "bess_id": "BESS_3",
+      "bus": 24,
+      "p_max_mw": 1.5,
+      "p_min_mw": -1.5,
+      "step_mw": 0.25
+    },
+    {
+      "bess_id": "BESS_4",
+      "bus": 32,
+      "p_max_mw": 1.5,
+      "p_min_mw": -1.5,
+      "step_mw": 0.25
+    }
+  ],
+  "initial_state": {
+    "bus_voltages_pu": {
+      "0": 1.0,
+      "1": 1.0005198019037758,
+      "10": 1.0394463608168032,
+      "11": 1.0427276981250402,
+      "12": 1.0551827817773365,
+      "13": 1.059704815315787,
+      "14": 1.0654194515236324,
+      "15": 1.0729610284996778,
+      "16": 1.0861918478110646,
+      "17": 1.0941661947650765,
+      "18": 1.0001517085663532,
+      "19": 0.9976600304991291,
+      "2": 1.004579281438926,
+      "20": 0.9971693980373266,
+      "21": 0.9967255196222983,
+      "22": 1.0042449461135476,
+      "23": 1.0039011697453162,
+      "24": 1.0058229609774902,
+      "25": 1.0193082372094304,
+      "26": 1.0209942675508665,
+      "27": 1.0260228083869611,
+      "28": 1.0302397955046951,
+      "29": 1.0339989446412012,
+      "3": 1.0079579658690905,
+      "30": 1.042859895725617,
+      "31": 1.0459560123963971,
+      "32": 1.0498173790558483,
+      "4": 1.0117735840013888,
+      "5": 1.0181708756851282,
+      "6": 1.0176495614185037,
+      "7": 1.0225448812146782,
+      "8": 1.0298989847614974,
+      "9": 1.037769828001004
+    },
+    "condition": "OVERVOLTAGE",
+    "converged": true,
+    "error": null,
+    "max_line_loading_percent": 0.00012580745820419385,
+    "max_vm_bus": 17,
+    "max_vm_pu": 1.0941661947650765,
+    "min_vm_bus": 21,
+    "min_vm_pu": 0.9967255196222983,
+    "overloaded_lines": {},
+    "overvoltage_buses": {
+      "12": 1.0551827817773365,
+      "13": 1.059704815315787,
+      "14": 1.0654194515236324,
+      "15": 1.0729610284996778,
+      "16": 1.0861918478110646,
+      "17": 1.0941661947650765
+    },
+    "undervoltage_buses": {},
+    "voltage_violation_count": 6,
+    "voltage_violation_magnitude": 0.13362611969257454
+  },
+  "line_loading_percent_max": 100.0,
+  "network": {
+    "branches": [
+      {
+        "from_bus": 0,
+        "in_service": true,
+        "line_id": 0,
+        "to_bus": 1
+      },
+      {
+        "from_bus": 1,
+        "in_service": true,
+        "line_id": 1,
+        "to_bus": 2
+      },
+      {
+        "from_bus": 2,
+        "in_service": true,
+        "line_id": 2,
+        "to_bus": 3
+      },
+      {
+        "from_bus": 3,
+        "in_service": true,
+        "line_id": 3,
+        "to_bus": 4
+      },
+      {
+        "from_bus": 4,
+        "in_service": true,
+        "line_id": 4,
+        "to_bus": 5
+      },
+      {
+        "from_bus": 5,
+        "in_service": true,
+        "line_id": 5,
+        "to_bus": 6
+      },
+      {
+        "from_bus": 6,
+        "in_service": true,
+        "line_id": 6,
+        "to_bus": 7
+      },
+      {
+        "from_bus": 7,
+        "in_service": true,
+        "line_id": 7,
+        "to_bus": 8
+      },
+      {
+        "from_bus": 8,
+        "in_service": true,
+        "line_id": 8,
+        "to_bus": 9
+      },
+      {
+        "from_bus": 9,
+        "in_service": true,
+        "line_id": 9,
+        "to_bus": 10
+      },
+      {
+        "from_bus": 10,
+        "in_service": true,
+        "line_id": 10,
+        "to_bus": 11
+      },
+      {
+        "from_bus": 11,
+        "in_service": true,
+        "line_id": 11,
+        "to_bus": 12
+      },
+      {
+        "from_bus": 12,
+        "in_service": true,
+        "line_id": 12,
+        "to_bus": 13
+      },
+      {
+        "from_bus": 13,
+        "in_service": true,
+        "line_id": 13,
+        "to_bus": 14
+      },
+      {
+        "from_bus": 14,
+        "in_service": true,
+        "line_id": 14,
+        "to_bus": 15
+      },
+      {
+        "from_bus": 15,
+        "in_service": true,
+        "line_id": 15,
+        "to_bus": 16
+      },
+      {
+        "from_bus": 16,
+        "in_service": true,
+        "line_id": 16,
+        "to_bus": 17
+      },
+      {
+        "from_bus": 1,
+        "in_service": true,
+        "line_id": 17,
+        "to_bus": 18
+      },
+      {
+        "from_bus": 18,
+        "in_service": true,
+        "line_id": 18,
+        "to_bus": 19
+      },
+      {
+        "from_bus": 19,
+        "in_service": true,
+        "line_id": 19,
+        "to_bus": 20
+      },
+      {
+        "from_bus": 20,
+        "in_service": true,
+        "line_id": 20,
+        "to_bus": 21
+      },
+      {
+        "from_bus": 2,
+        "in_service": true,
+        "line_id": 21,
+        "to_bus": 22
+      },
+      {
+        "from_bus": 22,
+        "in_service": true,
+        "line_id": 22,
+        "to_bus": 23
+      },
+      {
+        "from_bus": 23,
+        "in_service": true,
+        "line_id": 23,
+        "to_bus": 24
+      },
+      {
+        "from_bus": 5,
+        "in_service": true,
+        "line_id": 24,
+        "to_bus": 25
+      },
+      {
+        "from_bus": 25,
+        "in_service": true,
+        "line_id": 25,
+        "to_bus": 26
+      },
+      {
+        "from_bus": 26,
+        "in_service": true,
+        "line_id": 26,
+        "to_bus": 27
+      },
+      {
+        "from_bus": 27,
+        "in_service": true,
+        "line_id": 27,
+        "to_bus": 28
+      },
+      {
+        "from_bus": 28,
+        "in_service": true,
+        "line_id": 28,
+        "to_bus": 29
+      },
+      {
+        "from_bus": 29,
+        "in_service": true,
+        "line_id": 29,
+        "to_bus": 30
+      },
+      {
+        "from_bus": 30,
+        "in_service": true,
+        "line_id": 30,
+        "to_bus": 31
+      },
+      {
+        "from_bus": 31,
+        "in_service": true,
+        "line_id": 31,
+        "to_bus": 32
+      },
+      {
+        "from_bus": 20,
+        "in_service": false,
+        "line_id": 32,
+        "to_bus": 7
+      },
+      {
+        "from_bus": 8,
+        "in_service": false,
+        "line_id": 33,
+        "to_bus": 14
+      },
+      {
+        "from_bus": 11,
+        "in_service": false,
+        "line_id": 34,
+        "to_bus": 21
+      },
+      {
+        "from_bus": 17,
+        "in_service": false,
+        "line_id": 35,
+        "to_bus": 32
+      },
+      {
+        "from_bus": 24,
+        "in_service": false,
+        "line_id": 36,
+        "to_bus": 28
+      }
+    ],
+    "loads": [
+      {
+        "bus": 1,
+        "load_id": 0,
+        "p_mw": 0.06999999999999999,
+        "q_mvar": 0.041999999999999996
+      },
+      {
+        "bus": 2,
+        "load_id": 1,
+        "p_mw": 0.063,
+        "q_mvar": 0.027999999999999997
+      },
+      {
+        "bus": 3,
+        "load_id": 2,
+        "p_mw": 0.08399999999999999,
+        "q_mvar": 0.055999999999999994
+      },
+      {
+        "bus": 4,
+        "load_id": 3,
+        "p_mw": 0.041999999999999996,
+        "q_mvar": 0.020999999999999998
+      },
+      {
+        "bus": 5,
+        "load_id": 4,
+        "p_mw": 0.041999999999999996,
+        "q_mvar": 0.013999999999999999
+      },
+      {
+        "bus": 6,
+        "load_id": 5,
+        "p_mw": 0.13999999999999999,
+        "q_mvar": 0.06999999999999999
+      },
+      {
+        "bus": 7,
+        "load_id": 6,
+        "p_mw": 0.13999999999999999,
+        "q_mvar": 0.06999999999999999
+      },
+      {
+        "bus": 8,
+        "load_id": 7,
+        "p_mw": 0.041999999999999996,
+        "q_mvar": 0.013999999999999999
+      },
+      {
+        "bus": 9,
+        "load_id": 8,
+        "p_mw": 0.041999999999999996,
+        "q_mvar": 0.013999999999999999
+      },
+      {
+        "bus": 10,
+        "load_id": 9,
+        "p_mw": 0.0315,
+        "q_mvar": 0.020999999999999998
+      },
+      {
+        "bus": 11,
+        "load_id": 10,
+        "p_mw": 0.041999999999999996,
+        "q_mvar": 0.0245
+      },
+      {
+        "bus": 12,
+        "load_id": 11,
+        "p_mw": 0.041999999999999996,
+        "q_mvar": 0.0245
+      },
+      {
+        "bus": 13,
+        "load_id": 12,
+        "p_mw": 0.08399999999999999,
+        "q_mvar": 0.055999999999999994
+      },
+      {
+        "bus": 14,
+        "load_id": 13,
+        "p_mw": 0.041999999999999996,
+        "q_mvar": 0.006999999999999999
+      },
+      {
+        "bus": 15,
+        "load_id": 14,
+        "p_mw": 0.041999999999999996,
+        "q_mvar": 0.013999999999999999
+      },
+      {
+        "bus": 16,
+        "load_id": 15,
+        "p_mw": 0.041999999999999996,
+        "q_mvar": 0.013999999999999999
+      },
+      {
+        "bus": 17,
+        "load_id": 16,
+        "p_mw": 0.063,
+        "q_mvar": 0.027999999999999997
+      },
+      {
+        "bus": 18,
+        "load_id": 17,
+        "p_mw": 0.063,
+        "q_mvar": 0.027999999999999997
+      },
+      {
+        "bus": 19,
+        "load_id": 18,
+        "p_mw": 0.063,
+        "q_mvar": 0.027999999999999997
+      },
+      {
+        "bus": 20,
+        "load_id": 19,
+        "p_mw": 0.063,
+        "q_mvar": 0.027999999999999997
+      },
+      {
+        "bus": 21,
+        "load_id": 20,
+        "p_mw": 0.063,
+        "q_mvar": 0.027999999999999997
+      },
+      {
+        "bus": 22,
+        "load_id": 21,
+        "p_mw": 0.063,
+        "q_mvar": 0.034999999999999996
+      },
+      {
+        "bus": 23,
+        "load_id": 22,
+        "p_mw": 0.294,
+        "q_mvar": 0.13999999999999999
+      },
+      {
+        "bus": 24,
+        "load_id": 23,
+        "p_mw": 0.294,
+        "q_mvar": 0.13999999999999999
+      },
+      {
+        "bus": 25,
+        "load_id": 24,
+        "p_mw": 0.041999999999999996,
+        "q_mvar": 0.017499999999999998
+      },
+      {
+        "bus": 26,
+        "load_id": 25,
+        "p_mw": 0.041999999999999996,
+        "q_mvar": 0.017499999999999998
+      },
+      {
+        "bus": 27,
+        "load_id": 26,
+        "p_mw": 0.041999999999999996,
+        "q_mvar": 0.013999999999999999
+      },
+      {
+        "bus": 28,
+        "load_id": 27,
+        "p_mw": 0.08399999999999999,
+        "q_mvar": 0.049
+      },
+      {
+        "bus": 29,
+        "load_id": 28,
+        "p_mw": 0.13999999999999999,
+        "q_mvar": 0.42
+      },
+      {
+        "bus": 30,
+        "load_id": 29,
+        "p_mw": 0.105,
+        "q_mvar": 0.049
+      },
+      {
+        "bus": 31,
+        "load_id": 30,
+        "p_mw": 0.147,
+        "q_mvar": 0.06999999999999999
+      },
+      {
+        "bus": 32,
+        "load_id": 31,
+        "p_mw": 0.041999999999999996,
+        "q_mvar": 0.027999999999999997
+      }
+    ],
+    "n_bus": 33,
+    "n_line": 37,
+    "name": "IEEE 33-bus distribution feeder"
+  },
+  "scenario_id": "V0008",
+  "voltage_limits_pu": {
+    "max": 1.05,
+    "min": 0.95
+  }
+}

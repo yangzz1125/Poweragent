@@ -1,0 +1,15 @@
+{
+  "module": "psspy",
+  "function_name": "getdefaultchar",
+  "category": "Non-Engineering",
+  "description": "Retrieve “no input” value for characters (i.e., strings) other than filenames. Specify this value to indicate that “no input” is intended. This API routine was first introduced in release 32.0.0. cdef = getdefaultchar()",
+  "python_syntax": "cdef = getdefaultchar()",
+  "return_type": "value_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "cdef",
+      "description": ""
+    }
+  ]
+}

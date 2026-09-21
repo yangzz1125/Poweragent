@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "purg_voltage_droop",
+  "category": "Power Flow Data",
+  "description": "Use this API to delete an existing voltage droop control from the working case. This API routine was first introduced in release 35.3.0. ierr = purg_voltage_droop(name)",
+  "python_syntax": "ierr = purg_voltage_droop(name)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Voltage droop control name. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "voltage droop control not found."
+    },
+    {
+      "value": "= 2",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

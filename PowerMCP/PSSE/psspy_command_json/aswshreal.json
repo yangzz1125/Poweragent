@@ -1,0 +1,342 @@
+{
+  "module": "psspy",
+  "function_name": "aswshreal",
+  "category": "Switched Shunt Data",
+  "description": "Use this API to return an array of real values for subsystem switched shunts. This API routine was first introduced in release 30.2.0. ierr, rarray = aswshreal(sid, flag, string)",
+  "python_syntax": "ierr, rarray = aswshreal(sid, flag, string)",
+  "return_type": "error_and_array",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the bus subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem switched shunts to include. (input; 1 by default)."
+    },
+    {
+      "name": "string",
+      "description": "An array of NSTR elements specifying NSTR of the following strings indicating the bus and/or switched shunt quantities desired. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "rarray",
+      "description": "An array of NSTR*DIM elements specifying Is an array of at least NSTR columns, each of which contains DIM elements. (output)."
+    }
+  ],
+  "allowed_values": {
+    "sid": [
+      {
+        "value": "< 0",
+        "description": "to instruct the API to assume a subsystem containing all buses in the working case."
+      },
+      {
+        "value": ">= 0",
+        "description": "valid bus subsystem identifier. Valid subsystem identifiers range from 0 to 11. Subsystem SID must have been previously defined."
+      }
+    ],
+    "flag": [
+      {
+        "value": "= 1",
+        "description": "for only in-service switched shunts at in-service buses (type code < 4)."
+      },
+      {
+        "value": "= 2",
+        "description": "for all switched shunts at in-service buses (type code < 4)."
+      },
+      {
+        "value": "= 3",
+        "description": "for only in-service switched shunts, including those at type 4 buses."
+      },
+      {
+        "value": "= 4",
+        "description": "for all switched shunts."
+      }
+    ],
+    "string": [
+      {
+        "value": "= BASE",
+        "description": "Bus base voltage in kV."
+      },
+      {
+        "value": "= PU",
+        "description": "Actual bus voltage magnitude, in pu."
+      },
+      {
+        "value": "= KV",
+        "description": "Actual bus voltage magnitude, in kV (in pu if base voltage is 0.0)."
+      },
+      {
+        "value": "= ANGLE",
+        "description": "Bus voltage phase angle, in radians."
+      },
+      {
+        "value": "= ANGLED",
+        "description": "Bus voltage phase angle, in degrees."
+      },
+      {
+        "value": "= VSWHI",
+        "description": "Controlled quantity upper limit."
+      },
+      {
+        "value": "= VSWLO",
+        "description": "Controlled quantity lower limit."
+      },
+      {
+        "value": "= RMPCT",
+        "description": "Percent of total Mvar to be contributed by this switched shunt."
+      },
+      {
+        "value": "= PU_BSWZERO",
+        "description": "Present zero sequence susceptance switched on, in pu."
+      },
+      {
+        "value": "= PUBZERBLOCK1",
+        "description": "Zero sequence pu step size in block 1."
+      },
+      {
+        "value": "= PUBZERBLOCK2",
+        "description": "Zero sequence pu step size in block 2."
+      },
+      {
+        "value": "= PUBZERBLOCK3",
+        "description": "Zero sequence pu step size in block 3."
+      },
+      {
+        "value": "= PUBZERBLOCK4",
+        "description": "Zero sequence pu step size in block 4."
+      },
+      {
+        "value": "= PUBZERBLOCK5",
+        "description": "Zero sequence pu step size in block 5."
+      },
+      {
+        "value": "= PUBZERBLOCK6",
+        "description": "Zero sequence pu step size in block 6."
+      },
+      {
+        "value": "= PUBZERBLOCK7",
+        "description": "Zero sequence pu step size in block 7."
+      },
+      {
+        "value": "= PUBZERBLOCK8",
+        "description": "Zero sequence pu step size in block 8."
+      },
+      {
+        "value": "= BSWNOM",
+        "description": "Present susceptance switched on (susceptance)."
+      },
+      {
+        "value": "= BSWMAX",
+        "description": "Admittance with all reactors off, all capacitors on."
+      },
+      {
+        "value": "= BSWMIN",
+        "description": "Admittance with all reactors on, all capacitors off."
+      },
+      {
+        "value": "= BSWACT",
+        "description": "Present susceptance switched on (Mvar)."
+      },
+      {
+        "value": "= BSWZERO",
+        "description": "Present zero sequence susceptance switched on."
+      },
+      {
+        "value": "= BSTPBLOCK1",
+        "description": "Step size in block 1."
+      },
+      {
+        "value": "= BSTPBLOCK2",
+        "description": "Step size in block 2."
+      },
+      {
+        "value": "= BSTPBLOCK3",
+        "description": "Step size in block 3."
+      },
+      {
+        "value": "= BSTPBLOCK4",
+        "description": "Step size in block 4."
+      },
+      {
+        "value": "= BSTPBLOCK5",
+        "description": "Step size in block 5."
+      },
+      {
+        "value": "= BSTPBLOCK6",
+        "description": "Step size in block 6."
+      },
+      {
+        "value": "= BSTPBLOCK7",
+        "description": "Step size in block 7."
+      },
+      {
+        "value": "= BSTPBLOCK8",
+        "description": "Step size in block 8."
+      },
+      {
+        "value": "= BZERBLOCK1",
+        "description": "Zero sequence step size in block 1."
+      },
+      {
+        "value": "= BZERBLOCK2",
+        "description": "Zero sequence step size in block 2."
+      },
+      {
+        "value": "= BZERBLOCK3",
+        "description": "Zero sequence step size in block 3."
+      },
+      {
+        "value": "= BZERBLOCK4",
+        "description": "Zero sequence step size in block 4."
+      },
+      {
+        "value": "= BZERBLOCK5",
+        "description": "Zero sequence step size in block 5."
+      },
+      {
+        "value": "= BZERBLOCK6",
+        "description": "Zero sequence step size in block 6."
+      },
+      {
+        "value": "= BZERBLOCK7",
+        "description": "Zero sequence step size in block 7."
+      },
+      {
+        "value": "= BZERBLOCK8",
+        "description": "Zero sequence step size in block 8."
+      },
+      {
+        "value": "= MISMATCH",
+        "description": "Bus mismatch (0.0 if bus type code > 3)."
+      },
+      {
+        "value": "= O_BSWNOM",
+        "description": "Present susceptance switched on (units determined by power output options)."
+      },
+      {
+        "value": "= O_BSWMAX",
+        "description": "Admittance with all reactors off all capacitors on (units determined by power output options)."
+      },
+      {
+        "value": "= O_BSWMIN",
+        "description": "Admittance with all reactors on all capacitors off (units determined by power output options)."
+      },
+      {
+        "value": "= O_BSWACT",
+        "description": "Present susceptance switched on (units determined by power output options)."
+      },
+      {
+        "value": "= O_BSWZERO",
+        "description": "Present zero sequence susceptance switched on (units determined by power output options)."
+      },
+      {
+        "value": "= O_BSTPBLOCK1",
+        "description": "Step size in block 1 (units determined by power output options)."
+      },
+      {
+        "value": "= O_BSTPBLOCK2",
+        "description": "Step size in block 2 (units determined by power output options)."
+      },
+      {
+        "value": "= O_BSTPBLOCK3",
+        "description": "Step size in block 3 (units determined by power output options)."
+      },
+      {
+        "value": "= O_BSTPBLOCK4",
+        "description": "Step size in block 4 (units determined by power output options)."
+      },
+      {
+        "value": "= O_BSTPBLOCK5",
+        "description": "Step size in block 5 (units determined by power output options)."
+      },
+      {
+        "value": "= O_BSTPBLOCK6",
+        "description": "Step size in block 6 (units determined by power output options)."
+      },
+      {
+        "value": "= O_BSTPBLOCK7",
+        "description": "Step size in block 7 (units determined by power output options)."
+      },
+      {
+        "value": "= O_BSTPBLOCK8",
+        "description": "Step size in block 8 (units determined by power output options)."
+      },
+      {
+        "value": "= O_BZERBLOCK1",
+        "description": "Zero sequence step size in block 1 (units determined by power output options)."
+      },
+      {
+        "value": "= O_BZERBLOCK2",
+        "description": "Zero sequence step size in block 2 (units determined by power output options)."
+      },
+      {
+        "value": "= O_BZERBLOCK3",
+        "description": "Zero sequence step size in block 3 (units determined by power output options)."
+      },
+      {
+        "value": "= O_BZERBLOCK4",
+        "description": "Zero sequence step size in block 4 (units determined by power output options)."
+      },
+      {
+        "value": "= O_BZERBLOCK5",
+        "description": "Zero sequence step size in block 5 (units determined by power output options)."
+      },
+      {
+        "value": "= O_BZERBLOCK6",
+        "description": "Zero sequence step size in block 6 (units determined by power output options)."
+      },
+      {
+        "value": "= O_BZERBLOCK7",
+        "description": "Zero sequence step size in block 7 (units determined by power output options)."
+      },
+      {
+        "value": "= O_BZERBLOCK8",
+        "description": "Zero sequence step size in block 8 (units determined by power output options)."
+      },
+      {
+        "value": "= O_MISMATCH",
+        "description": "Bus mismatch (0.0 if bus type code > 3) (units determined by power output options)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid FLAG value."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid NSTR value."
+    },
+    {
+      "value": "= 5",
+      "description": "DIM, and hence the size of RARRAY, is not large enough."
+    },
+    {
+      "value": "= 6",
+      "description": "Invalid STRING value."
+    },
+    {
+      "value": "= 7",
+      "description": "Sequence data not in case (when STRING = ‘BSWZERO’, ‘PU_BSWZERO’, ‘O_BSWZERO’, ‘BZERBLOCKn’, ‘PUBZERBLOCKn’, ‘O_BZERBLOCKn’)."
+    }
+  ]
+}

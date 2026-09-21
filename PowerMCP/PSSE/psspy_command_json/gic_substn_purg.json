@@ -1,0 +1,30 @@
+{
+  "module": "psspy",
+  "function_name": "gic_substn_purg",
+  "category": "Gic Data",
+  "description": "Use this API to purge GIC sub station data to the working case. This API routine was first introduced in release 34.8.0. ierr = gic_substn_purg(subnum)",
+  "python_syntax": "ierr = gic_substn_purg(subnum)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "subnum",
+      "description": "Sub station number. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

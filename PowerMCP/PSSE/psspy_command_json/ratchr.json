@@ -1,0 +1,54 @@
+{
+  "module": "psspy",
+  "function_name": "ratchr",
+  "category": "Single Element Data",
+  "description": "Use this API to get rating set parameters. This API routine was first introduced in release 34.0.0. ierr, strout = ratchr(ratset, strin)",
+  "python_syntax": "ierr, strout = ratchr(ratset, strin)",
+  "return_type": "error_and_value",
+  "parameters": [
+    {
+      "name": "ratset",
+      "description": "Rating set number (1 through 12). (input)."
+    },
+    {
+      "name": "strin",
+      "description": "None. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "strout",
+      "description": "Character string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "strin": [
+      {
+        "value": "= NAME",
+        "description": "column heading (6 characters)."
+      },
+      {
+        "value": "= DESC",
+        "description": "description (32 characters)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error; ‘STROUT’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid rating set number; ‘STROUT’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "bad value of ‘STRIN’; ‘STROUT’ unchanged."
+    }
+  ]
+}

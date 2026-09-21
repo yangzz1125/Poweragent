@@ -1,0 +1,252 @@
+{
+  "module": "psspy",
+  "function_name": "atr3int",
+  "category": "Three-Winding Transformer Data",
+  "description": "Use this API to return an array of integer values for subsystem three-winding transformers. This API routine was first introduced in release 30.2.0. ierr, iarray = atr3int(sid, owner, ties, flag, entry, string)",
+  "python_syntax": "ierr, iarray = atr3int(sid, owner, ties, flag, entry, string)",
+  "return_type": "error_and_array",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the bus subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "owner",
+      "description": "A flag indicating owner usage if ownership is a subsystem selection criterion (ignored if sid is negative). (input; 1 by default)."
+    },
+    {
+      "name": "ties",
+      "description": "A flag indicating which subsystem three-winding transformers to include (ignored if sid is negative). (input; 1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem three-winding transformers to include. (input; 1 by default)."
+    },
+    {
+      "name": "entry",
+      "description": "A flag indicating organization. (input; 1 by default)."
+    },
+    {
+      "name": "string",
+      "description": "An array of NSTR elements specifying NSTR of the following strings indicating the transformer quantities desired. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "iarray",
+      "description": "An array of NSTR*DIM elements specifying Is an array of at least NSTR columns, each of which contains DIM elements. (output)."
+    }
+  ],
+  "allowed_values": {
+    "sid": [
+      {
+        "value": "< 0",
+        "description": "to instruct the API to assume a subsystem containing all buses in the working case."
+      },
+      {
+        "value": ">= 0",
+        "description": "valid bus subsystem identifier. Valid subsystem identifiers range from 0 to 11. Subsystem SID must have been previously defined."
+      }
+    ],
+    "owner": [
+      {
+        "value": "= 1",
+        "description": "to use bus ownership."
+      },
+      {
+        "value": "= 2",
+        "description": "to use transformer ownership."
+      }
+    ],
+    "ties": [
+      {
+        "value": "= 1",
+        "description": "for interior subsystem three-winding transformers only."
+      },
+      {
+        "value": "= 2",
+        "description": "for subsystem tie three-winding transformers only."
+      },
+      {
+        "value": "= 3",
+        "description": "for both interior subsystem and tie three-winding transformers."
+      }
+    ],
+    "flag": [
+      {
+        "value": "= 1",
+        "description": "for only in-service three-winding transformers."
+      },
+      {
+        "value": "= 2",
+        "description": "for all three-winding transformers."
+      }
+    ],
+    "entry": [
+      {
+        "value": "= 1",
+        "description": "for winding 1 bus order."
+      },
+      {
+        "value": "= 2",
+        "description": "for transformer name order."
+      }
+    ],
+    "string": [
+      {
+        "value": "= WIND1NUMBER",
+        "description": "Winding 1 bus number."
+      },
+      {
+        "value": "= WIND2NUMBER",
+        "description": "Winding 2 bus number."
+      },
+      {
+        "value": "= WIND3NUMBER",
+        "description": "Winding 3 bus number."
+      },
+      {
+        "value": "= WIND1STATION",
+        "description": "Winding 1 bus substation number (0 if bus is not in a substation)."
+      },
+      {
+        "value": "= WIND2STATION",
+        "description": "Winding 2 bus substation number (0 if bus is not in a substation)."
+      },
+      {
+        "value": "= WIND3STATION",
+        "description": "Winding 3 bus substation number (0 if bus is not in a substation)."
+      },
+      {
+        "value": "= WIND1SECTION",
+        "description": "Winding 1 bus section number (0 if bus is not represented by multiple bus sections)."
+      },
+      {
+        "value": "= WIND2SECTION",
+        "description": "Winding 2 bus section number (0 if bus is not represented by multiple bus sections)."
+      },
+      {
+        "value": "= WIND3SECTION",
+        "description": "Winding 3 bus section number (0 if bus is not represented by multiple bus sections)."
+      },
+      {
+        "value": "= WIND1NODE",
+        "description": "Winding 1 bus node number (0 if bus is not in a substation)."
+      },
+      {
+        "value": "= WIND2NODE",
+        "description": "Winding 2 bus node number (0 if bus is not in a substation)."
+      },
+      {
+        "value": "= WIND3NODE",
+        "description": "Winding 3 bus node number (0 if bus is not in a substation)."
+      },
+      {
+        "value": "= STATUS",
+        "description": "Transformer status."
+      },
+      {
+        "value": "= NMETERNUMBER",
+        "description": "Non-metered end bus number."
+      },
+      {
+        "value": "= OWNERS",
+        "description": "Number of owners."
+      },
+      {
+        "value": "= OWN1",
+        "description": "First owner."
+      },
+      {
+        "value": "= OWN2",
+        "description": "Second owner."
+      },
+      {
+        "value": "= OWN3",
+        "description": "Third owner."
+      },
+      {
+        "value": "= OWN4",
+        "description": "Fourth owner."
+      },
+      {
+        "value": "= ZADCOD",
+        "description": "Impedance adjustment method code."
+      },
+      {
+        "value": "= CW",
+        "description": "Winding data I/O code."
+      },
+      {
+        "value": "= CZ",
+        "description": "Impedance data I/O code."
+      },
+      {
+        "value": "= CM",
+        "description": "Magnetizing admittance I/O code."
+      },
+      {
+        "value": "= CZ0",
+        "description": "Leakage impedance data I/O code."
+      },
+      {
+        "value": "= CZG",
+        "description": "Grounding impedance data I/O code."
+      },
+      {
+        "value": "= CNXCOD",
+        "description": "Connection code."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid OWNER value."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid TIES value."
+    },
+    {
+      "value": "= 5",
+      "description": "Invalid FLAG value."
+    },
+    {
+      "value": "= 6",
+      "description": "Invalid ENTRY value."
+    },
+    {
+      "value": "= 7",
+      "description": "Invalid NSTR value."
+    },
+    {
+      "value": "= 8",
+      "description": "DIM, and hence the size of IARRAY, is not large enough."
+    },
+    {
+      "value": "= 9",
+      "description": "Invalid STRING value."
+    },
+    {
+      "value": "= 10",
+      "description": "Sequence data not in case (when STRING = ‘CZ0’, ‘CZG’ or ‘CNXCOD’)."
+    }
+  ]
+}

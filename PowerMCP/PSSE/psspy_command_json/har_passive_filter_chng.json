@@ -1,0 +1,116 @@
+{
+  "module": "psspy",
+  "function_name": "har_passive_filter_chng",
+  "category": "Harmonics Data",
+  "description": "Use this API to modify harmonics passive filter data in the working case. This API routine was first introduced in release 35.4.0. ierr = har_passive_filter_chng(ibus,id,intgar,realar)",
+  "python_syntax": "ierr = har_passive_filter_chng(ibus,id,intgar,realar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Passive filter identifier. (input; no default allowed)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of three elementsNone. (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of three elementsNone. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "Current Control State (1 by default), can also be specified with keyword ‘hstate’."
+      },
+      {
+        "value": "= 0",
+        "description": "Not active in harmonics."
+      },
+      {
+        "value": "= 1",
+        "description": "Active in harmonics."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "units in which impedance or admittance data (RG, XB1, XB2) are specified (0 by default), can also be specified with keyword ‘czy’."
+      },
+      {
+        "value": "= 0",
+        "description": "Impedance expressed in PU on bus voltage and system MVA base."
+      },
+      {
+        "value": "= 1",
+        "description": "Admittance expressed in PU on bus voltage and system MVA base."
+      },
+      {
+        "value": "= 2",
+        "description": "Admittance expressed in MW and MVAR at 1 PU voltage."
+      },
+      {
+        "value": "= 3",
+        "description": "Impedance expressed in ohms (XB1 and XB2 expressed as positive for inductive and negative for capacitive reactances)."
+      },
+      {
+        "value": "= 4",
+        "description": "RG is resistance, XB1 is inductive reactance and XB2 is capacitive susceptance expressed in PU on bus voltage and system MVA base."
+      },
+      {
+        "value": "INTGAR(3)",
+        "description": "configuration of impedance or admittance data (RG, XB1, XB2) (0 by default), can also be specified with keyword ‘cfg’."
+      },
+      {
+        "value": "= 0",
+        "description": "RG, XB1, XB2 are connected in series."
+      },
+      {
+        "value": "= 1",
+        "description": "RG, XB1, XB2 are connected in parallel."
+      },
+      {
+        "value": "= 2",
+        "description": "RG and XB1 are connected in parallel and that equivalent in series with XB2."
+      },
+      {
+        "value": "= 3",
+        "description": "RG and XB2 are connected in parallel and that equivalent in series with XB1."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "RG, passive filter resistance or conductance or MW at fundamental frequency (0.0 by default), can also be specified with keyword ‘rg’."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "XB1, passive filter reactance or susceptance or MVAR at fundamental frequency. Specify positive for inductive reactance, inductive susceptance or capacitive MVAR. Specify negative for capacitive reactance, capacitive susceptance or inductive MVAR. (0.0 by default), can also be specified with keyword ‘xb1’."
+      },
+      {
+        "value": "REALAR(3)",
+        "description": "XB2, passive filter reactance or susceptance or MVAR at fundamental frequency. Specify positive for inductive reactance, inductive susceptance or capacitive MVAR. Specify negative for capacitive reactance, capacitive susceptance or inductive MVAR. (0.0 by default), can also be specified with keyword ‘xb2’."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

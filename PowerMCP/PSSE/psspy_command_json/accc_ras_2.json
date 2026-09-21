@@ -1,0 +1,102 @@
+{
+  "module": "psspy",
+  "function_name": "accc_ras_2",
+  "category": "Using The Vendor Neutral Contingency And Ras Auxiliary File",
+  "description": "Use this API to run AC contingency calculation function with RAS model. This API routine was first introduced in release 35.2.0. ierr = accc_ras_2(accfile,xmlfile,option)",
+  "python_syntax": "ierr = accc_ras_2(accfile,xmlfile,option)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "accfile",
+      "description": "Is the name of the contingency solution output file. (input)."
+    },
+    {
+      "name": "xmlfile",
+      "description": "Is the name of the apply tracing output file. (input)."
+    },
+    {
+      "name": "option",
+      "description": "Apply tracing option. (input; 0 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Is the error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "option": [
+      {
+        "value": "= 0",
+        "description": "Do not create Apply Tracing file."
+      },
+      {
+        "value": "= 1",
+        "description": "Create Apply Tracing file."
+      },
+      {
+        "value": "= 2",
+        "description": "If Apply Tracing file fails to open, write output to current progress device."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid tolerance value from RAS file."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid solution option value from RAS file."
+    },
+    {
+      "value": "= 3",
+      "description": "generators are converted."
+    },
+    {
+      "value": "= 4",
+      "description": "buses in island(s) without a swing bus; use activity TREE."
+    },
+    {
+      "value": "= 5",
+      "description": "largest mismatch exceeds mismatch tolerance."
+    },
+    {
+      "value": "= 7",
+      "description": "too many islands in base case."
+    },
+    {
+      "value": "= 9",
+      "description": "no AC Contingency Solution Output File specified."
+    },
+    {
+      "value": "= 10",
+      "description": "in-service induction machines are in the “stalled” or “tripped” state."
+    },
+    {
+      "value": "= 11",
+      "description": "buses with bus type code and series element status inconsistencies."
+    },
+    {
+      "value": "= 16",
+      "description": "Contingency and Remedial Actions definitions not in memory."
+    },
+    {
+      "value": "= 17",
+      "description": "Contingency and Remedial Actions definitions have not been validated."
+    },
+    {
+      "value": "= 51",
+      "description": "error opening Contingency Solution Output File."
+    },
+    {
+      "value": "= 56",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

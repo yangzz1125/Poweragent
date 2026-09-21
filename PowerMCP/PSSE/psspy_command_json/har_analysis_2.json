@@ -1,0 +1,580 @@
+{
+  "module": "psspy",
+  "function_name": "har_analysis_2",
+  "category": "Harmonics Operation",
+  "description": "Use this API to run harmonics analysis. Harmonics analysis is performed to calculate (1) frequency scan (driving point impedance scan) and (2) voltage and current distortions due to harmonics sources. The working case impedances are recalculated considering harmonics models of network elements and equipment for specified harmonic order range and driving point impedances calculated at specifed buses. The voltage and current distortions are calculated for all harmonic sources present. This API routine was first introduced in release 35.6.0. ierr = har_analysis_2(sid, all, intgar, realar, filear)",
+  "python_syntax": "ierr = har_analysis_2(sid, all, intgar, realar, filear)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid subsystem identifier. valid subsystem identifiers range from 0 to 11. subsystem sid must have been previously defined. (input; 0 by default)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem flag. (input; no default allowed)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of seventeen elements specifying Integer Argument Inputs. (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of three elements specifying Real Argument Inputs. (input)."
+    },
+    {
+      "name": "filear",
+      "description": "An array of three elements specifying File Argument Inputs. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 0",
+        "description": "process only buses in subsystem SID."
+      },
+      {
+        "value": "= 1",
+        "description": "process all buses."
+      }
+    ],
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "Frequency Scan option (1 by default), can also be specified with keyword ‘fscanoptn’."
+      },
+      {
+        "value": "= 0",
+        "description": "No."
+      },
+      {
+        "value": "= 1",
+        "description": "Yes, run frequency scan calculations."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "Distortion Calculations option (1 by default), can also be specified with keyword ‘dstnoptn’."
+      },
+      {
+        "value": "= 0",
+        "description": "No."
+      },
+      {
+        "value": "= 1",
+        "description": "Yes, run voltage and current distortion calculations."
+      },
+      {
+        "value": "INTGAR(3)",
+        "description": "Transmission Line Model (0 by default), can also be specified with keyword ‘linmdl’."
+      },
+      {
+        "value": "= 0",
+        "description": "Nominal PI Line Model, no long line effects, no skin effects."
+      },
+      {
+        "value": "= 1",
+        "description": "Distributed Parameter Line Model, long line effects and skin effects modeled."
+      },
+      {
+        "value": "= 2",
+        "description": "Distributed Parameter Line Model, long line effects modeled, but skin effects not modeled."
+      },
+      {
+        "value": "INTGAR(4)",
+        "description": "Bus report option in distortion analysis. Note- Frequency scan is always done for study subsystem buses only. The distortion calculations are done for these buses. (0 by default), can also be specified with keyword ‘dstnbuop’."
+      },
+      {
+        "value": "= 0",
+        "description": "All buses in the case."
+      },
+      {
+        "value": "= 1",
+        "description": "Only study subsystem buses."
+      },
+      {
+        "value": "INTGAR(5)",
+        "description": "Report format option in distortion analysis (0 by default), can also be specified with keyword ‘dstnrptop’."
+      },
+      {
+        "value": "= 0",
+        "description": "Report voltage and current Total Harmonic Distortion (THD) Factors."
+      },
+      {
+        "value": "= 1",
+        "description": "Report THDs and current contributions."
+      },
+      {
+        "value": "INTGAR(6)",
+        "description": "Induction Machine Impedance Option. Note - The zero sequence impedance data always derived from sequence data. When sequence data is not specified, they are treated as open circuit. (0 by default), can also be specified with keyword ‘imachimpop’."
+      },
+      {
+        "value": "= 0",
+        "description": "Use positive sequence impedance derived from power flow data."
+      },
+      {
+        "value": "= 1",
+        "description": "Use positive sequence impedance derived from sequence data."
+      },
+      {
+        "value": "INTGAR(7)",
+        "description": "Two Terminal, VSC and Multi Terminal DC equivalent Impedance Option in frequency scan. Note - In distortion calculations, these are represented by either harmonic current sources when specified or equivalent impedances. (0 by default), can also be specified with keyword ‘dcimpop’."
+      },
+      {
+        "value": "= 0",
+        "description": "Do not add equivalent impedance to admittance matrix during frequency scan."
+      },
+      {
+        "value": "= 1",
+        "description": "Add equivalent impedance to admittance matrix during frequency scan."
+      },
+      {
+        "value": "INTGAR(8)",
+        "description": "Triplen harmonics treatment option in distortion calculations (0 by default), can also be specified with keyword ‘triplenop’."
+      },
+      {
+        "value": "= 0",
+        "description": "Ignore triplen harmonics."
+      },
+      {
+        "value": "= 1",
+        "description": "Consider triplen harmonics."
+      },
+      {
+        "value": "INTGAR(9)",
+        "description": "Generator Impedance Option. (0 by default), can also be specified with keyword ‘genimpop’."
+      },
+      {
+        "value": "= 0",
+        "description": "Use ZSORCE impedance from power flow data."
+      },
+      {
+        "value": "= 1",
+        "description": "Use subtransient impedance from sequence data."
+      },
+      {
+        "value": "= 2",
+        "description": "Use transient impedance from sequence data."
+      },
+      {
+        "value": "= 3",
+        "description": "Use synchronous impedance from sequence data."
+      },
+      {
+        "value": "= 4",
+        "description": "Use negative sequence impedance from sequence data."
+      },
+      {
+        "value": "INTGAR(10)",
+        "description": "Harmonics Model Type Option (0 by default), can also be specified with keyword ‘mdltypop’."
+      },
+      {
+        "value": "= 0",
+        "description": "Use Model Type as specified in Harmonics Data File. When specified as inherit model type, use Model Type specified in API options."
+      },
+      {
+        "value": "= 1",
+        "description": "Use Model Type specified in API options. The Model Type specified in Harmoics Data File is ignored."
+      },
+      {
+        "value": "INTGAR(11)",
+        "description": "Load Model Type Option. (0 by default), can also be specified with keyword ‘load_mdltyp’."
+      },
+      {
+        "value": "= 0",
+        "description": "No frequency dependency, R and X used as in power flow data. R stays constant, X reactance changes per frequency."
+      },
+      {
+        "value": "= 1",
+        "description": "Quality R constant (serial)."
+      },
+      {
+        "value": "= 2",
+        "description": "Quality X/R constant (serial)."
+      },
+      {
+        "value": "= 3",
+        "description": "Impedance characteristics."
+      },
+      {
+        "value": "= 4",
+        "description": "Quality X/R constant (parallel)."
+      },
+      {
+        "value": "= 5",
+        "description": "CIGRE Measurements model."
+      },
+      {
+        "value": "= 6",
+        "description": "Quality R constant (parallel)."
+      },
+      {
+        "value": "= 7",
+        "description": "IEEE Measurements model."
+      },
+      {
+        "value": "= 8",
+        "description": "IEEE RL Series Model."
+      },
+      {
+        "value": "= 9",
+        "description": "IEEE RL Parallel Model."
+      },
+      {
+        "value": "= 10",
+        "description": "Infinite, ignored in harmonics network."
+      },
+      {
+        "value": "= 11",
+        "description": "IEEE Skin Effect Model."
+      },
+      {
+        "value": "= 12",
+        "description": "IEEE Induction Motor Model."
+      },
+      {
+        "value": "= 13",
+        "description": "IEEE 2RL Parallel Model."
+      },
+      {
+        "value": "= 14",
+        "description": "CIGRE Passive Model."
+      },
+      {
+        "value": "= 15",
+        "description": "CIGRE Motive Model."
+      },
+      {
+        "value": "= 16",
+        "description": "Large Area Asynchronous Motor Model."
+      },
+      {
+        "value": "INTGAR(12)",
+        "description": "Generator Model Type Option. (0 by default), can also be specified with keyword ‘gen_mdltyp’."
+      },
+      {
+        "value": "= 0",
+        "description": "No frequency dependency, R and X used as in power flow data. R stays constant, X reactance changes per frequency."
+      },
+      {
+        "value": "= 1",
+        "description": "quality constant R series."
+      },
+      {
+        "value": "= 2",
+        "description": "quality constant X/R series (generator R data if any, ignored and R calculated from HQUALITY)."
+      },
+      {
+        "value": "= 3",
+        "description": "Impedance characteristics."
+      },
+      {
+        "value": "= 4",
+        "description": "Model 1 IEEE."
+      },
+      {
+        "value": "= 5",
+        "description": "Model 2 CIGRE Electra 167."
+      },
+      {
+        "value": "= 6",
+        "description": "Model 3 HQ (Hydro Quebec)."
+      },
+      {
+        "value": "= 9",
+        "description": "Infinite, ignored in harmonics network."
+      },
+      {
+        "value": "INTGAR(13)",
+        "description": "Branch Shunt Model Type Option. (0 by default), can also be specified with keyword ‘brnsh_mdltyp’."
+      },
+      {
+        "value": "= 0",
+        "description": "No frequency dependency, R and X used as in power flow data. R stays constant, X reactance changes per frequency."
+      },
+      {
+        "value": "= 1",
+        "description": "quality constant R series."
+      },
+      {
+        "value": "= 2",
+        "description": "quality constant X/R series (applicable only when branch shunt is inductive), (Line shunt R data if any, ignored and shunt R calculated from HQUALITY)."
+      },
+      {
+        "value": "= 3",
+        "description": "quality constant R parallel."
+      },
+      {
+        "value": "= 4",
+        "description": "quality constant X/R parallel (applicable only when branch shunt is inductive), (Line shunt R data if any, ignored and shunt R calculated from HQUALITY)."
+      },
+      {
+        "value": "INTGAR(14)",
+        "description": "Transformer Model Type Option. (0 by default), can also be specified with keyword ‘trn_mdltyp’."
+      },
+      {
+        "value": "= 0",
+        "description": "No frequency dependency, R and X used as in power flow data. R stays constant, X reactance changes per frequency."
+      },
+      {
+        "value": "= 1",
+        "description": "Model 1 CIGRE Electra No. 167."
+      },
+      {
+        "value": "= 2",
+        "description": "Model 2 IEEE Std. 399."
+      },
+      {
+        "value": "= 3",
+        "description": "Model 3 CIGRE Electra No. 164."
+      },
+      {
+        "value": "= 4",
+        "description": "Model 4 Arrillaga."
+      },
+      {
+        "value": "= 5",
+        "description": "Model 5 Funk."
+      },
+      {
+        "value": "= 6",
+        "description": "Impedance characteristics (allowed only for 2 winding transformers)."
+      },
+      {
+        "value": "INTGAR(15)",
+        "description": "FACTS Device Shunt Model Type Option. (0 by default), can also be specified with keyword ‘fctsh_mdltyp’."
+      },
+      {
+        "value": "= 0",
+        "description": "No frequency dependency, R and X used as in power flow data. R stays constant, X reactance changes per frequency."
+      },
+      {
+        "value": "= 1",
+        "description": "Quality R constant (serial)."
+      },
+      {
+        "value": "= 2",
+        "description": "Quality X/R constant (serial)."
+      },
+      {
+        "value": "= 3",
+        "description": "Impedance characteristics."
+      },
+      {
+        "value": "= 4",
+        "description": "Quality X/R constant (parallel)."
+      },
+      {
+        "value": "= 5",
+        "description": "CIGRE Measurements model."
+      },
+      {
+        "value": "= 6",
+        "description": "Quality R constant (parallel)."
+      },
+      {
+        "value": "= 9",
+        "description": "Infinite."
+      },
+      {
+        "value": "INTGAR(16)",
+        "description": "FACTS Device Series Model Type Option. (0 by default), can also be specified with keyword ‘fctse_mdltyp’."
+      },
+      {
+        "value": "= 0",
+        "description": "No frequency dependency, R and X used as in power flow data. R stays constant, X reactance changes per frequency."
+      },
+      {
+        "value": "= 1",
+        "description": "Quality R constant (serial)."
+      },
+      {
+        "value": "= 2",
+        "description": "Quality X/R constant (serial)."
+      },
+      {
+        "value": "= 3",
+        "description": "Impedance characteristics."
+      },
+      {
+        "value": "INTGAR(17)",
+        "description": "Induction Machine Model Type Option. (0 by default), can also be specified with keyword ‘imach_mdltyp’."
+      },
+      {
+        "value": "= 0",
+        "description": "No frequency dependency, R and X used as in power flow data. R stays constant, X reactance changes per frequency."
+      },
+      {
+        "value": "= 1",
+        "description": "Quality R constant."
+      },
+      {
+        "value": "= 2",
+        "description": "Quality X/R constant."
+      },
+      {
+        "value": "= 3",
+        "description": "Impedance characteristics."
+      },
+      {
+        "value": "= 9",
+        "description": "Infinite."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "Minimum Harmonic Order, must be >0. Specify hord_min=1.0 for fundamental frequency. When hord_min=0.0, hord_min is set to hord_stp. (0.0 by default), can also be specified with keyword ‘hord_min’."
+      },
+      {
+        "value": "= ‘0.0’",
+        "description": "Use default."
+      },
+      {
+        "value": "> 0",
+        "description": "Use specified."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "Maximum Harmonic Order, must be >0. A frequency range upto 50th order harmonics is used in typical power quality assessments. When hord_max=0.0, hord_max is set to hord_stp. (50.0 by default), can also be specified with keyword ‘hord_max’."
+      },
+      {
+        "value": "= ‘0.0’",
+        "description": "Use default."
+      },
+      {
+        "value": "> 0",
+        "description": "Use specified."
+      },
+      {
+        "value": "REALAR(3)",
+        "description": "Harmonic Order Step, must be >0. Specify hord_stp=1.0 for scan in increments of base power frequency. (0.1 by default), can also be specified with keyword ‘hord_stp’."
+      },
+      {
+        "value": "= ‘0.0’",
+        "description": "Use default."
+      },
+      {
+        "value": "> 0",
+        "description": "Use specified."
+      }
+    ],
+    "filear": [
+      {
+        "value": "FILEAR(1)",
+        "description": "Harmonics Analysis Results Output file name (.hrs). (blank by default), can also be specified with keyword ‘hrsfile’."
+      },
+      {
+        "value": "= ‘’ ‘’",
+        "description": "temporary file created."
+      },
+      {
+        "value": "= ‘nooutput’",
+        "description": "no file created."
+      },
+      {
+        "value": "FILEAR(2)",
+        "description": "Harmonic Analysis Distortion Calculation Report File Name (.txt). (blank by default), can also be specified with keyword ‘dstnfile’."
+      },
+      {
+        "value": "= ‘’ ‘’",
+        "description": "report created in report window."
+      },
+      {
+        "value": "= ‘nooutput’",
+        "description": "no report file created."
+      },
+      {
+        "value": "FILEAR(3)",
+        "description": "Harmonic Analysis Frequency Scan Resonance Report File Name (.txt). (blank by default), can also be specified with keyword ‘resnfile’."
+      },
+      {
+        "value": "= ‘’ ‘’",
+        "description": "report created in report window."
+      },
+      {
+        "value": "= ‘nooutput’",
+        "description": "no report file created."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "Error - Prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= 2",
+      "description": "Topology error, bus type code and series element status inconsistencies."
+    },
+    {
+      "value": "= 3",
+      "description": "Error - Invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 4",
+      "description": "Error - Invalid ALL value."
+    },
+    {
+      "value": "= 5",
+      "description": "Error - Invalid INTGAR value."
+    },
+    {
+      "value": "= 6",
+      "description": "Error - Invalid REALAR value."
+    },
+    {
+      "value": "= 7",
+      "description": "Info - No study subsystem buses, frequency scan not done."
+    },
+    {
+      "value": "= 8",
+      "description": "Info - No harmonics sources, distortion analysis not done."
+    },
+    {
+      "value": "= 9",
+      "description": "Error - working case generators are converted, harmonics analysis not done."
+    },
+    {
+      "value": "= 10",
+      "description": "Error - working case is not solved power flow case, harmonics analysis not done."
+    },
+    {
+      "value": "= 11",
+      "description": "Info - error adding PQ loads for fundamental harmonics sources, distortion analysis not done."
+    },
+    {
+      "value": "= 12",
+      "description": "Info - case not converged with PQ loads added for fundamental harmonics sources, distortion analysis not done."
+    },
+    {
+      "value": "= 13",
+      "description": "Error - restoring working case to start harmonics analysis."
+    },
+    {
+      "value": "= 14",
+      "description": "Error - Opening Binary Results (hrsfile) or Report File."
+    },
+    {
+      "value": "= 15",
+      "description": "Error - Writing to Binary Results (hrsfile) or Report File."
+    },
+    {
+      "value": "= 16",
+      "description": "Info - Frequency Scan Harmonic Order minimum is more than maximum, values swapped."
+    },
+    {
+      "value": "= 17",
+      "description": "Info - Info - Frequency Scan and Distortion Report file names are same, added ‘fscan’ and ‘dstr’ suffix."
+    }
+  ]
+}

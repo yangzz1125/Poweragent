@@ -1,0 +1,25 @@
+{
+  "module": "psspy",
+  "function_name": "runlastsolution",
+  "category": "Power Flow Operation",
+  "description": "Use this API to run the last known power flow solution. A power flow solution is ‘know’ if the solution method and parameters are contained within the SAV or RAW file. It is useful for solving a case from an outside source for which there is no documentation on solution methods. This API routine was first introduced in release 34.0.0. ierr = runlastsolution()",
+  "python_syntax": "ierr = runlastsolution()",
+  "return_type": "error_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": ""
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

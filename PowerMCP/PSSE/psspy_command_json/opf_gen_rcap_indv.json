@@ -1,0 +1,108 @@
+{
+  "module": "psspy",
+  "function_name": "opf_gen_rcap_indv",
+  "category": "Optimal Power Flow Data",
+  "description": "Use this API to add an individual generation reactive capability data record to the working case. It may also be used to modify an existing generation reactive capability data record. This API routine was first introduced in release 28.0.0. ierr = opf_gen_rcap_indv(eibus, genid, rcstat, realar)",
+  "python_syntax": "ierr = opf_gen_rcap_indv(eibus, genid, rcstat, realar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "eibus",
+      "description": "Bus number. (input; no default allowed)."
+    },
+    {
+      "name": "genid",
+      "description": "Machine identifier. (input; ‘ ‘ by default)."
+    },
+    {
+      "name": "rcstat",
+      "description": "Reactive capability limit status. (input; 4 by default)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of five elementsNone. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "rcstat": [
+      {
+        "value": "= 0",
+        "description": "out of service."
+      },
+      {
+        "value": "= 1",
+        "description": "in service, no reactive generation limits."
+      },
+      {
+        "value": "= 2",
+        "description": "in service, inhibiting field increase."
+      },
+      {
+        "value": "= 3",
+        "description": "in service, inhibiting field decrease."
+      },
+      {
+        "value": "= 4",
+        "description": "in service, fixed Efd."
+      },
+      {
+        "value": "= 5",
+        "description": "in service, apply reactive generation limits."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "direct-axis synchronous reactance in pu on Mbase (default of 1.0 if new record, current value otherwise)."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "stator current limit in pu on Mbase (default of 1.0 if new record, current value otherwise)."
+      },
+      {
+        "value": "REALAR(3)",
+        "description": "rated lagging power factor (default of 1.0 if new record, current value otherwise)."
+      },
+      {
+        "value": "REALAR(4)",
+        "description": "rated leading power factor (default of 1.0 if new record, current value otherwise)."
+      },
+      {
+        "value": "REALAR(5)",
+        "description": "maximum reactive absorption in pu on Mbase (default of 1.0 if new record, current value otherwise)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid bus number specified."
+    },
+    {
+      "value": "= 2",
+      "description": "specified machine does not exist."
+    },
+    {
+      "value": "= 3",
+      "description": "generator reactive capability data table is full."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "non-fatal error occurred. Possible warning messages are: - Invalid reactive capability status specified."
+    }
+  ]
+}

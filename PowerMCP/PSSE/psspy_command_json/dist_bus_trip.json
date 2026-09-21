@@ -1,0 +1,42 @@
+{
+  "module": "psspy",
+  "function_name": "dist_bus_trip",
+  "category": "Set Disturbance",
+  "description": "Use this API to disconnect a bus during dynamic simulations. This API routine was first introduced in release 30.2.0. ierr = dist_bus_trip(ibus)",
+  "python_syntax": "ierr = dist_bus_trip(ibus)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number of the bus to be disconnected. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "STRT or MSTR not successfully executed."
+    },
+    {
+      "value": "= 2",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 3",
+      "description": "bus is already disconnected."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

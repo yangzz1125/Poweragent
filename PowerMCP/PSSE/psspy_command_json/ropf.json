@@ -1,0 +1,34 @@
+{
+  "module": "psspy",
+  "function_name": "ropf",
+  "category": "Optimal Power Flow Operation",
+  "description": "Use this API to read an Optimal Power Flow Raw Data File. This API routine was first introduced in release 28.0.0. ierr = ropf(rfile)",
+  "python_syntax": "ierr = ropf(rfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "rfile",
+      "description": "Optimal power flow data file name, or ‘1’ if is coming directly from the terminal or response file. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "error opening file."
+    },
+    {
+      "value": "= 2",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

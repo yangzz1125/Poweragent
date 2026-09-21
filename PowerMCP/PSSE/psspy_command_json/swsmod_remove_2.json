@@ -1,0 +1,46 @@
+{
+  "module": "psspy",
+  "function_name": "swsmod_remove_2",
+  "category": "Switched Shunt Models",
+  "description": "Use this API to remove the switched shunt model from a specified switched shunt. This API routine was first introduced in release 35.0.0. ierr = swsmod_remove_2(ibus,id)",
+  "python_syntax": "ierr = swsmod_remove_2(ibus,id)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Switched shunt bus number. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Switched shunt identifier. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "no model at this switched shunt device."
+    },
+    {
+      "value": "= 2",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 3",
+      "description": "switched shunt not found."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

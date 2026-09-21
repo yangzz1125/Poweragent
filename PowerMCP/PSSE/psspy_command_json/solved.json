@@ -1,0 +1,67 @@
+{
+  "module": "psspy",
+  "function_name": "solved",
+  "category": "Single Element Data",
+  "description": "Use this API to check whether the last solution attempt reached tolerance. This is not a test for whether the working case is a solved case. This API routine was first introduced in release 28.0.0. ival = solved()",
+  "python_syntax": "ival = solved()",
+  "return_type": "value_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ival",
+      "description": ""
+    }
+  ],
+  "allowed_values": {
+    "ival": [
+      {
+        "value": "= 0",
+        "description": "Met convergence tolerance."
+      },
+      {
+        "value": "= 1",
+        "description": "Iteration limit exceeded."
+      },
+      {
+        "value": "= 2",
+        "description": "Blown up (only when non-divergent option disabled)."
+      },
+      {
+        "value": "= 3",
+        "description": "Terminated by non-divergent option."
+      },
+      {
+        "value": "= 4",
+        "description": "Terminated by console interrupt."
+      },
+      {
+        "value": "= 5",
+        "description": "Singular Jacobian matrix or voltage of 0.0 detected."
+      },
+      {
+        "value": "= 6",
+        "description": "Inertial power flow dispatch error (INLF)."
+      },
+      {
+        "value": "= 7",
+        "description": "OPF solution met convergence tolerance (NOPF)."
+      },
+      {
+        "value": "= 9",
+        "description": "Solution not attempted."
+      },
+      {
+        "value": "= 10",
+        "description": "RSOL converged with Phase shift locked."
+      },
+      {
+        "value": "= 11",
+        "description": "RSOL converged with TOLN increased."
+      },
+      {
+        "value": "= 12",
+        "description": "RSOL converged with Y load conversion due to low voltage."
+      }
+    ]
+  }
+}

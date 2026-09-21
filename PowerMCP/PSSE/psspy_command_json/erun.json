@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "erun",
+  "category": "Dynamic Simulation Operation",
+  "description": "Use this API to calculate PSSE state-space dynamic simulations of excitation system response tests. This API routine was first introduced in release 30.2.0. ierr = erun(tpause, nprt, nplt, crtplt)",
+  "python_syntax": "ierr = erun(tpause, nprt, nplt, crtplt)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "tpause",
+      "description": "Value of simulated time at which the simulation should next pause. (input; no default allowed)."
+    },
+    {
+      "name": "nprt",
+      "description": "Number of time steps between the printing of the channel values. (input; unchanged by default)."
+    },
+    {
+      "name": "nplt",
+      "description": "Number of time steps between the writing of the output channel values to the current channel output file. (input; unchanged by default)."
+    },
+    {
+      "name": "crtplt",
+      "description": "Number of time steps between the plotting of those channel values that have been designated as crt output channels. (input; unchanged by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "activity ESTR needs to be executed."
+    },
+    {
+      "value": "= 2",
+      "description": "error opening the current Channel Output File."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

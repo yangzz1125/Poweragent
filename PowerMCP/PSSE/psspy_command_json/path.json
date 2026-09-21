@@ -1,0 +1,34 @@
+{
+  "module": "psspy",
+  "function_name": "path",
+  "category": "Power Flow Operation",
+  "description": "Use this API to specify a directory pathname. Then, whenever a simple filename preceded by an ampersand (for example, &myfile) is specified as input to a PSSE API, the file is opened in the directory specified rather than in the user’s current directory. This API routine was first introduced in release 29.0.0. ierr = path(pathname)",
+  "python_syntax": "ierr = path(pathname)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "pathname",
+      "description": "Name of path to be used (blank to disable). (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "error setting path PATHNAME."
+    },
+    {
+      "value": "= 2",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

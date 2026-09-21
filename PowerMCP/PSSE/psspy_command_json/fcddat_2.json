@@ -1,0 +1,234 @@
+{
+  "module": "psspy",
+  "function_name": "fcddat_2",
+  "category": "Single Element Data",
+  "description": "This API is the second release of the API that returns FACTS device real quantities. This API routine was first introduced in release 31.0.0. ierr, rval = fcddat_2(name, string)",
+  "python_syntax": "ierr, rval = fcddat_2(name, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Facts device name. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the facts device quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "rval",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= PDES",
+        "description": "Desired active power flow at terminal end bus in MW."
+      },
+      {
+        "value": "= O_PDES",
+        "description": "Same as ‘PDES’ in units determined by the power output option setting."
+      },
+      {
+        "value": "= QDES",
+        "description": "Desired reactive power flow at terminal end bus in Mvar."
+      },
+      {
+        "value": "= O_QDES",
+        "description": "Same as ‘QDES’ in units determined by the power output option setting."
+      },
+      {
+        "value": "= VSET",
+        "description": "Voltage setpoint at sending end bus."
+      },
+      {
+        "value": "= SHMX",
+        "description": "Maximum shunt current at sending end bus in MVA at unity voltage."
+      },
+      {
+        "value": "= O_SHMX",
+        "description": "Same as ‘SHMX’ in units determined by the power output option setting."
+      },
+      {
+        "value": "= TRMX",
+        "description": "Maximum bridge real power transfer in MW."
+      },
+      {
+        "value": "= O_TRMX",
+        "description": "Same as ‘TRMX’ in units determined by the power output option setting."
+      },
+      {
+        "value": "= VTMN",
+        "description": "Minimum voltage at terminal end bus in pu."
+      },
+      {
+        "value": "= VTMX",
+        "description": "Maximum voltage at terminal end bus in pu."
+      },
+      {
+        "value": "= VSMX",
+        "description": "Maximum series voltage in pu."
+      },
+      {
+        "value": "= IMX",
+        "description": "Maximum series current in MVA at unity voltage."
+      },
+      {
+        "value": "= O_IMX",
+        "description": "Same as ‘IMX’ in units determined by the power output option setting."
+      },
+      {
+        "value": "= LINX",
+        "description": "Reactance of the dummy series element in pu."
+      },
+      {
+        "value": "= PSEND",
+        "description": "Active power into series element at sending end bus in MW."
+      },
+      {
+        "value": "= O_PSEND",
+        "description": "Same as ‘PSEND’ in units determined by the power output option setting."
+      },
+      {
+        "value": "= QSEND",
+        "description": "Reactive power into series element at sending end bus in Mvar."
+      },
+      {
+        "value": "= O_QSEND",
+        "description": "Same as ‘QSEND’ in units determined by the power output option setting."
+      },
+      {
+        "value": "= PTERM",
+        "description": "Active power into series element at terminal end bus in MW."
+      },
+      {
+        "value": "= O_PTERM",
+        "description": "Same as ‘PTERM’ in units determined by the power output option setting."
+      },
+      {
+        "value": "= QTERM",
+        "description": "Reactive power into series element at terminal end bus in Mvar."
+      },
+      {
+        "value": "= O_QTERM",
+        "description": "Same as ‘QTERM’ in units determined by the power output option setting."
+      },
+      {
+        "value": "= PBRDG",
+        "description": "Active bridge power exchange in MW."
+      },
+      {
+        "value": "= O_PBRDG",
+        "description": "Same as ‘PBRDG’ in units determined by the power output option setting."
+      },
+      {
+        "value": "= QSHNT",
+        "description": "Reactive power into shunt element in Mvar."
+      },
+      {
+        "value": "= O_QSHNT",
+        "description": "Same as ‘QSHNT’ in units determined by the power output option setting."
+      },
+      {
+        "value": "= VSERES",
+        "description": "Series voltage magnitude."
+      },
+      {
+        "value": "= MVASND",
+        "description": "Flow into series element at sending bus end in MVA."
+      },
+      {
+        "value": "= O_MVASND",
+        "description": "Same as ‘MVASND’ in units determined by the power output option setting."
+      },
+      {
+        "value": "= MVATRM",
+        "description": "Flow into series element at terminal bus end in MVA."
+      },
+      {
+        "value": "= O_MVATRM",
+        "description": "Same as ‘MVATRM’ in units determined by the power output option setting."
+      },
+      {
+        "value": "= MVASHN",
+        "description": "Flow into shunt element in MVA."
+      },
+      {
+        "value": "= O_MVASHN",
+        "description": "Same as ‘MVASHN’ in units determined by the power output option setting."
+      },
+      {
+        "value": "= IPUSND",
+        "description": "Current flow into series element at sending bus end in pu."
+      },
+      {
+        "value": "= IPUTRM",
+        "description": "Current flow into series element at terminal bus end in pu."
+      },
+      {
+        "value": "= IPUSHN",
+        "description": "Current flow into shunt element in pu."
+      },
+      {
+        "value": "= AMPSND",
+        "description": "Current flow into series element at sending bus end in amps."
+      },
+      {
+        "value": "= AMPTRM",
+        "description": "Current flow into series element at terminal bus end in amps."
+      },
+      {
+        "value": "= AMPSHN",
+        "description": "Current flow into shunt element in amps."
+      },
+      {
+        "value": "= PCTSND",
+        "description": "Percent series current loading at sending bus end."
+      },
+      {
+        "value": "= PCTTRM",
+        "description": "Percent series current loading at terminal bus end."
+      },
+      {
+        "value": "= PCTSHN",
+        "description": "Percent shunt current loading."
+      },
+      {
+        "value": "= PCTPBR",
+        "description": "Percent bridge real power loading."
+      },
+      {
+        "value": "= RMPCT",
+        "description": "Percent of contributed vars."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘RVAL’ returned."
+    },
+    {
+      "value": "= 2",
+      "description": "FACTS device ‘NAME’ not found; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid value of ‘STRING’; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 4",
+      "description": "No base kV at bus; ‘RVAL’ returned = per unit current."
+    },
+    {
+      "value": "= 5",
+      "description": "For quantities which are solution results, the FACTS is blocked or out-of-service; “V” of 0.0 returned."
+    }
+  ]
+}

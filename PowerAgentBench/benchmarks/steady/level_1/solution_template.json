@@ -1,0 +1,40 @@
+{
+  "actions": [
+    {
+      "id": "redispatch_G7_up",
+      "value": 0.0
+    },
+    {
+      "id": "redispatch_G8_up",
+      "value": 0.0
+    },
+    {
+      "id": "redispatch_G9_up",
+      "value": 0.0
+    },
+    {
+      "id": "vm_support_south",
+      "value": 0.0
+    },
+    {
+      "id": "tap_T1_up",
+      "value": 0.0
+    },
+    {
+      "id": "switch_shunt_bus7",
+      "value": 0.0
+    },
+    {
+      "id": "shed_load_L20",
+      "value": 0.0
+    },
+    {
+      "id": "shed_load_L10",
+      "value": 0.0
+    },
+    {
+      "id": "phase_shift_T9",
+      "value": 0.0
+    }
+  ]
+}

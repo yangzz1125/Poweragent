@@ -1,0 +1,54 @@
+{
+  "module": "psspy",
+  "function_name": "addcondition",
+  "category": "Using The Vendor Neutral Contingency And Ras Auxiliary File",
+  "description": "Add Condition to RAS memory model This API routine was first introduced in release 35.4.0. ierr = addcondition(condname, object, condlogic, evaluateinref, disableiftrueinref, timedelay, memo)",
+  "python_syntax": "ierr = addcondition(condname, object, condlogic, evaluateinref, disableiftrueinref, timedelay, memo)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "condname",
+      "description": "Unique name of the condition. (input)."
+    },
+    {
+      "name": "object",
+      "description": "None. (input)."
+    },
+    {
+      "name": "condlogic",
+      "description": "Logic to apply to the list of comparisons (and, or, nand, nor,xor,onetrue). (input)."
+    },
+    {
+      "name": "evaluateinref",
+      "description": "Set to yes to cause the model condition to evaluate itself in the reference case and never reevaluate during a contingency solution. (input; NO by default)."
+    },
+    {
+      "name": "disableiftrueinref",
+      "description": "Set to yes to disable this model condition for the entire contingency run if it evaluated true in the reference (this is used so that a model condition can be created that checks the status of a branch being opened, but you want to restrict it to triggering an event only when the branch is opened as a result of the contingency). (see model filter explanation in section 5.13.1). (input; NO by default)."
+    },
+    {
+      "name": "timedelay",
+      "description": "This field is only defined for the power flow contingency elements. time delay to wait before the defined action takes place specified in a real number in seconds (see note below when using a modelfilter). this is not an absolute time at which an action occurs, but serves as a relative ordering for the implementation of actions. actions with the smallest time delay will be applied first during the topologycheck and postcheck solution steps. (input; 0.0 by default)."
+    },
+    {
+      "name": "memo",
+      "description": "Extra string enclosed in quotes. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "(output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error occurred."
+    },
+    {
+      "value": "= 4",
+      "description": "Req are not met."
+    }
+  ]
+}

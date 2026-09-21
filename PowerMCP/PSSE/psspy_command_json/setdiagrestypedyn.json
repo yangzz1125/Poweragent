@@ -1,0 +1,10 @@
+{
+  "module": "psspy",
+  "function_name": "setdiagrestypedyn",
+  "category": "Diagram View",
+  "description": "Use this API to set the type of results displayed in the active Slider diagram to Dynamics data results. Requires that current network elements are being displayed in the diagram view. This API routine was first introduced in release 31.0.0. setdiagrestypedyn()",
+  "python_syntax": "setdiagrestypedyn()",
+  "return_type": "void",
+  "parameters": [],
+  "return_values": []
+}

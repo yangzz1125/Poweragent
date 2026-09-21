@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "opf_scale_qgen_limits",
+  "category": "Optimal Power Flow Operation",
+  "description": "Use this API to set or return the value of the OPF option to scale reactive generation limits in the clamped constraint equation. This API routine was first introduced in release 30.0.0. ierr = opf_scale_qgen_limits(ival) ierr, ival = opf_scale_qgen_limits()",
+  "python_syntax": "ierr = opf_scale_qgen_limits(ival) ierr, ival = opf_scale_qgen_limits()",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ival",
+      "description": "Indicates whether to scale reactive generation limits in the clamp equation. (input; if Batch command, or for Python if specified as an argument, or for Fortran if IOCODE is 0, then input of 0 by default; else output)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "ival": [
+      {
+        "value": "= 0",
+        "description": "do not scale reactive generation limits."
+      },
+      {
+        "value": "= 1",
+        "description": "scale reactive generation limits."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid IVAL value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid IOCODE value."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

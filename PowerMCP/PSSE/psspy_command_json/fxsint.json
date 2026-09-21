@@ -1,0 +1,78 @@
+{
+  "module": "psspy",
+  "function_name": "fxsint",
+  "category": "Single Element Data",
+  "description": "Use this API to return integer quantities of the specified fixed bus shunt. This API routine was first introduced in release 31.0.0. ierr, ival = fxsint(ibus, id, string)",
+  "python_syntax": "ierr, ival = fxsint(ibus, id, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    },
+    {
+      "name": "id",
+      "description": "Shunt identifier. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the shunt quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "ival",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= STATION",
+        "description": "Bus IBUS substation number (returned as 0 if bus IBUS is not in a substation)."
+      },
+      {
+        "value": "= SECTION",
+        "description": "Bus IBUS bus section number (returned as 0 if bus IBUS is not in a substation)."
+      },
+      {
+        "value": "= NODE",
+        "description": "Number of the node to which the fixed shunt is connected (returned as 0 if bus IBUS is not in a substation)."
+      },
+      {
+        "value": "= STATUS",
+        "description": "Shunt status; 1 (one) for in-service 0 (zero) for out-of-service."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Bus not found; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Shunt not found; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "Bus type code is not 1, 2 or 3; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 4",
+      "description": "Shunt out-of-service; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 5",
+      "description": "Invalid value of ‘STRING’; ‘IVAL’ unchanged."
+    }
+  ]
+}

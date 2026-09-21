@@ -1,0 +1,54 @@
+{
+  "module": "psspy",
+  "function_name": "purge_multi_term_dc_convr",
+  "category": "Power Flow Data",
+  "description": "Use this API to delete the specified converter from the specified multi-terminal dc line in the working case. This API routine was first introduced in release 30.0.0. ierr = purge_multi_term_dc_convr(dc, ibus)",
+  "python_syntax": "ierr = purge_multi_term_dc_convr(dc, ibus)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "dc",
+      "description": "Quoted name of the multi-terminal dc line from which a converter is to be removed; if an unquoted integer value is specified, the api converts it to a left- justified name. (input; no default allowed)."
+    },
+    {
+      "name": "ibus",
+      "description": "Number of the ac bus from which the converter is to be removed. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "dc line not found."
+    },
+    {
+      "value": "= 2",
+      "description": "converter bus not found."
+    },
+    {
+      "value": "= 3",
+      "description": "bus is not a converter bus of this multi-terminal dc line."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - this converter bus is no longer its pole’s voltage controlling converter. - the voltage setpoint of the new voltage controlling converter is not positive. - the voltage setpoint of the new voltage controlling converter is less than the mode switch voltage."
+    }
+  ]
+}

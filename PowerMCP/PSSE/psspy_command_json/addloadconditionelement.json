@@ -1,0 +1,66 @@
+{
+  "module": "psspy",
+  "function_name": "addloadconditionelement",
+  "category": "Using The Vendor Neutral Contingency And Ras Auxiliary File",
+  "description": "Add LoadConditionElement to RAS memory model This API routine was first introduced in release 35.4.0. ierr = addloadconditionelement(ibus, loadid, condname, condnum, objfield, comparelogic, value, othervalue, absolute, objectfieldevalref)",
+  "python_syntax": "ierr = addloadconditionelement(ibus, loadid, condname, condnum, objfield, comparelogic, value, othervalue, absolute, objectfieldevalref)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": ""
+    },
+    {
+      "name": "loadid",
+      "description": "A string describing the network element load id. (key). (input)."
+    },
+    {
+      "name": "condname",
+      "description": "Unique name of the condition. (input)."
+    },
+    {
+      "name": "condnum",
+      "description": "Number specifying the number of the condition. omitting this value, or specifying a value of zero will cause this to automatically add the condition to the existing modelcondition. otherwise by specifying a number you can edit existing conditions. (input)."
+    },
+    {
+      "name": "objfield",
+      "description": "A field associated with the object to which this model condition applies. a list of fields is shown in section 2.4. in addition to these fields, you may also specify the string _useanotherfilter to signify that this condition refers to another filter. this will be important for the creation of more complex nested filter definitions as described in section 3.2. (input)."
+    },
+    {
+      "name": "comparelogic",
+      "description": "Logic to apply to the list of comparisons (and, or, nand, nor,xor,onetrue). (input)."
+    },
+    {
+      "name": "value",
+      "description": "Value or field or expression. the entry specifies the value to which the field is compared. this may be done in three ways value : 1.459 or a string field : start with the tag field and then follow with a string using the format as the objectfield string model expression : start with the tag expression and then follow the name of the model expression. (input)."
+    },
+    {
+      "name": "othervalue",
+      "description": "None. (input)."
+    },
+    {
+      "name": "absolute",
+      "description": "Set to yes to take the absolute value of the objectfield begin compared. (input; NO by default)."
+    },
+    {
+      "name": "objectfieldevalref",
+      "description": "Set to yes to specify that the objectfield should be evaluated in the reference state of the contingency analysis tool. added in simulator version 19, december 18, 2015 patch. (input; NO by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "(output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error occurred."
+    },
+    {
+      "value": "= 4",
+      "description": "Req are not met."
+    }
+  ]
+}

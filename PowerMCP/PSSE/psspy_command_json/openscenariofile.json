@@ -1,0 +1,15 @@
+{
+  "module": "psspy",
+  "function_name": "openscenariofile",
+  "category": "Scenarios",
+  "description": "This API routine is obsolete. It has been replaced by the API routine SCENARIOOPEN, and is implemented by a call to SCENARIOOPEN. Use this API to open a previously created Scenario. This API routine was first introduced in release 32.0.0. openscenariofile(sfile)",
+  "python_syntax": "openscenariofile(sfile)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "sfile",
+      "description": ""
+    }
+  ],
+  "return_values": []
+}

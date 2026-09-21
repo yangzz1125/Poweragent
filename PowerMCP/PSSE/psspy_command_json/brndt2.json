@@ -1,0 +1,102 @@
+{
+  "module": "psspy",
+  "function_name": "brndt2",
+  "category": "Single Element Data",
+  "description": "Use this API to return complex positive and zero sequence parameters for non-transformer branches, and complex positive sequence parameters for transformer branches. This API routine was first introduced in release 28.0.0. ierr, cmpval = brndt2(ibus,jbus,ickt,string)",
+  "python_syntax": "ierr, cmpval = brndt2(ibus,jbus,ickt,string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "From bus number. (input)."
+    },
+    {
+      "name": "jbus",
+      "description": "To bus number. (input)."
+    },
+    {
+      "name": "ickt",
+      "description": "Circuit identifier. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the branch quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "cmpval",
+      "description": "Complex value indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= RX",
+        "description": "Branch resistance and reactance in per unit."
+      },
+      {
+        "value": "= ISHNT",
+        "description": "Admittance of line shunt at IBUS end of the branch."
+      },
+      {
+        "value": "= JSHNT",
+        "description": "Admittance of line shunt at JBUS end of the branch."
+      },
+      {
+        "value": "= RXZ",
+        "description": "Zero sequence branch resistance and reactance (not valid for transformers)."
+      },
+      {
+        "value": "= ISHNTZ",
+        "description": "Zero sequence admittance of line shunt at IBUS end of the branch (not valid for transformers)."
+      },
+      {
+        "value": "= JSHNTZ",
+        "description": "Zero sequence admittance of line shunt at JBUS end of the branch (not valid for transformers)."
+      },
+      {
+        "value": "= LOSSES",
+        "description": "Branch losses in MW and Mvar."
+      },
+      {
+        "value": "= O_LOSSES",
+        "description": "Branch losses in units determined by the power output option setting."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘P’ and ‘Q’ or ‘CMPVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Bus not found; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Branch not found; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid value of ‘STRING’; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    },
+    {
+      "value": "= 4",
+      "description": "‘BRNDT2’ invalid with multisection line identifier; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    },
+    {
+      "value": "= 5",
+      "description": "Sequence data not in case; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    },
+    {
+      "value": "= 6",
+      "description": "‘BRNDT2’ zero sequence parameter invalid for transformer; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    }
+  ]
+}

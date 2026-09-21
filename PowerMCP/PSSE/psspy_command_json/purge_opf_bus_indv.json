@@ -1,0 +1,34 @@
+{
+  "module": "psspy",
+  "function_name": "purge_opf_bus_indv",
+  "category": "Optimal Power Flow Data",
+  "description": "This API routine is obsolete. It has been replaced by the API routine purge_opf_bus_indv_3, and is implemented by a call to purge_opf_bus_indv_3. Use this API to purge (re-initialize) OPF bus voltage magnitude data for an individual record in the working case. This API routine was first introduced in release 30.0.0. ierr = purge_opf_bus_indv(eibus)",
+  "python_syntax": "ierr = purge_opf_bus_indv(eibus)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "eibus",
+      "description": "Bus number. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid bus number specified."
+    },
+    {
+      "value": "= 2",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

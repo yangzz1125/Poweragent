@@ -1,0 +1,15 @@
+{
+  "module": "psspy",
+  "function_name": "scenarioisdirty",
+  "category": "Scenarios",
+  "description": "Use this API to determine if there are any unsaved changes in the current Scenario. This API routine was first introduced in release 33.0.0. isdirty = scenarioisdirty()",
+  "python_syntax": "isdirty = scenarioisdirty()",
+  "return_type": "value_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "isdirty",
+      "description": ""
+    }
+  ]
+}

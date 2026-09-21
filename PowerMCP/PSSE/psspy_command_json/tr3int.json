@@ -1,0 +1,166 @@
+{
+  "module": "psspy",
+  "function_name": "tr3int",
+  "category": "Single Element Data",
+  "description": "Use this API to return three-winding transformer integer values. This API routine was first introduced in release 28.0.0. ierr, ival = tr3int(ibus, jbus, kbus, ickt, string)",
+  "python_syntax": "ierr, ival = tr3int(ibus, jbus, kbus, ickt, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "From bus number. (input)."
+    },
+    {
+      "name": "jbus",
+      "description": "To bus number. (input)."
+    },
+    {
+      "name": "kbus",
+      "description": "Third bus number. (input)."
+    },
+    {
+      "name": "ickt",
+      "description": "Circuit identifier. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the three-winding transformer quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "ival",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= STATUS",
+        "description": "Three-winding transformer status."
+      },
+      {
+        "value": "= NMETER",
+        "description": "Non-metered bus number."
+      },
+      {
+        "value": "= OWNERS",
+        "description": "Number of owners."
+      },
+      {
+        "value": "= OWN1",
+        "description": "Owner number of first owner."
+      },
+      {
+        "value": "= OWN2",
+        "description": "Owner number of second owner."
+      },
+      {
+        "value": "= OWN3",
+        "description": "Owner number of third owner."
+      },
+      {
+        "value": "= OWN4",
+        "description": "Owner number of fourth owner."
+      },
+      {
+        "value": "= CW",
+        "description": "Winding data I/O code."
+      },
+      {
+        "value": "= CZ",
+        "description": "Impedance data I/O code."
+      },
+      {
+        "value": "= CM",
+        "description": "Magnetizing admittance data I/O code."
+      },
+      {
+        "value": "= CZ0",
+        "description": "Leakage impedance data I/O code."
+      },
+      {
+        "value": "= CZG",
+        "description": "Grounding impedance data I/O code."
+      },
+      {
+        "value": "= CNXCOD",
+        "description": "Winding connection code."
+      },
+      {
+        "value": "= ZADCOD",
+        "description": "Impedance adjustment method code."
+      },
+      {
+        "value": "= STATION_I",
+        "description": "Bus IBUS substation number (returned as 0 if bus IBUS is not in a substation)."
+      },
+      {
+        "value": "= STATION_J",
+        "description": "Bus JBUS substation number (returned as 0 if bus JBUS is not in a substation)."
+      },
+      {
+        "value": "= STATION_K",
+        "description": "Bus KBUS substation number (returned as 0 if bus KBUS is not in a substation)."
+      },
+      {
+        "value": "= SECTION_I",
+        "description": "Bus IBUS bus section number (returned as 0 if bus IBUS is not in a substation)."
+      },
+      {
+        "value": "= SECTION_J",
+        "description": "Bus JBUS bus section number (returned as 0 if bus JBUS is not in a substation)."
+      },
+      {
+        "value": "= SECTION_K",
+        "description": "Bus KBUS bus section number (returned as 0 if bus KBUS is not in a substation)."
+      },
+      {
+        "value": "= NODE_I",
+        "description": "Number of the node to which the winding is connected at the bus IBUS end (returned as 0 if bus IBUS is not in a substation)."
+      },
+      {
+        "value": "= NODE_J",
+        "description": "Number of the node to which the winding is connected at the bus JBUS end (returned as 0 if bus JBUS is not in a substation)."
+      },
+      {
+        "value": "= NODE_K",
+        "description": "Number of the node to which the winding is connected at the bus KBUS end (returned as 0 if bus KBUS is not in a substation)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Bus not found; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Three-winding transformer not found; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid ‘STRING’; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 4",
+      "description": "Error fetching transformer data; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 5",
+      "description": "Sequence data not in case for ‘STRING’ = ‘CZ0’, ‘CZG’ or ‘CNXCOD’; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 6",
+      "description": "With ‘STRING’ = OWNn, n > number of owners; ‘IVAL’ unchanged."
+    }
+  ]
+}

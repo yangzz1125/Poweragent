@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "non_trans_percent_units",
+  "category": "Power Flow Operation",
+  "description": "Use this API to set the non-transformer branch percent units option setting to either MVA or current expressed as MVA. This API routine was first introduced in release 31.0.0. ierr = non_trans_percent_units(ival) ierr, ival = non_trans_percent_units()",
+  "python_syntax": "ierr = non_trans_percent_units(ival) ierr, ival = non_trans_percent_units()",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ival",
+      "description": "Value of the option setting. (input; if Batch command, or for Python if specified as an argument, or for Fortran if IOCODE is 0, 1 by default; else output)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "ival": [
+      {
+        "value": "= 0",
+        "description": "MVA."
+      },
+      {
+        "value": "= 1",
+        "description": "current expressed as MVA."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid IVAL value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid IOCODE value."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

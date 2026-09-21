@@ -1,0 +1,58 @@
+{
+  "module": "psspy",
+  "function_name": "busordpos",
+  "category": "Single Element Data",
+  "description": "Use this API to return the ordinal position of the specified bus or bus section in the numerically ordered list of non-star point buses (i.e., star point buses are excluded). This API routine was first introduced in release 34.1.0. ierr, iord = busordpos(ibus, inode)",
+  "python_syntax": "ierr, iord = busordpos(ibus, inode)",
+  "return_type": "error_and_value",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    },
+    {
+      "name": "inode",
+      "description": "Node number. the position in the collating sequence of the bus section to which node inode is connected is returned. inode must be specified as 0 if bus ibus is not in a substation. inode may be specified as 0 if bus ibus is represented by a single bus section. if 0 is specified and bus ibus is represented by multiple bus sections, the collating sequence position of the parent bus section of bus ibus is returned. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "iord",
+      "description": "Ordinal position; 1 through the number of non-star point buses in the working case. iord is unchanged if a positive value of ierr is returned. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error; ‘IORD’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid bus number."
+    },
+    {
+      "value": "= 2",
+      "description": "bus IBUS not found."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid node number."
+    },
+    {
+      "value": "= 4",
+      "description": "bus IBUS does not belong to a substation."
+    },
+    {
+      "value": "= 5",
+      "description": "node INODE is not in the substation of bus IBUS."
+    },
+    {
+      "value": "= 6",
+      "description": "node INODE is not connected to any bus section of bus IBUS."
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "module": "psspy",
+  "function_name": "mtdclmod_status",
+  "category": "Dc Line Related Models",
+  "description": "Use this API to change the status of the multi-terminal dc line model at a specified multi- terminal dc line. This API routine was first introduced in release 30.2.0. ierr = mtdclmod_status(dc, status)",
+  "python_syntax": "ierr = mtdclmod_status(dc, status)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "dc",
+      "description": "Quoted name of the multi-terminal dc line for which the model status is to be changed; if an unquoted integer value is specified, the api converts it to a left- justified name. (input; no default allowed)."
+    },
+    {
+      "name": "status",
+      "description": "New model status. (input; 1 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "status": [
+      {
+        "value": "= 0",
+        "description": "out-of-service."
+      },
+      {
+        "value": "= 1",
+        "description": "in-service."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "dc line not found."
+    },
+    {
+      "value": "= 2",
+      "description": "no model at this dc line."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid STATUS value."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

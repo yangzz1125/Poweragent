@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "import_ecdi",
+  "category": "Optimal Power Flow Operation",
+  "description": "Use this API to import data from an Economics Dispatch Data File, as prepared for use in activity ECDI, into the OPF working data. This function removes all existing Optimal Power Flow Generator Dispatch Data, Active Power Dispatch Data, and Cost Curve Data, before adding new records from the ECD file. This API routine was first introduced in release 30.0.0. ierr = import_ecdi(file)",
+  "python_syntax": "ierr = import_ecdi(file)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "file",
+      "description": "Name of the economics dispatch data file. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "NEWOPF_API error occurred."
+    },
+    {
+      "value": "= 2",
+      "description": "ECDIAPI error occurred."
+    },
+    {
+      "value": "= 3",
+      "description": "CSTTBL_QUAD_API error occurred."
+    },
+    {
+      "value": "= 4",
+      "description": "OPFDSP_TBL_API error occurred."
+    },
+    {
+      "value": "= 5",
+      "description": "GENDSP_INDV_API error occurred."
+    },
+    {
+      "value": "= 6",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

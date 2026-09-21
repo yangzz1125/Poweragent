@@ -1,0 +1,145 @@
+{
+  "module": "psspy",
+  "function_name": "setdiagrespflowoptions_2",
+  "category": "Diagram View",
+  "description": "This API routine is obsolete. It has been replaced by the API routine setdiagrespflowoptions_3, and is implemented by a call to setdiagrespflowoptions_3. Use this API to specify the basic Power Flow annotation options in the active Slider diagram. This API routine was first introduced in release 33.0.0. setdiagrespflowoptions_2(brnann, flwopt, busvlt, pmvaline, pmvatran, usepgmset, diagttl)",
+  "python_syntax": "setdiagrespflowoptions_2(brnann, flwopt, busvlt, pmvaline, pmvatran, usepgmset, diagttl)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "brnann",
+      "description": "Branch annotation. (input)."
+    },
+    {
+      "name": "flwopt",
+      "description": "Flow direction. (input)."
+    },
+    {
+      "name": "busvlt",
+      "description": "Bus voltage annotation. (input)."
+    },
+    {
+      "name": "pmvaline",
+      "description": "Loading basis for % loading on non-transformer branches. (input)."
+    },
+    {
+      "name": "pmvatran",
+      "description": "Loading basis for % loading on transformer branches. (input)."
+    },
+    {
+      "name": "usepgmset",
+      "description": "Flag for system or diagram settings for displaying mvatrans and mvaline values. (input)."
+    },
+    {
+      "name": "diagttl",
+      "description": "Diagram title. (input)."
+    }
+  ],
+  "return_values": [],
+  "allowed_values": {
+    "brnann": [
+      {
+        "value": "= 0",
+        "description": "MW/MVAR flows."
+      },
+      {
+        "value": "= 1",
+        "description": "MVA."
+      },
+      {
+        "value": "= 2",
+        "description": "MVA/% rating."
+      },
+      {
+        "value": "= 3",
+        "description": "Amps/pu current."
+      },
+      {
+        "value": "= 4",
+        "description": "MW/%rating."
+      },
+      {
+        "value": "= 5",
+        "description": "Amps/% rating."
+      },
+      {
+        "value": "= 6",
+        "description": "None."
+      }
+    ],
+    "flwopt": [
+      {
+        "value": "= 0",
+        "description": "arrows."
+      },
+      {
+        "value": "= 1",
+        "description": "signs."
+      }
+    ],
+    "busvlt": [
+      {
+        "value": "= 0",
+        "description": "magnitude (pu)."
+      },
+      {
+        "value": "= 1",
+        "description": "magnitude (kV)."
+      },
+      {
+        "value": "= 2",
+        "description": "angle (degrees)."
+      },
+      {
+        "value": "= 3",
+        "description": "magnitude (pu) and angle (degrees)."
+      },
+      {
+        "value": "= 4",
+        "description": "magnitude (pu) and magnitude (kV)."
+      },
+      {
+        "value": "= 5",
+        "description": "magnitude (kV) and angle (degrees)."
+      },
+      {
+        "value": "= 7",
+        "description": "magnitude (pu), magnitude (kV) and angle (degrees)."
+      },
+      {
+        "value": "= 8",
+        "description": "none."
+      }
+    ],
+    "pmvaline": [
+      {
+        "value": "= 0",
+        "description": "current loading."
+      },
+      {
+        "value": "= 1",
+        "description": "MVA loading."
+      }
+    ],
+    "pmvatran": [
+      {
+        "value": "= 0",
+        "description": "current loading."
+      },
+      {
+        "value": "= 1",
+        "description": "MVA loading."
+      }
+    ],
+    "usepgmset": [
+      {
+        "value": "= 0",
+        "description": "use diagram settings."
+      },
+      {
+        "value": "= 1",
+        "description": "use System settings."
+      }
+    ]
+  }
+}

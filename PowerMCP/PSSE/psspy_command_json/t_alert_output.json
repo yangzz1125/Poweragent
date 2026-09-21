@@ -1,0 +1,104 @@
+{
+  "module": "psspy",
+  "function_name": "t_alert_output",
+  "category": "Non-Engineering",
+  "description": "Use this API to specify a “T“‘d alert device, i.e. a destination for a copy of everything sent to the alert device. This API routine was first introduced in release 34.0.0. ierr = t_alert_output(islct, filarg, options)",
+  "python_syntax": "ierr = t_alert_output(islct, filarg, options)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "islct",
+      "description": "Virtual device selector. (input)."
+    },
+    {
+      "name": "filarg",
+      "description": "Printer name or filename; ignored if islct is not 2 or 3. (input)."
+    },
+    {
+      "name": "options",
+      "description": "An array of two elements specifying open and printing options; ignored if ISLCT is not 2 or 3. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "islct": [
+      {
+        "value": "= 1",
+        "description": "standard destination. In the PSSE GUI standard output for alerts is a message box and a copy to the Alerts/Warnings tab of the output bar."
+      },
+      {
+        "value": "= 2",
+        "description": "direct output to a file."
+      },
+      {
+        "value": "= 3",
+        "description": "direct output to a printer."
+      },
+      {
+        "value": "= 4",
+        "description": "direct output to progress device."
+      },
+      {
+        "value": "= 5",
+        "description": "direct output to report device."
+      },
+      {
+        "value": "= 6",
+        "description": "no output."
+      }
+    ],
+    "options": [
+      {
+        "value": "OPTIONS(1)",
+        "description": "file and printer open options: The OPTIONS(1) values may be summed to select multiple options."
+      },
+      {
+        "value": "= 0",
+        "description": "open with carriage control format and, for files, for overwrite of existing files with buffering."
+      },
+      {
+        "value": "= 1",
+        "description": "open with list format."
+      },
+      {
+        "value": "= 2",
+        "description": "open file for append (file output only)."
+      },
+      {
+        "value": "= 2",
+        "description": "set printer orientation to portrait mode (printer output only)."
+      },
+      {
+        "value": "= 4",
+        "description": "open file with no buffering (file output only)."
+      },
+      {
+        "value": "= 4",
+        "description": "open printer in immediate print mode (printer output only)."
+      },
+      {
+        "value": "OPTIONS(2)",
+        "description": "number of copies to print (printer only)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= 2",
+      "description": "failed to open device."
+    }
+  ]
+}

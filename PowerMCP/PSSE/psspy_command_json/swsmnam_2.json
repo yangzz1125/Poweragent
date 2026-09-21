@@ -1,0 +1,54 @@
+{
+  "module": "psspy",
+  "function_name": "swsmnam_2",
+  "category": "Single Element Data",
+  "description": "Use this API to return switched shunt model name. This API routine was first introduced in release 35.0.0. ierr, cval = swsmnam_2(ibus,id)",
+  "python_syntax": "ierr, cval = swsmnam_2(ibus,id)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    },
+    {
+      "name": "id",
+      "description": "Switched shunt identifier. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "cval",
+      "description": "Model name. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘CVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Switched shunt not in network but in model tables; ‘CVAL’ returned."
+    },
+    {
+      "value": "= 2",
+      "description": "Switched shunt not in network or in model tables; ‘CVAL’ unchanged."
+    },
+    {
+      "value": "= 4",
+      "description": "No model in model tables; ‘CVAL’ unchanged."
+    },
+    {
+      "value": "= 7",
+      "description": "Bus not found; ‘CVAL’ unchanged."
+    },
+    {
+      "value": "= 9",
+      "description": "Dynamics data not present in working memory; ‘CVAL’ unchanged."
+    }
+  ]
+}

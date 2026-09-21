@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "har_cursrc_chng_name",
+  "category": "Harmonics Data",
+  "description": "Use this API to change harmonics current source table name in the working case. This API is used to change table name from working case harmonics data. NAMNEW must not exist in working case harmonics data. NAME must be provided and it must exist in working case harmonics data, then table name changed from NAME to NAMNEW. This API routine was first introduced in release 35.4.0. ierr = har_cursrc_chng_name(name, namnew, intgar)",
+  "python_syntax": "ierr = har_cursrc_chng_name(name, namnew, intgar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Harmonics current source table name whose name is to be changed. name must be provided and it must exist in working case harmonics data. (input; no default allowed)."
+    },
+    {
+      "name": "namnew",
+      "description": "New harmonics current source table name to be assigned. namnew must not exist in working case harmonics data. (input; no default allowed)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of two elementsNone. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "CRTYP, Harmonics current Source type (1 by default)."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "ANTYP, Harmonics current Source angle type (1 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "swsdat",
+  "category": "Single Element Data",
+  "description": "This API routine is obsolete. It has been replaced by the API routine SWSDAT_2, and is implemented by a call to SWSDAT_2. Use this API to return the switched shunt ‘1’ scheduled voltage band. This API routine was first introduced in release 28.0.0. ierr, vhi, vlo = swsdat(ibus)",
+  "python_syntax": "ierr, vhi, vlo = swsdat(ibus)",
+  "return_type": "error_and_multi_value",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "vhi",
+      "description": "Desired voltage upper limit. (output)."
+    },
+    {
+      "name": "vlo",
+      "description": "Desired voltage lower limit. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘VHI’ and ‘VLO’ returned."
+    },
+    {
+      "value": "> 0",
+      "description": "SWSDAT_2 error code."
+    }
+  ]
+}

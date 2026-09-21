@@ -1,0 +1,58 @@
+{
+  "module": "psspy",
+  "function_name": "dscval",
+  "category": "Single Element Data",
+  "description": "Use this API to return dynamics character array values. This API routine was first introduced in release 28.0.0. ierr, cval = dscval(string, indx)",
+  "python_syntax": "ierr, cval = dscval(string, indx)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "string",
+      "description": "String indicating the dynamics quantity desired. (input)."
+    },
+    {
+      "name": "indx",
+      "description": "Index to the dynamics character array. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "cval",
+      "description": "Character dynamics array value. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= ICON",
+        "description": "Character model parameters."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘CVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Invalid value of ‘STRING’; ‘CVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "‘INDX’ invalid; ‘CVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "‘INDX’ points to integer icon; ‘CVAL’ unchanged."
+    },
+    {
+      "value": "= 9",
+      "description": "Dynamics data not present in working memory; ‘CVAL’ unchanged."
+    }
+  ]
+}

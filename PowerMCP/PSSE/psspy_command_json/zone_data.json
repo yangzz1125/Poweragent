@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "zone_data",
+  "category": "Power Flow Data",
+  "description": "Use this API to modify zone data in the working case (see PSSE Program Operation Manual, Zone Data). This API routine was first introduced in release 28.0.0. ierr = zone_data(izone, zoname)",
+  "python_syntax": "ierr = zone_data(izone, zoname)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "izone",
+      "description": "Zone number between 1 and 9999. (input; no default allowed)."
+    },
+    {
+      "name": "zoname",
+      "description": "Zone name. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid zone number."
+    },
+    {
+      "value": "= 2",
+      "description": "zone table is full."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - No equipment is assigned to zone."
+    }
+  ]
+}

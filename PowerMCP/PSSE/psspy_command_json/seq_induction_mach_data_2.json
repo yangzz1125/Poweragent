@@ -1,0 +1,124 @@
+{
+  "module": "psspy",
+  "function_name": "seq_induction_mach_data_2",
+  "category": "Fault Analysis Data",
+  "description": "Use this API routine to modify the sequence data of an existing induction machine in the working case (see PSSE Program Operation Manual, Induction Machine Impedance Data). This API routine was first introduced in release 34.0.0. ierr = seq_induction_mach_data_2(ibus, id, intgar, realar)",
+  "python_syntax": "ierr = seq_induction_mach_data_2(ibus, id, intgar, realar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Machine identifier. (input; ‘1’ by default)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of two elements specifying (defaulted data items are unchanged). (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of ten elements specifying (defaulted data items are unchanged). (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "CZG, code indicating the units in which the zero sequence grounding impedance is specified."
+      },
+      {
+        "value": "= 1",
+        "description": "for per unit."
+      },
+      {
+        "value": "= 2",
+        "description": "for ohms."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "CGR, grounding code (0 = ungrounded; 1 = grounded) (0 by default)."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "ILK2IR, ratio of positive sequence locked rotor current to rated current."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "ROVERX, ratio of positive sequence resistance to reactance."
+      },
+      {
+        "value": "REALAR(3)",
+        "description": "R0, machine zero sequence fault analysis resistance."
+      },
+      {
+        "value": "REALAR(4)",
+        "description": "X0, machine zero sequence fault analysis reactance."
+      },
+      {
+        "value": "REALAR(5)",
+        "description": "RG, machine zero sequence grounding resistance."
+      },
+      {
+        "value": "REALAR(6)",
+        "description": "XG, machine zero sequence grounding reactance."
+      },
+      {
+        "value": "REALAR(7)",
+        "description": "RT, ratio of locked rotor current to rated current (transient)."
+      },
+      {
+        "value": "REALAR(8)",
+        "description": "XT, ratio of Rpos to Xpos (these two used to set IMZPSN)(transient)."
+      },
+      {
+        "value": "REALAR(9)",
+        "description": "RN, ratio of locked rotor current to rated current (negative sequence)."
+      },
+      {
+        "value": "REALAR(10)",
+        "description": "XN, ratio of Rpos to Xpos (these two used to set IMZPSN)(negative sequence)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "machine identifier is more than two characters."
+    },
+    {
+      "value": "= 3",
+      "description": "induction machine not found."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - Invalid CZG data value. - invalid grounding code. - CZG is 2 but the bus has no base voltage specified."
+    }
+  ]
+}

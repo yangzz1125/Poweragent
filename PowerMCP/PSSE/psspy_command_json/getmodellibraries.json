@@ -1,0 +1,15 @@
+{
+  "module": "psspy",
+  "function_name": "getmodellibraries",
+  "category": "Multiple Element Data",
+  "description": "Return the list of libraries that are searched for dynamically (i.e. run-time) loaded dynamics model programs. In particular this will be the list of libraries searched for user-written dynamics model programs. This API routine was first introduced in release 31.0.0. names = getmodellibraries()",
+  "python_syntax": "names = getmodellibraries()",
+  "return_type": "value_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "names",
+      "description": ""
+    }
+  ]
+}

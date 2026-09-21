@@ -1,0 +1,54 @@
+{
+  "module": "psspy",
+  "function_name": "tspfprofilecurvevalue",
+  "category": "Power Flow Operation",
+  "description": "Use this API to return real parameters of Time Series Power Flow profile data. This API routine was first introduced in release 35.4.0. ierr, rval = tspfprofilecurvevalue(curvesetid,curvecol,index,string)",
+  "python_syntax": "ierr, rval = tspfprofilecurvevalue(curvesetid,curvecol,index,string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "curvesetid",
+      "description": "Curve set id. (input)."
+    },
+    {
+      "name": "curvecol",
+      "description": "Curve column. (input)."
+    },
+    {
+      "name": "index",
+      "description": "Index. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating name of the real parameter desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "The error code . (output)."
+    },
+    {
+      "name": "rval",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= VALUE",
+        "description": "Profile value indicated by index."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘RVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Curveid not found; ‘RVAL’ unchanged."
+    }
+  ]
+}

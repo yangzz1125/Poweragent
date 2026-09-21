@@ -1,0 +1,238 @@
+{
+  "module": "psspy",
+  "function_name": "accc_single_run_report",
+  "category": "Power Flow Operation",
+  "description": "This API routine is obsolete. It has been replaced by the API routine accc_single_run_report_2, and is implemented by a call to accc_single_run_report_2. Use this API, the AC Contingency Report function, to report the results of the AC Contingency Calculation function. This API routine was first introduced in release 30.2.0. ierr = accc_single_run_report(status, intval, realval, rfile)",
+  "python_syntax": "ierr = accc_single_run_report(status, intval, realval, rfile)",
+  "return_type": "error_only_report",
+  "parameters": [
+    {
+      "name": "status",
+      "description": "An array of eight elementsNone. (input)."
+    },
+    {
+      "name": "intval",
+      "description": "An array of five elementsNone. (input)."
+    },
+    {
+      "name": "realval",
+      "description": "An array of seven elementsNone. (input)."
+    },
+    {
+      "name": "rfile",
+      "description": "Contingency solution output file. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "status": [
+      {
+        "value": "STATUS(1)",
+        "description": "report format (3 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "spreadsheet overload report."
+      },
+      {
+        "value": "= 1",
+        "description": "spreadsheet loading table."
+      },
+      {
+        "value": "= 2",
+        "description": "available capacity table."
+      },
+      {
+        "value": "= 3",
+        "description": "non-spreadsheet overload report."
+      },
+      {
+        "value": "= 4",
+        "description": "non-spreadsheet loading table."
+      },
+      {
+        "value": "= 5",
+        "description": "non-converged networks report."
+      },
+      {
+        "value": "STATUS(2)",
+        "description": "base case rating set; used only when STATUS(1) is 0, 1, 3 or 4 (rating set program option setting by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "rate A."
+      },
+      {
+        "value": "= 2",
+        "description": "rate B."
+      },
+      {
+        "value": "= 3",
+        "description": "rate C."
+      },
+      {
+        "value": "STATUS(3)",
+        "description": "contingency case rating set when STATUS(1) is 0, 1, 3 or 4; base case and contingency case rating set when STATUS(1) is 2 (rating set program option setting by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "rate A."
+      },
+      {
+        "value": "= 2",
+        "description": "rate B."
+      },
+      {
+        "value": "= 3",
+        "description": "rate C."
+      },
+      {
+        "value": "STATUS(4)",
+        "description": "exclude interfaces from report; used only when STATUS(1) is 0, 1, 2, 3 or 4 (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no."
+      },
+      {
+        "value": "= 1",
+        "description": "yes."
+      },
+      {
+        "value": "STATUS(5)",
+        "description": "run voltage limit check; used only when STATUS(1) is 0, 1, 3 or 4 (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no."
+      },
+      {
+        "value": "= 1",
+        "description": "yes."
+      },
+      {
+        "value": "STATUS(6)",
+        "description": "in overload reports, exclude monitored branches and interfaces that show loading violations in the base case from being checked and reported in contingency cases; used only when STATUS(1) is 0 or 3 (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no."
+      },
+      {
+        "value": "= 1",
+        "description": "yes."
+      },
+      {
+        "value": "STATUS(7)",
+        "description": "in voltage range violation reports, exclude monitored buses that show voltage range violations in the base case from the corresponding check in contingency case reports; used only when STATUS(1) is 0 or 3 (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no."
+      },
+      {
+        "value": "= 1",
+        "description": "yes."
+      },
+      {
+        "value": "STATUS(8)",
+        "description": "exclude cases with no overloads from non-spreadsheet overload report; used only when STATUS(1) is 3 (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no."
+      },
+      {
+        "value": "= 1",
+        "description": "yes."
+      }
+    ],
+    "intval": [
+      {
+        "value": "INTVAL(1)",
+        "description": "number of low voltage range violations filtering criterion (0 by default)."
+      },
+      {
+        "value": "INTVAL(2)",
+        "description": "number of high voltage range violations filtering criterion (0 by default)."
+      },
+      {
+        "value": "INTVAL(3)",
+        "description": "number of voltage deviation violations filtering criterion; not applied to base case (0 by default)."
+      },
+      {
+        "value": "INTVAL(4)",
+        "description": "number of buses in the largest disconnected island filtering criterion; not applied to base case (0 by default)."
+      },
+      {
+        "value": "INTVAL(5)",
+        "description": "maximum number of elements in the available capacity table (no limit by default)."
+      }
+    ],
+    "realval": [
+      {
+        "value": "REALVAL(1)",
+        "description": "bus mismatch converged tolerance (MW or Mvar) (0.5 by default)."
+      },
+      {
+        "value": "REALVAL(2)",
+        "description": "system mismatch converged tolerance (MVA) (5.0 by default)."
+      },
+      {
+        "value": "REALVAL(3)",
+        "description": "percent of flow rating; used only when STATUS(1) is 0, 3 or 4 (100.0 by default)."
+      },
+      {
+        "value": "REALVAL(4)",
+        "description": "in overload reports, minimum contingency case flow change from base case value; used only when STATUS(1) is 0 or 3 (0.0 by default)."
+      },
+      {
+        "value": "REALVAL(5)",
+        "description": "in overload reports, minimum contingency case percent loading increase from base case value; used only when STATUS(1) is 0 or 3 (0.0 by default)."
+      },
+      {
+        "value": "REALVAL(6)",
+        "description": "in voltage range violation reports, minimum contingency case voltage change from base case value; used only when STATUS(1) is 0, 1, 3 or 4 (0.0 by default)."
+      },
+      {
+        "value": "REALVAL(7)",
+        "description": "cutoff threshold for available capacity table; used only when STATUS(1) is 2 (99999.0 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid STATUS value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid INTVAL value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid REALVAL value."
+    },
+    {
+      "value": "= 4",
+      "description": "error opening RFILE."
+    },
+    {
+      "value": "= 5",
+      "description": "error reading RFILE."
+    },
+    {
+      "value": "= 6",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

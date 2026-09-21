@@ -1,0 +1,46 @@
+{
+  "module": "psspy",
+  "function_name": "mbidvd",
+  "category": "Power Flow Data",
+  "description": "Use this API to change the voltage droop control name of the specified voltage droop control in the working case. This API routine was first introduced in release 35.3.0. ierr = mbidvd(name, namnew)",
+  "python_syntax": "ierr = mbidvd(name, namnew)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Name of the voltage droop control for which the voltage droop control name is to be changed. (input; no default allowed)."
+    },
+    {
+      "name": "namnew",
+      "description": "New name to be assigned to the voltage droop control. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "voltage droop control NAME not found."
+    },
+    {
+      "value": "= 2",
+      "description": "voltage droop control NEWNAM already exists."
+    },
+    {
+      "value": "= 3",
+      "description": "a non-blank new identifier must be specified."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

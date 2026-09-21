@@ -1,0 +1,30 @@
+{
+  "module": "psspy",
+  "function_name": "bsysinit",
+  "category": "Bus Subsystems",
+  "description": "Use this API to initialize or re-initialize a bus subsystem. This API routine was first introduced in release 31.0.0. ierr = bsysinit(sid)",
+  "python_syntax": "ierr = bsysinit(sid)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Valid bus subsystem id. valid bus subsystem ids range from 0 to 11. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error return. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "SID is not valid."
+    }
+  ]
+}

@@ -1,0 +1,162 @@
+{
+  "module": "psspy",
+  "function_name": "ansi",
+  "category": "Fault Analysis Operation",
+  "description": "This API routine is obsolete. It has been replaced by the API routine ansi_2, and is implemented by a call to ansi_2. Use this API to calculate fault currents according to the ANSI standard (activity ANSI). To designate fault specification data as part of the API’s calling sequence, INARG must be positive; to designate fault specification data in an ANSI Fault Specification Data input file, INARG must be zero and the filename specified as FILARG. This API routine was first introduced in release 28.0.0. ierr = ansi(options, values, inarg, busary, vltary, cptary, filarg)",
+  "python_syntax": "ierr = ansi(options, values, inarg, busary, vltary, cptary, filarg)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "options",
+      "description": "An array of three elements specifying solution and reporting options. (input)."
+    },
+    {
+      "name": "values",
+      "description": "An array of four elements specifying divisors for calculating resistances of network elements where resistance is zero in the working case. (input)."
+    },
+    {
+      "name": "inarg",
+      "description": "Fault specification option. (input; 0 by default)."
+    },
+    {
+      "name": "busary",
+      "description": "An array of INARG elements specifying a list of faulted buses; ignored if INARG is 0 (if INARG > 0). (input; no default allowed)."
+    },
+    {
+      "name": "vltary",
+      "description": "An array of INARG elements specifying a list of maximum operating voltages in pu; ignored if INARG is 0. (input; 1.0 by default)."
+    },
+    {
+      "name": "cptary",
+      "description": "An array of INARG elements specifying a list of contact parting times in seconds; ignored if INARG is 0. (input; 1 cycle by default)."
+    },
+    {
+      "name": "filarg",
+      "description": "Filename of ansi fault specification data file; ignored if inarg > 0 (if inarg is 0). (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "options": [
+      {
+        "value": "OPTIONS(1)",
+        "description": "transformer impedance correction option (1 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "do not apply to zero sequence."
+      },
+      {
+        "value": "= 1",
+        "description": "apply to zero sequence."
+      },
+      {
+        "value": "OPTIONS(2)",
+        "description": "set of ANSI decrement factors to use (1 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "account for dc decrement only (use ANSI table 3)."
+      },
+      {
+        "value": "= 1",
+        "description": "account for ac and dc decrements (use ANSI tables 1 and 2)."
+      },
+      {
+        "value": "OPTIONS(3)",
+        "description": "option (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "summary output using ANSI X only, report format (blank delimited output fields)."
+      },
+      {
+        "value": "= 1",
+        "description": "summary output using ANSI X only, spreadsheet input format (comma delimited output fields)."
+      },
+      {
+        "value": "= 2",
+        "description": "detailed output using ANSI X only."
+      },
+      {
+        "value": "= 3",
+        "description": "detailed output using ANSI R and X."
+      },
+      {
+        "value": "= 4",
+        "description": "summary output using ANSI R and X, report format (blank delimited output fields)."
+      },
+      {
+        "value": "= 5",
+        "description": "summary output using ANSI R and X, spreadsheet input format (comma delimited output fields)."
+      }
+    ],
+    "values": [
+      {
+        "value": "VALUES(1)",
+        "description": "used for branches in the positive sequence network (40.0 by default)."
+      },
+      {
+        "value": "VALUES(2)",
+        "description": "used for machines in the positive sequence network (80.0 by default)."
+      },
+      {
+        "value": "VALUES(3)",
+        "description": "used for branches in the zero sequence network (40.0 by default)."
+      },
+      {
+        "value": "VALUES(4)",
+        "description": "used for machines in the zero sequence network (80.0 by default)."
+      }
+    ],
+    "inarg": [
+      {
+        "value": "= 0",
+        "description": "fault specifications specified in input file."
+      },
+      {
+        "value": "> 0",
+        "description": "fault specifications specified in calling sequence."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid OPTIONS value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid VALUES value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid INARG value."
+    },
+    {
+      "value": "= 4",
+      "description": "fault analysis is invalid due to the presence of in-service induction machines that are in the “stalled” or “tripped” state."
+    },
+    {
+      "value": "= 5",
+      "description": "bus type code and series element status inconsistencies."
+    },
+    {
+      "value": "= 6",
+      "description": "error opening file FILARG."
+    },
+    {
+      "value": "= 7",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

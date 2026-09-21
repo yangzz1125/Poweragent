@@ -1,0 +1,42 @@
+{
+  "module": "psspy",
+  "function_name": "ratingsettextdata",
+  "category": "Power Flow Data",
+  "description": "Use this API to change the column and descriptions for a particular rating set used in reporting. This API routine was first introduced in release 34.0.0. ierr = ratingsettextdata(irate, name, descr)",
+  "python_syntax": "ierr = ratingsettextdata(irate, name, descr)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "irate",
+      "description": "Rating set number (1 through 12). (input)."
+    },
+    {
+      "name": "name",
+      "description": "Rating set column heading . (input)."
+    },
+    {
+      "name": "descr",
+      "description": "Rating set description . (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid rating set number."
+    },
+    {
+      "value": "= 2",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

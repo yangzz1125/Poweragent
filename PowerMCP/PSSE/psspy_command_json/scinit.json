@@ -1,0 +1,29 @@
+{
+  "module": "psspy",
+  "function_name": "scinit",
+  "category": "Single Element Data",
+  "description": "Use this API to initialize the short-circuit data retrieval APIs. It must be called when PSSE is at the power flow activity level and must follow each execution of activity SCMU. Can be followed by SCBUS2, SCBRN2, SC3WND and SCMAC2 calls. SCDONE must be called after executing these and before any other calls or PSSE activities can be executed. This API routine was first introduced in release 28.0.0. ierr = scinit()",
+  "python_syntax": "ierr = scinit()",
+  "return_type": "error_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": ""
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Sequence data not in case."
+    },
+    {
+      "value": "= 2",
+      "description": "Unable to access SCMU results; one of the following occurred: -No SCMU results file is open. -SCMU results are not compatible with the working case. -Error reading the SCMU results file."
+    }
+  ]
+}

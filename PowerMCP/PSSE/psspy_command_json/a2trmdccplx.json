@@ -1,0 +1,132 @@
+{
+  "module": "psspy",
+  "function_name": "a2trmdccplx",
+  "category": "Two-Terminal Dc Line Data",
+  "description": "Use this API to return an array of complex values for subsystem two-terminal dc lines. This API routine was first introduced in release 30.3.0. ierr, xarray = a2trmdccplx(sid, ties, flag, string)",
+  "python_syntax": "ierr, xarray = a2trmdccplx(sid, ties, flag, string)",
+  "return_type": "error_and_array",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the bus subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "ties",
+      "description": "A flag indicating which subsystem two-terminal dc lines to include (ignored if sid is negative). (input; 1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem two-terminal dc lines to include. (input; 1 by default)."
+    },
+    {
+      "name": "string",
+      "description": "An array of NSTR elements specifying NSTR of the following strings indicating the two-terminal dc line quantities desired. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "xarray",
+      "description": "An array of NSTR*DIM elements specifying Is an array of at least NSTR columns, each of which contains DIM elements. (output)."
+    }
+  ],
+  "allowed_values": {
+    "sid": [
+      {
+        "value": "< 0",
+        "description": "to instruct the API to assume a subsystem containing all buses in the working case."
+      },
+      {
+        "value": ">= 0",
+        "description": "valid bus subsystem identifier. Valid subsystem identifiers range from 0 to 11. Subsystem SID must have been previously defined."
+      }
+    ],
+    "ties": [
+      {
+        "value": "= 1",
+        "description": "for interior subsystem two-terminal dc lines only."
+      },
+      {
+        "value": "= 2",
+        "description": "for subsystem tie two-terminal dc lines only."
+      },
+      {
+        "value": "= 3",
+        "description": "for both interior subsystem two-terminal dc lines and tie two-terminal dc lines."
+      }
+    ],
+    "flag": [
+      {
+        "value": "= 1",
+        "description": "for only in-service two-terminal dc lines."
+      },
+      {
+        "value": "= 2",
+        "description": "for all two-terminal dc lines."
+      }
+    ],
+    "string": [
+      {
+        "value": "= PQAC_R",
+        "description": "Apparent ac power flow into the dc line at the rectifier (in MW and Mvar)."
+      },
+      {
+        "value": "= PQAC_I",
+        "description": "Apparent ac power flow into the dc line at the inverter (in MW and Mvar)."
+      },
+      {
+        "value": "= PQLOSS",
+        "description": "ac power losses (in MW and Mvar)."
+      },
+      {
+        "value": "= O_PQAC_R",
+        "description": "Apparent ac power flow into the dc line at the rectifier (units determined by power output options)."
+      },
+      {
+        "value": "= O_PQAC_I",
+        "description": "Apparent ac power flow into the dc line at the inverter (units determined by power output options)."
+      },
+      {
+        "value": "= O_PQLOSS",
+        "description": "ac power losses (units determined by power output options)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid TIES value."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid FLAG value."
+    },
+    {
+      "value": "= 5",
+      "description": "Invalid NSTR value."
+    },
+    {
+      "value": "= 6",
+      "description": "DIM, and hence the size of XARRAY, is not large enough."
+    },
+    {
+      "value": "= 7",
+      "description": "Invalid STRING value."
+    }
+  ]
+}

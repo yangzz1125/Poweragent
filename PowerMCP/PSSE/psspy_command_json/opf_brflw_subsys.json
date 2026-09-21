@@ -1,0 +1,262 @@
+{
+  "module": "psspy",
+  "function_name": "opf_brflw_subsys",
+  "category": "Optimal Power Flow Data",
+  "description": "Use this API to add or modify all branch flow data records in a specified subsystem of the working case. This API routine was first introduced in release 28.0.0. ierr = opf_brflw_subsys(sid, all, autoadd, bflwid, intgar, realar, useval)",
+  "python_syntax": "ierr = opf_brflw_subsys(sid, all, autoadd, bflwid, intgar, realar, useval)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid subsystem id from 0 to 11. a subsystem must have been previously defined. (input; no default allowed)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem flag. (input; no default allowed)."
+    },
+    {
+      "name": "autoadd",
+      "description": "Indicates whether new records can be added, or are to be modified. (input; no default allowed)."
+    },
+    {
+      "name": "bflwid",
+      "description": "Branch flow identifier. (input; no default allowed)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of three elementsNone. (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of five elementsNone. (input)."
+    },
+    {
+      "name": "useval",
+      "description": "An array of five elements specifying Specifies whether the corresponding REALAR value should be applied as provided, or multiplied by the present value or added to the present value. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 0",
+        "description": "process only specified buses."
+      },
+      {
+        "value": "= 1",
+        "description": "process all buses."
+      }
+    ],
+    "autoadd": [
+      {
+        "value": "= 0",
+        "description": "do not add a new branch flow record if it does not already exist."
+      },
+      {
+        "value": "= 1",
+        "description": "add a new branch flow record if it does not already exist."
+      },
+      {
+        "value": "= 2",
+        "description": "only modify existing branch flow records that correspond to the flow identifier given in BFLWID."
+      }
+    ],
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "branch flow type (default value of 4 for new records, current value otherwise)."
+      },
+      {
+        "value": "= 1",
+        "description": "MW."
+      },
+      {
+        "value": "= 2",
+        "description": "Mvar."
+      },
+      {
+        "value": "= 3",
+        "description": "MVA."
+      },
+      {
+        "value": "= 4",
+        "description": "Ampere."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "limit type imposed on the branch flow limits (default value of 1 for new records, current value otherwise)."
+      },
+      {
+        "value": "= 0",
+        "description": "reporting only."
+      },
+      {
+        "value": "= 1",
+        "description": "hard limit."
+      },
+      {
+        "value": "= 2",
+        "description": "linear soft limit."
+      },
+      {
+        "value": "= 3",
+        "description": "quadratic soft limit."
+      },
+      {
+        "value": "INTGAR(3)",
+        "description": "default rate setting (default value of 0)."
+      },
+      {
+        "value": "= 0",
+        "description": "use the limits that have been defined."
+      },
+      {
+        "value": "= 1",
+        "description": "base flow limits on RATEA."
+      },
+      {
+        "value": "= 2",
+        "description": "base flow limits on RATEB."
+      },
+      {
+        "value": "= 3",
+        "description": "base flow limits on RATEC."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "maximum normal flow limit in physical units (default value of 0.0 for new records, current value otherwise)."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "minimum normal flow limit in physical units (default value of 0.0 for new records, current value otherwise)."
+      },
+      {
+        "value": "REALAR(3)",
+        "description": "maximum emergency flow limit in physical units (default value of 0.0 for new records, current value otherwise)."
+      },
+      {
+        "value": "REALAR(4)",
+        "description": "minimum emergency flow limit in physical units (default value of 0.0 for new records, current value otherwise)."
+      },
+      {
+        "value": "REALAR(5)",
+        "description": "soft limit penalty weight (default value of 1.0 for new records, current value otherwise)."
+      }
+    ],
+    "useval": [
+      {
+        "value": "USEVAL(1)",
+        "description": "indicates how the value of REALAR(1) should be used."
+      },
+      {
+        "value": "= 0",
+        "description": "if the value of REALAR(1) is to be used as defined."
+      },
+      {
+        "value": "= 1",
+        "description": "if the value of REALAR(1) is to be multiplied by the present value of the maximum normal flow limit."
+      },
+      {
+        "value": "= 2",
+        "description": "if the value of REALAR(1) is to be added to the present value of the maximum normal flow limit."
+      },
+      {
+        "value": "USEVAL(2)",
+        "description": "indicates how the value of REALAR(2) should be used."
+      },
+      {
+        "value": "= 0",
+        "description": "if the value of REALAR(2) is to be used as defined."
+      },
+      {
+        "value": "= 1",
+        "description": "if the value of REALAR(2) is to be multiplied by the present value of the minimum normal flow limit."
+      },
+      {
+        "value": "= 2",
+        "description": "if the value of REALAR(2) is to be added to the present value of the minimum normal flow limit."
+      },
+      {
+        "value": "USEVAL(3)",
+        "description": "indicates how the value of REALAR(3) should be used."
+      },
+      {
+        "value": "= 0",
+        "description": "if the value of REALAR(3) is to be used as defined."
+      },
+      {
+        "value": "= 1",
+        "description": "if the value of REALAR(3) is to be multiplied by the present value of the maximum emergency flow limit."
+      },
+      {
+        "value": "= 2",
+        "description": "if the value of REALAR(3) is to be added to the present value of the maximum emergency flow limit."
+      },
+      {
+        "value": "USEVAL(4)",
+        "description": "indicates how the value of REALAR(4) should be used."
+      },
+      {
+        "value": "= 0",
+        "description": "if the value of REALAR(4) is to be used as defined."
+      },
+      {
+        "value": "= 1",
+        "description": "if the value of REALAR(4) is to be multiplied by the present value of the minimum emergency flow limit."
+      },
+      {
+        "value": "= 2",
+        "description": "if the value of REALAR(4) is to be added to the present value of the minimum emergency flow limit."
+      },
+      {
+        "value": "USEVAL(5)",
+        "description": "indicates how the value of REALAR(5) should be used."
+      },
+      {
+        "value": "= 0",
+        "description": "if the value of REALAR(5) is to be used as defined."
+      },
+      {
+        "value": "= 1",
+        "description": "if the value of REALAR(5) is to be multiplied by the present value of the soft limit penalty weight."
+      },
+      {
+        "value": "= 2",
+        "description": "if the value of REALAR(5) is to be added to the present value of the soft limit penalty weight."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= -1",
+      "description": "non-fatal error occurred. Possible warning messages are: - Invalid flow type specified. - Invalid branch flow limit type specified. - Maximum normal flow limit is less than the minimum normal flow limit. - Maximum emergency flow limit is less than the minimum emergency flow limit."
+    },
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ALL value."
+    },
+    {
+      "value": "= 3",
+      "description": "branch flow constraint table is full."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

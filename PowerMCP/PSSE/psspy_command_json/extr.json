@@ -1,0 +1,72 @@
+{
+  "module": "psspy",
+  "function_name": "extr",
+  "category": "Power Flow Data",
+  "description": "Use this API to purge specified buses and all branches connected to them from the working case (activity EXTR). This API routine was first introduced in release 28.0.0. ierr = extr(sid, all, status)",
+  "python_syntax": "ierr = extr(sid, all, status)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid subsystem identifier. valid subsystem identifiers range from 0 to 11. subsystem sid must have been previously defined (when all is 0). (input; no default allowed)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem flag. (input; 0 by default)."
+    },
+    {
+      "name": "status",
+      "description": "An array of two elements specifying They are used to control subsystem removal options. A value of 0 means the option is not enabled. A value of 1 means the option is enabled. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 1",
+        "description": "process all buses."
+      },
+      {
+        "value": "= 0",
+        "description": "process only buses in subsystem SID."
+      }
+    ],
+    "status": [
+      {
+        "value": "STATUS(1)",
+        "description": "remove generator entries for out-of-service plants (0 by default)."
+      },
+      {
+        "value": "STATUS(2)",
+        "description": "change codes of boundary buses (0 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ALL value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid STATUS value."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

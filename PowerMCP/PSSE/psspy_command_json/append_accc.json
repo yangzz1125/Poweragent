@@ -1,0 +1,138 @@
+{
+  "module": "psspy",
+  "function_name": "append_accc",
+  "category": "Power Flow Operation",
+  "description": "Use this API to replicate system conditions of a contingency case solution, as contained in a designated Saved Case File, in the form of a Contingency Solution Output File. Results may be appended to an existing Contingency Solution Output File, or an new Contingency Solution Output File may be created. This API routine was first introduced in release 30.0.0. ierr = append_accc(option, dfxfile, basfile, cntfile, accfile, label, numdesc, descrpt)",
+  "python_syntax": "ierr = append_accc(option, dfxfile, basfile, cntfile, accfile, label, numdesc, descrpt)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "option",
+      "description": "Append flag. (input; 1 by default)."
+    },
+    {
+      "name": "dfxfile",
+      "description": "Name of the distribution factor data file. (input; no default allowed)."
+    },
+    {
+      "name": "basfile",
+      "description": "Name of the saved case file containing the pre-contingency power flow working case. this is the case that was present when the distribution factor data file specified in dfxfile was constructed; it is also the case from which the contingency case was formed. its solution is in the saved case file specified in cntfile. (input; no default allowed)."
+    },
+    {
+      "name": "cntfile",
+      "description": "Name of the saved case file containing the contingency case solution for which results are to be placed in the contingency solution output file specified in accfile. this case must be formed by imposing status and/or boundary condition changes on the pre-contingency case specified in basfile, and then solving using one or more of the power flow solution activities. (input; no default allowed)."
+    },
+    {
+      "name": "accfile",
+      "description": "Name of the contingency solution output file. (input; no default allowed)."
+    },
+    {
+      "name": "label",
+      "description": "12 character contingency label. (input; blank by default)."
+    },
+    {
+      "name": "numdesc",
+      "description": "Number of lines of text used to describe the contingency case; must be between 1 and 16. (input; no default allowed)."
+    },
+    {
+      "name": "descrpt",
+      "description": "An array of NUMDESC elements specifying Are NUMDESC lines of text describing the contingency case. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "option": [
+      {
+        "value": "= 0",
+        "description": "create a new Contingency Solution Output File in the file specified in ACCFILE."
+      },
+      {
+        "value": "= 1",
+        "description": "append results to the existing Contingency Solution Output File specified in ACCFILE."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid OPTION value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid NUMDESC value."
+    },
+    {
+      "value": "= 3",
+      "description": "generators are converted."
+    },
+    {
+      "value": "= 4",
+      "description": "buses in island(s) without a swing bus; use activity TREE."
+    },
+    {
+      "value": "= 5",
+      "description": "no base case Saved Case File specified."
+    },
+    {
+      "value": "= 6",
+      "description": "no contingency case Saved Case File specified."
+    },
+    {
+      "value": "= 7",
+      "description": "Contingency Solution Output File not found."
+    },
+    {
+      "value": "= 8",
+      "description": "DFAX File and Contingency Solution Output File are not compatible."
+    },
+    {
+      "value": "= 9",
+      "description": "no Distribution Factor Data File specified."
+    },
+    {
+      "value": "= 10",
+      "description": "no Contingency Solution Output File specified."
+    },
+    {
+      "value": "= 21",
+      "description": "file DFXFILE is not in the form of a PSSE-25 or later DFAX file; run DFAX."
+    },
+    {
+      "value": "= 22",
+      "description": "monitored elements exceed limit when adding multi-section line members."
+    },
+    {
+      "value": "= 51",
+      "description": "error opening Contingency Solution Output File."
+    },
+    {
+      "value": "= 52",
+      "description": "error opening Distribution Factor Data File."
+    },
+    {
+      "value": "= 53",
+      "description": "error opening pre-contingency Saved Case File."
+    },
+    {
+      "value": "= 54",
+      "description": "error opening contingency case Saved Case File."
+    },
+    {
+      "value": "= 55",
+      "description": "error reading Contingency Solution Output File."
+    },
+    {
+      "value": "= 56",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

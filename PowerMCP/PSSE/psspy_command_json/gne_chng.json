@@ -1,0 +1,130 @@
+{
+  "module": "psspy",
+  "function_name": "gne_chng",
+  "category": "Power Flow Data",
+  "description": "Use this API routine to modify the data of an existing GNE device in the working case (see PSSE Program Operation Manual, GNE Device Data). This API routine was first introduced in release 33.0.0. ierr = gne_chng(name, model, nterm, trmnls, intgar, nrelcn, relcon, nintcn, intcon, nchrcn, chrcon)",
+  "python_syntax": "ierr = gne_chng(name, model, nterm, trmnls, intgar, nrelcn, relcon, nintcn, intcon, nchrcn, chrcon)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Name of the gne device. (input; no default allowed)."
+    },
+    {
+      "name": "model",
+      "description": "Name of the gmb/bosl model to be used by this gne device. the gmb/bosl model file “model.mac” must be available. (input; no default allowed)."
+    },
+    {
+      "name": "nterm",
+      "description": "Number of terminals (i.e., buses) to which the model is connected. nterm must be 1 for gne-pq and gne-i models, and it must be either 1 or 2 for a gne-y model. (input; no default allowed)."
+    },
+    {
+      "name": "trmnls",
+      "description": "An array of NTERM elements specifying containing the bus numbers of the buses to which this model is connected. (input; no default allowed)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of three elementsNone. (input)."
+    },
+    {
+      "name": "nrelcn",
+      "description": "Number of real constants required by the model. (input; no default allowed)."
+    },
+    {
+      "name": "relcon",
+      "description": "An array of NRELCN elements specifying real model constants. (input; 0.0 by default)."
+    },
+    {
+      "name": "nintcn",
+      "description": "Number of integer constants required by the model. (input; no default allowed)."
+    },
+    {
+      "name": "intcon",
+      "description": "An array of NINTCN elements specifying integer model constants (usually bus numbers) (TRMNLS). (input; 1 by default)."
+    },
+    {
+      "name": "nchrcn",
+      "description": "Number of two-character identifiers required required by the model. (input; no default allowed)."
+    },
+    {
+      "name": "chrcon",
+      "description": "An array of NCHRCN elements specifying containing character model constants (e.g., circuit identifiers). (input; ‘1’ by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "STATUS, model status (0 for out-of-service, 1 for in-service) (1 by default)."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "OWNER, owner number (the owner to which bus TRMNLS (1) is assigned by default)."
+      },
+      {
+        "value": "INTGAR(3)",
+        "description": "NMETR, non-metered end bus number (TRMNLS (NTERM) by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "blank GNE device name is invalid."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid number of terminal buses for this GMB/BOSL model."
+    },
+    {
+      "value": "= 3",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 4",
+      "description": "model is not a GNE model."
+    },
+    {
+      "value": "= 5",
+      "description": "number of constants specified differs from those required in the model’s.mac file."
+    },
+    {
+      "value": "= 7",
+      "description": "blank model name is invalid for a new GNE device instance."
+    },
+    {
+      "value": "= 8",
+      "description": "GNE.mac file is not found or an error occurred while reading it."
+    },
+    {
+      "value": "= 9",
+      "description": "GNE device not found."
+    },
+    {
+      "value": "= 10",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= 18",
+      "description": "BOSL/GMB not installed/initialized."
+    },
+    {
+      "value": "= -1",
+      "description": "warnings - one or more of: - Invalid GNE device status. - Invalid owner number. - Invalid non-metered end bus. - Bus specified in an integer constant is not found. - Owner table is full."
+    }
+  ]
+}

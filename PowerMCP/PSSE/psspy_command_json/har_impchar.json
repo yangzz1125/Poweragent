@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "har_impchar",
+  "category": "Harmonics Data",
+  "description": "Use this API to modify or add new harmonics impedance characteristics table data to the working case. This API is used to add new table of harmonic numbers and corresponding R/R0, L/L0 and C/C0 data points. This can be used to add a new data point of harmonic number, R/R0, L/L0 and C/C0 data to existing table. This can be used to change R/R0, L/L0 and C/C0 data points of existing harmonic number in the table. This API cannot be used to change table name and harmonic numbers. This API routine was first introduced in release 35.4.0. ierr = har_impchar(name, npts, har, rar, lar, car)",
+  "python_syntax": "ierr = har_impchar(name, npts, har, rar, lar, car)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Harmonics impedance characteristics data table name. (input; no default allowed)."
+    },
+    {
+      "name": "npts",
+      "description": "Number of data points specified in the table. (input)."
+    },
+    {
+      "name": "har",
+      "description": "An array of NPTS elements specifying array of ‘NPTS’ values specifying harmonic numbers. All the harmonic numbers in HAR array must be non zero. (input)."
+    },
+    {
+      "name": "rar",
+      "description": "An array of NPTS elements specifying array of ‘NPTS’ values specifying R/R0 ratio. (input)."
+    },
+    {
+      "name": "lar",
+      "description": "An array of NPTS elements specifying array of ‘NPTS’ values specifying L/L0 ratio. (input)."
+    },
+    {
+      "name": "car",
+      "description": "An array of NPTS elements specifying array of ‘NPTS’ values specifying C/C0 ratio. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

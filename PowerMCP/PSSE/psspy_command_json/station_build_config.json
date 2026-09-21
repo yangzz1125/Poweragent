@@ -1,0 +1,102 @@
+{
+  "module": "psspy",
+  "function_name": "station_build_config",
+  "category": "Node Breaker Operation",
+  "description": "Use this API to automatically build a general layout configuration for a bus being built within a substation. Once the substation is built, the layout can be further modified within the substation diagram and substation editor in order to match specific configurations. This API routine was first introduced in release 34.0.0. ierr = station_build_config(ibus, istarg, namear, subtyp)",
+  "python_syntax": "ierr = station_build_config(ibus, istarg, namear, subtyp)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus being built within the substation. (input)."
+    },
+    {
+      "name": "istarg",
+      "description": "Station number used to uniquely identify this substation. (input)."
+    },
+    {
+      "name": "namear",
+      "description": "Station name used to uniquely identify this substation. (input)."
+    },
+    {
+      "name": "subtyp",
+      "description": "Basic layout configuration to build for the specified bus. (input; 1 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "subtyp": [
+      {
+        "value": "= 1",
+        "description": "single bus."
+      },
+      {
+        "value": "= 2",
+        "description": "ring bus."
+      },
+      {
+        "value": "= 3",
+        "description": "double breaker, double bus."
+      },
+      {
+        "value": "= 4",
+        "description": "breaker and a half bus."
+      },
+      {
+        "value": "= 5",
+        "description": "single breaker, double bus."
+      },
+      {
+        "value": "= 6",
+        "description": "main transfer bus."
+      },
+      {
+        "value": "= 7",
+        "description": "breaker and a half bus, with odd/even nodes in columns."
+      },
+      {
+        "value": "= 8",
+        "description": "single breaker, double bus, with odd/even nodes in columns."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 1",
+      "description": "bus does not exist."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid substation number."
+    },
+    {
+      "value": "= 3",
+      "description": "substation model already exists for bus."
+    },
+    {
+      "value": "= 4",
+      "description": "nodes to be added in the substation greater than maximum."
+    },
+    {
+      "value": "= 5",
+      "description": "total nodes in the substation greater than maximum."
+    },
+    {
+      "value": "= 6",
+      "description": "error building the substation."
+    },
+    {
+      "value": "= 7",
+      "description": "error building the nodes and switching devices."
+    },
+    {
+      "value": "= 8",
+      "description": "Prerequisite requirements for function not met."
+    }
+  ]
+}

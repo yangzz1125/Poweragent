@@ -1,0 +1,62 @@
+{
+  "module": "psspy",
+  "function_name": "tspf_output_pmatrix",
+  "category": "Time Series Power Flow Operation",
+  "description": "Use this API to output the profile curves within one profile set in the matrix format. This API routine was first introduced in release 35.4.0. ierr = tspf_output_pmatrix(profile,optacc)",
+  "python_syntax": "ierr = tspf_output_pmatrix(profile,optacc)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "profile",
+      "description": "Profile name. (input)."
+    },
+    {
+      "name": "optacc",
+      "description": "An array of 2 elements specifying profile output options. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Is the error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "optacc": [
+      {
+        "value": "OPTACC(1)",
+        "description": "Start time point. when start time point is less than 0, all time points are simulated (-1, by default)."
+      },
+      {
+        "value": "OPTACC(2)",
+        "description": "end time point. when end time is less than start time, only start time point is simulated (1 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "No profile curve sets defined."
+    },
+    {
+      "value": "= 2",
+      "description": "Profile curve set not found."
+    },
+    {
+      "value": "= 3",
+      "description": "No profile curves defined in profile curve set."
+    },
+    {
+      "value": "= 4",
+      "description": "Time point not found in the profile curve set."
+    },
+    {
+      "value": "= 56",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

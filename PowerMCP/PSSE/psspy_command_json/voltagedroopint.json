@@ -1,0 +1,62 @@
+{
+  "module": "psspy",
+  "function_name": "voltagedroopint",
+  "category": "Single Element Data",
+  "description": "Use this API to return voltage droop control integer parameters. This API routine was first introduced in release 35.3.0. ierr, ival = voltagedroopint(name, string)",
+  "python_syntax": "ierr, ival = voltagedroopint(name, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Voltage droop control name. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the voltage droop control quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "ival",
+      "description": "Parameter value. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= STATUS",
+        "description": "voltage droop control status."
+      },
+      {
+        "value": "= REGBUS",
+        "description": "regulated bus of voltage droop control."
+      },
+      {
+        "value": "= ACTSTATUS",
+        "description": "actual voltage droop control status."
+      },
+      {
+        "value": "= ACTREGBUS",
+        "description": "actual regulated bus of voltage droop control."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "voltage droop control ‘NAME’ not found; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid ‘STRING’; ‘IVAL’ unchanged."
+    }
+  ]
+}

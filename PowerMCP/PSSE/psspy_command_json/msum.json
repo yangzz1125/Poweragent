@@ -1,0 +1,25 @@
+{
+  "module": "psspy",
+  "function_name": "msum",
+  "category": "Power Flow Operation",
+  "description": "Use this API to print a summary of mileage by owner. This API routine was first introduced in release 30.0.0. ierr = msum()",
+  "python_syntax": "ierr = msum()",
+  "return_type": "error_only_report",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": ""
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

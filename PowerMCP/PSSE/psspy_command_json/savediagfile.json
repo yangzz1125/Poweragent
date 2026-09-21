@@ -1,0 +1,15 @@
+{
+  "module": "psspy",
+  "function_name": "savediagfile",
+  "category": "Diagram View",
+  "description": "Use this API to save the active Slider diagram in the GUI. This API routine was first introduced in release 30.0.0. savediagfile(sfile)",
+  "python_syntax": "savediagfile(sfile)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "sfile",
+      "description": ""
+    }
+  ],
+  "return_values": []
+}

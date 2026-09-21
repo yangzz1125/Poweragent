@@ -1,0 +1,42 @@
+{
+  "module": "psspy",
+  "function_name": "isolatemtdclinebybreaker",
+  "category": "Node Breaker Operation",
+  "description": "Use this API to isolate a multi-terminal dc line using system or substation breakers. This API works in conjunction with the ISOLATE_LEVELS() API which sets the number of levels the ISOLATEMTDCLINEBYBREAKER API can search outward into the network for breakers to open when attempting to isolate the multi-terminal dc line. If inadequate system or substation breakers are found, such that the line is not successfully isolated, then specifying a larger ISOLATE_LEVELS() value may find enough additional breakers to open to achieve isolation of the line. Use the RESTORESTATESFROMISOLATE API to restore the original network working case after an Isolate. It is recommended that you save your network case prior to running any “Isolate”. Multiple “Isolate” actions can be run, and other network changes can be made, but only the original network working case prior to the initial “Isolate”, or prior to the first “Isolate” after a “Restore”, will be restored. This API routine was first introduced in release 34.3.0. ierr = isolatemtdclinebybreaker(namearg)",
+  "python_syntax": "ierr = isolatemtdclinebybreaker(namearg)",
+  "return_type": "error_only_write_file",
+  "parameters": [
+    {
+      "name": "namearg",
+      "description": "Multi-terminal dc line identifier. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error return. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "multi-terminal dc line is not found."
+    },
+    {
+      "value": "= 2",
+      "description": "topology error in bus branch model."
+    },
+    {
+      "value": "= 3",
+      "description": "maximum levels reached and unable to isolate line."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

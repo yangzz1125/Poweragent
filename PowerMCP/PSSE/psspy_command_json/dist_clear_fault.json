@@ -1,0 +1,82 @@
+{
+  "module": "psspy",
+  "function_name": "dist_clear_fault",
+  "category": "Set Disturbance",
+  "description": "Use this API to clear a fault during dynamic simulations. The fault must have previously been applied using one of the following APIs: - DIST_3WIND_FAULT - DIST_BRANCH_FAULT - DIST_BUS_FAULT_3 - DIST_SCMU_FAULT_3 - DIST_SPCB_FAULT_2 This API routine was first introduced in release 30.2.0. ierr = dist_clear_fault(fault)",
+  "python_syntax": "ierr = dist_clear_fault(fault)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "fault",
+      "description": "Index in the fault memory tables of the fault to be cleared. (input; 1 by default). Faults are stored in the fault memory tables in the order in which they are applied; the index assigned to a fault is the next available location in the tables. Each time a fault is cleared using this API, the fault memory tables are compressed. Thus, if there are three faults active, the most recently applied fault will have index number 3)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "STRT or MSTR not successfully executed."
+    },
+    {
+      "value": "= 2",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 3",
+      "description": "branch not found."
+    },
+    {
+      "value": "= 4",
+      "description": "three-winding transformer not found."
+    },
+    {
+      "value": "= 5",
+      "description": "fixed bus shunt not found."
+    },
+    {
+      "value": "= 6",
+      "description": "no faults in the fault memory tables."
+    },
+    {
+      "value": "= 7",
+      "description": "invalid bus number."
+    },
+    {
+      "value": "= 8",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 9",
+      "description": "invalid node number."
+    },
+    {
+      "value": "= 10",
+      "description": "bus does not belong to a substation."
+    },
+    {
+      "value": "= 11",
+      "description": "node not found in the substation of this bus."
+    },
+    {
+      "value": "= 12",
+      "description": "node is not connected to any bus section of this bus."
+    },
+    {
+      "value": "= 13",
+      "description": "invalid FAULT value."
+    },
+    {
+      "value": "= 14",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

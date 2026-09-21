@@ -1,0 +1,118 @@
+{
+  "module": "psspy",
+  "function_name": "ardat",
+  "category": "Single Element Data",
+  "description": "Use this API to return area totals. This API routine was first introduced in release 28.0.0. ierr, cmpval = ardat(iar, string)",
+  "python_syntax": "ierr, cmpval = ardat(iar, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "iar",
+      "description": "Area number. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the area total desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "cmpval",
+      "description": "Desired complex power. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= LOAD",
+        "description": "Total area load by bus area assignment (net of load plus in-service distributed generation on load feeder)."
+      },
+      {
+        "value": "= LOADLD",
+        "description": "Total area load by load area assignment."
+      },
+      {
+        "value": "= LDGN",
+        "description": "Total distributed generation on load feeder by bus area assignment."
+      },
+      {
+        "value": "= LDGNLD",
+        "description": "Total distributed generation on load feeder by load area assignment."
+      },
+      {
+        "value": "= GEN",
+        "description": "Total area generation."
+      },
+      {
+        "value": "= LOSS",
+        "description": "Total area losses; I**2 * (R + jX) for ac branches with non-metered end in the area."
+      },
+      {
+        "value": "= XFRMAG",
+        "description": "Magnetizing admittance powers for transformers with winding 1 bus in the area."
+      },
+      {
+        "value": "= LNSHNT",
+        "description": "Powers flowing into line shunts of non-transformer branches with non-metered end in the area."
+      },
+      {
+        "value": "= CHARGE",
+        "description": "Powers flowing from line charging of non-transformer branches with non-metered end in the area."
+      },
+      {
+        "value": "= INT",
+        "description": "Net area interchange."
+      },
+      {
+        "value": "= INDMAC",
+        "description": "Total area induction machine powers by bus area assignment."
+      },
+      {
+        "value": "= INDMACMC",
+        "description": "Total area induction machine powers by machine area assignment."
+      },
+      {
+        "value": "= INDGEN",
+        "description": "Total area induction generator powers by bus area assignment."
+      },
+      {
+        "value": "= INDGENMC",
+        "description": "Total area induction generator powers by machine area assignment."
+      },
+      {
+        "value": "= INDMOT",
+        "description": "Total area induction motor powers by bus area assignment."
+      },
+      {
+        "value": "= INDMOTMC",
+        "description": "Total area induction motor powers by machine area assignment."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘P’ and ‘Q’ or ‘CMPVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Area number < 0 or > largest allowable area number; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "No in-service buses with in-service loads (for ‘LOAD’), no in-service loads (for ‘LOADLD’), no type 2 or type 3 buses (for ‘GEN’), no branches (for ‘LOSS’), or no ties (for ‘INT’) in area; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "Area not found; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    },
+    {
+      "value": "= 4",
+      "description": "Bad ‘STRING’ value; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    }
+  ]
+}

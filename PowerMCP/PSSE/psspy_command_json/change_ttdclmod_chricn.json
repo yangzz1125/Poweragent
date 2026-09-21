@@ -1,0 +1,66 @@
+{
+  "module": "psspy",
+  "function_name": "change_ttdclmod_chricn",
+  "category": "Dc Line Related Models",
+  "description": "Use this API to change the value of a character ICON (i.e., an element of the CHRICN array) of the two-terminal dc line model of a specified two-terminal dc line. The corresponding integer ICON is set to 0. This API routine was first introduced in release 30.2.0. ierr = change_ttdclmod_chricn(dc, model, j, chdata)",
+  "python_syntax": "ierr = change_ttdclmod_chricn(dc, model, j, chdata)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "dc",
+      "description": "Quoted name of the two-terminal dc line for which model data is to be changed; if an unquoted integer value is specified, the api converts it to a left- justified name. (input; no default allowed)."
+    },
+    {
+      "name": "model",
+      "description": "Model name. (input; no default allowed)."
+    },
+    {
+      "name": "j",
+      "description": "Icon number to change relative to the start of the block of icons assigned to this model (1 for icon(i), 2 for icon(i+1), etc.). (input; no default allowed)."
+    },
+    {
+      "name": "chdata",
+      "description": "New character icon value. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "dc line not found."
+    },
+    {
+      "value": "= 2",
+      "description": "unknown model name."
+    },
+    {
+      "value": "= 3",
+      "description": "no model at this dc line."
+    },
+    {
+      "value": "= 4",
+      "description": "model at this dc line is aaa not xxx."
+    },
+    {
+      "value": "= 5",
+      "description": "no input ICONs used in model."
+    },
+    {
+      "value": "= 6",
+      "description": "ICON number outside of the ICON range of this model."
+    },
+    {
+      "value": "= 7",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

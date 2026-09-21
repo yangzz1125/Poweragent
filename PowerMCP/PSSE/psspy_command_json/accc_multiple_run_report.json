@@ -1,0 +1,320 @@
+{
+  "module": "psspy",
+  "function_name": "accc_multiple_run_report",
+  "category": "Power Flow Operation",
+  "description": "This API routine is obsolete. It has been replaced by the API routine accc_multiple_run_report_2, and is implemented by a call to accc_multiple_run_report_2. Use this API to report the results of up to nine executions of the AC Contingency Calculation function. This API routine was first introduced in release 30.2.0. ierr = accc_multiple_run_report(options, values, nfiles, acfiles)",
+  "python_syntax": "ierr = accc_multiple_run_report(options, values, nfiles, acfiles)",
+  "return_type": "error_only_report",
+  "parameters": [
+    {
+      "name": "options",
+      "description": "An array of fourteen elements specifying defining reporting options. (input)."
+    },
+    {
+      "name": "values",
+      "description": "An array of seven elements specifying reporting parameters. (input)."
+    },
+    {
+      "name": "nfiles",
+      "description": "Number of contingency solution output files to be processed (1 through 22). (input; no default allowed)."
+    },
+    {
+      "name": "acfiles",
+      "description": "An array of NFILES elements specifying NFILES names of Contingency Solution Output Files. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "options": [
+      {
+        "value": "OPTIONS(1)",
+        "description": "column headings code (1 by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "Contingency Solution Output File names."
+      },
+      {
+        "value": "= 2",
+        "description": "Saved Case File names as contained in the Contingency Solution Output Files."
+      },
+      {
+        "value": "OPTIONS(2)",
+        "description": "base case rating set (rating set program option setting by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "rate A."
+      },
+      {
+        "value": "= 2",
+        "description": "rate B."
+      },
+      {
+        "value": "= 3",
+        "description": "rate C."
+      },
+      {
+        "value": "OPTIONS(3)",
+        "description": "contingency case rating set (rating set program option setting by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "rate A."
+      },
+      {
+        "value": "= 2",
+        "description": "rate B."
+      },
+      {
+        "value": "= 3",
+        "description": "rate C."
+      },
+      {
+        "value": "OPTIONS(4)",
+        "description": "print monitored elements summary report (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no."
+      },
+      {
+        "value": "= 1",
+        "description": "yes."
+      },
+      {
+        "value": "OPTIONS(5)",
+        "description": "print missing monitored elements report (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no."
+      },
+      {
+        "value": "= 1",
+        "description": "yes."
+      },
+      {
+        "value": "OPTIONS(6)",
+        "description": "print missing monitored voltage buses report (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no."
+      },
+      {
+        "value": "= 1",
+        "description": "yes."
+      },
+      {
+        "value": "OPTIONS(7)",
+        "description": "print contingency legend (2 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no."
+      },
+      {
+        "value": "= 1",
+        "description": "complete master legend report only."
+      },
+      {
+        "value": "= 2",
+        "description": "reduced legend with each table."
+      },
+      {
+        "value": "= 3",
+        "description": "both master legend report and legend with each table."
+      },
+      {
+        "value": "OPTIONS(8)",
+        "description": "print missing contingencies report (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no."
+      },
+      {
+        "value": "= 1",
+        "description": "yes."
+      },
+      {
+        "value": "OPTIONS(9)",
+        "description": "print non-converged contingencies report (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no."
+      },
+      {
+        "value": "= 1",
+        "description": "yes."
+      },
+      {
+        "value": "OPTIONS(10)",
+        "description": "print loading violation reports (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no."
+      },
+      {
+        "value": "= 1",
+        "description": "base case and worst case contingency violations only."
+      },
+      {
+        "value": "= 2",
+        "description": "base case and all contingency violations only."
+      },
+      {
+        "value": "= 3",
+        "description": "base case, worst case contingency, and all contingency violations."
+      },
+      {
+        "value": "OPTIONS(11)",
+        "description": "print voltage violation reports (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no."
+      },
+      {
+        "value": "= 1",
+        "description": "base case and worst case contingency violations only."
+      },
+      {
+        "value": "= 2",
+        "description": "base case and all contingency violations only."
+      },
+      {
+        "value": "= 3",
+        "description": "base case, worst case contingency, and all contingency violations."
+      },
+      {
+        "value": "OPTIONS(12)",
+        "description": "option for processing interfaces in loading violation reports (1 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "exclude interfaces from loading violation checking and reporting."
+      },
+      {
+        "value": "= 1",
+        "description": "check and report interface loading violations."
+      },
+      {
+        "value": "OPTIONS(13)",
+        "description": "in loading violation reports, exclude monitored branches and interfaces that show loading violations in the base case from being checked and reported in contingency case reports (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no."
+      },
+      {
+        "value": "= 1",
+        "description": "yes."
+      },
+      {
+        "value": "OPTIONS(14)",
+        "description": "in voltage range violation reports, exclude monitored buses that show voltage range violations in the base case from the corresponding check in contingency case reports (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no."
+      },
+      {
+        "value": "= 1",
+        "description": "yes."
+      }
+    ],
+    "values": [
+      {
+        "value": "VALUES(1)",
+        "description": "bus mismatch converged tolerance (MW or Mvar) (0.5 by default)."
+      },
+      {
+        "value": "VALUES(2)",
+        "description": "system mismatch converged tolerance (MVA) (5.0 by default)."
+      },
+      {
+        "value": "VALUES(3)",
+        "description": "in loading violation reports, percent of flow rating for reporting (100.0 by default)."
+      },
+      {
+        "value": "VALUES(4)",
+        "description": "in the worst case contingency loading violation reports, percent of flow rating for counting (> VALUES(3)) (100.0 by default)."
+      },
+      {
+        "value": "VALUES(5)",
+        "description": "in loading violation reports, minimum contingency case flow change from base case value for reporting and counting (0.0 by default)."
+      },
+      {
+        "value": "VALUES(6)",
+        "description": "in loading violation reports, minimum contingency case percent loading increase from base case value for reporting and counting (0.0 by default)."
+      },
+      {
+        "value": "VALUES(7)",
+        "description": "minimum contingency case voltage change for reporting and counting in voltage range violations (0.0 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid OPTIONS value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid VALUES value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid NFILES value."
+    },
+    {
+      "value": "= 4",
+      "description": "the percent for counting is less than the percent for reporting."
+    },
+    {
+      "value": "= 5",
+      "description": "file is not in the form of a current Contingency Solution Output File."
+    },
+    {
+      "value": "= 6",
+      "description": "error opening a Contingency Solution Output File."
+    },
+    {
+      "value": "= 7",
+      "description": "error reading a Contingency Solution Output File."
+    },
+    {
+      "value": "= 8",
+      "description": "error opening a temporary file."
+    },
+    {
+      "value": "= 9",
+      "description": "error opening a subfile in the temporary file."
+    },
+    {
+      "value": "= 10",
+      "description": "error reading or writing the temporary file."
+    },
+    {
+      "value": "= 11",
+      "description": "error closing a subfile in the temporary file."
+    },
+    {
+      "value": "= 12",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

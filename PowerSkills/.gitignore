@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+*.egg-info/
+
+# Analysis outputs
+contingency_report.txt
+*_report.txt
+*.log
+
+# Network files (optionally exclude test networks)
+# *.json
+# *.p
+# *.pkl
+test_case.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,172 @@
+{
+  "module": "psspy",
+  "function_name": "bussectdt2",
+  "category": "Single Element Data",
+  "description": "Use this API routine to return complex bus section parameters. Values may be either nominal or actual. Nominal values return negative values for reactors. Actual values show flow into reactor. This API routine was first introduced in release 34.1.0. ierr, cmpval = bussectdt2(ibus, sect, string1, string2)",
+  "python_syntax": "ierr, cmpval = bussectdt2(ibus, sect, string1, string2)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    },
+    {
+      "name": "sect",
+      "description": "Bus section number. (input)."
+    },
+    {
+      "name": "string1",
+      "description": "String indicating the bus quantity desired. (input)."
+    },
+    {
+      "name": "string2",
+      "description": "String indicating the units to be used (ignored if string1 = ‘ysz’ or ‘yswz’). (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "cmpval",
+      "description": "Complex value indicated by string1 in the units indicated by string2. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string1": [
+      {
+        "value": "= MVA",
+        "description": "Net in-service constant MVA load."
+      },
+      {
+        "value": "= IL",
+        "description": "Net in-service constant current load."
+      },
+      {
+        "value": "= YL",
+        "description": "Net in-service constant admittance load."
+      },
+      {
+        "value": "= TOTAL",
+        "description": "Net in-service total load (total of constant MVA constant current and constant admittance portions)."
+      },
+      {
+        "value": "= LDGEN",
+        "description": "Total in-service distributed generation on the load feeder."
+      },
+      {
+        "value": "= SC_MVA",
+        "description": "Net in-service scalable constant MVA load."
+      },
+      {
+        "value": "= SC_IL",
+        "description": "Net in-service scalable constant current load."
+      },
+      {
+        "value": "= SC_YL",
+        "description": "Net in-service scalable constant admittance load."
+      },
+      {
+        "value": "= SC_TOTAL",
+        "description": "Net in-service scalable total load."
+      },
+      {
+        "value": "= FX_MVA",
+        "description": "Net in-service fixed constant MVA load."
+      },
+      {
+        "value": "= FX_IL",
+        "description": "Net in-service fixed constant current load."
+      },
+      {
+        "value": "= FX_YL",
+        "description": "Net in-service fixed constant admittance load."
+      },
+      {
+        "value": "= FX_TOTAL",
+        "description": "Net in-service fixed total load."
+      },
+      {
+        "value": "= YS",
+        "description": "Total in-service fixed bus shunt."
+      },
+      {
+        "value": "= YSZERO",
+        "description": "Total nominal in-service zero sequence fixed bus shunt."
+      },
+      {
+        "value": "= YSZ",
+        "description": "Total nominal in-service zero sequence fixed bus shunt in per unit."
+      },
+      {
+        "value": "= YSW",
+        "description": "In-service switched shunt."
+      },
+      {
+        "value": "= YSWZ",
+        "description": "In-service zero sequence switched shunt."
+      },
+      {
+        "value": "= SHUNTN",
+        "description": "Total in-service negative sequence load (pu nominal)."
+      },
+      {
+        "value": "= SHUNTZ",
+        "description": "Total in-service zero sequence load (pu nominal)."
+      }
+    ],
+    "string2": [
+      {
+        "value": "= ACT",
+        "description": "Actual load or shunt (nominal shunt for STRING1 = ‘YSZERO’ or ‘YSWZERO’). ‘RVAL’ returned in MVA."
+      },
+      {
+        "value": "= O_ACT",
+        "description": "Actual load or shunt (nominal shunt for STRING1 = ‘YSZERO’ or ‘YSWZERO’). ‘RVAL’ in units determined by the power option setting."
+      },
+      {
+        "value": "= NOM",
+        "description": "Nominal load or shunt (at 1.0 pu voltage). ‘RVAL’ returned in MVA."
+      },
+      {
+        "value": "= O_NOM",
+        "description": "Nominal load or shunt (at 1.0 pu voltage). ‘RVAL’ in units determined by the power option setting."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘P’ and ‘Q’ or ‘CMPVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Bus not found; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Bad value of ‘STRING1’ or ‘STRING2’; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "Bus type code 4 or greater; ‘P’ and ‘Q’ or ‘CMPVAL’ returned."
+    },
+    {
+      "value": "= 4",
+      "description": "No loads at bus for ‘STRING1’ = ‘MVA’, ‘IL’, ‘YL’, or ‘TOTAL’; ‘P’ and ‘Q’ or ‘CMPVAL’ returned set to zero."
+    },
+    {
+      "value": "= 5",
+      "description": "No switched shunt at bus for ‘STRING1’ = ‘YSW’, ‘YSWZERO’ or ‘YSWZ’; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    },
+    {
+      "value": "= 6",
+      "description": "Sequence data not in case for ‘STRING1’ = ‘YSZERO’, ‘YSZ’, ‘YSWZERO’, ‘YSWZ’, ‘SHUNTN’ or ‘SHUNTZ’; ‘CMPVAL’ unchanged."
+    },
+    {
+      "value": "= 9",
+      "description": "Bus section not found; ‘CMPVAL’ unchanged."
+    }
+  ]
+}

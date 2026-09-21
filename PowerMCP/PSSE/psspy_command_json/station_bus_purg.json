@@ -1,0 +1,54 @@
+{
+  "module": "psspy",
+  "function_name": "station_bus_purg",
+  "category": "Node Breaker Data",
+  "description": "This API routine was first introduced in release 34.2.0. ierr = station_bus_purg(station,ibus)",
+  "python_syntax": "ierr = station_bus_purg(station,ibus)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "station",
+      "description": "Substation number. (input)."
+    },
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid STATION number."
+    },
+    {
+      "value": "= 2",
+      "description": "STATION does not exist."
+    },
+    {
+      "value": "= 3",
+      "description": "BUS does not exist."
+    },
+    {
+      "value": "= 4",
+      "description": "unable to move all connections back to original network bus."
+    },
+    {
+      "value": "= 5",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

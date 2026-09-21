@@ -1,0 +1,100 @@
+{
+  "module": "psspy",
+  "function_name": "casolution_parameters_2",
+  "category": "Power Flow Data",
+  "description": "Use this API to modify the contingency analysis solution parameters. This API routine was first introduced in release 35.2.0. ierr = casolution_parameters_2(intgar, realar)",
+  "python_syntax": "ierr = casolution_parameters_2(intgar, realar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "intgar",
+      "description": "An array of ten elementsNone. (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of four elementsNone. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "RATBAS, base case rating (1 by default)."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "RATCNT, contingency case rating (2 by default)."
+      },
+      {
+        "value": "INTGAR(3)",
+        "description": "MWRATE, Convert MVA to MW for DC solution (1 by default)."
+      },
+      {
+        "value": "INTGAR(4)",
+        "description": "VLTBAS, base case voltage limit (1 by default)."
+      },
+      {
+        "value": "INTGAR(5)",
+        "description": "VLTCNT, contingency case voltage limit (2 by default)."
+      },
+      {
+        "value": "INTGAR(6)",
+        "description": "SCRCAS, enable AC contingency case screening (0 by default)."
+      },
+      {
+        "value": "INTGAR(7)",
+        "description": "INCLOS, include loss estimates in DC solution (0 by default)."
+      },
+      {
+        "value": "INTGAR(8)",
+        "description": "ROSOLN, Enable Robust Power flow solution for non-converged cases (0 by default)."
+      },
+      {
+        "value": "INTGAR(9)",
+        "description": "BASLOD, Base loaded machine option (0 by default)."
+      },
+      {
+        "value": "INTGAR(10)",
+        "description": "RASFLG, enable RAS (0 by default)."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "RATPCT, percent of loading (100 by default)."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "LOADCT, loading cutoff (2 by default)."
+      },
+      {
+        "value": "REALAR(3)",
+        "description": "CHAGMW, flow change cutoff in MW (100 by default)."
+      },
+      {
+        "value": "REALAR(4)",
+        "description": "TOTGEN,Total generation dispatch limit (10000 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

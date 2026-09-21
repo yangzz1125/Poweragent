@@ -1,0 +1,68 @@
+{
+  "module": "psspy",
+  "function_name": "inibus_2",
+  "category": "Single Element Data",
+  "description": "Initializes the bus fetching routine ‘NXTBUS_2’ for retrieving buses in ascending numerical order. Hidden star point buses of three-winding transformers are excluded. This API routine was first introduced in release 34.2.0. ierr = inibus_2(ibus,msl,topo)",
+  "python_syntax": "ierr = inibus_2(ibus,msl,topo)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Starting bus number, 0 for first bus in ordered list. (input)."
+    },
+    {
+      "name": "msl",
+      "description": "Multi-section line interior bus code. (input)."
+    },
+    {
+      "name": "topo",
+      "description": "Topological bus code. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "msl": [
+      {
+        "value": "= 0",
+        "description": "exclude."
+      },
+      {
+        "value": "= 1",
+        "description": "include."
+      }
+    ],
+    "topo": [
+      {
+        "value": "= 0",
+        "description": "exclude (i.e., for a bus with multiple sections, only one bus section is included)."
+      },
+      {
+        "value": "= 1",
+        "description": "include (i.e., for a bus with multiple sections, all bus sections are included)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error; ‘NXTBUS_2’ is properly initialized."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found; ‘NXTBUS_2’ may not be used."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid MSL value; ‘NXTBUS_2’ may not be used."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid TOPO value; ‘NXTBUS_2’ may not be used."
+    }
+  ]
+}

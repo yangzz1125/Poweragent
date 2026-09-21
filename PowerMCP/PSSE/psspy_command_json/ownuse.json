@@ -1,0 +1,36 @@
+{
+  "module": "psspy",
+  "function_name": "ownuse",
+  "category": "Single Element Data",
+  "description": "Use this API to indicate whether an owner is in use. This API routine was first introduced in release 30.0.0. ival = ownuse(iar)",
+  "python_syntax": "ival = ownuse(iar)",
+  "return_type": "value_only",
+  "parameters": [
+    {
+      "name": "iar",
+      "description": "Owner number. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ival",
+      "description": "Owner status. (output)."
+    }
+  ],
+  "allowed_values": {
+    "ival": [
+      {
+        "value": "= -1",
+        "description": "Owner number <= 0 or > largest allowable owner number."
+      },
+      {
+        "value": "= 0",
+        "description": "If no equipment is assigned to owner IAR."
+      },
+      {
+        "value": "= 1",
+        "description": "If any equipment is assigned to owner IAR."
+      }
+    ]
+  }
+}

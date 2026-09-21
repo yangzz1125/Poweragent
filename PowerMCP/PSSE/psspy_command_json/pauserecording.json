@@ -1,0 +1,42 @@
+{
+  "module": "psspy",
+  "function_name": "pauserecording",
+  "category": "Non-Engineering",
+  "description": "Pause or resume recording program operation. This API routine was first introduced in release 35.4.0. ierr = pauserecording(iopt)",
+  "python_syntax": "ierr = pauserecording(iopt)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "iopt",
+      "description": "Type of format to be recorded. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "iopt": [
+      {
+        "value": "= 0",
+        "description": "resume recording."
+      },
+      {
+        "value": "= 1",
+        "description": "pause recording."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 2",
+      "description": "not recording."
+    }
+  ]
+}

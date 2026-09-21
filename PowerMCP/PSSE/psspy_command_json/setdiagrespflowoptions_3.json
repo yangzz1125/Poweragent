@@ -1,0 +1,249 @@
+{
+  "module": "psspy",
+  "function_name": "setdiagrespflowoptions_3",
+  "category": "Diagram View",
+  "description": "Use this API to specify the basic Power Flow annotation options in the active Slider diagram. This API routine was first introduced in release 34.0.0. setdiagrespflowoptions_3(setscope, brnann, flwopt, busvlt, eqipann, pmvaline, pmvatran, usepgmset, mslopt, busidann, brnidann, eqipidann)",
+  "python_syntax": "setdiagrespflowoptions_3(setscope, brnann, flwopt, busvlt, eqipann, pmvaline, pmvatran, usepgmset, mslopt, busidann, brnidann, eqipidann)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "setscope",
+      "description": "Scope of the api. (input)."
+    },
+    {
+      "name": "brnann",
+      "description": "Branch annotation. (input)."
+    },
+    {
+      "name": "flwopt",
+      "description": "Flow direction. (input)."
+    },
+    {
+      "name": "busvlt",
+      "description": "Bus voltage annotation. (input)."
+    },
+    {
+      "name": "eqipann",
+      "description": "Equipment annotation. (input)."
+    },
+    {
+      "name": "pmvaline",
+      "description": "Loading basis for % loading on non-transformer branches. (input)."
+    },
+    {
+      "name": "pmvatran",
+      "description": "Loading basis for % loading on transformer branches. (input)."
+    },
+    {
+      "name": "usepgmset",
+      "description": "Flag for system or diagram settings for displaying mvatrans and mvaline values. (input)."
+    },
+    {
+      "name": "mslopt",
+      "description": "Multi-section line (msl) option. (input)."
+    },
+    {
+      "name": "busidann",
+      "description": "Bus id annotation. (input)."
+    },
+    {
+      "name": "brnidann",
+      "description": "Branch id annotation. (input)."
+    },
+    {
+      "name": "eqipidann",
+      "description": "Equipment id annotation. (input)."
+    }
+  ],
+  "return_values": [],
+  "allowed_values": {
+    "setscope": [
+      {
+        "value": "= 0",
+        "description": "defaults for new diagrams."
+      },
+      {
+        "value": "= 1",
+        "description": "defaults for new diagrams and settings for the active diagram."
+      },
+      {
+        "value": "= 2",
+        "description": "settings for the active diagram."
+      }
+    ],
+    "brnann": [
+      {
+        "value": "= 0",
+        "description": "MW/MVAR flows."
+      },
+      {
+        "value": "= 1",
+        "description": "MVA."
+      },
+      {
+        "value": "= 2",
+        "description": "MVA/% rating."
+      },
+      {
+        "value": "= 3",
+        "description": "Amps/pu current."
+      },
+      {
+        "value": "= 4",
+        "description": "MW/%rating."
+      },
+      {
+        "value": "= 5",
+        "description": "Amps/% rating."
+      },
+      {
+        "value": "= 6",
+        "description": "none."
+      }
+    ],
+    "flwopt": [
+      {
+        "value": "= 0",
+        "description": "arrows."
+      },
+      {
+        "value": "= 1",
+        "description": "signs."
+      }
+    ],
+    "busvlt": [
+      {
+        "value": "= 0",
+        "description": "magnitude (pu)."
+      },
+      {
+        "value": "= 1",
+        "description": "magnitude (kV)."
+      },
+      {
+        "value": "= 2",
+        "description": "angle (degrees)."
+      },
+      {
+        "value": "= 3",
+        "description": "magnitude (pu) and angle (degrees)."
+      },
+      {
+        "value": "= 4",
+        "description": "magnitude (pu) and magnitude (kV)."
+      },
+      {
+        "value": "= 5",
+        "description": "magnitude (kV) and angle (degrees)."
+      },
+      {
+        "value": "= 7",
+        "description": "magnitude (pu), magnitude (kV) and angle (degrees)."
+      },
+      {
+        "value": "= 8",
+        "description": "none."
+      }
+    ],
+    "eqipann": [
+      {
+        "value": "= 0",
+        "description": "MW/Mvar."
+      },
+      {
+        "value": "= 1",
+        "description": "MVA."
+      },
+      {
+        "value": "= 2",
+        "description": "MW."
+      },
+      {
+        "value": "= 3",
+        "description": "Mvar."
+      },
+      {
+        "value": "= 4",
+        "description": "None."
+      }
+    ],
+    "pmvaline": [
+      {
+        "value": "= 0",
+        "description": "current loading."
+      },
+      {
+        "value": "= 1",
+        "description": "MVA loading."
+      }
+    ],
+    "pmvatran": [
+      {
+        "value": "= 0",
+        "description": "current loading."
+      },
+      {
+        "value": "= 1",
+        "description": "MVA loading."
+      }
+    ],
+    "usepgmset": [
+      {
+        "value": "= 0",
+        "description": "use diagram settings."
+      },
+      {
+        "value": "= 1",
+        "description": "use System settings."
+      }
+    ],
+    "mslopt": [
+      {
+        "value": "= 0",
+        "description": "MSL are not displayed."
+      },
+      {
+        "value": "= 1",
+        "description": "MSL are displayed."
+      }
+    ],
+    "busidann": [
+      {
+        "value": "= 0",
+        "description": "bus number only."
+      },
+      {
+        "value": "= 1",
+        "description": "bus name only."
+      },
+      {
+        "value": "= 2",
+        "description": "bus number and bus name."
+      },
+      {
+        "value": "= 3",
+        "description": "none."
+      }
+    ],
+    "brnidann": [
+      {
+        "value": "= 0",
+        "description": "branch Ids are not displayed."
+      },
+      {
+        "value": "= 1",
+        "description": "branch Ids are displayed."
+      }
+    ],
+    "eqipidann": [
+      {
+        "value": "= 0",
+        "description": "equipment Ids are not displayed."
+      },
+      {
+        "value": "= 1",
+        "description": "equipment Ids are displayed."
+      }
+    ]
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "module": "psspy",
+  "function_name": "change_ldmod_var",
+  "category": "Load Related Models",
+  "description": "Use this API to change the value of a VAR of a load related model at a specified load or subsystem. This API can be used only for bus based load models. It cannot be used for changing VARs of owner, zone, area, and “all” type load models. This API routine was first introduced in release 32.0.0. ierr = change_ldmod_var(ibus, id, name, j, rdata)",
+  "python_syntax": "ierr = change_ldmod_var(ibus, id, name, j, rdata)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Load bus number. (input)."
+    },
+    {
+      "name": "id",
+      "description": "Load identifier, or “*” if the model is applied to all loads in the subsystem. (input; blank by default)."
+    },
+    {
+      "name": "name",
+      "description": "Model name. (input; no default allowed)."
+    },
+    {
+      "name": "j",
+      "description": "Var number to change relative to the start of the block of vars assigned to this model (1 for var(j), 2 for var(j+1), etc.). (input; no default allowed)."
+    },
+    {
+      "name": "rdata",
+      "description": "New var value. (input; unchanged by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "unknown model NAME."
+    },
+    {
+      "value": "= 2",
+      "description": "model NAME is not a load-related model."
+    },
+    {
+      "value": "= 3",
+      "description": "no <subsystem type> type <load type> model for this id in tables for <subsystem type> IBUS."
+    },
+    {
+      "value": "= 4",
+      "description": "no “all” type <load type> model for this id in tables."
+    },
+    {
+      "value": "= 5",
+      "description": "<subsystem type> <load type> model for this id for <subsystem type> IBUS is aaa not xxx."
+    },
+    {
+      "value": "= 6",
+      "description": "“all” type <load type> model for this id is aaa not xxx."
+    },
+    {
+      "value": "= 7",
+      "description": "no VARs used in model NAME."
+    },
+    {
+      "value": "= 8",
+      "description": "VAR number outside of the VAR range of this model."
+    },
+    {
+      "value": "= 9",
+      "description": "VARs of only bus based (load type) models can be changed using this API."
+    },
+    {
+      "value": "= 10",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

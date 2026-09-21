@@ -1,0 +1,74 @@
+{
+  "module": "psspy",
+  "function_name": "dyre_new",
+  "category": "Dynamic Simulation Operation",
+  "description": "Use this API to clear dynamics working memory, read a Dynamics Data File, and place the model references specified on its data records into dynamics working memory. It optionally creates a command file for compiling the CONEC and CONET subroutines. This API routine was first introduced in release 30.2.0. ierr = dyre_new(startindx,dyrefile,conecfile,conetfile,compilfil)",
+  "python_syntax": "ierr = dyre_new(startindx,dyrefile,conecfile,conetfile,compilfil)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "startindx",
+      "description": "An array of four elements specifying starting locations in the dynamics data storage arrays. (input)."
+    },
+    {
+      "name": "dyrefile",
+      "description": "Name of the dynamics model raw data file. (input; no default allowed)."
+    },
+    {
+      "name": "conecfile",
+      "description": "Name of conec output file; blank for output to the progress area. (input; blank by default)."
+    },
+    {
+      "name": "conetfile",
+      "description": "Name of conet output file; blank for output to the progress area. (input; blank by default)."
+    },
+    {
+      "name": "compilfil",
+      "description": "Name of file containing commands to compile the conec and conet output files; blank for none. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "startindx": [
+      {
+        "value": "STARTINDX(1)",
+        "description": "starting CON index (1 by default)."
+      },
+      {
+        "value": "STARTINDX(2)",
+        "description": "starting STATE index (1 by default)."
+      },
+      {
+        "value": "STARTINDX(3)",
+        "description": "starting VAR index (1 by default)."
+      },
+      {
+        "value": "STARTINDX(4)",
+        "description": "starting ICON index (1 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid STARTINDX value."
+    },
+    {
+      "value": "= 3",
+      "description": "error opening output file DYREFILE."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "module": "psspy",
+  "function_name": "scenariomodelgroup",
+  "category": "Scenarios",
+  "description": "Use this API to create a new group that is identical to another group. This API routine was first introduced in release 33.0.0. ierr = scenariomodelgroup(sgroup, snewname)",
+  "python_syntax": "ierr = scenariomodelgroup(sgroup, snewname)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sgroup",
+      "description": "Name of the group to be copied. (input; no default allowed)."
+    },
+    {
+      "name": "snewname",
+      "description": "Name of the new group. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "no Scenario in memory."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid file name."
+    },
+    {
+      "value": "= 3",
+      "description": "specified group not found."
+    }
+  ]
+}

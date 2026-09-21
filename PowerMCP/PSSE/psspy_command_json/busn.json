@@ -1,0 +1,42 @@
+{
+  "module": "psspy",
+  "function_name": "busn",
+  "category": "Power Flow Operation",
+  "description": "Use this API to tabulate unused bus numbers within a specified bus number range (activity BUSN). This API routine was first introduced in release 28.0.0. ierr = busn(buslo, bushi)",
+  "python_syntax": "ierr = busn(buslo, bushi)",
+  "return_type": "error_only_report",
+  "parameters": [
+    {
+      "name": "buslo",
+      "description": "Low limit of bus number range. (input; 1 by default)."
+    },
+    {
+      "name": "bushi",
+      "description": "High limit of bus number range. (input; 999,997, by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid starting bus number."
+    },
+    {
+      "value": "= 2",
+      "description": "starting bus number is greater than ending bus number."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

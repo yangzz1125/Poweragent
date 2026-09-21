@@ -1,0 +1,15 @@
+{
+  "module": "psspy",
+  "function_name": "mdllibcnt",
+  "category": "Single Element Data",
+  "description": "Use this API to return the number of libraries in the list to be searched for dynamics library models. This API routine was first introduced in release 31.0.0. nstr = mdllibcnt()",
+  "python_syntax": "nstr = mdllibcnt()",
+  "return_type": "value_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "nstr",
+      "description": ""
+    }
+  ]
+}

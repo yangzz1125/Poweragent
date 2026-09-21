@@ -1,0 +1,10 @@
+{
+  "module": "psspy",
+  "function_name": "closeeventstudyfile",
+  "category": "Event Studies",
+  "description": "Use this API to close an open Event Study file. This API routine was first introduced in release 32.0.0. closeeventstudyfile()",
+  "python_syntax": "closeeventstudyfile()",
+  "return_type": "void",
+  "parameters": [],
+  "return_values": []
+}

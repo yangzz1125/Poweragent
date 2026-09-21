@@ -1,0 +1,132 @@
+{
+  "module": "psspy",
+  "function_name": "solution_parameters_2",
+  "category": "Power Flow Data",
+  "description": "This API routine is obsolete. It has been replaced by the API routine solution_parameters_3, and is implemented by a call to solution_parameters_3. Use this API to modify the power flow solution parameters in the working case. This API routine was first introduced in release 30.3.0. ierr = solution_parameters_2(intgar, realar)",
+  "python_syntax": "ierr = solution_parameters_2(intgar, realar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "intgar",
+      "description": "An array of three elementsNone. (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of eighteen elementsNone. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "ITMX, Gauss-Seidel maximum number of iterations."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "ITMXN, Newton-Raphson maximum number of iterations."
+      },
+      {
+        "value": "INTGAR(3)",
+        "description": "ITMXTY, TYSL maximum number of iterations."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "ACCP, Gauss-Seidel real component acceleration factor."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "ACCQ, Gauss-Seidel imaginary component acceleration factor."
+      },
+      {
+        "value": "REALAR(3)",
+        "description": "ACCM, special MSLV acceleration factor."
+      },
+      {
+        "value": "REALAR(4)",
+        "description": "TOL, Gauss-Seidel convergence tolerance."
+      },
+      {
+        "value": "REALAR(5)",
+        "description": "ACCN, Newton-Raphson acceleration factor."
+      },
+      {
+        "value": "REALAR(6)",
+        "description": "TOLN, Newton-Raphson mismatch convergence tolerance."
+      },
+      {
+        "value": "REALAR(7)",
+        "description": "ACCTY, TYSL acceleration factor."
+      },
+      {
+        "value": "REALAR(8)",
+        "description": "TOLTY, TYSL convergence tolerance."
+      },
+      {
+        "value": "REALAR(9)",
+        "description": "BLOWUP, blow-up threshold."
+      },
+      {
+        "value": "REALAR(10)",
+        "description": "PQBRAK, constant power load characteristic breakpoint."
+      },
+      {
+        "value": "REALAR(11)",
+        "description": "THRSHZ, zero impedance line threshold."
+      },
+      {
+        "value": "REALAR(12)",
+        "description": "ADJTHR, automatic adjustment threshold tolerance."
+      },
+      {
+        "value": "REALAR(13)",
+        "description": "ACCTAP, tap movement deceleration factor."
+      },
+      {
+        "value": "REALAR(14)",
+        "description": "TAPLIM, maximum tap change per adjustment."
+      },
+      {
+        "value": "REALAR(15)",
+        "description": "DVLIM, largest abs(delta v)/abs(v) for Newton solutions."
+      },
+      {
+        "value": "REALAR(16)",
+        "description": "NDVFCT, non-divergent required improvement factor."
+      },
+      {
+        "value": "REALAR(17)",
+        "description": "VCTOLQ, Newton-Raphson voltage controlled bus reactive power mismatch convergence tolerance."
+      },
+      {
+        "value": "REALAR(18)",
+        "description": "VCTOLV, Newton-Raphson voltage controlled bus voltage error convergence tolerance."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "warnings: - None."
+    }
+  ]
+}

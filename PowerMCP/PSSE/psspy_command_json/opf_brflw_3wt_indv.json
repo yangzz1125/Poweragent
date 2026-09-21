@@ -1,0 +1,140 @@
+{
+  "module": "psspy",
+  "function_name": "opf_brflw_3wt_indv",
+  "category": "Optimal Power Flow Data",
+  "description": "Use this API to add a flow constraint record for an individual winding of a three-winding transformer in the working case. It may also be used to modify an existing three-winding transformer flow constraint record. This API routine was first introduced in release 28.0.0. ierr = opf_brflw_3wt_indv(eibus, ejbus, ekbus, cktid, bflwid, intgar, realar)",
+  "python_syntax": "ierr = opf_brflw_3wt_indv(eibus, ejbus, ekbus, cktid, bflwid, intgar, realar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "eibus",
+      "description": "From bus number the value of eibus indicates the from bus of the winding for which the flow constraint is being introduced. (input; no default allowed)."
+    },
+    {
+      "name": "ejbus",
+      "description": "To bus number. (input; no default allowed)."
+    },
+    {
+      "name": "ekbus",
+      "description": "Third bus number. (input; no default allowed)."
+    },
+    {
+      "name": "cktid",
+      "description": "Circuit identifier. (input; no default allowed)."
+    },
+    {
+      "name": "bflwid",
+      "description": "Branch flow constraint identifier. (input; no default allowed)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of two elementsNone. (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of five elementsNone. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "branch flow type (default value of 4 if new record, current value otherwise)."
+      },
+      {
+        "value": "= 1",
+        "description": "MW."
+      },
+      {
+        "value": "= 2",
+        "description": "Mvar."
+      },
+      {
+        "value": "= 3",
+        "description": "MVA."
+      },
+      {
+        "value": "= 4",
+        "description": "Ampere."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "limit type imposed on the branch flow limits (default value of 1 if new record, current value otherwise)."
+      },
+      {
+        "value": "= 0",
+        "description": "reporting only."
+      },
+      {
+        "value": "= 1",
+        "description": "hard limit."
+      },
+      {
+        "value": "= 2",
+        "description": "linear soft limit."
+      },
+      {
+        "value": "= 3",
+        "description": "quadratic soft limit."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "maximum normal flow limit in physical units (default value of 0.0 for new record, current value otherwise)."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "minimum normal flow limit in physical units (default value of 0.0 for new record, current value otherwise)."
+      },
+      {
+        "value": "REALAR(3)",
+        "description": "maximum emergency flow limit in physical units (default value of 0.0 for new record, current value otherwise)."
+      },
+      {
+        "value": "REALAR(4)",
+        "description": "minimum emergency flow limit in physical units (default value of 0.0 for new record, current value otherwise)."
+      },
+      {
+        "value": "REALAR(5)",
+        "description": "soft limit penalty weight (default value of 1.0 for new record, current value otherwise)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= -1",
+      "description": "non-fatal error occurred. Possible warning messages are: - Invalid branch flow type specified. - Invalid branch flow limit type specified. - Maximum normal flow limit is less than the minimum normal flow limit. - Maximum emergency flow limit is less than the minimum emergency flow limit."
+    },
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid bus number specified."
+    },
+    {
+      "value": "= 2",
+      "description": "specified three-winding transformer does not exist."
+    },
+    {
+      "value": "= 3",
+      "description": "specified winding of three-winding transformer not found."
+    },
+    {
+      "value": "= 4",
+      "description": "branch flow constraint table is full."
+    },
+    {
+      "value": "= 5",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

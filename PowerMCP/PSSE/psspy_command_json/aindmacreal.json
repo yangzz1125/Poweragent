@@ -1,0 +1,274 @@
+{
+  "module": "psspy",
+  "function_name": "aindmacreal",
+  "category": "Induction Machine Data",
+  "description": "Use this API routine to return an array of real values for subsystem induction machines. This API routine was first introduced in release 33.0.0. ierr, rarray = aindmacreal(sid, flag, string)",
+  "python_syntax": "ierr, rarray = aindmacreal(sid, flag, string)",
+  "return_type": "error_and_array",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the bus subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem induction machines to include. (input; 1 by default)."
+    },
+    {
+      "name": "string",
+      "description": "An array of NSTR elements specifying NSTR of the following strings indicating the bus and/or induction machine quantities desired. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "rarray",
+      "description": "An array of NSTR*DIM elements specifying Is an array of at least NSTR columns, each of which contains DIM elements. (output)."
+    }
+  ],
+  "allowed_values": {
+    "sid": [
+      {
+        "value": "< 0",
+        "description": "to instruct the API routine to assume a subsystem containing all buses in the working case."
+      },
+      {
+        "value": ">= 0",
+        "description": "valid bus subsystem identifier. Valid subsystem identifiers range from 0 to 11. Subsystem SID must have been previously defined."
+      }
+    ],
+    "flag": [
+      {
+        "value": "= 1",
+        "description": "for all in-service induction machines at in-service subsystem buses (type code 1, 2 or 3)."
+      },
+      {
+        "value": "= 2",
+        "description": "for all induction machines at in-service subsystem buses (type code 1, 2 or 3)."
+      },
+      {
+        "value": "= 3",
+        "description": "for all in-service induction machines at subsystem buses, even if the bus to which it is connected is out-of-service (type code 4)."
+      },
+      {
+        "value": "= 4",
+        "description": "for all induction machines at all subsystem buses."
+      },
+      {
+        "value": "= 11",
+        "description": "for all in-service induction generators at in-service subsystem buses (type code 1, 2 or 3)."
+      },
+      {
+        "value": "= 12",
+        "description": "all induction generators at in-service subsystem buses (type code 1, 2 or 3)."
+      },
+      {
+        "value": "= 13",
+        "description": "for all in-service induction generators at subsystem buses, even if the bus to which it is connected is out-of-service (type code 4)."
+      },
+      {
+        "value": "= 14",
+        "description": "for all induction generators at all subsystem buses."
+      },
+      {
+        "value": "= 21",
+        "description": "for all in-service induction motors at in-service subsystem buses (type code 1, 2 or 3)."
+      },
+      {
+        "value": "= 22",
+        "description": "all induction motors at in-service subsystem buses (type code 1, 2 or 3)."
+      },
+      {
+        "value": "= 23",
+        "description": "for all in-service induction motors at subsystem buses, even if the bus to which it is connected is out-of-service (type code 4)."
+      },
+      {
+        "value": "= 24",
+        "description": "for all induction motors at all subsystem buses."
+      }
+    ],
+    "string": [
+      {
+        "value": "= MBASE",
+        "description": "Machine base power."
+      },
+      {
+        "value": "= RATEKV",
+        "description": "Machine rated voltage."
+      },
+      {
+        "value": "= PSETPOINT",
+        "description": "Power setpoint (positive for a motor)."
+      },
+      {
+        "value": "= RA",
+        "description": "Armature resistance."
+      },
+      {
+        "value": "= XA",
+        "description": "Armature leakage reactance."
+      },
+      {
+        "value": "= XM",
+        "description": "Magnetizing reactance."
+      },
+      {
+        "value": "= R1",
+        "description": "First cage resistance."
+      },
+      {
+        "value": "= X1",
+        "description": "First cage reactance."
+      },
+      {
+        "value": "= R2",
+        "description": "Second cage resistance."
+      },
+      {
+        "value": "= X2",
+        "description": "Second cage reactance."
+      },
+      {
+        "value": "= X3",
+        "description": "Third reactance."
+      },
+      {
+        "value": "= E1",
+        "description": "First saturation voltage."
+      },
+      {
+        "value": "= SE1",
+        "description": "SE(E1)."
+      },
+      {
+        "value": "= E2",
+        "description": "Second saturation voltage."
+      },
+      {
+        "value": "= SE2",
+        "description": "SE(E2)."
+      },
+      {
+        "value": "= IA1",
+        "description": "Starting stator current for applying stator leakage reactance saturation."
+      },
+      {
+        "value": "= IA2",
+        "description": "Stator current at which the stator leakage reactance is fully saturated."
+      },
+      {
+        "value": "= XAMULT",
+        "description": "Xa multiplier at full leakage reactance saturation."
+      },
+      {
+        "value": "= TRQA",
+        "description": "Load torque variation constant A for WECC model."
+      },
+      {
+        "value": "= TRQB",
+        "description": "Load torque variation constant B for WECC model."
+      },
+      {
+        "value": "= TRQD",
+        "description": "Load torque variation constant D for both models."
+      },
+      {
+        "value": "= TRQE",
+        "description": "Load torque variation constant E for WECC model."
+      },
+      {
+        "value": "= SLIP",
+        "description": "Slip."
+      },
+      {
+        "value": "= H",
+        "description": "Machine inertia."
+      },
+      {
+        "value": "= ILKDOVERIRAT",
+        "description": "Ratio of locked rotor current to rated current."
+      },
+      {
+        "value": "= ROVERX",
+        "description": "Ratio of Rpos to Xpos."
+      },
+      {
+        "value": "= RZERO",
+        "description": "Machine zero sequence fault analysis resistance."
+      },
+      {
+        "value": "= XZERO",
+        "description": "Machine zero sequence fault analysis reactance."
+      },
+      {
+        "value": "= RGROUND",
+        "description": "Machine zero sequence grounding resistance."
+      },
+      {
+        "value": "= XGROUND",
+        "description": "Machine zero sequence grounding reactance."
+      },
+      {
+        "value": "= P",
+        "description": "Active power flow from the bus to the machine, in MW."
+      },
+      {
+        "value": "= Q",
+        "description": "Reactive power flow from the bus to the machine, in Mvar."
+      },
+      {
+        "value": "= MVA",
+        "description": "MVA flow from the bus to the machine, in MVA."
+      },
+      {
+        "value": "= O_P",
+        "description": "Active power flow from the bus to the machine (units determined by power output options)."
+      },
+      {
+        "value": "= O_Q",
+        "description": "Reactive power flow from the bus to the machine (units determined by power output options)."
+      },
+      {
+        "value": "= O_MVA",
+        "description": "MVA flow from the bus to the machine (units determined by power output options)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid FLAG value."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid NSTR value."
+    },
+    {
+      "value": "= 5",
+      "description": "DIM, and hence the size of RARRAY, is not large enough."
+    },
+    {
+      "value": "= 6",
+      "description": "Invalid STRING value."
+    },
+    {
+      "value": "= 7",
+      "description": "Sequence data not in case (when STRING = ‘ILKDOVERIRAT’, ‘ROVERX’, ‘RZERO’, ‘XZERO’, ‘XZERO’, ‘RGROUND’ or ‘XGROUND’)."
+    }
+  ]
+}

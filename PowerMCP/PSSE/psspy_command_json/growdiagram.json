@@ -1,0 +1,31 @@
+{
+  "module": "psspy",
+  "function_name": "growdiagram",
+  "category": "Diagram View",
+  "description": "This API routine is obsolete. It has been replaced by the API routine growdiagram_2, and is implemented by a call to growdiagram_2. Use this API to GROW a bus and all the connected buses in an active Slider diagram in the GUI. Requires a current network case. This API routine was first introduced in release 33.0.0. growdiagram(numlevels, itemcount, itemlist, xposition, yposition)",
+  "python_syntax": "growdiagram(numlevels, itemcount, itemlist, xposition, yposition)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "numlevels",
+      "description": "Number of levels; include all buses up to this number of connections from each item in itemlist in the grow operation. a value of -1 can be used to grow all buses (subsystem and in-service options still apply), however attempting to lay out several hundred buses or more will take a very large amount of time to complete as psse attempts to calculate best positions for each bus. it is still recommended that the user only grow several levels at once. (input)."
+    },
+    {
+      "name": "itemcount",
+      "description": "Number of items in itemlist. itemcount can be 0 if numlevels is -1. under this condition diagram growth will start at an arbitrary bus. (input; 0 by default)."
+    },
+    {
+      "name": "itemlist",
+      "description": "An array of ITEMCOUNT elements specifying list of items to grow. Each item is given by its generated map string. (input)."
+    },
+    {
+      "name": "xposition",
+      "description": "X coordinate of the first bus on the slider diagram. (input)."
+    },
+    {
+      "name": "yposition",
+      "description": "X coordinate of the first bus on the slider diagram. (input)."
+    }
+  ],
+  "return_values": []
+}

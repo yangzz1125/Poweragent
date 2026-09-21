@@ -1,0 +1,10 @@
+{
+  "module": "psspy",
+  "function_name": "showloadedlibraries",
+  "category": "Non-Engineering",
+  "description": "",
+  "python_syntax": "",
+  "return_type": "void",
+  "parameters": [],
+  "return_values": []
+}

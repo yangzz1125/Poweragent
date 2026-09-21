@@ -1,0 +1,29 @@
+{
+  "module": "psspy",
+  "function_name": "restorestatesfromisolate",
+  "category": "Node Breaker Operation",
+  "description": "Use this API to restore the network working case back to its original state; the state prior to all “Isolate By Breaker” actions that have been taken. Caution: Any network changes that may have been made since the initial “Isolate” action will be lost. This API routine was first introduced in release 34.1.0. restorestatesfromisolate(ierr)",
+  "python_syntax": "restorestatesfromisolate(ierr)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "ierr",
+      "description": ""
+    }
+  ],
+  "return_values": [],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "error restoring working case."
+    },
+    {
+      "value": "= 2",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

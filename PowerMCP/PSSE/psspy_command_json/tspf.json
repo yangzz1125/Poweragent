@@ -1,0 +1,314 @@
+{
+  "module": "psspy",
+  "function_name": "tspf",
+  "category": "Time Series Power Flow Operation",
+  "description": "Use this API to run the time series power flow solution. This API routine was first introduced in release 35.4.0. ierr = tspf(profile, starttime, endtime, tol, optacc, label, dfxfile, accfile, inlfile, zipfile)",
+  "python_syntax": "ierr = tspf(profile, starttime, endtime, tol, optacc, label, dfxfile, accfile, inlfile, zipfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "profile",
+      "description": "Profile name. (input)."
+    },
+    {
+      "name": "starttime",
+      "description": "Start time point. when start time point is less than 0, all time points are simulated. (input; -1, by default)."
+    },
+    {
+      "name": "endtime",
+      "description": "End time point. when end time is less than start time, only start time point is simulated. (input; -1, by default)."
+    },
+    {
+      "name": "tol",
+      "description": "Is the mismatch tolerance. (input; Newton solution convergence tolerance, TOLN, by default)."
+    },
+    {
+      "name": "optacc",
+      "description": "An array of 11 elements specifying solution options. The values are as follows:. (input)."
+    },
+    {
+      "name": "label",
+      "description": "Is the name of the generation dispatch subsystem (blank by default, no default allowed if options(10) is not 0). (input)."
+    },
+    {
+      "name": "dfxfile",
+      "description": "Is the name of the distribution factor data file. (input)."
+    },
+    {
+      "name": "accfile",
+      "description": "Is the name of the contingency solution output file. (input)."
+    },
+    {
+      "name": "inlfile",
+      "description": "Is the name of the unit inertia and governor data file. (input)."
+    },
+    {
+      "name": "zipfile",
+      "description": "Is the name of the zip archive output file. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Is the error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "optacc": [
+      {
+        "value": "OPTACC(1)",
+        "description": "tap adjustment flag (tap adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable stepping adjustment."
+      },
+      {
+        "value": "= 2",
+        "description": "enable direct adjustment."
+      },
+      {
+        "value": "OPTACC(2)",
+        "description": "area interchange adjustment flag (area interchange adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable using tie line flows only in calculating area interchange."
+      },
+      {
+        "value": "= 2",
+        "description": "enable using tie line flows and loads in calculating area interchange."
+      },
+      {
+        "value": "OPTACC(3)",
+        "description": "phase shift adjustment flag (phase shift adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTACC(4)",
+        "description": "dc tap adjustment flag (dc tap adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTACC(5)",
+        "description": "switched shunt adjustment flag (switched shunt adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "= 2",
+        "description": "enable continuous mode, disable discrete mode."
+      },
+      {
+        "value": "OPTACC(6)",
+        "description": "solution method flag (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "FDNS."
+      },
+      {
+        "value": "= 1",
+        "description": "FNSL."
+      },
+      {
+        "value": "= 2",
+        "description": "optimized FDNS."
+      },
+      {
+        "value": "OPTACC(7)",
+        "description": "non-divergent solution flag (non-divergent solution option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTACC(8)",
+        "description": "induction motor treatment flag (applied when an induction motor fails to solve due to low terminal bus voltage)."
+      },
+      {
+        "value": "= 0",
+        "description": "stall."
+      },
+      {
+        "value": "= 1",
+        "description": "trip."
+      },
+      {
+        "value": "OPTACC(9)",
+        "description": "induction machine failure flag (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "treat contingency as non-converged if any induction machines are placed in the “stalled” or “tripped” state."
+      },
+      {
+        "value": "= 1",
+        "description": "treat contingency as solved if it converges, even if any induction machines are placed in the “stalled” or “tripped” state."
+      },
+      {
+        "value": "OPTACC(10)",
+        "description": "dispatch mode (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "subsystem machines (reserve)."
+      },
+      {
+        "value": "= 2",
+        "description": "subsystem machines (pmax)."
+      },
+      {
+        "value": "= 3",
+        "description": "subsystem machines (inertia)."
+      },
+      {
+        "value": "= 4",
+        "description": "subsystem machines (governor droop)."
+      },
+      {
+        "value": "OPTACC(11)",
+        "description": "ZIP archive flag (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "do not write a ZIP archive file."
+      },
+      {
+        "value": "= 1",
+        "description": "write a ZIP archive using the file specified as ZIPFILE."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid TOL value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid OPTIONS value."
+    },
+    {
+      "value": "= 3",
+      "description": "generators are converted."
+    },
+    {
+      "value": "= 4",
+      "description": "generation dispatch subsystem is not defined."
+    },
+    {
+      "value": "= 5",
+      "description": "buses with bus type code and series element status inconsistencies."
+    },
+    {
+      "value": "= 6",
+      "description": "buses in island(s) without a swing bus; use activity TREE."
+    },
+    {
+      "value": "= 7",
+      "description": "too many islands in base case."
+    },
+    {
+      "value": "= 8",
+      "description": "no Distribution Factor Data File specified."
+    },
+    {
+      "value": "= 9",
+      "description": "no TSPF Output File specified."
+    },
+    {
+      "value": "= 10",
+      "description": "no ZIP Archive Output File specified."
+    },
+    {
+      "value": "= 11",
+      "description": "No profile curve sets defined."
+    },
+    {
+      "value": "= 12",
+      "description": "Profile curve set not found."
+    },
+    {
+      "value": "= 13",
+      "description": "No profile curves defined in profile curve set."
+    },
+    {
+      "value": "= 14",
+      "description": "Time point not found in the profile curve set."
+    },
+    {
+      "value": "= 15",
+      "description": "No profile data defined."
+    },
+    {
+      "value": "= 21",
+      "description": "file DFXFILE is not in the form of a PSSE 25 or later DFAX file; run DFAX."
+    },
+    {
+      "value": "= 22",
+      "description": "monitored elements exceed limit when adding multi-section line members."
+    },
+    {
+      "value": "= 51",
+      "description": "error opening TSPF Solution Output File."
+    },
+    {
+      "value": "= 52",
+      "description": "error opening Distribution Factor Data File."
+    },
+    {
+      "value": "= 54",
+      "description": "error opening Unit Inertia and Governor Data File."
+    },
+    {
+      "value": "= 55",
+      "description": "error opening ZIP Archive Output File."
+    },
+    {
+      "value": "= 56",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

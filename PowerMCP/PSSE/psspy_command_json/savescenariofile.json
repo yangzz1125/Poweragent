@@ -1,0 +1,15 @@
+{
+  "module": "psspy",
+  "function_name": "savescenariofile",
+  "category": "Scenarios",
+  "description": "This API routine is obsolete. It has been replaced by the API routine SCENARIOSAVE, and is implemented by a call to SCENARIOSAVE. Use this API to save the currently open Scenario. This API routine was first introduced in release 32.0.0. savescenariofile(sfile)",
+  "python_syntax": "savescenariofile(sfile)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "sfile",
+      "description": ""
+    }
+  ],
+  "return_values": []
+}

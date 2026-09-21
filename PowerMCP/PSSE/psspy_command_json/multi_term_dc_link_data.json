@@ -1,0 +1,100 @@
+{
+  "module": "psspy",
+  "function_name": "multi_term_dc_link_data",
+  "category": "Power Flow Data",
+  "description": "Use this API to modify the data of a dc link of an existing multi-terminal dc line in the working case or to add a new dc link to a multi-terminal dc line in the working case (see PSSE Program Operation Manual, Multi-Terminal DC Transmission Line Data). The dc line must have previously been specified via the MULTI_TERM_DC_LINE_DATA API. This API routine was first introduced in release 28.0.0. ierr = multi_term_dc_link_data(dc,idc,jdc,dcckt,intgar,realar)",
+  "python_syntax": "ierr = multi_term_dc_link_data(dc,idc,jdc,dcckt,intgar,realar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "dc",
+      "description": "Quoted name of the multi-terminal dc line for which data for a dc link is to be specified; if an unquoted integer value is specified, the api converts it to a left- justified name. (input; no default allowed)."
+    },
+    {
+      "name": "idc",
+      "description": "Dc bus number of from bus (must be between 1 and the number of dc buses in multi-terminal dc line dc). (input; no default allowed)."
+    },
+    {
+      "name": "jdc",
+      "description": "Dc bus number of to bus (must be between 1 and the number of dc buses in multi-terminal dc line dc). (input; no default allowed)."
+    },
+    {
+      "name": "dcckt",
+      "description": "Circuit identifier. (input; ‘1’ by default)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of one elementsNone. (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of two elementsNone. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "METBUS, metered end dc bus number (IDC by default)."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "RDC, dc link resistance (0.0 by default)."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "LDC, dc link inductance (0.0 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "dc line not found."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid dc bus number."
+    },
+    {
+      "value": "= 3",
+      "description": "circuit identifier is more than one character."
+    },
+    {
+      "value": "= 4",
+      "description": "dc bus not present in this multi-terminal dc line."
+    },
+    {
+      "value": "= 5",
+      "description": "branch from a bus to itself."
+    },
+    {
+      "value": "= 6",
+      "description": "too many dc links in this multi-terminal dc line."
+    },
+    {
+      "value": "= 7",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - invalid metered end bus. - invalid dc link resistance. - invalid dc link inductance."
+    }
+  ]
+}

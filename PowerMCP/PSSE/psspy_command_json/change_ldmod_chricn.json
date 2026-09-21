@@ -1,0 +1,78 @@
+{
+  "module": "psspy",
+  "function_name": "change_ldmod_chricn",
+  "category": "Load Related Models",
+  "description": "Use this API to change the value of a character ICON (i.e., an element of the CHRICN array) of a load related model at a specified load or subsystem. The corresponding integer ICON is set to 0. This API routine was first introduced in release 30.2.0. ierr = change_ldmod_chricn(ibus, id, name, j, chdata)",
+  "python_syntax": "ierr = change_ldmod_chricn(ibus, id, name, j, chdata)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus, owner, zone or area number. ignored when an all type load model is specified (unless an all type load model is specified). (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Load identifier, or “*” if the model is applied to all loads in the subsystem. (input; blank by default)."
+    },
+    {
+      "name": "name",
+      "description": "Model name. (input; no default allowed)."
+    },
+    {
+      "name": "j",
+      "description": "Icon number to change relative to the start of the block of icons assigned to this model (1 for icon(i), 2 for icon(i+1), etc.). (input; no default allowed)."
+    },
+    {
+      "name": "chdata",
+      "description": "New character icon value. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "unknown model NAME."
+    },
+    {
+      "value": "= 2",
+      "description": "model NAME is not a load-related model."
+    },
+    {
+      "value": "= 3",
+      "description": "no <subsystem type> type <load type> model for this id in tables for <subsystem type> IBUS."
+    },
+    {
+      "value": "= 4",
+      "description": "no all type <load type> model for this id in tables."
+    },
+    {
+      "value": "= 5",
+      "description": "<subsystem type> <load type> model for this id for <subsystem type> IBUS is aaa not xxx."
+    },
+    {
+      "value": "= 6",
+      "description": "all type <load type> model for this id is aaa not xxx."
+    },
+    {
+      "value": "= 7",
+      "description": "no input ICONs used in model NAME."
+    },
+    {
+      "value": "= 8",
+      "description": "ICON number outside of the ICON range of this model."
+    },
+    {
+      "value": "= 9",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

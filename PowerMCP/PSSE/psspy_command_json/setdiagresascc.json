@@ -1,0 +1,191 @@
+{
+  "module": "psspy",
+  "function_name": "setdiagresascc",
+  "category": "Diagram View",
+  "description": "This API routine is obsolete. It has been replaced by the API routine setdiagresascc_2, and is implemented by a call to setdiagresascc_2. This API is used to set the ASCC short circuit analysis annotation options in the active Slider diagram. This API routine was first introduced in release 32.0.0. setdiagresascc(annot, type, bus, boe, ctrib, frm, to, last, id, style, width, color)",
+  "python_syntax": "setdiagresascc(annot, type, bus, boe, ctrib, frm, to, last, id, style, width, color)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "annot",
+      "description": "Fault to display. (input)."
+    },
+    {
+      "name": "type",
+      "description": "Fault display quantity. (input)."
+    },
+    {
+      "name": "bus",
+      "description": "Faulted bus. (input)."
+    },
+    {
+      "name": "boe",
+      "description": "Fault location. (input)."
+    },
+    {
+      "name": "ctrib",
+      "description": "Contributions at home bus for bus faults. (input)."
+    },
+    {
+      "name": "frm",
+      "description": "From bus if a line fault is applied. (input)."
+    },
+    {
+      "name": "to",
+      "description": "To bus if a line fault is applied. (input)."
+    },
+    {
+      "name": "last",
+      "description": "Third bus if a line fault is applied to a 3-winding transformer. (input)."
+    },
+    {
+      "name": "id",
+      "description": "Branch/transformer identifier. (input)."
+    },
+    {
+      "name": "style",
+      "description": "Line style applied to the faulted bus diagram item. (input)."
+    },
+    {
+      "name": "width",
+      "description": "Line width applied to the faulted bus diagram item, >= 1. (input)."
+    },
+    {
+      "name": "color",
+      "description": "An array of three elements specifying color for diagram items that are faulted. (input)."
+    }
+  ],
+  "return_values": [],
+  "allowed_values": {
+    "annot": [
+      {
+        "value": "= 0",
+        "description": "fault currents (only bus faults)."
+      },
+      {
+        "value": "= 1",
+        "description": "three phase."
+      },
+      {
+        "value": "= 2",
+        "description": "line to Ground (LG)."
+      },
+      {
+        "value": "= 3",
+        "description": "line Line to Ground (LLG)."
+      },
+      {
+        "value": "= 4",
+        "description": "line to Line (LL)."
+      }
+    ],
+    "type": [
+      {
+        "value": "= 1",
+        "description": "Ia1."
+      },
+      {
+        "value": "= 2",
+        "description": "Ia2."
+      },
+      {
+        "value": "= 3",
+        "description": "Ia0."
+      },
+      {
+        "value": "= 4",
+        "description": "IA."
+      },
+      {
+        "value": "= 5",
+        "description": "IB."
+      },
+      {
+        "value": "= 6",
+        "description": "IC."
+      },
+      {
+        "value": "= 7",
+        "description": "3Ia0."
+      }
+    ],
+    "bus": [
+      {
+        "value": "= 0",
+        "description": "no bus faulted."
+      },
+      {
+        "value": "> 0",
+        "description": "bus to be faulted."
+      }
+    ],
+    "boe": [
+      {
+        "value": "= 1",
+        "description": "fault located at the faulted bus."
+      },
+      {
+        "value": "= 2",
+        "description": "fault located at the faulted bus with lines outaged."
+      },
+      {
+        "value": "= 3",
+        "description": "fault located at the end of lines."
+      }
+    ],
+    "ctrib": [
+      {
+        "value": "= 0",
+        "description": "contributions for selected fault."
+      },
+      {
+        "value": "= 1",
+        "description": "contributions at home bus for all faulted buses for selected fault."
+      }
+    ],
+    "frm": [
+      {
+        "value": "= 0",
+        "description": "no line fault applied."
+      },
+      {
+        "value": "> 0",
+        "description": "from bus."
+      }
+    ],
+    "to": [
+      {
+        "value": "= 0",
+        "description": "no line fault applied."
+      },
+      {
+        "value": "> 0",
+        "description": "to bus."
+      }
+    ],
+    "last": [
+      {
+        "value": "= 0",
+        "description": "no line fault applied."
+      },
+      {
+        "value": "> 0",
+        "description": "to bus."
+      }
+    ],
+    "color": [
+      {
+        "value": "COLOR(1)",
+        "description": "0->255 Red component."
+      },
+      {
+        "value": "COLOR(2)",
+        "description": "0->255 Blue component."
+      },
+      {
+        "value": "COLOR(3)",
+        "description": "0->255 Green component."
+      }
+    ]
+  }
+}

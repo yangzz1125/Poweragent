@@ -1,0 +1,118 @@
+{
+  "module": "psspy",
+  "function_name": "dfax",
+  "category": "Power Flow Operation",
+  "description": "This API routine is obsolete. It has been replaced by the API routine dfax_2, and is implemented by a call to dfax_2. Use this API to construct a Distribution Factor Data File (activity DFAX). This API routine was first introduced in release 29.0.0. ierr = dfax(options, subfile, monfile, confile, dfxfile)",
+  "python_syntax": "ierr = dfax(options, subfile, monfile, confile, dfxfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "options",
+      "description": "An array of two elements specifying calculation options. The value of each element is as follows. (input)."
+    },
+    {
+      "name": "subfile",
+      "description": "Name of the subsystem description file; blank for none. (input; blank by default)."
+    },
+    {
+      "name": "monfile",
+      "description": "Name of monitored element description file. (input; no default allowed)."
+    },
+    {
+      "name": "confile",
+      "description": "Name of contingency description data file. (input; no default allowed)."
+    },
+    {
+      "name": "dfxfile",
+      "description": "Name of distribution factor data file. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "options": [
+      {
+        "value": "OPTIONS(1)",
+        "description": "distribution factor option flag (1 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "do not calculate distribution factors (i.e., DFAX,AC)."
+      },
+      {
+        "value": "= 1",
+        "description": "calculate distribution factors."
+      },
+      {
+        "value": "OPTIONS(2)",
+        "description": "monitored element sorting flag (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "do not sort (i.e., leave in Monitored Element Description File order)."
+      },
+      {
+        "value": "= 1",
+        "description": "sort."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid OPTIONS value."
+    },
+    {
+      "value": "= 2",
+      "description": "generators are converted."
+    },
+    {
+      "value": "= 3",
+      "description": "buses in island(s) without a swing bus; use activity TREE."
+    },
+    {
+      "value": "= 4",
+      "description": "no Distribution Factor Data File specified."
+    },
+    {
+      "value": "= 5",
+      "description": "no Monitored Element Data input file specified."
+    },
+    {
+      "value": "= 6",
+      "description": "no Contingency Description Data file specified."
+    },
+    {
+      "value": "= 7",
+      "description": "fatal error reading input file."
+    },
+    {
+      "value": "= 8",
+      "description": "error opening output file DFXFILE."
+    },
+    {
+      "value": "= 9",
+      "description": "error opening input file SUBFILE."
+    },
+    {
+      "value": "= 10",
+      "description": "error opening input file MONFILE."
+    },
+    {
+      "value": "= 11",
+      "description": "error opening input file CONFILE."
+    },
+    {
+      "value": "= 12",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

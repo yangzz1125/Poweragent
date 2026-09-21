@@ -1,0 +1,62 @@
+{
+  "module": "psspy",
+  "function_name": "get_ext_msline_int",
+  "category": "Extension Data Access",
+  "description": "Use this API to get multi-section line integer extension data. This API routine was first introduced in release 35.1.0. ierr, ival = get_ext_msline_int(ibus, jbus, mslid, string)",
+  "python_syntax": "ierr, ival = get_ext_msline_int(ibus, jbus, mslid, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Msline ibus. (input)."
+    },
+    {
+      "name": "jbus",
+      "description": "Msline jbus. (input)."
+    },
+    {
+      "name": "mslid",
+      "description": "Msline mslid. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the extension msline field desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "ival",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Element not found; ‘IVAL’ not returned."
+    },
+    {
+      "value": "= 2",
+      "description": "Bad value of ‘STRING’; ‘IVAL’ not returned."
+    },
+    {
+      "value": "= 3",
+      "description": "Bad data type for field ‘STRING’; ‘IVAL’ not returned."
+    },
+    {
+      "value": "= 4",
+      "description": "Unknown error with data access; ‘IVAL’ not returned."
+    },
+    {
+      "value": "= 10",
+      "description": "API Prereqs not met; ‘IVAL’ not returned."
+    }
+  ]
+}

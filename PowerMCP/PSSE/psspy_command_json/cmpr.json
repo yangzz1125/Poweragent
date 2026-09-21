@@ -1,0 +1,176 @@
+{
+  "module": "psspy",
+  "function_name": "cmpr",
+  "category": "Power Flow Operation",
+  "description": "Use this API to tabulate certain case totals, as contained in the working case, with those of a designated Saved Case (activity CMPR). Either system totals, area totals, owner totals, or zone totals may be compared. It must be referenced using one of the following procedures: - One reference with APIOPT=1, followed by any number of references with APIOPT=2, followed by one reference with APIOPT=3. - One reference with APIOPT=0. This automatically combines the processing of one APIOPT 1 reference, followed by one APIOPT 2 reference, followed by one APIOPT 3 reference. This API routine was first introduced in release 28.0.0. ierr = cmpr(sid, apiopt, status, thrsh, cfile)",
+  "python_syntax": "ierr = cmpr(sid, apiopt, status, thrsh, cfile)",
+  "return_type": "error_only_report",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid area, zone or owner subsystem identifier. valid subsystem identifiers range from 0 to 11. subsystem sid must have been previously defined. (input; used only when APIOPT is 0 or 1; 0 by default)."
+    },
+    {
+      "name": "apiopt",
+      "description": "Mode of operation in the api. (input; 0 by default)."
+    },
+    {
+      "name": "status",
+      "description": "An array of four elements specifying The value of each element is as follows. (input)."
+    },
+    {
+      "name": "thrsh",
+      "description": "Difference threshold, in either engineering units or a percent, based on the value of status(2). (input; used only when APIOPT is 0 or 2; 0.0 by default)."
+    },
+    {
+      "name": "cfile",
+      "description": "Saved case file to be compared against the working case (when apiopt is 0 or 1). (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "apiopt": [
+      {
+        "value": "= 0",
+        "description": "initialize for case totals comparison, run the comparison specified by STATUS(3), and run post-processing clean up."
+      },
+      {
+        "value": "= 1",
+        "description": "initialize system for system, area, owner, zone totals."
+      },
+      {
+        "value": "= 2",
+        "description": "calculate and report system, area, owner, zone totals."
+      },
+      {
+        "value": "= 3",
+        "description": "postprocessing housekeeping."
+      }
+    ],
+    "status": [
+      {
+        "value": "STATUS(1)",
+        "description": "tabulation method (used only when APIOPT is 0 or 1; 0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "tabulate system totals."
+      },
+      {
+        "value": "= 1",
+        "description": "tabulate area totals for area subsystem SID."
+      },
+      {
+        "value": "= 2",
+        "description": "tabulate owner totals for owner subsystem SID."
+      },
+      {
+        "value": "= 3",
+        "description": "tabulate zone totals for zone subsystem SID."
+      },
+      {
+        "value": "STATUS(2)",
+        "description": "units for the difference threshold (used only when APIOPT is 0 or 2; 0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "threshold in engineering units."
+      },
+      {
+        "value": "= 1",
+        "description": "threshold in percent."
+      },
+      {
+        "value": "STATUS(3)",
+        "description": "quantity to be compared (used only when APIOPT is 0 or 2; 1 by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "compare generation."
+      },
+      {
+        "value": "= 2",
+        "description": "compare load."
+      },
+      {
+        "value": "= 3",
+        "description": "compare losses."
+      },
+      {
+        "value": "= 4",
+        "description": "compare mismatch."
+      },
+      {
+        "value": "= 5",
+        "description": "compare interchange; not valid for STATUS(1) = 2."
+      },
+      {
+        "value": "STATUS(4)",
+        "description": "file to restore into the working case upon completion (used only when APIOPT is 0 or 3; 0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "restore the working case."
+      },
+      {
+        "value": "= 1",
+        "description": "restore the comparison file to the working case."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid APIOPT value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid STATUS value."
+    },
+    {
+      "value": "= 4",
+      "description": "owner (STATUS(1)=2) interchange (STATUS(3)=5) combination is invalid."
+    },
+    {
+      "value": "= 5",
+      "description": "invalid THRSH value."
+    },
+    {
+      "value": "= 6",
+      "description": "CFILE is blank."
+    },
+    {
+      "value": "= 7",
+      "description": "error writing the working case to a temporary file."
+    },
+    {
+      "value": "= 8",
+      "description": "unexpected APIOPT value."
+    },
+    {
+      "value": "= 9",
+      "description": "error reading the comparison case."
+    },
+    {
+      "value": "= 10",
+      "description": "error opening the temporary file."
+    },
+    {
+      "value": "= 11",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

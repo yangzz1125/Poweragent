@@ -1,0 +1,46 @@
+{
+  "module": "psspy",
+  "function_name": "purgbrn",
+  "category": "Power Flow Data",
+  "description": "Use this API to delete the specified non-transformer branch or two-winding transformer from the working case. This API routine was first introduced in release 28.0.0. ierr = purgbrn(ibus, jbus, ckt)",
+  "python_syntax": "ierr = purgbrn(ibus, jbus, ckt)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "One of the buses connected by the branch. (input; no default allowed)."
+    },
+    {
+      "name": "jbus",
+      "description": "Other bus connected by the branch. (input; no default allowed)."
+    },
+    {
+      "name": "ckt",
+      "description": "Circuit identifier of the branch to be deleted. (input; ‘1’ by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "branch not found."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

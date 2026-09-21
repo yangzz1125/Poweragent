@@ -1,0 +1,42 @@
+{
+  "module": "psspy",
+  "function_name": "swsblz",
+  "category": "Single Element Data",
+  "description": "This API routine is obsolete. It has been replaced by the API routine SWSBLK_2, and is implemented by a call to SWSBLK_2. Use this API to return the switched shunt ‘1’ number of steps and zero sequence step size in per unit for block IBLK. This API routine was first introduced in release 28.0.0. ierr, ival, v = swsblz(ibus, iblk)",
+  "python_syntax": "ierr, ival, v = swsblz(ibus, iblk)",
+  "return_type": "error_and_multi_value",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    },
+    {
+      "name": "iblk",
+      "description": "Switched shunt block number. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "ival",
+      "description": "Number of steps in block ‘iblk’. (output)."
+    },
+    {
+      "name": "v",
+      "description": "Admittance in pu per step in block ‘iblk’. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IVAL’ and ‘V’ returned."
+    },
+    {
+      "value": "> 0",
+      "description": "SWSBLK_2 error code."
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "module": "psspy",
+  "function_name": "har_vltsrc_chng",
+  "category": "Harmonics Data",
+  "description": "Use this API to change harmonics voltage source table data in the working case. This API is used to change angle type data, V/V0 and Angle data points of existing harmonic number and existing table in working case harmonics data. This API cannot be used to change table name and harmonic numbers. All the harmonic numbers in HAR array must be non zero. This API routine was first introduced in release 35.4.0. ierr = har_vltsrc_chng(name, npts, intgar, har, var, anar)",
+  "python_syntax": "ierr = har_vltsrc_chng(name, npts, intgar, har, var, anar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Harmonics voltage source data table name. (input; no default allowed)."
+    },
+    {
+      "name": "npts",
+      "description": "Number of data points specified in the table. (input)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of one elementsNone. (input)."
+    },
+    {
+      "name": "har",
+      "description": "An array of NPTS elements specifying array of ‘NPTS’ values specifying harmonic numbers. All the harmonic numbers in HAR array must be non zero. (input)."
+    },
+    {
+      "name": "var",
+      "description": "An array of NPTS elements specifying array of ‘NPTS’ values specifying magnitude. (input)."
+    },
+    {
+      "name": "anar",
+      "description": "An array of NPTS elements specifying array of ‘NPTS’ values specifying angle. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "ANTYP, Harmonics Voltage Source angle type (1 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

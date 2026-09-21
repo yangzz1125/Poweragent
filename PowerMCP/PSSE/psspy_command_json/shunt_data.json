@@ -1,0 +1,88 @@
+{
+  "module": "psspy",
+  "function_name": "shunt_data",
+  "category": "Power Flow Data",
+  "description": "Use this API to modify the data of an existing fixed bus shunt in the working case or to add a new fixed bus shunt to the working case (see PSSE Program Operation Manual, Fixed Bus Shunt Data). This API routine was first introduced in release 31.0.0. ierr = shunt_data(ibus, id, intgar, realar)",
+  "python_syntax": "ierr = shunt_data(ibus, id, intgar, realar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Shunt identifier. (input; ‘1’ by default)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of one elementsNone. (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of two elementsNone. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "STATUS, shunt status (1 by default)."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "GL, fixed shunt admittance (conductance) (0.0 by default)."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "BL, fixed shunt admittance (susceptance) (0.0 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "shunt identifier is more than two characters."
+    },
+    {
+      "value": "= 3",
+      "description": "blank shunt identifier is invalid."
+    },
+    {
+      "value": "= 4",
+      "description": "fixed bus shunt table is full."
+    },
+    {
+      "value": "= 6",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= 7",
+      "description": "node-breaker terminal connection table is full."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - invalid shunt status."
+    }
+  ]
+}

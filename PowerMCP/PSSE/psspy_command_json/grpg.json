@@ -1,0 +1,24 @@
+{
+  "module": "psspy",
+  "function_name": "grpg",
+  "category": "Diagram View",
+  "description": "Use this API to produce a GRPG report in the active Slider diagram in the GUI. This API routine was first introduced in release 30.3.3. ierr = grpg(imagefile, dumfile)",
+  "python_syntax": "ierr = grpg(imagefile, dumfile)",
+  "return_type": "error_only_report",
+  "parameters": [
+    {
+      "name": "imagefile",
+      "description": "Name of the grpg file to be used. (input)."
+    },
+    {
+      "name": "dumfile",
+      "description": "Dummy filename; this should be initialized to “ “. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "(output)."
+    }
+  ]
+}

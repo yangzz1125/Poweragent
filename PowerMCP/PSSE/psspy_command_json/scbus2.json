@@ -1,0 +1,130 @@
+{
+  "module": "psspy",
+  "function_name": "scbus2",
+  "category": "Single Element Data",
+  "description": "Returns complex bus voltages and currents following activity SCMU. This API routine was first introduced in release 28.0.0. ierr, cmpval = scbus2(ibus, string)",
+  "python_syntax": "ierr, cmpval = scbus2(ibus, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "cmpval",
+      "description": "Complex value indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= VPOS",
+        "description": "Positive sequence voltage."
+      },
+      {
+        "value": "= VNEG",
+        "description": "Negative sequence voltage."
+      },
+      {
+        "value": "= VZERO",
+        "description": "Zero sequence voltage."
+      },
+      {
+        "value": "= VA",
+        "description": "A-phase voltage."
+      },
+      {
+        "value": "= VB",
+        "description": "B-phase voltage."
+      },
+      {
+        "value": "= VC",
+        "description": "C-phase voltage."
+      },
+      {
+        "value": "= SHUNTP",
+        "description": "Positive sequence shunt current."
+      },
+      {
+        "value": "= SHUNTN",
+        "description": "Negative sequence shunt current."
+      },
+      {
+        "value": "= SHUNTZ",
+        "description": "Zero sequence shunt current."
+      },
+      {
+        "value": "= SHUNTA",
+        "description": "A-phase shunt current."
+      },
+      {
+        "value": "= SHUNTB",
+        "description": "B-phase shunt current."
+      },
+      {
+        "value": "= SHUNTC",
+        "description": "C-phase shunt current."
+      },
+      {
+        "value": "= FAULTP",
+        "description": "Positive sequence fault current."
+      },
+      {
+        "value": "= FAULTN",
+        "description": "Negative sequence fault current."
+      },
+      {
+        "value": "= FAULTZ",
+        "description": "Zero sequence fault current."
+      },
+      {
+        "value": "= FAULTA",
+        "description": "A-phase fault current."
+      },
+      {
+        "value": "= FAULTB",
+        "description": "B-phase fault current."
+      },
+      {
+        "value": "= FAULTC",
+        "description": "C-phase fault current."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘P’ and ‘Q’ or ‘CMPVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "‘SCINIT’ not successfully called; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Bus not found; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "Bad value of ‘STRING’; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    },
+    {
+      "value": "= 4",
+      "description": "Bus disconnected; ‘P’ and ‘Q’ of 0.0 or ‘CMPVAL’ of (0.0,0.0) returned."
+    },
+    {
+      "value": "= 5",
+      "description": "Bus not faulted; ‘P’ and ‘Q’ of 0.0 or ‘CMPVAL’ of (0.0,0.0) returned."
+    }
+  ]
+}

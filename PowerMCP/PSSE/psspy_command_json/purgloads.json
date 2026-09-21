@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "purgloads",
+  "category": "Power Flow Data",
+  "description": "Use this API to delete all loads from the specified bus in the working case. This API routine was first introduced in release 28.0.0. ierr = purgloads(ibus)",
+  "python_syntax": "ierr = purgloads(ibus)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus from which all loads are to be removed. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "no loads at bus."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

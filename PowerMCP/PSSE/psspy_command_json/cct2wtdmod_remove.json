@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "cct2wtdmod_remove",
+  "category": "Cct Models",
+  "description": "Use this API to remove a 2-winding transformer device model attached to the specified 2-winding transformer. This API routine was first introduced in release 33.0.0. ierr = cct2wtdmod_remove(ibus, jbus, id)",
+  "python_syntax": "ierr = cct2wtdmod_remove(ibus, jbus, id)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "From bus number. (input; no default allowed)."
+    },
+    {
+      "name": "jbus",
+      "description": "To bus number. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Circuit identifier. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "no 2-winding transformer device model on this branch."
+    },
+    {
+      "value": "= 2",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 3",
+      "description": "2-winding transformer not found."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

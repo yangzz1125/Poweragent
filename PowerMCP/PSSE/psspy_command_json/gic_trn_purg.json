@@ -1,0 +1,42 @@
+{
+  "module": "psspy",
+  "function_name": "gic_trn_purg",
+  "category": "Gic Data",
+  "description": "Use this API to purge GIC transformer data from the working case. This API routine was first introduced in release 34.8.0. ierr = gic_trn_purg(ibus,jbus,kbus,ckt)",
+  "python_syntax": "ierr = gic_trn_purg(ibus,jbus,kbus,ckt)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "The bus number of the bus to which winding 1 is connected. it must be same winding 1 bus of the same transformer in the working case. (input; no default allowed)."
+    },
+    {
+      "name": "jbus",
+      "description": "The bus number of the bus to which winding 2 is connected. it must be same winding 2 bus of the same transformer in the working case. (input; no default allowed)."
+    },
+    {
+      "name": "kbus",
+      "description": "The bus number of the bus to which winding 3 is connected. it must be same winding 3 bus of the same transformer in the working case. kbus=0 for two winding transformers. no default allowed for three winding transformers. (input; 0 by default)."
+    },
+    {
+      "name": "ckt",
+      "description": "Transformer circuit identifier. (input; ‘1’ by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

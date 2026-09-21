@@ -1,0 +1,46 @@
+{
+  "module": "psspy",
+  "function_name": "tspfprofilecurvechr",
+  "category": "Single Element Data",
+  "description": "Use this API to return string parameters of Time Series Power Flow profile curve. This API routine was first introduced in release 35.4.0. ierr, astring = tspfprofilecurvechr(curveid,string)",
+  "python_syntax": "ierr, astring = tspfprofilecurvechr(curveid,string)",
+  "return_type": "error_and_value",
+  "parameters": [
+    {
+      "name": "curveid",
+      "description": "Curve id. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating name of the string parameter desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "The error code . (output)."
+    },
+    {
+      "name": "astring",
+      "description": "Value indicated by input string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= START",
+        "description": "Start time."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘STRING’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Curveid not found; ‘STRING’ unchanged."
+    }
+  ]
+}

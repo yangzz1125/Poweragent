@@ -1,0 +1,58 @@
+{
+  "module": "psspy",
+  "function_name": "har_vltsrc",
+  "category": "Harmonics Data",
+  "description": "Use this API to modify or add new harmonics voltage source table data to the working case. This API is used to add new table of angle type data, harmonic numbers and corresponding V/V0 and Angle data points. This can be used to add a new data point of harmonic number, V/V0 and Angle data to existing table. This can be used to change angle type data, V/V0 and Angle data points of existing harmonic number in the table. This API cannot be used to change table name and harmonic numbers. This API routine was first introduced in release 35.4.0. ierr = har_vltsrc(name, npts, intgar, har, var, anar)",
+  "python_syntax": "ierr = har_vltsrc(name, npts, intgar, har, var, anar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Harmonics voltage source data table name. (input; no default allowed)."
+    },
+    {
+      "name": "npts",
+      "description": "Number of data points specified in the table. (input)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of one elementsNone. (input)."
+    },
+    {
+      "name": "har",
+      "description": "An array of NPTS elements specifying array of ‘NPTS’ values specifying harmonic numbers. All the harmonic numbers in HAR array must be non zero. (input)."
+    },
+    {
+      "name": "var",
+      "description": "An array of NPTS elements specifying array of ‘NPTS’ values specifying R/R0 ratio. (input)."
+    },
+    {
+      "name": "anar",
+      "description": "An array of NPTS elements specifying array of ‘NPTS’ values specifying L/L0 ratio. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "ANTYP, Harmonics Voltage Source angle type (1 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

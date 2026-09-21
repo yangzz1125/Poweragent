@@ -1,0 +1,58 @@
+{
+  "module": "psspy",
+  "function_name": "ascc_scfile",
+  "category": "Fault Analysis Operation",
+  "description": "This API reads ASCC short circuit results from SCFILE and produces same ASCC output report that was generated when SCFILE was created. SCFILE is read into PSSE memory to enable displaying ASCC results onto slider diagrams. For this API to work properly, it is required that working case in PSSE memory should be the same Saved case that was used when creating the SCFILE. This API routine was first introduced in release 32.0.2. ierr = ascc_scfile(scfile)",
+  "python_syntax": "ierr = ascc_scfile(scfile)",
+  "return_type": "error_only_report",
+  "parameters": [
+    {
+      "name": "scfile",
+      "description": "Activity ascc results (.sc) file. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 7",
+      "description": "prerequisite requirements for function not met."
+    },
+    {
+      "value": "= 9",
+      "description": "error opening SCFILE."
+    },
+    {
+      "value": "= 10",
+      "description": "SCFILE error."
+    },
+    {
+      "value": "= 11",
+      "description": "bus SC results not available."
+    },
+    {
+      "value": "= 12",
+      "description": "branch SC results not available."
+    },
+    {
+      "value": "= 13",
+      "description": "three winding transformer SC results not available."
+    },
+    {
+      "value": "= 14",
+      "description": "incorrect SCFILE."
+    },
+    {
+      "value": "= 15",
+      "description": "SCFILE not allowed."
+    }
+  ]
+}

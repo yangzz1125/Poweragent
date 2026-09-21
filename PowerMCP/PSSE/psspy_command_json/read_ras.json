@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "read_ras",
+  "category": "Using The Vendor Neutral Contingency And Ras Auxiliary File",
+  "description": "Use this API to read a Contingency Definition and Remedial Actions auxiliary file into memory. This API routine was first introduced in release 34.6.0. ierr = read_ras(ifile)",
+  "python_syntax": "ierr = read_ras(ifile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ifile",
+      "description": "Contingency definition and remedial actions auxiliary file. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "(output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 2",
+      "description": "error opening IFILE."
+    },
+    {
+      "value": "= 3",
+      "description": "error closing IFILE."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

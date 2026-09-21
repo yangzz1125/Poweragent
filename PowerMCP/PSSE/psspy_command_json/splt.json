@@ -1,0 +1,62 @@
+{
+  "module": "psspy",
+  "function_name": "splt",
+  "category": "Power Flow Operation",
+  "description": "Use this API to add a bus to the working case and place a zero impedance line between bus BUS and the new bus. No other equipment is connected to the new bus by this API. This API routine was first introduced in release 28.0.0. ierr = splt(bus, newnum, newnam, newkv)",
+  "python_syntax": "ierr = splt(bus, newnum, newnam, newkv)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "bus",
+      "description": "Number of the bus to be split. (input; no default allowed)."
+    },
+    {
+      "name": "newnum",
+      "description": "Number to be assigned to the new bus. (input; no default allowed)."
+    },
+    {
+      "name": "newnam",
+      "description": "Name to be assigned to the new bus. (input; blank by default)."
+    },
+    {
+      "name": "newkv",
+      "description": "Base voltage to be assigned to the new bus. (input; base voltage of bus BUS by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid NEWNUM value."
+    },
+    {
+      "value": "= 3",
+      "description": "bus number is already assigned to another bus."
+    },
+    {
+      "value": "= 4",
+      "description": "invalid NEWKV value."
+    },
+    {
+      "value": "= 5",
+      "description": "bus, branch, or branch ownership tables are full."
+    },
+    {
+      "value": "= 6",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "module": "psspy",
+  "function_name": "powerflowmode",
+  "category": "Dynamic Simulation Operation",
+  "description": "Use this API to switch PSSE from dynamics mode to power flow mode. (This API would normally be followed by the use of one or more of the power flow data editor APIs, and then the DYNAMICSMODE API). Batch command syntax. BAT_POWERFLOWMODE This API routine was first introduced in release 30.0.0. ierr = powerflowmode()",
+  "python_syntax": "ierr = powerflowmode()",
+  "return_type": "error_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": ""
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

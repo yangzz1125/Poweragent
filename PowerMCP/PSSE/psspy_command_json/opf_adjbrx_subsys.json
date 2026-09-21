@@ -1,0 +1,192 @@
+{
+  "module": "psspy",
+  "function_name": "opf_adjbrx_subsys",
+  "category": "Optimal Power Flow Data",
+  "description": "Use this API to add or modify all OPF branch reactance data records in a specified subsystem of the working case. This API routine was first introduced in release 28.0.0. ierr = opf_adjbrx_subsys(sid, all, intgar, realar, useval)",
+  "python_syntax": "ierr = opf_adjbrx_subsys(sid, all, intgar, realar, useval)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid subsystem id from 0 to 11. a subsystem must have been previously defined. (input; no default allowed)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem flag. (input; no default allowed)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of three elementsNone. (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of four elementsNone. (input)."
+    },
+    {
+      "name": "useval",
+      "description": "An array of four elements specifying (default treatment same as value of 0). (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 0",
+        "description": "process only specified buses."
+      },
+      {
+        "value": "= 1",
+        "description": "process all buses."
+      }
+    ],
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "cost curve type. This value is not currently used by the program."
+      },
+      {
+        "value": "= 1",
+        "description": "polynomial and exponential cost curve."
+      },
+      {
+        "value": "= 2",
+        "description": "linear cost curve."
+      },
+      {
+        "value": "= 3",
+        "description": "quadratic cost curve."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "adjustable branch reactance status (default value of 1 for new records, current values otherwise)."
+      },
+      {
+        "value": "= 0",
+        "description": "out of service."
+      },
+      {
+        "value": "= 1",
+        "description": "in service."
+      },
+      {
+        "value": "INTGAR(3)",
+        "description": "cost table cross reference number. This value is not currently used by the program."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "reactance multiplier in pu (default value of 1.0 for new records, current value otherwise)."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "maximum reactance multiplier in pu (default value of 1.0 for new records, current value otherwise)."
+      },
+      {
+        "value": "REALAR(3)",
+        "description": "minimum reactance multiplier in pu (default value of 1.0 for new records, current value otherwise)."
+      },
+      {
+        "value": "REALAR(4)",
+        "description": "cost scale coefficient in $/pu (default value of 1.0 for new records, current value otherwise)."
+      }
+    ],
+    "useval": [
+      {
+        "value": "USEVAL(1)",
+        "description": "indicates how the value of REALAR(1) should be used."
+      },
+      {
+        "value": "= 0",
+        "description": "if the value of REALAR(1) is to be used as defined."
+      },
+      {
+        "value": "= 1",
+        "description": "if the value of REALAR(1) is to be multiplied by the present value of the branch reactance multiplier."
+      },
+      {
+        "value": "= 2",
+        "description": "if the value of REALAR(1) is to be added to the present value of the branch reactance multiplier."
+      },
+      {
+        "value": "USEVAL(2)",
+        "description": "indicates how the value of REALAR(2) should be used."
+      },
+      {
+        "value": "= 0",
+        "description": "if the value of REALAR(2) is to be used as defined."
+      },
+      {
+        "value": "= 1",
+        "description": "if the value of REALAR(2) is to be multiplied by the present value of the maximum branch reactance multiplier."
+      },
+      {
+        "value": "= 2",
+        "description": "if the value of REALAR(2) is to be added to the present value of the maximum branch reactance multiplier."
+      },
+      {
+        "value": "USEVAL(3)",
+        "description": "indicates how the value of REALAR(3) should be used."
+      },
+      {
+        "value": "= 0",
+        "description": "if the value of REALAR(3) is to be used as defined."
+      },
+      {
+        "value": "= 1",
+        "description": "if the value of REALAR(3) is to be multiplied by the present value of the minimum branch reactance multiplier."
+      },
+      {
+        "value": "= 2",
+        "description": "if the value of REALAR(3) is to be added to the present value of the minimum branch reactance multiplier."
+      },
+      {
+        "value": "USEVAL(4)",
+        "description": "indicates how the value of REALAR(4) should be used."
+      },
+      {
+        "value": "= 0",
+        "description": "if the value of REALAR(4) is to be used as defined."
+      },
+      {
+        "value": "= 1",
+        "description": "if the value of REALAR(4) is to be multiplied by the present value of the cost scale coefficient."
+      },
+      {
+        "value": "= 2",
+        "description": "if the value of REALAR(4) is to be added to the present value of the cost scale coefficient."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= -1",
+      "description": "non-fatal error occurred. Warning messages are as follows: - Invalid cost curve type specified - Invalid branch reactance status specified. - Maximum branch reactance multiplier less than minimum multiplier - Branch reactance multiplier cannot be less than 0.1. - Branch reactance multiplier cannot be set to zero."
+    },
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ALL value."
+    },
+    {
+      "value": "= 3",
+      "description": "adjustable branch reactance table is full."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "module": "psspy",
+  "function_name": "immod_status",
+  "category": "Induction Machine Models",
+  "description": "Use this API to change the status of an induction machine model at a specified machine. This API routine was first introduced in release 33.0.0. ierr = immod_status(ibus, id, status)",
+  "python_syntax": "ierr = immod_status(ibus, id, status)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Induction machine bus number. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Induction machine identifier. (input; blank by default)."
+    },
+    {
+      "name": "status",
+      "description": "New model status. (input; 1 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "status": [
+      {
+        "value": "= 0",
+        "description": "out-of-service."
+      },
+      {
+        "value": "= 1",
+        "description": "in-service."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "no induction machine model at this machine."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid STATUS value."
+    },
+    {
+      "value": "= 3",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 4",
+      "description": "machine not found."
+    },
+    {
+      "value": "= 5",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

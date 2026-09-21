@@ -1,0 +1,62 @@
+{
+  "module": "psspy",
+  "function_name": "opf_genrsv_indv",
+  "category": "Optimal Power Flow Data",
+  "description": "Use this API to add an individual generator reserve data record to the working case. It may also be used to modify an existing generator reserve data record. This API routine was first introduced in release 28.0.0. ierr = opf_genrsv_indv(eibus, genid, realar)",
+  "python_syntax": "ierr = opf_genrsv_indv(eibus, genid, realar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "eibus",
+      "description": "Bus number. (input; no default allowed)."
+    },
+    {
+      "name": "genid",
+      "description": "Machine identifier. (input; no default allowed)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of two elementsNone. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "unit ramp rate in MW/minute (default value of 9999.0 if new record, current value otherwise)."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "unit capability in MW (default value of 9999.0 if new record, current value otherwise)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid bus number specified."
+    },
+    {
+      "value": "= 2",
+      "description": "specified machine does not exist."
+    },
+    {
+      "value": "= 3",
+      "description": "generator reserve unit table full."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

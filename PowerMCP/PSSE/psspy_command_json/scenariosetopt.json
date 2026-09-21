@@ -1,0 +1,144 @@
+{
+  "module": "psspy",
+  "function_name": "scenariosetopt",
+  "category": "Scenarios",
+  "description": "Use this API to modify the Scenario options. Note: Scenario settings are not attached to the Scenario file. They are user preferences that are saved on the user’s machine. This API routine was first introduced in release 33.0.0. ierr = scenariosetopt(trackopt, uziprootopt, uziplclpcopt, uziplclopt, uziprmtpcopt, uziprmtopt)",
+  "python_syntax": "ierr = scenariosetopt(trackopt, uziprootopt, uziplclpcopt, uziplclopt, uziprmtpcopt, uziprmtopt)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "trackopt",
+      "description": "Setting for file tracking. (input; unchanged by default)."
+    },
+    {
+      "name": "uziprootopt",
+      "description": "Setting for conflict resolution for root files. (input; unchanged by default)."
+    },
+    {
+      "name": "uziplclpcopt",
+      "description": "Setting for placement of local files. (input; unchanged by default)."
+    },
+    {
+      "name": "uziplclopt",
+      "description": "Setting for conflict resolution for local files. (input; unchanged by default)."
+    },
+    {
+      "name": "uziprmtpcopt",
+      "description": "Setting for placement of remote files. (input; unchanged by default). Note: Cannot choose to unzip remote files by relative path)."
+    },
+    {
+      "name": "uziprmtopt",
+      "description": "Setting for conflict resolution for remote files. (input; unchanged by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "trackopt": [
+      {
+        "value": "= 0",
+        "description": "The user will not be prompted about tracked files. If there are files that are currently being tracked the user will be prompted as soon as possible for those files."
+      },
+      {
+        "value": "= 1",
+        "description": "The user will be prompted as soon as possible when a new file is being tracked."
+      },
+      {
+        "value": "= 2",
+        "description": "The user will be prompted about tracked files when the current active group is being closed."
+      },
+      {
+        "value": "= 3",
+        "description": "Tracked files will be added to the current active group immediately. If there are files that are currently being tracked the user will be prompted as soon as possible for those files."
+      }
+    ],
+    "uziprootopt": [
+      {
+        "value": "= 0",
+        "description": "Skip the file."
+      },
+      {
+        "value": "= 1",
+        "description": "Prompt the user for action."
+      },
+      {
+        "value": "= 2",
+        "description": "Overwrite the file on disk."
+      }
+    ],
+    "uziplclpcopt": [
+      {
+        "value": "= 0",
+        "description": "Do not unzip."
+      },
+      {
+        "value": "= 1",
+        "description": "Unzip to the root path."
+      },
+      {
+        "value": "= 2",
+        "description": "Unzip to the same path the file was at before the file was zipped."
+      },
+      {
+        "value": "= 3",
+        "description": "Unzip to the same path the file was at before, relative to the root path."
+      }
+    ],
+    "uziplclopt": [
+      {
+        "value": "= 0",
+        "description": "Skip the file."
+      },
+      {
+        "value": "= 1",
+        "description": "Prompt the user for action."
+      },
+      {
+        "value": "= 2",
+        "description": "Overwrite the file on disk."
+      }
+    ],
+    "uziprmtpcopt": [
+      {
+        "value": "= 0",
+        "description": "Do not unzip."
+      },
+      {
+        "value": "= 1",
+        "description": "Unzip to the root path."
+      },
+      {
+        "value": "= 2",
+        "description": "Unzip to the same path the file was at before the file was zipped."
+      }
+    ],
+    "uziprmtopt": [
+      {
+        "value": "= 0",
+        "description": "Skip the file."
+      },
+      {
+        "value": "= 1",
+        "description": "Prompt the user for action."
+      },
+      {
+        "value": "= 2",
+        "description": "Overwrite the file on disk."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "module": "psspy",
+  "function_name": "station_swd_mbid",
+  "category": "Node Breaker Data",
+  "description": "Use this API to modify the circuit identifier of an existing station switching device in the working case. This API routine was first introduced in release 34.0.0. ierr = station_swd_mbid(station, inode, jnode, cktarg, cktnew)",
+  "python_syntax": "ierr = station_swd_mbid(station, inode, jnode, cktarg, cktnew)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "station",
+      "description": "Substation number. (input)."
+    },
+    {
+      "name": "inode",
+      "description": "From node number. (input)."
+    },
+    {
+      "name": "jnode",
+      "description": "To node number. (input)."
+    },
+    {
+      "name": "cktarg",
+      "description": "Circuit identifier. (input)."
+    },
+    {
+      "name": "cktnew",
+      "description": "New circuit identifier. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "substation is not found."
+    },
+    {
+      "value": "= 2",
+      "description": "node is not found."
+    },
+    {
+      "value": "= 3",
+      "description": "circuit identifier is more than two characters."
+    },
+    {
+      "value": "= 4",
+      "description": "switching device from node to itself."
+    },
+    {
+      "value": "= 5",
+      "description": "circuit identifier is invalid."
+    },
+    {
+      "value": "= 6",
+      "description": "switching device is not found."
+    },
+    {
+      "value": "= 7",
+      "description": "circuit identifier connecting these nodes already exists."
+    },
+    {
+      "value": "= 8",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

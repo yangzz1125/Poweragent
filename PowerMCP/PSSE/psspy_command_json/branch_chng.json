@@ -1,0 +1,160 @@
+{
+  "module": "psspy",
+  "function_name": "branch_chng",
+  "category": "Power Flow Data",
+  "description": "This API routine is obsolete. It has been replaced by the API routine branch_chng_3, and is implemented by a call to branch_chng_3. Use this API routine to modify the data of an existing non-transformer branch in the working case (see PSSE Program Operation Manual, Non-Transformer Branch Data). This API routine was first introduced in release 33.0.0. ierr = branch_chng(ibus, jbus, ckt, intgar, realar)",
+  "python_syntax": "ierr = branch_chng(ibus, jbus, ckt, intgar, realar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number of from bus. (input; no default allowed)."
+    },
+    {
+      "name": "jbus",
+      "description": "Bus number of to bus. (input; no default allowed)."
+    },
+    {
+      "name": "ckt",
+      "description": "Circuit identifier. (input; ‘1’ by default)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of six elementsNone. (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of fifteen elementsNone. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "ST, branch status (1 by default), can also be specified with keyword ‘st’."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "METBUS, metered end bus number (IBUS or JBUS) (IBUS by default), can also be specified with keyword ‘metbus’."
+      },
+      {
+        "value": "INTGAR(3)",
+        "description": "O1, first owner number (owner of bus IBUS by default), can also be specified with keyword ‘o1’."
+      },
+      {
+        "value": "INTGAR(4)",
+        "description": "O2, second owner number (0 by default), can also be specified with keyword ‘o2’."
+      },
+      {
+        "value": "INTGAR(5)",
+        "description": "O3, third owner number (0 by default), can also be specified with keyword ‘o3’."
+      },
+      {
+        "value": "INTGAR(6)",
+        "description": "O4, fourth owner number (0 by default), can also be specified with keyword ‘o4’."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "R, nominal branch resistance (0.0 by default), can also be specified with keyword ‘r’."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "X, nominal branch reactance (THRSHZ by default; 0.0001 if THRSHZ = 0.0), can also be specified with keyword ‘x’."
+      },
+      {
+        "value": "REALAR(3)",
+        "description": "B, total line charging (0.0 by default), can also be specified with keyword ‘b’."
+      },
+      {
+        "value": "REALAR(4)",
+        "description": "RATEA, rating set A line rating (0.0 by default), can also be specified with keyword ‘ratea’."
+      },
+      {
+        "value": "REALAR(5)",
+        "description": "RATEB, rating set B line rating (0.0 by default), can also be specified with keyword ‘rateb’."
+      },
+      {
+        "value": "REALAR(6)",
+        "description": "RATEC, rating set C line rating (0.0 by default), can also be specified with keyword ‘ratec’."
+      },
+      {
+        "value": "REALAR(7)",
+        "description": "GI, real line shunt at bus IBUS end (0.0 by default), can also be specified with keyword ‘gi’."
+      },
+      {
+        "value": "REALAR(8)",
+        "description": "BI, reactive line shunt at bus IBUS end (0.0 by default), can also be specified with keyword ‘bi’."
+      },
+      {
+        "value": "REALAR(9)",
+        "description": "GJ, real line shunt at bus JBUS end (0.0 by default), can also be specified with keyword ‘gj’."
+      },
+      {
+        "value": "REALAR(10)",
+        "description": "BJ, reactive line shunt at bus JBUS end (0.0 by default), can also be specified with keyword ‘bj’."
+      },
+      {
+        "value": "REALAR(11)",
+        "description": "LEN, line length (0.0 by default), can also be specified with keyword ‘len’."
+      },
+      {
+        "value": "REALAR(12)",
+        "description": "F1, first owner fraction (1.0 by default), can also be specified with keyword ‘f1’."
+      },
+      {
+        "value": "REALAR(13)",
+        "description": "F2, second owner fraction (1.0 by default), can also be specified with keyword ‘f2’."
+      },
+      {
+        "value": "REALAR(14)",
+        "description": "F3, third owner fraction (1.0 by default), can also be specified with keyword ‘f3’."
+      },
+      {
+        "value": "REALAR(15)",
+        "description": "F4, fourth owner fraction (1.0 by default), can also be specified with keyword ‘f4’."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "circuit identifier is more than two characters."
+    },
+    {
+      "value": "= 3",
+      "description": "branch exists but it is a two-winding transformer."
+    },
+    {
+      "value": "= 9",
+      "description": "branch not found."
+    },
+    {
+      "value": "= 10",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - branch reactance is 0.0 - line length is negative - zero impedance line table is full; branch is treated as a normal line - invalid metered end bus - invalid branch status - invalid owner number - invalid ownership fraction - no ownership data is specified - multi-section line grouping deleted - branch ownership table is full–only first n owners retained - branch is no longer treated as a zero impedance line - owner table is full."
+    }
+  ]
+}

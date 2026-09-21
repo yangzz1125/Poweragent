@@ -1,0 +1,54 @@
+{
+  "module": "psspy",
+  "function_name": "mov_tolerance",
+  "category": "Power Flow Operation",
+  "description": "Use this API to specify or return the value of the MOV iteration tolerance option setting. This API routine was first introduced in release 34.0.0. ierr = mov_tolerance(rval, iocode)",
+  "python_syntax": "ierr = mov_tolerance(rval, iocode)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "rval",
+      "description": "Mov iteration tolerance. (input; if Batch command, or for Python if specified as an argument, or for Fortran if IOCODE is 0, 0.01 by default; else output)."
+    },
+    {
+      "name": "iocode",
+      "description": "Indicates the operation mode of the api. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "iocode": [
+      {
+        "value": "= 0",
+        "description": "set the option setting to the value specified in RVAL."
+      },
+      {
+        "value": "= 1",
+        "description": "return the current value of the option setting in RVAL."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid RVAL value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid IOCODE value."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

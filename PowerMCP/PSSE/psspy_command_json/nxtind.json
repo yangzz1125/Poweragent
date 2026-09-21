@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "nxtind",
+  "category": "Single Element Data",
+  "description": "Use this API routine to return the identifier of the next induction machine connected to a bus. Each time ‘NXTIND’ is called it returns the next induction machine identifier in ascending order. ‘INIIND’ must first be called to establish the induction machine bus number. This API routine was first introduced in release 33.0.0. ierr, id = nxtind(ibus)",
+  "python_syntax": "ierr, id = nxtind(ibus)",
+  "return_type": "error_and_value",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "id",
+      "description": "Induction machine identifier. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘ID’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "No more induction machines at ‘IBUS’; ‘ID’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "‘INIIND’ was not called for bus ‘IBUS’; ‘ID’ unchanged."
+    }
+  ]
+}

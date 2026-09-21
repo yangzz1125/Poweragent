@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "purge_opf_adjvar_indv",
+  "category": "Optimal Power Flow Data",
+  "description": "This API routine is obsolete. It has been replaced by the API routine purge_opf_adjvar_indv_3, and is implemented by a call to purge_opf_adjvar_indv_3. Use this API to purge an individual OPF adjustable bus shunt data record from the working case. This API routine was first introduced in release 30.0.0. ierr = purge_opf_adjvar_indv(eibus, shntid)",
+  "python_syntax": "ierr = purge_opf_adjvar_indv(eibus, shntid)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "eibus",
+      "description": "Bus number. (input; no default allowed)."
+    },
+    {
+      "name": "shntid",
+      "description": "Bus shunt identifier. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "adjustable bus shunt identifier is more than two characters."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid bus number specified."
+    },
+    {
+      "value": "= 3",
+      "description": "blank adjustable bus shunt identifier is invalid."
+    },
+    {
+      "value": "= 4",
+      "description": "OPF adjustable bus shunt at bus not found."
+    },
+    {
+      "value": "= 5",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

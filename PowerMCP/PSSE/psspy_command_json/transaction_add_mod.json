@@ -1,0 +1,80 @@
+{
+  "module": "psspy",
+  "function_name": "transaction_add_mod",
+  "category": "Power Flow Data",
+  "description": "Use this API to add or modify transaction event data in PSSE working memory. This API routine was first introduced in release 30.0.0. ierr = transaction_add_mod(event, intgar, realar, dscrp)",
+  "python_syntax": "ierr = transaction_add_mod(event, intgar, realar, dscrp)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "event",
+      "description": "Transaction event number. (input)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of two elementsNone. (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of two elementsNone. (input)."
+    },
+    {
+      "name": "dscrp",
+      "description": "Transaction event description. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "transaction event status (0 = out-of-service, 1 = in-service)."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "transaction event priority."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "transaction event magnitude in MW."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "transaction event curtailment in MW."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "error occurred."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid transaction event number."
+    },
+    {
+      "value": "> 2",
+      "description": "unable to add or modify transaction event data: error condition detected in data access routine."
+    },
+    {
+      "value": "= 10",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "warnings: - None."
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "module": "psspy",
+  "function_name": "immod_remove",
+  "category": "Induction Machine Models",
+  "description": "Use this API to remove an induction machine model of a designated type from a specified machine. This API routine was first introduced in release 33.0.0. ierr = immod_remove(ibus, id)",
+  "python_syntax": "ierr = immod_remove(ibus, id)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Induction machine bus number. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Induction machine identifier. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "no induction machine model at this machine."
+    },
+    {
+      "value": "= 2",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 3",
+      "description": "machine not found."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

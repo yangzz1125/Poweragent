@@ -1,0 +1,47 @@
+{
+  "module": "psspy",
+  "function_name": "exportimagefile",
+  "category": "Diagram View",
+  "description": "This API routine is obsolete. It has been replaced by the API routine exportimagefile_2, and is implemented by a call to exportimagefile_2. Use this API to export an image of the active Slider Diagram in the GUI to a file. This API routine was first introduced in release 31.0.0. exportimagefile(type, imagefile, quality)",
+  "python_syntax": "exportimagefile(type, imagefile, quality)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "type",
+      "description": "Type of image to export. (input)."
+    },
+    {
+      "name": "imagefile",
+      "description": "Name of the image file to be written. (input)."
+    },
+    {
+      "name": "quality",
+      "description": "A value, between 1 and 100, used to control the quality of the exported image if type = 2. (input)."
+    }
+  ],
+  "return_values": [],
+  "allowed_values": {
+    "type": [
+      {
+        "value": "= 1",
+        "description": "Bitmap."
+      },
+      {
+        "value": "= 2",
+        "description": "JPEG."
+      },
+      {
+        "value": "= 3",
+        "description": "PNG."
+      },
+      {
+        "value": "= 4",
+        "description": "GIF."
+      },
+      {
+        "value": "= 5",
+        "description": "TIF."
+      }
+    ]
+  }
+}

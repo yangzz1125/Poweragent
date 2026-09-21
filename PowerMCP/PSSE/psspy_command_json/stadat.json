@@ -1,0 +1,58 @@
+{
+  "module": "psspy",
+  "function_name": "stadat",
+  "category": "Single Element Data",
+  "description": "Use this API routine to return real substation values. This API routine was first introduced in release 34.1.0. ierr, rval = stadat(ista,string)",
+  "python_syntax": "ierr, rval = stadat(ista,string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ista",
+      "description": "Substation number. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "rval",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= LATI",
+        "description": "Substation latitude in degrees."
+      },
+      {
+        "value": "= LONG",
+        "description": "Substation longitude in degrees."
+      },
+      {
+        "value": "= SRG",
+        "description": "Substation grounding dc resistance in ohms."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘RVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Substation not found; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid value of ‘STRING’; ‘RVAL’ unchanged."
+    }
+  ]
+}

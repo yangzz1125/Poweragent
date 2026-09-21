@@ -1,0 +1,15 @@
+{
+  "module": "psspy",
+  "function_name": "gethomepath",
+  "category": "Single Element Data",
+  "description": "Use this API to retrieve a user’s HOMEPATH directory. This API routine was first introduced in release 34.1.0. sfile = gethomepath()",
+  "python_syntax": "sfile = gethomepath()",
+  "return_type": "value_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "sfile",
+      "description": ""
+    }
+  ]
+}

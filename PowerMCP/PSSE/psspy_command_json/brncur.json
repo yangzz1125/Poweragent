@@ -1,0 +1,54 @@
+{
+  "module": "psspy",
+  "function_name": "brncur",
+  "category": "Single Element Data",
+  "description": "This API routine is obsolete. It has been replaced by the API routine BRNMSC, and is implemented by a call to BRNMSC. Use this API to return branch flow values. This API routine was first introduced in release 28.0.0. ierr, rval = brncur(ibus,jbus,ickt)",
+  "python_syntax": "ierr, rval = brncur(ibus,jbus,ickt)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "From bus number. (input)."
+    },
+    {
+      "name": "jbus",
+      "description": "To bus number. (input)."
+    },
+    {
+      "name": "ickt",
+      "description": "Circuit or multisection line identifier. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "rval",
+      "description": "Flow value. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘RVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Bus not found; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Branch not found; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "Branch out-of-service; ‘RVAL’ returned set to zero."
+    },
+    {
+      "value": "= 4",
+      "description": "No base kV at IBUS; ‘RVAL’ returned = per unit current."
+    }
+  ]
+}

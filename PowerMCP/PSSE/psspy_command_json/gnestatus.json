@@ -1,0 +1,58 @@
+{
+  "module": "psspy",
+  "function_name": "gnestatus",
+  "category": "Power Flow Operation",
+  "description": "Use this API to specify or return the status of a GNE device. This API routine was first introduced in release 33.0.0. ierr = gnestatus(name, ival) ierr, ival = gnestatus(name)",
+  "python_syntax": "ierr = gnestatus(name, ival) ierr, ival = gnestatus(name)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Name of the gne device for which the status is to be changed. (input; no default allowed)."
+    },
+    {
+      "name": "ival",
+      "description": "Value of the status of the specified gne device. (input; if Batch command, or for Python if specified as an argument, or for Fortran if IOCODE is 0, no default allowed; else output)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "ival": [
+      {
+        "value": "= 0",
+        "description": "out-of-service."
+      },
+      {
+        "value": "= 1",
+        "description": "in-service."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "GNE device not found."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid GNE status value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid IOCODE value."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "module": "psspy",
+  "function_name": "station_2dc_bus_term_chng",
+  "category": "Node Breaker Data",
+  "description": "Use this API to change the station two-term dc rectifier or inverter node terminal connection in the working case. This api is defined using the rectifier or inverter end bus number and the desired node number to connect to that end. This API routine was first introduced in release 35.5. ierr = station_2dc_bus_term_chng(name, ibus, inode)",
+  "python_syntax": "ierr = station_2dc_bus_term_chng(name, ibus, inode)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Quoted name of the two-terminal dc line whose node terminal connection data is being changed. (input)."
+    },
+    {
+      "name": "ibus",
+      "description": "Bus number of desired dc rectifier or inverter end being modified. (input; no default allowed)."
+    },
+    {
+      "name": "inode",
+      "description": "Node number to which the dc rectifier or inverter end is to be attached. node must correspond to ibus. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error return. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "two-terminal dc line not found."
+    },
+    {
+      "value": "= 2",
+      "description": "bus is not part of a substation."
+    },
+    {
+      "value": "= 3",
+      "description": "node not found in substation."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid node number."
+    },
+    {
+      "value": "= 5",
+      "description": "node-breaker terminal connection table is full."
+    },
+    {
+      "value": "= 6",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= 7",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 8",
+      "description": "bus not a converter bus of dc line."
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "module": "psspy",
+  "function_name": "purgatrn",
+  "category": "Power Flow Data",
+  "description": "Use this API to delete the specified inter-area transfer from the working case. This API routine was first introduced in release 28.0.0. ierr = purgatrn(frmarea, toarea, id)",
+  "python_syntax": "ierr = purgatrn(frmarea, toarea, id)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "frmarea",
+      "description": "One of the areas involved in the transfer. (input; no default allowed)."
+    },
+    {
+      "name": "toarea",
+      "description": "Other area involved in the transfer. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Inter-area transfer identifier. (input; ‘1’ by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "area not found."
+    },
+    {
+      "value": "= 2",
+      "description": "inter-area transfer not found."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

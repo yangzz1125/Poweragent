@@ -1,0 +1,74 @@
+{
+  "module": "psspy",
+  "function_name": "dyre_add",
+  "category": "Dynamic Simulation Operation",
+  "description": "Use this API to read a Dynamics Model Raw Data File and append the model references specified in its data records to the simulation data already contained in dynamics working memory (activity DYRE,ADD). This API routine was first introduced in release 30.2.0. ierr = dyre_add(startindx, dyrefile, conecfile, conetfile)",
+  "python_syntax": "ierr = dyre_add(startindx, dyrefile, conecfile, conetfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "startindx",
+      "description": "An array of four elements specifying starting locations in the dynamics data storage arrays. (input)."
+    },
+    {
+      "name": "dyrefile",
+      "description": "Name of the dynamics model raw data file. (input; no default allowed)."
+    },
+    {
+      "name": "conecfile",
+      "description": "Name of the output file for conec additions; blank to route data to the progress area. (input; blank by default)."
+    },
+    {
+      "name": "conetfile",
+      "description": "Name of the output file for conet additions; blank to route data to the progress area. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "startindx": [
+      {
+        "value": "STARTINDX(1)",
+        "description": "starting CON index (the next available CON by default)."
+      },
+      {
+        "value": "STARTINDX(2)",
+        "description": "starting STATE index (the next available STATE by default)."
+      },
+      {
+        "value": "STARTINDX(3)",
+        "description": "starting VAR index (the next available VAR by default)."
+      },
+      {
+        "value": "STARTINDX(4)",
+        "description": "starting ICON index (the next available ICON by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid STARTINDX value."
+    },
+    {
+      "value": "= 2",
+      "description": "machine model connection tables full–use pack plant model tables function."
+    },
+    {
+      "value": "= 3",
+      "description": "error opening output file DYREFILE."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

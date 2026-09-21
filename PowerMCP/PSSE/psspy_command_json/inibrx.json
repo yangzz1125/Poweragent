@@ -1,0 +1,42 @@
+{
+  "module": "psspy",
+  "function_name": "inibrx",
+  "category": "Single Element Data",
+  "description": "Initializes the branch fetching routine, ‘NXTBRN’ or ‘NXTBRN3’ for returning branches connected to IBUS. For multisection lines, ‘NXTBRN’ or ‘NXTBRN3’ returns the other endpoint bus as the to bus. This API routine was first introduced in release 28.0.0. ierr = inibrx(ibus, single)",
+  "python_syntax": "ierr = inibrx(ibus, single)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "From bus. (input)."
+    },
+    {
+      "name": "single",
+      "description": "If 1, ‘nxtbrn’ or ‘nxtbrn3’ will return only branches for which the from bus (‘ibus’) number (or bus name) is lower than the to bus (or buses); if 2, then all branches connected to ‘ibus’ are returned by ‘nxtbrn’ or ‘nxtbrn3’. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error, ‘NXTBRN/NXTBRN3’ properly initialized."
+    },
+    {
+      "value": "= 1",
+      "description": "Bus not found; ‘NXTBRN/NXTBRN3’ may not be used."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid ‘SINGLE’ value; ‘NXTBRN/NXTBRN3’ may not be used."
+    },
+    {
+      "value": "= 3",
+      "description": "‘IBUS’ is a multi-section line dummy bus; ‘NXTBRN/NXTBRN3’ may not be used."
+    }
+  ]
+}

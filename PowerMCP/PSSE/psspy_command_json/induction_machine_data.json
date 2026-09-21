@@ -1,0 +1,204 @@
+{
+  "module": "psspy",
+  "function_name": "induction_machine_data",
+  "category": "Power Flow Data",
+  "description": "Use this API routine to modify the data of an existing induction machine in the working case, or to add a new induction machine to the working case (see PSSE Program Operation Manual, Induction Machine Data). This API routine was first introduced in release 33.0.0. ierr = induction_machine_data(ibus, id, intgar, realar)",
+  "python_syntax": "ierr = induction_machine_data(ibus, id, intgar, realar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Machine identifier. (input; ‘1’ by default)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of nine elementsNone. (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of twenty three elementsNone. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "STAT, induction machine status (1 by default)."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "SCODE, machine standard type (1 for NEMA, 2 for IEC) (1 by default)."
+      },
+      {
+        "value": "INTGAR(3)",
+        "description": "DCODE, machine design code (0 for custom, 1 through 5 for MEMA designs A through E) (2 by default)."
+      },
+      {
+        "value": "INTGAR(4)",
+        "description": "AREA, area number (area of bus IBUS by default)."
+      },
+      {
+        "value": "INTGAR(5)",
+        "description": "ZONE, zone number (zone of bus IBUS by default)."
+      },
+      {
+        "value": "INTGAR(6)",
+        "description": "OWNER, owner number (owner of bus IBUS by default)."
+      },
+      {
+        "value": "INTGAR(7)",
+        "description": "TCODE, type of mechanical torque variation (1 for simple power law, 2 for WECC model) (1 by default)."
+      },
+      {
+        "value": "INTGAR(8)",
+        "description": "BCODE, base machine power code (1 for mechanical power 2 for electrical power drawn) (1 by default)."
+      },
+      {
+        "value": "INTGAR(9)",
+        "description": "PCODE, power setpoint code (1 for mechanical power 2 for electrical power drawn) (1 by default)."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "MBASE, machine base power (SBASE by default)."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "RATEKV, machine rated voltage (kV line to line); 0.0 for bus base voltage (0.0 by default)."
+      },
+      {
+        "value": "REALAR(3)",
+        "description": "PSET, machine power setpoint in MW (positive for a motor) (0.0 by default)."
+      },
+      {
+        "value": "REALAR(4)",
+        "description": "H, machine inertia in pu on machine base power (1.0 by default)."
+      },
+      {
+        "value": "REALAR(5)",
+        "description": "A, load torque variation constant (1.0 by default)."
+      },
+      {
+        "value": "REALAR(6)",
+        "description": "B, load torque variation constant (1.0 by default)."
+      },
+      {
+        "value": "REALAR(7)",
+        "description": "D, load torque variation constant (1.0 by default)."
+      },
+      {
+        "value": "REALAR(8)",
+        "description": "E, load torque variation constant (1.0 by default)."
+      },
+      {
+        "value": "REALAR(9)",
+        "description": "RA, armature resistance (0.02494 by default)."
+      },
+      {
+        "value": "REALAR(10)",
+        "description": "XA, armature leakage reactance (0.07482 by default)."
+      },
+      {
+        "value": "REALAR(11)",
+        "description": "XM, magnetizing reactance (2.32786 by default)."
+      },
+      {
+        "value": "REALAR(12)",
+        "description": "R1, first cage resistance (0.02078 by default)."
+      },
+      {
+        "value": "REALAR(13)",
+        "description": "X1, first cage reactance (0.09145 by default)."
+      },
+      {
+        "value": "REALAR(14)",
+        "description": "R2, second cage resistance (0.12471 by default)."
+      },
+      {
+        "value": "REALAR(15)",
+        "description": "X2, second cage reactance (0.03326 by default)."
+      },
+      {
+        "value": "REALAR(16)",
+        "description": "X3, third reactance (0.0 by default)."
+      },
+      {
+        "value": "REALAR(17)",
+        "description": "E1, first voltage point on saturation curve (1.0 by default)."
+      },
+      {
+        "value": "REALAR(18)",
+        "description": "SE1, saturation factor at E1 (0.04 by default)."
+      },
+      {
+        "value": "REALAR(19)",
+        "description": "E2, second voltage point on saturation curve (1.2 by default)."
+      },
+      {
+        "value": "REALAR(20)",
+        "description": "SE2, saturation factor at E2 (0.2 by default)."
+      },
+      {
+        "value": "REALAR(21)",
+        "description": "IA1, starting stator current for applying stator leakage reactance saturation (1.0 by default)."
+      },
+      {
+        "value": "REALAR(22)",
+        "description": "IA2, stator current at wiich the stator leakage reactance is fully saturated (5.0 by default)."
+      },
+      {
+        "value": "REALAR(23)",
+        "description": "XAMULT, Xa multiplier at full leakage reactance saturation (1.0 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "machine identifier is more than two characters."
+    },
+    {
+      "value": "= 3",
+      "description": "blank machine identifier is invalid."
+    },
+    {
+      "value": "= 4",
+      "description": "induction machine table is full."
+    },
+    {
+      "value": "= 5",
+      "description": "node-breaker terminal connection table is full."
+    },
+    {
+      "value": "= 6",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - invalid machine status. - invalid machine standard code. - invalid machine design code. - invalid area, zone or owner number. - invalid mechanical torque variation method code. - invalid base power code. - invalid power setpoint code. - machine base power is not positive. - machine rated voltage is negative. - machine rated voltage is ignored because the bus has no base voltage specified for it. - bus base voltage and machine rated voltage differ by more than 20%. - power setpoint exceeds the threshold determined from the standard code and the power setpoint code. - invalid machine inertia. - magnitude of load torque variation constant D is not between 0.2 and 5.0. - the sign of load torque variation constant D is not consistent with that of the machine power setpoint. - machine parameter is negative. - XM is not positive. - Rn or Xn exceeds 999.0. - Rn and Xn are both 0.0. - one of R1 and Xn is 999.0 and the other is not. - E1 is greater than E2; interchanging E1 and E2. - E1 and E2 are equal. - SE1 is greater than SE2; interchanging SE1 and SE2. - IA1 is greater than IA2; interchanging IA1 and IA2. - IA1 and IA2 are equal. - XAMULT must be between 0.0 and 1.0. - area, zone or owner table is full."
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "module": "psspy",
+  "function_name": "dscn",
+  "category": "Power Flow Operation",
+  "description": "Use this API to electrically disconnect a bus (activity DSCN). This API routine was first introduced in release 28.0.0. ierr = dscn(bus)",
+  "python_syntax": "ierr = dscn(bus)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "bus",
+      "description": "Number of the bus to be disconnected. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus BUS not found."
+    },
+    {
+      "value": "= 2",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

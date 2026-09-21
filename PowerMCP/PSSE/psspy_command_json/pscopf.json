@@ -1,0 +1,566 @@
+{
+  "module": "psspy",
+  "function_name": "pscopf",
+  "category": "Power Flow Operation",
+  "description": "This API routine is obsolete. It has been replaced by the API routine pscopf_2, and is implemented by a call to pscopf_2. This API is used to find the settings of controls for a system to comply with base case and contingency case operation limits. The API is implemented with preventive security constrained optimal power flow method (PSCOPF). The objective of the PSCOPF is to minimize control adjustments subject to operation limits constraints. The available controls are generation MW outputs of on-line and off-line generators, loads, phase shifters, tap settings and switched shunts. This API routine was first introduced in release 33.0.0. ierr = pscopf(options,values,labels,dfxfile,inlfile,thrfile)",
+  "python_syntax": "ierr = pscopf(options,values,labels,dfxfile,inlfile,thrfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "options",
+      "description": "An array of twenty six elements specifying integer specifying power flow options. (input)."
+    },
+    {
+      "name": "values",
+      "description": "An array of eleven elements specifying VALUES Is a real. (input)."
+    },
+    {
+      "name": "labels",
+      "description": "An array of seven elements specifying a character. (input)."
+    },
+    {
+      "name": "dfxfile",
+      "description": "Name of the distribution factor data file. (input; no default allowed)."
+    },
+    {
+      "name": "inlfile",
+      "description": "Name of unit inertia data file. (input; blank for none)."
+    },
+    {
+      "name": "thrfile",
+      "description": "Name of load throwover data file. (input; blank for none)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "options": [
+      {
+        "value": "OPTIONS(1)",
+        "description": "tap adjustment flag for the base case (tap adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable stepping adjustment."
+      },
+      {
+        "value": "= 2",
+        "description": "enable direct adjustment."
+      },
+      {
+        "value": "OPTIONS(2)",
+        "description": "area interchange adjustment flag for the base case (area interchange adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable using tie line flows only in calculating area interchange."
+      },
+      {
+        "value": "= 2",
+        "description": "enable using tie line flows and loads in calculating area interchange."
+      },
+      {
+        "value": "OPTIONS(3)",
+        "description": "phase shift adjustment flag for the base case (phase shift adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTIONS(4)",
+        "description": "dc tap adjustment flag for the base case (dc tap adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTIONS(5)",
+        "description": "switched shunt adjustment flag for the base case (switched shunt adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable all."
+      },
+      {
+        "value": "= 2",
+        "description": "enable continuous, disable discrete."
+      },
+      {
+        "value": "OPTIONS(6)",
+        "description": "induction motor treatment flag (applied when an induction motor fails to solve due to low terminal bus voltage, 0, by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "stall."
+      },
+      {
+        "value": "= 1",
+        "description": "trip."
+      },
+      {
+        "value": "OPTIONS(7)",
+        "description": "solution method flag (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "Fixed slope decoupled Newton-Raphson method."
+      },
+      {
+        "value": "= 1",
+        "description": "Full Newton-Raphson method."
+      },
+      {
+        "value": "= 2",
+        "description": "Optimized fixed slope decoupled Newton-Raphson method."
+      },
+      {
+        "value": "OPTIONS(8)",
+        "description": "non-divergent solution flag (non-divergent solution option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "Disable."
+      },
+      {
+        "value": "= 1",
+        "description": "Enable."
+      },
+      {
+        "value": "OPTIONS(9)",
+        "description": "tap adjustment flag for the first N-1 contingency (tap adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable stepping adjustment."
+      },
+      {
+        "value": "= 2",
+        "description": "enable direct adjustment."
+      },
+      {
+        "value": "OPTIONS(10)",
+        "description": "area interchange adjustment flag for the contingency case (area interchange adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable using tie line flows only in calculating area interchange."
+      },
+      {
+        "value": "= 2",
+        "description": "enable using tie line flows and loads in calculating area interchange."
+      },
+      {
+        "value": "OPTIONS(11)",
+        "description": "phase shift adjustment flag for the contingency case (phase shift adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTIONS(12)",
+        "description": "dc tap adjustment flag for the contingency case (dc tap adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTIONS(13)",
+        "description": "switched shunt adjustment flag for the contingency case (switched shunt adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "= 2",
+        "description": "enable continuous, disable discrete."
+      },
+      {
+        "value": "OPTIONS(14)",
+        "description": "induction motor treatment flag for the contingency case (applied when an induction motor fails to solve due to low terminal bus voltage, 0, by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "stall."
+      },
+      {
+        "value": "= 1",
+        "description": "trip."
+      },
+      {
+        "value": "OPTIONS(15)",
+        "description": "dispatch mode (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "subsystem machines (RESERVE)."
+      },
+      {
+        "value": "= 2",
+        "description": "subsystem machines (PMAX)."
+      },
+      {
+        "value": "= 3",
+        "description": "subsystem machines (INERTIA)."
+      },
+      {
+        "value": "= 4",
+        "description": "subsystem machines (GOVERNOR DROOP)."
+      },
+      {
+        "value": "OPTIONS(16)",
+        "description": "Rating set for the base case."
+      },
+      {
+        "value": "= 1",
+        "description": "RATE A."
+      },
+      {
+        "value": "= 2",
+        "description": "RATE B."
+      },
+      {
+        "value": "= 3",
+        "description": "RATE C."
+      },
+      {
+        "value": "OPTIONS(17)",
+        "description": "Rating set for the contingency case."
+      },
+      {
+        "value": "= 1",
+        "description": "RATE A."
+      },
+      {
+        "value": "= 2",
+        "description": "RATE B."
+      },
+      {
+        "value": "= 3",
+        "description": "RATE C."
+      },
+      {
+        "value": "OPTIONS(18)",
+        "description": "maximum iteration number of PSCOPF."
+      },
+      {
+        "value": "= 1",
+        "description": "RATE A."
+      },
+      {
+        "value": "= 2",
+        "description": "RATE B."
+      },
+      {
+        "value": "= 3",
+        "description": "RATE C."
+      },
+      {
+        "value": "OPTIONS(19)",
+        "description": "maximum number of a contingency that does not cause limit violations and instability issue to be tested in the iterative process of PSCOPF."
+      },
+      {
+        "value": "OPTIONS(20)",
+        "description": "Handle initial violations in the base case."
+      },
+      {
+        "value": "= 0",
+        "description": "Ignore the initial violations in the base case from the PSCOPF analysis."
+      },
+      {
+        "value": "= 1",
+        "description": "Clean the initial violations in the base case."
+      },
+      {
+        "value": "OPTIONS(21)",
+        "description": "generator control flag (1 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable generation MW dispatch."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTIONS(22)",
+        "description": "load control flag (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable load shedding control."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTIONS(23)",
+        "description": "phase shifter control flag (1 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable phase shifter control."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTIONS(24)",
+        "description": "off-line generator control flag (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable generation MW dispatch of off-line generators."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTIONS(25)",
+        "description": "tap setting adjustment flag (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable tap setting adjustment."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTIONS(26)",
+        "description": "switched shunt control flag (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable switch shunt control."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      }
+    ],
+    "values": [
+      {
+        "value": "VALUES(1)",
+        "description": "Mismatch tolerance (TOLN by default)."
+      },
+      {
+        "value": "VALUES(2)",
+        "description": "Percentage of rating for the base case (100.0 by default)."
+      },
+      {
+        "value": "VALUES(3)",
+        "description": "Percentage of rating for the contingency cases (100.0 by default)."
+      },
+      {
+        "value": "VALUES(4)",
+        "description": "Voltage tolerance in linear programming."
+      },
+      {
+        "value": "VALUES(5)",
+        "description": "Flow tolerance in linear programming."
+      },
+      {
+        "value": "VALUES(6)",
+        "description": "Weighting factor of generation MW dispatch (1.0 by default)."
+      },
+      {
+        "value": "VALUES(7)",
+        "description": "Weighting factor of load control (1.0 by default)."
+      },
+      {
+        "value": "VALUES(8)",
+        "description": "Weighting factor of phase shifter control (1.0 by default)."
+      },
+      {
+        "value": "VALUES(9)",
+        "description": "Weighting factor of generation MW dispatch of off-line generators (1.0 by default)."
+      },
+      {
+        "value": "VALUES(10)",
+        "description": "Weighting factor of tap setting adjustment (1.0 by default)."
+      },
+      {
+        "value": "VALUES(11)",
+        "description": "Weighting factor of switched shunt control (1.0 by default)."
+      }
+    ],
+    "labels": [
+      {
+        "value": "LABELS(1)",
+        "description": "label of generation dispatch system, required if the dispatch mode of OPTIONS(15) is not zero. The dispatch mode and the system provide for a default dispatch method for contingencies causing unbalance between load demand and generation (blank for none)."
+      },
+      {
+        "value": "LABELS(2)",
+        "description": "label of generation dispatch control system. MW injections of the generators within the system are available for dispatch in the corrective action mode or preventive security constrained optimal power flow mode (blank for none)."
+      },
+      {
+        "value": "LABELS(3)",
+        "description": "label of load control system. Loads in the load control system are available for curtailment in the corrective action mode or preventive security constrained optimal power flow mode (blank for none)."
+      },
+      {
+        "value": "LABELS(4)",
+        "description": "label of phase shifter adjustment system. The phase angles of phase shifters in the system are regulated either by corrective action or preventive security constrained optimal power flow (blank for none)."
+      },
+      {
+        "value": "LABELS(5)",
+        "description": "label of generation MW control of off-line generator control system. MW injections of the off-line generators within the system are available for dispatch in the corrective action mode or preventive security constrained optimal power flow mode (blank for none)."
+      },
+      {
+        "value": "LABELS(6)",
+        "description": "label of tap adjustment system. The tap positions of transformers in voltage control mode are regulated either by corrective action or preventive security constrained optimal power flow (blank for none)."
+      },
+      {
+        "value": "LABELS(7)",
+        "description": "label of switched shunt control system. The admittances of switched shunts in voltage control mode are regulated either by corrective action or preventive security constrained optimal power flow (blank for none)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= -2",
+      "description": "PSCOPF terminates with active constraints."
+    },
+    {
+      "value": "= -1",
+      "description": "PSCOPF reaches the maximum iteration."
+    },
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Invalid OPTIONS value."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid VALUES value."
+    },
+    {
+      "value": "= 3",
+      "description": "Generators are converted."
+    },
+    {
+      "value": "= 4",
+      "description": "Buses in island(s) without a swing bus–use activity TREE."
+    },
+    {
+      "value": "= 5",
+      "description": "Largest mismatch exceeds tolerance."
+    },
+    {
+      "value": "= 6",
+      "description": "Generation subsystem not specified."
+    },
+    {
+      "value": "= 7",
+      "description": "Too many islands in base case."
+    },
+    {
+      "value": "= 8",
+      "description": "in-service induction machines are in the “stalled” or “tripped” state."
+    },
+    {
+      "value": "= 9",
+      "description": "buses with bus type code and series element status inconsistencies."
+    },
+    {
+      "value": "= 10",
+      "description": "No Distribution Factor Data input file specified."
+    },
+    {
+      "value": "= 11",
+      "description": "No controls are specified."
+    },
+    {
+      "value": "= 12",
+      "description": "No constraints are specified."
+    },
+    {
+      "value": "= 13",
+      "description": "Invalid base/contingency case flag combination."
+    },
+    {
+      "value": "= 21",
+      "description": "File is not in the form of a PSSE-25 or later DFAX file–run DFAX."
+    },
+    {
+      "value": "= 22",
+      "description": "Monitored elements exceed limit when adding multi-section line members."
+    },
+    {
+      "value": "= 51",
+      "description": "Error opening distribution factor data file."
+    },
+    {
+      "value": "= 52",
+      "description": "Error opening load throwover data file."
+    },
+    {
+      "value": "= 53",
+      "description": "Error opening inertia data file."
+    },
+    {
+      "value": "= 54",
+      "description": "Prerequisite requirements for function not met."
+    }
+  ]
+}

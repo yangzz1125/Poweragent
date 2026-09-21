@@ -1,0 +1,74 @@
+{
+  "module": "psspy",
+  "function_name": "convert_section_to_bus",
+  "category": "Node Breaker Operation",
+  "description": "Use this API routine to convert a bus section, one that had been automatically created within a substation due to open substation switching devices, into a main network bus. After the conversion, the new network bus will reside in the same substation and all prior network connections will remain. Only bus sections that are not the main parent bus can be converted. If a plant exists at the parent bus of the bus section to be converted and if all machines are connected to the bus section, then the plant will be removed from the parent bus once the conversion of the bus section to a main network bus is made. The newly converted network bus will remain as a plant. This API routine was first introduced in release 34.2.0. ierr = convert_section_to_bus(ibus, inode, iarg, name)",
+  "python_syntax": "ierr = convert_section_to_bus(ibus, inode, iarg, name)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input; no default allowed)."
+    },
+    {
+      "name": "inode",
+      "description": "Node number. (input; no default allowed)."
+    },
+    {
+      "name": "iarg",
+      "description": "Bus number of the new network bus that is being converted from a bus section. (input)."
+    },
+    {
+      "name": "name",
+      "description": "New bus name. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid bus number."
+    },
+    {
+      "value": "= 4",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 5",
+      "description": "invalid node number."
+    },
+    {
+      "value": "= 6",
+      "description": "bus does not belong to a substation."
+    },
+    {
+      "value": "= 7",
+      "description": "node is not found in the substation."
+    },
+    {
+      "value": "= 8",
+      "description": "node is not connected to any bus section of the specified bus."
+    },
+    {
+      "value": "= 9",
+      "description": "selected bus section is the parent bus and therefore is already a network bus."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - Bus name is more than 12 characters."
+    }
+  ]
+}

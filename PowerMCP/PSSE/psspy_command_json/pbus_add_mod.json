@@ -1,0 +1,70 @@
+{
+  "module": "psspy",
+  "function_name": "pbus_add_mod",
+  "category": "Power Flow Data",
+  "description": "Use this API to add or modify transaction event participating bus data. This API routine was first introduced in release 30.0.0. ierr = pbus_add_mod(event, ibus, realar)",
+  "python_syntax": "ierr = pbus_add_mod(event, ibus, realar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "event",
+      "description": "Transaction event number. (input)."
+    },
+    {
+      "name": "ibus",
+      "description": "Number of the participating bus. (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of two elementsNone. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "participating bus load value."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "participating bus generation value."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "error occurred."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid transaction event number."
+    },
+    {
+      "value": "= 3",
+      "description": "transaction event not found."
+    },
+    {
+      "value": "> 3",
+      "description": "unable to add or modify participating bus data; error condition detected in data access routine."
+    },
+    {
+      "value": "= 10",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "warnings: - None."
+    }
+  ]
+}

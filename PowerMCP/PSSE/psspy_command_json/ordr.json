@@ -1,0 +1,46 @@
+{
+  "module": "psspy",
+  "function_name": "ordr",
+  "category": "Power Flow Operation",
+  "description": "Use this API to calculate a sparsity preserving ordering of buses in preparation for the processing of network matrices. This API routine was first introduced in release 28.0.0. ierr = ordr(opt)",
+  "python_syntax": "ierr = ordr(opt)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "opt",
+      "description": "Flag for ordering option. (input; 0 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "opt": [
+      {
+        "value": "= 0",
+        "description": "assume all branches between in-service buses are in-service."
+      },
+      {
+        "value": "= 1",
+        "description": "ignore out-of-service branches in calculating the bus ordering."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid OPT value."
+    },
+    {
+      "value": "= 2",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,185 @@
+{
+  "module": "psspy",
+  "function_name": "setdiagresrel_3",
+  "category": "Diagram View",
+  "description": "Use this API to specify the reliability annotation options in the active Slider diagram. This API routine was first introduced in release 33.1.0. setdiagresrel_3(setscope, outmode, relmode, busmode, busdetann, brndetann, busprbann, brnprbann, voltrec)",
+  "python_syntax": "setdiagresrel_3(setscope, outmode, relmode, busmode, busdetann, brndetann, busprbann, brnprbann, voltrec)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "setscope",
+      "description": "Scope of the api. (input)."
+    },
+    {
+      "name": "outmode",
+      "description": "Mode of results displayed. (input)."
+    },
+    {
+      "name": "relmode",
+      "description": "Type of reliability results displayed. (input)."
+    },
+    {
+      "name": "busmode",
+      "description": "Mode of bus reporting. (input)."
+    },
+    {
+      "name": "busdetann",
+      "description": "If mode = 1, is the option to specify which bus voltage violations are displayed. (input)."
+    },
+    {
+      "name": "brndetann",
+      "description": "If mode = 1, is the option to specify which branch flow overloading violations are displayed. (input)."
+    },
+    {
+      "name": "busprbann",
+      "description": "If mode = 2, is the option to specify which bus voltage violations are displayed. (input)."
+    },
+    {
+      "name": "brnprbann",
+      "description": "If mode = 2, is the option to specify which branch flow overloading violations are displayed. (input)."
+    },
+    {
+      "name": "voltrec",
+      "description": "Index into the voltage limit record array for the current dfax file. (input)."
+    }
+  ],
+  "return_values": [],
+  "allowed_values": {
+    "setscope": [
+      {
+        "value": "= 0",
+        "description": "defaults for new diagrams."
+      },
+      {
+        "value": "= 1",
+        "description": "defaults for new diagrams and settings for the active diagram."
+      },
+      {
+        "value": "= 2",
+        "description": "settings for the active diagram."
+      }
+    ],
+    "outmode": [
+      {
+        "value": "= 1",
+        "description": "post contingency stage."
+      },
+      {
+        "value": "= 2",
+        "description": "post tripping stage."
+      },
+      {
+        "value": "= 3",
+        "description": "post corrective actions stage."
+      }
+    ],
+    "relmode": [
+      {
+        "value": "= 0",
+        "description": "deterministic reliability results."
+      },
+      {
+        "value": "= 1",
+        "description": "probabilistic reliability results."
+      }
+    ],
+    "busmode": [
+      {
+        "value": "= 0",
+        "description": "bus voltage violations."
+      },
+      {
+        "value": "= 1",
+        "description": "bus load curtailments."
+      }
+    ],
+    "busdetann": [
+      {
+        "value": "= 0",
+        "description": "don’t display Bus voltage violations."
+      },
+      {
+        "value": "= BUSDETANN + 1",
+        "description": "# of contingencies resulting in violations."
+      },
+      {
+        "value": "= BUSDETANN + 2",
+        "description": "contingency with maximum violations."
+      },
+      {
+        "value": "= BUSDETANN + 4",
+        "description": "average violations (AV)."
+      },
+      {
+        "value": "= BUSDETANN + 8",
+        "description": "maximum violations (MV)."
+      }
+    ],
+    "brndetann": [
+      {
+        "value": "= 0",
+        "description": "don’t display branch flow violations."
+      },
+      {
+        "value": "= BRNDETANN + 1",
+        "description": "# of contingencies resulting in violations."
+      },
+      {
+        "value": "= BRNDETANN + 2",
+        "description": "contingency with maximum loading."
+      },
+      {
+        "value": "= BRNDETANN + 4",
+        "description": "available capacity (AC)."
+      },
+      {
+        "value": "= BRNDETANN + 8",
+        "description": "average violations (AV)."
+      },
+      {
+        "value": "= BRNDETANN + 16",
+        "description": "maximum loading % (ML)."
+      }
+    ],
+    "busprbann": [
+      {
+        "value": "= 0",
+        "description": "don’t display Bus voltage violations."
+      },
+      {
+        "value": "= BUSPRBANN + 1",
+        "description": "frequency (OC/Y)."
+      },
+      {
+        "value": "= BUSPRBANN + 2",
+        "description": "impact (VI)."
+      },
+      {
+        "value": "= BUSPRBANN + 4",
+        "description": "probability (H/Y)."
+      },
+      {
+        "value": "= BUSPRBANN + 8",
+        "description": "expected energy curtailed."
+      }
+    ],
+    "brnprbann": [
+      {
+        "value": "= 0",
+        "description": "don’t display branch flow violations."
+      },
+      {
+        "value": "= BRNPRBANN + 1",
+        "description": "frequency (OC/Y)."
+      },
+      {
+        "value": "= BRNPRBANN + 2",
+        "description": "impact (VI)."
+      },
+      {
+        "value": "= BRNPRBANN + 4",
+        "description": "probability (H/Y)."
+      }
+    ]
+  }
+}

@@ -1,0 +1,236 @@
+{
+  "module": "psspy",
+  "function_name": "opf_bus_subsys",
+  "category": "Optimal Power Flow Data",
+  "description": "Use this API to add OPF bus attribute data for all records in a specified subsystem of the working case. This API routine was first introduced in release 28.0.0. ierr = opf_bus_subsys(sid, all, intgar, realar, useval)",
+  "python_syntax": "ierr = opf_bus_subsys(sid, all, intgar, realar, useval)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid subsystem id from 0 to 11. a subsystem must have been previously defined. (input; no default allowed)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem flag. (input; no default allowed)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of three elementsNone. (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of five elementsNone. (input)."
+    },
+    {
+      "name": "useval",
+      "description": "An array of five elements specifying (default treatment same as value of 0). (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 0",
+        "description": "process only specified buses."
+      },
+      {
+        "value": "= 1",
+        "description": "process all buses, use existing data values."
+      },
+      {
+        "value": "= 2",
+        "description": "process all buses, use default data values."
+      }
+    ],
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "limit type imposed on the bus voltage limits (default is the current value; initialized to 1)."
+      },
+      {
+        "value": "= 0",
+        "description": "reporting only."
+      },
+      {
+        "value": "= 1",
+        "description": "hard limit."
+      },
+      {
+        "value": "= 2",
+        "description": "linear soft limit."
+      },
+      {
+        "value": "= 3",
+        "description": "quadratic soft limit."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "indicates what to do with the defined voltage limits (default treatment same as value of 0)."
+      },
+      {
+        "value": "= 0",
+        "description": "leave voltage limits as defined by REALAR(1) and REALAR(2)."
+      },
+      {
+        "value": "= 1",
+        "description": "fix normal voltage limit at present voltage values, ignoring any values defined by REALAR(1) and REALAR(2)."
+      },
+      {
+        "value": "= 2",
+        "description": "allow normal voltage limits to open up if they exceed the bounds defined by REALAR(1) or REALAR(2)."
+      },
+      {
+        "value": "= 3",
+        "description": "set normal and emergency OPF voltage limits to the normal and emergency voltage limits as defined in the network bus data."
+      },
+      {
+        "value": "INTGAR(3)",
+        "description": "indicates which bus types should be processed (default treatment same as value of 0)."
+      },
+      {
+        "value": "= 0",
+        "description": "all buses in subsystem."
+      },
+      {
+        "value": "= 1",
+        "description": "only Type 1 buses in subsystem."
+      },
+      {
+        "value": "= 2",
+        "description": "only Type 2 and 3 buses in subsystem."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "normal maximum voltage limit in pu (default is the current value; initialized to 9999.0)."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "normal minimum voltage limit in pu (default is the current value; initialized to -9999.0)."
+      },
+      {
+        "value": "REALAR(3)",
+        "description": "emergency maximum voltage limit in pu (default is the current value; initialized to 9999.0)."
+      },
+      {
+        "value": "REALAR(4)",
+        "description": "emergency minimum voltage limit in pu (default is the current value; initialized to -9999.0)."
+      },
+      {
+        "value": "REALAR(5)",
+        "description": "soft-limit penalty weight (default is the current value; initialized to 1.0)."
+      }
+    ],
+    "useval": [
+      {
+        "value": "USEVAL(1)",
+        "description": "indicates how the value of REALAR(1) should be used."
+      },
+      {
+        "value": "= 0",
+        "description": "if the value of REALAR(1) is to be used as defined."
+      },
+      {
+        "value": "= 1",
+        "description": "if the value of REALAR(1) is to be multiplied by the present value of the normal bus voltage minimum limit."
+      },
+      {
+        "value": "= 2",
+        "description": "if the value of REALAR(1) is to be added to the present value of the normal bus voltage minimum limit."
+      },
+      {
+        "value": "USEVAL(2)",
+        "description": "indicates how the value of REALAR(2) should be used."
+      },
+      {
+        "value": "= 0",
+        "description": "if the value of REALAR(2) is to be used as defined."
+      },
+      {
+        "value": "= 1",
+        "description": "if the value of REALAR(2) is to be multiplied by the present value of the normal bus voltage maximum limit."
+      },
+      {
+        "value": "= 2",
+        "description": "if the value of REALAR(2) is to be added to the present value of the normal bus voltage maximum limit."
+      },
+      {
+        "value": "USEVAL(3)",
+        "description": "indicates how the value of REALAR(3) should be used."
+      },
+      {
+        "value": "= 0",
+        "description": "if the value of REALAR(3) is to be used as defined."
+      },
+      {
+        "value": "= 1",
+        "description": "if the value of REALAR(3) is to be multiplied by the present value of the emergency bus voltage minimum limit."
+      },
+      {
+        "value": "= 2",
+        "description": "if the value of REALAR(3) is to be added to the present value of the emergency bus voltage minimum limit."
+      },
+      {
+        "value": "USEVAL(4)",
+        "description": "indicates how the value of REALAR(4) should be used."
+      },
+      {
+        "value": "= 0",
+        "description": "if the value of REALAR(4) is to be used as defined."
+      },
+      {
+        "value": "= 1",
+        "description": "if the value of REALAR(4) is to be multiplied by the present value of the emergency bus voltage maximum limit."
+      },
+      {
+        "value": "= 2",
+        "description": "if the value of REALAR(4) is to be added to the present value of the emergency bus voltage maximum limit."
+      },
+      {
+        "value": "USEVAL(5)",
+        "description": "indicates how the value of PENWGT should be used."
+      },
+      {
+        "value": "= 0",
+        "description": "if the value of PENWGT is to be used as defined."
+      },
+      {
+        "value": "= 1",
+        "description": "if the value of PENWGT is to be multiplied by the present value of the soft limit penalty weight."
+      },
+      {
+        "value": "= 2",
+        "description": "if the value of PENWGT is to be added to the present value of the soft limit penalty weight."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ALL value."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "non-fatal error occurred. Warning messages are as follows: - Invalid limit type specified. - Maximum normal voltage limit less than minimum limit. - Maximum emergency voltage limit less than minimum limit."
+    }
+  ]
+}

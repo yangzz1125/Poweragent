@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "change_chricn",
+  "category": "Dynamic Simulation Operation",
+  "description": "Use this API to change the value of an element of the CHRICN array (a character ICON). The element is specified relative to the beginning of the CHRICN array. This API routine was first introduced in release 28.0.0. ierr = change_chricn(number, newval)",
+  "python_syntax": "ierr = change_chricn(number, newval)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "number",
+      "description": "Chricn number or array index (must be between 1 and the number of icons allowed at the present size level of psse). (input; no default allowed)."
+    },
+    {
+      "name": "newval",
+      "description": "New value to be assigned to chricn (number). (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid CHRICN index."
+    },
+    {
+      "value": "= 2",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

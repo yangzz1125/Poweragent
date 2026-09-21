@@ -1,0 +1,86 @@
+{
+  "module": "psspy",
+  "function_name": "systot",
+  "category": "Single Element Data",
+  "description": "Use this API to return complex system-wide values. This API routine was first introduced in release 28.0.0. ierr, cmpval = systot(string)",
+  "python_syntax": "ierr, cmpval = systot(string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "string",
+      "description": "String indicating the system total desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "cmpval",
+      "description": "Complex power. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= LOAD",
+        "description": "Total system load."
+      },
+      {
+        "value": "= GEN",
+        "description": "Total system generation."
+      },
+      {
+        "value": "= LOSS",
+        "description": "Total system losses; I**2 * (R + jX) for ac branches."
+      },
+      {
+        "value": "= XFRMAG",
+        "description": "Total power consumed by transformer magnetizing admittances."
+      },
+      {
+        "value": "= INDMAC",
+        "description": "Total system induction machine powers."
+      },
+      {
+        "value": "= INDGEN",
+        "description": "Total system induction generator powers."
+      },
+      {
+        "value": "= INDMOT",
+        "description": "Total system induction motor powers."
+      },
+      {
+        "value": "= FACTSH",
+        "description": "Total of FACTS device shunt elements."
+      },
+      {
+        "value": "= BSSHNT",
+        "description": "Total of bus fixed and switched shunt elements."
+      },
+      {
+        "value": "= LNSHNT",
+        "description": "Total of line shunts and transformer magnetizing shunt elements."
+      },
+      {
+        "value": "= ALSHNT",
+        "description": "Total of FACTS device fixed switched line and transformer magnetizing shunt elements."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘P’ and ‘Q’ or ‘CMPVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Bad ‘STRING’ value; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "No in-service buses in case; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    }
+  ]
+}

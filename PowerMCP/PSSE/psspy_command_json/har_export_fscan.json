@@ -1,0 +1,42 @@
+{
+  "module": "psspy",
+  "function_name": "har_export_fscan",
+  "category": "Harmonics Operation",
+  "description": "Use this API to export harmonics frequency scan results to comma separated (.csv) file. The harmonic analysis must be previously performed and working memory contains those results. This API routine was first introduced in release 35.4.0. ierr = har_export_fscan(csvname)",
+  "python_syntax": "ierr = har_export_fscan(csvname)",
+  "return_type": "error_only_write_file",
+  "parameters": [
+    {
+      "name": "csvname",
+      "description": "Name of the file to which harmonics frequency scan results are exported. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= 2",
+      "description": "no harmonics results exists."
+    },
+    {
+      "value": "= 3",
+      "description": "error opening CSVNAME file."
+    },
+    {
+      "value": "= 4",
+      "description": "CSVNAME is blank."
+    }
+  ]
+}

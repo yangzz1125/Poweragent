@@ -1,0 +1,90 @@
+{
+  "module": "psspy",
+  "function_name": "gneint",
+  "category": "Single Element Data",
+  "description": "Use this API routine to return integer quantities of a specified GNE device. This API routine was first introduced in release 33.0.0. ierr, ival = gneint(name, string)",
+  "python_syntax": "ierr, ival = gneint(name, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Gne device name. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the gne device quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "ival",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= NTERM",
+        "description": "Number of terminals used by this model (1 or 2)."
+      },
+      {
+        "value": "= BUS1",
+        "description": "Number of the first (or only) bus to which this model is connected."
+      },
+      {
+        "value": "= BUS2",
+        "description": "Number of the second bus to which this model is connected; 0 is returned for a 1 terminal model."
+      },
+      {
+        "value": "= STATUS",
+        "description": "Device status."
+      },
+      {
+        "value": "= OWNER",
+        "description": "Owner to which the device is assigned."
+      },
+      {
+        "value": "= NMETER",
+        "description": "Number of the non-metered end bus; used for GNE devices with more than one terminal."
+      },
+      {
+        "value": "= NREAL",
+        "description": "Number of floating point data items required by this model."
+      },
+      {
+        "value": "= NINTG",
+        "description": "Number of buses required by the model to calculate its inputs."
+      },
+      {
+        "value": "= NCHAR",
+        "description": "Number of number of two-character identifiers required by the model to calculate its inputs."
+      },
+      {
+        "value": "= INTGn",
+        "description": "nth bus number required by this model; n must be between 1 and the number of buses required by the model to calculate its inputs."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "GNE device not found; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid value of ‘STRING’; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "For ‘STRING’ value ‘INTGn’, n is not valid for this model; ‘IVAL’ unchanged."
+    }
+  ]
+}

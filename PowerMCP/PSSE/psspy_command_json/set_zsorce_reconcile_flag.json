@@ -1,0 +1,42 @@
+{
+  "module": "psspy",
+  "function_name": "set_zsorce_reconcile_flag",
+  "category": "Dynamic Simulation Operation",
+  "description": "Use this API to enable or disable the simulation option setting for automatic ZSORCE reconciliation. This API routine was first introduced in release 33.10.0 and 34.2.0. ierr = set_zsorce_reconcile_flag(status) ierr, status = set_zsorce_reconcile_flag()",
+  "python_syntax": "ierr = set_zsorce_reconcile_flag(status) ierr, status = set_zsorce_reconcile_flag()",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "status",
+      "description": "Option setting. (input; if Batch command or for Python if specified as an argument, or for Fortran if ICODE is 0; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "status": [
+      {
+        "value": "= 0",
+        "description": "disable ZSORCE reconciliation."
+      },
+      {
+        "value": "= 1",
+        "description": "enable ZSORCE reconciliation."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

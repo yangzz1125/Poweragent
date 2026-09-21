@@ -1,0 +1,62 @@
+{
+  "module": "psspy",
+  "function_name": "set_ext_sysswd_int",
+  "category": "Extension Data Access",
+  "description": "Use this API to set system switching device integer extension data. This API routine was first introduced in release 35.1.0. ierr = set_ext_sysswd_int(ibus, jbus, ckt, string, ival)",
+  "python_syntax": "ierr = set_ext_sysswd_int(ibus, jbus, ckt, string, ival)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Sysswd ibus. (input)."
+    },
+    {
+      "name": "jbus",
+      "description": "Sysswd jbus. (input)."
+    },
+    {
+      "name": "ckt",
+      "description": "Sysswd ckt. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the extension sysswd field desired. (input)."
+    },
+    {
+      "name": "ival",
+      "description": "Value indicated by string. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IVAL’ set."
+    },
+    {
+      "value": "= 1",
+      "description": "Element not found; ‘IVAL’ not set."
+    },
+    {
+      "value": "= 2",
+      "description": "Bad value of ‘STRING’; ‘IVAL’ not set."
+    },
+    {
+      "value": "= 3",
+      "description": "Bad data type for field ‘STRING’; ‘IVAL’ not set."
+    },
+    {
+      "value": "= 4",
+      "description": "Unknown error with data access; ‘IVAL’ not set."
+    },
+    {
+      "value": "= 10",
+      "description": "API Prereqs not met; ‘IVAL’ not set."
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+{
+  "module": "psspy",
+  "function_name": "aswshchar",
+  "category": "Switched Shunt Data",
+  "description": "Use this API to return an array of character values for subsystem switched shunts. This API routine was first introduced in release 30.2.0. ierr, carray = aswshchar(sid, flag, string)",
+  "python_syntax": "ierr, carray = aswshchar(sid, flag, string)",
+  "return_type": "error_and_array",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the bus subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem switched shunts to include. (input; 1 by default)."
+    },
+    {
+      "name": "string",
+      "description": "An array of NSTR elements specifying NSTR of the following strings indicating the bus and/or switched shunt quantities desired. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "carray",
+      "description": "An array of NSTR*DIM elements specifying Is an array of at least NSTR columns, each of which contains DIM elements. (output)."
+    }
+  ],
+  "allowed_values": {
+    "sid": [
+      {
+        "value": "< 0",
+        "description": "to instruct the API to assume a subsystem containing all buses in the working case."
+      },
+      {
+        "value": ">= 0",
+        "description": "valid bus subsystem identifier. Valid subsystem identifiers range from 0 to 11. Subsystem SID must have been previously defined."
+      }
+    ],
+    "flag": [
+      {
+        "value": "= 1",
+        "description": "for only in-service switched shunts at in-service buses (type code < 4)."
+      },
+      {
+        "value": "= 2",
+        "description": "for all switched shunts at in-service buses (type code < 4)."
+      },
+      {
+        "value": "= 3",
+        "description": "for only in-service switched shunts, including those at type 4 buses."
+      },
+      {
+        "value": "= 4",
+        "description": "for all switched shunts."
+      }
+    ],
+    "string": [
+      {
+        "value": "= VSCNAME",
+        "description": "VSC dc line name; non-blank name is returned only for those switched shunts for which the control mode, MODSW, is 4 (12 characters)."
+      },
+      {
+        "value": "= FACTSNAME",
+        "description": "FACTS device name; non-blank name is returned only for those switched shunts for which the control mode, MODSW, is 6 (12 characters)."
+      },
+      {
+        "value": "= DEVICENAME",
+        "description": "VSC dc line name or FACTS device name; non-blank name is returned only for those switched shunts for which the control mode, MODSW, is 4 or 6 (12 characters)."
+      },
+      {
+        "value": "= ID",
+        "description": "Switched shunt identifier (2 characters)."
+      },
+      {
+        "value": "= NAME",
+        "description": "Bus name (12 characters)."
+      },
+      {
+        "value": "= EXNAME",
+        "description": "Extended bus name (18 characters)."
+      },
+      {
+        "value": "= IREGNAME",
+        "description": "Bus name of regulated bus (12 characters)."
+      },
+      {
+        "value": "= IREGEXNAME",
+        "description": "Extended bus name of regulated bus (18 characters)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid FLAG value."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid NSTR value."
+    },
+    {
+      "value": "= 5",
+      "description": "DIM, and hence the size of CARRAY, is not large enough."
+    },
+    {
+      "value": "= 6",
+      "description": "Invalid STRING value."
+    }
+  ]
+}

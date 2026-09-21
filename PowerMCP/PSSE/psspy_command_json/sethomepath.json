@@ -1,0 +1,15 @@
+{
+  "module": "psspy",
+  "function_name": "sethomepath",
+  "category": "Single Element Data",
+  "description": "Use this API to set a user’s HOMEPATH directory. This API routine was first introduced in release 34.1.0. sethomepath(sfile)",
+  "python_syntax": "sethomepath(sfile)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "sfile",
+      "description": ""
+    }
+  ],
+  "return_values": []
+}

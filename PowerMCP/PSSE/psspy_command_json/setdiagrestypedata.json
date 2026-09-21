@@ -1,0 +1,10 @@
+{
+  "module": "psspy",
+  "function_name": "setdiagrestypedata",
+  "category": "Diagram View",
+  "description": "Use this API to set the type of results displayed in the active Slider diagram to impedance data values. Requires that current network elements are being displayed in the diagram view. This API routine was first introduced in release 30.0.0. setdiagrestypedata()",
+  "python_syntax": "setdiagrestypedata()",
+  "return_type": "void",
+  "parameters": [],
+  "return_values": []
+}

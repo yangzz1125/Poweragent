@@ -1,0 +1,23 @@
+{
+  "module": "psspy",
+  "function_name": "setdiagfont",
+  "category": "Diagram View",
+  "description": "Use this API to specify the default text font in the active Slider diagram. This API routine was first introduced in release 30.0.0. setdiagfont(fntsiz, fntwgt, fntnam)",
+  "python_syntax": "setdiagfont(fntsiz, fntwgt, fntnam)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "fntsiz",
+      "description": "Font point size. (input)."
+    },
+    {
+      "name": "fntwgt",
+      "description": "Font weight. (input)."
+    },
+    {
+      "name": "fntnam",
+      "description": "Name of the font family. (input)."
+    }
+  ],
+  "return_values": []
+}

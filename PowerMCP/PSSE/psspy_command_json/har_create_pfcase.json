@@ -1,0 +1,70 @@
+{
+  "module": "psspy",
+  "function_name": "har_create_pfcase",
+  "category": "Harmonics Operation",
+  "description": "Use this API to save working case updated for harmonic frequency and passive filters added as fixed shunts. The working case impedances are recalculated considering harmonics models of network elements and equipment for specified harmonic order. This API routine was first introduced in release 35.4.0. ierr = har_create_pfcase(hord, linmdl, savoutfile)",
+  "python_syntax": "ierr = har_create_pfcase(hord, linmdl, savoutfile)",
+  "return_type": "error_only_write_file",
+  "parameters": [
+    {
+      "name": "hord",
+      "description": "Harmonic order (=harmonicfrequency/basefrequency), must be >0.0. specify hord=1.0 for fundamental frequency. (input; no default allowed)."
+    },
+    {
+      "name": "linmdl",
+      "description": "Transmission line model. (input; 0 by default)."
+    },
+    {
+      "name": "savoutfile",
+      "description": "File name to save output file. if savoutfile exists, it will be overwritten. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "linmdl": [
+      {
+        "value": "= 0",
+        "description": "nominal PI Line Model, no long line effects, no skin effects."
+      },
+      {
+        "value": "= 1",
+        "description": "distributed Parameter Line Model, long line effects and skin effects modeled."
+      },
+      {
+        "value": "= 2",
+        "description": "distributed Parameter Line Model, long line effects modeled, but skin effects not modeled."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "Error - Invalid harmonic order (HORD) value, must be >0.0."
+    },
+    {
+      "value": "= 2",
+      "description": "Error - SAVOUTFILE name not provided."
+    },
+    {
+      "value": "= 3",
+      "description": "Error - Prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= 4",
+      "description": "Error opening SAVOUTFILE."
+    },
+    {
+      "value": "= 5",
+      "description": "Error writing to SAVOUTFILE."
+    }
+  ]
+}

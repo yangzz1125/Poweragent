@@ -1,0 +1,74 @@
+{
+  "module": "psspy",
+  "function_name": "station_sws_shunt_term_chng_2",
+  "category": "Node Breaker Data",
+  "description": "Use this API to change a substation switched shunt node terminal connection in the working case. This API routine was first introduced in release 35.0.0. ierr = station_sws_shunt_term_chng_2(bus, id, intgar)",
+  "python_syntax": "ierr = station_sws_shunt_term_chng_2(bus, id, intgar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "bus",
+      "description": "Number of the bus to which the switched shunt is connected. (input)."
+    },
+    {
+      "name": "id",
+      "description": "Switched shunt identifier. (input)."
+    },
+    {
+      "name": "intgar",
+      "description": "Terminal node number. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error return. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "switched shunt identifier is more than two characters."
+    },
+    {
+      "value": "= 3",
+      "description": "switched shunt not found."
+    },
+    {
+      "value": "= 4",
+      "description": "bus does not belong to a substation."
+    },
+    {
+      "value": "= 5",
+      "description": "node not found in substation."
+    },
+    {
+      "value": "= 6",
+      "description": "invalid node number."
+    },
+    {
+      "value": "= 7",
+      "description": "node-breaker terminal connection table is full."
+    },
+    {
+      "value": "= 8",
+      "description": "error when moving switched shunt terminal connection."
+    },
+    {
+      "value": "= 9",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

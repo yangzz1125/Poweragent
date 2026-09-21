@@ -1,0 +1,66 @@
+{
+  "module": "psspy",
+  "function_name": "addvscdccontingencyelement",
+  "category": "Using The Vendor Neutral Contingency And Ras Auxiliary File",
+  "description": "Add VscdcContingencyElement to RAS memory model This API routine was first introduced in release 35.4.0. ierr = addvscdccontingencyelement(dcname, ctgname, action, actvalue, actmodif, critname, critstat, persistent, comment, timedelay)",
+  "python_syntax": "ierr = addvscdccontingencyelement(dcname, ctgname, action, actvalue, actmodif, critname, critstat, persistent, comment, timedelay)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "dcname",
+      "description": "A string describing the network element dc name. (key). (input)."
+    },
+    {
+      "name": "ctgname",
+      "description": "Name of the contingency (or tscontingency) to which this element belongs. (input)."
+    },
+    {
+      "name": "action",
+      "description": "A string describing this action. (input)."
+    },
+    {
+      "name": "actvalue",
+      "description": "Value of the action. actvalue_r refers to real, actvalue_c refers to character value in the fortran syntax. (input)."
+    },
+    {
+      "name": "actmodif",
+      "description": "Modifier field of the action. (input)."
+    },
+    {
+      "name": "critname",
+      "description": "Name of either a modelcondition or a modelfilter that determines the situation under which the action will actually be implemented. the point at which this model criteria is evaluated will depend on the criteriastatus as well as whether this contingency is used for power flow contingencies or transient stability contingencies. (input)."
+    },
+    {
+      "name": "critstat",
+      "description": "Set to either always, never, check, topologycheck ,postcheck, or solutionfail. default value used when none specified is check. details are explained in section 5.15.2. for transient stability elements, the choices are either always, never, or check. (input; Check by default)."
+    },
+    {
+      "name": "persistent",
+      "description": "This field is only defined for the power flow contingency elements. a yes or no field. any action that has persistent set to yes and also has the criteriastatus field set to solutionfail, postcheck or topologycheck will be applied in the appropriate section of the overall contingency process any time that its criteria is met. an exception to this is that a solutionfail element will only remain persistent up until a solution is successfully achieved. once a solution is achieved then the solutionfail elements that had been applied will no longer be evaluated. this is done to ensure the solutionfail loop is not entered repeatedly. default value used when none specified is no. (input; NO by default)."
+    },
+    {
+      "name": "comment",
+      "description": "Text field that can be used to provide comments attached to the element default value used when none specified is empty string. (input)."
+    },
+    {
+      "name": "timedelay",
+      "description": "This field is only defined for the power flow contingency elements. time delay to wait before the defined action takes place specified in a real number in seconds (see note below when using a modelfilter). this is not an absolute time at which an action occurs, but serves as a relative ordering for the implementation of actions. actions with the smallest time delay will be applied first during the topologycheck and postcheck solution steps. (input; 0.0 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "(output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error occurred."
+    },
+    {
+      "value": "= 4",
+      "description": "Req are not met."
+    }
+  ]
+}

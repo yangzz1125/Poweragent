@@ -1,0 +1,376 @@
+{
+  "module": "psspy",
+  "function_name": "n11_accc_parallel_2",
+  "category": "Power Flow Operation",
+  "description": "Use this API to run the N-1-1 contingency analysis in parallel when the number of contingency processors in Program Settings is greater than 1. The API distributes contingency cases among multiple processors evenly, and tests the contingency cases and following tripping actions assigned to each processor in parallel. This API routine was first introduced in release 35.1.0. ierr = n11_accc_parallel_2(options, values, label, dfxfile, accfile, confile, inlfile, thrfile)",
+  "python_syntax": "ierr = n11_accc_parallel_2(options, values, label, dfxfile, accfile, confile, inlfile, thrfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "options",
+      "description": "An array of 16 elements specifying power flow options. (input; tap adjustment option setting by default)."
+    },
+    {
+      "name": "values",
+      "description": "An array of one elements specifying power flow options. (input)."
+    },
+    {
+      "name": "label",
+      "description": "The label of generation dispatch system, required if the dispatch mode of options(15) is not zero. the dispatch mode and the system provide for a default dispatch method for contingencies causing unbalance between load demand and generation output. (input)."
+    },
+    {
+      "name": "dfxfile",
+      "description": "Is the name of the distribution factor data file. (input)."
+    },
+    {
+      "name": "accfile",
+      "description": "Is the name of contingency analysis output file. (input)."
+    },
+    {
+      "name": "confile",
+      "description": "Is the name of contingency description data file for the second n-1 contingencies. (input)."
+    },
+    {
+      "name": "inlfile",
+      "description": "Is the name of unit inertia data file. (input)."
+    },
+    {
+      "name": "thrfile",
+      "description": "Is the name of load throwover data file. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Is the error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "options": [
+      {
+        "value": "OPTIONS(1)",
+        "description": "tap adjustment flag for the first N-1 contingency (tap adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable stepping adjustment."
+      },
+      {
+        "value": "= 2",
+        "description": "enable direct adjustment."
+      },
+      {
+        "value": "OPTIONS(2)",
+        "description": "area interchange adjustment flag for the first N-1 contingency (area interchange adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable using tie line flows only in calculating area interchange."
+      },
+      {
+        "value": "= 2",
+        "description": "enable using tie line flows and loads in calculating area interchange."
+      },
+      {
+        "value": "OPTIONS(3)",
+        "description": "phase shift adjustment flag for the first N-1 contingency (phase shift adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTIONS(4)",
+        "description": "dc tap adjustment flag for the first N-1 contingency (dc tap adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTIONS(5)",
+        "description": "switched shunt adjustment flag for the first N-1 contingency (switched shunt adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable all."
+      },
+      {
+        "value": "= 2",
+        "description": "enable continuous, disable discrete."
+      },
+      {
+        "value": "OPTIONS(6)",
+        "description": "induction motor treatment flag for the first N-1 contingency (applied when an induction motor fails to solve due to low terminal bus voltage, 0 by default) ."
+      },
+      {
+        "value": "= 0",
+        "description": "stall."
+      },
+      {
+        "value": "= 1",
+        "description": "trip."
+      },
+      {
+        "value": "OPTIONS(7)",
+        "description": "solution method flag (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "Fixed slope decoupled Newton-Raphson method."
+      },
+      {
+        "value": "= 1",
+        "description": "Full Newton-Raphson method."
+      },
+      {
+        "value": "= 2",
+        "description": "Optimized fixed slope decoupled Newton-Raphson method."
+      },
+      {
+        "value": "OPTIONS(8)",
+        "description": "non-divergent solution flag (non-divergent solution option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "Disable."
+      },
+      {
+        "value": "= 1",
+        "description": "Enable."
+      },
+      {
+        "value": "OPTIONS(9)",
+        "description": "tap adjustment flag for the second N-1 contingency (tap adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable stepping adjustment."
+      },
+      {
+        "value": "= 2",
+        "description": "enable direct adjustment."
+      },
+      {
+        "value": "OPTIONS(10)",
+        "description": "area interchange adjustment flag for the second N-1 contingency (area interchange adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable using tie line flows only in calculating area interchange."
+      },
+      {
+        "value": "= 2",
+        "description": "enable using tie line flows and loads in calculating area interchange."
+      },
+      {
+        "value": "OPTIONS(11)",
+        "description": "phase shift adjustment flag for the second N-1 contingency (phase shift adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTIONS(12)",
+        "description": "dc tap adjustment flag for the second N-1 contingency (dc tap adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTIONS(13)",
+        "description": "switched shunt adjustment flag for the second N-1 contingency (switched shunt adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "= 2",
+        "description": "enable continuous, disable discrete."
+      },
+      {
+        "value": "OPTIONS(14)",
+        "description": "induction motor treatment flag for the second N-1 contingency (applied when an induction motor fails to solve due to low terminal bus voltage, 0 by default) ."
+      },
+      {
+        "value": "= 0",
+        "description": "stall."
+      },
+      {
+        "value": "= 1",
+        "description": "trip."
+      },
+      {
+        "value": "OPTIONS(15)",
+        "description": "generation dispatch method."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "subsystem machines (RESERVE)."
+      },
+      {
+        "value": "= 2",
+        "description": "subsystem machines (PMAX)."
+      },
+      {
+        "value": "= 3",
+        "description": "subsystem machines (INERTIA)."
+      },
+      {
+        "value": "= 4",
+        "description": "subsystem machines (GOVERNOR DROOP)."
+      },
+      {
+        "value": "OPTIONS(16)",
+        "description": "flag to skip the second N-1 contingencies if the first N-1 contingency is not clean."
+      },
+      {
+        "value": "= 0",
+        "description": "No."
+      },
+      {
+        "value": "= 1",
+        "description": "Yes."
+      }
+    ],
+    "values": [
+      {
+        "value": "VALUES(1)",
+        "description": "Mismatch tolerance (TOLN by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "Invalid OPTIONS value."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid VALUES value."
+    },
+    {
+      "value": "= 3",
+      "description": "Generators are converted."
+    },
+    {
+      "value": "= 4",
+      "description": "Buses in island(s) without a swing bus–use activity TREE."
+    },
+    {
+      "value": "= 5",
+      "description": "Largest mismatch exceeds tolerance."
+    },
+    {
+      "value": "= 6",
+      "description": "Generation subsystem not specified."
+    },
+    {
+      "value": "= 7",
+      "description": "Too many islands in base case."
+    },
+    {
+      "value": "= 8",
+      "description": "in-service induction machines are in the “stalled” or “tripped” state."
+    },
+    {
+      "value": "= 9",
+      "description": "buses with bus type code and series element status inconsistencies."
+    },
+    {
+      "value": "= 10",
+      "description": "No Distribution Factor Data input file specified."
+    },
+    {
+      "value": "= 11",
+      "description": "No Contingency Solution Output File specified."
+    },
+    {
+      "value": "= 12",
+      "description": "Can not read the Contingency Description Data File for the second N-1 contingencies."
+    },
+    {
+      "value": "= 13",
+      "description": "No second N-1 contingencies are specified."
+    },
+    {
+      "value": "= 14",
+      "description": "Invalid base/contingency case flag combination."
+    },
+    {
+      "value": "= 21",
+      "description": "file DFXFILE is not in the form of a PSSE 25 or later DFAX file; run DFAX."
+    },
+    {
+      "value": "= 22",
+      "description": "monitored elements exceed limit when adding multi-section line members."
+    },
+    {
+      "value": "= 51",
+      "description": "error opening Distribution Factor Data File."
+    },
+    {
+      "value": "= 52",
+      "description": "error opening Load Throwover Data File."
+    },
+    {
+      "value": "= 53",
+      "description": "error opening Unit Inertia and Governor Data File."
+    },
+    {
+      "value": "= 54",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

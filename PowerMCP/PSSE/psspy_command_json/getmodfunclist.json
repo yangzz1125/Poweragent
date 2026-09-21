@@ -1,0 +1,10 @@
+{
+  "module": "psspy",
+  "function_name": "getmodfunclist",
+  "category": "Non-Engineering",
+  "description": "Get list if external callable methods given a module name. Module is imported in process.",
+  "python_syntax": "",
+  "return_type": "void",
+  "parameters": [],
+  "return_values": []
+}

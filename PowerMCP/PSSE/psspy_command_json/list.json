@@ -1,0 +1,210 @@
+{
+  "module": "psspy",
+  "function_name": "list",
+  "category": "Power Flow Operation",
+  "description": "Use this API routine to tabulate the power flow working case in a form suitable for problem data documentation. This API routine was first introduced in release 28.0.0. ierr = list(sid, all, opt, vrev)",
+  "python_syntax": "ierr = list(sid, all, opt, vrev)",
+  "return_type": "error_only_report",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid subsystem identifier. valid subsystem identifiers range from 0 to 11. subsystem sid must have been previously defined. (input; 0 by default)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem flag. (input; 1 by default)."
+    },
+    {
+      "name": "opt",
+      "description": "Power flow data category to be tabulated. (input; 1 by default)."
+    },
+    {
+      "name": "vrev",
+      "description": "Units used for displaying voltages. (input; 0 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 0",
+        "description": "process only buses in subsystem SID."
+      },
+      {
+        "value": "= 1",
+        "description": "process all buses."
+      }
+    ],
+    "opt": [
+      {
+        "value": "= 1",
+        "description": "case summary."
+      },
+      {
+        "value": "= 2",
+        "description": "bus data."
+      },
+      {
+        "value": "= 3",
+        "description": "switched shunt data."
+      },
+      {
+        "value": "= 4",
+        "description": "plant data."
+      },
+      {
+        "value": "= 5",
+        "description": "generator unit data."
+      },
+      {
+        "value": "= 6",
+        "description": "branch data (single entry)."
+      },
+      {
+        "value": "= 7",
+        "description": "branch data (double entry)."
+      },
+      {
+        "value": "= 8",
+        "description": "two-winding transformer impedance data."
+      },
+      {
+        "value": "= 9",
+        "description": "line shunt data."
+      },
+      {
+        "value": "= 10",
+        "description": "dc line data."
+      },
+      {
+        "value": "= 11",
+        "description": "area interchange data."
+      },
+      {
+        "value": "= 12",
+        "description": "full listing (single entry)."
+      },
+      {
+        "value": "= 13",
+        "description": "full listing (double entry)."
+      },
+      {
+        "value": "= 14",
+        "description": "impedance table correction data."
+      },
+      {
+        "value": "= 15",
+        "description": "multi-section line data."
+      },
+      {
+        "value": "= 16",
+        "description": "zone data."
+      },
+      {
+        "value": "= 17",
+        "description": "inter-area transfer data."
+      },
+      {
+        "value": "= 18",
+        "description": "load data."
+      },
+      {
+        "value": "= 19",
+        "description": "owner data."
+      },
+      {
+        "value": "= 20",
+        "description": "FACTS device sending end data."
+      },
+      {
+        "value": "= 21",
+        "description": "two-winding transformer winding data."
+      },
+      {
+        "value": "= 22",
+        "description": "three-winding transformer impedance data."
+      },
+      {
+        "value": "= 23",
+        "description": "three-winding transformer winding data."
+      },
+      {
+        "value": "= 24",
+        "description": "three-winding transformer control data."
+      },
+      {
+        "value": "= 25",
+        "description": "three-winding transformer general data."
+      },
+      {
+        "value": "= 26",
+        "description": "two-winding transformer control data."
+      },
+      {
+        "value": "= 27",
+        "description": "FACTS device terminal end data."
+      },
+      {
+        "value": "= 28",
+        "description": "fixed bus shunt data."
+      },
+      {
+        "value": "= 29",
+        "description": "GNE device data."
+      },
+      {
+        "value": "= 30",
+        "description": "induction machine circuit data."
+      },
+      {
+        "value": "= 31",
+        "description": "induction machine miscellaneous data."
+      },
+      {
+        "value": "= 32",
+        "description": "capability curve data."
+      }
+    ],
+    "vrev": [
+      {
+        "value": "= 0",
+        "description": "use default voltage units."
+      },
+      {
+        "value": "= 1",
+        "description": "use alternate voltage units."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ALL value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid OPT value."
+    },
+    {
+      "value": "= 4",
+      "description": "invalid VREV value."
+    },
+    {
+      "value": "= 5",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

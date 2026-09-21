@@ -1,0 +1,33 @@
+{
+  "module": "psspy",
+  "function_name": "maxmsm",
+  "category": "Single Element Data",
+  "description": "Use this API to return the complex bus mismatch at the bus with the largest MVA mismatch. This API routine was first introduced in release 32.0.0. ierr, ibus, cmpval = maxmsm()",
+  "python_syntax": "ierr, ibus, cmpval = maxmsm()",
+  "return_type": "error_and_multi_value",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "ibus",
+      "description": "Bus number of the bus with the largest mva mismatch. (output)."
+    },
+    {
+      "name": "cmpval",
+      "description": "Complex bus mismatch. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IBUS’, and ‘P’ and ‘Q’ or ‘CMPVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "No in-service buses found; ‘IBUS’ of 0, and ‘P’ and ‘Q’ of 0.0 or ‘CMPVAL’ of (0.0,0.0) returned."
+    }
+  ]
+}

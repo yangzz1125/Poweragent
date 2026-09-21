@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "pseb",
+  "category": "Power Flow Operation",
+  "description": "Use this API to convert a PSEB command file into a PSSE response file. This API routine was first introduced in release 30.0.0. ierr, respfil = pseb(inpfile, outfile)",
+  "python_syntax": "ierr, respfil = pseb(inpfile, outfile)",
+  "return_type": "error_and_value",
+  "parameters": [
+    {
+      "name": "inpfile",
+      "description": "Name of the pseb command file. (input; no default allowed)."
+    },
+    {
+      "name": "outfile",
+      "description": "Name of response file; blank to have pseb assign the filename. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "respfil",
+      "description": "Pathname of the response file constructed by pseb. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "error opening INPFILE."
+    },
+    {
+      "value": "= 2",
+      "description": "error opening OUTFILE."
+    },
+    {
+      "value": "= 3",
+      "description": "errors detected while reading the PSEB Command Data input file."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

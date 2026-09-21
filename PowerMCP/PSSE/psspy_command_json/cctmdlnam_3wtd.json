@@ -1,0 +1,62 @@
+{
+  "module": "psspy",
+  "function_name": "cctmdlnam_3wtd",
+  "category": "Single Element Data",
+  "description": "Use this API to return model name of the CCT 3-winding transformer device model. This API routine was first introduced in release 33.9.0. ierr, model = cctmdlnam_3wtd(ibus, jbus, kbus, id)",
+  "python_syntax": "ierr, model = cctmdlnam_3wtd(ibus, jbus, kbus, id)",
+  "return_type": "error_and_model",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "“from” bus number of the branch. (input)."
+    },
+    {
+      "name": "jbus",
+      "description": "“to” bus number of the branch. (input)."
+    },
+    {
+      "name": "kbus",
+      "description": "“third” bus number of the branch. (input)."
+    },
+    {
+      "name": "id",
+      "description": "3-winding transformer branch circuit identifier. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "model",
+      "description": "Model name. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; MODEL name is returned."
+    },
+    {
+      "value": "= 1",
+      "description": "branch not in case;"
+    },
+    {
+      "value": "= 2",
+      "description": "No CCT models in case."
+    },
+    {
+      "value": "= 3",
+      "description": "No device model attached to the specified 3-winding transformer."
+    },
+    {
+      "value": "= 4",
+      "description": "Dynamics data not present in working memory."
+    },
+    {
+      "value": "= 5",
+      "description": "Specified branch is a transformer."
+    }
+  ]
+}

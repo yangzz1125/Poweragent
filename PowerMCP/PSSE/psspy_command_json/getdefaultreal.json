@@ -1,0 +1,15 @@
+{
+  "module": "psspy",
+  "function_name": "getdefaultreal",
+  "category": "Non-Engineering",
+  "description": "Retrieve “no input” value for reals (floats). Specify this value to indicate that “no input” is intended. This API routine was first introduced in release 32.0.0. rdef = getdefaultreal()",
+  "python_syntax": "rdef = getdefaultreal()",
+  "return_type": "value_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "rdef",
+      "description": ""
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "module": "psspy",
+  "function_name": "vscint",
+  "category": "Single Element Data",
+  "description": "Use this API to return VSC dc line integer parameters. This API routine was first introduced in release 28.0.0. ierr, ival = vscint(id, string)",
+  "python_syntax": "ierr, ival = vscint(id, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "id",
+      "description": "Vsc dc line name. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the vsc dc line quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "ival",
+      "description": "Parameter value. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= CONV1",
+        "description": "Converter 1 bus number."
+      },
+      {
+        "value": "= CONV2",
+        "description": "Converter 2 bus number."
+      },
+      {
+        "value": "= MDC",
+        "description": "Control mode."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "VSC dc line ‘ID’ not found; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid ‘STRING’; ‘IVAL’ unchanged."
+    }
+  ]
+}

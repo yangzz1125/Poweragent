@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "notona",
+  "category": "Single Element Data",
+  "description": "Use this API to return the bus 18-character extended bus name for a specified bus number. This API routine was first introduced in release 28.0.0. ierr, cval = notona(ibus)",
+  "python_syntax": "ierr, cval = notona(ibus)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "cval",
+      "description": "Extended bus name. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘CVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Bus not found; ‘CVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "‘CVAL’ not long enough to contain entire extended bus name; ‘CVAL’ unchanged."
+    }
+  ]
+}

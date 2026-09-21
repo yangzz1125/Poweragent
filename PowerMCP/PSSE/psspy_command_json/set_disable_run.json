@@ -1,0 +1,42 @@
+{
+  "module": "psspy",
+  "function_name": "set_disable_run",
+  "category": "Dynamic Simulation Operation",
+  "description": "Use this API to enable or disable the simulation option setting that precludes dynamic simulation runs in the event there are fatal errors in the model data. This API routine was first introduced in release 33.10.0 and 34.2.0. ierr = set_disable_run(status) ierr, status = set_disable_run()",
+  "python_syntax": "ierr = set_disable_run(status) ierr, status = set_disable_run()",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "status",
+      "description": "Option setting. (input; if batch command or ICODE is 0 or negative; unchanged by default) (if ICODE is positive)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "status": [
+      {
+        "value": "= 0",
+        "description": "Do not disable dynamic simulation run if there is fatal data error."
+      },
+      {
+        "value": "= 1",
+        "description": "Disable dynamic simulation run if there is fatal data error."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "pre-requisite requirements for API are not met."
+    }
+  ]
+}

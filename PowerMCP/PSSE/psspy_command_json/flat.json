@@ -1,0 +1,112 @@
+{
+  "module": "psspy",
+  "function_name": "flat",
+  "category": "Fault Analysis Operation",
+  "description": "This API routine is obsolete. It has been replaced by the API routine flat_2, and is implemented by a call to flat_2. Use this API to specify various levels of flat conditions in preparation for fault analysis calculations (activity FLAT). This API routine was first introduced in release 28.0.0. ierr = flat(options, values)",
+  "python_syntax": "ierr = flat(options, values)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "options",
+      "description": "An array of four elements specifying boundary condition options. (input)."
+    },
+    {
+      "name": "values",
+      "description": "An array of two elements specifying boundary condition values (ignored unless OPTIONS(1) is 2). (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "options": [
+      {
+        "value": "OPTIONS(1)",
+        "description": "flat option (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "only change voltages (activity FLAT)."
+      },
+      {
+        "value": "= 1",
+        "description": "set classical fault analysis conditions (activity FLAT,CL)."
+      },
+      {
+        "value": "= 2",
+        "description": "set conditions in preparation for IEC standard 909 calculations (activity FLAT,IEC)."
+      },
+      {
+        "value": "OPTIONS(2)",
+        "description": "tap ratio treatment flag (ignored if OPTIONS(1) is 0) (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "leave tap ratios unchanged."
+      },
+      {
+        "value": "= 1",
+        "description": "set tap ratios to 1.0."
+      },
+      {
+        "value": "OPTIONS(3)",
+        "description": "charging treatment flag (ignored if OPTIONS(1) is 0) (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "leave charging unchanged."
+      },
+      {
+        "value": "= 1",
+        "description": "set charging to 0.0."
+      },
+      {
+        "value": "OPTIONS(4)",
+        "description": "shunt treatment flag (ignored if OPTIONS(1) is 0) (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "leave shunts unchanged."
+      },
+      {
+        "value": "= 1",
+        "description": "set line shunts to 0.0 in the positive (and hence negative) sequence, and fixed and switched shunts to 0.0 in all three sequence networks."
+      },
+      {
+        "value": "= 2",
+        "description": "set line shunts, fixed shunts, and switched shunts to 0.0 in all sequence networks, and negative and zero sequence shunt loads to 0.0."
+      }
+    ],
+    "values": [
+      {
+        "value": "VALUES(1)",
+        "description": "voltage magnitude for all buses, or 0.0 to use present voltage magnitudes (0.0 by default)."
+      },
+      {
+        "value": "VALUES(2)",
+        "description": "generator power factor, or 0.0 to leave generator Mvar unchanged (0.0 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid OPTIONS value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid VALUES value."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

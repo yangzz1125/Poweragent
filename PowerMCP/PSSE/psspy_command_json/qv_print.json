@@ -1,0 +1,81 @@
+{
+  "module": "psspy",
+  "function_name": "qv_print",
+  "category": "Graphical Analysis Output",
+  "description": "Use this API to print the results of QV analysis from a .qv resultsfile. This API routine was first introduced in release 30.0.0. qv_print(resfile, nconting, contingarray, enforcescale, uselinestyles, numberlines, prtparams)",
+  "python_syntax": "qv_print(resfile, nconting, contingarray, enforcescale, uselinestyles, numberlines, prtparams)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "resfile",
+      "description": "Name of the existing .qv file. (input)."
+    },
+    {
+      "name": "nconting",
+      "description": "Number of specified contingencies. (input)."
+    },
+    {
+      "name": "contingarray",
+      "description": "An array of NCONTING elements specifying array of the numbers of specified contingencies. The base case is marked by 0. The size of the array is equal to NCONTING. (input)."
+    },
+    {
+      "name": "enforcescale",
+      "description": "Allows to print the results with the different scales. (input)."
+    },
+    {
+      "name": "uselinestyles",
+      "description": "Use (or not) different line styles for plotting. (input)."
+    },
+    {
+      "name": "numberlines",
+      "description": "Put the numbers (or not) on the graphs. (input)."
+    },
+    {
+      "name": "prtparams",
+      "description": "Print (or not) the set of parameters used for calculations. (input)."
+    }
+  ],
+  "return_values": [],
+  "allowed_values": {
+    "enforcescale": [
+      {
+        "value": "= 0",
+        "description": "the scales will be not changed according with the results; this allows to print the results from different files in the same scales."
+      },
+      {
+        "value": "= 1",
+        "description": "the maximum and minimum values for the used scales will be taken from the file of results, and the printing will be done according with these values."
+      }
+    ],
+    "uselinestyles": [
+      {
+        "value": "= 0",
+        "description": "all the lines will be solid."
+      },
+      {
+        "value": "= 1",
+        "description": "five different (standard) styles of lines will be used: Solid, Dash-Dash, Dot-Dot, Dash-Dot, Dash-Dot-Dot."
+      }
+    ],
+    "numberlines": [
+      {
+        "value": "= 0",
+        "description": "no numbering of the graphs."
+      },
+      {
+        "value": "= 1",
+        "description": "each graph will have its number for better recognition."
+      }
+    ],
+    "prtparams": [
+      {
+        "value": "= 0",
+        "description": "no printing of parameters."
+      },
+      {
+        "value": "= 1",
+        "description": "the set of parameters will be printed."
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+# potpourri Agent Skill Requirements
+# Install: pip install -r requirements.txt
+
+opf-potpourri>=0.4
+
+# potpourri calls pandapower's top-level create_continuous_bus_index, which
+# moved out of the top-level namespace in pandapower 3.5 (it still exists in
+# pandapower.toolbox). Installing opf-potpourri on its own resolves pandapower
+# to >=3.5 and every model constructor then raises AttributeError, so pin below
+# it until potpourri supports 3.5.
+pandapower>=2.13,<3.5
+
+pyomo>=6.10
+simbench>=1.4          # benchmark networks and the profiles multi-period needs
+pandas>=2.0
+numpy>=1.24
+
+# -----------------------------------------------------------------------------
+# Solvers (install separately - potpourri bundles none)
+# -----------------------------------------------------------------------------
+# Pick at least one that matches the formulation you intend to solve. Run
+# `python scripts/solve_opf.py --list-solvers` to see what is actually usable.
+#
+#   AC OPF          nonlinear (NLP)   IPOPT       conda install -c conda-forge ipopt
+#   DC OPF          linear (LP/MIP)   GLPK        conda install -c conda-forge glpk
+#                                     CBC         conda install -c conda-forge coincbc
+#   discrete taps,  mixed-integer     Gurobi >=12 pip install "gurobipy>=12"
+#   hosting cap.    nonlinear (MINLP)             (licence required; use the
+#                                                 'gurobi_direct_minlp' interface)
+#
+# MindtPy ships with Pyomo but is only a decomposition driver: it still needs an
+# NLP sub-solver (IPOPT) and a MIP sub-solver (GLPK, CBC or Gurobi).

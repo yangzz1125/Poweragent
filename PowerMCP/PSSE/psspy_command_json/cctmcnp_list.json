@@ -1,0 +1,76 @@
+{
+  "module": "psspy",
+  "function_name": "cctmcnp_list",
+  "category": "Cct Models",
+  "description": "Use this API to list protection models attached to machines. This API routine was first introduced in release 33.12.0 and 34.1.0. ierr = cctmcnp_list(sid, all, status)",
+  "python_syntax": "ierr = cctmcnp_list(sid, all, status)",
+  "return_type": "error_only_listing",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Valid subsystem identifier. valid subsystem identifiers range from 0 to 11. subsystem sid must have been previously defined (0 by default). (input)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem flag (1 by default). (input)."
+    },
+    {
+      "name": "status",
+      "description": "Active/bypassed flag. (input; 0 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 0",
+        "description": "process only buses in subsystem SID."
+      },
+      {
+        "value": "= 1",
+        "description": "process all buses."
+      }
+    ],
+    "status": [
+      {
+        "value": "= 0",
+        "description": "active and bypassed models."
+      },
+      {
+        "value": "= 1",
+        "description": "active models only."
+      },
+      {
+        "value": "= 2",
+        "description": "bypassed models only."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ALL value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid STATUS value."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

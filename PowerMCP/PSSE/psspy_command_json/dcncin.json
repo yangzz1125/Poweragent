@@ -1,0 +1,62 @@
+{
+  "module": "psspy",
+  "function_name": "dcncin",
+  "category": "Single Element Data",
+  "description": "This API routine is obsolete. It has been replaced by the API routine dcncin_2, and is implemented by a call to dcncin_2. Use this API to return integer multi-terminal dc line converter quantities. This API routine was first introduced in release 28.0.0. ierr, ival = dcncin(n, ibus, string)",
+  "python_syntax": "ierr, ival = dcncin(n, ibus, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "n",
+      "description": "Multi-terminal dc line number. (input)."
+    },
+    {
+      "name": "ibus",
+      "description": "Converter bus number. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the dc line quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "ival",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= ANSTT",
+        "description": "Firing angle status: (-1) low; (0) regulating; (1) high."
+      },
+      {
+        "value": "= TPSTT",
+        "description": "Tap status: (-1) low; (0) regulating; (1) high; (-2) locked."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "dc line not found; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Bus not a converter bus of dc line ‘N’; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid ‘STRING’; ‘IVAL’ unchanged."
+    }
+  ]
+}

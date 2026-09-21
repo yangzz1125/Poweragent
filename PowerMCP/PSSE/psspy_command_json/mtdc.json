@@ -1,0 +1,29 @@
+{
+  "module": "psspy",
+  "function_name": "mtdc",
+  "category": "Power Flow Operation",
+  "description": "Use this API to produce a report of bus voltages and flows for each in-service multi-terminal dc line. This API routine was first introduced in release 28.0.0. ierr = mtdc()",
+  "python_syntax": "ierr = mtdc()",
+  "return_type": "error_only_report",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": ""
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "no unblocked multi-terminal dc lines in this case."
+    },
+    {
+      "value": "= 2",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

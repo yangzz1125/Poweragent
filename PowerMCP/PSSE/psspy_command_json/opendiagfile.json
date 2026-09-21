@@ -1,0 +1,15 @@
+{
+  "module": "psspy",
+  "function_name": "opendiagfile",
+  "category": "Diagram View",
+  "description": "Use this API to open an existing Slider diagram in the GUI. This API routine was first introduced in release 30.0.0. opendiagfile(sfile)",
+  "python_syntax": "opendiagfile(sfile)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "sfile",
+      "description": ""
+    }
+  ],
+  "return_values": []
+}

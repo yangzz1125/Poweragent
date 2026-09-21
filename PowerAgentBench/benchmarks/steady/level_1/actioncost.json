@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0",
+  "task_id": "steady_level_1_case39_easy",
+  "cost_unit": "benchmark_cost_points",
+  "actions": [
+    {
+      "id": "redispatch_G7_up",
+      "cost_per_step": 50.0,
+      "rationale": "Small upward redispatch on a near-limit unit."
+    },
+    {
+      "id": "redispatch_G8_up",
+      "cost_per_step": 120.0,
+      "rationale": "Moderate redispatch on a regional support generator."
+    },
+    {
+      "id": "redispatch_G9_up",
+      "cost_per_step": 120.0,
+      "rationale": "Moderate redispatch on a regional support generator."
+    },
+    {
+      "id": "vm_support_south",
+      "cost_per_step": 20.0,
+      "rationale": "Minor operational cost for coordinated AVR setpoint adjustment."
+    },
+    {
+      "id": "tap_T1_up",
+      "cost_per_step": 15.0,
+      "rationale": "Tap changes are cheap but not free."
+    },
+    {
+      "id": "switch_shunt_bus7",
+      "cost_per_step": 25.0,
+      "rationale": "Capacitor-bank switching has a small wear-and-tear penalty."
+    },
+    {
+      "id": "shed_load_L20",
+      "cost_per_step": 400.0,
+      "rationale": "Load curtailment is intentionally expensive."
+    },
+    {
+      "id": "shed_load_L10",
+      "cost_per_step": 250.0,
+      "rationale": "Industrial load shedding is expensive but slightly less severe than curtailing L20."
+    },
+    {
+      "id": "phase_shift_T9",
+      "cost_per_step": 10.0,
+      "rationale": "Small operating cost for phase-shifting transformer movement."
+    }
+  ]
+}

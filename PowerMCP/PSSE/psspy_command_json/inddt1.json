@@ -1,0 +1,206 @@
+{
+  "module": "psspy",
+  "function_name": "inddt1",
+  "category": "Single Element Data",
+  "description": "Use this API routine to return real induction machine quantities. This API routine was first introduced in release 33.0.0. ierr, rval = inddt1(ibus, id, string)",
+  "python_syntax": "ierr, rval = inddt1(ibus, id, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    },
+    {
+      "name": "id",
+      "description": "Induction machine identifier. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the induction machine quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "rval",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= MBASE",
+        "description": "Machine power base."
+      },
+      {
+        "value": "= RATEKV",
+        "description": "Machine rated voltage."
+      },
+      {
+        "value": "= PSET",
+        "description": "Power setpoint (positive for a motor)."
+      },
+      {
+        "value": "= RA",
+        "description": "Armature resistance."
+      },
+      {
+        "value": "= XA",
+        "description": "Armature leakage reactance."
+      },
+      {
+        "value": "= R1",
+        "description": "First cage resistance."
+      },
+      {
+        "value": "= X1",
+        "description": "First cage reactance."
+      },
+      {
+        "value": "= R2",
+        "description": "Second cage resistance."
+      },
+      {
+        "value": "= X2",
+        "description": "Second cage reactance."
+      },
+      {
+        "value": "= X3",
+        "description": "Third reactance."
+      },
+      {
+        "value": "= E1",
+        "description": "Main saturation parameter."
+      },
+      {
+        "value": "= SE1",
+        "description": "Main saturation parameter."
+      },
+      {
+        "value": "= E2",
+        "description": "Main saturation parameter."
+      },
+      {
+        "value": "= SE2",
+        "description": "Main saturation parameter."
+      },
+      {
+        "value": "= IA1",
+        "description": "Leakage saturation parameter."
+      },
+      {
+        "value": "= IA2",
+        "description": "Leakage saturation parameter."
+      },
+      {
+        "value": "= XAMULT",
+        "description": "Leakage saturation parameter."
+      },
+      {
+        "value": "= TRQA",
+        "description": "Load torque variation constant."
+      },
+      {
+        "value": "= TRQB",
+        "description": "Load torque variation constant."
+      },
+      {
+        "value": "= TRQD",
+        "description": "Load torque variation constant."
+      },
+      {
+        "value": "= TRQE",
+        "description": "Load torque variation constant."
+      },
+      {
+        "value": "= H",
+        "description": "Machine inertia constant."
+      },
+      {
+        "value": "= IRATIO",
+        "description": "Ratio of locked rotor current to rated current."
+      },
+      {
+        "value": "= ROVERX",
+        "description": "Ratio of Rpos to Xpos."
+      },
+      {
+        "value": "= RZERO",
+        "description": "Machine zero sequence fault analysis resistance."
+      },
+      {
+        "value": "= XZERO",
+        "description": "Machine zero sequence fault analysis reactance."
+      },
+      {
+        "value": "= RGRND",
+        "description": "Machine zero sequence grounding resistance."
+      },
+      {
+        "value": "= XGRND",
+        "description": "Machine zero sequence grounding reactance."
+      },
+      {
+        "value": "= P",
+        "description": "Active power flowing from the bus to the machine in MW."
+      },
+      {
+        "value": "= O_P",
+        "description": "Same as ‘P’ in units determined by the power output option setting."
+      },
+      {
+        "value": "= Q",
+        "description": "Reactive power flowing from the bus to the machine in Mvar."
+      },
+      {
+        "value": "= O_Q",
+        "description": "Same as ‘Q’ in units determined by the power output option setting."
+      },
+      {
+        "value": "= MVA",
+        "description": "Complex power flowing from the bus to the machine in MVA."
+      },
+      {
+        "value": "= O_MVA",
+        "description": "Same as ‘MVA’ in units determined by the power output option setting."
+      },
+      {
+        "value": "= SLIP",
+        "description": "Machine slip."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘RVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Bus not found; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Induction machine not found; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "Bus type code is not 2 or 3; ‘RVAL’ returned."
+    },
+    {
+      "value": "= 4",
+      "description": "Induction machine is out-of-service; ‘RVAL’ returned."
+    },
+    {
+      "value": "= 5",
+      "description": "Invalid value of ‘STRING’; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 6",
+      "description": "Sequence data not in case (when STRING = ‘IRATIO’, ‘ROVERX’, ‘RZERO’, ‘XZERO’, ‘RGRND’ or ‘XGRND’)."
+    }
+  ]
+}

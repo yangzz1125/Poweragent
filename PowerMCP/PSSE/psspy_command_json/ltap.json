@@ -1,0 +1,86 @@
+{
+  "module": "psspy",
+  "function_name": "ltap",
+  "category": "Power Flow Operation",
+  "description": "Use this API to insert a bus at a designated location along a line. This API routine was first introduced in release 28.0.0. ierr = ltap(frmbus, tobus, ckt, fraction, newnum, newnam, newkv)",
+  "python_syntax": "ierr = ltap(frmbus, tobus, ckt, fraction, newnum, newnam, newkv)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "frmbus",
+      "description": "One of the buses connected by the branch to be tapped. (input; no default allowed)."
+    },
+    {
+      "name": "tobus",
+      "description": "Other bus connected by the branch to be tapped. (input; no default allowed)."
+    },
+    {
+      "name": "ckt",
+      "description": "Circuit identifier of the branch to be tapped. (input; ‘1’ by default)."
+    },
+    {
+      "name": "fraction",
+      "description": "New bus location relative to bus frmbus in per unit of total line length. (input; 0.5 by default)."
+    },
+    {
+      "name": "newnum",
+      "description": "Number to be assigned to the new bus. (input; no default allowed)."
+    },
+    {
+      "name": "newnam",
+      "description": "Name to be assigned to the new bus. (input; blank by default)."
+    },
+    {
+      "name": "newkv",
+      "description": "Base voltage to be assigned to the new bus. (input; base voltage of bus FRMBUS by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "branch not found."
+    },
+    {
+      "value": "= 3",
+      "description": "branch is a transformer."
+    },
+    {
+      "value": "= 4",
+      "description": "invalid FRACTION value."
+    },
+    {
+      "value": "= 5",
+      "description": "invalid NEWNUM value."
+    },
+    {
+      "value": "= 6",
+      "description": "bus number is already assigned to another bus."
+    },
+    {
+      "value": "= 7",
+      "description": "invalid NEWKV value."
+    },
+    {
+      "value": "= 8",
+      "description": "bus, branch, or branch ownership tables full."
+    },
+    {
+      "value": "= 9",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "module": "psspy",
+  "function_name": "wnmod_status",
+  "category": "Wind Related Models",
+  "description": "Use this API to change the status of a renewable machine related model of a designated type at a specified renewable machine. This API routine was first introduced in release 31.0.0. ierr = wnmod_status(ibus, id, mtype, status)",
+  "python_syntax": "ierr = wnmod_status(ibus, id, mtype, status)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Renewable machine bus number. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Renewable machine identifier. (input)."
+    },
+    {
+      "name": "mtype",
+      "description": "Model type. (input; 1 by default)."
+    },
+    {
+      "name": "status",
+      "description": "New model status. (input; 1 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "mtype": [
+      {
+        "value": "= 1",
+        "description": "renewable generator model."
+      },
+      {
+        "value": "= 2",
+        "description": "renewable electrical control model."
+      },
+      {
+        "value": "= 3",
+        "description": "renewable mechanical system model."
+      },
+      {
+        "value": "= 4",
+        "description": "renewable pitch control model."
+      },
+      {
+        "value": "= 5",
+        "description": "renewable aerodynamic model."
+      },
+      {
+        "value": "= 6",
+        "description": "renewable gust model."
+      },
+      {
+        "value": "= 7",
+        "description": "renewable auxiliary control model."
+      },
+      {
+        "value": "= 8",
+        "description": "renewable torque control model."
+      },
+      {
+        "value": "= 9",
+        "description": "renewable weak grid control model."
+      },
+      {
+        "value": "= 10",
+        "description": "renewable paux control model."
+      }
+    ],
+    "status": [
+      {
+        "value": "= 0",
+        "description": "out-of-service."
+      },
+      {
+        "value": "= 1",
+        "description": "in-service."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid MTYPE value."
+    },
+    {
+      "value": "= 2",
+      "description": "no model of type MTYPE at this machine."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid STATUS value."
+    },
+    {
+      "value": "= 4",
+      "description": "machine is not designated as a renewable machine in power flow."
+    },
+    {
+      "value": "= 5",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 6",
+      "description": "machine not found."
+    },
+    {
+      "value": "= 7",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

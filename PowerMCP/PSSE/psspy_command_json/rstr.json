@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "rstr",
+  "category": "Dynamic Simulation Operation",
+  "description": "Use this API to read a dynamics Snapshot File into PSSE working memory. This API routine was first introduced in release 28.0.0. ierr = rstr(sfile)",
+  "python_syntax": "ierr = rstr(sfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sfile",
+      "description": "Snapshot file; ‘*’ to restore the most recently accessed snapshot file in the current execution of psse. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "error opening SFILE."
+    },
+    {
+      "value": "= 2",
+      "description": "error reading from SFILE."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "open_bus_voltage_limits",
+  "category": "Optimal Power Flow Operation",
+  "description": "Use this API to specify or return the value of the OPF solution option to automatically adjust bus voltage limits, making them more open for initial feasibility. This API routine was first introduced in release 30.0.0. ierr = open_bus_voltage_limits(ival) ierr, ival = open_bus_voltage_limits()",
+  "python_syntax": "ierr = open_bus_voltage_limits(ival) ierr, ival = open_bus_voltage_limits()",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ival",
+      "description": "Indicates whether to open bus voltage limits for initial feasibility. (input; if Batch command, or for Python if specified as an argument, or for Fortran if IOCODE is 0, then input of 0 by default; else output)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "ival": [
+      {
+        "value": "= 0",
+        "description": "do not open up bus voltage limits."
+      },
+      {
+        "value": "= 1",
+        "description": "open bus voltage limits for initial feasibility."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid IVAL value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid IOCODE value."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

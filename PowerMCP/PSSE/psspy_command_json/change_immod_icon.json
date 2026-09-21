@@ -1,0 +1,74 @@
+{
+  "module": "psspy",
+  "function_name": "change_immod_icon",
+  "category": "Induction Machine Models",
+  "description": "Use this API to change the value of an integer ICON of a designated induction machine model at a specified machine. The corresponding character CHRICN is set to ‘$$’. This API routine was first introduced in release 33.0.0. ierr = change_immod_icon(ibus, id, name, j, idata)",
+  "python_syntax": "ierr = change_immod_icon(ibus, id, name, j, idata)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Induction machine bus number. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Induction machine identifier. (input; blank by default)."
+    },
+    {
+      "name": "name",
+      "description": "Model name. (input; no default allowed)."
+    },
+    {
+      "name": "j",
+      "description": "Icon number to change relative to the start of the block of icons assigned to this model (1 for icon(i), 2 for icon(i+1), etc.). (input; no default allowed)."
+    },
+    {
+      "name": "idata",
+      "description": "New integer icon value. (input; unchanged by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "unknown model NAME."
+    },
+    {
+      "value": "= 2",
+      "description": "No model at this induction machine."
+    },
+    {
+      "value": "= 3",
+      "description": "model at this machine is aaa not NAME."
+    },
+    {
+      "value": "= 4",
+      "description": "no input CONs used in model NAME."
+    },
+    {
+      "value": "= 5",
+      "description": "CON number outside of the CON range of this model."
+    },
+    {
+      "value": "= 6",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 7",
+      "description": "machine not found."
+    },
+    {
+      "value": "= 8",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

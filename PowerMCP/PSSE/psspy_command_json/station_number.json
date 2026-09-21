@@ -1,0 +1,46 @@
+{
+  "module": "psspy",
+  "function_name": "station_number",
+  "category": "Node Breaker Data",
+  "description": "Use this API to change a substation number for an existing substation. This API routine was first introduced in release 34.0.1. ierr = station_number(station, newstation)",
+  "python_syntax": "ierr = station_number(station, newstation)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "station",
+      "description": "Substation number. (input)."
+    },
+    {
+      "name": "newstation",
+      "description": "New substation number. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error return. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 1",
+      "description": "invalid substation number."
+    },
+    {
+      "value": "= 2",
+      "description": "substation not found."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid new substation number."
+    },
+    {
+      "value": "= 4",
+      "description": "substation number is already assigned to another substation."
+    },
+    {
+      "value": "= 5",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

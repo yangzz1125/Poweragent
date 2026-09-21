@@ -1,0 +1,25 @@
+{
+  "module": "psspy",
+  "function_name": "size",
+  "category": "Power Flow Operation",
+  "description": "Use this API to obtain a summary of the number of components in the working case (activity SIZE). This API routine was first introduced in release 29.0.0. ierr = size()",
+  "python_syntax": "ierr = size()",
+  "return_type": "error_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": ""
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

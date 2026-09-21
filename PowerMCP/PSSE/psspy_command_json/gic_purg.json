@@ -1,0 +1,25 @@
+{
+  "module": "psspy",
+  "function_name": "gic_purg",
+  "category": "Gic Operation",
+  "description": "Use this API to purge all GIC data from the working case. This API routine was first introduced in release 34.8.0. ierr = gic_purg()",
+  "python_syntax": "ierr = gic_purg()",
+  "return_type": "error_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": ""
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

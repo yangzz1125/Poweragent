@@ -1,0 +1,178 @@
+{
+  "module": "psspy",
+  "function_name": "dc2dat_2",
+  "category": "Single Element Data",
+  "description": "This API is the second release of the API that returns real two-terminal dc line quantities. This API routine was first introduced in release 31.0.0. ierr, rval = dc2dat_2(name, ibus, string)",
+  "python_syntax": "ierr, rval = dc2dat_2(name, ibus, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Two-terminal dc line name. (input)."
+    },
+    {
+      "name": "ibus",
+      "description": "Converter bus number. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the dc line quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "rval",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= DCCUR",
+        "description": "dc line current in amps (Line Quantity)."
+      },
+      {
+        "value": "= RDC",
+        "description": "dc line resistance in ohms (Line Quantity)."
+      },
+      {
+        "value": "= SETVAL",
+        "description": "Current (amps) or power (MW) demand (Line Quantity)."
+      },
+      {
+        "value": "= VSCHD",
+        "description": "Scheduled compounded dc voltage in kV (Line Quantity)."
+      },
+      {
+        "value": "= VCMOD",
+        "description": "Mode switch dc voltage in kV (Line Quantity)."
+      },
+      {
+        "value": "= RCOMP",
+        "description": "Compounding resistance in ohms (Line Quantity)."
+      },
+      {
+        "value": "= DELTI",
+        "description": "Margin in pu of desired dc power or current (Line Quantity)."
+      },
+      {
+        "value": "= DCVMIN",
+        "description": "Minimum compounded dc voltage in kV (Line Quantity)."
+      },
+      {
+        "value": "= PAC",
+        "description": "Apparent active power flow into the dc line in MW (Converter Quantity)."
+      },
+      {
+        "value": "= O_PAC",
+        "description": "Same as ‘PAC’ in units determined by the power output option setting (Converter Quantity)."
+      },
+      {
+        "value": "= QAC",
+        "description": "Apparent reactive power flow into the dc line in Mvar (Converter Quantity)."
+      },
+      {
+        "value": "= O_QAC",
+        "description": "Same as ‘QAC’ in units determined by the power output option setting (Converter Quantity)."
+      },
+      {
+        "value": "= MVA",
+        "description": "Apparent ac flow into the dc line in MVA (Converter Quantity)."
+      },
+      {
+        "value": "= O_MVA",
+        "description": "Same as ‘MVA’ in units determined by the power output option setting (Converter Quantity)."
+      },
+      {
+        "value": "= ACAMPS",
+        "description": "ac current flow into the dc line in amps (Converter Quantity)."
+      },
+      {
+        "value": "= PUCUR",
+        "description": "ac current flow into the dc line in pu (Converter Quantity)."
+      },
+      {
+        "value": "= KVDC",
+        "description": "dc voltage in kV (Converter Quantity)."
+      },
+      {
+        "value": "= ANGLE",
+        "description": "Converter angle in degrees (Converter Quantity)."
+      },
+      {
+        "value": "= ANGMIN",
+        "description": "Minimum steady-state converter angle in degrees (Converter Quantity)."
+      },
+      {
+        "value": "= ANGMAX",
+        "description": "Nominal maximum converter angle in degrees (Converter Quantity)."
+      },
+      {
+        "value": "= RC",
+        "description": "Commutating transformer resistance per bridge in ohms (Converter Quantity)."
+      },
+      {
+        "value": "= XC",
+        "description": "Commutating transformer reactance per bridge in ohms (Converter Quantity)."
+      },
+      {
+        "value": "= EBASE",
+        "description": "Primary base ac voltage in kV (Converter Quantity)."
+      },
+      {
+        "value": "= TR",
+        "description": "Transformer ratio in pu (Converter Quantity)."
+      },
+      {
+        "value": "= TAP",
+        "description": "Tap setting in pu (Converter Quantity)."
+      },
+      {
+        "value": "= TPMX",
+        "description": "Maximum tap setting in pu (Converter Quantity)."
+      },
+      {
+        "value": "= TPMN",
+        "description": "Minimum tap setting in pu (Converter Quantity)."
+      },
+      {
+        "value": "= STP",
+        "description": "Tap step in pu (Converter Quantity)."
+      },
+      {
+        "value": "= XCAP",
+        "description": "Commutating capacitor reactance magnitude per bridge in ohms (Converter Quantity)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘RVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "dc line not found; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Bus not a converter bus of dc line ‘NAME’; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid value of ‘STRING’; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 4",
+      "description": "dc line blocked; ‘RVAL’ of 0.0 returned."
+    },
+    {
+      "value": "= 5",
+      "description": "No base kV at bus; ‘RVAL’ returned as the per unit current."
+    }
+  ]
+}

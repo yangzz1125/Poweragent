@@ -1,0 +1,62 @@
+{
+  "module": "psspy",
+  "function_name": "writeseqversion",
+  "category": "Power Flow Operation",
+  "description": "This API routine is obsolete. It has been replaced by the API routine writeseqversion_2, and is implemented by a call to writeseqversion_2. Use this API to replicate the working case in the form of a network sequence data file compatible with PSSE 27 or later. This API routine was first introduced in release 32.0.4. ierr = writeseqversion(vernum, out, ofile)",
+  "python_syntax": "ierr = writeseqversion(vernum, out, ofile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "vernum",
+      "description": "Value of ofile version number vernum =’27’ or later. example: if ofile format is to be psse 29.5.1: vernum=’29’ or =’29.5’ or =’29.5.1’. (input; no default allowed)."
+    },
+    {
+      "name": "out",
+      "description": "Output destination. (input; 1 by default)."
+    },
+    {
+      "name": "ofile",
+      "description": "Name of the network sequence data file. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "out": [
+      {
+        "value": "= 0",
+        "description": "to OFILE."
+      },
+      {
+        "value": "= 1",
+        "description": "to current report device."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid VERNUM value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid OUT value."
+    },
+    {
+      "value": "= 3",
+      "description": "error opening OFILE."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

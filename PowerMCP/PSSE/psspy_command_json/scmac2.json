@@ -1,0 +1,86 @@
+{
+  "module": "psspy",
+  "function_name": "scmac2",
+  "category": "Single Element Data",
+  "description": "Use this API to return the machine short circuit currents following activity SCMU. This API routine was first introduced in release 28.0.0. ierr, cmpval = scmac2(ibus, ickt, string)",
+  "python_syntax": "ierr, cmpval = scmac2(ibus, ickt, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    },
+    {
+      "name": "ickt",
+      "description": "Machine identifier. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the short circuit current desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "cmpval",
+      "description": "Complex current. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= IPOS",
+        "description": "Positive sequence."
+      },
+      {
+        "value": "= INEG",
+        "description": "Negative sequence."
+      },
+      {
+        "value": "= IZERO",
+        "description": "Zero sequence."
+      },
+      {
+        "value": "= IA",
+        "description": "A-phase."
+      },
+      {
+        "value": "= IB",
+        "description": "B-phase."
+      },
+      {
+        "value": "= IC",
+        "description": "C-phase."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘P’ and ‘Q’ or ‘CMPVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "‘SCINIT’ not successfully called; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Bus not found; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "Machine not found; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    },
+    {
+      "value": "= 4",
+      "description": "Bad value of ‘STRING’; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    },
+    {
+      "value": "= 5",
+      "description": "Machine out of service; ‘P’ and ‘Q’ of 0.0 or ‘CMPVAL’ of (0.0,0.0) returned."
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "fetch_adjvar_term_node",
+  "category": "Node Breaker Data",
+  "description": "Use this API to obtain the terminal node to which an OPF adjustable bus shunt is connected to. This API routine was first introduced in release 34.8.0 and 35.2.0. ierr,intgar = fetch_adjvar_term_node(ibus, cktarg)",
+  "python_syntax": "ierr,intgar = fetch_adjvar_term_node(ibus, cktarg)",
+  "return_type": "error_and_record",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "From bus number. (input)."
+    },
+    {
+      "name": "cktarg",
+      "description": "Opf adjustable var identifier. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error return. (output)."
+    },
+    {
+      "name": "intgar",
+      "description": "Node terminal number. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus does not exist."
+    },
+    {
+      "value": "= 2",
+      "description": "OPF adjustable bus shunt identifier is more than two characters."
+    },
+    {
+      "value": "= 3",
+      "description": "OPF adjustable bus shunt not found."
+    }
+  ]
+}

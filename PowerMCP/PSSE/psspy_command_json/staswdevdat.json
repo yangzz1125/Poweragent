@@ -1,0 +1,138 @@
+{
+  "module": "psspy",
+  "function_name": "staswdevdat",
+  "category": "Single Element Data",
+  "description": "Use this API routine to return real substation switching device values. This API routine was first introduced in release 34.1.0. ierr, rval = staswdevdat(ista, inode, jnode, id, string)",
+  "python_syntax": "ierr, rval = staswdevdat(ista, inode, jnode, id, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ista",
+      "description": "Substation number. (input)."
+    },
+    {
+      "name": "inode",
+      "description": "“from” node number. (input)."
+    },
+    {
+      "name": "jnode",
+      "description": "“to” node number. (input)."
+    },
+    {
+      "name": "id",
+      "description": "Switching device identifier. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "rval",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= X",
+        "description": "switching device reactance."
+      },
+      {
+        "value": "= RATE1",
+        "description": "switching device first rating."
+      },
+      {
+        "value": "= RATE2",
+        "description": "switching device second rating."
+      },
+      {
+        "value": "= RATE3",
+        "description": "switching device third rating."
+      },
+      {
+        "value": "= AMPS",
+        "description": "switching device current in amps."
+      },
+      {
+        "value": "= PUCUR",
+        "description": "switching device current in pu."
+      },
+      {
+        "value": "= P",
+        "description": "MW flow at the INODE end."
+      },
+      {
+        "value": "= O_P",
+        "description": "same as P."
+      },
+      {
+        "value": "= Q",
+        "description": "MVAR flow at the INODE end."
+      },
+      {
+        "value": "= O_Q",
+        "description": "same as Q."
+      },
+      {
+        "value": "= MVA",
+        "description": "switching device MVA loading."
+      },
+      {
+        "value": "= O_MVA",
+        "description": "same as MVA."
+      },
+      {
+        "value": "= PCTRT1",
+        "description": "percent current loading of RATE1."
+      },
+      {
+        "value": "= PCTRT2",
+        "description": "percent current loading of RATE2."
+      },
+      {
+        "value": "= PCTRT3",
+        "description": "percent current loading of RATE3."
+      },
+      {
+        "value": "= PCTMV1",
+        "description": "percent MVA loading of RATE1."
+      },
+      {
+        "value": "= PCTMV2",
+        "description": "percent MVA loading of RATE2."
+      },
+      {
+        "value": "= PCTMV3",
+        "description": "percent MVA loading of RATE3."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error; ‘RVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "substation not found; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "node not found; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "switching device not found; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 4",
+      "description": "invalid value of ‘STRING’; ‘RVAL’ unchanged."
+    }
+  ]
+}

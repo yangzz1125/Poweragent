@@ -1,0 +1,98 @@
+{
+  "module": "psspy",
+  "function_name": "gens",
+  "category": "Power Flow Operation",
+  "description": "Use this API to tabulate the loading and voltage conditions at plant buses (activity GENS). This API routine was first introduced in release 28.0.0. ierr = gens(sid, all, opt, vrev)",
+  "python_syntax": "ierr = gens(sid, all, opt, vrev)",
+  "return_type": "error_only_report",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid subsystem identifier. valid subsystem identifiers range from 0 to 11. subsystem sid must have been previously defined. (input; 0 by default)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem flag. (input; 1 by default)."
+    },
+    {
+      "name": "opt",
+      "description": "Option. (input; 4 by default)."
+    },
+    {
+      "name": "vrev",
+      "description": "Option to select the units in which voltages are tabulated. (input; 0 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 1",
+        "description": "process all buses."
+      },
+      {
+        "value": "= 0",
+        "description": "process only buses in subsystem SID."
+      }
+    ],
+    "opt": [
+      {
+        "value": "= 1",
+        "description": "tabulate var limited plants with unequal var limits."
+      },
+      {
+        "value": "= 2",
+        "description": "tabulate all var limited plants."
+      },
+      {
+        "value": "= 3",
+        "description": "tabulate on-line plants."
+      },
+      {
+        "value": "= 4",
+        "description": "tabulate all plants."
+      }
+    ],
+    "vrev": [
+      {
+        "value": "= 0",
+        "description": "use default voltage units."
+      },
+      {
+        "value": "= 1",
+        "description": "use alternate voltage units."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ALL value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid OPT value."
+    },
+    {
+      "value": "= 4",
+      "description": "invalid VREV value."
+    },
+    {
+      "value": "= 5",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

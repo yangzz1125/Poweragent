@@ -1,0 +1,25 @@
+{
+  "module": "psspy",
+  "function_name": "prti",
+  "category": "Power Flow Operation",
+  "description": "Use this API to print the 16 line long title. This API routine was first introduced in release 29.0.0. ierr = prti()",
+  "python_syntax": "ierr = prti()",
+  "return_type": "error_only_report",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": ""
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

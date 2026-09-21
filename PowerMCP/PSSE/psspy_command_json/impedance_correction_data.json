@@ -1,0 +1,74 @@
+{
+  "module": "psspy",
+  "function_name": "impedance_correction_data",
+  "category": "Power Flow Data",
+  "description": "This API routine is obsolete. It has been replaced by the API routine impedance_correction_data_3, and is implemented by a call to impedance_correction_data_3. Use this API to modify the data of an existing transformer impedance correction table in the working case or to add a new transformer impedance correction table to the working case (see PSSE Program Operation Manual, Transformer Impedance Correction Table Data). This API routine was first introduced in release 28.0.0. ierr, intgar = impedance_correction_data(i, realar)",
+  "python_syntax": "ierr, intgar = impedance_correction_data(i, realar)",
+  "return_type": "error_and_record",
+  "parameters": [
+    {
+      "name": "i",
+      "description": "Table number (must be between 1 and the number of tables allowed at the present size level of psse). (input; no default allowed)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of 22 elements specifying 22 values dimensioned (2,11), where REALAR(1,i) specifies Ti, and REALAR(2,i) specifies Fi. The values are specified such that the left subscript varies more rapidly: (1,1), (2,1), (1,2), (2,2), .. (1,11), (2,11). (REALAR(1,1) = REALAR. (input; 2,1) =1.0 by default; all other values are 0.0 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of two elementsNone. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "number of entries in table (returned)."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "table type flag (0=ratio, 1=angle) (returned)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid transformer impedance correction table number."
+    },
+    {
+      "value": "= 3",
+      "description": "ABSCISSA values are not in ascending order."
+    },
+    {
+      "value": "= 4",
+      "description": "ABSCISSA value is outside of the range of -180 to +180."
+    },
+    {
+      "value": "= 5",
+      "description": "table has fewer than 2 points."
+    },
+    {
+      "value": "= 6",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - point is beyond previous end of table - invalid scaling factor."
+    }
+  ]
+}

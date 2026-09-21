@@ -1,0 +1,15 @@
+{
+  "module": "psspy",
+  "function_name": "lodcnv",
+  "category": "Single Element Data",
+  "description": "This obsolete API always returns a 0. This API routine was first introduced in release 28.0.0. icode = lodcnv()",
+  "python_syntax": "icode = lodcnv()",
+  "return_type": "value_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "icode",
+      "description": ""
+    }
+  ]
+}

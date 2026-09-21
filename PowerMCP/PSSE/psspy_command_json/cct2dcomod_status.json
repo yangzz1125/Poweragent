@@ -1,0 +1,62 @@
+{
+  "module": "psspy",
+  "function_name": "cct2dcomod_status",
+  "category": "Cct Models",
+  "description": "Use this API to change status of an “other” type model attached to a 2-terminal dc line. This API routine was first introduced in release 33.0.0. ierr = cct2dcomod_status(dc, model, status)",
+  "python_syntax": "ierr = cct2dcomod_status(dc, model, status)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "dc",
+      "description": "Quoted name of the two-terminal dc line for which model data is to be changed. (input; no default allowed)."
+    },
+    {
+      "name": "model",
+      "description": "Name of the model whose status is to be changed. (input; no default allowed)."
+    },
+    {
+      "name": "status",
+      "description": "New model status. (input; 1 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "status": [
+      {
+        "value": "= 0",
+        "description": "out-of-service."
+      },
+      {
+        "value": "= 1",
+        "description": "in-service."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "no “other” model at this dc line."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid STATUS value."
+    },
+    {
+      "value": "= 3",
+      "description": "dc line not found."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

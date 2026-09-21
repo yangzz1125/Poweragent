@@ -1,0 +1,166 @@
+{
+  "module": "psspy",
+  "function_name": "aflowchar",
+  "category": "Branch Flow Data",
+  "description": "Use this API to return an array of character values for subsystem branches. This API routine was first introduced in release 30.2.0. ierr, carray = aflowchar(sid, owner, ties, flag, string)",
+  "python_syntax": "ierr, carray = aflowchar(sid, owner, ties, flag, string)",
+  "return_type": "error_and_array",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the bus subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "owner",
+      "description": "A flag indicating owner usage if ownership is a subsystem selection criterion (ignored if sid is negative). (input; 1 by default)."
+    },
+    {
+      "name": "ties",
+      "description": "A flag indicating which subsystem branches to include (ignored if sid is negative). (input; 1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem branches to include. (input; 1 by default)."
+    },
+    {
+      "name": "string",
+      "description": "An array of NSTR elements specifying NSTR of the following strings indicating the branch quantities desired. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "carray",
+      "description": "An array of NSTR*DIM elements specifying Is an array of at least NSTR columns, each of which contains DIM elements. (output)."
+    }
+  ],
+  "allowed_values": {
+    "sid": [
+      {
+        "value": "< 0",
+        "description": "to instruct the API to assume a subsystem containing all buses in the working case."
+      },
+      {
+        "value": ">= 0",
+        "description": "valid bus subsystem identifier. Valid subsystem identifiers range from 0 to 11. Subsystem SID must have been previously defined."
+      }
+    ],
+    "owner": [
+      {
+        "value": "= 1",
+        "description": "to use bus ownership."
+      },
+      {
+        "value": "= 2",
+        "description": "to use branch ownership."
+      }
+    ],
+    "ties": [
+      {
+        "value": "= 1",
+        "description": "for each end of interior subsystem branches only."
+      },
+      {
+        "value": "= 2",
+        "description": "for the subsystem bus end of tie branches only."
+      },
+      {
+        "value": "= 3",
+        "description": "for the non-subsystem bus end of tie branches only."
+      },
+      {
+        "value": "= 4",
+        "description": "for each end of tie branches only."
+      },
+      {
+        "value": "= 5",
+        "description": "for each end of interior subsystem branches and the subsystem bus end of tie branches."
+      },
+      {
+        "value": "= 6",
+        "description": "for each end of interior subsystem branches and tie branches."
+      }
+    ],
+    "flag": [
+      {
+        "value": "= 1",
+        "description": "for only in-service branches."
+      },
+      {
+        "value": "= 2",
+        "description": "for all branches."
+      }
+    ],
+    "string": [
+      {
+        "value": "= ID",
+        "description": "Circuit identifier (2 characters)."
+      },
+      {
+        "value": "= FROMNAME",
+        "description": "From bus name (12 characters)."
+      },
+      {
+        "value": "= FROMEXNAME",
+        "description": "From bus extended bus name (18 characters)."
+      },
+      {
+        "value": "= TONAME",
+        "description": "To bus name (three-winding transformer name for a three-winding transformer winding) (12 characters)."
+      },
+      {
+        "value": "= TOEXNAME",
+        "description": "To bus extended bus name (three-winding transformer name and winding number for a three-winding transformer winding) (18 characters)."
+      },
+      {
+        "value": "= NMETERNAME",
+        "description": "Non-metered bus name (12 characters)."
+      },
+      {
+        "value": "= NMETEREXNAME",
+        "description": "Non-metered bus extended bus name (18 characters)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid OWNER value."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid TIES value."
+    },
+    {
+      "value": "= 5",
+      "description": "Invalid FLAG value."
+    },
+    {
+      "value": "= 6",
+      "description": "Invalid NSTR value."
+    },
+    {
+      "value": "= 7",
+      "description": "DIM, and hence the size of CARRAY, is not large enough."
+    },
+    {
+      "value": "= 8",
+      "description": "Invalid STRING value."
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "module": "psspy",
+  "function_name": "progress",
+  "category": "Non-Engineering",
+  "description": "Send output to progress device. Note: A Fortran program that calls PROGRESS must also include a USE statement for KEYPTI. This API routine was first introduced in release 30.0.0. progress(string)",
+  "python_syntax": "progress(string)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "string",
+      "description": ""
+    }
+  ],
+  "return_values": []
+}

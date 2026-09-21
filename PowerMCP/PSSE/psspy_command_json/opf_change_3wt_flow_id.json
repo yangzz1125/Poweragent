@@ -1,0 +1,78 @@
+{
+  "module": "psspy",
+  "function_name": "opf_change_3wt_flow_id",
+  "category": "Optimal Power Flow Data",
+  "description": "Use this API to change the identifier of a flow constraint record for an individual winding of a three-winding transformer in the working case. This API routine was first introduced in release 34.8.0 and 35.2.0. ierr = opf_change_3wt_flow_id(ibus, jbus, kbus, cktid, id, idnew)",
+  "python_syntax": "ierr = opf_change_3wt_flow_id(ibus, jbus, kbus, cktid, id, idnew)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "From bus number the value of ibus indicates the from bus of the winding for which the flow constraint is being introduced. (input; no default allowed)."
+    },
+    {
+      "name": "jbus",
+      "description": "To bus number. (input; no default allowed)."
+    },
+    {
+      "name": "kbus",
+      "description": "Third bus number. (input; no default allowed)."
+    },
+    {
+      "name": "cktid",
+      "description": "Circuit identifier. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Branch flow constraint identifier. (input; no default allowed)."
+    },
+    {
+      "name": "idnew",
+      "description": "New branch flow constraint identifier. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid bus number specified."
+    },
+    {
+      "value": "= 2",
+      "description": "a non-blank new identifier must be specified."
+    },
+    {
+      "value": "= 3",
+      "description": "specified three-winding transformer does not exist."
+    },
+    {
+      "value": "= 4",
+      "description": "branch flow identifier is more than one character."
+    },
+    {
+      "value": "= 5",
+      "description": "specified winding of three-winding transformer not found."
+    },
+    {
+      "value": "= 6",
+      "description": "specified OPF branch flow constraint does not exist."
+    },
+    {
+      "value": "= 7",
+      "description": "branch flow constraint already exists."
+    },
+    {
+      "value": "= 8",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

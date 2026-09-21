@@ -1,0 +1,277 @@
+{
+  "module": "psspy",
+  "function_name": "setdiagprop_5",
+  "category": "Diagram View",
+  "description": "Use this API to specify basic properties in the active Slider diagram. This API routine was first introduced in release 34.0.0. setdiagprop_5(setscope, bkgclr, prtclr, grdclr, uparwclr, dwnarwclr, labclr, grdstyl, grdptrn, fltval, dblval, logval, prntmode, imgdir)",
+  "python_syntax": "setdiagprop_5(setscope, bkgclr, prtclr, grdclr, uparwclr, dwnarwclr, labclr, grdstyl, grdptrn, fltval, dblval, logval, prntmode, imgdir)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "setscope",
+      "description": "Is the scope of the api. (input)."
+    },
+    {
+      "name": "bkgclr",
+      "description": "An array of three elements specifying background color. (input)."
+    },
+    {
+      "name": "prtclr",
+      "description": "An array of three elements specifying item connection port color. (input)."
+    },
+    {
+      "name": "grdclr",
+      "description": "An array of three elements specifying on-diagram layout grid color. (input)."
+    },
+    {
+      "name": "uparwclr",
+      "description": "An array of three elements specifying active power animation arrow color. (input)."
+    },
+    {
+      "name": "dwnarwclr",
+      "description": "An array of three elements specifying reactive power animation arrow color. (input)."
+    },
+    {
+      "name": "labclr",
+      "description": "An array of three elements specifying label color. (input)."
+    },
+    {
+      "name": "grdstyl",
+      "description": "Grid style. (input)."
+    },
+    {
+      "name": "grdptrn",
+      "description": "Grid pattern. (input)."
+    },
+    {
+      "name": "fltval",
+      "description": "An array of two elementsNone. (input)."
+    },
+    {
+      "name": "dblval",
+      "description": "An array of eleven elementsNone. (input)."
+    },
+    {
+      "name": "logval",
+      "description": "An array of seven elements specifying Each element has only two possible values. 0 = FALSE and 1 = TRUE. The elements are as follows. (input)."
+    },
+    {
+      "name": "prntmode",
+      "description": "Printing mode. (input)."
+    },
+    {
+      "name": "imgdir",
+      "description": "Name of directory where image files for this diagram are stored. (input)."
+    }
+  ],
+  "return_values": [],
+  "allowed_values": {
+    "setscope": [
+      {
+        "value": "= 0",
+        "description": "defaults for new diagrams."
+      },
+      {
+        "value": "= 1",
+        "description": "defaults for new diagrams and settings for the active diagram."
+      },
+      {
+        "value": "= 2",
+        "description": "settings for the active diagram."
+      }
+    ],
+    "bkgclr": [
+      {
+        "value": "BKGCLR(1)",
+        "description": "0->255 Red component."
+      },
+      {
+        "value": "BKGCLR(2)",
+        "description": "0->255 Blue component."
+      },
+      {
+        "value": "BKGCLR(3)",
+        "description": "0->255 Green component."
+      }
+    ],
+    "prtclr": [
+      {
+        "value": "PRTCLR(1)",
+        "description": "0->255 Red component."
+      },
+      {
+        "value": "PRTCLR(2)",
+        "description": "0->255 Blue component."
+      },
+      {
+        "value": "PRTCLR(3)",
+        "description": "0->255 Green component."
+      }
+    ],
+    "grdclr": [
+      {
+        "value": "GRDCLR(1)",
+        "description": "0->255 Red component."
+      },
+      {
+        "value": "GRDCLR(2)",
+        "description": "0->255 Blue component."
+      },
+      {
+        "value": "GRDCLR(3)",
+        "description": "0->255 Green component."
+      }
+    ],
+    "uparwclr": [
+      {
+        "value": "UPARWCLR(1)",
+        "description": "0->255 Red component."
+      },
+      {
+        "value": "UPARWCLR(2)",
+        "description": "0->255 Blue component."
+      },
+      {
+        "value": "UPARWCLR(3)",
+        "description": "0->255 Green component."
+      }
+    ],
+    "dwnarwclr": [
+      {
+        "value": "DWNARWCLR(1)",
+        "description": "0->255 Red component."
+      },
+      {
+        "value": "DWNARWCLR(2)",
+        "description": "0->255 Blue component."
+      },
+      {
+        "value": "DWNARWCLR(3)",
+        "description": "0->255 Green component."
+      }
+    ],
+    "labclr": [
+      {
+        "value": "LABCLR(1)",
+        "description": "0->255 Red component."
+      },
+      {
+        "value": "LABCLR(2)",
+        "description": "0->255 Blue component."
+      },
+      {
+        "value": "LABCLR(3)",
+        "description": "0->255 Green component."
+      }
+    ],
+    "grdstyl": [
+      {
+        "value": "= 0",
+        "description": "dotted."
+      },
+      {
+        "value": "= 1",
+        "description": "lined."
+      }
+    ],
+    "fltval": [
+      {
+        "value": "FLTVAL(1)",
+        "description": "grid point size."
+      },
+      {
+        "value": "FLTVAL(2)",
+        "description": "default line width in pixels."
+      }
+    ],
+    "dblval": [
+      {
+        "value": "DBLVAL(1)",
+        "description": "maximum zoom factor x 100, i.e. 10=1000% zoom."
+      },
+      {
+        "value": "DBLVAL(2)",
+        "description": "minimum zoom factor."
+      },
+      {
+        "value": "DBLVAL(3)",
+        "description": "zoom increment."
+      },
+      {
+        "value": "DBLVAL(4)",
+        "description": "zoom at which to hide selection handles."
+      },
+      {
+        "value": "DBLVAL(5)",
+        "description": "zoom at which to hide text."
+      },
+      {
+        "value": "DBLVAL(6)",
+        "description": "zoom at which to hide grid."
+      },
+      {
+        "value": "DBLVAL(7)",
+        "description": "multi-page print scaling."
+      },
+      {
+        "value": "DBLVAL(8)",
+        "description": "pan distance."
+      },
+      {
+        "value": "DBLVAL(9)",
+        "description": "grid spacing."
+      },
+      {
+        "value": "DBLVAL(10)",
+        "description": "grid snap distance."
+      },
+      {
+        "value": "DBLVAL(11)",
+        "description": "branch spacing."
+      }
+    ],
+    "logval": [
+      {
+        "value": "LOGVAL(1)",
+        "description": "no upside down text."
+      },
+      {
+        "value": "LOGVAL(2)",
+        "description": "high quality printing."
+      },
+      {
+        "value": "LOGVAL(3)",
+        "description": "display tooltips."
+      },
+      {
+        "value": "LOGVAL(4)",
+        "description": "stipple grid."
+      },
+      {
+        "value": "LOGVAL(5)",
+        "description": "hide unbound network items."
+      },
+      {
+        "value": "LOGVAL(6)",
+        "description": "display filled busbars."
+      },
+      {
+        "value": "LOGVAL(7)",
+        "description": "make branch connections perpendicular to branches."
+      }
+    ],
+    "prntmode": [
+      {
+        "value": "= 0",
+        "description": "as seen on the screen, WYSIWYG."
+      },
+      {
+        "value": "= 1",
+        "description": "fit the whole diagram on the page."
+      },
+      {
+        "value": "= 2",
+        "description": "multi-page."
+      }
+    ]
+  }
+}

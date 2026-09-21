@@ -1,0 +1,74 @@
+{
+  "module": "psspy",
+  "function_name": "station_indmachine_term_chng",
+  "category": "Node Breaker Data",
+  "description": "Use this API to change a substation induction machine node terminal connection in the working case. This API routine was first introduced in release 34.3.0. ierr = station_indmachine_term_chng(ibus, cktarg, intgar)",
+  "python_syntax": "ierr = station_indmachine_term_chng(ibus, cktarg, intgar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "From bus number. (input)."
+    },
+    {
+      "name": "cktarg",
+      "description": "Induction machine identifier. (input)."
+    },
+    {
+      "name": "intgar",
+      "description": "Node terminal number. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error return. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus does not exist."
+    },
+    {
+      "value": "= 2",
+      "description": "induction machine identifier is more than two characters."
+    },
+    {
+      "value": "= 3",
+      "description": "induction machine not found."
+    },
+    {
+      "value": "= 4",
+      "description": "bus does not belong to a substation."
+    },
+    {
+      "value": "= 5",
+      "description": "node does not exist in substation."
+    },
+    {
+      "value": "= 6",
+      "description": "invalid node number."
+    },
+    {
+      "value": "= 7",
+      "description": "node-breaker terminal connection table is full."
+    },
+    {
+      "value": "= 8",
+      "description": "error when moving induction machine terminal connection."
+    },
+    {
+      "value": "= 9",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

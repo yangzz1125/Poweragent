@@ -1,0 +1,188 @@
+{
+  "module": "psspy",
+  "function_name": "awndcplx",
+  "category": "Three-Winding Transformer Winding Data",
+  "description": "Use this API to return an array of complex values for subsystem three-winding transformer windings. This API routine was first introduced in release 30.2.0. ierr, xarray = awndcplx(sid, owner, ties, flag, entry, string)",
+  "python_syntax": "ierr, xarray = awndcplx(sid, owner, ties, flag, entry, string)",
+  "return_type": "error_and_array",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the bus subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "owner",
+      "description": "A flag indicating owner usage if ownership is a subsystem selection criterion (ignored if sid is negative). (input; 1 by default)."
+    },
+    {
+      "name": "ties",
+      "description": "A flag indicating which subsystem three-winding transformers to include (ignored if sid is negative). (input; 1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem three-winding transformers to include. (input; 1 by default)."
+    },
+    {
+      "name": "entry",
+      "description": "A flag indicating organization. (input; 1 by default)."
+    },
+    {
+      "name": "string",
+      "description": "An array of NSTR elements specifying NSTR of the following strings indicating the transformer quantities desired. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "xarray",
+      "description": "An array of NSTR*DIM elements specifying Is an array of at least NSTR columns, each of which contains DIM elements. (output)."
+    }
+  ],
+  "allowed_values": {
+    "sid": [
+      {
+        "value": "< 0",
+        "description": "to instruct the API to assume a subsystem containing all buses in the working case."
+      },
+      {
+        "value": ">= 0",
+        "description": "valid bus subsystem identifier. Valid subsystem identifiers range from 0 to 11. Subsystem SID must have been previously defined."
+      }
+    ],
+    "owner": [
+      {
+        "value": "= 1",
+        "description": "to use bus ownership."
+      },
+      {
+        "value": "= 2",
+        "description": "to use transformer ownership."
+      }
+    ],
+    "ties": [
+      {
+        "value": "= 1",
+        "description": "for interior subsystem three-winding transformers only."
+      },
+      {
+        "value": "= 2",
+        "description": "for subsystem tie three-winding transformers only."
+      },
+      {
+        "value": "= 3",
+        "description": "for both interior subsystem and tie three-winding transformers."
+      }
+    ],
+    "flag": [
+      {
+        "value": "= 1",
+        "description": "for only in-service windings of in-service three-winding transformers."
+      },
+      {
+        "value": "= 2",
+        "description": "for all windings of in-service three-winding transformers."
+      },
+      {
+        "value": "= 3",
+        "description": "for all three-winding transformer windings."
+      }
+    ],
+    "entry": [
+      {
+        "value": "= 1",
+        "description": "for winding bus order."
+      },
+      {
+        "value": "= 2",
+        "description": "for transformer name order."
+      }
+    ],
+    "string": [
+      {
+        "value": "= RXACT",
+        "description": "Actual transformer impedance, in pu."
+      },
+      {
+        "value": "= RXNOM",
+        "description": "Nominal transformer impedance, in pu."
+      },
+      {
+        "value": "= COMPRX",
+        "description": "Load drop compensation impedance, in pu."
+      },
+      {
+        "value": "= RXZERO",
+        "description": "Zero sequence winding leakage impedance, in pu."
+      },
+      {
+        "value": "= ZGRND",
+        "description": "Zero sequence winding grounding impedance, in pu."
+      },
+      {
+        "value": "= PQ",
+        "description": "P + j Q flow at winding bus end, in MW and Mvar."
+      },
+      {
+        "value": "= PQLOSS",
+        "description": "Losses, in MW and Mvar."
+      },
+      {
+        "value": "= O_PQ",
+        "description": "P + j Q flow at winding bus end (units determined by power output options)."
+      },
+      {
+        "value": "= O_PQLOSS",
+        "description": "Losses (units determined by power output options)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid OWNER value."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid TIES value."
+    },
+    {
+      "value": "= 5",
+      "description": "Invalid FLAG value."
+    },
+    {
+      "value": "= 6",
+      "description": "Invalid ENTRY value."
+    },
+    {
+      "value": "= 7",
+      "description": "Invalid NSTR value."
+    },
+    {
+      "value": "= 8",
+      "description": "DIM, and hence the size of XARRAY, is not large enough."
+    },
+    {
+      "value": "= 9",
+      "description": "Invalid STRING value."
+    },
+    {
+      "value": "= 10",
+      "description": "Sequence data not in case (when STRING = ‘RXZERO’ or ‘ZGRND’)."
+    }
+  ]
+}

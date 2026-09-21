@@ -1,0 +1,45 @@
+{
+  "module": "psspy",
+  "function_name": "nxtbus_2",
+  "category": "Single Element Data",
+  "description": "Returns the next bus in ordered sequence. One of the routines INIBUS_2 or ININAM_2 must be called first. The sequence can also be affected by STAREA, STZONE, and STBSKV (more than one may be used; conditions are applied in an ‘AND’ fashion). This API routine was first introduced in release 34.2.0. ierr, ibus, isect, cval = nxtbus_2()",
+  "python_syntax": "ierr, ibus, isect, cval = nxtbus_2()",
+  "return_type": "error_and_multi_value",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "ibus",
+      "description": "Bus number. (output)."
+    },
+    {
+      "name": "isect",
+      "description": "Bus section number (returned as 0 for a bus represented by a single bus section). (output)."
+    },
+    {
+      "name": "cval",
+      "description": "Extended bus name. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error; ‘IBUS’, ‘ISECT’ and ‘CVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "no more buses; ‘IBUS’, ‘ISECT’ and ‘CVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "‘INIBUS_2’ or ‘ININAM_2’ was not called; ‘IBUS’, ‘ISECT’ and ‘CVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "‘CVAL’ not long enough to contain entire extended bus name; ‘IBUS’, ‘ISECT’ and ‘CVAL’ returned but ‘CVAL’ does not contain any part of the base voltage portion of extended bus name."
+    }
+  ]
+}

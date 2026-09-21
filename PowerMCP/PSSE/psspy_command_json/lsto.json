@@ -1,0 +1,154 @@
+{
+  "module": "psspy",
+  "function_name": "lsto",
+  "category": "Optimal Power Flow Operation",
+  "description": "Use this API to list OPF working case data in a form suitable for data documentation. This API routine was first introduced in release 28.0.0. ierr = lsto(sid, all, opt, vrev)",
+  "python_syntax": "ierr = lsto(sid, all, opt, vrev)",
+  "return_type": "error_only_listing",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid subsystem id from 0 to 11. a subsystem must have been previously defined. (input; no default allowed)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem. (input; no default allowed)."
+    },
+    {
+      "name": "opt",
+      "description": "Number corresponding to the category of opf data that is to be tabulated. (input; no default allowed)."
+    },
+    {
+      "name": "vrev",
+      "description": "Option to change voltage units from the default units to the alternate units. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 0",
+        "description": "process only specified buses."
+      },
+      {
+        "value": "= 1",
+        "description": "process all buses."
+      }
+    ],
+    "opt": [
+      {
+        "value": "= 1",
+        "description": "case summary."
+      },
+      {
+        "value": "= 2",
+        "description": "bus attribute data."
+      },
+      {
+        "value": "= 3",
+        "description": "adjustable bus shunt data."
+      },
+      {
+        "value": "= 4",
+        "description": "bus load data."
+      },
+      {
+        "value": "= 5",
+        "description": "adjustable bus load table data."
+      },
+      {
+        "value": "= 6",
+        "description": "generator dispatch data."
+      },
+      {
+        "value": "= 7",
+        "description": "active power dispatch data."
+      },
+      {
+        "value": "= 8",
+        "description": "generation reserve data."
+      },
+      {
+        "value": "= 9",
+        "description": "generator reactive capability data."
+      },
+      {
+        "value": "= 10",
+        "description": "adjustable branch reactance data."
+      },
+      {
+        "value": "= 11",
+        "description": "linear cost table data."
+      },
+      {
+        "value": "= 12",
+        "description": "quadratic cost table data."
+      },
+      {
+        "value": "= 13",
+        "description": "polynomial and exponential cost table data."
+      },
+      {
+        "value": "= 14",
+        "description": "period reserve constraint data."
+      },
+      {
+        "value": "= 15",
+        "description": "branch flow constraint data."
+      },
+      {
+        "value": "= 16",
+        "description": "interface flow constraint data."
+      },
+      {
+        "value": "= 17",
+        "description": "linear constraint dependency data."
+      },
+      {
+        "value": "= 21",
+        "description": "full listing."
+      }
+    ],
+    "vrev": [
+      {
+        "value": "= 0",
+        "description": "use default voltage units."
+      },
+      {
+        "value": "= 1",
+        "description": "use alternate voltage units."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ALL value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid OPT value."
+    },
+    {
+      "value": "= 4",
+      "description": "invalid VREV value."
+    },
+    {
+      "value": "= 5",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

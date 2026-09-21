@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "opf_gendsp_indv",
+  "category": "Optimal Power Flow Data",
+  "description": "Use this API to add generator dispatch data to an individual record in the working case. This API routine was first introduced in release 28.0.0. ierr = opf_gendsp_indv(eibus, genid, apdtbl, dsptch)",
+  "python_syntax": "ierr = opf_gendsp_indv(eibus, genid, apdtbl, dsptch)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "eibus",
+      "description": "Bus number. (input; no default allowed)."
+    },
+    {
+      "name": "genid",
+      "description": "Machine identifier. (input; no default allowed)."
+    },
+    {
+      "name": "apdtbl",
+      "description": "Active power dispatch table cross reference number. (input; default of 0 if new record, current value otherwise)."
+    },
+    {
+      "name": "dsptch",
+      "description": "Dispatch fraction (default value of 1.0 if new record, current value otherwise). (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid bus number specified."
+    },
+    {
+      "value": "= 2",
+      "description": "specified machine does not exist."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

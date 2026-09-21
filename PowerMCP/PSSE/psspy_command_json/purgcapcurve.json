@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "purgcapcurve",
+  "category": "Power Flow Data",
+  "description": "Use this API to delete the specified machine’s capability curve from the working case. This API routine was first introduced in release 35.0.0. ierr = purgcapcurve(ibus, id)",
+  "python_syntax": "ierr = purgcapcurve(ibus, id)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus to which the specified machine is connected. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Identifier of the machine whose capability curve is to be removed. (input; ‘1’ by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "no machines at the bus."
+    },
+    {
+      "value": "= 3",
+      "description": "machine not found."
+    },
+    {
+      "value": "= 4",
+      "description": "capability curve not found for this machine."
+    },
+    {
+      "value": "= 5",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

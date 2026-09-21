@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "bussectexs",
+  "category": "Single Element Data",
+  "description": "Use this API routine to check for the existence of a specified bus section. This API routine was first introduced in release 34.1.0. ierr = bussectexs(ibus, sect)",
+  "python_syntax": "ierr = bussectexs(ibus, sect)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    },
+    {
+      "name": "sect",
+      "description": "Bus section number. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Bus not found; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 9",
+      "description": "Bus section not found; ‘IVAL’ unchanged."
+    }
+  ]
+}

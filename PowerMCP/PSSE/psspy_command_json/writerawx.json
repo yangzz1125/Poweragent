@@ -1,0 +1,62 @@
+{
+  "module": "psspy",
+  "function_name": "writerawx",
+  "category": "Power Flow Operation",
+  "description": "Use this API to write an extended raw data file from data in the current working case. This API routine was first introduced in release 35.4.0. ierr = writerawx(sfile, domains)",
+  "python_syntax": "ierr = writerawx(sfile, domains)",
+  "return_type": "error_only_write_file",
+  "parameters": [
+    {
+      "name": "sfile",
+      "description": "Filename of the extended power flow raw data file. (input)."
+    },
+    {
+      "name": "domains",
+      "description": "Comma separated string of rawx domains to write to sfile. (input; all domains by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "domains": [
+      {
+        "value": "= all",
+        "description": "all domains."
+      },
+      {
+        "value": "= network",
+        "description": "network data."
+      },
+      {
+        "value": "= timeseries",
+        "description": "time series power flow data."
+      },
+      {
+        "value": "= harmonics",
+        "description": "harmonics data."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 2",
+      "description": "rawx write error."
+    },
+    {
+      "value": "= 3",
+      "description": "error opening SFILE."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

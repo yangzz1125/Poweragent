@@ -1,0 +1,20 @@
+{
+  "module": "psspy",
+  "function_name": "scenariozipsave",
+  "category": "Scenarios",
+  "description": "This API routine was first introduced in release 33.2.0. ierr = scenariozipsave(sfile)",
+  "python_syntax": "ierr = scenariozipsave(sfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sfile",
+      "description": "Full file path of the scenario file to save to. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "None. (output)."
+    }
+  ]
+}

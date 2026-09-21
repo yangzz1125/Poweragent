@@ -1,0 +1,148 @@
+{
+  "module": "psspy",
+  "function_name": "ldmodc_remove",
+  "category": "Load Related Models",
+  "description": "Use this API to remove a load component related model of a designated type from a specified load or subsystem. This API routine was first introduced in release 35.5. ierr = ldmodc_remove(stype, ibus, ltypname, id, ltype)",
+  "python_syntax": "ierr = ldmodc_remove(stype, ibus, ltypname, id, ltype)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "stype",
+      "description": "Subsystem type. (input; 0 by default)."
+    },
+    {
+      "name": "ibus",
+      "description": "Bus, owner, zone or area number. ignored when mtype is 4 (when mtype is less than 4). (input; no default allowed)."
+    },
+    {
+      "name": "ltypname",
+      "description": "Load type, or “ “ if the model is not applied to applied to “load type”subsystem. (input; blank by default)."
+    },
+    {
+      "name": "id",
+      "description": "Load identifier, or “*” if the model is applied to all loads in the subsystem. (input; blank by default)."
+    },
+    {
+      "name": "ltype",
+      "description": "Load model type. (input; 1 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "stype": [
+      {
+        "value": "= 0",
+        "description": "bus model."
+      },
+      {
+        "value": "= 1",
+        "description": "owner model."
+      },
+      {
+        "value": "= 2",
+        "description": "zone model."
+      },
+      {
+        "value": "= 3",
+        "description": "area model."
+      },
+      {
+        "value": "= 4",
+        "description": "all model."
+      }
+    ],
+    "ltype": [
+      {
+        "value": "= 11",
+        "description": "load main component model."
+      },
+      {
+        "value": "= 12",
+        "description": "load distribution component model."
+      },
+      {
+        "value": "= 21",
+        "description": "Component # 1 load Individual component model."
+      },
+      {
+        "value": "= 22",
+        "description": "Component # 2 load Individual component model."
+      },
+      {
+        "value": "= 23",
+        "description": "Component # 3 load Individual component model."
+      },
+      {
+        "value": "= 24",
+        "description": "Component # 4 load Individual component model."
+      },
+      {
+        "value": "= 25",
+        "description": "Component # 5 load Individual component model."
+      },
+      {
+        "value": "= 26",
+        "description": "Component # 6 load Individual component model."
+      },
+      {
+        "value": "= 27",
+        "description": "Component # 7 load Individual component model."
+      },
+      {
+        "value": "= 28",
+        "description": "Component # 8 load Individual component model."
+      },
+      {
+        "value": "= 29",
+        "description": "Component # 9 load Individual component model."
+      },
+      {
+        "value": "= 30",
+        "description": "Component # 10 load Individual component model."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid number specified for IBUS."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid LTYPE value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid STYPE value."
+    },
+    {
+      "value": "= 4",
+      "description": "no all type LTYPE model for load id."
+    },
+    {
+      "value": "= 5",
+      "description": "no STYPE type LTYPE model for load id for MTYPE IBUS."
+    },
+    {
+      "value": "= 6",
+      "description": "no all type LTYPE model at component # for load id."
+    },
+    {
+      "value": "= 7",
+      "description": "no STYPE type LTYPE model at component # for load id for MTYPE IBUS."
+    },
+    {
+      "value": "= 8",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

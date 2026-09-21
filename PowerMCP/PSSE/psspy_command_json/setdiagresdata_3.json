@@ -1,0 +1,67 @@
+{
+  "module": "psspy",
+  "function_name": "setdiagresdata_3",
+  "category": "Diagram View",
+  "description": "Use this API to specify the basic Power Flow annotation options in the active Slider Diagram. This API routine was first introduced in release 34.0.0. setdiagresdata_3(setscope, brnann, busann)",
+  "python_syntax": "setdiagresdata_3(setscope, brnann, busann)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "setscope",
+      "description": "Scope of the api. (input)."
+    },
+    {
+      "name": "brnann",
+      "description": "Branch annotation. (input)."
+    },
+    {
+      "name": "busann",
+      "description": "Bus voltage annotation. (input)."
+    }
+  ],
+  "return_values": [],
+  "allowed_values": {
+    "setscope": [
+      {
+        "value": "= 0",
+        "description": "defaults for new diagrams."
+      },
+      {
+        "value": "= 1",
+        "description": "defaults for new diagrams and settings for the active diagram."
+      },
+      {
+        "value": "= 2",
+        "description": "settings for the active diagram."
+      }
+    ],
+    "brnann": [
+      {
+        "value": "= 6",
+        "description": "display impedances."
+      },
+      {
+        "value": "= 7",
+        "description": "display ratings."
+      },
+      {
+        "value": "= 8",
+        "description": "display impedances & ratings."
+      },
+      {
+        "value": "= 9",
+        "description": "display nothing."
+      }
+    ],
+    "busann": [
+      {
+        "value": "= 0",
+        "description": "don’t display base kV."
+      },
+      {
+        "value": "= 1",
+        "description": "display base kV."
+      }
+    ]
+  }
+}

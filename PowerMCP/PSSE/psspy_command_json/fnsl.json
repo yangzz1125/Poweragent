@@ -1,0 +1,174 @@
+{
+  "module": "psspy",
+  "function_name": "fnsl",
+  "category": "Power Flow Operation",
+  "description": "Use this API to apply the Newton-Raphson power flow calculation (activity FNSL). This API routine was first introduced in release 28.0.0. ierr = fnsl(options)",
+  "python_syntax": "ierr = fnsl(options)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "options",
+      "description": "An array of eight elements specifying solution options. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "options": [
+      {
+        "value": "OPTIONS(1)",
+        "description": "tap adjustment flag (use tap adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable stepping adjustment."
+      },
+      {
+        "value": "= 2",
+        "description": "enable direct adjustment."
+      },
+      {
+        "value": "OPTIONS(2)",
+        "description": "area interchange adjustment flag (use area interchange adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable using tie line flows only in calculating area interchange."
+      },
+      {
+        "value": "= 2",
+        "description": "enable using tie line flows and loads in calculating area interchange."
+      },
+      {
+        "value": "OPTIONS(3)",
+        "description": "phase shift adjustment flag (use phase shift adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTIONS(4)",
+        "description": "dc tap adjustment flag (use dc tap adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTIONS(5)",
+        "description": "switched shunt adjustment flag (use switched shunt adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "= 2",
+        "description": "enable continuous mode, disable discrete mode."
+      },
+      {
+        "value": "OPTIONS(6)",
+        "description": "flat start flag (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "do not flat start."
+      },
+      {
+        "value": "= 1",
+        "description": "flat start."
+      },
+      {
+        "value": "= 2",
+        "description": "flat start, then estimate voltage magnitudes."
+      },
+      {
+        "value": "= 3",
+        "description": "flat start, then estimate voltage phase angles."
+      },
+      {
+        "value": "= 4",
+        "description": "flat start, then estimate voltage magnitudes and phase angles."
+      },
+      {
+        "value": "OPTIONS(7)",
+        "description": "var limit flag (99 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "apply var limits immediately."
+      },
+      {
+        "value": "> 0",
+        "description": "apply var limits on iteration n (or sooner if mismatch gets small)."
+      },
+      {
+        "value": "= -1",
+        "description": "ignore var limits."
+      },
+      {
+        "value": "OPTIONS(8)",
+        "description": "non-divergent solution flag (use non-divergent solution option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid OPTIONS value."
+    },
+    {
+      "value": "= 2",
+      "description": "generators are converted."
+    },
+    {
+      "value": "= 3",
+      "description": "buses in island(s) without a swing bus; use activity TREE."
+    },
+    {
+      "value": "= 4",
+      "description": "bus type code and series element status inconsistencies."
+    },
+    {
+      "value": "= 5",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

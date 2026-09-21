@@ -1,0 +1,104 @@
+{
+  "module": "psspy",
+  "function_name": "rwdy",
+  "category": "Dynamic Simulation Operation",
+  "description": "Use this API to replicate portions of dynamics model data in the form of either a breaker duty data file, unit inertia and governor data file, or PSSPLT relay characteristic data file. This API routine was first introduced in release 30.2.0. ierr = rwdy(options, out, ofile)",
+  "python_syntax": "ierr = rwdy(options, out, ofile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "options",
+      "description": "An array of three elementsNone. (input)."
+    },
+    {
+      "name": "out",
+      "description": "Destination selection. (input; 1 by default)."
+    },
+    {
+      "name": "ofile",
+      "description": "Name of the file to which data records are to be written. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "options": [
+      {
+        "value": "OPTIONS(1)",
+        "description": "type of file to be (1 by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "breaker duty data file."
+      },
+      {
+        "value": "= 2",
+        "description": "unit inertia and governor data file."
+      },
+      {
+        "value": "= 3",
+        "description": "PSSPLT relay characteristic data file."
+      },
+      {
+        "value": "OPTIONS(2)",
+        "description": "machine limits flag for activity INLF (ignored unless OPTIONS(1) = 2) (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "include machine limits."
+      },
+      {
+        "value": "= 1",
+        "description": "suppress machine limits."
+      },
+      {
+        "value": "OPTIONS(3)",
+        "description": "flag indicating the treatment of machines without governor models in activity INLF (ignored unless OPTIONS(1) = 2) (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "use the working case limits."
+      },
+      {
+        "value": "= 1",
+        "description": "treat them as non-dispatchable."
+      }
+    ],
+    "out": [
+      {
+        "value": "= 0",
+        "description": "direct output to a data file specified by OFILE."
+      },
+      {
+        "value": "= 1",
+        "description": "direct output to the current report device."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid OPTIONS value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid OUT value."
+    },
+    {
+      "value": "= 3",
+      "description": "error opening OFILE."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

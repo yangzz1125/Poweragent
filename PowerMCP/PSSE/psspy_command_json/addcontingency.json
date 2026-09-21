@@ -1,0 +1,42 @@
+{
+  "module": "psspy",
+  "function_name": "addcontingency",
+  "category": "Using The Vendor Neutral Contingency And Ras Auxiliary File",
+  "description": "Add Contingency to RAS memory model This API routine was first introduced in release 35.4.0. ierr = addcontingency(ctgname, category, skip, memo)",
+  "python_syntax": "ierr = addcontingency(ctgname, category, skip, memo)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ctgname",
+      "description": "Unique name of the contingency. (input)."
+    },
+    {
+      "name": "category",
+      "description": "A comma delimited list of strings representing the contingency categories assigned to this contingency. (input)."
+    },
+    {
+      "name": "skip",
+      "description": "Set to “yes” and a contingency processor will ignore this contingency. (input; NO by default)."
+    },
+    {
+      "name": "memo",
+      "description": "A comment field. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "(output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error occurred."
+    },
+    {
+      "value": "= 4",
+      "description": "Req are not met."
+    }
+  ]
+}

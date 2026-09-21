@@ -1,0 +1,92 @@
+{
+  "module": "psspy",
+  "function_name": "bsysadd",
+  "category": "Bus Subsystems",
+  "description": "Use this API to add elements to an existing bus subsystem. The criteria used to define a bus subsystem are evaluated using an AND criteria. That is to say, if a bus kV range, Areas and Zones are specified, to be in the bus subsystem a bus must be in the specified kV range AND must be in one of the Areas defined AND must be in one of the Zones defined. Failure to meet ANY of the specified criteria will remove the bus from the bus subsystem. Adding to an existing bus subsystem with this API adds addtional AND critieria, not OR criteria, to be used in the evaluation. This API routine was first introduced in release 30.0.0. ierr = bsysadd(sid, usekv, basekv, numarea, areas, numbus, buses, numowner, owners, numzone, zones)",
+  "python_syntax": "ierr = bsysadd(sid, usekv, basekv, numarea, areas, numbus, buses, numowner, owners, numzone, zones)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Valid bus subsystem id. valid bus subsystem ids range from 0 to 11. (input)."
+    },
+    {
+      "name": "usekv",
+      "description": "Flag to determine whether to use basekv values in setting the subsystem. (input)."
+    },
+    {
+      "name": "basekv",
+      "description": "An array of two elementsNone. (input)."
+    },
+    {
+      "name": "numarea",
+      "description": "Number of areas to set. (input)."
+    },
+    {
+      "name": "areas",
+      "description": "An array of NUMAREA elements specifying array that contains the areas to set. (input)."
+    },
+    {
+      "name": "numbus",
+      "description": "Number of buses to set. (input)."
+    },
+    {
+      "name": "buses",
+      "description": "An array of NUMBUS elements specifying array that contains the buses to set. (input)."
+    },
+    {
+      "name": "numowner",
+      "description": "Number of owners to set. (input)."
+    },
+    {
+      "name": "owners",
+      "description": "An array of NUMOWNER elements specifying array that contains the owners to set. (input)."
+    },
+    {
+      "name": "numzone",
+      "description": "Number of zones to set. (input)."
+    },
+    {
+      "name": "zones",
+      "description": "An array of NUMZONE elements specifying array that contains the zones to set. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error return. (output)."
+    }
+  ],
+  "allowed_values": {
+    "usekv": [
+      {
+        "value": "= 0",
+        "description": "don’t use BASEKV values."
+      },
+      {
+        "value": "= 1",
+        "description": "use BASEKV values."
+      }
+    ],
+    "basekv": [
+      {
+        "value": "BASEKV(1)",
+        "description": "minimum basekV limit."
+      },
+      {
+        "value": "BASEKV(2)",
+        "description": "maximum basekV limit."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "SID is not valid."
+    }
+  ]
+}

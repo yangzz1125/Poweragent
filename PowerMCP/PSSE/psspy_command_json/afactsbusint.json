@@ -1,0 +1,204 @@
+{
+  "module": "psspy",
+  "function_name": "afactsbusint",
+  "category": "Facts Device Bus Data",
+  "description": "Use this API to return an array of integer values for subsystem FACTS device buses. This API routine was first introduced in release 30.3.0. ierr, iarray = afactsbusint(sid, ties, flag, fcttyp, entry, string)",
+  "python_syntax": "ierr, iarray = afactsbusint(sid, ties, flag, fcttyp, entry, string)",
+  "return_type": "error_and_array",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the bus subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "ties",
+      "description": "A flag indicating which subsystem buses connected to facts devices with a series element to include (ignored if sid is negative). (input; 1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem facts devices to include. (input; 1 by default)."
+    },
+    {
+      "name": "fcttyp",
+      "description": "A flag indicating which types of facts devices to include. (input; 1 by default)."
+    },
+    {
+      "name": "entry",
+      "description": "A flag indicating organization. (input; 1 by default)."
+    },
+    {
+      "name": "string",
+      "description": "An array of NSTR elements specifying NSTR of the following strings indicating the FACTS device quantities desired. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "iarray",
+      "description": "An array of NSTR*DIM elements specifying Is an array of at least NSTR columns, each of which contains DIM elements. (output)."
+    }
+  ],
+  "allowed_values": {
+    "sid": [
+      {
+        "value": "< 0",
+        "description": "to instruct the API to assume a subsystem containing all buses in the working case."
+      },
+      {
+        "value": ">= 0",
+        "description": "valid bus subsystem identifier. Valid subsystem identifiers range from 0 to 11. Subsystem SID must have been previously defined."
+      }
+    ],
+    "ties": [
+      {
+        "value": "= 1",
+        "description": "for each end of interior subsystem FACTS devices only."
+      },
+      {
+        "value": "= 2",
+        "description": "for the subsystem bus end of tie FACTS devices only."
+      },
+      {
+        "value": "= 3",
+        "description": "for the non-subsystem bus end of tie FACTS devices only."
+      },
+      {
+        "value": "= 4",
+        "description": "for each end of tie FACTS devices only."
+      },
+      {
+        "value": "= 5",
+        "description": "for each end of interior subsystem FACTS devices and the subsystem bus end of tie FACTS devices."
+      },
+      {
+        "value": "= 6",
+        "description": "for each end of interior subsystem FACTS devices and tie FACTS devices."
+      }
+    ],
+    "flag": [
+      {
+        "value": "= 1",
+        "description": "for only in-service FACTS devices."
+      },
+      {
+        "value": "= 2",
+        "description": "for both in-service and out-of-service FACTS devices."
+      }
+    ],
+    "fcttyp": [
+      {
+        "value": "= 1",
+        "description": "for only FACTS devices without a series element."
+      },
+      {
+        "value": "= 2",
+        "description": "for only FACTS devices with a series element."
+      },
+      {
+        "value": "= 3",
+        "description": "for both types of FACTS devices."
+      }
+    ],
+    "entry": [
+      {
+        "value": "= 1",
+        "description": "for bus order."
+      },
+      {
+        "value": "= 2",
+        "description": "for FACTS device name order."
+      }
+    ],
+    "string": [
+      {
+        "value": "= FROMNUMBER",
+        "description": "Bus number of this FACTS bus."
+      },
+      {
+        "value": "= TONUMBER",
+        "description": "Bus number of the other end FACTS bus."
+      },
+      {
+        "value": "= FACTSEND",
+        "description": "FACTS device end code of this FACTS bus: 1 (sending end bus) or 2 (terminal end bus)."
+      },
+      {
+        "value": "= MODE",
+        "description": "Control mode (negative if blocked during solution)."
+      },
+      {
+        "value": "= OWNER",
+        "description": "Owner number."
+      },
+      {
+        "value": "= IREG",
+        "description": "Regulated bus number."
+      },
+      {
+        "value": "= NREG",
+        "description": "Regulated node number."
+      },
+      {
+        "value": "= VSREF",
+        "description": "Series voltage reference code."
+      },
+      {
+        "value": "= STATVT",
+        "description": "Terminal end voltage condition code: -1 (holding low limit), 0 (in range), or 1 (holding high limit)."
+      },
+      {
+        "value": "= STATVS",
+        "description": "Series voltage limit code: 0 (in range), or 1 (holding high limit)."
+      },
+      {
+        "value": "= STATBR",
+        "description": "Bridge active power transfer limit code: 0 (in range), or 1 (holding high limit)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid TIES value."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid FLAG value."
+    },
+    {
+      "value": "= 5",
+      "description": "Invalid FCTTYP value."
+    },
+    {
+      "value": "= 6",
+      "description": "Invalid ENTRY value."
+    },
+    {
+      "value": "= 7",
+      "description": "Invalid NSTR value."
+    },
+    {
+      "value": "= 8",
+      "description": "DIM, and hence the size of IARRAY, is not large enough."
+    },
+    {
+      "value": "= 9",
+      "description": "Invalid STRING value."
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "module": "psspy",
+  "function_name": "llrf",
+  "category": "Power Flow Operation",
+  "description": "Use this API to apply the line loading relief calculation using a linear network (dc) model. It must first be called once with APIOPT set to 1, then once for each priority level for which the adjustment method is to be changed with APIOPT set to 2, and finally once with APIOPT set to 3. This API routine was first introduced in release 29.0.0. ierr = llrf(apiopt, options, rval, dfxfile)",
+  "python_syntax": "ierr = llrf(apiopt, options, rval, dfxfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "apiopt",
+      "description": "Mode of operation. (input)."
+    },
+    {
+      "name": "options",
+      "description": "An array of two elements specifying options and values to be used in the current calculation phase of LLRFAPI; ignored when APIOPT is 1. When APIOPT is 2, the elements of OPTIONS define a priority level and the adjustment method to be used in curtailing or restoring transactions. When APIOPT is 3, the first element of OPTIONS defines the line loading relief function to be applied. For the curtail transactions and restore transactions functions, the second element of OPTIONS defines the monitored element to be used as the transaction adjustment target. (input)."
+    },
+    {
+      "name": "rval",
+      "description": "Used in the current calculation phase of llrfapi; ignored when apiopt is 2. when apiopt is 1, rval is the distribution factor tolerance used to preclude those transactions with negligible effect on the target monitored element from the transaction adjustment functions. (input; 0.05 by default). When APIOPT is 3, RVAL is the target element adjustment MW (10.0 by default)."
+    },
+    {
+      "name": "dfxfile",
+      "description": "Name of dfax data file when apiopt is 1. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "apiopt": [
+      {
+        "value": "= 1",
+        "description": "initialize."
+      },
+      {
+        "value": "= 2",
+        "description": "specify a priority level and the adjustment method to be applied; must be called once for each priority level, adjustment method pair to be specified."
+      },
+      {
+        "value": "= 3",
+        "description": "specify a line loading relief function, apply the required calculations, report results, and terminate."
+      }
+    ],
+    "options": [
+      {
+        "value": "OPTIONS(1)",
+        "description": "When APIOPT is 2, priority level When APIOPT is 3 (no default allowed)."
+      },
+      {
+        "value": "= 0",
+        "description": "curtail transactions."
+      },
+      {
+        "value": "= 1",
+        "description": "restore transactions."
+      },
+      {
+        "value": "= 2",
+        "description": "report distribution factor matrix."
+      },
+      {
+        "value": "OPTIONS(2)",
+        "description": "When APIOPT is 3, monitored element list index (1 by default when OPTIONS(1) is 0 or 1).. When APIOPT is 2)."
+      },
+      {
+        "value": "= 0",
+        "description": "first in, last out (FILO)."
+      },
+      {
+        "value": "= 1",
+        "description": "decreasing order of distribution factor magnitude (DF-ORDER)."
+      },
+      {
+        "value": "= 2",
+        "description": "distribution factor pro rata (DF-PRO RATA)."
+      },
+      {
+        "value": "= 3",
+        "description": "pro rata based on the product of distribution factor and transaction schedule (DF-SCHED-PRO RATA)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "no transactions defined."
+    },
+    {
+      "value": "= 2",
+      "description": "no DFAX data file specified."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid OPTIONS value."
+    },
+    {
+      "value": "= 4",
+      "description": "invalid RVAL value."
+    },
+    {
+      "value": "= 5",
+      "description": "unexpected APIOPT value."
+    },
+    {
+      "value": "= 6",
+      "description": "invalid APIOPT value."
+    },
+    {
+      "value": "= 7",
+      "description": "error opening file DFXFILE."
+    },
+    {
+      "value": "= 8",
+      "description": "file DFXFILE is not in the form of a PSSE-25 or later DFAX file; run DFAX."
+    },
+    {
+      "value": "= 10",
+      "description": "no monitored branches or interfaces defined."
+    },
+    {
+      "value": "= 11",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

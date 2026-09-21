@@ -1,0 +1,102 @@
+{
+  "module": "psspy",
+  "function_name": "multi_term_dc_line_data",
+  "category": "Power Flow Data",
+  "description": "Use this API to modify the control mode and mode switch voltage of an existing multi-terminal dc line in the working case or to add a new multi-terminal dc line to the working case (see PSSE Program Operation Manual, Multi-Terminal DC Transmission Line Data). Converter data, dc bus data, and dc link data are specified via the MULTI_TERM_DC_CONVR_DATA, MULTI_TERM_DC_BUS_DATA, and MULTI_TERM_DC_LINK_DATA APIs respectively. This API routine was first introduced in release 28.0.0. ierr, intgaro = multi_term_dc_line_data(dc, intgari, realar)",
+  "python_syntax": "ierr, intgaro = multi_term_dc_line_data(dc, intgari, realar)",
+  "return_type": "error_and_record",
+  "parameters": [
+    {
+      "name": "dc",
+      "description": "Quoted name of the multi-terminal dc line for which data is to be specified; if an unquoted integer value is specified, the api converts it to a left-justified name. (input; no default allowed)."
+    },
+    {
+      "name": "intgari",
+      "description": "An array of one elements specifying one element corresponding to value INTGAR(1) as described above. (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of one elementsNone. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "intgaro",
+      "description": "An array of seven elements specifying corresponding to values INTGAR(2) through INTGAR(8) as described above. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgari": [
+      {
+        "value": "INTGARI(1)",
+        "description": "MDC, control mode (0 by default)."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "VCMOD, mode switch dc voltage (kV) (0.0 by default)."
+      }
+    ],
+    "intgaro": [
+      {
+        "value": "INTGARO(1)",
+        "description": "positive pole voltage controlling converter index (returned)."
+      },
+      {
+        "value": "INTGARO(2)",
+        "description": "negative pole voltage controlling converter index, or zero if the negative pole is not being modeled (returned)."
+      },
+      {
+        "value": "INTGARO(3)",
+        "description": "positive pole voltage controlling converter bus number (returned)."
+      },
+      {
+        "value": "INTGARO(4)",
+        "description": "positive pole voltage controlling converter bus number (returned)."
+      },
+      {
+        "value": "INTGARO(5)",
+        "description": "number of converters (returned)."
+      },
+      {
+        "value": "INTGARO(6)",
+        "description": "number of dc buses (returned)."
+      },
+      {
+        "value": "INTGARO(7)",
+        "description": "number of dc links (returned)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "multi-terminal dc line table is full."
+    },
+    {
+      "value": "= 2",
+      "description": "blank dc line name is invalid."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - invalid dc line control mode."
+    }
+  ]
+}

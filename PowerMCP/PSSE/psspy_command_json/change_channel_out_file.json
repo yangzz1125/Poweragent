@@ -1,0 +1,42 @@
+{
+  "module": "psspy",
+  "function_name": "change_channel_out_file",
+  "category": "Dynamic Simulation Operation",
+  "description": "Use this API to modify the dynamic simulation channel output filename in dynamics working memory (see PSSE Program Operation Manual, activity ALTR). This API routine was first introduced in release 32.0.0. ierr = change_channel_out_file(outfile)",
+  "python_syntax": "ierr = change_channel_out_file(outfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "outfile",
+      "description": "Name of the channel output file (blank to bypass recording of the output channel values in a channel output file). (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "error opening OUTFILE."
+    },
+    {
+      "value": "= 2",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "warnings: - None."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "module": "psspy",
+  "function_name": "mtdcauxmod_status",
+  "category": "Auxiliary Signal Models",
+  "description": "Use this API to change the status of the auxiliary signal model at the specified auxiliary signal index of the designated multi-terminal dc line. This API routine was first introduced in release 30.2.0. ierr = mtdcauxmod_status(dc, isgndx, status)",
+  "python_syntax": "ierr = mtdcauxmod_status(dc, isgndx, status)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "dc",
+      "description": "Quoted name of the multi-terminal dc line receiving the of the auxiliary signal model; if an unquoted integer value is specified, the api converts it to a left- justified name. (input; no default allowed)."
+    },
+    {
+      "name": "isgndx",
+      "description": "Auxiliary signal injection point number, or the auxiliary signal index. (input; 1 by default)."
+    },
+    {
+      "name": "status",
+      "description": "New model status. (input; 1 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "status": [
+      {
+        "value": "= 0",
+        "description": "out-of-service."
+      },
+      {
+        "value": "= 1",
+        "description": "in-service."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "dc line not found."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ISGNDX value for a multi-terminal dc line."
+    },
+    {
+      "value": "= 3",
+      "description": "no auxiliary signal model at this index for this multi-terminal dc line."
+    },
+    {
+      "value": "= 4",
+      "description": "invalid STATUS value."
+    },
+    {
+      "value": "= 5",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

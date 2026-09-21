@@ -1,0 +1,114 @@
+{
+  "module": "psspy",
+  "function_name": "tr3dt2",
+  "category": "Single Element Data",
+  "description": "Use this API to return three-winding transformer complex values. This API routine was first introduced in release 28.0.0. ierr, cmpval = tr3dt2(ibus, jbus, kbus, ickt, string)",
+  "python_syntax": "ierr, cmpval = tr3dt2(ibus, jbus, kbus, ickt, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "From bus number. (input)."
+    },
+    {
+      "name": "jbus",
+      "description": "To bus number. (input)."
+    },
+    {
+      "name": "kbus",
+      "description": "Third bus number. (input)."
+    },
+    {
+      "name": "ickt",
+      "description": "Circuit identifier. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the three-winding transformer quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "cmpval",
+      "description": "Complex value indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= RX1-2",
+        "description": "Measured impedance in per unit between the winding 1 and 2 buses."
+      },
+      {
+        "value": "= RX2-3",
+        "description": "Measured impedance in per unit between the winding 2 and 3 buses."
+      },
+      {
+        "value": "= RX3-1",
+        "description": "Measured impedance in per unit between the winding 3 and 1 buses."
+      },
+      {
+        "value": "= YMAGNT",
+        "description": "Magnetizing admittance in pu."
+      },
+      {
+        "value": "= ZG1’, ‘ZGRND",
+        "description": "Zero-sequence winding 1 grounding impedance."
+      },
+      {
+        "value": "= Z01",
+        "description": "Zero-sequence winding 1 or winding 1 bus to winding 2 bus leakage impedance."
+      },
+      {
+        "value": "= ZG2",
+        "description": "Zero-sequence winding 2 grounding impedance."
+      },
+      {
+        "value": "= Z02",
+        "description": "Zero-sequence winding 2 or winding 2 bus to winding 3 bus leakage impedance."
+      },
+      {
+        "value": "= ZG3",
+        "description": "Zero-sequence winding 3 grounding impedance."
+      },
+      {
+        "value": "= Z03",
+        "description": "Zero-sequence winding 3 or winding 3 bus to winding 1 bus leakage impedance."
+      },
+      {
+        "value": "= ZNUTRL",
+        "description": "Zero-sequence common neutral grounding impedance."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘P’ and ‘Q’ or ‘CMPVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Bus not found; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Three-winding transformer not found; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid ‘STRING’; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    },
+    {
+      "value": "= 4",
+      "description": "Error fetching transformer data; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    },
+    {
+      "value": "= 5",
+      "description": "Sequence data not in case for ‘STRING’ = ‘ZGRND’, ‘ZG1’, ‘Z01’, ‘ZG2’, ,’Z02’, ‘ZG3’, ‘Z03’, or ‘ZNUTRL’; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    }
+  ]
+}

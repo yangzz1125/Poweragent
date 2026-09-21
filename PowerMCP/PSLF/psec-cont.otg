@@ -1,0 +1,314 @@
+# contingency selection : from area 1 to 8; 100 kV to 999 kV 
+# contingency selection : from area 1 to 8; 100 kV to 999 kV 
+line_1            "line PNN/WRLD to NYC/LI   345 ck 1" 
+ line "PNN/WRLD 345.00"  "NYC/LI   345.00"  "1 "  1 0 
+ line "PNN/WRLD 345.00"  "WATRC345 345.00"  "1 "  1 0 
+0
+line_2            "line PNN/WRLD to STOLE345 345 ck 1" 
+ line "PNN/WRLD 345.00"  "STOLE345 345.00"  "1 "  1 0 
+0
+line_3            "line PNN/WRLD to WATRC345 345 ck 1" 
+ line "PNN/WRLD 345.00"  "WATRC345 345.00"  "1 "  1 0 
+0
+line_4            "line PNN/WRLD to OR & RCK 345 ck 1" 
+ line "PNN/WRLD 345.00"  "OR & RCK 345.00"  "1 "  1 0 
+0
+line_5            "line NEPOOL   to NYC/LI   345 ck 1" 
+ line "NEPOOL   345.00"  "NYC/LI   345.00"  "1 "  1 0 
+0
+line_6            "line NEPOOL   to PLTVLLEY 345 ck 1" 
+ line "NEPOOL   345.00"  "PLTVLLEY 345.00"  "1 "  1 0 
+0
+line_7            "line NEPOOL   to ALBANY   345 ck 1" 
+ line "NEPOOL   345.00"  "ALBANY   345.00"  "1 "  1 0 
+0
+line_8            "line HURLEY 3 to ROSETON  345 ck 1" 
+ line "HURLEY 3 345.00"  "ROSETON  345.00"  "1 "  1 0 
+0
+line_9            "line HURLEY 3 to PLTVLLEY 345 ck 1" 
+ line "HURLEY 3 345.00"  "PLTVLLEY 345.00"  "1 "  1 0 
+0
+line_10           "line HURLEY 3 to LEEDS 3  345 ck 1" 
+ line "HURLEY 3 345.00"  "LEEDS 3  345.00"  "1 "  1 0 
+0
+line_11           "line HURLEY 3 to OR & RCK 345 ck 1" 
+ line "HURLEY 3 345.00"  "OR & RCK 345.00"  "1 "  1 0 
+0
+line_12           "line ROSETON  to NYC/LI   345 ck 1" 
+ line "ROSETON  345.00"  "NYC/LI   345.00"  "1 "  1 0 
+0
+line_13           "line ROSETON  to PLTVLLEY 345 ck 1" 
+ line "ROSETON  345.00"  "PLTVLLEY 345.00"  "1 "  1 0 
+0
+line_14           "line ROSETON  to OR & RCK 345 ck 1" 
+ line "ROSETON  345.00"  "OR & RCK 345.00"  "1 "  1 0 
+0
+line_15           "line NYC/LI   to PLTVLLEY 345 ck 1" 
+ line "NYC/LI   345.00"  "PLTVLLEY 345.00"  "1 "  1 0 
+0
+line_16           "line NYC/LI   to OR & RCK 345 ck 1" 
+ line "NYC/LI   345.00"  "OR & RCK 345.00"  "1 "  1 0 
+0
+line_17           "line PLTVLLEY to LEEDS 3  345 ck 1" 
+ line "PLTVLLEY 345.00"  "LEEDS 3  345.00"  "1 "  1 0 
+0
+line_18           "line PLTVLLEY to OR & RCK 345 ck 1" 
+ line "PLTVLLEY 345.00"  "OR & RCK 345.00"  "1 "  1 0 
+0
+line_19           "line COOPC345 to FRASR345 345 ck 1" 
+ line "COOPC345 345.00"  "FRASR345 345.00"  "1 "  1 0 
+0
+line_20           "line COOPC345 to EDIC     345 ck 1" 
+ line "COOPC345 345.00"  "EDIC     345.00"  "1 "  1 0 
+0
+line_21           "line COOPC345 to OR & RCK 345 ck 1" 
+ line "COOPC345 345.00"  "OR & RCK 345.00"  "1 "  1 0 
+0
+line_22           "line COOPC345 to OR & RCK 345 ck 2" 
+ line "COOPC345 345.00"  "OR & RCK 345.00"  "2 "  1 0 
+0
+line_23           "line FRASR345 to OAKDL345 345 ck 1" 
+ line "FRASR345 345.00"  "OAKDL345 345.00"  "1 "  1 0 
+0
+line_24           "line FRASR345 to OAKDL345 345 ck 2" 
+ line "FRASR345 345.00"  "OAKDL345 345.00"  "2 "  1 0 
+0
+line_25           "line FRASR345 to EDIC     345 ck 1" 
+ line "FRASR345 345.00"  "EDIC     345.00"  "1 "  1 0 
+0
+line_26           "line FRASR345 to GILB 345 345 ck 1" 
+ line "FRASR345 345.00"  "GILB 345 345.00"  "1 "  1 0 
+0
+line_27           "line OAKDL345 to WATRC345 345 ck 1" 
+ line "OAKDL345 345.00"  "WATRC345 345.00"  "1 "  1 0 
+0
+line_28           "line OAKDL345 to SYRACUSE 345 ck 1" 
+ line "OAKDL345 345.00"  "SYRACUSE 345.00"  "1 "  1 0 
+0
+line_29           "line GARDV230 to STOLE230 230 ck 1" 
+ line "GARDV230 230.00"  "STOLE230 230.00"  "1 "  1 0 
+0
+line_30           "line GARDV230 to DUNKIRK  230 ck 1" 
+ line "GARDV230 230.00"  "DUNKIRK  230.00"  "1 "  1 0 
+0
+line_31           "line GARDV230 to DUNKIRK  230 ck 2" 
+ line "GARDV230 230.00"  "DUNKIRK  230.00"  "2 "  1 0 
+0
+line_32           "line HILSD230 to MEYER230 230 ck 1" 
+ line "HILSD230 230.00"  "MEYER230 230.00"  "1 "  1 0 
+0
+line_33           "line HILSD230 to MEYER230 230 ck 2" 
+ line "HILSD230 230.00"  "MEYER230 230.00"  "2 "  1 0 
+0
+line_34           "line HILSD230 to WATRC230 230 ck 1" 
+ line "HILSD230 230.00"  "WATRC230 230.00"  "1 "  1 0 
+0
+line_35           "line MEYER230 to STOLE230 230 ck 1" 
+ line "MEYER230 230.00"  "STOLE230 230.00"  "1 "  1 0 
+0
+line_36           "line OAKDL230 to WATRC230 230 ck 1" 
+ line "OAKDL230 230.00"  "WATRC230 230.00"  "1 "  1 0 
+0
+line_37           "line ROBIN230 to STOLE230 230 ck 1" 
+ line "ROBIN230 230.00"  "STOLE230 230.00"  "1 "  1 0 
+0
+line_38           "line SYRACUSE to SCRIBA   345 ck 1" 
+ line "SYRACUSE 345.00"  "SCRIBA   345.00"  "1 "  1 0 
+0
+line_39           "line SYRACUSE to SCRIBA   345 ck 2" 
+ line "SYRACUSE 345.00"  "SCRIBA   345.00"  "2 "  1 0 
+0
+line_40           "line SYRACUSE to EDIC     345 ck 1" 
+ line "SYRACUSE 345.00"  "EDIC     345.00"  "1 "  1 0 
+0
+line_41           "line SYRACUSE to EDIC     345 ck 2" 
+ line "SYRACUSE 345.00"  "EDIC     345.00"  "2 "  1 0 
+0
+line_42           "line SYRACUSE to ROCH 345 345 ck 1" 
+ line "SYRACUSE 345.00"  "ROCH 345 345.00"  "1 "  1 0 
+0
+line_43           "line SYRACUSE to ROCH 345 345 ck 2" 
+ line "SYRACUSE 345.00"  "ROCH 345 345.00"  "2 "  1 0 
+0
+line_44           "line SCRIBA   to EDIC     345 ck 1" 
+ line "SCRIBA   345.00"  "EDIC     345.00"  "1 "  1 0 
+0
+line_45           "line SYRACUSE to SCRIBA   345 ck eq" 
+ line "SYRACUSE 115.00"  "SCRIBA   345.00"  "eq"  1 0 
+0
+line_46           "line SYRACUSE to PORTER   115 ck eq" 
+ line "SYRACUSE 115.00"  "PORTER   115.00"  "eq"  1 0 
+0
+line_47           "line SYRACUSE to ROCH 115 115 ck eq" 
+ line "SYRACUSE 115.00"  "ROCH 115 115.00"  "eq"  1 0 
+0
+line_48           "line EDIC     to ALBANY   345 ck 1" 
+ line "EDIC     345.00"  "ALBANY   345.00"  "1 "  1 0 
+0
+line_49           "line EDIC     to ALBANY   345 ck 2" 
+ line "EDIC     345.00"  "ALBANY   345.00"  "2 "  1 0 
+0
+line_50           "line PORTER   to ALBANY   115 ck eq" 
+ line "PORTER   115.00"  "ALBANY   115.00"  "eq"  1 0 
+0
+line_51           "line PORTER 2 to ROTRDM.2 230 ck 1" 
+ line "PORTER 2 230.00"  "ROTRDM.2 230.00"  "1 "  1 0 
+0
+line_52           "line LEEDS 3  to ALBANY   345 ck 1" 
+ line "LEEDS 3  345.00"  "ALBANY   345.00"  "1 "  1 0 
+0
+line_53           "line LEEDS 3  to GILB 345 345 ck 1" 
+ line "LEEDS 3  345.00"  "GILB 345 345.00"  "1 "  1 0 
+0
+line_54           "line ALBANY   to GILB 345 345 ck 1" 
+ line "ALBANY   345.00"  "GILB 345 345.00"  "1 "  1 0 
+0
+line_55           "line MARCY765 to MASS 765 765 ck 1" 
+ line "MARCY765 765.00"  "MASS 765 765.00"  "1 "  1 0 
+0
+line_56           "line MASS 765 to ONT HYDR 345 ck 1" 
+ line "MASS 765 765.00"  "ONT HYDR 345.00"  "1 "  1 0 
+0
+line_57           "line MASS 230 to PORTER 2 230 ck 1" 
+ line "MASS 230 230.00"  "PORTER 2 230.00"  "1 "  1 0 
+0
+line_58           "line MASS 230 to PORTER 2 230 ck 2" 
+ line "MASS 230 230.00"  "PORTER 2 230.00"  "2 "  1 0 
+0
+line_59           "line NIAG 345 to ROCH 345 345 ck 1" 
+ line "NIAG 345 345.00"  "ROCH 345 345.00"  "1 "  1 0 
+0
+line_60           "line NIAG 345 to ROCH 345 345 ck 2" 
+ line "NIAG 345 345.00"  "ROCH 345 345.00"  "2 "  1 0 
+0
+line_61           "line NIAG 345 to ROCH 115 115 ck eq" 
+ line "NIAG 345 345.00"  "ROCH 115 115.00"  "eq"  1 0 
+0
+line_62           "line NIAG 345 to ONT HYDR 345 ck 1" 
+ line "NIAG 345 345.00"  "ONT HYDR 345.00"  "1 "  1 0 
+0
+tran_63           "tran PNN/WRLD 345 to HILSD230  230 ck eq" 
+ tran "PNN/WRLD 345.00"  "HILSD230 230.00"  "eq"  0 
+0
+tran_64           "tran PNN/WRLD 345 to DUNKIRK   230 ck eq" 
+ tran "PNN/WRLD 345.00"  "DUNKIRK  230.00"  "eq"  0 
+0
+tran_65           "tran NEPOOL   345 to ROTRDM.2  230 ck eq" 
+ tran "NEPOOL   345.00"  "ROTRDM.2 230.00"  "eq"  0 
+0
+tran_66           "tran NEPOOL   345 to PLAT 115  115 ck eq" 
+ tran "NEPOOL   345.00"  "PLAT 115 115.00"  "eq"  0 
+0
+tran_67           "tran OAKDL345 345 to HILSD230  230 ck eq" 
+ tran "OAKDL345 345.00"  "HILSD230 230.00"  "eq"  0 
+0
+tran_68           "tran OAKDL345 345 to OAKDL230  230 ck 1" 
+ tran "OAKDL345 345.00"  "OAKDL230 230.00"  "1 "  0 
+0
+tran_69           "tran STOLE345 345 to GARDV230  230 ck eq" 
+ tran "STOLE345 345.00"  "GARDV230 230.00"  "eq"  0 
+0
+tran_70           "tran STOLE345 345 to DUNKIRK   230 ck eq" 
+ tran "STOLE345 345.00"  "DUNKIRK  230.00"  "eq"  0 
+0
+tran_71           "tran WATRC345 345 to WATRC230  230 ck 1" 
+ tran "WATRC345 345.00"  "WATRC230 230.00"  "1 "  0 
+0
+tran_72           "tran GARDV230 230 to NIAG 345  345 ck e1" 
+ tran "GARDV230 230.00"  "NIAG 345 345.00"  "e1"  0 
+0
+tran_73           "tran GARDV230 230 to NIAG 345  345 ck e2" 
+ tran "GARDV230 230.00"  "NIAG 345 345.00"  "e2"  0 
+0
+tran_74           "tran MEYER230 230 to ROCH 115  115 ck eq" 
+ tran "MEYER230 230.00"  "ROCH 115 115.00"  "eq"  0 
+0
+tran_75           "tran ROBIN230 230 to NIAG 345  345 ck e1" 
+ tran "ROBIN230 230.00"  "NIAG 345 345.00"  "e1"  0 
+0
+tran_76           "tran ROBIN230 230 to NIAG 345  345 ck e2" 
+ tran "ROBIN230 230.00"  "NIAG 345 345.00"  "e2"  0 
+0
+tran_77           "tran ROBIN230 230 to ROCH 115  115 ck eq" 
+ tran "ROBIN230 230.00"  "ROCH 115 115.00"  "eq"  0 
+0
+tran_78           "tran SYRACUSE 345 to SYRACUSE  115 ck 1" 
+ tran "SYRACUSE 345.00"  "SYRACUSE 115.00"  "1 "  0 
+0
+tran_79           "tran EDIC     345 to PORTER    115 ck 1" 
+ tran "EDIC     345.00"  "PORTER   115.00"  "1 "  0 
+0
+tran_80           "tran EDIC     345 to PORTER 2  230 ck 1" 
+ tran "EDIC     345.00"  "PORTER 2 230.00"  "1 "  0 
+0
+tran_81           "tran EDIC     345 to MARCY765  765 ck 1" 
+ tran "EDIC     345.00"  "MARCY765 765.00"  "1 "  0 
+0
+tran_82           "tran PORTER   115 to PORTER 2  230 ck 1" 
+ tran "PORTER   115.00"  "PORTER 2 230.00"  "1 "  0 
+0
+tran_83           "tran ALBANY   345 to ALBANY    115 ck 1" 
+ tran "ALBANY   345.00"  "ALBANY   115.00"  "1 "  0 
+0
+tran_84           "tran ALBANY   345 to ROTRDM.2  230 ck eq" 
+ tran "ALBANY   345.00"  "ROTRDM.2 230.00"  "eq"  0 
+0
+tran_85           "tran ALBANY   115 to ROTRDM.2  230 ck 1" 
+ tran "ALBANY   115.00"  "ROTRDM.2 230.00"  "1 "  0 
+0
+tran_86           "tran MASS 765 765 to PLAT 115  115 ck eq" 
+ tran "MASS 765 765.00"  "PLAT 115 115.00"  "eq"  0 
+0
+tran_87           "tran MASS 230 230 to MASS 765  765 ck 1" 
+ tran "MASS 230 230.00"  "MASS 765 765.00"  "1 "  0 
+0
+tran_88           "tran ROCH 345 345 to ROCH 115  115 ck 1" 
+ tran "ROCH 345 345.00"  "ROCH 115 115.00"  "1 "  0 
+0
+gen_89            "gen ROSETON  345.0 unit 1" 
+ gen "ROSETON  345.00"    "1 "  0 
+0
+gen_90            "gen NYC/LI   345.0 unit 1" 
+ gen "NYC/LI   345.00"    "1 "  0 
+0
+gen_91            "gen FRASR345 345.0 unit 1" 
+ gen "FRASR345 345.00"    "1 "  0 
+0
+gen_92            "gen MEYER230 230.0 unit 1" 
+ gen "MEYER230 230.00"    "1 "  0 
+0
+gen_93            "gen OAKDL230 230.0 unit 1" 
+ gen "OAKDL230 230.00"    "1 "  0 
+0
+gen_94            "gen SYRACUSE 115.0 unit 1" 
+ gen "SYRACUSE 115.00"    "1 "  0 
+0
+gen_95            "gen SCRIBA   345.0 unit 1" 
+ gen "SCRIBA   345.00"    "1 "  0 
+0
+gen_96            "gen PORTER   115.0 unit 1" 
+ gen "PORTER   115.00"    "1 "  0 
+0
+gen_97            "gen ALBANY   115.0 unit 1" 
+ gen "ALBANY   115.00"    "1 "  0 
+0
+gen_98            "gen OR & RCK 345.0 unit 1" 
+ gen "OR & RCK 345.00"    "1 "  0 
+0
+gen_99            "gen MASS 765 765.0 unit 1" 
+ gen "MASS 765 765.00"    "1 "  0 
+0
+gen_100           "gen GILB 345 345.0 unit 1" 
+ gen "GILB 345 345.00"    "1 "  0 
+0
+gen_101           "gen NIAG 345 345.0 unit 1" 
+ gen "NIAG 345 345.00"    "1 "  0 
+0
+gen_102           "gen PLAT 115 115.0 unit 1" 
+ gen "PLAT 115 115.00"    "1 "  0 
+0
+gen_103           "gen ROCH 115 115.0 unit 1" 
+ gen "ROCH 115 115.00"    "1 "  0 
+0
+end
+# End of contingency list, 103 continegncies added to list

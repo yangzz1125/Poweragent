@@ -1,0 +1,42 @@
+{
+  "module": "psspy",
+  "function_name": "trig_volt_violation_check",
+  "category": "Dynamic Simulation Operation",
+  "description": "This API is used to trigger voltage violation (voltage recovery, voltage dip) checks. This API routine was first introduced in release 32.0.0. ierr = trig_volt_violation_check(status) ierr, status = trig_volt_violation_check()",
+  "python_syntax": "ierr = trig_volt_violation_check(status) ierr, status = trig_volt_violation_check()",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "status",
+      "description": "Option setting. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "status": [
+      {
+        "value": "= 0",
+        "description": "disable voltage violation check."
+      },
+      {
+        "value": "= 1",
+        "description": "trigger voltage violation."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API not met."
+    }
+  ]
+}

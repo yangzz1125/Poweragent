@@ -1,0 +1,42 @@
+{
+  "module": "psspy",
+  "function_name": "nxtstabussect",
+  "category": "Single Element Data",
+  "description": "Use this API routine to retrieve the next bus section in the specified substation. The routine IniStaBusSect must be called first with the same substation number. This API routine was first introduced in release 34.1.0. ierr, ibus, sect = nxtstabussect(ista)",
+  "python_syntax": "ierr, ibus, sect = nxtstabussect(ista)",
+  "return_type": "error_and_multi_value",
+  "parameters": [
+    {
+      "name": "ista",
+      "description": "Substation number. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "ibus",
+      "description": "Bus number. (output)."
+    },
+    {
+      "name": "sect",
+      "description": "Bus section number. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IBUS’ and ‘SECT’ are returned."
+    },
+    {
+      "value": "= 1",
+      "description": "No more bus sections in this substation; ‘IBUS’ and ‘SECT’ are returned as zero."
+    },
+    {
+      "value": "= 2",
+      "description": "‘IniStaBusSect’ was not called for this substation; ‘IBUS’ and ‘SECT’ unchanged."
+    }
+  ]
+}

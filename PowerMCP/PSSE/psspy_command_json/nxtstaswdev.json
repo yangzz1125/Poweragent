@@ -1,0 +1,46 @@
+{
+  "module": "psspy",
+  "function_name": "nxtstaswdev",
+  "category": "Single Element Data",
+  "description": "Use this API routine to retrieve the next switching device in the specified substation. The routine IniStaSwDev must be called first with the same substation number. This API routine was first introduced in release 34.1.0. ierr, inode, jnode, id = nxtstaswdev(ista)",
+  "python_syntax": "ierr, inode, jnode, id = nxtstaswdev(ista)",
+  "return_type": "error_and_multi_value",
+  "parameters": [
+    {
+      "name": "ista",
+      "description": "Substation number. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "inode",
+      "description": "“from” node number. (output)."
+    },
+    {
+      "name": "jnode",
+      "description": "“to” node number. (output)."
+    },
+    {
+      "name": "id",
+      "description": "Switching device identifier. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘INODE’, ‘JNODE’ and ‘ID’ are returned."
+    },
+    {
+      "value": "= 1",
+      "description": "No more switching devices in this substation; ‘INODE’ and ‘JNODE’ are returned as zero, and ‘ID” is returned as blanks."
+    },
+    {
+      "value": "= 2",
+      "description": "‘IniStaSwDev’ was not called for this substation; ‘INODE’, ‘JNODE’ and ‘ID’ unchanged."
+    }
+  ]
+}

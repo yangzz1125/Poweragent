@@ -1,0 +1,140 @@
+{
+  "module": "psspy",
+  "function_name": "change_ldmod_data",
+  "category": "Load Related Models",
+  "description": "This API routine is obsolete. It has been replaced by the API routine CHANGE_LDMOD_CON, CHANGE_LDMOD_ICON, CHANGE_LDMOD_CHRICN, and is implemented by a call to CHANGE_LDMOD_CON, CHANGE_LDMOD_ICON, CHANGE_LDMOD_CHRICN. Use this API to change the value of an ICON and/or CON of a load related model of a designated type at a specified load or subsystem. This API routine was first introduced in release 28.0.0. ierr = change_ldmod_data(ibus,id,mtype,ltype,name,j,rdata,i,idata,chdata)",
+  "python_syntax": "ierr = change_ldmod_data(ibus,id,mtype,ltype,name,j,rdata,i,idata,chdata)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus, owner, zone or area number. ignored when mtype is 4 (when mtype is less than 4). (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Load identifier, or “*” if the model is applied to all loads in the subsystem. (input; blank by default)."
+    },
+    {
+      "name": "mtype",
+      "description": "Subsystem type. (input; 0 by default)."
+    },
+    {
+      "name": "ltype",
+      "description": "Load model type. (input; 1 by default)."
+    },
+    {
+      "name": "name",
+      "description": "Model name. (input; no default allowed)."
+    },
+    {
+      "name": "j",
+      "description": "Con number to change relative to the start of the block of cons assigned to this model, or 0 for no con change (1 for con(j), 2 for con(j+1), etc.). (input; 0 by default)."
+    },
+    {
+      "name": "rdata",
+      "description": "New con value. (input; unchanged by default)."
+    },
+    {
+      "name": "i",
+      "description": "Icon number to change relative to the start of the block of icons assigned to this model, or 0 for no icon change (1 for icon(i), 2 for icon(i+1), etc.). (input; 0 by default)."
+    },
+    {
+      "name": "idata",
+      "description": "New integer icon value. (input; unchanged by default). When a character value is intended for an ICON value, the IDATA entry is ignored and the integer ICON is set to 0)."
+    },
+    {
+      "name": "chdata",
+      "description": "New character icon value (no default allowed if the character icon is to be changed). when an integer value is intended for an icon value, the chdata entry must be either defaulted or specified as either ‘$$’ or ‘ ‘; the character icon is set to ‘$$’. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "mtype": [
+      {
+        "value": "= 0",
+        "description": "bus model."
+      },
+      {
+        "value": "= 1",
+        "description": "owner model."
+      },
+      {
+        "value": "= 2",
+        "description": "zone model."
+      },
+      {
+        "value": "= 3",
+        "description": "area model."
+      },
+      {
+        "value": "= 4",
+        "description": "all model."
+      }
+    ],
+    "ltype": [
+      {
+        "value": "= 1",
+        "description": "load characteristic model."
+      },
+      {
+        "value": "= 2",
+        "description": "load relay model."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid MTYPE value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid LTYPE value."
+    },
+    {
+      "value": "= 3",
+      "description": "unknown model NAME."
+    },
+    {
+      "value": "= 4",
+      "description": "no all type LTYPE model for this id in tables."
+    },
+    {
+      "value": "= 5",
+      "description": "no STYPE type LTYPE model for this id in tables for MTYPE IBUS."
+    },
+    {
+      "value": "= 6",
+      "description": "all type LTYPE model for this id is aaa not xxx."
+    },
+    {
+      "value": "= 7",
+      "description": "MTYPE type LTYPE model for this id for MTYPE IBUS is aaa not xxx."
+    },
+    {
+      "value": "= 8",
+      "description": "CON number exceeds the number of CONs used by the model."
+    },
+    {
+      "value": "= 9",
+      "description": "ICON number exceeds the number of input ICONs used by the model."
+    },
+    {
+      "value": "= 10",
+      "description": "neither the CON nor ICON number is positive."
+    },
+    {
+      "value": "= 11",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

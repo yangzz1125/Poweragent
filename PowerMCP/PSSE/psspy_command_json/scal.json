@@ -1,0 +1,254 @@
+{
+  "module": "psspy",
+  "function_name": "scal",
+  "category": "Power Flow Operation",
+  "description": "This API routine is obsolete. It has been replaced by the API routine scal_4, and is implemented by a call to scal_4. Use this API to uniformly increase or decrease any or all specified bus quantities for a specified group of buses (activity SCAL). It must be referenced using one of the following procedures: - One reference with APIOPT=1, followed by one reference with APIOPT=2. - One reference with APIOPT=0. This automatically combines the processing of one APIOPT 1 reference, followed by one APIOPT 2 reference. This API routine was first introduced in release 28.0.0. ierr, totals, moto = scal(sid, all, apiopt, status, scalval)",
+  "python_syntax": "ierr, totals, moto = scal(sid, all, apiopt, status, scalval)",
+  "return_type": "error_and_multi_value",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid subsystem identifier. valid subsystem identifiers range from 0 to 11. subsystem sid must have been previously defined. (input; 0 by default)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem flag. (input; 1 by default)."
+    },
+    {
+      "name": "apiopt",
+      "description": "Mode of operation in the api. (input; 0 by default)."
+    },
+    {
+      "name": "status",
+      "description": "An array of four elements specifying that are used to control scaling. The first three elements are checked and used when APIOPT = 0 or 2; the fourth element is checked and saved when APIOPT = 0 or 1. (input)."
+    },
+    {
+      "name": "scalval",
+      "description": "An array of seven elements specifying used as scaling targets. Based on the value of STATUS(1), entries (1) through (6) are either total powers. (input; present total power by default), percent changes (0.0 by default), or incremental changes (0.0 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code (from scal_4). (output)."
+    },
+    {
+      "name": "totals",
+      "description": "An array of eleven elements specifying returned when APIOPT = 0 or 1. (output)."
+    },
+    {
+      "name": "moto",
+      "description": "Returned when apiopt = 0 or 1. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 0",
+        "description": "process only buses in subsystem SID."
+      },
+      {
+        "value": "= 1",
+        "description": "process all buses."
+      }
+    ],
+    "apiopt": [
+      {
+        "value": "= 0",
+        "description": "initialize for scaling, then run the scaling and post-processing housekeeping."
+      },
+      {
+        "value": "= 1",
+        "description": "initialize for scaling."
+      },
+      {
+        "value": "= 2",
+        "description": "run the scaling and post-processing housekeeping."
+      }
+    ],
+    "status": [
+      {
+        "value": "STATUS(1)",
+        "description": "method used to scale active power load, generation and motor data, and bus shunt data (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no scaling."
+      },
+      {
+        "value": "= 1",
+        "description": "specify new total powers."
+      },
+      {
+        "value": "= 2",
+        "description": "specify percent changes."
+      },
+      {
+        "value": "= 3",
+        "description": "specify incremental powers."
+      },
+      {
+        "value": "STATUS(2)",
+        "description": "flag to enforce machine power limits (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "ignore machine power limits."
+      },
+      {
+        "value": "= 1",
+        "description": "enforce machine power limits."
+      },
+      {
+        "value": "STATUS(3)",
+        "description": "flag to specify the scaling rule to be enforced when changing the reactive power load (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no change."
+      },
+      {
+        "value": "= 1",
+        "description": "constant P/Q ratio."
+      },
+      {
+        "value": "= 2",
+        "description": "new total Q load."
+      },
+      {
+        "value": "= 3",
+        "description": "percent change."
+      },
+      {
+        "value": "= 4",
+        "description": "new power factor."
+      },
+      {
+        "value": "= 5",
+        "description": "incremental Q load."
+      },
+      {
+        "value": "STATUS(4)",
+        "description": "bus type code flag for load scaling; normally defaulted except when used by OPF (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "all buses in subsystem."
+      },
+      {
+        "value": "= 1",
+        "description": "only Type 1 buses in subsystem."
+      },
+      {
+        "value": "= 2",
+        "description": "only Type 2 and 3 buses in subsystem."
+      }
+    ],
+    "scalval": [
+      {
+        "value": "SCALVAL(1)",
+        "description": "load MW total/percent/increment."
+      },
+      {
+        "value": "SCALVAL(2)",
+        "description": "generation MW total/percent/increment."
+      },
+      {
+        "value": "SCALVAL(3)",
+        "description": "shunt MW total/percent/increment."
+      },
+      {
+        "value": "SCALVAL(4)",
+        "description": "reactor Mvar total/percent/increment."
+      },
+      {
+        "value": "SCALVAL(5)",
+        "description": "capacitor Mvar total/percent/increment."
+      },
+      {
+        "value": "SCALVAL(6)",
+        "description": "motor load MW total/percent/increment."
+      },
+      {
+        "value": "SCALVAL(7)",
+        "description": "reactive load scaling parameter."
+      },
+      {
+        "value": "",
+        "description": "If STATUS(3)"
+      },
+      {
+        "value": "= 2",
+        "description": "new total Mvar load (present total Mvar load by default)."
+      },
+      {
+        "value": "= 3",
+        "description": "percent change (0.0 by default)."
+      },
+      {
+        "value": "= 4",
+        "description": "new power factor (1.0 by default)."
+      },
+      {
+        "value": "= 5",
+        "description": "incremental Mvar load change (0.0 by default)."
+      }
+    ],
+    "totals": [
+      {
+        "value": "TOTALS(1)",
+        "description": "load Mvar total."
+      },
+      {
+        "value": "TOTALS(2)",
+        "description": "load MW total."
+      },
+      {
+        "value": "TOTALS(3)",
+        "description": "generation MW total."
+      },
+      {
+        "value": "TOTALS(4)",
+        "description": "shunt MW total."
+      },
+      {
+        "value": "TOTALS(5)",
+        "description": "reactor Mvar total."
+      },
+      {
+        "value": "TOTALS(6)",
+        "description": "capacitor Mvar total."
+      },
+      {
+        "value": "TOTALS(7)",
+        "description": "motor load MW total."
+      },
+      {
+        "value": "TOTALS(8)",
+        "description": "generator PMAX."
+      },
+      {
+        "value": "TOTALS(9)",
+        "description": "generator PMIN."
+      },
+      {
+        "value": "TOTALS(10)",
+        "description": "motor load PMIN."
+      },
+      {
+        "value": "TOTALS(11)",
+        "description": "motor load PMAX."
+      }
+    ],
+    "moto": [
+      {
+        "value": "= 0",
+        "description": "no motors in the specified subsystem."
+      },
+      {
+        "value": "= 1",
+        "description": "motors present in the specified subsystem."
+      }
+    ]
+  }
+}

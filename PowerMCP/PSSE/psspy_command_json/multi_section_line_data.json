@@ -1,0 +1,110 @@
+{
+  "module": "psspy",
+  "function_name": "multi_section_line_data",
+  "category": "Power Flow Data",
+  "description": "Use this API to modify the definition of an existing multi-section line grouping in the working case or to add a new multi-section line grouping to the working case (see PSSE Program Operation Manual, Multi-Section Line Grouping Data). This API routine was first introduced in release 28.0.0. ierr = multi_section_line_data(ibus, jbus, id, intgar)",
+  "python_syntax": "ierr = multi_section_line_data(ibus, jbus, id, intgar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number of from bus. (input; no default allowed)."
+    },
+    {
+      "name": "jbus",
+      "description": "Bus number of to bus. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "A multi-section line identifier; id(1:1) must be ‘&’. (input; ‘&1’ by default)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of ten elementsNone. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "METBUS, metered end bus number (must be IBUS or JBUS) (IBUS by default)."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "DUM1 through DUM9 entries 2 through 10 are the bus numbers of the dummy buses encountered along this multi-section line, starting with the bus to which bus ‘IBUS’ is connected and ending with the bus to which bus ‘JBUS’ is connected; entries used are 2 through n+1, where n is the number of dummy buses; if n+1 is less than 10, entries n+2 through 10 must be set to 0 (No default is allowed for entry 2; entries 3 through 10 are 0 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "multi-section line identifier is more than two characters."
+    },
+    {
+      "value": "= 3",
+      "description": "multi-section line identifier does not start with &"
+    },
+    {
+      "value": "= 4",
+      "description": "no dummy buses specified."
+    },
+    {
+      "value": "= 5",
+      "description": "line section not found."
+    },
+    {
+      "value": "= 6",
+      "description": "circuit is already a member of another multi-section line."
+    },
+    {
+      "value": "= 7",
+      "description": "bus appears more than once in the multi-section line path."
+    },
+    {
+      "value": "= 8",
+      "description": "dummy bus does not have exactly two branches connected to it."
+    },
+    {
+      "value": "= 9",
+      "description": "dummy bus is a converter bus of a dc line."
+    },
+    {
+      "value": "= 10",
+      "description": "a FACTS device is connected to a dummy bus."
+    },
+    {
+      "value": "= 11",
+      "description": "line section table is full."
+    },
+    {
+      "value": "= 12",
+      "description": "multi-section line table is full."
+    },
+    {
+      "value": "= 13",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - invalid metered end bus - branch status and bus type code changes."
+    }
+  ]
+}

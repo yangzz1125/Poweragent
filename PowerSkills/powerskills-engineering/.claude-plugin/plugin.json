@@ -1,0 +1,11 @@
+{
+  "name": "powerskills-engineering",
+  "description": "Senior power-engineer mitigation playbooks: voltage violations, thermal overloads, contingency (N-1/N-2) findings, dynamic-stability problems, operations/planning infeasibilities, convergence failures, short-circuit duty, frequency response, interconnection impacts, and DER hosting capacity. Issue-driven and software-agnostic; triggered from the escalation tables in the powerskills-tool skills.",
+  "version": "0.2.0",
+  "author": {
+    "name": "Power-Agent",
+    "url": "https://github.com/Power-Agent/PowerSkills"
+  },
+  "homepage": "https://github.com/Power-Agent/PowerSkills",
+  "keywords": ["power-systems", "grid-operations", "voltage", "thermal-overload", "contingency", "n-1", "stability", "frequency-response", "short-circuit", "interconnection", "der", "hosting-capacity", "mitigation", "powermcp"]
+}

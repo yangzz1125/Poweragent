@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "change_icon",
+  "category": "Dynamic Simulation Operation",
+  "description": "Use this API to change the value of an element of the ICON array (an integer ICON). The element is specified relative to the beginning of the ICON array. This API routine was first introduced in release 28.0.0. ierr = change_icon(number, newval)",
+  "python_syntax": "ierr = change_icon(number, newval)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "number",
+      "description": "Icon number or array index (must be between 1 and the number of icons allowed at the present size level of psse). (input; no default allowed)."
+    },
+    {
+      "name": "newval",
+      "description": "New value to be assigned to icon (number). (input; unchanged by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid ICON index."
+    },
+    {
+      "value": "= 2",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

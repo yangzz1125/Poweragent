@@ -1,0 +1,34 @@
+{
+  "module": "psspy",
+  "function_name": "natono",
+  "category": "Single Element Data",
+  "description": "Use this API to return the bus number for a specified 18-character extended bus name. This API routine was first introduced in release 28.0.0. ierr, ibus = natono(string)",
+  "python_syntax": "ierr, ibus = natono(string)",
+  "return_type": "error_and_count",
+  "parameters": [
+    {
+      "name": "string",
+      "description": "Extended bus name. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "ibus",
+      "description": "Bus number. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IBUS’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Bus not found; ‘IBUS’ unchanged."
+    }
+  ]
+}

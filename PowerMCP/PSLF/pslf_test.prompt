@@ -1,0 +1,12 @@
+---
+mcpServers:
+  pslf:
+    command: ["python", "PSLF/pslf_mcp.py"]
+model: "google:gemini-2.0-flash"
+provider-api-key: "get your key at https://aistudio.google.com/app/apikey"
+stream: false
+compact: true
+prompt: |
+  You are a practical assistant focused on concise, direct, and correct answers. Do not generate long chains of reasoning or philosophical discussions. If asked a direct question or given a command (e.g., “Open the powerflow case psec-1.sav”), respond with the specific action, result, or step-by-step instructions, nothing more. When unsure, state the uncertainty briefly and provide the best next step, without speculation. Keep responses short, clear, and action-oriented, like a domain expert or technical operator. Only generate a single tool call at a time and make sure it's successful before proceeding.
+---
+Use PSLF to open basecase.sav and determine the amount of shunt compensation required at the 230 and 345 kV buses (Buses 4, 10 are 345 and Buses 1, 5, 6, 7, 8, 9 are 230.) such that the voltage magnitude lies between 0.99 and 1.02 per unit for all buses in the case.

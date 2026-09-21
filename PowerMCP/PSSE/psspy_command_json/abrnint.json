@@ -1,0 +1,244 @@
+{
+  "module": "psspy",
+  "function_name": "abrnint",
+  "category": "Branch Data",
+  "description": "Use this API to return an array of integer values for subsystem branches. This API routine was first introduced in release 30.2.0. ierr, iarray = abrnint(sid, owner, ties, flag, entry, string)",
+  "python_syntax": "ierr, iarray = abrnint(sid, owner, ties, flag, entry, string)",
+  "return_type": "error_and_array",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the bus subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "owner",
+      "description": "A flag indicating owner usage if ownership is a subsystem selection criterion (ignored if sid is negative). (input; 1 by default)."
+    },
+    {
+      "name": "ties",
+      "description": "A flag indicating which subsystem branches to include (ignored if sid is negative). (input; 1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem branches to include. (input; 1 by default)."
+    },
+    {
+      "name": "entry",
+      "description": "A flag indicating organization. (input; 1 by default)."
+    },
+    {
+      "name": "string",
+      "description": "An array of NSTR elements specifying NSTR of the following strings indicating the branch quantities desired. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "The error code. (output)."
+    },
+    {
+      "name": "iarray",
+      "description": "An array of NSTR*DIM elements specifying Is an array of at least NSTR columns, each of which contains DIM elements. (output)."
+    }
+  ],
+  "allowed_values": {
+    "sid": [
+      {
+        "value": "< 0",
+        "description": "to instruct the API to assume a subsystem containing all buses in the working case."
+      },
+      {
+        "value": ">= 0",
+        "description": "valid bus subsystem identifier. Valid subsystem identifiers range from 0 to 11. Subsystem SID must have been previously defined."
+      }
+    ],
+    "owner": [
+      {
+        "value": "= 1",
+        "description": "to use bus ownership."
+      },
+      {
+        "value": "= 2",
+        "description": "to use branch ownership."
+      }
+    ],
+    "ties": [
+      {
+        "value": "= 1",
+        "description": "for interior subsystem branches only."
+      },
+      {
+        "value": "= 2",
+        "description": "for subsystem tie branches only."
+      },
+      {
+        "value": "= 3",
+        "description": "for both interior subsystem branches and tie branches."
+      }
+    ],
+    "flag": [
+      {
+        "value": "= 1",
+        "description": "for only in-service non-transformer branches."
+      },
+      {
+        "value": "= 2",
+        "description": "for all non-transformer branches."
+      },
+      {
+        "value": "= 3",
+        "description": "for only in-service non-transformer branches and two-winding transformers."
+      },
+      {
+        "value": "= 4",
+        "description": "for all non-transformer branches and two-winding transformers."
+      },
+      {
+        "value": "= 5",
+        "description": "for only in-service two-winding transformers."
+      },
+      {
+        "value": "= 6",
+        "description": "for all two-winding transformers."
+      },
+      {
+        "value": "= 7",
+        "description": "for only in-service system switching devices."
+      },
+      {
+        "value": "= 8",
+        "description": "for all system switching devices."
+      }
+    ],
+    "entry": [
+      {
+        "value": "= 1",
+        "description": "for single entry (each branch once)."
+      },
+      {
+        "value": "= 2",
+        "description": "for double entry (each branch in both directions)."
+      }
+    ],
+    "string": [
+      {
+        "value": "= FROMNUMBER",
+        "description": "From bus number."
+      },
+      {
+        "value": "= TONUMBER",
+        "description": "To bus number."
+      },
+      {
+        "value": "= FROMSTATION",
+        "description": "From bus substation number (0 if bus is not in a substation)."
+      },
+      {
+        "value": "= TOSTATION",
+        "description": "To bus substation number (0 if bus is not in a substation)."
+      },
+      {
+        "value": "= FROMSECTION",
+        "description": "From bus section number (0 if bus is not represented by multiple bus sections)."
+      },
+      {
+        "value": "= TOSECTION",
+        "description": "To bus section number (0 if bus is not represented by multiple bus sections)."
+      },
+      {
+        "value": "= FROMNODE",
+        "description": "From bus node number (0 if bus is not in a substation)."
+      },
+      {
+        "value": "= TONODE",
+        "description": "To bus node number (0 if bus is not in a substation)."
+      },
+      {
+        "value": "= STATUS",
+        "description": "Branch / System switching device status."
+      },
+      {
+        "value": "= NSTATUS",
+        "description": "Normal system switching device status."
+      },
+      {
+        "value": "= METERNUMBER",
+        "description": "Metered end bus number."
+      },
+      {
+        "value": "= NMETERNUMBER",
+        "description": "Non-metered end bus number."
+      },
+      {
+        "value": "= OWNERS",
+        "description": "Number of owners."
+      },
+      {
+        "value": "= OWN1",
+        "description": "First owner."
+      },
+      {
+        "value": "= OWN2",
+        "description": "Second owner."
+      },
+      {
+        "value": "= OWN3",
+        "description": "Third owner."
+      },
+      {
+        "value": "= OWN4",
+        "description": "Fourth owner."
+      },
+      {
+        "value": "= TYPE",
+        "description": "System switching device type (0 if branch is not a system switching device)."
+      },
+      {
+        "value": "= MOVTYPE",
+        "description": "MOV protection mode."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid OWNER value."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid TIES value."
+    },
+    {
+      "value": "= 5",
+      "description": "Invalid FLAG value."
+    },
+    {
+      "value": "= 6",
+      "description": "Invalid ENTRY value."
+    },
+    {
+      "value": "= 7",
+      "description": "Invalid NSTR value."
+    },
+    {
+      "value": "= 8",
+      "description": "DIM, and hence the size of IARRAY, is not large enough."
+    },
+    {
+      "value": "= 9",
+      "description": "Invalid STRING value."
+    }
+  ]
+}

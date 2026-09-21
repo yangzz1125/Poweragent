@@ -1,0 +1,33 @@
+{
+  "module": "psspy",
+  "function_name": "scenariogetcomments",
+  "category": "Scenarios",
+  "description": "Use this API to retrieve the Scenario comments. This API routine was first introduced in release 33.0.0. ierr, comments = scenariogetcomments()",
+  "python_syntax": "ierr, comments = scenariogetcomments()",
+  "return_type": "error_and_count",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "comments",
+      "description": "The comment string for the scenario. use scenariolengthcomments to get required buffer size, if needed. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "no Scenario in memory."
+    }
+  ]
+}

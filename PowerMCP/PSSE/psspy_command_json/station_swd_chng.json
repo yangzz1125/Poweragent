@@ -1,0 +1,128 @@
+{
+  "module": "psspy",
+  "function_name": "station_swd_chng",
+  "category": "Node Breaker Data",
+  "description": "Use this API to modify the data of an existing station switching device in the working case. This API routine was first introduced in release 34.0.0. ierr = station_swd_chng(station, inode, jnode, cktarg, intgar, realar, namear)",
+  "python_syntax": "ierr = station_swd_chng(station, inode, jnode, cktarg, intgar, realar, namear)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "station",
+      "description": "Substation number. (input)."
+    },
+    {
+      "name": "inode",
+      "description": "From node number. (input)."
+    },
+    {
+      "name": "jnode",
+      "description": "To node number. (input)."
+    },
+    {
+      "name": "cktarg",
+      "description": "Circuit identifier. (input)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of three elementsNone. (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of four elementsNone. (input)."
+    },
+    {
+      "name": "namear",
+      "description": "Substation switching device name. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "device status."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "device normal status."
+      },
+      {
+        "value": "INTGAR(3)",
+        "description": "device type."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "device reactance."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "RateA rating."
+      },
+      {
+        "value": "REALAR(3)",
+        "description": "RateB rating."
+      },
+      {
+        "value": "REALAR(4)",
+        "description": "RateC rating."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "substation is not found."
+    },
+    {
+      "value": "= 2",
+      "description": "node is not found."
+    },
+    {
+      "value": "= 3",
+      "description": "circuit identifier is more than two characters."
+    },
+    {
+      "value": "= 4",
+      "description": "switching device from node to itself."
+    },
+    {
+      "value": "= 5",
+      "description": "circuit identifier is invalid."
+    },
+    {
+      "value": "= 6",
+      "description": "switching device is not found."
+    },
+    {
+      "value": "= 7",
+      "description": "cannot place substation switching device between nodes residing in different substations."
+    },
+    {
+      "value": "= 8",
+      "description": "cannot place substation switching device between nodes belonging to two different buses in the same substation."
+    },
+    {
+      "value": "= 9",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - switching device reactance is 0.0. - switching device rating is less than 0.0. - invalid status. - switching device name truncated to 40 characters. - switching device name contains invalid characters. - switching device name already assigned to another switching device in substation."
+    }
+  ]
+}

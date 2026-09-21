@@ -1,0 +1,176 @@
+{
+  "module": "psspy",
+  "function_name": "astr",
+  "category": "Dynamic Simulation Operation",
+  "description": "Use this API to calculate and replicates the state variable system matrices in the form required by the Linear Dynamic Analysis Program, LSYSAN (activity ASTR). This API routine was first introduced in release 30.2.0. ierr = astr(option, maxderiv, perturb, nstate, minstate, maxstate, noutput, minchan, maxchan, ninput, intype, inpert, inbus, inmcid, inident, outfile)",
+  "python_syntax": "ierr = astr(option, maxderiv, perturb, nstate, minstate, maxstate, noutput, minchan, maxchan, ninput, intype, inpert, inbus, inmcid, inident, outfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "option",
+      "description": "Network solution convergence monitor option. (input; 0 by default)."
+    },
+    {
+      "name": "maxderiv",
+      "description": "Largest derivative threshold for considering that the initialization reflects a steady-state condition. (input; 0.01 by default)."
+    },
+    {
+      "name": "perturb",
+      "description": "Amount by which the specified state variables are to be perturbed. (input; 0.01 by default)."
+    },
+    {
+      "name": "nstate",
+      "description": "Number of state variable ranges defining those state variables that are to be perturbed; 0 to include all states. (input; 0 by default)."
+    },
+    {
+      "name": "minstate",
+      "description": "An array of NSTATE elements specifying a list of starting STATE indices defining the ranges of state variables to be perturbed; ignored if NSTATE = 0. (input; no default allowed)."
+    },
+    {
+      "name": "maxstate",
+      "description": "An array of NSTATE elements specifying a list of ending STATE indices defining the ranges of state variables to be perturbed; ignored if NSTATE = 0. (input; no default allowed)."
+    },
+    {
+      "name": "noutput",
+      "description": "Number of channel ranges defining those output channels that are to be included in the system output vector; 0 to use the first ‘nchan’ or 50, whichever is less. (input; 0 by default)."
+    },
+    {
+      "name": "minchan",
+      "description": "An array of NOUTPUT elements specifying a list of starting channel indices defining the ranges of output channels to be included in the system output vector; ignored if NOUTPUT = 0. (input; no default allowed)."
+    },
+    {
+      "name": "maxchan",
+      "description": "An array of NOUTPUT elements specifying a list of ending channel indices defining the ranges of output channels to be included in the system output vector; ignored if NOUTPUT = 0. (input; no default allowed)."
+    },
+    {
+      "name": "ninput",
+      "description": "Number of system variables that are to be perturbed. (input; 0 by default)."
+    },
+    {
+      "name": "intype",
+      "description": "An array of NINPUT elements specifying a list of variable type codes; ignored if NINPUT = 0. (input; no default allowed)."
+    },
+    {
+      "name": "inpert",
+      "description": "An array of NINPUT elements specifying a list of perturbation factors to be applied to those system variables that are to be perturbed; ignored if NINPUT = 0. (input; PERTURB by default)."
+    },
+    {
+      "name": "inbus",
+      "description": "An array of NINPUT elements specifying a list of buses (when the corresponding INTYPE is 1 through 4) and/or VAR indices (when the corresponding INTYPE is 5) used to define those system variables that are to be perturbed; ignored if NINPUT = 0. (input; no default allowed)."
+    },
+    {
+      "name": "inmcid",
+      "description": "An array of NINPUT elements specifying a list of machine identifiers used to define those system variables that are to be perturbed (when the corresponding INTYPE is 1 through 4; ignored when the corresponding INTYPE is 5); ignored if NINPUT = 0. (input; ‘1’ by default)."
+    },
+    {
+      "name": "inident",
+      "description": "An array of NINPUT elements specifying a list of text strings used to identify those system variables that are to be perturbed; ignored if NINPUT = 0. If a blank identifier is specified, the ASTR API provides an appropriate identifier. (input; blank by default)."
+    },
+    {
+      "name": "outfile",
+      "description": "Name of the matrix output file into which the results of this api’s calculation are to be placed; this file may then be used as to the lsysan program. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "option": [
+      {
+        "value": "= 1",
+        "description": "automatically print the convergence monitor."
+      },
+      {
+        "value": "= 0",
+        "description": "print the convergence monitor only if it is enabled via the CM interrupt control code."
+      }
+    ],
+    "intype": [
+      {
+        "value": "= 1",
+        "description": "EFD, generator main field voltage (pu)."
+      },
+      {
+        "value": "= 2",
+        "description": "PMECH, turbine mechanical power (pu on MBASE)."
+      },
+      {
+        "value": "= 3",
+        "description": "VOTHSG, stabilizer output signal (pu)."
+      },
+      {
+        "value": "= 4",
+        "description": "VREF, voltage regulator voltage setpoint (pu)."
+      },
+      {
+        "value": "= 5",
+        "description": "VAR."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "generators are not converted."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid OPTION value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid MAXDERIV value."
+    },
+    {
+      "value": "= 4",
+      "description": "invalid PERTURB value."
+    },
+    {
+      "value": "= 5",
+      "description": "derivative threshold exceeded–not in steady state."
+    },
+    {
+      "value": "= 6",
+      "description": "invalid code of input to be perturbed."
+    },
+    {
+      "value": "= 7",
+      "description": "invalid perturbation amount."
+    },
+    {
+      "value": "= 8",
+      "description": "machine is out-of-service."
+    },
+    {
+      "value": "= 9",
+      "description": "invalid VAR index."
+    },
+    {
+      "value": "= 10",
+      "description": "attempting to select more STATEs than are in the system model."
+    },
+    {
+      "value": "= 11",
+      "description": "too many channels selected."
+    },
+    {
+      "value": "= 12",
+      "description": "prior initialization modified the loads–pick up original converted case."
+    },
+    {
+      "value": "= 13",
+      "description": "error opening OUTFILE."
+    },
+    {
+      "value": "= 14",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

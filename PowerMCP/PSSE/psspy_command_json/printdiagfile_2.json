@@ -1,0 +1,69 @@
+{
+  "module": "psspy",
+  "function_name": "printdiagfile_2",
+  "category": "Diagram View",
+  "description": "Use this API to print the active Slider diagram in the GUI. This API routine was first introduced in release 35.3.0. printdiagfile_2(pagesetup, viewsetup, sdev, filename)",
+  "python_syntax": "printdiagfile_2(pagesetup, viewsetup, sdev, filename)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "pagesetup",
+      "description": "An array of two elements specifying print options. (input)."
+    },
+    {
+      "name": "viewsetup",
+      "description": "An array of five elements specifying view setup options. (input)."
+    },
+    {
+      "name": "sdev",
+      "description": "Name of valid attached windows printer. (input)."
+    },
+    {
+      "name": "filename",
+      "description": "Name of a file to save the print to, if printing to a file.this parameter is not written out during the recording of the api from the psse gui due to dependencies on the print device. (input)."
+    }
+  ],
+  "return_values": [],
+  "allowed_values": {
+    "pagesetup": [
+      {
+        "value": "PAGESETUP(1)",
+        "description": "number of copies to print (1 by default), can also be specified with keyword ‘copies’."
+      },
+      {
+        "value": "PAGESETUP(2)",
+        "description": "orientation (1 by default), can also be specified with keyword ‘orient’."
+      },
+      {
+        "value": "= 1",
+        "description": "Portrait."
+      },
+      {
+        "value": "= 2",
+        "description": "Landscape."
+      }
+    ],
+    "viewsetup": [
+      {
+        "value": "VIEWSETUP(1)",
+        "description": "left extent of view to print, can also be specified with keyword ‘xmin’."
+      },
+      {
+        "value": "VIEWSETUP(2)",
+        "description": "bottom extent of view to print, can also be specified with keyword ‘ymin’."
+      },
+      {
+        "value": "VIEWSETUP(3)",
+        "description": "right extent of view to print, can also be specified with keyword ‘xmax’."
+      },
+      {
+        "value": "VIEWSETUP(4)",
+        "description": "top extent of view to print, can also be specified with keyword ‘ymax’."
+      },
+      {
+        "value": "VIEWSETUP(5)",
+        "description": "scale to print view at, 0.0 to fit view extents to a single page (0.0 by default), can also be specified with keyword ‘scale’."
+      }
+    ]
+  }
+}

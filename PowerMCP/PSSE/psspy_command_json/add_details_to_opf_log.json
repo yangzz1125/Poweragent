@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "add_details_to_opf_log",
+  "category": "Optimal Power Flow Operation",
+  "description": "Use this API to specify or return the value of the OPF solution option to add details of the sensitivity values and Lagrange multipliers to the OPF Output Log file. This API routine was first introduced in release 30.0.0. ierr = add_details_to_opf_log(ival) ierr, ival = add_details_to_opf_log()",
+  "python_syntax": "ierr = add_details_to_opf_log(ival) ierr, ival = add_details_to_opf_log()",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ival",
+      "description": "Indicates whether to append the opf log file with information on sensitivity values and lagrange multipliers. (input; input if Batch command or for Python if specified as an argument, or for FORTRAN if IOCODE is 0; else output, 0 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "ival": [
+      {
+        "value": "= 0",
+        "description": "do not print additional details in log file."
+      },
+      {
+        "value": "= 1",
+        "description": "print additional details."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid IVAL value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid IOCODE value."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "module": "psspy",
+  "function_name": "change_ldmodc_icon",
+  "category": "Load Component Models",
+  "description": "Use this API to change the value of a ICON of a load component model at a specified load or subsystem. This API routine was first introduced in release 35.5. ierr = change_ldmodc_icon(ibus, ltypname,id, name, mcomp, j, idata)",
+  "python_syntax": "ierr = change_ldmodc_icon(ibus, ltypname,id, name, mcomp, j, idata)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus, owner, zone or area number. ignored when an all type load model is specified (unless an all type load model is specified). (input; no default allowed)."
+    },
+    {
+      "name": "ltypname",
+      "description": "Load type, or “ “ if the model is not applied to applied to “load type”subsystem. (input; blank by default)."
+    },
+    {
+      "name": "id",
+      "description": "Load identifier, or “*” if the model is applied to all loads in the subsystem. (input; blank by default)."
+    },
+    {
+      "name": "name",
+      "description": "Model name. (input; no default allowed)."
+    },
+    {
+      "name": "mcomp",
+      "description": "Model component number. (input; no default allowed)."
+    },
+    {
+      "name": "j",
+      "description": "Icon number to change relative to the start of the block of icons assigned to this model (1 for icon(m), 2 for icon(m+1), etc.). (input; no default allowed)."
+    },
+    {
+      "name": "idata",
+      "description": "New icon value. (input; unchanged by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "mcomp": [
+      {
+        "value": "= 11",
+        "description": "load main component model."
+      },
+      {
+        "value": "= 12",
+        "description": "load distribution component model."
+      },
+      {
+        "value": "= 21",
+        "description": "Component # 1 load Individual component model."
+      },
+      {
+        "value": "= 22",
+        "description": "Component # 2 load Individual component model."
+      },
+      {
+        "value": "= 23",
+        "description": "Component # 3 load Individual component model."
+      },
+      {
+        "value": "= 24",
+        "description": "Component # 4 load Individual component model."
+      },
+      {
+        "value": "= 25",
+        "description": "Component # 5 load Individual component model."
+      },
+      {
+        "value": "= 26",
+        "description": "Component # 6 load Individual component model."
+      },
+      {
+        "value": "= 27",
+        "description": "Component # 7 load Individual component model."
+      },
+      {
+        "value": "= 28",
+        "description": "Component # 8 load Individual component model."
+      },
+      {
+        "value": "= 29",
+        "description": "Component # 9 load Individual component model."
+      },
+      {
+        "value": "= 30",
+        "description": "Component # 10 load Individual component model."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "unknown model NAME."
+    },
+    {
+      "value": "= 2",
+      "description": "model NAME is not a load component model."
+    },
+    {
+      "value": "= 3",
+      "description": "no <subsystem type> type <load type> model for this id in tables for <subsystem type> IBUS."
+    },
+    {
+      "value": "= 4",
+      "description": "no all type <load type> model for this id in tables."
+    },
+    {
+      "value": "= 5",
+      "description": "<subsystem type> <load type> model for this id for <subsystem type> IBUS is aaa not xxx."
+    },
+    {
+      "value": "= 6",
+      "description": "all type <load type> model for this id is aaa not xxx."
+    },
+    {
+      "value": "= 7",
+      "description": "no ICONs used in model NAME."
+    },
+    {
+      "value": "= 8",
+      "description": "ICON number outside of the ICON range of this model."
+    },
+    {
+      "value": "= 9",
+      "description": "invalid Component number Mcomp for <load type> Model <NAME> for <subsystem> IBUS, load id <ID>"
+    },
+    {
+      "value": "= 10",
+      "description": "invalid Component number Mcomp for <load type> Model <NAME> for <subsystem type> IBUS, load id <ID>"
+    },
+    {
+      "value": "= 11",
+      "description": "invalid Load Model <NAME>(5th and 6th chacaracters in Model Name must be BL/OW/ZN/AR/AL/LT)."
+    },
+    {
+      "value": "= 12",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

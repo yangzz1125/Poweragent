@@ -1,0 +1,66 @@
+{
+  "module": "psspy",
+  "function_name": "opf_intflw_3wt",
+  "category": "Optimal Power Flow Data",
+  "description": "Use this API to add a participating three-winding transformer winding to a specified interface flow constraint in the working case. This API routine was first introduced in release 28.0.0. ierr = opf_intflw_3wt(ifid, eibus, ejbus, ekbus, cktid)",
+  "python_syntax": "ierr = opf_intflw_3wt(ifid, eibus, ejbus, ekbus, cktid)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ifid",
+      "description": "Interface flow identifier. (input; no default allowed)."
+    },
+    {
+      "name": "eibus",
+      "description": "From bus number the value of eibus indicates the from bus of the winding for which the flow constraint is being introduced. (input; no default allowed)."
+    },
+    {
+      "name": "ejbus",
+      "description": "To bus number. (input; no default allowed)."
+    },
+    {
+      "name": "ekbus",
+      "description": "Third bus number. (input; no default allowed)."
+    },
+    {
+      "name": "cktid",
+      "description": "Circuit identifier. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "participating branch table is full."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid interface flow identifier specified."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid bus number specified."
+    },
+    {
+      "value": "= 4",
+      "description": "specified three-winding transformer does not exist."
+    },
+    {
+      "value": "= 5",
+      "description": "specified winding is already participating in the interface."
+    },
+    {
+      "value": "= 6",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

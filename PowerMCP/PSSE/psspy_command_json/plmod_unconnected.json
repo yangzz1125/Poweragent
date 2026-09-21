@@ -1,0 +1,46 @@
+{
+  "module": "psspy",
+  "function_name": "plmod_unconnected",
+  "category": "Plant Related Models",
+  "description": "Use this API to list or remove from dynamics working memory those plant related models that are assigned to machines that are not present in the current power flow working case (unconnected). This API routine was first introduced in release 28.0.0. ierr = plmod_unconnected(opt)",
+  "python_syntax": "ierr = plmod_unconnected(opt)",
+  "return_type": "error_only_listing",
+  "parameters": [
+    {
+      "name": "opt",
+      "description": "Option code. (input; 0 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "opt": [
+      {
+        "value": "= 0",
+        "description": "list unconnected plant models."
+      },
+      {
+        "value": "= 1",
+        "description": "remove unconnected plant models."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid OPT value."
+    },
+    {
+      "value": "= 2",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

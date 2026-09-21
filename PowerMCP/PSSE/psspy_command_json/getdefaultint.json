@@ -1,0 +1,15 @@
+{
+  "module": "psspy",
+  "function_name": "getdefaultint",
+  "category": "Non-Engineering",
+  "description": "Retrieve “no input” value for integers. Specify this value to indicate that “no input” is intended. This API routine was first introduced in release 32.0.0. idef = getdefaultint()",
+  "python_syntax": "idef = getdefaultint()",
+  "return_type": "value_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "idef",
+      "description": ""
+    }
+  ]
+}

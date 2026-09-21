@@ -1,0 +1,86 @@
+{
+  "module": "psspy",
+  "function_name": "change_fctmod_data",
+  "category": "Facts Device Models",
+  "description": "This API routine is obsolete. It has been replaced by the API routine CHANGE_FCTMOD_CON, CHANGE_FCTMOD_ICON, CHANGE_FCTMOD_CHRICN, and is implemented by a call to CHANGE_FCTMOD_CON, CHANGE_FCTMOD_ICON, CHANGE_FCTMOD_CHRICN. Use this API to change the value of an ICON and/or CON of the FACTS device model of a specified FACTS device. This API routine was first introduced in release 30.2.0. ierr = change_fctmod_data(fd, name, j, rdata, i, idata, chdata)",
+  "python_syntax": "ierr = change_fctmod_data(fd, name, j, rdata, i, idata, chdata)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "fd",
+      "description": "Facts device number. (input; no default allowed)."
+    },
+    {
+      "name": "name",
+      "description": "Model name. (input; no default allowed)."
+    },
+    {
+      "name": "j",
+      "description": "Con number to change relative to the start of the block of cons assigned to this model, or 0 for no con change (1 for con(j), 2 for con(j+1), etc.). (input; 0 by default)."
+    },
+    {
+      "name": "rdata",
+      "description": "New con value. (input; unchanged by default)."
+    },
+    {
+      "name": "i",
+      "description": "Icon number to change relative to the start of the block of icons assigned to this model, or 0 for no icon change (1 for icon(i), 2 for icon(i+1), etc.). (input; 0 by default)."
+    },
+    {
+      "name": "idata",
+      "description": "New integer icon value. (input; unchanged by default). When a character value is intended for an ICON value, the IDATA entry is ignored and the integer ICON is set to 0)."
+    },
+    {
+      "name": "chdata",
+      "description": "New character icon value (no default allowed if the character icon is to be changed). when an integer value is intended for an icon value, the chdata entry must be either defaulted or specified as either ‘$$’ or ‘ ‘; the character icon is set to ‘$$’. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "FACTS device not found."
+    },
+    {
+      "value": "= 2",
+      "description": "unknown model name."
+    },
+    {
+      "value": "= 3",
+      "description": "no model at this FACTS device."
+    },
+    {
+      "value": "= 4",
+      "description": "model at this FACTS device is aaa not xxx."
+    },
+    {
+      "value": "= 5",
+      "description": "no CONs used in model."
+    },
+    {
+      "value": "= 5",
+      "description": "no input ICONs used in model."
+    },
+    {
+      "value": "= 6",
+      "description": "CON number outside of the CON range of this model."
+    },
+    {
+      "value": "= 6",
+      "description": "ICON number outside of the ICON range of this model."
+    },
+    {
+      "value": "= 7",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "module": "psspy",
+  "function_name": "tysl",
+  "category": "Power Flow Operation",
+  "description": "Use this API to run switching study network solutions. This API routine was first introduced in release 28.0.0. ierr = tysl(opt)",
+  "python_syntax": "ierr = tysl(opt)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "opt",
+      "description": "Flat start flag. (input; 0 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "opt": [
+      {
+        "value": "= 0",
+        "description": "use present voltage vector as starting point."
+      },
+      {
+        "value": "= 1",
+        "description": "flat start."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid OPT value."
+    },
+    {
+      "value": "= 2",
+      "description": "generators are not converted."
+    },
+    {
+      "value": "= 3",
+      "description": "network is not ordered."
+    },
+    {
+      "value": "= 4",
+      "description": "error reading the admittance matrix temporary file; one of the following occurred: Admittance matrix temporary file is not open; Reading matrix pointers: different sizes specified than were used in writing them; Reading matrix terms: different sizes specified than were used in writing them."
+    },
+    {
+      "value": "= 5",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

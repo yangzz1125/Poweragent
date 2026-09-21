@@ -1,0 +1,42 @@
+{
+  "module": "psspy",
+  "function_name": "macstt",
+  "category": "Single Element Data",
+  "description": "Use this API to return the machine status value. This API routine was first introduced in release 28.0.0. ierr, ival = macstt(ibus, id)",
+  "python_syntax": "ierr, ival = macstt(ibus, id)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    },
+    {
+      "name": "id",
+      "description": "Machine identifier. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "ival",
+      "description": "Machine status value; 0 for out of service, 1 for in service. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Bus not found; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Machine not found; ‘IVAL’ unchanged."
+    }
+  ]
+}

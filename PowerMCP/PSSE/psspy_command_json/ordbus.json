@@ -1,0 +1,34 @@
+{
+  "module": "psspy",
+  "function_name": "ordbus",
+  "category": "Single Element Data",
+  "description": "This API routine returns the bus number corresponding to the specified position in the ordered list (numeric or alphabetic) of non-hidden buses (i.e., star point buses and topological buses are excluded). Dummy buses of multi-section lines are included; hidden star point buses of three-winding transformers are not included; topological buses of buses represented by multiple bus sections are not included. This API routine was first introduced in release 28.0.0. ierr, ibus = ordbus(iord)",
+  "python_syntax": "ierr, ibus = ordbus(iord)",
+  "return_type": "error_and_count",
+  "parameters": [
+    {
+      "name": "iord",
+      "description": "Ordinal position; 1 through the number of non-hidden buses in the working case. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "ibus",
+      "description": "Bus number. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IBUS’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "‘IORD’ outside of range 1 through the number of non-hidden buses in the working case; ‘IBUS’ unchanged."
+    }
+  ]
+}

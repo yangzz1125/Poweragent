@@ -1,0 +1,116 @@
+{
+  "module": "psspy",
+  "function_name": "load_data_3",
+  "category": "Power Flow Data",
+  "description": "This API routine is obsolete. It has been replaced by the API routine load_data_4, and is implemented by a call to load_data_4. Use this API to modify the data of an existing load in the working case or to add a new load to the working case. This API routine was first introduced in release 32.0.0. ierr = load_data_3(ibus, id, intgar, realar)",
+  "python_syntax": "ierr = load_data_3(ibus, id, intgar, realar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Load identifier. (input; ‘1’ by default)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of five elementsNone. (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of six elementsNone. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "STATUS, load status (1 by default)."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "AREA, area number (area of bus IBUS by default)."
+      },
+      {
+        "value": "INTGAR(3)",
+        "description": "ZONE, zone number (zone of bus IBUS by default)."
+      },
+      {
+        "value": "INTGAR(4)",
+        "description": "OWNER, owner number (owner of bus IBUS by default)."
+      },
+      {
+        "value": "INTGAR(5)",
+        "description": "SCALE, load scaling flag (0 = fixed, non-conforming; 1 = scalable, conforming) (1 by default)."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "PL, constant power active load (0.0 by default)."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "QL, constant power reactive load (0.0 by default)."
+      },
+      {
+        "value": "REALAR(3)",
+        "description": "IP, constant current active load (0.0 by default)."
+      },
+      {
+        "value": "REALAR(4)",
+        "description": "IQ, constant current reactive load (0.0 by default)."
+      },
+      {
+        "value": "REALAR(5)",
+        "description": "YP, constant admittance active load (0.0 by default)."
+      },
+      {
+        "value": "REALAR(6)",
+        "description": "YQ, constant admittance reactive load (0.0 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "load identifier is more than two characters."
+    },
+    {
+      "value": "= 3",
+      "description": "blank load identifier is invalid."
+    },
+    {
+      "value": "= 4",
+      "description": "load table is full."
+    },
+    {
+      "value": "= 6",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - invalid load status. - invalid area, zone or owner number. - area table is full. - zone table is full. - owner table is full. - invalid load scaling flag."
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "nxtfxs",
+  "category": "Single Element Data",
+  "description": "Use this API to return the identifier of the next fixed shunt connected to a bus. Each time ‘NXTFXS’ is called it returns the next shunt identifier in ascending order. ‘INIFXS’ must first be called to establish the shunt bus number. This API routine was first introduced in release 31.0.0. ierr, id = nxtfxs(ibus)",
+  "python_syntax": "ierr, id = nxtfxs(ibus)",
+  "return_type": "error_and_value",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "id",
+      "description": "Shunt identifier. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘ID’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "No more fixed shunts at ‘IBUS’; ‘ID’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "‘INIFXS’ was not called for bus ‘IBUS’; ‘ID’ unchanged."
+    }
+  ]
+}

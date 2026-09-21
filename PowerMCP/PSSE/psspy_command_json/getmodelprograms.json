@@ -1,0 +1,23 @@
+{
+  "module": "psspy",
+  "function_name": "getmodelprograms",
+  "category": "Multiple Element Data",
+  "description": "Return the list dynamically (i.e. run-time) loaded dynamics model programs currently in use. In particular this will include all user-written dynamics model programs. This API routine was first introduced in release 33.3.0. progs,libs,args = getmodelprograms()",
+  "python_syntax": "progs,libs,args = getmodelprograms()",
+  "return_type": "multi_value",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "progs",
+      "description": "An array of NSIZ elementsNone. (output)."
+    },
+    {
+      "name": "libs",
+      "description": "An array of NSIZ elements specifying names of the libraries each program has been loaded from; the array index of program can be used to identify the correcponding library in this array. (output)."
+    },
+    {
+      "name": "args",
+      "description": "An array of NSIZ elements specifying number of arguments for each program; the array index of program can be used to identify the correcponding entry in this array. (output)."
+    }
+  ]
+}

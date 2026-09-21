@@ -1,0 +1,36 @@
+{
+  "module": "psspy",
+  "function_name": "showtablebyindex",
+  "category": "Power Flow Operation",
+  "description": "This API routine was first introduced in release 35.0.0. ierr = showtablebyindex(tblid, direction)",
+  "python_syntax": "ierr = showtablebyindex(tblid, direction)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "tblid",
+      "description": "(input)."
+    },
+    {
+      "name": "direction",
+      "description": "(input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "direction": [
+      {
+        "value": "= 1",
+        "description": "Progress window."
+      },
+      {
+        "value": "= 2",
+        "description": "Report window."
+      }
+    ]
+  }
+}

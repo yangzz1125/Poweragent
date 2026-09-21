@@ -1,0 +1,94 @@
+{
+  "module": "psspy",
+  "function_name": "machine_cap_curve_chng",
+  "category": "Power Flow Data",
+  "description": "Use this API routine to modify the capability curve data of an existing machine in the working case. This API routine was first introduced in release 35.0.0. ierr = machine_cap_curve_chng(ibus, id, points, pgenar, qmaxar, qminar)",
+  "python_syntax": "ierr = machine_cap_curve_chng(ibus, id, points, pgenar, qmaxar, qminar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Machine identifier. (input; ‘1’ by default)."
+    },
+    {
+      "name": "points",
+      "description": "Number of points specified in the capability curve. (input)."
+    },
+    {
+      "name": "pgenar",
+      "description": "An array of POINTS elements specifying array of ‘POINTS’ values specifying machine active power outputs in MW along the MW axis of the machine’s capability curve. (input)."
+    },
+    {
+      "name": "qmaxar",
+      "description": "An array of POINTS elements specifying array of ‘POINTS’ values specifying machine maximum reactive power outputs in MVAR at the corresponding PGENAR values of the machine’s capability curve. (input)."
+    },
+    {
+      "name": "qminar",
+      "description": "An array of POINTS elements specifying array of ‘POINTS’ values specifying machine minimum reactive power outputs in MVAR at the corresponding PGENAR values of the machine’s capability curve. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "machine identifier is more than two characters."
+    },
+    {
+      "value": "= 3",
+      "description": "machine not found."
+    },
+    {
+      "value": "= 4",
+      "description": "invalid POINTS value."
+    },
+    {
+      "value": "= 5",
+      "description": "a motor capability curve is specified for a generator."
+    },
+    {
+      "value": "= 6",
+      "description": "a generator capability curve is specified for a motor."
+    },
+    {
+      "value": "= 7",
+      "description": "capability curve P’’s for a generator are not in increasing order."
+    },
+    {
+      "value": "= 8",
+      "description": "capability curve P’’s for a motor are not in decreasing order."
+    },
+    {
+      "value": "= 9",
+      "description": "capability curve not found for this machine."
+    },
+    {
+      "value": "= 10",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - Machine active power is outside the limits of the capability curve. - For at least one curve point, QMAX is less than QMIN - Non- conventional machine with machine control mode greater than 1."
+    }
+  ]
+}

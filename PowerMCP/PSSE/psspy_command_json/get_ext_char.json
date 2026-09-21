@@ -1,0 +1,58 @@
+{
+  "module": "psspy",
+  "function_name": "get_ext_char",
+  "category": "Extension Data Access",
+  "description": "Use this API to get character extension data. This API routine was first introduced in release 35.1.0. ierr, cval = get_ext_char(tblname, string, irow)",
+  "python_syntax": "ierr, cval = get_ext_char(tblname, string, irow)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "tblname",
+      "description": "Extension table name. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the extension field desired. (input)."
+    },
+    {
+      "name": "irow",
+      "description": "Row index of desired data item. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "cval",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IVAL’ set."
+    },
+    {
+      "value": "= 1",
+      "description": "Element not found; ‘IVAL’ not set."
+    },
+    {
+      "value": "= 2",
+      "description": "Bad value of ‘STRING’; ‘IVAL’ not set."
+    },
+    {
+      "value": "= 3",
+      "description": "Bad data type for field ‘STRING’; ‘IVAL’ not set."
+    },
+    {
+      "value": "= 4",
+      "description": "Unknown error with data access; ‘IVAL’ not set."
+    },
+    {
+      "value": "= 5",
+      "description": "Data table row index ‘IROW’ out-of-bounds; ‘IVAL’ not set."
+    }
+  ]
+}

@@ -1,0 +1,620 @@
+{
+  "module": "psspy",
+  "function_name": "maccc_with_cor_2",
+  "category": "Power Flow Operation",
+  "description": "This API routine is obsolete. It has been replaced by the API routine maccc_with_cor_3, and is implemented by a call to maccc_with_cor_3. This API is the second release of function to run multiple AC contingency analysis with corrective actions. The user-specified and automatically-selected contingencies are evaluated individually and in combination each other as overlapping contingencies. Corrective actions are specified automatically to eliminate the violations in each post contingency solution with the objective of minimizing the controls adjustments including load shedding, MW generation dispatch, phase shifter angle adjustments, off-line generator controls, tap setting adjustments and switched shunt controls. This API routine was first introduced in release 32.0.0. ierr = maccc_with_cor_2(tol, optacc, optmac, optrnk, optcor, values, labels, dfxfile, accfile, thrfile, inlfile)",
+  "python_syntax": "ierr = maccc_with_cor_2(tol, optacc, optmac, optrnk, optcor, values, labels, dfxfile, accfile, thrfile, inlfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "tol",
+      "description": "Mismatch tolerance. (input; Newton solution convergence tolerance, TOLN, by default)."
+    },
+    {
+      "name": "optacc",
+      "description": "An array of eight elements specifying power flow solution. (input)."
+    },
+    {
+      "name": "optmac",
+      "description": "An array of forty one elements specifying contingency evaluation level and combinations. (input)."
+    },
+    {
+      "name": "optrnk",
+      "description": "An array of seventeen elements specifying ranking options. (input)."
+    },
+    {
+      "name": "optcor",
+      "description": "An array of eight elements specifying corrective actions options. (input)."
+    },
+    {
+      "name": "values",
+      "description": "An array of eleven elements specifying ranking parameters and corrective actions parameters. (input)."
+    },
+    {
+      "name": "labels",
+      "description": "An array of eight elements specifying subsystem labels. (input)."
+    },
+    {
+      "name": "dfxfile",
+      "description": "Name of distribution factor data file. (input; no default allowed)."
+    },
+    {
+      "name": "accfile",
+      "description": "Name of contingency solution output file. (input; no default allowed)."
+    },
+    {
+      "name": "thrfile",
+      "description": "Name of load throwover data file. (input; blank for none)."
+    },
+    {
+      "name": "inlfile",
+      "description": "Name of unit inertia and governor data file. (input; blank for none)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "optacc": [
+      {
+        "value": "OPTACC(1)",
+        "description": "tap adjustment flag (tap adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable stepping adjustment."
+      },
+      {
+        "value": "= 2",
+        "description": "enable direct adjustment."
+      },
+      {
+        "value": "OPTACC(2)",
+        "description": "area interchange adjustment flag (area interchange adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable using tie line flows only in calculating area interchange."
+      },
+      {
+        "value": "= 2",
+        "description": "enable using tie line flows and loads in calculating area interchange."
+      },
+      {
+        "value": "OPTACC(3)",
+        "description": "phase shift adjustment flag (phase shift adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTACC(4)",
+        "description": "dc tap adjustment flag (dc tap adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTACC(5)",
+        "description": "switched shunt adjustment flag (switched shunt adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "= 2",
+        "description": "enable continuous, disable discrete."
+      },
+      {
+        "value": "OPTACC(6)",
+        "description": "solution method flag (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "FDNS."
+      },
+      {
+        "value": "= 1",
+        "description": "FNSL."
+      },
+      {
+        "value": "= 2",
+        "description": "optimized FDNS."
+      },
+      {
+        "value": "OPTACC(7)",
+        "description": "non-divergent solution flag (non-divergent solution option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTACC(8)",
+        "description": "dispatch mode (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "subsystem machines (RESERVE)."
+      },
+      {
+        "value": "= 2",
+        "description": "subsystem machines (PMAX)."
+      },
+      {
+        "value": "= 3",
+        "description": "subsystem machines (INERTIA)."
+      },
+      {
+        "value": "= 4",
+        "description": "subsystem machines (GOVERNOR DROOP)."
+      }
+    ],
+    "optmac": [
+      {
+        "value": "OPTMAC(1)",
+        "description": "allow multiple contingency analysis (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "= 2",
+        "description": "enabled with failure cutoff disabled."
+      },
+      {
+        "value": "OPTMAC(2)",
+        "description": "contingency evaluation level (1 by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "N-1 contingency analysis."
+      },
+      {
+        "value": "= 2",
+        "description": "N-2 contingency analysis."
+      },
+      {
+        "value": "= 3",
+        "description": "N-3 contingency analysis."
+      },
+      {
+        "value": "OPTMAC(3)",
+        "description": "each element represents a type of contingency combinations in the following order. {S, U, B, SS, SU, SB, US, UU, UB, BS, BU, BB, SSS, SSB, SSU, SBS, SBB, SBU, SUS, SUB, SUU, USS, USU, USB, UUS, UUB, UUU, UBS, UBU, UBB, BSS, BSU, BSB, SUS, SUB, SUU, BBS, BBU, BBB}, where S, U and B are user specified cases, single unit and single branch outages respectively."
+      },
+      {
+        "value": "= 1",
+        "description": "include the contingency combinations."
+      },
+      {
+        "value": "= 0",
+        "description": "(0 by default)."
+      }
+    ],
+    "optrnk": [
+      {
+        "value": "OPTRNK(1)",
+        "description": "include ties from subsystem (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTRNK(2)",
+        "description": "contingency rating (rating set program option setting by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "rate A."
+      },
+      {
+        "value": "= 2",
+        "description": "rate B."
+      },
+      {
+        "value": "= 3",
+        "description": "rate C."
+      },
+      {
+        "value": "OPTRNK(3)",
+        "description": "convert ratings to MW (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTRNK(4)",
+        "description": "machine overload contingencies (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTRNK(5)",
+        "description": "minimum of machine overload contingencies to evaluate (>=0, 1, by default)."
+      },
+      {
+        "value": "OPTRNK(6)",
+        "description": "maximum of machine overload contingencies to evaluate (>=0, 10, by default)."
+      },
+      {
+        "value": "OPTRNK(7)",
+        "description": "cutoff of machine overload contingencies to evaluate (>=0, 5, by default)."
+      },
+      {
+        "value": "OPTRNK(8)",
+        "description": "line overload contingencies (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTRNK(9)",
+        "description": "minimum of line overload contingencies to evaluate (>=0, 1, by default)."
+      },
+      {
+        "value": "OPTRNK(10)",
+        "description": "maximum of line overload contingencies to evaluate (>=0, 10, by default)."
+      },
+      {
+        "value": "OPTRNK(11)",
+        "description": "cutoff of line overload contingencies (>=0, 5, by default)."
+      },
+      {
+        "value": "OPTRNK(12)",
+        "description": "voltage collapse line contingencies (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTRNK(13)",
+        "description": "minimum of voltage collapse line contingencies to evaluate (>=0, 1, by default)."
+      },
+      {
+        "value": "OPTRNK(14)",
+        "description": "maximum of voltage collapse line contingencies to evaluate (>=0, 10, by default)."
+      },
+      {
+        "value": "OPTRNK(15)",
+        "description": "cutoff of voltage collapse line contingencies (>=0, 5 be default)."
+      },
+      {
+        "value": "OPTRNK(16)",
+        "description": "include all branches in voltage collapse ranking (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "include only with non-zero rating."
+      },
+      {
+        "value": "= 1",
+        "description": "all."
+      },
+      {
+        "value": "OPTRNK(17)",
+        "description": "include contingencies that create swingless island (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      }
+    ],
+    "optcor": [
+      {
+        "value": "OPTCOR(1)",
+        "description": "run corrective action (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTCOR(2)",
+        "description": "number power flows (1 by default)."
+      },
+      {
+        "value": "OPTCOR(3)",
+        "description": "generator control flag (1 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTCOR(4)",
+        "description": "load control flag (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTCOR(5)",
+        "description": "phase shifter control flag (1 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTCOR(6)",
+        "description": "off-line generator control flag (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTCOR(7)",
+        "description": "tap setting adjustment flag (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTCOR(8)",
+        "description": "switched shunt control flag (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      }
+    ],
+    "values": [
+      {
+        "value": "VALUES(1)",
+        "description": "small reactance threshold, (0<= VALUES (1)<=0.005, 0.0005, by default)."
+      },
+      {
+        "value": "VALUES(2)",
+        "description": "percent of flow rating, (0<= VALUES (2)<=200.0, 100.0, by default)."
+      },
+      {
+        "value": "VALUES(3)",
+        "description": "MW threshold for islanding contingencies (>=0, 0.0, by default)."
+      },
+      {
+        "value": "VALUES(4)",
+        "description": "bus voltage violation tolerance (0.1 by default)."
+      },
+      {
+        "value": "VALUES(5)",
+        "description": "branch overload violation tolerance (0.1 by default)."
+      },
+      {
+        "value": "VALUES(6)",
+        "description": "generator control weighting factor (1.0 by default)."
+      },
+      {
+        "value": "VALUES(7)",
+        "description": "load control weighting factor (1.0 by default)."
+      },
+      {
+        "value": "VALUES(8)",
+        "description": "phase shifter control weighting factor (1.0 by default)."
+      },
+      {
+        "value": "VALUES(9)",
+        "description": "off-line generator control weighting factor (1.0 by default)."
+      },
+      {
+        "value": "VALUES(10)",
+        "description": "tap setting adjustment weighting factor (1.0 by default)."
+      },
+      {
+        "value": "VALUES(11)",
+        "description": "switched shunt control weighting factor (1.0 by default)."
+      }
+    ],
+    "labels": [
+      {
+        "value": "LABELS(1)",
+        "description": "label of generation dispatch subsystem (blank by default, no default allowed if OPTACC(8) is 1)."
+      },
+      {
+        "value": "LABELS(2)",
+        "description": "label of contingency subsystem (blank by default)."
+      },
+      {
+        "value": "LABELS(3)",
+        "description": "label of generator control subsystem (blank by default, no default allowed if OPTCOR(3) is 1)."
+      },
+      {
+        "value": "LABELS(4)",
+        "description": "label of load control subsystem (blank by default, no default allowed if OPTCOR(4) is 1)."
+      },
+      {
+        "value": "LABELS(5)",
+        "description": "label of phase shifter control subsystem (blank by default, no default allowed if OPTCOR(5) is 1)."
+      },
+      {
+        "value": "LABELS(6)",
+        "description": "off-line generator control subsystem (blank by default; no default allowed if OPTCOR(6) is 1)."
+      },
+      {
+        "value": "LABELS(7)",
+        "description": "tap setting adjustment subsystem (blank by default; no default allowed if OPTCOR(7) is 1)."
+      },
+      {
+        "value": "LABELS(8)",
+        "description": "switched shunt control subsystem (blank by default; no default allowed if OPTCOR(8) is 1)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid TOL value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid OPTACC value."
+    },
+    {
+      "value": "= 3",
+      "description": "generators are converted."
+    },
+    {
+      "value": "= 4",
+      "description": "buses in island(s) without a swing bus; use activity TREE."
+    },
+    {
+      "value": "= 5",
+      "description": "largest mismatch exceeds mismatch tolerance."
+    },
+    {
+      "value": "= 6",
+      "description": "generation subsystem is not defined."
+    },
+    {
+      "value": "= 7",
+      "description": "too many islands in base case."
+    },
+    {
+      "value": "= 8",
+      "description": "invalid OPTMAC value."
+    },
+    {
+      "value": "= 9",
+      "description": "invalid OPTRNK value."
+    },
+    {
+      "value": "= 10",
+      "description": "invalid OPTCOR value."
+    },
+    {
+      "value": "= 11",
+      "description": "invalid VALUES value."
+    },
+    {
+      "value": "= 21",
+      "description": "file DFXFILE is not in the form of a PSSE-25 or later DFAX file; run DFAX."
+    },
+    {
+      "value": "= 22",
+      "description": "monitored elements exceed limit when adding multisection line members."
+    },
+    {
+      "value": "= 50",
+      "description": "error opening Unit Inertia Data File."
+    },
+    {
+      "value": "= 51",
+      "description": "error opening Contingency Solution Output File."
+    },
+    {
+      "value": "= 52",
+      "description": "error opening Distribution Factor Data File."
+    },
+    {
+      "value": "= 53",
+      "description": "error opening Load Throwover Data File."
+    },
+    {
+      "value": "= 54",
+      "description": "prerequisite requirements for function not met."
+    }
+  ]
+}

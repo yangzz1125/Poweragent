@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "gettspfprofilebyelement",
+  "category": "Multiple Element Data",
+  "description": "Use this API to return an array of character values for the Time Series Power Flow profiles by element name. This API routine was first introduced in release 35.4.0. ierr, carray = gettspfprofilebyelement(element)",
+  "python_syntax": "ierr, carray = gettspfprofilebyelement(element)",
+  "return_type": "error_and_array",
+  "parameters": [
+    {
+      "name": "element",
+      "description": "Name of the element that profiles will be returned. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "The error code . (output)."
+    },
+    {
+      "name": "carray",
+      "description": "An array of COUNT elements specifying Is an array which contains COUNT elements. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Invalid input for non-optional field."
+    },
+    {
+      "value": "= 2",
+      "description": "Internal database error."
+    }
+  ]
+}

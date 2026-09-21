@@ -1,0 +1,250 @@
+{
+  "module": "psspy",
+  "function_name": "amultitrmdcconvreal",
+  "category": "Multi-Terminal Dc Line Converter Data",
+  "description": "Use this API to return an array of real values for subsystem multi-terminal dc line converters. This API routine was first introduced in release 30.3.0. ierr, rarray = amultitrmdcconvreal(sid, ties, flag, entry, string)",
+  "python_syntax": "ierr, rarray = amultitrmdcconvreal(sid, ties, flag, entry, string)",
+  "return_type": "error_and_array",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the bus subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "ties",
+      "description": "A flag indicating which subsystem converter buses of multi-terminal dc lines to include (ignored if sid is negative). (input; 1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem multi-terminal dc line converters to include. (input; 1 by default)."
+    },
+    {
+      "name": "entry",
+      "description": "A flag indicating organization. (input; 1 by default)."
+    },
+    {
+      "name": "string",
+      "description": "An array of NSTR elements specifying NSTR of the following strings indicating the multi-terminal dc line converter quantities desired. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "rarray",
+      "description": "An array of NSTR*DIM elements specifying Is an array of at least NSTR columns, each of which contains DIM elements. (output)."
+    }
+  ],
+  "allowed_values": {
+    "sid": [
+      {
+        "value": "< 0",
+        "description": "to instruct the API to assume a subsystem containing all buses in the working case."
+      },
+      {
+        "value": ">= 0",
+        "description": "valid bus subsystem identifier. Valid subsystem identifiers range from 0 to 11. Subsystem SID must have been previously defined."
+      }
+    ],
+    "ties": [
+      {
+        "value": "= 1",
+        "description": "for each end of interior subsystem multi-terminal dc lines only."
+      },
+      {
+        "value": "= 2",
+        "description": "for the subsystem bus ends of tie multi-terminal dc lines only."
+      },
+      {
+        "value": "= 3",
+        "description": "for the non-subsystem bus ends of tie multi-terminal dc lines only."
+      },
+      {
+        "value": "= 4",
+        "description": "for each end of tie multi-terminal dc lines only."
+      },
+      {
+        "value": "= 5",
+        "description": "for each end of interior subsystem multi-terminal dc lines and the subsystem bus ends of tie multi-terminal dc lines."
+      },
+      {
+        "value": "= 6",
+        "description": "for each end of interior subsystem multi-terminal dc lines and tie multi-terminal dc lines."
+      }
+    ],
+    "flag": [
+      {
+        "value": "= 1",
+        "description": "for only in-service multi-terminal dc lines."
+      },
+      {
+        "value": "= 2",
+        "description": "for all multi-terminal dc lines."
+      }
+    ],
+    "entry": [
+      {
+        "value": "= 1",
+        "description": "for converter bus order."
+      },
+      {
+        "value": "= 2",
+        "description": "for dc line name order."
+      }
+    ],
+    "string": [
+      {
+        "value": "= DCCUR",
+        "description": "Converter dc current in amps."
+      },
+      {
+        "value": "= SETVAL",
+        "description": "Voltage (kV) current (amps) or power (MW) setpoint."
+      },
+      {
+        "value": "= ACAMPS",
+        "description": "ac current in amps at the converter bus."
+      },
+      {
+        "value": "= PUCUR",
+        "description": "ac current in pu at the converter bus."
+      },
+      {
+        "value": "= KVDC",
+        "description": "Converter bus dc voltage in kV."
+      },
+      {
+        "value": "= ANGLE",
+        "description": "Converter angle in degrees."
+      },
+      {
+        "value": "= ANGMIN",
+        "description": "Minimum steady-state converter angle in degrees."
+      },
+      {
+        "value": "= ANGMAX",
+        "description": "Nominal maximum converter angle in degrees."
+      },
+      {
+        "value": "= TAP",
+        "description": "Converter bus tap setting in pu."
+      },
+      {
+        "value": "= TPMX",
+        "description": "Maximum tap setting in pu."
+      },
+      {
+        "value": "= TPMN",
+        "description": "Minimum tap setting in pu."
+      },
+      {
+        "value": "= STP",
+        "description": "Tap step in pu."
+      },
+      {
+        "value": "= TR",
+        "description": "Transformer ratio in pu."
+      },
+      {
+        "value": "= RC",
+        "description": "Commutating transformer resistance per bridge in ohms."
+      },
+      {
+        "value": "= XC",
+        "description": "Commutating transformer reactance per bridge in ohms."
+      },
+      {
+        "value": "= EBASE",
+        "description": "Primary base ac voltage in kV."
+      },
+      {
+        "value": "= DELTI",
+        "description": "Rectifier margin in pu of desired dc power or current."
+      },
+      {
+        "value": "= DCPF",
+        "description": "Converter participation factor."
+      },
+      {
+        "value": "= PAC",
+        "description": "Apparent active power flow into the dc line at the converter bus in MW."
+      },
+      {
+        "value": "= QAC",
+        "description": "Apparent reactive power flow into the dc line at the converter bus in Mvar."
+      },
+      {
+        "value": "= MVA",
+        "description": "Apparent ac power flow into the dc line at the converter bus in MVA."
+      },
+      {
+        "value": "= PLOSS",
+        "description": "Total dc line active power losses in MW."
+      },
+      {
+        "value": "= QLOSS",
+        "description": "Total dc line reactive power losses in Mvar."
+      },
+      {
+        "value": "= O_PAC",
+        "description": "Apparent active power flow into the dc line at the converter bus (units determined by power output options)."
+      },
+      {
+        "value": "= O_QAC",
+        "description": "Apparent reactive power flow into the dc line at the converter bus (units determined by power output options)."
+      },
+      {
+        "value": "= O_MVA",
+        "description": "Apparent ac power flow into the dc line at the converter bus (units determined by power output options)."
+      },
+      {
+        "value": "= O_PLOSS",
+        "description": "Total dc line active power losses (units determined by power output options)."
+      },
+      {
+        "value": "= O_QLOSS",
+        "description": "Total dc line reactive power losses (units determined by power output options)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid TIES value."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid FLAG value."
+    },
+    {
+      "value": "= 5",
+      "description": "Invalid ENTRY value."
+    },
+    {
+      "value": "= 6",
+      "description": "Invalid NSTR value."
+    },
+    {
+      "value": "= 7",
+      "description": "DIM, and hence the size of RARRAY, is not large enough."
+    },
+    {
+      "value": "= 8",
+      "description": "Invalid STRING value."
+    }
+  ]
+}

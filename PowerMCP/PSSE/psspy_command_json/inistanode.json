@@ -1,0 +1,30 @@
+{
+  "module": "psspy",
+  "function_name": "inistanode",
+  "category": "Single Element Data",
+  "description": "Use this API routine to initialize the node fetching routine ‘NXTSTANODE’ for retrieving the nodes in a sub-station. This API routine was first introduced in release 34.1.0. ierr = inistanode(ista)",
+  "python_syntax": "ierr = inistanode(ista)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ista",
+      "description": "Substation number. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error; ‘NXTSTANODE’ is properly initialized."
+    },
+    {
+      "value": "= 1",
+      "description": "substation not found; ‘ NXTSTANODE’ may not be used."
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "module": "psspy",
+  "function_name": "dist_def_3wind_fault",
+  "category": "Set Disturbance Definition",
+  "description": "Use this API to define a fault at the IBUS end of a three-winding transformer in dynamic simulations. This API routine was first introduced in release 35.5.0. ierr = dist_def_3wind_fault(ibus,jbus,kbus,id,units,basekv,values, disttime)",
+  "python_syntax": "ierr = dist_def_3wind_fault(ibus,jbus,kbus,id,units,basekv,values, disttime)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number of the bus at which the fault is to be placed. (input; no default allowed)."
+    },
+    {
+      "name": "jbus",
+      "description": "Bus number of one of the other buses. (input; no default allowed)."
+    },
+    {
+      "name": "kbus",
+      "description": "Bus number of the third bus. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Circuit identifier. (input; ‘1’ by default)."
+    },
+    {
+      "name": "units",
+      "description": "Units in which fault admittance or impedance is specified in values. (input; 1 by default)."
+    },
+    {
+      "name": "basekv",
+      "description": "Base voltage in kv used to calculate the per unit fault admittance if units is 2 or 3; ignored if units is 1. if basekv is specified as 0.0, the base voltage of bus ibus is used. (input; 0.0 by default)."
+    },
+    {
+      "name": "values",
+      "description": "An array of two elementsNone. (input)."
+    },
+    {
+      "name": "disttime",
+      "description": "Time at which the fault is applied in seconds. (input; 1.0 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "units": [
+      {
+        "value": "= 1",
+        "description": "admittance in MVA."
+      },
+      {
+        "value": "= 2",
+        "description": "admittance in mhos."
+      },
+      {
+        "value": "= 3",
+        "description": "impedance in ohms."
+      }
+    ],
+    "values": [
+      {
+        "value": "VALUES(1)",
+        "description": "real component of the complex fault admittance or impedance according to the value specified for UNITS (0.0 by default)."
+      },
+      {
+        "value": "VALUES(2)",
+        "description": "reactive component of the complex fault admittance or impedance according to the value specified for UNITS (-2.0E11 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid DISTTIME value."
+    },
+    {
+      "value": "= 2",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 3",
+      "description": "three-winding transformer not found."
+    },
+    {
+      "value": "= 4",
+      "description": "three-winding transformer winding is out-of-service."
+    },
+    {
+      "value": "= 5",
+      "description": "invalid UNITS value."
+    },
+    {
+      "value": "= 6",
+      "description": "invalid BASEKV value (<0.0)."
+    },
+    {
+      "value": "= 7",
+      "description": "both BASEKV and the base voltage of bus IBUS are 0.0."
+    },
+    {
+      "value": "= 8",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

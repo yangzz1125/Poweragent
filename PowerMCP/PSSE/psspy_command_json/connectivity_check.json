@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "connectivity_check",
+  "category": "Power Flow Operation",
+  "description": "Use this API to specify or return the option to enable or disable the solution connectivity checking option setting. This API routine was first introduced in release 29.0.0. ierr = connectivity_check(ival) ierr, ival = connectivity_check()",
+  "python_syntax": "ierr = connectivity_check(ival) ierr, ival = connectivity_check()",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ival",
+      "description": "Value of the option setting. (input; if Batch command, or for Python if specified as an argument, or for Fortran if IOCODE is 0, 1 by default; else output)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "ival": [
+      {
+        "value": "= 0",
+        "description": "no solution connectivity check before power flow solutions."
+      },
+      {
+        "value": "= 1",
+        "description": "run solution connectivity check before each power flow solution."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid IVAL value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid IOCODE value."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

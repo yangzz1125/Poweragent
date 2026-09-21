@@ -1,0 +1,102 @@
+{
+  "module": "psspy",
+  "function_name": "fcdauxmind",
+  "category": "Single Element Data",
+  "description": "Use this API to return the starting array indices and status of auxiliary signal model associated with FACTS device for the specified signal index. This API routine was first introduced in release 31.0.0. ierr, ival = fcdauxmind(name, isgndx, string)",
+  "python_syntax": "ierr, ival = fcdauxmind(name, isgndx, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Facts device name. (input)."
+    },
+    {
+      "name": "isgndx",
+      "description": "Auxiliary signal index. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the facts device auxiliary signal model quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "ival",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= CON",
+        "description": "Starting CON index."
+      },
+      {
+        "value": "= STATE",
+        "description": "Starting STATE index."
+      },
+      {
+        "value": "= VAR",
+        "description": "Starting VAR index."
+      },
+      {
+        "value": "= ICON",
+        "description": "Starting ICON index."
+      },
+      {
+        "value": "= NCON",
+        "description": "Number of CON values used by the model."
+      },
+      {
+        "value": "= NSTATE",
+        "description": "Number of STATE values used by the model."
+      },
+      {
+        "value": "= NVAR",
+        "description": "Number of VAR values used by the model."
+      },
+      {
+        "value": "= NICON",
+        "description": "Number of ICON values used by the model."
+      },
+      {
+        "value": "= STATUS",
+        "description": "Bypassed flag: 0 = bypassed; 1 = not bypassed. For a model to be called during simulations the model’s bypassed flag must be not bypassed."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "FACTS device not in network but auxiliary signal model in model tables; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 2",
+      "description": "FACTS device not in network and auxiliary signal model not in model tables; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 4",
+      "description": "No model in model tables for the given auxiliary signal index; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 5",
+      "description": "Invalid value of ‘STRING’; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 6",
+      "description": "Model does not use any of this data type; ‘IVAL’ = 0 returned."
+    },
+    {
+      "value": "= 9",
+      "description": "Dynamics data not present in working memory; ‘IVAL’ unchanged."
+    }
+  ]
+}

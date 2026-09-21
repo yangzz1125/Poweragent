@@ -1,0 +1,46 @@
+{
+  "module": "psspy",
+  "function_name": "har_vltsrc_chng_onept",
+  "category": "Harmonics Data",
+  "description": "Use this API to modify one data point to harmonics voltage source table in the working case. This API is used to change H, V/V0, and Angle data of existing harmonic number (HPTOLD) in the existing working case harmonics data table. This API cannot be used to change table name. This API routine was first introduced in release 35.4.0. ierr = har_vltsrc_chng_onept(name, hptold, hpt, vpt, anpt)",
+  "python_syntax": "ierr = har_vltsrc_chng_onept(name, hptold, hpt, vpt, anpt)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Harmonics voltage source data table name. (input; no default allowed)."
+    },
+    {
+      "name": "hptold",
+      "description": "Harmonics number at point in data table where provided data is changed. (input; no default allowed)."
+    },
+    {
+      "name": "hpt",
+      "description": "New harmonics number to be changed. (input; no default allowed)."
+    },
+    {
+      "name": "vpt",
+      "description": "Voltage source magnitude for harmonics number hpt to be changed. (input; 1 by default)."
+    },
+    {
+      "name": "anpt",
+      "description": "Voltage source angle for harmonics number hpt to be changed. (input; 1 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

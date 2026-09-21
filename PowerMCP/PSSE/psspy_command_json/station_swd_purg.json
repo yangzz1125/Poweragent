@@ -1,0 +1,70 @@
+{
+  "module": "psspy",
+  "function_name": "station_swd_purg",
+  "category": "Node Breaker Data",
+  "description": "Use this API to delete an existing substation switching device in the working case. This API routine was first introduced in release 34.0.0. ierr = station_swd_purg(station, inode, jnode, cktarg)",
+  "python_syntax": "ierr = station_swd_purg(station, inode, jnode, cktarg)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "station",
+      "description": "Substation number. (input)."
+    },
+    {
+      "name": "inode",
+      "description": "From node number. (input)."
+    },
+    {
+      "name": "jnode",
+      "description": "To node number. (input)."
+    },
+    {
+      "name": "cktarg",
+      "description": "Circuit identifier. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "working case is empty."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid substation number."
+    },
+    {
+      "value": "= 3",
+      "description": "substation is not found."
+    },
+    {
+      "value": "= 4",
+      "description": "invalid node number."
+    },
+    {
+      "value": "= 5",
+      "description": "node number is not found in substation."
+    },
+    {
+      "value": "= 6",
+      "description": "switching device is not found."
+    },
+    {
+      "value": "= 7",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

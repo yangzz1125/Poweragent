@@ -1,0 +1,152 @@
+{
+  "module": "psspy",
+  "function_name": "vsc_dc_converter_data_3",
+  "category": "Power Flow Data",
+  "description": "Use this API to modify the data of a dc converter of an existing VSC dc line in the working case (see PSSE Program Operation Manual, Voltage Source Converter (VSC) DC Transmission Line Data). This API routine was first introduced in release 34.4.0. ierr = vsc_dc_converter_data_3(name, ic, intgar, realar)",
+  "python_syntax": "ierr = vsc_dc_converter_data_3(name, ic, intgar, realar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Vsc dc line name. (input; no default allowed)."
+    },
+    {
+      "name": "ic",
+      "description": "Dc converter index (1 or 2). (input; no default allowed)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of five elementsNone. (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of eleven elementsNone. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "IBUS, converter bus number (no default allowed)."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "TYPE, dc control code (1 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "out-of-service."
+      },
+      {
+        "value": "= 1",
+        "description": "kV."
+      },
+      {
+        "value": "= 2",
+        "description": "MW."
+      },
+      {
+        "value": "INTGAR(3)",
+        "description": "MODE, ac control code (1 = voltage, 2 = power factor) (1 by default)."
+      },
+      {
+        "value": "INTGAR(4)",
+        "description": "VSREG, regulated bus number (0 by default)."
+      },
+      {
+        "value": "INTGAR(5)",
+        "description": "NODE, regulated node number (0 by default)."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "DCSET, dc setpoint (kV or MW) (1.0 by default)."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "ACSET, ac setpoint (pu voltage or power factor) (1.0 by default)."
+      },
+      {
+        "value": "REALAR(3)",
+        "description": "ALOSS, A loss coefficient (kW) (0.0 by default)."
+      },
+      {
+        "value": "REALAR(4)",
+        "description": "BLOSS, B loss coefficient (kW/amps) (0.0 by default)."
+      },
+      {
+        "value": "REALAR(5)",
+        "description": "MINLOS, minimum converter losses (kW) (0.0 by default)."
+      },
+      {
+        "value": "REALAR(6)",
+        "description": "SMAX, converter ac MVA rating (0.0 by default)."
+      },
+      {
+        "value": "REALAR(7)",
+        "description": "IMAX, converter ac current rating (amps) (0.0 by default)."
+      },
+      {
+        "value": "REALAR(8)",
+        "description": "PWF, power weighting factor fraction (1.0 by default)."
+      },
+      {
+        "value": "REALAR(9)",
+        "description": "MAXQ, reactive power upper limit (Mvar) (9999.0 by default)."
+      },
+      {
+        "value": "REALAR(10)",
+        "description": "MINQ, reactive power lower limit (Mvar) (-9999.0 by default)."
+      },
+      {
+        "value": "REALAR(11)",
+        "description": "RMPCT, percent of contributed reactive power (100.0 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid converter index."
+    },
+    {
+      "value": "= 2",
+      "description": "no converter bus is specified."
+    },
+    {
+      "value": "= 3",
+      "description": "dc line not found."
+    },
+    {
+      "value": "= 4",
+      "description": "converter bus not found."
+    },
+    {
+      "value": "= 5",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= 6",
+      "description": "node-breaker terminal connection table is full."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - Converter bus is dummy bus of a multi-section line - Multi-section line grouping deleted. - Invalid dc control code - Invalid ac control mode - Regulated bus not found - A remote regulated bus is specified for a type 3 bus - Type code of regulated bus is not 1 or 2 - dc voltage setpoint is not positive - ac voltage setpoint is outside the band 0.75 to 1.25 pu - ac power factor setpoint is in error (magnitude exceeds 1.0) - Invalid power weighting factor fraction - MAXQ is less than MINQ. - RMPCT is not positive - Invalid node number - Non-zero regulated node specified but regulated bus does not belong to a substation - Regulated node not found - Regulated node is not connected to any bus section of the regulated bus."
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "module": "psspy",
+  "function_name": "seq_ncs_table_onept",
+  "category": "Fault Analysis Data",
+  "description": "Use this API to modify the one data point of an existing non-conventional source fault contribution table in the working case or to add a new one data point to non-conventional source fault contribution table to the working case. This API routine was first introduced in release 35.4.0. ierr = seq_ncs_table_onept(name, tptold, tpt, cipq)",
+  "python_syntax": "ierr = seq_ncs_table_onept(name, tptold, tpt, cipq)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Table name. (input)."
+    },
+    {
+      "name": "tptold",
+      "description": "Existing table point specifying ti in seconds or vi in per unit. table data at this point is added or changed. when tptold is specified and found, tpt and cipq values specified will be used to change existing data. when tptold is zero and tpt greater than 0, tpt and cipq values specified will be used to add new data point to existing data. specify tptold=tpt to change just cipq data at that point. (input; no default allowed)."
+    },
+    {
+      "name": "tpt",
+      "description": "New table point specifying ti in seconds or vi in per unit. (input; no default allowed)."
+    },
+    {
+      "name": "cipq",
+      "description": "Value specifying cip and ciq. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "blank table name is invalid."
+    },
+    {
+      "value": "= 2",
+      "description": "maximum number of points in table are already in the case."
+    },
+    {
+      "value": "= 3",
+      "description": "Ti or Vi is invalid."
+    },
+    {
+      "value": "= 4",
+      "description": "Ci is (0.0,0.0), but NCS fault current contribution cannot be zero."
+    },
+    {
+      "value": "= 5",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

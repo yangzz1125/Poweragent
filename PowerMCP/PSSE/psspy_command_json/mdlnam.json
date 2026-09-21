@@ -1,0 +1,102 @@
+{
+  "module": "psspy",
+  "function_name": "mdlnam",
+  "category": "Single Element Data",
+  "description": "Use this API to return plant-related model name. This API routine was first introduced in release 28.0.0. ierr, cval = mdlnam(ibus, id, string)",
+  "python_syntax": "ierr, cval = mdlnam(ibus, id, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    },
+    {
+      "name": "id",
+      "description": "Machine identifier. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the type of plant-related model. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "cval",
+      "description": "Model name. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= GEN",
+        "description": "Generator model."
+      },
+      {
+        "value": "= COMP",
+        "description": "Compensator model."
+      },
+      {
+        "value": "= STAB",
+        "description": "Stabilizer model."
+      },
+      {
+        "value": "= EXC",
+        "description": "Excitation system model."
+      },
+      {
+        "value": "= GOV",
+        "description": "Turbine governor model."
+      },
+      {
+        "value": "= TLC",
+        "description": "Turbine Load Controller model."
+      },
+      {
+        "value": "= MINXL",
+        "description": "Minimum excitation limiter model."
+      },
+      {
+        "value": "= MAXXL",
+        "description": "Maximum excitation limiter model."
+      },
+      {
+        "value": "= SCL",
+        "description": "Stator Current Limiter model."
+      },
+      {
+        "value": "= PFC",
+        "description": "Power Factor/Var Controller model."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘CVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Machine not in network but in model tables; ‘CVAL’ returned."
+    },
+    {
+      "value": "= 2",
+      "description": "Machine not in network or in model tables; ‘CVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid value of ‘STRING’, ‘CVAL’ unchanged."
+    },
+    {
+      "value": "= 4",
+      "description": "No model of type ‘STRING’ for this machine; ‘CVAL’ unchanged."
+    },
+    {
+      "value": "= 9",
+      "description": "Dynamics data not present in working memory; ‘CVAL’ unchanged."
+    }
+  ]
+}

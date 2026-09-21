@@ -1,0 +1,66 @@
+{
+  "module": "psspy",
+  "function_name": "seq_bus_data",
+  "category": "Fault Analysis Data",
+  "description": "Bus load sequence data is now accessible as load sequence data. Use this API routine to modify the sequence data of an existing bus in the working case (see PSSE Program Operation Manual, Negative Sequence Shunt Load Data and Zero Sequence Shunt Load Data). This API routine was first introduced in release 28.0.0. ierr = seq_bus_data(ibus, realar)",
+  "python_syntax": "ierr = seq_bus_data(ibus, realar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input; no default allowed)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of four elements specifying (defaulted data items are unchanged). (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "GNEG, negative sequence shunt admittance active component."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "BNEG, negative sequence shunt admittance reactive component."
+      },
+      {
+        "value": "REALAR(3)",
+        "description": "GZERO, zero sequence shunt admittance active component."
+      },
+      {
+        "value": "REALAR(4)",
+        "description": "BZERO, zero sequence shunt admittance reactive component."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "the SEQ_BUS_DATA API routine is obsolete."
+    },
+    {
+      "value": "= 2",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - None."
+    }
+  ]
+}

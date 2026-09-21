@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "set_next_var",
+  "category": "Dynamic Simulation Operation",
+  "description": "Use this API to assign the next available VAR index value. This API routine was first introduced in release 31.0.2. ierr = set_next_var(ival)",
+  "python_syntax": "ierr = set_next_var(ival)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ival",
+      "description": "Value to assign as the next available var index. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid VAR index."
+    },
+    {
+      "value": "= 2",
+      "description": "index is beyond the maximum allowed."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

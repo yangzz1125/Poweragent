@@ -1,0 +1,74 @@
+{
+  "module": "psspy",
+  "function_name": "gic_thermal_impact_1",
+  "category": "Gic Operation",
+  "description": "Use this API to calculate Transformer Thermal Impact assessement GIC(t) curve using specified effective Eastward GIC(E) and Nortward GIC(N) for one specific transformer. The geoelectric field waveshape used could be NERC TPL-007 Benchmark event, NERC TPL-007 Supplemental event or User specified event. This API routine was first introduced in release 34.8.0 and 35.1.0. ierr = gic_thermal_impact_1(gicearg, gicnarg, xmerlbl, gictfarg, ievt)",
+  "python_syntax": "ierr = gic_thermal_impact_1(gicearg, gicnarg, xmerlbl, gictfarg, ievt)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "gicearg",
+      "description": "Transfomer effective per phase gic due to eastward geoelectic field, gic(e) due to ee=1 v/km and en=0, with alpha and beta factors applied. (input; 0 by default)."
+    },
+    {
+      "name": "gicnarg",
+      "description": "Transfomer effective per phase gic due to northward geoelectic field, gic(n) due to en=1 v/km and ee=0, with alpha and beta factors applied. (input; 0 by default)."
+    },
+    {
+      "name": "xmerlbl",
+      "description": "Transfomer name. (input; ‘’ by default)."
+    },
+    {
+      "name": "gictfarg",
+      "description": "Transformer thermal analysis gic(t) csv file (output). (input; ‘’ by default)."
+    },
+    {
+      "name": "ievt",
+      "description": "Gmd event type. (input; 0 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "ievt": [
+      {
+        "value": "= 0",
+        "description": "TPL-007 Benchmark or User Specified Reference GMD Event."
+      },
+      {
+        "value": "= 1",
+        "description": "TPL-007 Supplemental GMD Event."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "No or invalid GICEARG value provided."
+    },
+    {
+      "value": "= 1",
+      "description": "No or invalid GICNARG value provided."
+    },
+    {
+      "value": "= 3",
+      "description": "No GMD Event EE(t) and EN(t) data available."
+    },
+    {
+      "value": "= 4",
+      "description": "Error opening GIC(t) File."
+    },
+    {
+      "value": "= 5",
+      "description": "No or invalid IEVT value provided."
+    }
+  ]
+}

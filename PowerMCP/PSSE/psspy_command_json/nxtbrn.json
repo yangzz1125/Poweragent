@@ -1,0 +1,42 @@
+{
+  "module": "psspy",
+  "function_name": "nxtbrn",
+  "category": "Single Element Data",
+  "description": "Returns the next branch connected to a bus, excluding three-winding transformers. Each time ‘NXTBRN’ is called it returns the next branch in either numeric or alphabetic ascending order, depending on the PSSE bus output option setting. ‘INIBRN’ or ‘INIBRX’ must first be called to establish the from bus number. This API routine was first introduced in release 28.0.0. ierr, jbus, ickt = nxtbrn(ibus)",
+  "python_syntax": "ierr, jbus, ickt = nxtbrn(ibus)",
+  "return_type": "error_and_multi_value",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "From bus number. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "jbus",
+      "description": "To bus number. (output)."
+    },
+    {
+      "name": "ickt",
+      "description": "Circuit identifier. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘JBUS’ and ‘ICKT’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "No more branches from ‘IBUS’; ‘JBUS’ is returned set to 0, and ‘ICKT’ returned set to spaces."
+    },
+    {
+      "value": "= 2",
+      "description": "‘INIBRN’ or ‘INIBRX’ was not called for bus ‘IBUS’; ‘JBUS’, and ‘ICKT’ are unchanged."
+    }
+  ]
+}

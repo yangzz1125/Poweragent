@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "scenariofilelengthcomments",
+  "category": "Scenarios",
+  "description": "Use this API to determine the buffer size needed to hold the comments for the specified file. This API routine was first introduced in release 33.0.0. ierr, length = scenariofilelengthcomments(sgroup, sfile)",
+  "python_syntax": "ierr, length = scenariofilelengthcomments(sgroup, sfile)",
+  "return_type": "error_and_value",
+  "parameters": [
+    {
+      "name": "sgroup",
+      "description": "Group that contains the specified file. (input; no default allowed)."
+    },
+    {
+      "name": "sfile",
+      "description": "Name of the file whose comment length is to be returned. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "length",
+      "description": "Length of the scenario comment string. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "no Scenario in memory."
+    },
+    {
+      "value": "= 3",
+      "description": "specified group not found."
+    },
+    {
+      "value": "= 4",
+      "description": "specified file not found."
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "scenariogroupopen",
+  "category": "Scenarios",
+  "description": "Use this API to add a group to the Scenario. This API routine was first introduced in release 33.0.0. ierr = scenariogroupopen(sgroup)",
+  "python_syntax": "ierr = scenariogroupopen(sgroup)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sgroup",
+      "description": "Name of the group to open. (input; ignored by default. When default is used the startup group will be opened if one is defined in the Scenario. If the name of a group in the Scenario is given, that group will be opened. If the string is blank or does not match any of the group names in the Scenario no group is opened)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "no Scenario in memory."
+    },
+    {
+      "value": "= 3",
+      "description": "specified group not found."
+    }
+  ]
+}

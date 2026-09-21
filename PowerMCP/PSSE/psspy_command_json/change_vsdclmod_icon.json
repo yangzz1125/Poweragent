@@ -1,0 +1,66 @@
+{
+  "module": "psspy",
+  "function_name": "change_vsdclmod_icon",
+  "category": "Dc Line Related Models",
+  "description": "Use this API to change the value of an integer ICON of the VSC dc line model of a specified VSC dc line. The corresponding character CHRICN is set to ‘$$’. This API routine was first introduced in release 30.2.0. ierr = change_vsdclmod_icon(dcname, model, j, idata)",
+  "python_syntax": "ierr = change_vsdclmod_icon(dcname, model, j, idata)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "dcname",
+      "description": "Vsc dc line name. (input; no default allowed)."
+    },
+    {
+      "name": "model",
+      "description": "Model name. (input; no default allowed)."
+    },
+    {
+      "name": "j",
+      "description": "Icon number to change relative to the start of the block of icons assigned to this model (1 for icon(i), 2 for icon(i+1), etc.). (input; no default allowed)."
+    },
+    {
+      "name": "idata",
+      "description": "New integer icon value. (input; unchanged by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "dc line not found."
+    },
+    {
+      "value": "= 2",
+      "description": "unknown model name."
+    },
+    {
+      "value": "= 3",
+      "description": "no model at this dc line."
+    },
+    {
+      "value": "= 4",
+      "description": "model at this dc line is aaa not xxx."
+    },
+    {
+      "value": "= 5",
+      "description": "no input ICONs used in model."
+    },
+    {
+      "value": "= 6",
+      "description": "ICON number outside of the ICON range of this model."
+    },
+    {
+      "value": "= 7",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

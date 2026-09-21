@@ -1,0 +1,160 @@
+{
+  "module": "psspy",
+  "function_name": "gic_trn_chng",
+  "category": "Gic Data",
+  "description": "Use this API to modify GIC transformer data to the working case. This API routine was first introduced in release 34.8.0. ierr = gic_trn_chng(ibus,jbus,kbus,ckt,intgar,realar,vecgrp)",
+  "python_syntax": "ierr = gic_trn_chng(ibus,jbus,kbus,ckt,intgar,realar,vecgrp)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "The bus number of the bus to which winding 1 is connected. it must be same winding 1 bus of the same transformer in the working case. (input; no default allowed)."
+    },
+    {
+      "name": "jbus",
+      "description": "The bus number of the bus to which winding 2 is connected. it must be same winding 2 bus of the same transformer in the working case. (input; no default allowed)."
+    },
+    {
+      "name": "kbus",
+      "description": "The bus number of the bus to which winding 3 is connected. it must be same winding 3 bus of the same transformer in the working case. kbus=0 for two winding transformers. no default allowed for three winding transformers. (input; 0 by default)."
+    },
+    {
+      "name": "ckt",
+      "description": "Transformer circuit identifier. (input; ‘1’ by default)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of five elementsNone. (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of seven elementsNone. (input)."
+    },
+    {
+      "name": "vecgrp",
+      "description": "Alphanumeric identifier specifying vector group based on transformer winding connections and phase angles. when vector group is blank, its value is taken form power flow data. (input; ‘’ by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "GIC blocking device in neutral of Winding 1. For an auto-transformers, if either BDI=1 or BDJ=1, that auto-transformer is treated as if it has GIC blocking device present. (0 by default), can also be specified with keyword ‘bdi’."
+      },
+      {
+        "value": "= 0",
+        "description": "no GIC blocking device present."
+      },
+      {
+        "value": "= 1",
+        "description": "GIC blocking device present."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "GIC blocking device in neutral of Winding 2. For an auto-transformers, if either BDI=1 or BDJ=1, that auto-transformer is treated as if it has GIC blocking device present. (0 by default), can also be specified with keyword ‘bdj’."
+      },
+      {
+        "value": "= 0",
+        "description": "no GIC blocking device present."
+      },
+      {
+        "value": "= 1",
+        "description": "GIC blocking device present."
+      },
+      {
+        "value": "INTGAR(3)",
+        "description": "GIC blocking device in neutral of Winding 3. (0 by default), can also be specified with keyword ‘bdk’."
+      },
+      {
+        "value": "= 0",
+        "description": "no GIC blocking device present."
+      },
+      {
+        "value": "= 1",
+        "description": "GIC blocking device present."
+      },
+      {
+        "value": "INTGAR(4)",
+        "description": "Number of cores in transformer core design. This information is used to calculate transformer reactive power loss from GIC flowing its winding. (0 by default), can also be specified with keyword ‘core’."
+      },
+      {
+        "value": "= -1",
+        "description": "three phase shell form."
+      },
+      {
+        "value": "= 0",
+        "description": "unknown core design."
+      },
+      {
+        "value": "= 1",
+        "description": "single phase core."
+      },
+      {
+        "value": "= 3",
+        "description": "three phase 3-legged core form."
+      },
+      {
+        "value": "= 5",
+        "description": "three phase 5-legged core form."
+      },
+      {
+        "value": "INTGAR(5)",
+        "description": "Model transformer as T-model in GIC DC Network (0 by default), can also be specified with keyword ‘tmodel’."
+      },
+      {
+        "value": "= 0",
+        "description": "two/three/auto transformer model as defined by its vector group."
+      },
+      {
+        "value": "= 1",
+        "description": "transformer as T-model in DC network."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "DC resistance of Winding 1 in ohms/phase. When WRI is not specified, working case resistance is used to determine WRI. (0.0 by default), can also be specified with keyword ‘wri’."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "DC resistance of Winding 2 in ohms/phase. When WRJ is not specified, working case resistance is used to determine WRJ. (0.0 by default), can also be specified with keyword ‘wrj’."
+      },
+      {
+        "value": "REALAR(3)",
+        "description": "DC resistance of Winding 2 in ohms/phase. When WRK is not specified, working case resistance is used to determine WRK. (0.0 by default), can also be specified with keyword ‘wrk’."
+      },
+      {
+        "value": "REALAR(4)",
+        "description": "Factor to calculate transformer reactive power loss from the GIC flow in its winding (MVAR/AMP) (0.0 by default), can also be specified with keyword ‘kfactor’."
+      },
+      {
+        "value": "REALAR(5)",
+        "description": "Winding 1 grounding DC resistance in ohms. When GRDWRI=0.0, there is no grounding resistance and winding is solidly grounded. (0.0 by default), can also be specified with keyword ‘grdwri’."
+      },
+      {
+        "value": "REALAR(6)",
+        "description": "Winding 2 grounding DC resistance in ohms. When GRDWRJ=0.0, there is no grounding resistance and winding is solidly grounded. (0.0 by default), can also be specified with keyword ‘grdwrj’."
+      },
+      {
+        "value": "REALAR(7)",
+        "description": "Winding 3 grounding DC resistance in ohms. When GRDWRK=0.0, there is no grounding resistance and winding is solidly grounded. (0.0 by default), can also be specified with keyword ‘grdwrk’."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

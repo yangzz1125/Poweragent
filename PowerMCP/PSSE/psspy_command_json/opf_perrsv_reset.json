@@ -1,0 +1,34 @@
+{
+  "module": "psspy",
+  "function_name": "opf_perrsv_reset",
+  "category": "Optimal Power Flow Data",
+  "description": "Use this API to remove all generation reserve units associated with a particular period reserve constraint in the working case. This API routine was first introduced in release 28.0.0. ierr = opf_perrsv_reset(rsvid)",
+  "python_syntax": "ierr = opf_perrsv_reset(rsvid)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "rsvid",
+      "description": "Period reserve identifier (1 through 15). (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid period reserve identifier specified."
+    },
+    {
+      "value": "= 2",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

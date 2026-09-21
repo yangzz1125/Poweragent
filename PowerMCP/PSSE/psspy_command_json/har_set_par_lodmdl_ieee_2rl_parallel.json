@@ -1,0 +1,74 @@
+{
+  "module": "psspy",
+  "function_name": "har_set_par_lodmdl_ieee_2rl_parallel",
+  "category": "Harmonics Data",
+  "description": "Use this API to set parameters for harmonics load data user model IEEE_2RL_PARALLEL. This API routine was first introduced in release 35.5.0. ierr = har_set_par_lodmdl_ieee_2rl_parallel(ibus,id,realar)",
+  "python_syntax": "ierr = har_set_par_lodmdl_ieee_2rl_parallel(ibus,id,realar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Load identifier. (input; ‘1’ by default)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of five elements specifying Refer model schematic diagram in PAG Harmonics chapter for information on each real constant. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "Real Constant K1 (0.8 by default), can also be specified with keyword ‘k1’."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "Real Constant KM (1.2 by default), can also be specified with keyword ‘km’."
+      },
+      {
+        "value": "REALAR(3)",
+        "description": "Real Constant XM (0.15 by default), can also be specified with keyword ‘xm’."
+      },
+      {
+        "value": "REALAR(4)",
+        "description": "Real Constant K2 (0.1 by default), can also be specified with keyword ‘k2’."
+      },
+      {
+        "value": "REALAR(5)",
+        "description": "Real Constant K3 (8.0 by default), can also be specified with keyword ‘k3’."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= 2",
+      "description": "Harmonics load model parameters not set: load not found."
+    },
+    {
+      "value": "= 3",
+      "description": "Harmonics load model parameters not set: model HTYP not allowed."
+    },
+    {
+      "value": "= 4",
+      "description": "Harmonics load model parameters not set: model does not take parameters."
+    }
+  ]
+}

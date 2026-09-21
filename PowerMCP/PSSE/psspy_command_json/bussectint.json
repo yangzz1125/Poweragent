@@ -1,0 +1,78 @@
+{
+  "module": "psspy",
+  "function_name": "bussectint",
+  "category": "Single Element Data",
+  "description": "Use this API routine to return real bus section values. This API routine was first introduced in release 34.1.0. ierr, ival = bussectint(ibus, sect, string)",
+  "python_syntax": "ierr, ival = bussectint(ibus, sect, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    },
+    {
+      "name": "sect",
+      "description": "Bus section number. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the bus quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "ival",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= STATION",
+        "description": "Bus IBUS substation number (returned as zero if bus IBUS is not in a substation)."
+      },
+      {
+        "value": "= TYPE",
+        "description": "Bus type code."
+      },
+      {
+        "value": "= AREA",
+        "description": "Bus area number."
+      },
+      {
+        "value": "= ZONE",
+        "description": "Bus zone number."
+      },
+      {
+        "value": "= OWNER",
+        "description": "Bus owner number."
+      },
+      {
+        "value": "= DUMMY",
+        "description": "Returns 1 (one) if bus is a dummy bus of a multi-section line else 0 (zero)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Bus not found; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid value of ‘STRING’; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 9",
+      "description": "Bus section not found; ‘IVAL’ unchanged."
+    }
+  ]
+}

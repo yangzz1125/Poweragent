@@ -1,0 +1,86 @@
+{
+  "module": "psspy",
+  "function_name": "change_rlmod_var",
+  "category": "Line Relay Models",
+  "description": "Use this API to change the value of a VAR of the line relay model in the designated relay slot of the from bus end of a specified branch. This API routine was first introduced in release 32.0.0. ierr = change_rlmod_var(ibus, jbus, id, rs, name, j, rdata)",
+  "python_syntax": "ierr = change_rlmod_var(ibus, jbus, id, rs, name, j, rdata)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "From bus number. (input; no default allowed)."
+    },
+    {
+      "name": "jbus",
+      "description": "To bus number. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Circuit identifier. (input)."
+    },
+    {
+      "name": "rs",
+      "description": "Relay slot (1 or 2). (input; 1 by default)."
+    },
+    {
+      "name": "name",
+      "description": "Model name. (input; no default allowed)."
+    },
+    {
+      "name": "j",
+      "description": "Var number to change relative to the start of the block of vars assigned to this model (1 for var(j), 2 for var(j+1), etc.). (input; no default allowed)."
+    },
+    {
+      "name": "rdata",
+      "description": "New var value. (input; unchanged by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid RS value."
+    },
+    {
+      "value": "= 2",
+      "description": "unknown model NAME."
+    },
+    {
+      "value": "= 3",
+      "description": "no relay model on this branch at the bus IBUS end."
+    },
+    {
+      "value": "= 4",
+      "description": "relay model at bus IBUS end is aaa not xxx."
+    },
+    {
+      "value": "= 5",
+      "description": "no VARs used in model NAME."
+    },
+    {
+      "value": "= 6",
+      "description": "VAR number outside of the VAR range of this model."
+    },
+    {
+      "value": "= 7",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 8",
+      "description": "branch not found."
+    },
+    {
+      "value": "= 9",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

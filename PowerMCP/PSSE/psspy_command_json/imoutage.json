@@ -1,0 +1,90 @@
+{
+  "module": "psspy",
+  "function_name": "imoutage",
+  "category": "Power Flow Operation",
+  "description": "Use this API routine to change the status of induction machines that are in-service, but that have been set to the “stalled” (for motors) or “tripped” (for generators) state by the power flow solution, to out-of-service. This API routine was first introduced in release 33.0.0. ierr = imoutage(sid, all, motopt, genopt)",
+  "python_syntax": "ierr = imoutage(sid, all, motopt, genopt)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid subsystem identifier. valid subsystem identifiers range from 0 to 11. subsystem sid must have been previously defined. (input; 0 by default)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem flag. (input; 1 by default)."
+    },
+    {
+      "name": "motopt",
+      "description": "“stalled” induction motor option. (input; 0 by default)."
+    },
+    {
+      "name": "genopt",
+      "description": "“tripped” induction generator option. (input; 0 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 0",
+        "description": "process only induction machines in subsystem SID."
+      },
+      {
+        "value": "= 1",
+        "description": "process all induction machines."
+      }
+    ],
+    "motopt": [
+      {
+        "value": "= 0",
+        "description": "set to out-of-service."
+      },
+      {
+        "value": "= 1",
+        "description": "leave in-service."
+      }
+    ],
+    "genopt": [
+      {
+        "value": "= 0",
+        "description": "set to out-of-service."
+      },
+      {
+        "value": "= 1",
+        "description": "leave in-service."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ALL value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid MOTOPT value."
+    },
+    {
+      "value": "= 4",
+      "description": "invalid GENOPT value."
+    },
+    {
+      "value": "= 5",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

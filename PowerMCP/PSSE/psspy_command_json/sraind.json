@@ -1,0 +1,174 @@
+{
+  "module": "psspy",
+  "function_name": "sraind",
+  "category": "Power Flow Operation",
+  "description": "Use this API to run the substation reliability analysis. It applies failure modes and affects analysis of arbitrary bus-breaker configurations and measures the impact of substation equipment failures upon the power transfer capability of the substation. This API routine was first introduced in release 32.0.0. ierr = sraind(options, values, labels, dfxfile, prbfile)",
+  "python_syntax": "ierr = sraind(options, values, labels, dfxfile, prbfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "options",
+      "description": "An array of three elements specifying options. (input)."
+    },
+    {
+      "name": "values",
+      "description": "An array of five elements specifying substation reliability assessment parameters. (input)."
+    },
+    {
+      "name": "labels",
+      "description": "An array of three elements specifying subsystem labels. (input)."
+    },
+    {
+      "name": "dfxfile",
+      "description": "Name of dfax data file. (input; no default allowed)."
+    },
+    {
+      "name": "prbfile",
+      "description": "Name of outage statistic data file. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "options": [
+      {
+        "value": "OPTIONS(1)",
+        "description": "report format (1 by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "contingency report."
+      },
+      {
+        "value": "= 2",
+        "description": "bus load curtailment report."
+      },
+      {
+        "value": "= 3",
+        "description": "substation load curtailment report."
+      },
+      {
+        "value": "OPTIONS(2)",
+        "description": "rating set (rating set program option setting by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "RATEA."
+      },
+      {
+        "value": "= 2",
+        "description": "RATEB."
+      },
+      {
+        "value": "= 3",
+        "description": "RATEC."
+      },
+      {
+        "value": "OPTIONS(3)",
+        "description": "include system ties (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      }
+    ],
+    "values": [
+      {
+        "value": "VALUES(1)",
+        "description": "percent of flow rating (>=0, 100.0, by default)."
+      },
+      {
+        "value": "VALUES(2)",
+        "description": "frequency cutoff (>=0, 0.0001, by default)."
+      },
+      {
+        "value": "VALUES(3)",
+        "description": "percent of peak load (>=0, 100.0, by default)."
+      },
+      {
+        "value": "VALUES(4)",
+        "description": "switching time in hours (>=0, 0.0, by default)."
+      },
+      {
+        "value": "VALUES(5)",
+        "description": "breaker failure rate in hours per year (>=0, 0.0, by default)."
+      }
+    ],
+    "labels": [
+      {
+        "value": "LABELS(1)",
+        "description": "label of substation subsystem (no default is allowed)."
+      },
+      {
+        "value": "LABELS(2)",
+        "description": "label of source subsystem (no default is allowed)."
+      },
+      {
+        "value": "LABELS(3)",
+        "description": "label of sink subsystem (no default is allowed)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid OPTIONS value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid VALUES value."
+    },
+    {
+      "value": "= 3",
+      "description": "substation/source/sink subsytem not specified."
+    },
+    {
+      "value": "= 4",
+      "description": "no DFAX data file specified."
+    },
+    {
+      "value": "= 5",
+      "description": "no outage Statistic Data File specified."
+    },
+    {
+      "value": "= 6",
+      "description": "file is not in the form of a PSSE-25 or later DFAX file; run DFAX."
+    },
+    {
+      "value": "= 7",
+      "description": "subsystem not found in DFAX data file."
+    },
+    {
+      "value": "= 8",
+      "description": "source/sink buses not in substation subsystem."
+    },
+    {
+      "value": "= 9",
+      "description": "source and sink systems overlap."
+    },
+    {
+      "value": "= 51",
+      "description": "error opening DFAX data file."
+    },
+    {
+      "value": "= 52",
+      "description": "error opening outage statistic data file."
+    },
+    {
+      "value": "= 53",
+      "description": "file system errors."
+    }
+  ]
+}

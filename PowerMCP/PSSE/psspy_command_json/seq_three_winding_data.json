@@ -1,0 +1,112 @@
+{
+  "module": "psspy",
+  "function_name": "seq_three_winding_data",
+  "category": "Fault Analysis Data",
+  "description": "This API routine is obsolete. It has been replaced by the API routine seq_three_winding_data_3, and is implemented by a call to seq_three_winding_data_3. Use this API to modify the zero sequence data of an existing three-winding transformer in the working case. This API routine was first introduced in release 28.0.0. ierr = seq_three_winding_data(ibus, jbus, kbus, ckt, intgar, realar)",
+  "python_syntax": "ierr = seq_three_winding_data(ibus, jbus, kbus, ckt, intgar, realar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number of one of the buses. (input)."
+    },
+    {
+      "name": "jbus",
+      "description": "Bus number one of the other buses. (input)."
+    },
+    {
+      "name": "kbus",
+      "description": "Bus number of the third bus. (input)."
+    },
+    {
+      "name": "ckt",
+      "description": "Transformer circuit identifier. (input)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of one elements specifying one element. (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of eight elementsNone. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "CC, connection code."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "RG, zero sequence grounding resistance."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "XG, zero sequence grounding reactance."
+      },
+      {
+        "value": "REALAR(3)",
+        "description": "R1, zero sequence winding one resistance."
+      },
+      {
+        "value": "REALAR(4)",
+        "description": "X1, zero sequence winding one reactance."
+      },
+      {
+        "value": "REALAR(5)",
+        "description": "R2, zero sequence winding two resistance."
+      },
+      {
+        "value": "REALAR(6)",
+        "description": "X2, zero sequence winding two reactance."
+      },
+      {
+        "value": "REALAR(7)",
+        "description": "R3, zero sequence winding three resistance."
+      },
+      {
+        "value": "REALAR(8)",
+        "description": "X3, zero sequence winding three reactance."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "circuit identifier is more than two characters."
+    },
+    {
+      "value": "= 3",
+      "description": "three-winding transformer not found."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "warnings - one or more of: - Invalid winding connection code. - Connection code is such that more than one winding requires a grounding impedance."
+    }
+  ]
+}

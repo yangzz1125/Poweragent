@@ -1,0 +1,24 @@
+# PyPSA Agent Skill Requirements
+# Install: pip install -r requirements.txt
+
+pypsa>=0.28.0
+pandas>=2.0.0
+numpy>=1.24.0
+scipy>=1.10.0
+xarray>=2023.1.0
+netcdf4>=1.6.0
+
+# Optimization solvers (at least one required)
+# Note: Free solvers - HiGHS (recommended) or GLPK
+# Commercial solvers require separate licenses
+highspy>=1.5.0        # HiGHS solver (recommended, fast, open source)
+
+# Optional but recommended
+matplotlib>=3.7.0      # for plotting
+cartopy>=0.21.0        # for geographic plots
+geopandas>=0.13.0      # for shapefile handling
+networkx>=3.0          # for graph algorithms
+
+# Optional commercial solvers (require licenses)
+# gurobi>=10.0.0
+# cplex>=22.1.0

@@ -1,0 +1,66 @@
+{
+  "module": "psspy",
+  "function_name": "read",
+  "category": "Power Flow Operation",
+  "description": "Use this API to read a power flow raw data file and add all the data specified in it to the working case. This API routine was first introduced in release 28.0.0. ierr = read(numnam, ifile)",
+  "python_syntax": "ierr = read(numnam, ifile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "numnam",
+      "description": "Flag for bus number or name specification on records. (input; 0 by default)."
+    },
+    {
+      "name": "ifile",
+      "description": "Filename of the power flow raw data file. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "numnam": [
+      {
+        "value": "= 0",
+        "description": "bus numbers."
+      },
+      {
+        "value": "= 1",
+        "description": "bus names."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid NUMNAM value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid revision number."
+    },
+    {
+      "value": "= 3",
+      "description": "unable to convert file."
+    },
+    {
+      "value": "= 4",
+      "description": "error opening temporary file."
+    },
+    {
+      "value": "= 10",
+      "description": "error opening IFILE."
+    },
+    {
+      "value": "= 11",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

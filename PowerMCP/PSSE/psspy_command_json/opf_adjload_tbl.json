@@ -1,0 +1,112 @@
+{
+  "module": "psspy",
+  "function_name": "opf_adjload_tbl",
+  "category": "Optimal Power Flow Data",
+  "description": "Use this API to add an individual adjustable bus load table record to the working case. It may also be used to modify an existing adjustable bus load table record. This API routine was first introduced in release 28.0.0. ierr = opf_adjload_tbl(tbl, intgar, realar)",
+  "python_syntax": "ierr = opf_adjload_tbl(tbl, intgar, realar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "tbl",
+      "description": "Adjustable bus load table number. (input; no default allowed)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of three elementsNone. (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of seven elementsNone. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "cost curve type. This value is not currently used by the program."
+      },
+      {
+        "value": "= 1",
+        "description": "polynomial and exponential cost curve."
+      },
+      {
+        "value": "= 2",
+        "description": "linear cost curve."
+      },
+      {
+        "value": "= 3",
+        "description": "quadratic cost curve."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "adjustable bus load status (default of 1 if new record, current value otherwise)."
+      },
+      {
+        "value": "= 0",
+        "description": "out of service."
+      },
+      {
+        "value": "= 1",
+        "description": "in service."
+      },
+      {
+        "value": "INTGAR(3)",
+        "description": "cost table cross reference number. This value is not currently used by the program."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "load multiplier (default value of 1.0 if new record, current value otherwise)."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "maximum load multiplier (default value of 1.0 if new record, current value otherwise)."
+      },
+      {
+        "value": "REALAR(3)",
+        "description": "minimum load multiplier (default value of 1.0 if new record, current value otherwise)."
+      },
+      {
+        "value": "REALAR(4)",
+        "description": "load ratio multiplier. This value is not currently used by the program."
+      },
+      {
+        "value": "REALAR(5)",
+        "description": "maximum load ratio multiplier. This value is not currently used by the program."
+      },
+      {
+        "value": "REALAR(6)",
+        "description": "minimum load ratio multiplier. This value is not currently used by the program."
+      },
+      {
+        "value": "REALAR(7)",
+        "description": "load cost scale coefficient (default value of 1.0 if new record, current value otherwise)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= -1",
+      "description": "non-fatal error occurred. Warning messages are as follows: - invalid cost curve type specified - invalid load table status specified - Maximum load multiplier less than 0.0 - Minimum load multiplier less than 0.0 - maximum load multiplier less than minimum load multiplier - maximum load ratio multiplier less than minimum load ratio multiplier."
+    },
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "adjustable bus load table is full."
+    },
+    {
+      "value": "= 2",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

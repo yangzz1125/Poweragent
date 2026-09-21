@@ -1,0 +1,106 @@
+{
+  "module": "psspy",
+  "function_name": "xeqv",
+  "category": "Power Flow Operation",
+  "description": "Use this API to build an electrical equivalent of the portion of the working case outside of a specified subsystem of the working case. This API routine was first introduced in release 30.2.0. ierr = xeqv(sid, all, status, dval)",
+  "python_syntax": "ierr = xeqv(sid, all, status, dval)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid subsystem identifier. valid subsystem identifiers range from 0 to 11. subsystem sid must have been previously defined. (input; 0 by default)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem flag. (input; 1 by default)."
+    },
+    {
+      "name": "status",
+      "description": "An array of six elements specifying They are used to control equivalencing options. A value of 0 means the option is not enabled. A value of 1 means the option is enabled. (input)."
+    },
+    {
+      "name": "dval",
+      "description": "An array of two elements specifying (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 0",
+        "description": "process only buses outside of subsystem SID."
+      },
+      {
+        "value": "= 1",
+        "description": "process all buses."
+      }
+    ],
+    "status": [
+      {
+        "value": "STATUS(1)",
+        "description": "retain area boundary buses (0 by default)."
+      },
+      {
+        "value": "STATUS(2)",
+        "description": "retain zone boundary buses (0 by default)."
+      },
+      {
+        "value": "STATUS(3)",
+        "description": "suppress the equivalencing option for phase shifters (0 by default)."
+      },
+      {
+        "value": "STATUS(4)",
+        "description": "retain controlled buses (0 by default)."
+      },
+      {
+        "value": "STATUS(5)",
+        "description": "retain existing branches between retained buses (0 by default)."
+      },
+      {
+        "value": "STATUS(6)",
+        "description": "net load and shunt at retained buses (0 by default)."
+      }
+    ],
+    "dval": [
+      {
+        "value": "DVAL(1)",
+        "description": "minimum active or reactive power generation for retaining generator buses (0.0 by default)."
+      },
+      {
+        "value": "DVAL(2)",
+        "description": "branch threshold tolerance (10.0 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ALL value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid STATUS value."
+    },
+    {
+      "value": "= 4",
+      "description": "invalid DVAL value."
+    },
+    {
+      "value": "= 5",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

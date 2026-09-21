@@ -1,0 +1,42 @@
+{
+  "module": "psspy",
+  "function_name": "chnval",
+  "category": "Single Element Data",
+  "description": "Use this API to return the present value of the simulation variable assigned to a specified output channel. This API routine was first introduced in release 28.0.0. ierr, rval = chnval(n)",
+  "python_syntax": "ierr, rval = chnval(n)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "n",
+      "description": "Channel number. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "rval",
+      "description": "Channel value. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘RVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Invalid channel index; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid channel address; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 9",
+      "description": "Dynamics data not present in working memory; ‘RVAL’ unchanged."
+    }
+  ]
+}

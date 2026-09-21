@@ -1,0 +1,34 @@
+{
+  "module": "psspy",
+  "function_name": "purgfacts",
+  "category": "Power Flow Data",
+  "description": "Use this API to delete the specified FACTS device from the working case. This API routine was first introduced in release 28.0.0. ierr = purgfacts(fd)",
+  "python_syntax": "ierr = purgfacts(fd)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "fd",
+      "description": "Quoted name of the facts device to be removed; if an unquoted integer value is specified, the api converts it to a left-justified name. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "FACTS device not found."
+    },
+    {
+      "value": "= 2",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

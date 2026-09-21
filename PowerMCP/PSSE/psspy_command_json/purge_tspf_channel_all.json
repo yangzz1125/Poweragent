@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "purge_tspf_channel_all",
+  "category": "Time Series Power Flow Data",
+  "description": "Use this API to remover all time series power flow channels for a selected element. This API routine was first introduced in release 35.4.0. ierr = purg_tspf_channel_all(element)",
+  "python_syntax": "ierr = purg_tspf_channel_all(element)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "element",
+      "description": "Element to be monitored. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 1",
+      "description": "element not found."
+    },
+    {
+      "value": "= 2",
+      "description": "Unrecognized data type of the element."
+    },
+    {
+      "value": "= 3",
+      "description": "element and data type not found."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

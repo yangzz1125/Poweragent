@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "csv_to_rawx_with_metamodel",
+  "category": "Power Flow Operation",
+  "description": "Use this API to import a rawx (extended raw data) data table from a CSV (comma-separated values) file with metamodel. This API routine was first introduced in release 35.1.0. ierr = csv_to_rawx_with_metamodel(infile, outfile, domainname, elementname)",
+  "python_syntax": "ierr = csv_to_rawx_with_metamodel(infile, outfile, domainname, elementname)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "infile",
+      "description": "Name of the input file. (input; no default allowed)."
+    },
+    {
+      "name": "outfile",
+      "description": "Name of the output file. (input; no default allowed)."
+    },
+    {
+      "name": "domainname",
+      "description": "File path of the csv input file. (input; no default allowed)."
+    },
+    {
+      "name": "elementname",
+      "description": "File path of the csv input file. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "Error opening “infile”"
+    },
+    {
+      "value": "= 2",
+      "description": "Empty “outfile”"
+    },
+    {
+      "value": "= 10",
+      "description": "Prerequisite requirements for API are not met."
+    }
+  ]
+}

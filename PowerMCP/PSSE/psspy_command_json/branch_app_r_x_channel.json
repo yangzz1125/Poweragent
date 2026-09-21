@@ -1,0 +1,102 @@
+{
+  "module": "psspy",
+  "function_name": "branch_app_r_x_channel",
+  "category": "Assign Branch Quantities To Output Channels",
+  "description": "Use this API to add a pair of output channels containing the apparent impedance, as seen at the from bus of a specified branch, along with a corresponding call to the RELAY2 monitoring model. This API routine was first introduced in release 30.2.0. ierr = branch_app_r_x_channel(status, id, ident)",
+  "python_syntax": "ierr = branch_app_r_x_channel(status, id, ident)",
+  "return_type": "error_only_output_channel",
+  "parameters": [
+    {
+      "name": "status",
+      "description": "An array of five elementsNone. (input)."
+    },
+    {
+      "name": "id",
+      "description": "Circuit identifier. (input; ‘1’ by default)."
+    },
+    {
+      "name": "ident",
+      "description": "An array of 2 elements specifying two identifiers to be assigned to the two channels. If a blank channel identifier is specified, the API generates an appropriate channel identifier. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "status": [
+      {
+        "value": "STATUS(1)",
+        "description": "starting channel index, or -1 for the next available (next available by default)."
+      },
+      {
+        "value": "STATUS(2)",
+        "description": "starting VAR index, or -1 for the next available (next available by default)."
+      },
+      {
+        "value": "STATUS(3)",
+        "description": "starting ICON index, or -1 for the next available (next available by default)."
+      },
+      {
+        "value": "STATUS(4)",
+        "description": "number of the from bus of the branch for which apparent impedance is to be placed in channels (no default allowed)."
+      },
+      {
+        "value": "STATUS(5)",
+        "description": "number of the to bus of the branch for which apparent impedance is to be placed in channels (no default allowed)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid STATUS value."
+    },
+    {
+      "value": "= 2",
+      "description": "starting channel number is greater than the largest channel number allowed."
+    },
+    {
+      "value": "= 3",
+      "description": "starting VAR index is greater than the largest VAR index allowed."
+    },
+    {
+      "value": "= 4",
+      "description": "starting ICON index is greater than the largest ICON index allowed."
+    },
+    {
+      "value": "= 5",
+      "description": "model RELAY2 needs 3 ICONs but the last one exceeds the largest ICON index allowed."
+    },
+    {
+      "value": "= 6",
+      "description": "the maximum number of channel monitoring models has already been specified."
+    },
+    {
+      "value": "= 7",
+      "description": "model RELAY2 needs 2 VARs but the last one exceeds the largest VAR index allowed."
+    },
+    {
+      "value": "= 8",
+      "description": "model RELAY2 needs 2 channels but the last one exceeds the largest channel number allowed."
+    },
+    {
+      "value": "= 9",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 10",
+      "description": "branch not found."
+    },
+    {
+      "value": "= 11",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

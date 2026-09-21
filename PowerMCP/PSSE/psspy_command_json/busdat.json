@@ -1,0 +1,90 @@
+{
+  "module": "psspy",
+  "function_name": "busdat",
+  "category": "Single Element Data",
+  "description": "Use this API to return real bus values. This API routine was first introduced in release 28.0.0. ierr, rval = busdat(ibus ,string)",
+  "python_syntax": "ierr, rval = busdat(ibus ,string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the bus quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "rval",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= BASE",
+        "description": "Bus base voltage, in kV."
+      },
+      {
+        "value": "= PU",
+        "description": "Actual bus voltage magnitude, in pu."
+      },
+      {
+        "value": "= KV",
+        "description": "Actual bus voltage magnitude, in kV."
+      },
+      {
+        "value": "= ANGLE",
+        "description": "Bus voltage angle, in radians."
+      },
+      {
+        "value": "= ANGLED",
+        "description": "Bus voltage angle, in degrees."
+      },
+      {
+        "value": "= NVLMHI",
+        "description": "Normal high voltage limit, in pu."
+      },
+      {
+        "value": "= NVLMLO",
+        "description": "Normal low voltage limit, in pu."
+      },
+      {
+        "value": "= EVLMHI",
+        "description": "Emergency high voltage limit, in pu."
+      },
+      {
+        "value": "= EVLMLO",
+        "description": "Emergency low voltage limit, in pu."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘RVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Bus not found; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Bad value of ‘STRING’; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "Bus type code 4 or greater; ‘RVAL’ returned."
+    },
+    {
+      "value": "= 4",
+      "description": "No base voltage and ‘STRING’ = ‘KV’; ‘RVAL’ unchanged."
+    }
+  ]
+}

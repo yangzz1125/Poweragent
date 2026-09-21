@@ -1,0 +1,54 @@
+{
+  "module": "psspy",
+  "function_name": "increment_gref",
+  "category": "Dynamic Simulation Operation",
+  "description": "Use this API to add a specified value to the value of the element of the GREF (governor reference) array associated with a specified machine. This API routine was first introduced in release 31.0.2. ierr = increment_gref(ibus, id, newval)",
+  "python_syntax": "ierr = increment_gref(ibus, id, newval)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Plant bus number. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Machine identifier. (input; ‘1’ by default)."
+    },
+    {
+      "name": "newval",
+      "description": "New value to be added to the gref array entry associated with machine id at bus ibus. (input; 0.0 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "machine not found."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "warnings - one or more of: - No turbine-governor model at this machine - Turbine- governor model at this machine is bypassed."
+    }
+  ]
+}

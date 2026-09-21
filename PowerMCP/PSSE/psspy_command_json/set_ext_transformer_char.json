@@ -1,0 +1,66 @@
+{
+  "module": "psspy",
+  "function_name": "set_ext_transformer_char",
+  "category": "Extension Data Access",
+  "description": "Use this API to set transformer character extension data. This API routine was first introduced in release 35.1.0. ierr = set_ext_transformer_char(ibus, jbus, kbus, ckt, string, cval)",
+  "python_syntax": "ierr = set_ext_transformer_char(ibus, jbus, kbus, ckt, string, cval)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Transformer ibus. (input)."
+    },
+    {
+      "name": "jbus",
+      "description": "Transformer jbus. (input)."
+    },
+    {
+      "name": "kbus",
+      "description": "Transformer kbus. (input)."
+    },
+    {
+      "name": "ckt",
+      "description": "Transformer ckt. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the extension transformer field desired. (input)."
+    },
+    {
+      "name": "cval",
+      "description": "Value indicated by string. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘CVAL’ set."
+    },
+    {
+      "value": "= 1",
+      "description": "Element not found; ‘CVAL’ not set."
+    },
+    {
+      "value": "= 2",
+      "description": "Bad value of ‘STRING’; ‘CVAL’ not set."
+    },
+    {
+      "value": "= 3",
+      "description": "Bad data type for field ‘STRING’; ‘CVAL’ not set."
+    },
+    {
+      "value": "= 4",
+      "description": "Unknown error with data access; ‘CVAL’ not set."
+    },
+    {
+      "value": "= 10",
+      "description": "API Prereqs not met; ‘CVAL’ not set."
+    }
+  ]
+}

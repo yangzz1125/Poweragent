@@ -1,0 +1,90 @@
+{
+  "module": "psspy",
+  "function_name": "avoltagedroopreal",
+  "category": "Multiple Element Data",
+  "description": "Use this API to return an array of real values for the voltage droop controls. This API routine was first introduced in release 35.3.0. ierr, rarray = avoltagedroopreal(string)",
+  "python_syntax": "ierr, rarray = avoltagedroopreal(string)",
+  "return_type": "error_and_array",
+  "parameters": [
+    {
+      "name": "string",
+      "description": "An array of NSTR elements specifying NSTR of the following strings indicating the voltage droop quantities desired. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "rarray",
+      "description": "An array of NSTR*DIM elements specifying Is an array of at least NSTR columns, each of which contains DIM elements. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= QMAX",
+        "description": "QMAX of voltage droop control."
+      },
+      {
+        "value": "= QDB",
+        "description": "QDB of voltage droop control."
+      },
+      {
+        "value": "= QMIN",
+        "description": "QMIN of voltage droop control."
+      },
+      {
+        "value": "= VLOW",
+        "description": "VLOW of voltage droop control."
+      },
+      {
+        "value": "= VDBLOW",
+        "description": "VDBLOW of voltage droop control."
+      },
+      {
+        "value": "= VDBHIGH",
+        "description": "VDBHIGH of voltage droop control."
+      },
+      {
+        "value": "= VHIGH",
+        "description": "VHIGH of voltage droop control."
+      },
+      {
+        "value": "= VOLTAGE",
+        "description": "voltage at the regulated bus of voltage droop control."
+      },
+      {
+        "value": "= QINJ",
+        "description": "Q injection to the regulated bus of voltage droop control, Q is positive if the Q enters into the bus."
+      },
+      {
+        "value": "= QMAX",
+        "description": "desired Q injection to the regulated bus of voltage droop control, Q is positive if the Q enters into the bus."
+      },
+      {
+        "value": "= QGEN",
+        "description": "total Q outputs of the generators in the voltage droop control."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid NSTR value."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid STRING value."
+    }
+  ]
+}

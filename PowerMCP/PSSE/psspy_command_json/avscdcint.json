@@ -1,0 +1,144 @@
+{
+  "module": "psspy",
+  "function_name": "avscdcint",
+  "category": "Vsc Dc Line Data",
+  "description": "Use this API to return an array of integer values for subsystem VSC dc lines. This API routine was first introduced in release 30.3.0. ierr, iarray = avscdcint(sid, ties, flag, string)",
+  "python_syntax": "ierr, iarray = avscdcint(sid, ties, flag, string)",
+  "return_type": "error_and_array",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the bus subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "ties",
+      "description": "A flag indicating which subsystem vsc dc lines to include (ignored if sid is negative). (input; 1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem vsc dc lines to include. (input; 1 by default)."
+    },
+    {
+      "name": "string",
+      "description": "An array of NSTR elements specifying NSTR of the following strings indicating the VSC dc line quantities desired. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "iarray",
+      "description": "An array of NSTR*DIM elements specifying Is an array of at least NSTR columns, each of which contains DIM elements. (output)."
+    }
+  ],
+  "allowed_values": {
+    "sid": [
+      {
+        "value": "< 0",
+        "description": "to instruct the API to assume a subsystem containing all buses in the working case."
+      },
+      {
+        "value": ">= 0",
+        "description": "valid bus subsystem identifier. Valid subsystem identifiers range from 0 to 11. Subsystem SID must have been previously defined."
+      }
+    ],
+    "ties": [
+      {
+        "value": "= 1",
+        "description": "for interior subsystem VSC dc lines only."
+      },
+      {
+        "value": "= 2",
+        "description": "for subsystem tie VSC dc lines only."
+      },
+      {
+        "value": "= 3",
+        "description": "for both interior subsystem VSC dc lines and tie VSC dc lines."
+      }
+    ],
+    "flag": [
+      {
+        "value": "= 1",
+        "description": "for only in-service VSC dc lines with one or both converters in-service."
+      },
+      {
+        "value": "= 2",
+        "description": "for only in-service VSC dc lines with both converters in-service."
+      },
+      {
+        "value": "= 3",
+        "description": "for all VSC dc lines."
+      }
+    ],
+    "string": [
+      {
+        "value": "= FROMNUMBER",
+        "description": "Converter 1 bus number."
+      },
+      {
+        "value": "= TONUMBER",
+        "description": "Converter 2 bus number."
+      },
+      {
+        "value": "= MDC",
+        "description": "Control mode."
+      },
+      {
+        "value": "= OWNERS",
+        "description": "Number of owners."
+      },
+      {
+        "value": "= OWN1",
+        "description": "First owner."
+      },
+      {
+        "value": "= OWN2",
+        "description": "Second owner."
+      },
+      {
+        "value": "= OWN3",
+        "description": "Third owner."
+      },
+      {
+        "value": "= OWN4",
+        "description": "Fourth owner."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid TIES value."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid FLAG value."
+    },
+    {
+      "value": "= 5",
+      "description": "Invalid NSTR value."
+    },
+    {
+      "value": "= 6",
+      "description": "DIM, and hence the size of IARRAY, is not large enough."
+    },
+    {
+      "value": "= 7",
+      "description": "Invalid STRING value."
+    }
+  ]
+}

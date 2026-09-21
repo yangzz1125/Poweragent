@@ -1,0 +1,66 @@
+{
+  "module": "psspy",
+  "function_name": "swsmod_status_2",
+  "category": "Switched Shunt Models",
+  "description": "Use this API to change the status of the switched shunt model at a specified switched shunt device. This API routine was first introduced in release 35.0.0. ierr = swsmod_status_2(ibus, id, status)",
+  "python_syntax": "ierr = swsmod_status_2(ibus, id, status)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Switched shunt bus number. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Switched shunt identifier. (input)."
+    },
+    {
+      "name": "status",
+      "description": "New model status. (input; 1 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "status": [
+      {
+        "value": "= 0",
+        "description": "out-of-service."
+      },
+      {
+        "value": "= 1",
+        "description": "in-service."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "no model at this switched shunt device."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid STATUS value."
+    },
+    {
+      "value": "= 3",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 4",
+      "description": "switched shunt not found."
+    },
+    {
+      "value": "= 5",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "module": "psspy",
+  "function_name": "gexmbus",
+  "category": "Diagram View",
+  "description": "Use this API to create a GEXM/GOUT display of a bus in an active Slider diagram in the GUI. Requires a current network case. This API routine was first introduced in release 30.0.0. gexmbus(bus)",
+  "python_syntax": "gexmbus(bus)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "bus",
+      "description": ""
+    }
+  ],
+  "return_values": []
+}

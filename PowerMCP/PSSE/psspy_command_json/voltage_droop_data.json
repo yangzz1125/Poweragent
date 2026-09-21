@@ -1,0 +1,100 @@
+{
+  "module": "psspy",
+  "function_name": "voltage_droop_data",
+  "category": "Power Flow Data",
+  "description": "Use this API routine to modify the voltage droop control in the working case, or to add a new voltage droop control to the working case (see PSSE Program Operation Manual. This API routine was first introduced in release 35.3.0. ierr = voltage_droop_data(name, intgar, realar)",
+  "python_syntax": "ierr = voltage_droop_data(name, intgar, realar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Name of the voltage droop control for which data is to be specified. (input; no default allowed)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of two elements specifying array of 2 elements specifying. (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of seven elements specifying array of 7 elements specifying. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "STATUS, voltage droop control status (0, 1) (0 by default)."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "REGBUS, regulated bus of voltage droop control (0 by default)."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "QMAX, upper Q limit of voltage droop control (1.0 by default)."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "QDB, Q output when voltage is within deadband (0.0 by default)."
+      },
+      {
+        "value": "REALAR(3)",
+        "description": "QMIN, lower Q limit of voltage droop control (-1.0 by default)."
+      },
+      {
+        "value": "REALAR(4)",
+        "description": "VLOW, lower voltage limit of voltage droop control (0.9 by default)."
+      },
+      {
+        "value": "REALAR(5)",
+        "description": "VDBLOW, lower voltage deadband limit of voltage droop control (0.98 by default)."
+      },
+      {
+        "value": "REALAR(6)",
+        "description": "VDBHIGH, higher voltage deadband limit of voltage droop control (1.02 by default)."
+      },
+      {
+        "value": "REALAR(7)",
+        "description": "VHIGH, higher voltage limit of voltage droop control (1.1 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "voltage droop control table is full."
+    },
+    {
+      "value": "= 2",
+      "description": "blank voltage droop control name is invalid."
+    },
+    {
+      "value": "= 3",
+      "description": "voltage droop control characteristic curve is invalid."
+    },
+    {
+      "value": "= 5",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - invalid voltage droop control status - qmax is less than qmin - vhigh is less than vlow - vdbhigh is less than vdblow - vdblow is less than vlow."
+    }
+  ]
+}

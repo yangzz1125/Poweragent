@@ -1,0 +1,67 @@
+{
+  "module": "psspy",
+  "function_name": "har_set_resn_thresholds",
+  "category": "Harmonics Operation",
+  "description": "Use this API to set parameters to filter resonances from harmonic analysis frequency scan response. Two criterions are used to filters peaks that could be considered as resonances. Criterion 1: Slow rising resonance peak, specifiy PCTMX1 and DPCTPN1. Criterion 2: Fast rising resonance peak, specifiy PCTMX2 and DPCTPN2. This API routine was first introduced in release 35.4.0. har_set_resn_thresholds(realar)",
+  "python_syntax": "har_set_resn_thresholds(realar)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "realar",
+      "description": ""
+    }
+  ],
+  "return_values": [],
+  "allowed_values": {
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "current point in percent of maximum peak value (60.0 by default), can also be specified with keyword ‘pctmx1’."
+      },
+      {
+        "value": "= ‘0.0’",
+        "description": "Use default."
+      },
+      {
+        "value": "> 0",
+        "description": "Use specified."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "delta previous and delta next points in percent of current point (75.0 by default), can also be specified with keyword ‘dpctpn1’."
+      },
+      {
+        "value": "= ‘0.0’",
+        "description": "Use default."
+      },
+      {
+        "value": "> 0",
+        "description": "Use specified."
+      },
+      {
+        "value": "REALAR(3)",
+        "description": "current point in percent of maximum peak value (20.0 by default), can also be specified with keyword ‘pctmx2’."
+      },
+      {
+        "value": "= ‘0.0’",
+        "description": "Use default."
+      },
+      {
+        "value": "> 0",
+        "description": "Use specified."
+      },
+      {
+        "value": "REALAR(4)",
+        "description": "delta previous and delta next points in percent of current point (85.0 by default), can also be specified with keyword ‘dpctpn2’."
+      },
+      {
+        "value": "= ‘0.0’",
+        "description": "Use default."
+      },
+      {
+        "value": "> 0",
+        "description": "Use specified."
+      }
+    ]
+  }
+}

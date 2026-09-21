@@ -1,0 +1,62 @@
+{
+  "module": "psspy",
+  "function_name": "gnedat",
+  "category": "Single Element Data",
+  "description": "Use this API routine to return real quantities of a specified GNE device. This API routine was first introduced in release 33.0.0. ierr, rval = gnedat(name, string)",
+  "python_syntax": "ierr, rval = gnedat(name, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Gne device name. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the gne device quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "rval",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= REALn",
+        "description": "nth real data item required by this model; n must be between 1 and the number of real data items used by the model."
+      },
+      {
+        "value": "= Pn",
+        "description": "active power in MW flowing into the GNE device at terminal n; n must be between 1 and the number of terminals used by the model."
+      },
+      {
+        "value": "= Qn",
+        "description": "reactive power in MVAR flowing into the GNE device at terminal n; n must be between 1 and the number of terminals used by the model."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘RVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "GNE device not found; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid value of ‘STRING’; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "For ‘STRING’ value ‘REALn’, n is not valid for this model; ‘RVAL’ unchanged."
+    }
+  ]
+}

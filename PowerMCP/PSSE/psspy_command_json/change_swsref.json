@@ -1,0 +1,46 @@
+{
+  "module": "psspy",
+  "function_name": "change_swsref",
+  "category": "Dynamic Simulation Operation",
+  "description": "This API routine is obsolete. It has been replaced by the API routine change_swsref_2, and is implemented by a call to change_swsref_2. Use this API to change the value of the element of the SWREF array associated with a specified switched shunt. This API routine was first introduced in release 32.2.1. ierr = change_swsref(ibus, newval)",
+  "python_syntax": "ierr = change_swsref(ibus, newval)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Switched shunt bus number. (input)."
+    },
+    {
+      "name": "newval",
+      "description": "New value to be assigned to the swsref array entry associated with switched shunt at bus ibus. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "switched shunt not found."
+    },
+    {
+      "value": "= 2",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - no table mode for switched shunt at this bus. - switched shunt dynamic model at this switched shunt is bypassed."
+    }
+  ]
+}

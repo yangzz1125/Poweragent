@@ -1,0 +1,242 @@
+{
+  "module": "psspy",
+  "function_name": "accc_with_dsp",
+  "category": "Power Flow Operation",
+  "description": "This API routine is obsolete. It has been replaced by the API routine accc_with_dsp_2, and is implemented by a call to accc_with_dsp_2. Use this API to apply the AC contingency calculation function with a generation dispatch function to handle imbalances in power resources and demand due to contingencies. This API routine was first introduced in release 30.2.0. ierr = accc_with_dsp(tol, optacc, label, dfxfile, accfile, thrfile, inlfile)",
+  "python_syntax": "ierr = accc_with_dsp(tol, optacc, label, dfxfile, accfile, thrfile, inlfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "tol",
+      "description": "Mismatch tolerance. (input; Newton solution convergence tolerance, TOLN, by default)."
+    },
+    {
+      "name": "optacc",
+      "description": "An array of eight elements specifying solution options. (input)."
+    },
+    {
+      "name": "label",
+      "description": "Name of the generation dispatch subsystem. (input; blank by default, no default allowed if OPTACC(8) is not 0)."
+    },
+    {
+      "name": "dfxfile",
+      "description": "Name of the distribution factor data file. (input; no default allowed)."
+    },
+    {
+      "name": "accfile",
+      "description": "Name of the contingency solution output file. (input; no default allowed)."
+    },
+    {
+      "name": "thrfile",
+      "description": "Name of the load throwover data file. (input; blank by default)."
+    },
+    {
+      "name": "inlfile",
+      "description": "Name of the unit inertia and governor data file. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "optacc": [
+      {
+        "value": "OPTACC(1)",
+        "description": "tap adjustment flag (tap adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable stepping adjustment."
+      },
+      {
+        "value": "= 2",
+        "description": "enable direct adjustment."
+      },
+      {
+        "value": "OPTACC(2)",
+        "description": "area interchange adjustment flag (area interchange adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable using tie line flows only in calculating area interchange."
+      },
+      {
+        "value": "= 2",
+        "description": "enable using tie line flows and loads in calculating area interchange."
+      },
+      {
+        "value": "OPTACC(3)",
+        "description": "phase shift adjustment flag (phase shift adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTACC(4)",
+        "description": "dc tap adjustment flag (dc tap adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTACC(5)",
+        "description": "switched shunt adjustment flag (switched shunt adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "= 2",
+        "description": "enable continuous mode, disable discrete mode."
+      },
+      {
+        "value": "OPTACC(6)",
+        "description": "solution method flag (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "FDNS."
+      },
+      {
+        "value": "= 1",
+        "description": "FNSL."
+      },
+      {
+        "value": "= 2",
+        "description": "optimized FDNS."
+      },
+      {
+        "value": "OPTACC(7)",
+        "description": "non-divergent solution flag (non-divergent solution option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTACC(8)",
+        "description": "dispatch mode (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "subsystem machines (reserve)."
+      },
+      {
+        "value": "= 2",
+        "description": "subsystem machines (pmax)."
+      },
+      {
+        "value": "= 3",
+        "description": "subsystem machines (inertia)."
+      },
+      {
+        "value": "= 4",
+        "description": "subsystem machines (governor droop)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid TOL value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid OPTACC value."
+    },
+    {
+      "value": "= 3",
+      "description": "generators are converted."
+    },
+    {
+      "value": "= 4",
+      "description": "buses in island(s) without a swing bus; use activity TREE."
+    },
+    {
+      "value": "= 5",
+      "description": "largest mismatch exceeds mismatch tolerance."
+    },
+    {
+      "value": "= 6",
+      "description": "generation dispatch subsystem is not defined."
+    },
+    {
+      "value": "= 7",
+      "description": "too many islands in base case."
+    },
+    {
+      "value": "= 8",
+      "description": "no Distribution Factor Data File specified."
+    },
+    {
+      "value": "= 9",
+      "description": "no Contingency Solution Output File specified."
+    },
+    {
+      "value": "= 21",
+      "description": "file DFXFILE is not in the form of a PSSE-25 or later DFAX file; run DFAX."
+    },
+    {
+      "value": "= 22",
+      "description": "monitored elements exceed limit when adding multi-section line members."
+    },
+    {
+      "value": "= 51",
+      "description": "error opening Contingency Solution Output File."
+    },
+    {
+      "value": "= 52",
+      "description": "error opening Distribution Factor Data File."
+    },
+    {
+      "value": "= 53",
+      "description": "error opening Load Throwover Data File."
+    },
+    {
+      "value": "= 54",
+      "description": "error opening Unit Inertia and Governor Data File."
+    },
+    {
+      "value": "= 55",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

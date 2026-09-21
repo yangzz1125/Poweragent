@@ -1,0 +1,58 @@
+{
+  "module": "psspy",
+  "function_name": "station_pout",
+  "category": "Node Breaker Operation",
+  "description": "This API routine is obsolete. It has been replaced by the API routine station_pout_2, and is implemented by a call to station_pout_2. Use this API to print power flows in a substation. This API routine was first introduced in release 34.0.0. ierr = station_pout(option, station)",
+  "python_syntax": "ierr = station_pout(option, station)",
+  "return_type": "error_only_report",
+  "parameters": [
+    {
+      "name": "option",
+      "description": "None. (input)."
+    },
+    {
+      "name": "station",
+      "description": "Substation number. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "option": [
+      {
+        "value": "= 1",
+        "description": "report the power flows of all substations."
+      },
+      {
+        "value": "= 2",
+        "description": "report the power flows of substation STATION."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid OPTION value."
+    },
+    {
+      "value": "= 2",
+      "description": "STATION does not exist."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,195 @@
+{
+  "module": "psspy",
+  "function_name": "growdiagram_2",
+  "category": "Diagram View",
+  "description": "Use this API to GROW a bus and all the connected buses in an active Slider diagram in the GUI. Requires a current network case. This API routine was first introduced in release 34.3.0. growdiagram_2(numlevels, itemcount, itemlist, xposition, yposition, excludelist)",
+  "python_syntax": "growdiagram_2(numlevels, itemcount, itemlist, xposition, yposition, excludelist)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "numlevels",
+      "description": "Number of levels; include all buses up to this number of connections from each item in itemlist in the grow operation. a value of -1 can be used to grow all buses (subsystem and in-service options still apply), however attempting to lay out several hundred buses or more will take a very large amount of time to complete as psse attempts to calculate best positions for each bus. it is still recommended that the user only grow several levels at once. (input)."
+    },
+    {
+      "name": "itemcount",
+      "description": "Number of items in itemlist. itemcount can be 0 if numlevels is -1. under this condition diagram growth will start at an arbitrary bus. (input; 0 by default)."
+    },
+    {
+      "name": "itemlist",
+      "description": "An array of ITEMCOUNT elements specifying list of items to grow. Each item is given by its generated map string. (input)."
+    },
+    {
+      "name": "xposition",
+      "description": "X coordinate of the first bus on the slider diagram. (input)."
+    },
+    {
+      "name": "yposition",
+      "description": "X coordinate of the first bus on the slider diagram. (input)."
+    },
+    {
+      "name": "excludelist",
+      "description": "An array of thirteen elements specifying list of element types to exclude from the grow operation. (input)."
+    }
+  ],
+  "return_values": [],
+  "allowed_values": {
+    "excludelist": [
+      {
+        "value": "EXCLUDELIST(1)",
+        "description": "Exclude machines (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disabled."
+      },
+      {
+        "value": "= 1",
+        "description": "enabled."
+      },
+      {
+        "value": "EXCLUDELIST(2)",
+        "description": "Exclude loads (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disabled."
+      },
+      {
+        "value": "= 1",
+        "description": "enabled."
+      },
+      {
+        "value": "EXCLUDELIST(3)",
+        "description": "Exclude fixed shunts (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disabled."
+      },
+      {
+        "value": "= 1",
+        "description": "enabled."
+      },
+      {
+        "value": "EXCLUDELIST(4)",
+        "description": "Exclude switched shunts (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disabled."
+      },
+      {
+        "value": "= 1",
+        "description": "enabled."
+      },
+      {
+        "value": "EXCLUDELIST(5)",
+        "description": "Exclude induction machines (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disabled."
+      },
+      {
+        "value": "= 1",
+        "description": "enabled."
+      },
+      {
+        "value": "EXCLUDELIST(6)",
+        "description": "Exclude AC branches (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disabled."
+      },
+      {
+        "value": "= 1",
+        "description": "enabled."
+      },
+      {
+        "value": "EXCLUDELIST(7)",
+        "description": "Exclude 2 winding transformers (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disabled."
+      },
+      {
+        "value": "= 1",
+        "description": "enabled."
+      },
+      {
+        "value": "EXCLUDELIST(8)",
+        "description": "Exclude 3 winding transformers (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disabled."
+      },
+      {
+        "value": "= 1",
+        "description": "enabled."
+      },
+      {
+        "value": "EXCLUDELIST(9)",
+        "description": "Exclude system switching devices (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disabled."
+      },
+      {
+        "value": "= 1",
+        "description": "enabled."
+      },
+      {
+        "value": "EXCLUDELIST(10)",
+        "description": "Exclude DC lines (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disabled."
+      },
+      {
+        "value": "= 1",
+        "description": "enabled."
+      },
+      {
+        "value": "EXCLUDELIST(11)",
+        "description": "Exclude VSC DC lines (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disabled."
+      },
+      {
+        "value": "= 1",
+        "description": "enabled."
+      },
+      {
+        "value": "EXCLUDELIST(12)",
+        "description": "Exclude N-term DC lines (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disabled."
+      },
+      {
+        "value": "= 1",
+        "description": "enabled."
+      },
+      {
+        "value": "EXCLUDELIST(13)",
+        "description": "Exclude FACTS devices (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disabled."
+      },
+      {
+        "value": "= 1",
+        "description": "enabled."
+      }
+    ]
+  }
+}

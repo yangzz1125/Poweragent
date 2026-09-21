@@ -1,0 +1,42 @@
+{
+  "module": "psspy",
+  "function_name": "purge_opf_lnceqn_vang",
+  "category": "Optimal Power Flow Data",
+  "description": "This API routine is obsolete. It has been replaced by the API routine purge_opf_lnceqn_vang_2, and is implemented by a call to purge_opf_lnceqn_vang_2. Use this API to remove a participating bus voltage angle variable from a specified OPF linear constraint dependency equation in the working case. This API routine was first introduced in release 31.0.0. ierr = purge_opf_lnceqn_vang(iqid, eibus)",
+  "python_syntax": "ierr = purge_opf_lnceqn_vang(iqid, eibus)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "iqid",
+      "description": "Linear constraint equation identification number. (input; no default allowed)."
+    },
+    {
+      "name": "eibus",
+      "description": "Bus number. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "specified linear constraint equation does not exist."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid bus number specified."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

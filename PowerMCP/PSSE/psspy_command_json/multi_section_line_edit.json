@@ -1,0 +1,86 @@
+{
+  "module": "psspy",
+  "function_name": "multi_section_line_edit",
+  "category": "Power Flow Data",
+  "description": "Use this API to modify the status and/or metered end designation of an existing multi-section line grouping in the working case (see PSSE Program Operation Manual, Multi-Section Line Grouping Data). This API routine was first introduced in release 28.0.0. ierr = multi_section_line_edit(ibus, jbus, id, intgar)",
+  "python_syntax": "ierr = multi_section_line_edit(ibus, jbus, id, intgar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number of from bus. (input; no default allowed)."
+    },
+    {
+      "name": "jbus",
+      "description": "Bus number of to bus. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Multi-section line identifier; id(1:1) must be ‘&’. (input; ‘&1’ by default)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of two elementsNone. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "STAT, branch status (unchanged by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "for in-service."
+      },
+      {
+        "value": "= 0",
+        "description": "for out-of-service."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "METBUS, metered end bus number (must be IBUS or JBUS) (unchanged by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "multi-section line identifier is more than two characters."
+    },
+    {
+      "value": "= 3",
+      "description": "multi-section line identifier does not start with &"
+    },
+    {
+      "value": "= 4",
+      "description": "multi-section line not found."
+    },
+    {
+      "value": "= 5",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - invalid metered end bus. - invalid branch status."
+    }
+  ]
+}

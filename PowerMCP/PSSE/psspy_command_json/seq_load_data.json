@@ -1,0 +1,88 @@
+{
+  "module": "psspy",
+  "function_name": "seq_load_data",
+  "category": "Fault Analysis Data",
+  "description": "Use this API routine to modify the sequence data of an existing load in the working case (see PSSE Program Operation Manual, Load Data). This API routine was first introduced in release 33.0.0. ierr = seq_load_data(ibus, id, intgar, realar)",
+  "python_syntax": "ierr = seq_load_data(ibus, id, intgar, realar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Load identifier. (input; ‘1’ by default)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of one elements specifying one element. (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of four elementsNone. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "CGR, load grounding code (0 = ungrounded; 1 = grounded) (0 by default)."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "GNEG, negative sequence active power load component; entered as admittance in MW at 1.0 per unit voltage (0.0 by default)."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "BNEG, negative sequence reactive power load component; BNEG is negative for an inductive load and positive for a capacitive load; entered as admittance in MVar at 1.0 per unit voltage (0.0 by default)."
+      },
+      {
+        "value": "REALAR(3)",
+        "description": "GZERO, zero sequence active power load component; entered as admittance in MW at 1.0 per unit voltage (0.0 by default)."
+      },
+      {
+        "value": "REALAR(4)",
+        "description": "BZERO, zero sequence reactive power load component; BZERO is negative for an inductive load and positive for a capacitive load; entered as admittance in MVar at 1.0 per unit voltage (0.0 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "load identifier is more than two characters."
+    },
+    {
+      "value": "= 3",
+      "description": "load not found."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - invalid grounding code."
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "lodtype",
+  "category": "Single Element Data",
+  "description": "Use this API to return the load type character string. This API routine was first introduced in release 35.0.0. ierr, string = lodtype(ibus, id)",
+  "python_syntax": "ierr, string = lodtype(ibus, id)",
+  "return_type": "error_and_string",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    },
+    {
+      "name": "id",
+      "description": "Load identifier. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the load type. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘STRING’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Bus not found; ‘STRING’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Load not found; ‘STRING’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "Bus type code is not 1, 2 or 3; ‘STRING’ returned."
+    },
+    {
+      "value": "= 4",
+      "description": "Load out-of-service; ‘STRING’ returned."
+    }
+  ]
+}

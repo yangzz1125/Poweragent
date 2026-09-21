@@ -1,0 +1,15 @@
+{
+  "module": "psspy",
+  "function_name": "setactiveeventstudy",
+  "category": "Event Studies",
+  "description": "Use this API to select an Event Study in an Event file as the active Event Study for running dynamic or power flow event studies. This API routine was first introduced in release 32.0.0. setactiveeventstudy(sfile)",
+  "python_syntax": "setactiveeventstudy(sfile)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "sfile",
+      "description": ""
+    }
+  ],
+  "return_values": []
+}

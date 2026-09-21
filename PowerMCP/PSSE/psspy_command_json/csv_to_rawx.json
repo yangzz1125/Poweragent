@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "csv_to_rawx",
+  "category": "Power Flow Operation",
+  "description": "Use this API to import a rawx (extended raw data) data table from a CSV (comma-separated values) file. This API routine was first introduced in release 35.1.0. ierr = csv_to_rawx(tblname, sfile)",
+  "python_syntax": "ierr = csv_to_rawx(tblname, sfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "tblname",
+      "description": "Name of the data table to import into (not case sensitive). (input; no default allowed)."
+    },
+    {
+      "name": "sfile",
+      "description": "File path of the csv input file. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid tblname."
+    },
+    {
+      "value": "= 2",
+      "description": "error opening SFILE."
+    },
+    {
+      "value": "= 3",
+      "description": "error generating RAWX data."
+    },
+    {
+      "value": "= 4",
+      "description": "error reading RAWX data."
+    },
+    {
+      "value": "= 10",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "module": "psspy",
+  "function_name": "cctmdlnam_msco",
+  "category": "Single Element Data",
+  "description": "Use this API to return model name of the CCT Miscellaneous other model. This API routine was first introduced in release 33.9.0. ierr, model = cctmdlnam_msco(mins)",
+  "python_syntax": "ierr, model = cctmdlnam_msco(mins)",
+  "return_type": "error_and_model",
+  "parameters": [
+    {
+      "name": "mins",
+      "description": "Model instance number of the model. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "model",
+      "description": "Model name. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; MODEL name is returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Invalid MINS value."
+    },
+    {
+      "value": "= 2",
+      "description": "No CCT models in case."
+    },
+    {
+      "value": "= 3",
+      "description": "No model attached for the specified MINS."
+    },
+    {
+      "value": "= 4",
+      "description": "Dynamics data not present in working memory."
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "module": "psspy",
+  "function_name": "newdiagfile",
+  "category": "Diagram View",
+  "description": "Use this API to open a new Slider diagram in the GUI. This API routine was first introduced in release 30.0.0. newdiagfile()",
+  "python_syntax": "newdiagfile()",
+  "return_type": "void",
+  "parameters": [],
+  "return_values": []
+}

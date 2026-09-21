@@ -1,0 +1,78 @@
+{
+  "module": "psspy",
+  "function_name": "move3wnd",
+  "category": "Power Flow Operation",
+  "description": "Use this API to disconnect the third bus of a specified three-winding transformer from the bus to which it is currently connected, and reconnect it to a designated bus. This API routine was first introduced in release 28.0.0. ierr = move3wnd(ibus, jbus1, jbus2, ckt, newtobus2, newckt)",
+  "python_syntax": "ierr = move3wnd(ibus, jbus1, jbus2, ckt, newtobus2, newckt)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "One of the buses connected by the three-winding transformer; the transformer will remain connected to this bus. (input; no default allowed)."
+    },
+    {
+      "name": "jbus1",
+      "description": "Other bus connected by the three-winding transformer; the transformer will remain connected to this bus. (input; no default allowed)."
+    },
+    {
+      "name": "jbus2",
+      "description": "Third bus connected by the three-winding transformer; this connection will be severed and the transformer connected to bus newtobus2. (input; no default allowed)."
+    },
+    {
+      "name": "ckt",
+      "description": "Circuit identifier of the three-winding transformer to be rerouted. (input; ‘1’ by default)."
+    },
+    {
+      "name": "newtobus2",
+      "description": "Number of the bus to which the three-winding transformer is to be connected. (input; no default allowed)."
+    },
+    {
+      "name": "newckt",
+      "description": "New circuit identifier to be assigned to the rerouted three-winding transformer. (input; CKT by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "three-winding transformer not found."
+    },
+    {
+      "value": "= 3",
+      "description": "new connection bus must not be the present from or to buses."
+    },
+    {
+      "value": "= 4",
+      "description": "circuit NEWCKT from IBUS to JBUS1 to NEWTOBUS2 already exists."
+    },
+    {
+      "value": "= 5",
+      "description": "invalid new identifier; cannot start with &, * or @"
+    },
+    {
+      "value": "= 6",
+      "description": "invalid new identifier; must not be blank."
+    },
+    {
+      "value": "= 7",
+      "description": "node-breaker terminal connection table is full."
+    },
+    {
+      "value": "= 8",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

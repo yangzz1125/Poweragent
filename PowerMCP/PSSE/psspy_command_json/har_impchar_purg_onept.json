@@ -1,0 +1,34 @@
+{
+  "module": "psspy",
+  "function_name": "har_impchar_purg_onept",
+  "category": "Harmonics Data",
+  "description": "Use this API to purge specified data point in harmonics impedance characteristics table. This API routine was first introduced in release 35.4.0. ierr = har_impchar_purg_onept(name, hpt)",
+  "python_syntax": "ierr = har_impchar_purg_onept(name, hpt)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Harmonics impedance characteristics table name. (input; no default allowed)."
+    },
+    {
+      "name": "hpt",
+      "description": "Harmonic number (h) at a point in data table where h, r/r0, l/) and c/c0 data is purged. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

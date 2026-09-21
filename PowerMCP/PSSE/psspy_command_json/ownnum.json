@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "ownnum",
+  "category": "Single Element Data",
+  "description": "Returns the owner number for a specified owner name. This API routine was first introduced in release 28.0.0. ierr, iar = ownnum(string)",
+  "python_syntax": "ierr, iar = ownnum(string)",
+  "return_type": "error_and_value",
+  "parameters": [
+    {
+      "name": "string",
+      "description": "Owner name. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "iar",
+      "description": "Owner number. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IAR’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Owner with name ‘STRING’ not found."
+    },
+    {
+      "value": "> 1",
+      "description": "Multiple owners with the name ‘STRING’ found; ‘IAR’ returned as the lowest numbered of these."
+    }
+  ]
+}

@@ -1,0 +1,188 @@
+{
+  "module": "psspy",
+  "function_name": "ownm_3",
+  "category": "Power Flow Operation",
+  "description": "This API routine is the third release of the owner renumbering function. Use this API routine to reassign the buses, loads, machines, induction machines, branches, FACTS devices, VSC dc lines, and/or GNE devices in a specified subsystem of the working case from their original owner to a designated owner. This API routine was first introduced in release 33.0.0. ierr = ownm_3(sid, all, status, ionew)",
+  "python_syntax": "ierr = ownm_3(sid, all, status, ionew)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid subsystem identifier. valid subsystem identifiers range from 0 to 11. subsystem sid must have been previously defined. (input; 0 by default)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem flag. (input; 1 by default)."
+    },
+    {
+      "name": "status",
+      "description": "An array of nine elements specifying They are used to control reassignment options. (input)."
+    },
+    {
+      "name": "ionew",
+      "description": "New owner to which the specified equipment items are to be assigned. ionew must be between 1 and 9999. (input; 1 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 0",
+        "description": "process only buses in subsystem SID."
+      },
+      {
+        "value": "= 1",
+        "description": "process all buses."
+      }
+    ],
+    "status": [
+      {
+        "value": "STATUS(1)",
+        "description": "bus owners to IONEW (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "leave bus ownership unchanged."
+      },
+      {
+        "value": "= 1",
+        "description": "change bus owners to IONEW."
+      },
+      {
+        "value": "STATUS(2)",
+        "description": "load owners to IONEW (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "leave load ownership unchanged."
+      },
+      {
+        "value": "= 1",
+        "description": "change load owners to IONEW."
+      },
+      {
+        "value": "STATUS(3)",
+        "description": "machine owners to IONEW (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "leave machine ownership unchanged."
+      },
+      {
+        "value": "= 1",
+        "description": "change machine owners to IONEW."
+      },
+      {
+        "value": "STATUS(4)",
+        "description": "induction machine owners to IONEW (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "leave induction machine ownership unchanged."
+      },
+      {
+        "value": "= 1",
+        "description": "change induction machine owners to IONEW."
+      },
+      {
+        "value": "STATUS(5)",
+        "description": "branch owners to IONEW (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "leave branch ownership unchanged."
+      },
+      {
+        "value": "= 1",
+        "description": "change branch owners to IONEW."
+      },
+      {
+        "value": "STATUS(6)",
+        "description": "FACTS device owners to IONEW (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "leave FACTS device ownership unchanged."
+      },
+      {
+        "value": "= 1",
+        "description": "change FACTS device owners to IONEW."
+      },
+      {
+        "value": "STATUS(7)",
+        "description": "VSC dc line owners to IONEW (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "leave VSC dc line ownership unchanged."
+      },
+      {
+        "value": "= 1",
+        "description": "change VSC dc line owners to IONEW."
+      },
+      {
+        "value": "STATUS(8)",
+        "description": "GNE device owners to IONEW (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "leave GNE device ownership unchanged."
+      },
+      {
+        "value": "= 1",
+        "description": "change GNE device owners to IONEW."
+      },
+      {
+        "value": "STATUS(9)",
+        "description": "branch, series FACTS device, VSC dc line, and series GNE device option (1 by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "subsystem branches only."
+      },
+      {
+        "value": "= 2",
+        "description": "subsystem ties only."
+      },
+      {
+        "value": "= 3",
+        "description": "both subsystem branches and ties."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ALL value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid STATUS value."
+    },
+    {
+      "value": "= 4",
+      "description": "invalid new owner number."
+    },
+    {
+      "value": "= 5",
+      "description": "owner table is full; cannot add owner to the working case."
+    },
+    {
+      "value": "= 6",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

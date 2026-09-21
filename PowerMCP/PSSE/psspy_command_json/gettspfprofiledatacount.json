@@ -1,0 +1,42 @@
+{
+  "module": "psspy",
+  "function_name": "gettspfprofiledatacount",
+  "category": "Multiple Element Data",
+  "description": "Use this API to return the number of Time Series Power Flow profile data count. This API routine was first introduced in release 35.4.0. ierr, count = gettspfprofiledatacount(curvesetid,curvecol)",
+  "python_syntax": "ierr, count = gettspfprofiledatacount(curvesetid,curvecol)",
+  "return_type": "error_and_count",
+  "parameters": [
+    {
+      "name": "curvesetid",
+      "description": "Curve id. (input; no default allowed)."
+    },
+    {
+      "name": "curvecol",
+      "description": "Curve col. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "The error code . (output)."
+    },
+    {
+      "name": "count",
+      "description": "Number of time series power flow data. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Invalid input for non-optional field."
+    },
+    {
+      "value": "= 2",
+      "description": "Internal database error."
+    }
+  ]
+}

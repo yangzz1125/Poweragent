@@ -1,0 +1,186 @@
+{
+  "module": "psspy",
+  "function_name": "three_winding_data",
+  "category": "Power Flow Data",
+  "description": "This API routine is obsolete. It has been replaced by the API routine three_wnd_impedance_data,three_wnd_winding_data, and is implemented by a call to three_wnd_impedance_data,three_wnd_winding_data. Use this API to modify the data of an existing three-winding transformer in the working case or to add a new three-winding transformer to the working case. This API routine was first introduced in release 28.0.0. ierr, realaro = three_winding_data(ibus, jbus, kbus, ckt, intgar, realari, name)",
+  "python_syntax": "ierr, realaro = three_winding_data(ibus, jbus, kbus, ckt, intgar, realari, name)",
+  "return_type": "error_and_record",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number of one of the buses. (input)."
+    },
+    {
+      "name": "jbus",
+      "description": "Bus number one of the other buses. (input)."
+    },
+    {
+      "name": "kbus",
+      "description": "Bus number of the third bus. (input)."
+    },
+    {
+      "name": "ckt",
+      "description": "Transformer circuit identifier. (input)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of seventeen elementsNone. (input)."
+    },
+    {
+      "name": "realari",
+      "description": "An array of forty one elementsNone. (input)."
+    },
+    {
+      "name": "name",
+      "description": "Transformer name. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "realaro",
+      "description": "An array of twelve elementsNone. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "O1, first owner number."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "O2, second owner number."
+      },
+      {
+        "value": "INTGAR(3)",
+        "description": "O3, third owner number."
+      },
+      {
+        "value": "INTGAR(4)",
+        "description": "O4, fourth owner number."
+      },
+      {
+        "value": "INTGAR(5)",
+        "description": "NTP1, number of tap positions."
+      },
+      {
+        "value": "INTGAR(6)",
+        "description": "TAB1, impedance correction table number."
+      },
+      {
+        "value": "INTGAR(7)",
+        "description": "CONT1, controlled bus number."
+      },
+      {
+        "value": "INTGAR(8)",
+        "description": "SICOD1, negative for controlled bus on winding one side."
+      },
+      {
+        "value": "INTGAR(9)",
+        "description": "COD1, adjustment control mode flag (-3 through +3)."
+      },
+      {
+        "value": "INTGAR(10)",
+        "description": "CW, winding data I/O code."
+      },
+      {
+        "value": "INTGAR(11)",
+        "description": "CZ, impedance data I/O code."
+      },
+      {
+        "value": "INTGAR(12)",
+        "description": "CM, magnetizing admittance data I/O code."
+      },
+      {
+        "value": "INTGAR(13)",
+        "description": "STAT, branch status."
+      },
+      {
+        "value": "INTGAR(14)",
+        "description": "NMETBS, non-metered end bus number (IBUS, JBUS or KBUS)."
+      },
+      {
+        "value": "INTGAR(15)",
+        "description": "WN1BUS, winding one side bus number (IBUS, JBUS or KBUS)."
+      },
+      {
+        "value": "INTGAR(16)",
+        "description": "WN2BUS, winding two side bus number (IBUS, JBUS or KBUS)."
+      },
+      {
+        "value": "INTGAR(17)",
+        "description": "WN3BUS, winding three side bus number (IBUS, JBUS or KBUS)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "circuit identifier is more than two characters."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid CW, CZ and/or CM value."
+    },
+    {
+      "value": "= 4",
+      "description": "CW, CZ and/or CM >1 but no base voltage at one or more buses."
+    },
+    {
+      "value": "= 5",
+      "description": "three different buses must be specified."
+    },
+    {
+      "value": "= 6",
+      "description": "blank circuit identifier."
+    },
+    {
+      "value": "= 7",
+      "description": "circuit identifier may not start with ‘&’."
+    },
+    {
+      "value": "= 8",
+      "description": "three-winding transformer table full."
+    },
+    {
+      "value": "= 9",
+      "description": "bus table full."
+    },
+    {
+      "value": "= 10",
+      "description": "not enough branch table entries available."
+    },
+    {
+      "value": "= 11",
+      "description": "not enough room in two winding transformer table."
+    },
+    {
+      "value": "= 12",
+      "description": "not enough room in branch ownership table."
+    },
+    {
+      "value": "= 13",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "warnings - one or more of: - Invalid set of winding buses. - Invalid transformer status. - Invalid non-metered end bus. - Winding side buses interchanged. - Losses are too big relative to total impedance at winding base MVA. - Magnitude of winding impedance is less than 0.00001. - Controlled bus not found. - Invalid adjustment control mode flag. - Any two-winding transformer warnings."
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "module": "psspy",
+  "function_name": "rwmm",
+  "category": "Power Flow Operation",
+  "description": "Use this API to replicate transaction event data in the form of a transactions data file. This API routine was first introduced in release 28.0.0. ierr = rwmm(out, ofile)",
+  "python_syntax": "ierr = rwmm(out, ofile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "out",
+      "description": "Selection option. (input; 1 by default)."
+    },
+    {
+      "name": "ofile",
+      "description": "Name of the file to which data records are to be written (when out is 0). (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "out": [
+      {
+        "value": "= 0",
+        "description": "direct output to the data file specified by OFILE."
+      },
+      {
+        "value": "= 1",
+        "description": "direct output to the current report device."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid OUT value."
+    },
+    {
+      "value": "= 2",
+      "description": "error opening OFILE."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

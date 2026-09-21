@@ -1,0 +1,15 @@
+{
+  "module": "psspy",
+  "function_name": "growstation",
+  "category": "Diagram View",
+  "description": "This API routine was first introduced in release 34.0.0. growstation(stationnum)",
+  "python_syntax": "growstation(stationnum)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "stationnum",
+      "description": ""
+    }
+  ],
+  "return_values": []
+}

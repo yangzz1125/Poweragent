@@ -1,0 +1,15 @@
+{
+  "module": "psspy",
+  "function_name": "setdiagtitle",
+  "category": "Diagram View",
+  "description": "Use this API to set the title of the active Slider diagram. This API routine was first introduced in release 34.0.0. setdiagtitle(diagtitle)",
+  "python_syntax": "setdiagtitle(diagtitle)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "diagtitle",
+      "description": ""
+    }
+  ],
+  "return_values": []
+}

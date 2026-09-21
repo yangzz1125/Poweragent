@@ -1,0 +1,25 @@
+{
+  "module": "psspy",
+  "function_name": "newseq",
+  "category": "Fault Analysis Operation",
+  "description": "Use this API to initialize the fault analysis data arrays, set them to default values, and set the flag indicating that sequence data is present in the working case. This API routine was first introduced in release 29.0.0. ierr = newseq()",
+  "python_syntax": "ierr = newseq()",
+  "return_type": "error_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": ""
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

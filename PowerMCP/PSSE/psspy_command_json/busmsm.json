@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "busmsm",
+  "category": "Single Element Data",
+  "description": "Use this API to return complex bus mismatch. This API routine was first introduced in release 28.0.0. ierr, cmpval = busmsm(ibus)",
+  "python_syntax": "ierr, cmpval = busmsm(ibus)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "cmpval",
+      "description": "Complex bus mismatch. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘P’ and ‘Q’ or ‘CMPVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Bus not found; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Bus type code greater than 4; ‘P’ and ‘Q’ or ‘CMPVAL’ returned set to zero."
+    }
+  ]
+}

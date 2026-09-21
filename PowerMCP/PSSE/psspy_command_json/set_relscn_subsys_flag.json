@@ -1,0 +1,54 @@
+{
+  "module": "psspy",
+  "function_name": "set_relscn_subsys_flag",
+  "category": "Dynamic Simulation Operation",
+  "description": "Use this API api for get/set the flag that is used for the subsystem defintion for performing scans of branches using a generic branch relay. This API routine was first introduced in release 34.0.0. ierr = set_relscn_subsys_flag(all, sid) ierr, all = set_relscn_subsys_flag()",
+  "python_syntax": "ierr = set_relscn_subsys_flag(all, sid) ierr, all = set_relscn_subsys_flag()",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem flag. (input; 1 by default)."
+    },
+    {
+      "name": "sid",
+      "description": "Valid subsystem identifier. valid subsystem identifiers range from 0 to 11. subsystem sid must have been previously defined. (input; 0 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 0",
+        "description": "process only buses in subsystem SID."
+      },
+      {
+        "value": "= 1",
+        "description": "process all buses."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid ALL value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid SID value."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

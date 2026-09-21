@@ -1,0 +1,27 @@
+{
+  "module": "psspy",
+  "function_name": "har_exists_fscan_results",
+  "category": "Harmonics Operation",
+  "description": "Check if Harmonics Frequency Scan results available in PSSE working memory from previously run harmonic analysis activity. This API routine was first introduced in release 35.5.3. ival = har_exists_fscan_results()",
+  "python_syntax": "ival = har_exists_fscan_results()",
+  "return_type": "value_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ival",
+      "description": ""
+    }
+  ],
+  "allowed_values": {
+    "ival": [
+      {
+        "value": "= 0",
+        "description": "PSSE working memory does not have Frequency Scan results."
+      },
+      {
+        "value": "= 1",
+        "description": "PSSE working memory has Frequency Scan results."
+      }
+    ]
+  }
+}

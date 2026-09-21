@@ -1,0 +1,134 @@
+{
+  "module": "psspy",
+  "function_name": "change_plmod_data",
+  "category": "Plant Related Models",
+  "description": "This API routine is obsolete. It has been replaced by the API routine CHANGE_PLMOD_CON, CHANGE_PLMOD_ICON, CHANGE_PLMOD_CHRICN, and is implemented by a call to CHANGE_PLMOD_CON, CHANGE_PLMOD_ICON, CHANGE_PLMOD_CHRICN. Use this API to change the value of an ICON and/or CON of a plant related model of a designated type at a specified machine. This API routine was first introduced in release 28.0.0. ierr = change_plmod_data(ibus,id,mtype,name,j,rdata,i,idata,chdata)",
+  "python_syntax": "ierr = change_plmod_data(ibus,id,mtype,name,j,rdata,i,idata,chdata)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Plant bus number. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Machine identifier. (input; ‘1’ by default)."
+    },
+    {
+      "name": "mtype",
+      "description": "Model type. (input; 1 by default)."
+    },
+    {
+      "name": "name",
+      "description": "Model name. (input; no default allowed)."
+    },
+    {
+      "name": "j",
+      "description": "Con number to change relative to the start of the block of cons assigned to this model, or 0 for no con change (1 for con(j), 2 for con(j+1), etc.). (input; 0 by default)."
+    },
+    {
+      "name": "rdata",
+      "description": "New con value. (input; unchanged by default)."
+    },
+    {
+      "name": "i",
+      "description": "Icon number to change relative to the start of the block of icons assigned to this model, or 0 for no icon change (1 for icon(i), 2 for icon(i+1), etc.). (input; 0 by default)."
+    },
+    {
+      "name": "idata",
+      "description": "New integer icon value. (input; unchanged by default). When a character value is intended for an ICON value, the IDATA entry is ignored and the integer ICON is set to 0)."
+    },
+    {
+      "name": "chdata",
+      "description": "New character icon value (no default allowed if the character icon is to be changed). when an integer value is intended for an icon value, the chdata entry must be either defaulted or specified as either ‘$$’ or ‘ ‘; the character icon is set to ‘$$’. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "mtype": [
+      {
+        "value": "= 1",
+        "description": "generator model."
+      },
+      {
+        "value": "= 2",
+        "description": "compensator model."
+      },
+      {
+        "value": "= 3",
+        "description": "stabilizer model."
+      },
+      {
+        "value": "= 4",
+        "description": "minimum excitation limiter model."
+      },
+      {
+        "value": "= 5",
+        "description": "maximum excitation limiter model."
+      },
+      {
+        "value": "= 6",
+        "description": "excitation system model."
+      },
+      {
+        "value": "= 7",
+        "description": "turbine-governor model."
+      },
+      {
+        "value": "= 8",
+        "description": "turbine-load controller model."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid MTYPE value."
+    },
+    {
+      "value": "= 2",
+      "description": "unknown model NAME."
+    },
+    {
+      "value": "= 3",
+      "description": "no model of type MTYPE at this machine."
+    },
+    {
+      "value": "= 4",
+      "description": "type MTYPE model at this machine is aaa not xxx."
+    },
+    {
+      "value": "= 5",
+      "description": "CON number exceeds the number of CONs used by the model."
+    },
+    {
+      "value": "= 6",
+      "description": "ICON number exceeds the number of ICONs used by the model."
+    },
+    {
+      "value": "= 7",
+      "description": "neither the CON nor ICON number is positive."
+    },
+    {
+      "value": "= 8",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 9",
+      "description": "machine not found."
+    },
+    {
+      "value": "= 10",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

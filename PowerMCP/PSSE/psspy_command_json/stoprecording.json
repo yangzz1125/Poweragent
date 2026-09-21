@@ -1,0 +1,29 @@
+{
+  "module": "psspy",
+  "function_name": "stoprecording",
+  "category": "Non-Engineering",
+  "description": "Stop recording program operation. This API routine was first introduced in release 30.0.0. ierr = stoprecording()",
+  "python_syntax": "ierr = stoprecording()",
+  "return_type": "error_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": ""
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "error closing file."
+    },
+    {
+      "value": "= 2",
+      "description": "not recording."
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "module": "psspy",
+  "function_name": "delete_all_plot_channels",
+  "category": "Dynamic Simulation Output Channel Operation",
+  "description": "Use this API to delete all the plot channels in the working case. Use of this API will reset the number of plot channels to zero and the next channel to one. This API routine was first introduced in release 32.2.1. ierr = delete_all_plot_channels()",
+  "python_syntax": "ierr = delete_all_plot_channels()",
+  "return_type": "error_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": ""
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

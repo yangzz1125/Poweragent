@@ -1,0 +1,34 @@
+{
+  "module": "psspy",
+  "function_name": "gic_read",
+  "category": "Gic Operation",
+  "description": "Use this API to read GIC Data Text (.gic) File into the working case memory. This API routine was first introduced in release 34.8.0. ierr = gic_read(rfile)",
+  "python_syntax": "ierr = gic_read(rfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "rfile",
+      "description": "Gic data file name. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "error opening file."
+    },
+    {
+      "value": "= 2",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

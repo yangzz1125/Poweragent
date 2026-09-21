@@ -1,0 +1,229 @@
+{
+  "module": "psspy",
+  "function_name": "setdiagresrel",
+  "category": "Diagram View",
+  "description": "This API routine is obsolete. It has been replaced by the API routine setdiagresrel_2, and is implemented by a call to setdiagresrel_2. Use this API to specify the reliability annotation options in the active Slider diagram. This API routine was first introduced in release 31.0.0. setdiagresrel(outmode, mode, busmode, cntbus, cntbrn, detbus, detbrn, prbbus, prbbrn, voltrec, cntlabel, cntlist)",
+  "python_syntax": "setdiagresrel(outmode, mode, busmode, cntbus, cntbrn, detbus, detbrn, prbbus, prbbrn, voltrec, cntlabel, cntlist)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "outmode",
+      "description": "Mode of results displayed. (input)."
+    },
+    {
+      "name": "mode",
+      "description": "Type of reliability results displayed. (input)."
+    },
+    {
+      "name": "busmode",
+      "description": "Mode of bus reporting. (input)."
+    },
+    {
+      "name": "cntbus",
+      "description": "If mode = 0, is the option to specify whether bus voltage is displayed. (input)."
+    },
+    {
+      "name": "cntbrn",
+      "description": "If mode = 0, is the option to specify whether branch flow loading is displayed. (input)."
+    },
+    {
+      "name": "detbus",
+      "description": "If mode = 1, is the option to specify which bus voltage violations are displayed. non-zero values may be summed. (input)."
+    },
+    {
+      "name": "detbrn",
+      "description": "If mode = 1, is the option to specify which branch flow overloading violations are displayed. (input)."
+    },
+    {
+      "name": "prbbus",
+      "description": "If mode = 2, is the option to specify which bus voltage violations are displayed. (input)."
+    },
+    {
+      "name": "prbbrn",
+      "description": "If mode = 2, is the option to specify which branch flow overloading violations are displayed. (input)."
+    },
+    {
+      "name": "voltrec",
+      "description": "Index into the voltage limit record array for the current dfax file. (input)."
+    },
+    {
+      "name": "cntlabel",
+      "description": "Contingency to display results for. (input)."
+    },
+    {
+      "name": "cntlist",
+      "description": "What contingencies are listed for selection. (input)."
+    }
+  ],
+  "return_values": [],
+  "allowed_values": {
+    "outmode": [
+      {
+        "value": "= 1",
+        "description": "post contingency stage."
+      },
+      {
+        "value": "= 2",
+        "description": "post tripping stage."
+      },
+      {
+        "value": "= 3",
+        "description": "post corrective actions stage."
+      }
+    ],
+    "mode": [
+      {
+        "value": "= 0",
+        "description": "contingency analysis results."
+      },
+      {
+        "value": "= 1",
+        "description": "deterministic reliability results."
+      },
+      {
+        "value": "= 2",
+        "description": "probabilistic reliability results."
+      }
+    ],
+    "busmode": [
+      {
+        "value": "= 0",
+        "description": "bus voltage violations."
+      },
+      {
+        "value": "= 1",
+        "description": "bus load curtailments."
+      }
+    ],
+    "cntbus": [
+      {
+        "value": "= 0",
+        "description": "don’t display Bus voltage."
+      },
+      {
+        "value": "= 1",
+        "description": "display Bus voltage."
+      }
+    ],
+    "cntbrn": [
+      {
+        "value": "= 0",
+        "description": "don’t display Branch flow loading."
+      },
+      {
+        "value": "= 1",
+        "description": "display MVA loading."
+      },
+      {
+        "value": "= 2",
+        "description": "display Percent (%)."
+      },
+      {
+        "value": "= 3",
+        "description": "display both MVA and Percent (%)."
+      }
+    ],
+    "detbus": [
+      {
+        "value": "= 0",
+        "description": "don’t display bus voltage violations."
+      },
+      {
+        "value": "= 1",
+        "description": "# of contingencies resulting in violations."
+      },
+      {
+        "value": "= 2",
+        "description": "contingency with maximum violation."
+      },
+      {
+        "value": "= 4",
+        "description": "average violations (AV)."
+      },
+      {
+        "value": "= 8",
+        "description": "maximum violation (MV)."
+      }
+    ],
+    "detbrn": [
+      {
+        "value": "= 0",
+        "description": "don’t display bus voltage violations."
+      },
+      {
+        "value": "= 1",
+        "description": "# of contingencies resulting in violations."
+      },
+      {
+        "value": "= 2",
+        "description": "Contingency with maximum loading."
+      },
+      {
+        "value": "= 4",
+        "description": "available capacity (AC)."
+      },
+      {
+        "value": "= 6",
+        "description": "maximum loading % (ML)."
+      },
+      {
+        "value": "= 8",
+        "description": "average violations (AV)."
+      }
+    ],
+    "prbbus": [
+      {
+        "value": "= 0",
+        "description": "don’t display bus voltage violations."
+      },
+      {
+        "value": "= 1",
+        "description": "frequency (OC/Y)."
+      },
+      {
+        "value": "= 2",
+        "description": "impact (VI)."
+      },
+      {
+        "value": "= 4",
+        "description": "probability (H/Y)."
+      },
+      {
+        "value": "= 8",
+        "description": "expected energy curtailed."
+      }
+    ],
+    "prbbrn": [
+      {
+        "value": "= 0",
+        "description": "don’t display bus voltage violations."
+      },
+      {
+        "value": "= 1",
+        "description": "frequency (OC/Y)s."
+      },
+      {
+        "value": "= 2",
+        "description": "impact (FI)."
+      },
+      {
+        "value": "= 4",
+        "description": "probability (H/Y)."
+      }
+    ],
+    "cntlist": [
+      {
+        "value": "= 1",
+        "description": "all contingencies are listed."
+      },
+      {
+        "value": "= 2",
+        "description": "only those contingencies that cause overloading violations are listed."
+      },
+      {
+        "value": "= 3",
+        "description": "only those contingencies that cause violations are listed."
+      }
+    ]
+  }
+}

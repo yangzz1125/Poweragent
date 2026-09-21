@@ -1,0 +1,33 @@
+{
+  "module": "psspy",
+  "function_name": "scenariogrouplist",
+  "category": "Scenarios",
+  "description": "Use this API to retrieve the list of groups in the Scenario. This API routine was first introduced in release 33.0.0. ierr, sgroups = scenariogrouplist()",
+  "python_syntax": "ierr, sgroups = scenariogrouplist()",
+  "return_type": "error_and_count",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "sgroups",
+      "description": "An array of NGROUPS elements specifying list of groups in the Scenario. (output; no default allowed)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "no Scenario in memory."
+    }
+  ]
+}

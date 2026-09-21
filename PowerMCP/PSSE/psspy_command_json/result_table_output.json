@@ -1,0 +1,46 @@
+{
+  "module": "psspy",
+  "function_name": "result_table_output",
+  "category": "Power Flow Operation",
+  "description": "Use this API to get and set the default tabular output. This API routine was first introduced in release 35.0.0. ierr = result_table_output(ival) ierr, ival = result_table_output()",
+  "python_syntax": "ierr = result_table_output(ival) ierr, ival = result_table_output()",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ival",
+      "description": "Output option setting. if no interactive spreadsheet device is available, report device text output will be used instead. (input; if Batch command or for Python if specified as an argument, or for Fortran if ICODE is 0; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "ival": [
+      {
+        "value": "= 0",
+        "description": "no output."
+      },
+      {
+        "value": "= 1",
+        "description": "interactive spreadsheet device output."
+      },
+      {
+        "value": "= 2",
+        "description": "report device text output."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

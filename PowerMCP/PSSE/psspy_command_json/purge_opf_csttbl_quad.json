@@ -1,0 +1,34 @@
+{
+  "module": "psspy",
+  "function_name": "purge_opf_csttbl_quad",
+  "category": "Optimal Power Flow Data",
+  "description": "Use this API to purge an optimal power flow quadratic cost curve record from the working case. This API routine was first introduced in release 30.0.0. ierr = purge_opf_csttbl_quad(tbl)",
+  "python_syntax": "ierr = purge_opf_csttbl_quad(tbl)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "tbl",
+      "description": "Quadratic cost curve table number. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "specified quadratic cost table does not exist."
+    },
+    {
+      "value": "= 2",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

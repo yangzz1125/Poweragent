@@ -1,0 +1,46 @@
+{
+  "module": "psspy",
+  "function_name": "gendt1",
+  "category": "Single Element Data",
+  "description": "Returns total plant power output in MVA. This API routine was first introduced in release 28.0.0. ierr, rval = gendt1(ibus)",
+  "python_syntax": "ierr, rval = gendt1(ibus)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "rval",
+      "description": "Magnitude of total plant generation. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘RVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Bus not found; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Bus type code is not 2 or 3; ‘RVAL’ returned."
+    },
+    {
+      "value": "= 3",
+      "description": "No machines at bus; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 4",
+      "description": "No online machines; ‘RVAL’ of 0.0 returned."
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "module": "psspy",
+  "function_name": "staswdevint",
+  "category": "Single Element Data",
+  "description": "Use this API routine to return integer substation switching device values. This API routine was first introduced in release 34.1.0. ierr, ival = staswdevint(ista, inode, jnode, id, string)",
+  "python_syntax": "ierr, ival = staswdevint(ista, inode, jnode, id, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ista",
+      "description": "Substation number. (input)."
+    },
+    {
+      "name": "inode",
+      "description": "“from” node number. (input)."
+    },
+    {
+      "name": "jnode",
+      "description": "“to” node number. (input)."
+    },
+    {
+      "name": "id",
+      "description": "Switching device identifier. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "ival",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= TYPE",
+        "description": "switching device type (1 through 3)."
+      },
+      {
+        "value": "= STATUS",
+        "description": "switching device status."
+      },
+      {
+        "value": "= NSTATUS",
+        "description": "switching device normal status."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "substation not found; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "node not found; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "switching device not found; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 4",
+      "description": "invalid value of ‘STRING’; ‘IVAL’ unchanged."
+    }
+  ]
+}

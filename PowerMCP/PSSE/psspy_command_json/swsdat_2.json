@@ -1,0 +1,82 @@
+{
+  "module": "psspy",
+  "function_name": "swsdat_2",
+  "category": "Single Element Data",
+  "description": "Use this API to return switched shunt real data. This API routine was first introduced in release 35.0.0. ierr, rval = swsdat_2(ibus, id, string)",
+  "python_syntax": "ierr, rval = swsdat_2(ibus, id, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    },
+    {
+      "name": "id",
+      "description": "Switched shunt identifier. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the switched shunt quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "rval",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= VSWHI",
+        "description": "Controlled quantity upper limit."
+      },
+      {
+        "value": "= VSWLO",
+        "description": "Controlled quantity lower limit."
+      },
+      {
+        "value": "= RMPCT",
+        "description": "Percentage of total Mvar required to regulate controlled bus voltage."
+      },
+      {
+        "value": "= BINIT",
+        "description": "Present admittance switched on in Mvar at unity voltage."
+      },
+      {
+        "value": "= O_BINIT",
+        "description": "Same as ‘BINIT’ units determined by power output option."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘RVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Bus not found; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Switched shunt not found; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid ‘STRING’; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 4",
+      "description": "Bus type code greater than or equal to 4; ‘RVAL’ returned."
+    },
+    {
+      "value": "= 5",
+      "description": "Status is 0; ‘RVAL’ returned."
+    }
+  ]
+}

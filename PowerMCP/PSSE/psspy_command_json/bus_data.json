@@ -1,0 +1,104 @@
+{
+  "module": "psspy",
+  "function_name": "bus_data",
+  "category": "Power Flow Data",
+  "description": "This API routine is obsolete. It has been replaced by the API routine bus_data_2, and is implemented by a call to bus_data_2. Use this API to modify the data of an existing bus in the working case or to add a new bus to the working case. This API routine was first introduced in release 28.0.0. ierr = bus_data(ibus, intgar, realar, name)",
+  "python_syntax": "ierr = bus_data(ibus, intgar, realar, name)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of four elementsNone. (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of five elementsNone. (input)."
+    },
+    {
+      "name": "name",
+      "description": "Bus name. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "IDE, bus type code."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "AREA, area number."
+      },
+      {
+        "value": "INTGAR(3)",
+        "description": "ZONE, zone number."
+      },
+      {
+        "value": "INTGAR(4)",
+        "description": "OWNER, owner number."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "GL, fixed shunt admittance (conductance)."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "BL, fixed shunt admittance (susceptance)."
+      },
+      {
+        "value": "REALAR(3)",
+        "description": "BASKV, bus base voltage in kV."
+      },
+      {
+        "value": "REALAR(4)",
+        "description": "VM, bus voltage magnitude in pu."
+      },
+      {
+        "value": "REALAR(5)",
+        "description": "VA, bus voltage phase angle."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid bus number."
+    },
+    {
+      "value": "= 2",
+      "description": "bus table is full."
+    },
+    {
+      "value": "= 3",
+      "description": "working case is not initialized."
+    },
+    {
+      "value": "= 5",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - Invalid base voltage. - Invalid bus type code. - Invalid area, zone or owner number. - Bus name is more than 12 characters. - New area number but bus is the area swing for its old area. - Bus type code is 3 but is not the swing bus for its area. - Area table is full. - Zone table is full. - Owner table is full."
+    }
+  ]
+}

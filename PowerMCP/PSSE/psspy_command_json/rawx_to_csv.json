@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "rawx_to_csv",
+  "category": "Power Flow Operation",
+  "description": "Use this API to export rawx (extended raw data) table to a CSV (comma-separated values) file. This API routine was first introduced in release 35.1.0. ierr = rawx_to_csv(tblname, ofile)",
+  "python_syntax": "ierr = rawx_to_csv(tblname, ofile)",
+  "return_type": "error_only_write_file",
+  "parameters": [
+    {
+      "name": "tblname",
+      "description": "Name of the data table to export (not case sensitive). (input; no default allowed)."
+    },
+    {
+      "name": "ofile",
+      "description": "File path of the csv output file. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid tblname."
+    },
+    {
+      "value": "= 2",
+      "description": "error opening OFILE."
+    },
+    {
+      "value": "= 3",
+      "description": "error generating RAWX data."
+    },
+    {
+      "value": "= 4",
+      "description": "error reading RAWX data."
+    },
+    {
+      "value": "= 10",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

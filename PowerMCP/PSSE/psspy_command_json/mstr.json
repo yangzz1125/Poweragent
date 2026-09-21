@@ -1,0 +1,70 @@
+{
+  "module": "psspy",
+  "function_name": "mstr",
+  "category": "Dynamic Simulation Operation",
+  "description": "Use this API to initialize a PSSE dynamic simulation for extended term simulations and to specify the Channel Output File into which the output channel values are to be recorded during the dynamic simulation. This API routine was first introduced in release 30.2.0. ierr = mstr(option, outfile)",
+  "python_syntax": "ierr = mstr(option, outfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "option",
+      "description": "Network solution convergence monitor option. (input; 0 by default)."
+    },
+    {
+      "name": "outfile",
+      "description": "Name of the channel output file (blank to bypass recording of the output channel values in a channel output file). (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "option": [
+      {
+        "value": "= 1",
+        "description": "automatically print the convergence monitor."
+      },
+      {
+        "value": "= 0",
+        "description": "print the convergence monitor only if it is enabled via the CM interrupt control code."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "long time step mode threshold is at or below intermediate mode threshold."
+    },
+    {
+      "value": "= 2",
+      "description": "DELT is greater than intermediate time step mode threshold."
+    },
+    {
+      "value": "= 3",
+      "description": "generators are not converted."
+    },
+    {
+      "value": "= 4",
+      "description": "invalid OPTION value."
+    },
+    {
+      "value": "= 5",
+      "description": "Prior initialization modified the loads–pick up original converted case."
+    },
+    {
+      "value": "= 6",
+      "description": "error opening OUTFILE."
+    },
+    {
+      "value": "= 7",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

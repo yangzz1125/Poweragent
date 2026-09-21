@@ -1,0 +1,158 @@
+{
+  "module": "psspy",
+  "function_name": "dcndat_2",
+  "category": "Single Element Data",
+  "description": "This API is the second release of the API that returns real multi-terminal dc line quantities. This API routine was first introduced in release 31.0.0. ierr, rval = dcndat_2(name, ibus, string)",
+  "python_syntax": "ierr, rval = dcndat_2(name, ibus, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Multi-terminal dc line name. (input)."
+    },
+    {
+      "name": "ibus",
+      "description": "Converter bus number. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the dc line quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "rval",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= VCMOD",
+        "description": "Mode switch dc voltage in kV (Line Quantity)."
+      },
+      {
+        "value": "= PAC",
+        "description": "Active power into dc line at converter bus in MW (Converter Quantity)."
+      },
+      {
+        "value": "= O_PAC",
+        "description": "Same as ‘PAC’ in units determined by the power output option setting (Converter Quantity)."
+      },
+      {
+        "value": "= QAC",
+        "description": "Reactive power into dc line at converter bus in Mvar (Converter Quantity)."
+      },
+      {
+        "value": "= O_QAC",
+        "description": "Same as ‘QAC’ in units determined by the power output option setting (Converter Quantity)."
+      },
+      {
+        "value": "= KVDC",
+        "description": "dc voltage at converter bus end (Converter Quantity)."
+      },
+      {
+        "value": "= DCCUR",
+        "description": "dc current (Converter Quantity)."
+      },
+      {
+        "value": "= SETVAL",
+        "description": "Converter setpoint (Converter Quantity)."
+      },
+      {
+        "value": "= ANGLE",
+        "description": "Converter angle (Converter Quantity)."
+      },
+      {
+        "value": "= TAP",
+        "description": "Tap setting (Converter Quantity)."
+      },
+      {
+        "value": "= ANGMIN",
+        "description": "Minimum steady-state ALPHA or GAMMA angle in degrees (Converter Quantity)."
+      },
+      {
+        "value": "= ANGMAX",
+        "description": "Nominal maximum ALPHA or GAMMA angle in degrees (Converter Quantity)."
+      },
+      {
+        "value": "= RC",
+        "description": "Commutating resistance per bridge in ohms (Converter Quantity)."
+      },
+      {
+        "value": "= XC",
+        "description": "Commutating reactance per bridge in ohms (Converter Quantity)."
+      },
+      {
+        "value": "= MVA",
+        "description": "Apparent ac flow into the dc line in MVA (Converter Quantity)."
+      },
+      {
+        "value": "= O_MVA",
+        "description": "Same as ‘MVA’ in units determined by the power output option setting (Converter Quantity)."
+      },
+      {
+        "value": "= ACAMPS",
+        "description": "ac current flow into the dc line in amps (Converter Quantity)."
+      },
+      {
+        "value": "= PUCUR",
+        "description": "ac current flow into the dc line in pu (Converter Quantity)."
+      },
+      {
+        "value": "= EBASE",
+        "description": "Primary base ac voltage in kV (Converter Quantity)."
+      },
+      {
+        "value": "= TR",
+        "description": "Transformer ratio in pu (Converter Quantity)."
+      },
+      {
+        "value": "= TPMX",
+        "description": "Maximum tap setting in pu (Converter Quantity)."
+      },
+      {
+        "value": "= TPMN",
+        "description": "Minimum tap setting in pu (Converter Quantity)."
+      },
+      {
+        "value": "= STP",
+        "description": "Tap step in pu (Converter Quantity)."
+      },
+      {
+        "value": "= DELTI",
+        "description": "Rectifier margin in pu of desired dc power or current (Converter Quantity)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘RVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "dc line not found; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Bus not a converter bus of dc line ‘NAME’; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid value of ‘STRING’; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 4",
+      "description": "dc line blocked; ‘RVAL’ of 0.0 returned."
+    },
+    {
+      "value": "= 5",
+      "description": "No base kV at bus; ‘RVAL’ returned as the per unit current."
+    }
+  ]
+}

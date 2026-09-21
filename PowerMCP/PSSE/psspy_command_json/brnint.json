@@ -1,0 +1,130 @@
+{
+  "module": "psspy",
+  "function_name": "brnint",
+  "category": "Single Element Data",
+  "description": "Use this API to return integer branch parameters. This API routine was first introduced in release 28.0.0. ierr, ival = brnint(ibus,jbus,ickt,string)",
+  "python_syntax": "ierr, ival = brnint(ibus,jbus,ickt,string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "From bus number. (input)."
+    },
+    {
+      "name": "jbus",
+      "description": "To bus number. (input)."
+    },
+    {
+      "name": "ickt",
+      "description": "Circuit or multisection line identifier. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the branch quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "The error code . (output)."
+    },
+    {
+      "name": "ival",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= STATUS",
+        "description": "Branch / System switching device status."
+      },
+      {
+        "value": "= NSTATUS",
+        "description": "Normal system switching device status."
+      },
+      {
+        "value": "= METER",
+        "description": "Bus number of metered end."
+      },
+      {
+        "value": "= NMETR",
+        "description": "Bus number of non-metered end."
+      },
+      {
+        "value": "= OWNERS",
+        "description": "Number of owners for this branch."
+      },
+      {
+        "value": "= OWN1",
+        "description": "Owner number of the first owner."
+      },
+      {
+        "value": "= OWN2",
+        "description": "Owner number of the second owner."
+      },
+      {
+        "value": "= OWN3",
+        "description": "Owner number of the third owner."
+      },
+      {
+        "value": "= OWN4",
+        "description": "Owner number of the fourth owner."
+      },
+      {
+        "value": "= STATION_I",
+        "description": "Bus IBUS substation number (returned as 0 if bus IBUS is not in a substation)."
+      },
+      {
+        "value": "= STATION_J",
+        "description": "Bus JBUS substation number (returned as 0 if bus JBUS is not in a substation)."
+      },
+      {
+        "value": "= SECTION_I",
+        "description": "Bus IBUS bus section number (returned as 0 if bus IBUS is not in a substation)."
+      },
+      {
+        "value": "= SECTION_J",
+        "description": "Bus JBUS bus section number (returned as 0 if bus JBUS is not in a substation)."
+      },
+      {
+        "value": "= NODE_I",
+        "description": "Number of the node to which the branch is connected at the bus IBUS end (returned as 0 if bus IBUS is not in a substation)."
+      },
+      {
+        "value": "= NODE_J",
+        "description": "Number of the node to which the branch is connected at the bus JBUS end (returned as 0 if bus JBUS is not in a substation)."
+      },
+      {
+        "value": "= TYPE",
+        "description": "System switching device type (returned as 0 if the branch is not a system switching device)."
+      },
+      {
+        "value": "= SCTYPE",
+        "description": "MOV protection mode."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Bus not found; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Branch not found; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid value of ‘STRING’; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 6",
+      "description": "For ‘STRING’ = ‘OWNn’, n > number of owners; ‘IVAL’ unchanged."
+    }
+  ]
+}

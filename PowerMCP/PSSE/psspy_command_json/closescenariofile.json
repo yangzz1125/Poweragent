@@ -1,0 +1,10 @@
+{
+  "module": "psspy",
+  "function_name": "closescenariofile",
+  "category": "Scenarios",
+  "description": "This API routine is obsolete. It has been replaced by the API routine SCENARIOCLOSE, and is implemented by a call to SCENARIOCLOSE. Use this API to close the currently open Scenario. If a file in the active group has was specified to “Load Last”, this file will be opened prior to the closing of the Scenario. This API routine was first introduced in release 32.0.0. closescenariofile()",
+  "python_syntax": "closescenariofile()",
+  "return_type": "void",
+  "parameters": [],
+  "return_values": []
+}

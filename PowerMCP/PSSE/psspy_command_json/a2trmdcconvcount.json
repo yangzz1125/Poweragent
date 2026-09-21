@@ -1,0 +1,102 @@
+{
+  "module": "psspy",
+  "function_name": "a2trmdcconvcount",
+  "category": "Two-Terminal Dc Line Converter Data",
+  "description": "Use this API to return the number of array entries required to accommodate the data to be returned by the remaining members of the two-terminal dc line converter data family. This API routine was first introduced in release 30.3.0. ierr, buses = a2trmdcconvcount(sid, ties, flag)",
+  "python_syntax": "ierr, buses = a2trmdcconvcount(sid, ties, flag)",
+  "return_type": "error_and_count",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the bus subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "ties",
+      "description": "A flag indicating which subsystem converter buses of two-terminal dc lines to include (ignored if sid is negative). (input; 1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem two-terminal dc line converters to include. (input; 1 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "buses",
+      "description": "Number of array entries required for the subsystem indicated by sid that meet the editing criteria indicated by ties and flag. (output)."
+    }
+  ],
+  "allowed_values": {
+    "sid": [
+      {
+        "value": "< 0",
+        "description": "to instruct the API to assume a subsystem containing all buses in the working case."
+      },
+      {
+        "value": ">= 0",
+        "description": "valid bus subsystem identifier. Valid subsystem identifiers range from 0 to 11. Subsystem SID must have been previously defined."
+      }
+    ],
+    "ties": [
+      {
+        "value": "= 1",
+        "description": "for each end of interior subsystem two-terminal dc lines only."
+      },
+      {
+        "value": "= 2",
+        "description": "for the subsystem bus end of tie two-terminal dc lines only."
+      },
+      {
+        "value": "= 3",
+        "description": "for the non-subsystem bus end of tie two-terminal dc lines only."
+      },
+      {
+        "value": "= 4",
+        "description": "for each end of tie two-terminal dc lines only."
+      },
+      {
+        "value": "= 5",
+        "description": "for each end of interior subsystem two-terminal dc lines and the subsystem bus end of tie two-terminal dc lines."
+      },
+      {
+        "value": "= 6",
+        "description": "for each end of interior subsystem two-terminal dc lines and tie two-terminal dc lines."
+      }
+    ],
+    "flag": [
+      {
+        "value": "= 1",
+        "description": "for only in-service two-terminal dc lines."
+      },
+      {
+        "value": "= 2",
+        "description": "for all two-terminal dc lines."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error, BUSES returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty; BUSES returned as 0."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value; BUSES returned as 0."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid TIES value; BUSES returned as 0."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid FLAG value; BUSES returned as 0."
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "module": "psspy",
+  "function_name": "cctswsomod_remove",
+  "category": "Cct Models",
+  "description": "This API routine is obsolete. It has been replaced by the API routine cctswsomod_remove_2, and is implemented by a call to cctswsomod_remove_2. Use this API to remove an “other” type model attached to a switched shunt. This API routine was first introduced in release 33.8.0. ierr = cctswsomod_remove(ibus, model)",
+  "python_syntax": "ierr = cctswsomod_remove(ibus, model)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Switched shunt bus number. (input; no default allowed)."
+    },
+    {
+      "name": "model",
+      "description": "Name of the model to be removed. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "no bus other model."
+    },
+    {
+      "value": "= 2",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

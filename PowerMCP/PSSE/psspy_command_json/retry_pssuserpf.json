@@ -1,0 +1,21 @@
+{
+  "module": "psspy",
+  "function_name": "retry_pssuserpf",
+  "category": "Power Flow Operation",
+  "description": "Use this API to allow the loading or use of the Powerflow Customization Interface (PCI) implementation module (pssuserpf) after a failure. For efficiency reasons loading the PCI module is only attempted once. You may reset the flag controlling this with this API. This API routine was first introduced in release 33.8.0. ierr = retry_pssuserpf()",
+  "python_syntax": "ierr = retry_pssuserpf()",
+  "return_type": "error_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": ""
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

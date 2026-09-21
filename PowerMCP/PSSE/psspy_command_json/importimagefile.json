@@ -1,0 +1,15 @@
+{
+  "module": "psspy",
+  "function_name": "importimagefile",
+  "category": "Diagram View",
+  "description": "Use this API to import an image into the background layer of the active Slider diagram in the GUI. This API routine was first introduced in release 31.0.0. importimagefile(imagefile)",
+  "python_syntax": "importimagefile(imagefile)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "imagefile",
+      "description": ""
+    }
+  ],
+  "return_values": []
+}

@@ -1,0 +1,33 @@
+{
+  "module": "psspy",
+  "function_name": "scenariolengthcomments",
+  "category": "Scenarios",
+  "description": "Use this API to determine the buffer size needed to hold the current Scenario comments. This API routine was first introduced in release 33.0.0. ierr, length = scenariolengthcomments()",
+  "python_syntax": "ierr, length = scenariolengthcomments()",
+  "return_type": "error_and_value",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "length",
+      "description": "Length of the scenario comment string. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "no Scenario in memory."
+    }
+  ]
+}

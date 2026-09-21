@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "zonnam",
+  "category": "Single Element Data",
+  "description": "Use this API to return the zone name. This API routine was first introduced in release 28.0.0. ierr, cval = zonnam(iar)",
+  "python_syntax": "ierr, cval = zonnam(iar)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "iar",
+      "description": "Zone number. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "cval",
+      "description": "Zone name. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error, ‘CVAL’ is returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Zone number <= 0 or > largest allowable zone number; ‘CVAL’ is unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Zone not found; ‘CVAL’ is unchanged."
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "module": "psspy",
+  "function_name": "set_input_dev",
+  "category": "Power Flow Operation",
+  "description": "Use this API to set the terminal input device to a file. This API routine was first introduced in release 31.0.0. ierr = set_input_dev(idvfil)",
+  "python_syntax": "ierr = set_input_dev(idvfil)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "idvfil",
+      "description": "Name of response file to be used for terminal. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "error opening IDVFIL."
+    },
+    {
+      "value": "= 2",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "module": "psspy",
+  "function_name": "show",
+  "category": "Power Flow Operation",
+  "description": "Use this API to tabulate summaries of Saved Case and/or Snapshot Files. This API routine was first introduced in release 29.0.0. ierr = show(option, sfile)",
+  "python_syntax": "ierr = show(option, sfile)",
+  "return_type": "error_only_report",
+  "parameters": [
+    {
+      "name": "option",
+      "description": "Code for the type(s) of files to report. (input; 1 by default)."
+    },
+    {
+      "name": "sfile",
+      "description": "Name of saved case or snapshot file (when option is 0). (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "option": [
+      {
+        "value": "= 0",
+        "description": "file specified in SFILE."
+      },
+      {
+        "value": "= 1",
+        "description": "all .savx, .sav and .snp files."
+      },
+      {
+        "value": "= 2",
+        "description": "all .savx and .sav files."
+      },
+      {
+        "value": "= 3",
+        "description": "all .snp files."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid OPTION value."
+    },
+    {
+      "value": "= 2",
+      "description": "SFILE is blank when OPTION is 0."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

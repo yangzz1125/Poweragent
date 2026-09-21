@@ -1,0 +1,62 @@
+{
+  "module": "psspy",
+  "function_name": "crt_plot_channel",
+  "category": "Dynamic Simulation Output Channel Operation",
+  "description": "Use this API to assign one of the main simulation output channels to a designated CRT plot channel. This API routine was first introduced in release 30.2.0. ierr = crt_plot_channel(crtchan, channel, cmin, cmax)",
+  "python_syntax": "ierr = crt_plot_channel(crtchan, channel, cmin, cmax)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "crtchan",
+      "description": "Crt plot channel number (1 through 6). (input; no default allowed)."
+    },
+    {
+      "name": "channel",
+      "description": "Number of the main simulation channel to be assigned to crt channel number crtchan (must be between 1 and the number of output channels allowed at the present size level of psse), or 0 to disable crt plot channel crtchan. (input; unchanged by default)."
+    },
+    {
+      "name": "cmin",
+      "description": "Minimum plotting scale value for this crt plot channel. (input; unchanged by default)."
+    },
+    {
+      "name": "cmax",
+      "description": "Maximum plotting scale value for this crt plot channel. (input; unchanged by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid CRTCHAN value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid CHANNEL value."
+    },
+    {
+      "value": "= 3",
+      "description": "CMIN is not less than CMAX."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "warnings - one or more of: - CHANNEL is larger than NCHAN."
+    }
+  ]
+}

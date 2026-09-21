@@ -1,0 +1,58 @@
+{
+  "module": "psspy",
+  "function_name": "nxtbrn3_2",
+  "category": "Single Element Data",
+  "description": "Returns the next branch connected to a bus section, including three-winding transformers. Each time ‘NXTBRN3_2’ is called it returns the next branch in either numeric or alphabetic ascending order, depending on the PSSE bus output option setting. ‘INIBRN’ or ‘INIBRX_2’ must first be called to establish the from bus number. This API routine was first introduced in release 34.2.0. ierr, jbus, jsect, kbus, ksect, ckt = nxtbrn3_2(ibus, inode)",
+  "python_syntax": "ierr, jbus, jsect, kbus, ksect, ckt = nxtbrn3_2(ibus, inode)",
+  "return_type": "error_and_multi_value",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "From bus number. (input)."
+    },
+    {
+      "name": "inode",
+      "description": "From bus node number. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "jbus",
+      "description": "To bus number. (output)."
+    },
+    {
+      "name": "jsect",
+      "description": "To bus section number. (output)."
+    },
+    {
+      "name": "kbus",
+      "description": "Third bus number. (output)."
+    },
+    {
+      "name": "ksect",
+      "description": "Third bus section number. (output)."
+    },
+    {
+      "name": "ckt",
+      "description": "Circuit identifier. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error; ‘JBUS’, ‘JSECT’, ‘KBUS’, ‘KSECT’ and ‘ICKT’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "no more branches from ‘IBUS’ and ‘INODE’; ‘JBUS’, ‘KBUS’, ‘JSECT’, ‘KSECT’ are returned set to 0, and ‘CKT’ returned set to spaces."
+    },
+    {
+      "value": "= 2",
+      "description": "‘INIBRN_2’ or ‘INIBRX_2’ was not called for node ‘INODE’ of bus ‘IBUS’; ‘JBUS’, ‘JSECT’, ‘KBUS’, ‘KSECT’ and ‘CKT’ are unchanged."
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "module": "psspy",
+  "function_name": "opf_lnceqn_main",
+  "category": "Optimal Power Flow Data",
+  "description": "Use this API to add a linear constraint dependency record to the working case. It may also be used to modify an existing linear constraint dependency record. This API must be invoked prior to adding any participating linear constraint equation variable records to the specified linear constraint dependency equation. This API routine was first introduced in release 28.0.0. ierr = opf_lnceqn_main(iqid, labl, realar)",
+  "python_syntax": "ierr = opf_lnceqn_main(iqid, labl, realar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "iqid",
+      "description": "Linear constraint equation identification number. (input; no default allowed)."
+    },
+    {
+      "name": "labl",
+      "description": "Linear constraint description made up of, at most, 12 characters. (input; ‘ ‘ by default)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of two elementsNone. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "maximum constraint slack value (Default value of 1.0 if new record, current value otherwise., by default)."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "minimum constraint slack value (Default value of 1.0 if new record, current value otherwise., by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= -1",
+      "description": "non-fatal error occurred. Possible warning messages are: - Maximum linear constraint slack is less than the minimum linear constraint slack."
+    },
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "linear constraint table is full."
+    },
+    {
+      "value": "= 2",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

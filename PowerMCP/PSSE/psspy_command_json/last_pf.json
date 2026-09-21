@@ -1,0 +1,81 @@
+{
+  "module": "psspy",
+  "function_name": "last_pf",
+  "category": "Multiple Element Data",
+  "description": "Return last attempted network solution data. This API routine was first introduced in release 34.0.0. method,opts = last_pf()",
+  "python_syntax": "method,opts = last_pf()",
+  "return_type": "multi_value",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "method",
+      "description": "Last solution api routine used. (output)."
+    },
+    {
+      "name": "opts",
+      "description": "An array of eight elements specifying solution parameters; values vary by solution type. For options not used by a particular solution type, a very large value is returned. (output)."
+    }
+  ],
+  "allowed_values": {
+    "opts": [
+      {
+        "value": "OPTS(1)",
+        "description": "Tap adjustment flag."
+      },
+      {
+        "value": "OPTS(2)",
+        "description": "Area interchange adjustment flag."
+      },
+      {
+        "value": "OPTS(3)",
+        "description": "Phase shift adjustment flag."
+      },
+      {
+        "value": "OPTS(4)",
+        "description": "Dc tap adjustment flag."
+      },
+      {
+        "value": "OPTS(5)",
+        "description": "Switched shunt adjustment flag."
+      },
+      {
+        "value": "OPTS(6)",
+        "description": "Flat start flag."
+      },
+      {
+        "value": "OPTS(7)",
+        "description": "Var limit flag."
+      },
+      {
+        "value": "OPTS(8)",
+        "description": "Non-divergent solution flag."
+      }
+    ],
+    "method": [
+      {
+        "value": "= 0",
+        "description": "for Unknown."
+      },
+      {
+        "value": "= 1",
+        "description": "for SOLV - standard Gauss-Seidel."
+      },
+      {
+        "value": "= 2",
+        "description": "for MSLV - modified Gauss-Seidel."
+      },
+      {
+        "value": "= 3",
+        "description": "for FNSL - full Newton-Raphson."
+      },
+      {
+        "value": "= 4",
+        "description": "for NSOL - simple decoupled Newton-Raphson."
+      },
+      {
+        "value": "= 5",
+        "description": "for FDNS - fixed slope decoupled Newton-Raphson."
+      }
+    ]
+  }
+}

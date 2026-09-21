@@ -1,0 +1,62 @@
+{
+  "module": "psspy",
+  "function_name": "purgmut",
+  "category": "Power Flow Data",
+  "description": "Use this API to delete the specified zero sequence mutual coupling from the working case. This API routine was first introduced in release 28.0.0. ierr = purgmut(ibus1, jbus1, ckt1, ibus2, jbus2, ckt2)",
+  "python_syntax": "ierr = purgmut(ibus1, jbus1, ckt1, ibus2, jbus2, ckt2)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus1",
+      "description": "One of the buses connected by the first branch of the mutual coupling. (input; no default allowed)."
+    },
+    {
+      "name": "jbus1",
+      "description": "Other bus connected by the first branch of the mutual coupling. (input; no default allowed)."
+    },
+    {
+      "name": "ckt1",
+      "description": "Circuit identifier of the first branch of the mutual coupling. (input; ‘1’ by default)."
+    },
+    {
+      "name": "ibus2",
+      "description": "One of the buses connected by the second branch of the mutual coupling. (input; no default allowed)."
+    },
+    {
+      "name": "jbus2",
+      "description": "Other bus connected by the second branch of the mutual coupling. (input; no default allowed)."
+    },
+    {
+      "name": "ckt2",
+      "description": "Circuit identifier of the second branch of the mutual coupling. (input; ‘1’ by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "branch not found."
+    },
+    {
+      "value": "= 3",
+      "description": "mutual coupling not found."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

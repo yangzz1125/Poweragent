@@ -1,0 +1,62 @@
+{
+  "module": "psspy",
+  "function_name": "station_ampout",
+  "category": "Node Breaker Operation",
+  "description": "Use this API to print current within a substation. This API routine was first introduced in release 35.3.3. ierr = station_ampout(all, station)",
+  "python_syntax": "ierr = station_ampout(all, station)",
+  "return_type": "error_only_report",
+  "parameters": [
+    {
+      "name": "all",
+      "description": "None. (input)."
+    },
+    {
+      "name": "station",
+      "description": "Substation number. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 1",
+        "description": "report the power flows of all substations."
+      },
+      {
+        "value": "= 2",
+        "description": "report the power flows of substation STATION."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid ALL value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid STATION number."
+    },
+    {
+      "value": "= 3",
+      "description": "STATION does not exist."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+# Surge Python bindings — v0.1.5 or newer required for agent-friendly
+# to_dict(), Network.summary(), and load_builtin_case helpers.
+surge-py>=0.1.5
+
+# MCP SDK — for the companion Surge MCP server in PowerMCP.
+mcp
+
+# Pandas is optional but makes list_buses / list_branches and the local
+# inspection scripts nicer. Skip if you need a minimal environment.
+pandas>=2.0
+
+# -----------------------------------------------------------------------------
+# System libraries (install separately — NOT pip)
+# -----------------------------------------------------------------------------
+# Surge loads its LP / MIP and NLP solvers at runtime. HiGHS and Ipopt are the
+# open-source defaults; install them with your OS package manager:
+#
+#   macOS (Homebrew):   brew install highs ipopt
+#   Ubuntu / Debian:    sudo apt install libhighs-dev coinor-libipopt-dev
+#
+# Gurobi, COPT, and CPLEX are optional commercial solvers — Surge auto-detects
+# them at runtime if present, and falls back to HiGHS / Ipopt otherwise. See
+# references/SOLVER_GUIDE.md for the selection decision tree.

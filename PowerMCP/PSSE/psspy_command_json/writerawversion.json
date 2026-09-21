@@ -1,0 +1,82 @@
+{
+  "module": "psspy",
+  "function_name": "writerawversion",
+  "category": "Power Flow Operation",
+  "description": "Use this API to replicate the working case in the form of power flow raw data file compatible with PSSE 15 or later. This API routine was first introduced in release 30.2.0. ierr = writerawversion(vernum, out, ofile)",
+  "python_syntax": "ierr = writerawversion(vernum, out, ofile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "vernum",
+      "description": "Value of ofile version number vernum =’15’ or later. example: if ofile format is to be psse 29.5.1: vernum=’29’ or =’29.5’ or =’29.5.1’. (input; no default allowed)."
+    },
+    {
+      "name": "out",
+      "description": "Output destination. (input; 1 by default)."
+    },
+    {
+      "name": "ofile",
+      "description": "Name of the power flow raw data file. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "out": [
+      {
+        "value": "= 0",
+        "description": "to OFILE."
+      },
+      {
+        "value": "= 1",
+        "description": "to current report device."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid VERNUM value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid OUT value."
+    },
+    {
+      "value": "= 3",
+      "description": "memory allocation Error."
+    },
+    {
+      "value": "= 4",
+      "description": "error reading data."
+    },
+    {
+      "value": "= 5",
+      "description": "error saving temporary ‘sav’ file."
+    },
+    {
+      "value": "= 6",
+      "description": "error opening temporary ‘sav’ file."
+    },
+    {
+      "value": "= 7",
+      "description": "error deleting temporary ‘sav’ file."
+    },
+    {
+      "value": "= 8",
+      "description": "rrror opening OFILE."
+    },
+    {
+      "value": "= 9",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

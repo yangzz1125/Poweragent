@@ -1,0 +1,73 @@
+{
+  "module": "psspy",
+  "function_name": "setdiagresaccc_2",
+  "category": "Diagram View",
+  "description": "This API routine is obsolete. It has been replaced by the API routine setdiagresaccc_3, and is implemented by a call to setdiagresaccc_3. Use this API to set the ACCC analysis annotation options in the active Slider diagram This API routine was first introduced in release 33.1.0. setdiagresaccc_2(cntgopt, selcntg, contour, cntropt)",
+  "python_syntax": "setdiagresaccc_2(cntgopt, selcntg, contour, cntropt)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "cntgopt",
+      "description": "Contingency to view. (input)."
+    },
+    {
+      "name": "selcntg",
+      "description": "Selected contingency. (input)."
+    },
+    {
+      "name": "contour",
+      "description": "Contour selection. (input)."
+    },
+    {
+      "name": "cntropt",
+      "description": "Contour value selection. (input)."
+    }
+  ],
+  "return_values": [],
+  "allowed_values": {
+    "cntgopt": [
+      {
+        "value": "= 1",
+        "description": "all contingencies."
+      },
+      {
+        "value": "= 2",
+        "description": "contingencies causing overload violations."
+      },
+      {
+        "value": "= 3",
+        "description": "contingencies causing any violations."
+      }
+    ],
+    "selcntg": [
+      {
+        "value": "= 0",
+        "description": "none selected."
+      },
+      {
+        "value": "!= 0",
+        "description": "selected contingency from list determined by CNTGOPT."
+      }
+    ],
+    "contour": [
+      {
+        "value": "= 0",
+        "description": "display data values as text."
+      },
+      {
+        "value": "= 1",
+        "description": "display data values as a contour."
+      }
+    ],
+    "cntropt": [
+      {
+        "value": "= 0",
+        "description": "contour bus voltages."
+      },
+      {
+        "value": "= 1",
+        "description": "contour % branch flows."
+      }
+    ]
+  }
+}

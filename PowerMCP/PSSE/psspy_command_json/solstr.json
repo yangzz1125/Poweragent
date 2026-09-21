@@ -1,0 +1,15 @@
+{
+  "module": "psspy",
+  "function_name": "solstr",
+  "category": "Single Element Data",
+  "description": "Use this API to return a string indicating the result of the last solution attempt. This API routine was first introduced in release 30.1.0. desc = solstr()",
+  "python_syntax": "desc = solstr()",
+  "return_type": "value_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "desc",
+      "description": ""
+    }
+  ]
+}

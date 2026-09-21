@@ -1,0 +1,41 @@
+{
+  "module": "psspy",
+  "function_name": "nxtbus",
+  "category": "Single Element Data",
+  "description": "Returns the next bus in ordered sequence. One of the routines INIBUS, INIBUX, ININAM or ININAX must be called first. The sequence can also be affected by STAREA, STZONE, and STBSKV (more than one may be used; conditions are applied in an ‘AND’ fashion). This API routine was first introduced in release 28.0.0. ierr, ibus, cval = nxtbus()",
+  "python_syntax": "ierr, ibus, cval = nxtbus()",
+  "return_type": "error_and_multi_value",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "ibus",
+      "description": "Bus number. (output)."
+    },
+    {
+      "name": "cval",
+      "description": "Extended bus name. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IBUS’ and ‘CVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "No more buses; ‘IBUS’ and ‘CVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "‘INIBUS’, ‘INIBUX’,’ININAM’ or ‘ININAX’ was not called; ‘IBUS’ and ‘CVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "‘STRING’ not long enough to contain entire extended bus name; ‘IBUS’ and ‘CVAL’ returned but ‘CVAL’ does not contain any part of the base voltage portion of extended bus name."
+    }
+  ]
+}

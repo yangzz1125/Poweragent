@@ -1,0 +1,174 @@
+{
+  "module": "psspy",
+  "function_name": "facts_data",
+  "category": "Power Flow Data",
+  "description": "This API routine is obsolete. It has been replaced by the API routine facts_data_2, and is implemented by a call to facts_data_2. Use this API to modify the data of an existing FACTS device in the working case or to add a new FACTS device to the working case. This API routine was first introduced in release 28.0.0. ierr, realaro = facts_data(fd, intgar, realari)",
+  "python_syntax": "ierr, realaro = facts_data(fd, intgar, realari)",
+  "return_type": "error_and_record",
+  "parameters": [
+    {
+      "name": "fd",
+      "description": "Number (which the api converts to a left-justified name) of the facts device for which data is to be specified. (input; no default allowed)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of five elementsNone. (input)."
+    },
+    {
+      "name": "realari",
+      "description": "An array of thirteen elements specifying corresponding to values REALAR(1) through REALAR(13) as described above. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "realaro",
+      "description": "An array of six elements specifying corresponding to values REALAR(14) through REALAR(19) as described above. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "I, sending end bus number, can also be specified with keyword ‘i’."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "J, terminal end bus number (0 for STATCON), can also be specified with keyword ‘j’."
+      },
+      {
+        "value": "INTGAR(3)",
+        "description": "MODE, control mode, can also be specified with keyword ‘mode’."
+      },
+      {
+        "value": "INTGAR(4)",
+        "description": "OWNER, owner number, can also be specified with keyword ‘owner’."
+      },
+      {
+        "value": "INTGAR(5)",
+        "description": "VSREF, series voltage reference code for modes 4 and 7 (0 for sending end voltage; 1 for series current), can also be specified with keyword ‘vsref’."
+      }
+    ],
+    "realari": [
+      {
+        "value": "REALARI(1)",
+        "description": "PDES, desired real power at terminal bus, can also be specified with keyword ‘pdes’."
+      },
+      {
+        "value": "REALARI(2)",
+        "description": "QDES, desired reactive power at terminal bus, can also be specified with keyword ‘qdes’."
+      },
+      {
+        "value": "REALARI(3)",
+        "description": "VSET, sending bus voltage setpoint, can also be specified with keyword ‘vset’."
+      },
+      {
+        "value": "REALARI(4)",
+        "description": "SHMX, sending end maximum shunt current (MVA at rated voltage), can also be specified with keyword ‘shmax’."
+      },
+      {
+        "value": "REALARI(5)",
+        "description": "TRMX, maximum bridge real power transfer, can also be specified with keyword ‘trmx’."
+      },
+      {
+        "value": "REALARI(6)",
+        "description": "VTMN, minimum terminal bus voltage magnitude, can also be specified with keyword ‘vtmn’."
+      },
+      {
+        "value": "REALARI(7)",
+        "description": "VTMX, maximum terminal bus voltage magnitude, can also be specified with keyword ‘vtmx’."
+      },
+      {
+        "value": "REALARI(8)",
+        "description": "VSMX, maximum series voltage magnitude, can also be specified with keyword ‘vsmx’."
+      },
+      {
+        "value": "REALARI(9)",
+        "description": "IMX, maximum series current (MVA at rated voltage), can also be specified with keyword ‘imx’."
+      },
+      {
+        "value": "REALARI(10)",
+        "description": "LINX, pu reactance of temporary series element, can also be specified with keyword ‘linx’."
+      },
+      {
+        "value": "REALARI(11)",
+        "description": "RMPCT, percent of contributed reactive power, can also be specified with keyword ‘rmpct’."
+      },
+      {
+        "value": "REALARI(12)",
+        "description": "SET1, real component of constant Z (mode = 3), magnitude of constant V (mode = 4), or VD (mode = 7 or 8), can also be specified with keyword ‘set1’."
+      },
+      {
+        "value": "REALARI(13)",
+        "description": "SET2, imaginary component of constant Z (mode = 3), angle of constant V (mode = 4), or VQ (mode = 7 or 8), can also be specified with keyword ‘set2’."
+      }
+    ],
+    "realaro": [
+      {
+        "value": "REALARO(1)",
+        "description": "real component of present effective series Z (returned)."
+      },
+      {
+        "value": "REALARO(2)",
+        "description": "imaginary component of present effective series Z (returned)."
+      },
+      {
+        "value": "REALARO(3)",
+        "description": "magnitude of present series voltage, FDVREF reference (returned)."
+      },
+      {
+        "value": "REALARO(4)",
+        "description": "le of present series voltage, FDVREF reference (returned)."
+      },
+      {
+        "value": "REALARO(5)",
+        "description": "real component of present series voltage, FDVREF reference (returned)."
+      },
+      {
+        "value": "REALARO(6)",
+        "description": "imaginary component of present series voltage, FDVREF reference (returned)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "FACTS device table is full."
+    },
+    {
+      "value": "= 2",
+      "description": "no sending end bus is specified."
+    },
+    {
+      "value": "= 3",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 4",
+      "description": "the same bus is specified for the sending and terminal end buses."
+    },
+    {
+      "value": "= 6",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= 7",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "warnings - one or more of: - Invalid FACTS device control model. - Invalid owner number. - Invalid series voltage reference code. - Shunt element voltage setpoint must be positive. - Terminal bus voltage limit must be positive. - VTMX is less than VTMN. - Series voltage limit must be positive. - Shunt current limit must not be negative. - Bridge real power transfer limit must not be negative. - Series current limit must not be negative. - Series reactance must be positive. - Shunt current limit is not 0.0 for an IPFC device. - Bridge real power transfer limit is not 0.0 for an IPFC device. - Impedance setpoint has reactance of 0.0. - RMPCT is not positive. - Master IPFC FACTS device not found. - Bus is dummy bus of a multi- section line. - Multi-section line grouping deleted. - Owner table is full."
+    }
+  ]
+}

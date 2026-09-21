@@ -1,0 +1,15 @@
+{
+  "module": "psspy",
+  "function_name": "setdiagprec",
+  "category": "Diagram View",
+  "description": "This API routine is obsolete. It has been replaced by the API routine setdiagprec_2, and is implemented by a call to setdiagprec_2. Use this API to specify the precision of results displayed in Slider diagrams. This API routine was first introduced in release 30.1.0. setdiagprec(diagprec)",
+  "python_syntax": "setdiagprec(diagprec)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "diagprec",
+      "description": ""
+    }
+  ],
+  "return_values": []
+}

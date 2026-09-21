@@ -1,0 +1,25 @@
+{
+  "module": "psspy",
+  "function_name": "user",
+  "category": "Power Flow Operation",
+  "description": "Use this API to run the user-written activity, subroutine USERAC. This API routine was first introduced in release 29.0.0. ierr = user()",
+  "python_syntax": "ierr = user()",
+  "return_type": "error_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": ""
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "module": "psspy",
+  "function_name": "setdiagresdyn",
+  "category": "Diagram View",
+  "description": "This API routine is obsolete. It has been replaced by the API routine setdiagresdyn_2, and is implemented by a call to setdiagresdyn_2. This API is used to set the dynamic simulation annotation options in the active Slider diagram. This API routine was first introduced in release 32.0.0. setdiagresdyn(mode, contour)",
+  "python_syntax": "setdiagresdyn(mode, contour)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "mode",
+      "description": "Specifies the simulation result/value to display. (input)."
+    },
+    {
+      "name": "contour",
+      "description": "Specifies the dynamic quantity to contour. (input)."
+    }
+  ],
+  "return_values": [],
+  "allowed_values": {
+    "mode": [
+      {
+        "value": "= 0",
+        "description": "voltage violations as specified by SET_VOLTAGE_REC_CHECK and SET_VOLTAGE_DIP_CHECK."
+      },
+      {
+        "value": "= 1",
+        "description": "contour simulation quantities."
+      }
+    ],
+    "contour": [
+      {
+        "value": "= 0",
+        "description": "bus voltage - kV."
+      }
+    ]
+  }
+}

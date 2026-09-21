@@ -1,0 +1,78 @@
+{
+  "module": "psspy",
+  "function_name": "fcdint",
+  "category": "Single Element Data",
+  "description": "This API routine is obsolete. It has been replaced by the API routine fcdint_2, and is implemented by a call to fcdint_2. Use this API to return FACTS device integer quantities. This API routine was first introduced in release 28.0.0. ierr, ival = fcdint(n, string)",
+  "python_syntax": "ierr, ival = fcdint(n, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "n",
+      "description": "Facts device number. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the facts device quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "ival",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= SEND",
+        "description": "Sending end bus number."
+      },
+      {
+        "value": "= TERM",
+        "description": "Terminal end bus number."
+      },
+      {
+        "value": "= REMOTE",
+        "description": "Bus number of remote bus or zero for local control."
+      },
+      {
+        "value": "= OWNER",
+        "description": "Owner number."
+      },
+      {
+        "value": "= MODE",
+        "description": "Control mode (negative for blocked during solution)."
+      },
+      {
+        "value": "= STATVT",
+        "description": "Terminal end voltage condition code returns: 0 Terminal end voltage not constrained. 1 Holding terminal end voltage high limit. -1 Holding terminal end voltage low limit."
+      },
+      {
+        "value": "= STATVS",
+        "description": "Series voltage limit code returns. 0 Series voltage not constrained. 1 Holding series voltage limit."
+      },
+      {
+        "value": "= STATBR",
+        "description": "Bridge active power transfer limit code returns. 0 Bridge real power transfer not constrained. 1 Holding bridge real power transfer limit."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 2",
+      "description": "FACTS device ‘N’ not found; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid value of ‘STRING’; ‘IVAL’ unchanged."
+    }
+  ]
+}

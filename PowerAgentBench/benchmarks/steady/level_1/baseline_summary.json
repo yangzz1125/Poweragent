@@ -1,0 +1,80 @@
+{
+  "task_id": "steady_level_1_case39_easy",
+  "base_case": {
+    "converged": true,
+    "violation_score": 0.13632703624559647,
+    "max_line_loading_pct": 105.5346705901701,
+    "worst_line": "L17",
+    "min_voltage_pu": 0.947320302301497,
+    "min_voltage_bus": "7",
+    "max_voltage_pu": 1.0536,
+    "max_voltage_bus": "35",
+    "overloaded_lines": {
+      "L17": 105.5347,
+      "L16": 103.2712
+    },
+    "low_voltage_buses": {
+      "7": 0.94732,
+      "6": 0.947853
+    },
+    "high_voltage_buses": {}
+  },
+  "contingencies": {
+    "L7_outage": {
+      "converged": true,
+      "violation_score": 0.09699735039538594,
+      "max_line_loading_pct": 119.31685321188637,
+      "worst_line": "L6",
+      "min_voltage_pu": 0.9396171181723477,
+      "min_voltage_bus": "7",
+      "max_voltage_pu": 1.0536,
+      "max_voltage_bus": "35",
+      "overloaded_lines": {
+        "L6": 119.3169
+      },
+      "low_voltage_buses": {
+        "7": 0.939617
+      },
+      "high_voltage_buses": {}
+    },
+    "L12_outage": {
+      "converged": true,
+      "violation_score": 0.12465033835365955,
+      "max_line_loading_pct": 119.26900129693747,
+      "worst_line": "L8",
+      "min_voltage_pu": 0.9378962273877383,
+      "min_voltage_bus": "7",
+      "max_voltage_pu": 1.0536,
+      "max_voltage_bus": "35",
+      "overloaded_lines": {
+        "L8": 119.269,
+        "L17": 111.0923
+      },
+      "low_voltage_buses": {
+        "7": 0.937896
+      },
+      "high_voltage_buses": {}
+    },
+    "L20_outage": {
+      "converged": true,
+      "violation_score": 0.061608610470573526,
+      "max_line_loading_pct": 116.16086104705735,
+      "worst_line": "L4",
+      "min_voltage_pu": 0.940761030091202,
+      "min_voltage_bus": "7",
+      "max_voltage_pu": 1.0536,
+      "max_voltage_bus": "35",
+      "overloaded_lines": {
+        "L4": 116.1609
+      },
+      "low_voltage_buses": {},
+      "high_voltage_buses": {}
+    }
+  },
+  "remaining_violation_score": 0.41958333546521553,
+  "action_cost": 0.0,
+  "composite_score": 4195.833354652155,
+  "feasible": false,
+  "applied_actions": {},
+  "ranking_rule": "Primary: lower remaining_violation_score. Secondary: lower action_cost."
+}

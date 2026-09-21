@@ -1,0 +1,36 @@
+{
+  "module": "psspy",
+  "function_name": "areuse",
+  "category": "Single Element Data",
+  "description": "Use this API to indicate if an area is in use. This API routine was first introduced in release 30.0.0. ival = areuse(iar)",
+  "python_syntax": "ival = areuse(iar)",
+  "return_type": "value_only",
+  "parameters": [
+    {
+      "name": "iar",
+      "description": "Area number. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ival",
+      "description": "Area status. (output)."
+    }
+  ],
+  "allowed_values": {
+    "ival": [
+      {
+        "value": "= -1",
+        "description": "Area number <= 0 or > largest allowable area number."
+      },
+      {
+        "value": "= 0",
+        "description": "If no equipment is assigned to area IAR."
+      },
+      {
+        "value": "= 1",
+        "description": "If any equipment is assigned to area IAR."
+      }
+    ]
+  }
+}

@@ -1,0 +1,238 @@
+{
+  "module": "psspy",
+  "function_name": "bsnm",
+  "category": "Power Flow Operation",
+  "description": "Use this API to change the bus numbers of specified network buses in the working case and retain a tabulation, in file form, of bus number changes made (activity BSNM). This API must be referenced with one OPT 0 reference followed by one of the following: - one OPT 5, 11 or 12 reference. - one or more OPT 1 references, followed by one OPT 7 reference. - one or more OPT 2 references, followed by one OPT 7 reference. - one or more OPT 3 references, followed by one OPT 7 reference. - one or more OPT 4 references, followed by one OPT 7 reference. - one OPT 15 reference for each area in the case containing at least one bus, in ascending area number order, followed by one OPT 25 reference. - zero or more OPT 15 references in the same order as above, followed by one OPT 35 reference. This API routine was first introduced in release 28.0.0. ierr = bsnm(sid, all, opt, status, busrng, oldnam, tfile, out, ofile)",
+  "python_syntax": "ierr = bsnm(sid, all, opt, status, busrng, oldnam, tfile, out, ofile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid subsystem identifier. valid subsystem identifiers range from 0 to 11. subsystem sid must have been previously defined. (input; 0 by default)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem flag. (input; 1 by default)."
+    },
+    {
+      "name": "opt",
+      "description": "Method used to renumber the buses. (input; no default allowed)."
+    },
+    {
+      "name": "status",
+      "description": "If opt=15, is the number of the area where the bus number range is specified in busrng. status must be between 1 and areas (the highest area number allowed at the present size level of psse). if opt=4: status = 0 indicates a new bus number range is provided. status = 1 indicates a bus number offset is provided. otherwise status is ignored. (input)."
+    },
+    {
+      "name": "busrng",
+      "description": "An array of 2 elements specifying If OPT = 1: BUSRNG(1) is the new bus number. If OPT = 2: BUSRNG(1) is the old bus number. BUSRNG(2) is the new bus number. If OPT = 3: BUSRNG(1) is the bus number at which to start packing sequentially. BUSRNG(2) is the bus number at which to end packing sequentially. If OPT = 4 and STATUS = 0: BUSRNG(1) is the starting bus number for the range into which the subsystem is to be renumbered. BUSRNG(2) is the ending bus number for the range into which the subsystem is to be renumbered. If OPT = 4 and STATUS = 1: BUSRNG(1) is amount by which all buses in the specified subsystem are offset. If OPT = 5: BUSRNG(1) bus number at which to start renumbering all buses in the working case. Buses are re-sequenced in increments of 1. If OPT = 15: BUSRNG(1) is the starting bus number for the range into which the area is to be renumbered. BUSRNG(2) is the ending bus number for the range into which the area is to be renumbered. (input)."
+    },
+    {
+      "name": "oldnam",
+      "description": "Extended bus name of the bus to be renumbered when opt is 1 (when opt is 1). (input; no default allowed)."
+    },
+    {
+      "name": "tfile",
+      "description": "Bus name/number translation file. this file is only used if opt = 11 or 12. data in the translation file must be in the form specified in the psse program operation manual. (when opt is 11 or 12). (input; no default allowed)."
+    },
+    {
+      "name": "out",
+      "description": "Option selection when opt is 0. (input; 1 by default)."
+    },
+    {
+      "name": "ofile",
+      "description": "Bus renumbering translation file for the records of activity bsnm (when opt is 0 and out is 0). (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 1",
+        "description": "process all buses."
+      },
+      {
+        "value": "= 0",
+        "description": "process only buses in subsystem SID."
+      }
+    ],
+    "opt": [
+      {
+        "value": "= 0",
+        "description": "initialize for renumbering."
+      },
+      {
+        "value": "= 1",
+        "description": "renumber buses based on name/new number pairs."
+      },
+      {
+        "value": "= 11",
+        "description": "renumber using name translation file."
+      },
+      {
+        "value": "= 2",
+        "description": "renumber buses based on old number/new number pairs."
+      },
+      {
+        "value": "= 12",
+        "description": "renumber buses using number translation file."
+      },
+      {
+        "value": "= 3",
+        "description": "pack all buses in specified low/high pairs."
+      },
+      {
+        "value": "= 4",
+        "description": "renumber buses based on the subsystem specified in the OPT 0 reference."
+      },
+      {
+        "value": "= 5",
+        "description": "renumber all buses."
+      },
+      {
+        "value": "= 15",
+        "description": "renumber all buses blocking by area."
+      },
+      {
+        "value": "= 25",
+        "description": "apply blocking by area changes."
+      },
+      {
+        "value": "= 35",
+        "description": "cancel blocking by area changes."
+      },
+      {
+        "value": "= 7",
+        "description": "cleanup from renumbering."
+      }
+    ],
+    "out": [
+      {
+        "value": "= 0",
+        "description": "direct output to a data file specified by OFILE."
+      },
+      {
+        "value": "= 1",
+        "description": "direct output to the current report device."
+      },
+      {
+        "value": "= 2",
+        "description": "no output."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ALL value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid OUT value."
+    },
+    {
+      "value": "= 4",
+      "description": "invalid OPT 0 call; bus renumbering already initialized."
+    },
+    {
+      "value": "= 5",
+      "description": "prior OPT is not 0 (OPT=1,2,11,12,5,25)."
+    },
+    {
+      "value": "= 6",
+      "description": "bus not found (OPT=1,2,11,12)."
+    },
+    {
+      "value": "= 7",
+      "description": "invalid new bus number (OPT=1,2,11,12,4)."
+    },
+    {
+      "value": "= 8",
+      "description": "bus number is already assigned to another bus (OPT=1,2,11,12,4)."
+    },
+    {
+      "value": "= 9",
+      "description": "prior OPT not 0 or 3 (OPT=3,4,15,35)."
+    },
+    {
+      "value": "= 10",
+      "description": "invalid starting bus number (OPT=3,4,5,15)."
+    },
+    {
+      "value": "= 11",
+      "description": "invalid ending bus number (OPT=3,4,15)."
+    },
+    {
+      "value": "= 12",
+      "description": "starting bus number is greater than ending bus number (OPT=3,4,15)."
+    },
+    {
+      "value": "= 13",
+      "description": "invalid STATUS value (OPT=4)."
+    },
+    {
+      "value": "= 14",
+      "description": "invalid offset value (OPT=4)."
+    },
+    {
+      "value": "= 15",
+      "description": "not enough unused bus numbers in specified bus number range (OPT=4)."
+    },
+    {
+      "value": "= 16",
+      "description": "not enough numbers between BUSRNG(1) and 999997 (OPT=5)."
+    },
+    {
+      "value": "= 17",
+      "description": "area specified but no more areas left to process (OPT=15)."
+    },
+    {
+      "value": "= 18",
+      "description": "area out of sequence (OPT=15)."
+    },
+    {
+      "value": "= 19",
+      "description": "bus number range of an area overlaps that of another area (OPT=15)."
+    },
+    {
+      "value": "= 20",
+      "description": "bus number range of an area is not large enough (OPT=15)."
+    },
+    {
+      "value": "= 21",
+      "description": "not enough OPT 15 calls (OPT=25)."
+    },
+    {
+      "value": "= 22",
+      "description": "invalid OPT 7 call; bus renumbering is not initialized (OPT=7)."
+    },
+    {
+      "value": "= 23",
+      "description": "invalid OPT value."
+    },
+    {
+      "value": "= 24",
+      "description": "error opening TFILE (OPT=11,12)."
+    },
+    {
+      "value": "= 25",
+      "description": "error opening OFILE."
+    },
+    {
+      "value": "= 26",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

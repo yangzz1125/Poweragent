@@ -1,0 +1,10 @@
+{
+  "module": "psspy",
+  "function_name": "runpowerfloweventstudy",
+  "category": "Event Studies",
+  "description": "Use this API to run a power flow study using the active event study in the open event study file. This API routine was first introduced in release 32.0.0. runpowerfloweventstudy()",
+  "python_syntax": "runpowerfloweventstudy()",
+  "return_type": "void",
+  "parameters": [],
+  "return_values": []
+}

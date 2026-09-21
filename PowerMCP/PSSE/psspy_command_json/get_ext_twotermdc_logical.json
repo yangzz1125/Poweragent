@@ -1,0 +1,54 @@
+{
+  "module": "psspy",
+  "function_name": "get_ext_twotermdc_logical",
+  "category": "Extension Data Access",
+  "description": "Use this API to get two-terminal dc line logical extension data. This API routine was first introduced in release 35.1.0. ierr, lval = get_ext_twotermdc_logical(name, string)",
+  "python_syntax": "ierr, lval = get_ext_twotermdc_logical(name, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Twotermdc name. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the extension twotermdc field desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "lval",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘LVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Element not found; ‘LVAL’ not returned."
+    },
+    {
+      "value": "= 2",
+      "description": "Bad value of ‘STRING’; ‘LVAL’ not returned."
+    },
+    {
+      "value": "= 3",
+      "description": "Bad data type for field ‘STRING’; ‘LVAL’ not returned."
+    },
+    {
+      "value": "= 4",
+      "description": "Unknown error with data access; ‘LVAL’ not returned."
+    },
+    {
+      "value": "= 10",
+      "description": "API Prereqs not met; ‘LVAL’ not returned."
+    }
+  ]
+}

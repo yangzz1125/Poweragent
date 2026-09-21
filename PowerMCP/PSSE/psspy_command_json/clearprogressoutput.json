@@ -1,0 +1,10 @@
+{
+  "module": "psspy",
+  "function_name": "clearprogressoutput",
+  "category": "Non-Engineering",
+  "description": "Clear the Progress tab of the output bar in the GUI This API routine was first introduced in release 34.1.0. clearprogressoutput()",
+  "python_syntax": "clearprogressoutput()",
+  "return_type": "void",
+  "parameters": [],
+  "return_values": []
+}

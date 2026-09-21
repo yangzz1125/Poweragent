@@ -1,0 +1,71 @@
+{
+  "benchmark_config_sha256": "0ba76e089757af12ffb712732f1a06c838c63c857f00433f1b5c39d316048ecd",
+  "dataset_version": "ieee33-bess-voltage-v1",
+  "scenarios": [
+    {
+      "condition": "UNDERVOLTAGE",
+      "full_path": "full/V0001.json",
+      "full_sha256": "b43a02c6b95087d5b0a1f3e751924f0772b673f1b0add816ffd6d347c581dcb4",
+      "public_path": "public/V0001.json",
+      "public_sha256": "fcb84ec26d066668ce8b3be1aec25d7230fae89457d3c6742bc3ef172e90ac1c",
+      "scenario_id": "V0001"
+    },
+    {
+      "condition": "UNDERVOLTAGE",
+      "full_path": "full/V0002.json",
+      "full_sha256": "b0e7193b821479586f29634f51328d463bef020779ed396eeece7f04f3e34f96",
+      "public_path": "public/V0002.json",
+      "public_sha256": "12b1a29399002eca0a5a9bddbfb4b8647c50fd2dd02873614823991b894271a0",
+      "scenario_id": "V0002"
+    },
+    {
+      "condition": "UNDERVOLTAGE",
+      "full_path": "full/V0003.json",
+      "full_sha256": "bad3de2b3dbe8c2f60ca2002783397eb8e7d60065527ec2e3f57a4857c88ad06",
+      "public_path": "public/V0003.json",
+      "public_sha256": "3a03ed0680b06d25d8ebfd1db06fb07f3e525216cbd924fddb46aad28edf727b",
+      "scenario_id": "V0003"
+    },
+    {
+      "condition": "UNDERVOLTAGE",
+      "full_path": "full/V0004.json",
+      "full_sha256": "e18bfb172486dac733477bd1a69d9c8157a631e744c3f9d2e80ac44e12304bca",
+      "public_path": "public/V0004.json",
+      "public_sha256": "b307cce8b1f95b43508f22803cd01810136b0c754afa3dd08f320a83eb372e76",
+      "scenario_id": "V0004"
+    },
+    {
+      "condition": "OVERVOLTAGE",
+      "full_path": "full/V0005.json",
+      "full_sha256": "b862e965144699368b526a5321f5fde222cb2dd49852f9073e40c49342c3a7f1",
+      "public_path": "public/V0005.json",
+      "public_sha256": "af019f7575eb3b2689aa599623fbe54022263edded0bfe22e820c8fe8d0050b6",
+      "scenario_id": "V0005"
+    },
+    {
+      "condition": "OVERVOLTAGE",
+      "full_path": "full/V0006.json",
+      "full_sha256": "7e39f3037ef8983bfb9849ad906a7d7775071d8e2c45a3e6a0bf1b174a81a402",
+      "public_path": "public/V0006.json",
+      "public_sha256": "29b5b289d9a53545934bfd54f11625e22e76a204c5d13aa6761b8e3467366e78",
+      "scenario_id": "V0006"
+    },
+    {
+      "condition": "OVERVOLTAGE",
+      "full_path": "full/V0007.json",
+      "full_sha256": "f9f14af9e621985aac7d5692565b2ad3d0ec6db29ce243c09207926ec2794dae",
+      "public_path": "public/V0007.json",
+      "public_sha256": "2160f1b2a18962e0ef8fa777a92b6239616b688bb2347c6fa47833320e952f07",
+      "scenario_id": "V0007"
+    },
+    {
+      "condition": "OVERVOLTAGE",
+      "full_path": "full/V0008.json",
+      "full_sha256": "1c1ca2f64d90fc97a4897763bd3629df2c034aebf920dd50111f56579331937b",
+      "public_path": "public/V0008.json",
+      "public_sha256": "4e55a285e73390ce6dffd9d39032f99bbf1d6c70e3da3956e262ac5b03c8ce0b",
+      "scenario_id": "V0008"
+    }
+  ],
+  "witnesses_sha256": "7fa87d9c371d44d3a3ea06e8b01fbf0aa8b371f90277daf3674bebb30b64bb40"
+}

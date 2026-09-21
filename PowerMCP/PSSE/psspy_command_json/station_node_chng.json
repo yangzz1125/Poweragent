@@ -1,0 +1,90 @@
+{
+  "module": "psspy",
+  "function_name": "station_node_chng",
+  "category": "Node Breaker Data",
+  "description": "Use this API to modify the data of an existing substation node in the working case. This API routine was first introduced in release 34.0.0. ierr = station_node_chng(station, node, intgar, namear)",
+  "python_syntax": "ierr = station_node_chng(station, node, intgar, namear)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "station",
+      "description": "Substation number. (input)."
+    },
+    {
+      "name": "node",
+      "description": "Node number. (input)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of two elements specifying array of two integer values. (input)."
+    },
+    {
+      "name": "namear",
+      "description": "Node name. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error return. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "bus number to which the node is connected."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "node status."
+      },
+      {
+        "value": "= 0",
+        "description": "out-of-service."
+      },
+      {
+        "value": "= 1",
+        "description": "in-service."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages."
+    },
+    {
+      "value": "= 0",
+      "description": "no errors."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid substation number."
+    },
+    {
+      "value": "= 2",
+      "description": "substation not found."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid node number."
+    },
+    {
+      "value": "= 4",
+      "description": "node not found."
+    },
+    {
+      "value": "= 5",
+      "description": "no bus associated with this node."
+    },
+    {
+      "value": "= 6",
+      "description": "node number already in use."
+    },
+    {
+      "value": "= 7",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

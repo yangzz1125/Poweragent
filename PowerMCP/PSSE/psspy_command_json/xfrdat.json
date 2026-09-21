@@ -1,0 +1,170 @@
+{
+  "module": "psspy",
+  "function_name": "xfrdat",
+  "category": "Single Element Data",
+  "description": "Use this API to return two-winding transformer real parameters. This API routine was first introduced in release 28.0.0. ierr, rval = xfrdat(ibus, jbus, ickt, string)",
+  "python_syntax": "ierr, rval = xfrdat(ibus, jbus, ickt, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "From bus number. (input)."
+    },
+    {
+      "name": "jbus",
+      "description": "To bus number. (input)."
+    },
+    {
+      "name": "ickt",
+      "description": "Circuit identifier. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the transformer quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "rval",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= RATIO",
+        "description": "Winding one off-nominal turns ratio."
+      },
+      {
+        "value": "= RATIO2",
+        "description": "Winding two off-nominal turns ratio."
+      },
+      {
+        "value": "= ANGLE",
+        "description": "Winding one-phase shift angle in degrees."
+      },
+      {
+        "value": "= RMAX",
+        "description": "Winding one ratio or angle upper limit."
+      },
+      {
+        "value": "= RMIN",
+        "description": "Winding one ratio or angle lower limit."
+      },
+      {
+        "value": "= VMAX",
+        "description": "Controlled quantity upper limit."
+      },
+      {
+        "value": "= VMIN",
+        "description": "Controlled quantity lower limit."
+      },
+      {
+        "value": "= STEP",
+        "description": "Winding one ratio or angle step width."
+      },
+      {
+        "value": "= CR",
+        "description": "Real component of load drop compensation impedance."
+      },
+      {
+        "value": "= CX",
+        "description": "Reactive component of load drop compensation impedance."
+      },
+      {
+        "value": "= CNXANG",
+        "description": "Winding connection angle in degrees."
+      },
+      {
+        "value": "= SBASE1",
+        "description": "Winding one base MVA."
+      },
+      {
+        "value": "= NOMV1",
+        "description": "Winding one nominal voltage in kV."
+      },
+      {
+        "value": "= NOMV2",
+        "description": "Winding two nominal voltage in kV."
+      },
+      {
+        "value": "= GMAGNT",
+        "description": "Conductance component of transformer magnetizing admittance in pu."
+      },
+      {
+        "value": "= BMAGNT",
+        "description": "Susceptance component of transformer magnetizing admittance in pu."
+      },
+      {
+        "value": "= ‘RG1’, ‘RGRND’",
+        "description": "Grounding resistance at the winding 1 bus."
+      },
+      {
+        "value": "= ‘XG1’, ‘XGRND’",
+        "description": "Grounding reactance at the winding 1 bus."
+      },
+      {
+        "value": "= R01",
+        "description": "Zero sequence leakage resistance connected to the winding 1 bus."
+      },
+      {
+        "value": "= X01",
+        "description": "Zero sequence leakage reactance connected to the winding 1 bus."
+      },
+      {
+        "value": "= ‘RG2’, ‘RGRND2’",
+        "description": "Grounding resistance at the winding 2 bus."
+      },
+      {
+        "value": "= ‘XG2’, ‘XGRND2’",
+        "description": "Grounding reactance at the winding 1 bus."
+      },
+      {
+        "value": "= R02",
+        "description": "Zero sequence leakage resistance connected to the winding 2 bus."
+      },
+      {
+        "value": "= X02",
+        "description": "Zero sequence leakage reactance connected to the winding 2 bus."
+      },
+      {
+        "value": "= RNUTRL",
+        "description": "Common neutral grounding resistance."
+      },
+      {
+        "value": "= XNUTRL",
+        "description": "Common neutral grounding reactance."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘RVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Bus not found; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Branch not found; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "Branch not a transformer; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid value of ‘STRING’; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 5",
+      "description": "Sequence data not in case for STRING = ‘RGRND’, ‘XGRND’, ‘RGRND2’, ‘XGRND2’, ‘RG1’, ‘XG1’, ‘R01’, ‘X01’, ‘RG2’, ‘XG2’, ‘R02’, ‘X02’, ‘RNUTRL’ or ‘XNUTRL’; ‘RVAL’ unchanged."
+    }
+  ]
+}

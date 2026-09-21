@@ -1,0 +1,284 @@
+{
+  "module": "psspy",
+  "function_name": "relind_2",
+  "category": "Power Flow Operation",
+  "description": "Use this API to run probabilistic reliability assessment for transmission systems. Probabilistic indices on system problems are calculated in entire system or a given subsystem, these problems include flow overloading, voltage violation and loss of load, etc. This API routine was first introduced in release 33.2.0. ierr = relind_2(optrel, relrel, chaarg, accfile, dfxfile, prbfile, stsfile)",
+  "python_syntax": "ierr = relind_2(optrel, relrel, chaarg, accfile, dfxfile, prbfile, stsfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "optrel",
+      "description": "An array of 8 elements specifying output options. (input)."
+    },
+    {
+      "name": "relrel",
+      "description": "An array of 3 elements specifying reliability assessment parameters. (input)."
+    },
+    {
+      "name": "chaarg",
+      "description": "Name of the study subsystem (blank by default, probabilistic reliability assessment is carried out in entire system). (input)."
+    },
+    {
+      "name": "accfile",
+      "description": "Contingency solution output file . (input)."
+    },
+    {
+      "name": "dfxfile",
+      "description": "Dfax data file. (input)."
+    },
+    {
+      "name": "prbfile",
+      "description": "Outage statistics data file (blank for none if options(1) is between 1 and 6, inclusive; no default allowed if options(1) is greater). (input)."
+    },
+    {
+      "name": "stsfile",
+      "description": "Output outage statistics data file (blank for none if options(6) is zero or options(1) is from 1 to 6; otherwise no default allowed). (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "optrel": [
+      {
+        "value": "OPTREL(1)",
+        "description": "report format (1 by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "system problem summary report."
+      },
+      {
+        "value": "= 2",
+        "description": "system loss of load report."
+      },
+      {
+        "value": "= 3",
+        "description": "bus loss of load report."
+      },
+      {
+        "value": "= 4",
+        "description": "branch flow overloading report."
+      },
+      {
+        "value": "= 5",
+        "description": "bus voltage violation report."
+      },
+      {
+        "value": "= 6",
+        "description": "contingency summary."
+      },
+      {
+        "value": "= 7",
+        "description": "system problem indices."
+      },
+      {
+        "value": "= 8",
+        "description": "system loss of load indices."
+      },
+      {
+        "value": "= 9",
+        "description": "bus loss of load indices."
+      },
+      {
+        "value": "= 10",
+        "description": "branch overload problem indices."
+      },
+      {
+        "value": "= 11",
+        "description": "bus voltage problem indices."
+      },
+      {
+        "value": "= 12",
+        "description": "contingency summary with outage statistics."
+      },
+      {
+        "value": "OPTREL(2)",
+        "description": "output mode (1 by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "post contingency mode."
+      },
+      {
+        "value": "= 2",
+        "description": "post tripping mode."
+      },
+      {
+        "value": "= 3",
+        "description": "post corrective action mode."
+      },
+      {
+        "value": "OPTREL(3)",
+        "description": "rating set (rating set program option setting by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "RATEA."
+      },
+      {
+        "value": "= 2",
+        "description": "RATEB."
+      },
+      {
+        "value": "= 3",
+        "description": "RATEC."
+      },
+      {
+        "value": "OPTREL(4)",
+        "description": "voltage limit."
+      },
+      {
+        "value": "= 1",
+        "description": "normal."
+      },
+      {
+        "value": "= 2",
+        "description": "emergency."
+      },
+      {
+        "value": "OPTREL(5)",
+        "description": "include ties from study subsystem (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTREL(6)",
+        "description": "include interfaces (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTREL(7)",
+        "description": "output Outage Statistics Data File (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTREL(8)",
+        "description": "normalize probability (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      }
+    ],
+    "relrel": [
+      {
+        "value": "RELREL(1)",
+        "description": "percent of rating set, (>=0 and <=200.0, 100.0 by default)."
+      },
+      {
+        "value": "RELREL(2)",
+        "description": "probability cutoff (>=0; 0.0001 by default)."
+      },
+      {
+        "value": "RELREL(3)",
+        "description": "frequency cutoff (>=0; 0.0001 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid OPTIONS value."
+    },
+    {
+      "value": "= 2",
+      "description": "no dispatch subsystem specified."
+    },
+    {
+      "value": "= 3",
+      "description": "no contingency solution output file specified."
+    },
+    {
+      "value": "= 4",
+      "description": "no DFAX data file specified."
+    },
+    {
+      "value": "= 5",
+      "description": "no outage statistic data file specified."
+    },
+    {
+      "value": "= 6",
+      "description": "no output outage statistic data file specified."
+    },
+    {
+      "value": "= 7",
+      "description": "generators are converted."
+    },
+    {
+      "value": "= 8",
+      "description": "buses in island(s) without a swing bus; use activity TREE."
+    },
+    {
+      "value": "= 9",
+      "description": "subsystem not found in DFAX data file."
+    },
+    {
+      "value": "= 10",
+      "description": "contingency solution output file is not created by Multiple Level Contingency Analysis of PSSE 31 or later."
+    },
+    {
+      "value": "= 11",
+      "description": "case data is not the one used in contingency analysis."
+    },
+    {
+      "value": "= 12",
+      "description": "DFAX data file is not the one used in contingency analysis."
+    },
+    {
+      "value": "= 13",
+      "description": "error reading contingency solution output file."
+    },
+    {
+      "value": "= 51",
+      "description": "error opening contingency solution output file."
+    },
+    {
+      "value": "= 52",
+      "description": "error opening DFAX data file."
+    },
+    {
+      "value": "= 53",
+      "description": "error opening outage statistic data file."
+    },
+    {
+      "value": "= 54",
+      "description": "error opening output outage statistic data file."
+    },
+    {
+      "value": "= 55",
+      "description": "prerequisite requirements for function not met."
+    }
+  ]
+}

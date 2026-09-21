@@ -1,0 +1,14 @@
+{
+  "factors": ["domain_specific_interface", "verification", "recovery"],
+  "design": "2x2x2 full factorial",
+  "conditions": [
+    {"id": "I0-V0-R0", "domain_specific_interface": false, "verification": false, "recovery": false},
+    {"id": "I0-V0-R1", "domain_specific_interface": false, "verification": false, "recovery": true},
+    {"id": "I0-V1-R0", "domain_specific_interface": false, "verification": true, "recovery": false},
+    {"id": "I0-V1-R1", "domain_specific_interface": false, "verification": true, "recovery": true},
+    {"id": "I1-V0-R0", "domain_specific_interface": true, "verification": false, "recovery": false},
+    {"id": "I1-V0-R1", "domain_specific_interface": true, "verification": false, "recovery": true},
+    {"id": "I1-V1-R0", "domain_specific_interface": true, "verification": true, "recovery": false},
+    {"id": "I1-V1-R1", "domain_specific_interface": true, "verification": true, "recovery": true}
+  ]
+}

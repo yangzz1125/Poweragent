@@ -1,0 +1,62 @@
+{
+  "module": "psspy",
+  "function_name": "dist_3wind_close",
+  "category": "Set Disturbance",
+  "description": "Use this API to set a three-winding transformer to in-service during dynamic simulations. This API routine was first introduced in release 30.2.0. ierr = dist_3wind_close(ibus, jbus, kbus, id)",
+  "python_syntax": "ierr = dist_3wind_close(ibus, jbus, kbus, id)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number of one of the buses. (input; no default allowed)."
+    },
+    {
+      "name": "jbus",
+      "description": "Bus number of one of the other buses. (input; no default allowed)."
+    },
+    {
+      "name": "kbus",
+      "description": "Bus number of the third bus. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Circuit identifier. (input; ‘1’ by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "STRT or MSTR has not been successfully executed."
+    },
+    {
+      "value": "= 2",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 3",
+      "description": "three-winding transformer not found."
+    },
+    {
+      "value": "= 4",
+      "description": "three-winding transformer is already in-service."
+    },
+    {
+      "value": "= 5",
+      "description": "bus is out-of-service."
+    },
+    {
+      "value": "= 6",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "module": "psspy",
+  "function_name": "cctmdlnam_brno",
+  "category": "Single Element Data",
+  "description": "Use this API to return model name of the CCT branch other model. This API routine was first introduced in release 35.0.0. ierr, model = cctmdlnam_brno(ibus, jbus, id)",
+  "python_syntax": "ierr, model = cctmdlnam_brno(ibus, jbus, id)",
+  "return_type": "error_and_model",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "“from” bus number of the branch. (input)."
+    },
+    {
+      "name": "jbus",
+      "description": "“to” bus number of the branch. (input)."
+    },
+    {
+      "name": "id",
+      "description": "Branch circuit identifier. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "model",
+      "description": "Model name. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; MODEL name is returned."
+    },
+    {
+      "value": "= 1",
+      "description": "branch not in case."
+    },
+    {
+      "value": "= 2",
+      "description": "No CCT models in case."
+    },
+    {
+      "value": "= 3",
+      "description": "No branch other model attached to the specified branch."
+    },
+    {
+      "value": "= 4",
+      "description": "Dynamics data not present in working memory."
+    },
+    {
+      "value": "= 5",
+      "description": "Specified branch is a transformer."
+    }
+  ]
+}

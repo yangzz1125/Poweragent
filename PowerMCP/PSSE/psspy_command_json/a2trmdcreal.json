@@ -1,0 +1,328 @@
+{
+  "module": "psspy",
+  "function_name": "a2trmdcreal",
+  "category": "Two-Terminal Dc Line Data",
+  "description": "Use this API to return an array of real values for subsystem two-terminal dc lines. This API routine was first introduced in release 30.3.0. ierr, rarray = a2trmdcreal(sid, ties, flag, string)",
+  "python_syntax": "ierr, rarray = a2trmdcreal(sid, ties, flag, string)",
+  "return_type": "error_and_array",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the bus subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "ties",
+      "description": "A flag indicating which subsystem two-terminal dc lines to include (ignored if sid is negative). (input; 1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem two-terminal dc lines to include. (input; 1 by default)."
+    },
+    {
+      "name": "string",
+      "description": "An array of NSTR elements specifying NSTR of the following strings indicating the two-terminal dc line quantities desired. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "rarray",
+      "description": "An array of NSTR*DIM elements specifying Is an array of at least NSTR columns, each of which contains DIM elements. (output)."
+    }
+  ],
+  "allowed_values": {
+    "sid": [
+      {
+        "value": "< 0",
+        "description": "to instruct the API to assume a subsystem containing all buses in the working case."
+      },
+      {
+        "value": ">= 0",
+        "description": "valid bus subsystem identifier. Valid subsystem identifiers range from 0 to 11. Subsystem SID must have been previously defined."
+      }
+    ],
+    "ties": [
+      {
+        "value": "= 1",
+        "description": "for interior subsystem two-terminal dc lines only."
+      },
+      {
+        "value": "= 2",
+        "description": "for subsystem tie two-terminal dc lines only."
+      },
+      {
+        "value": "= 3",
+        "description": "for both interior subsystem two-terminal dc lines and tie two-terminal dc lines."
+      }
+    ],
+    "flag": [
+      {
+        "value": "= 1",
+        "description": "for only in-service two-terminal dc lines."
+      },
+      {
+        "value": "= 2",
+        "description": "for all two-terminal dc lines."
+      }
+    ],
+    "string": [
+      {
+        "value": "= DCCUR",
+        "description": "dc line current in amps."
+      },
+      {
+        "value": "= RDC",
+        "description": "dc line resistance in ohms."
+      },
+      {
+        "value": "= SETVAL",
+        "description": "Desired current (in amps) or power (in MW) demand."
+      },
+      {
+        "value": "= VSCHD",
+        "description": "Scheduled compounded dc voltage in kV."
+      },
+      {
+        "value": "= VCMOD",
+        "description": "Mode switch dc voltage in kV."
+      },
+      {
+        "value": "= RCOMP",
+        "description": "Compounding resistance in ohms."
+      },
+      {
+        "value": "= DELTI",
+        "description": "Margin in pu of desired dc power or current."
+      },
+      {
+        "value": "= DCVMIN",
+        "description": "Minimum compounded dc voltage in kV."
+      },
+      {
+        "value": "= ACAMPS_R",
+        "description": "ac current in amps at the rectifier."
+      },
+      {
+        "value": "= ACAMPS_I",
+        "description": "ac current in amps at the inverter."
+      },
+      {
+        "value": "= PUCUR_R",
+        "description": "ac current in pu at the rectifier."
+      },
+      {
+        "value": "= PUCUR_I",
+        "description": "ac current in pu at the inverter."
+      },
+      {
+        "value": "= KVDC_R",
+        "description": "Rectifier dc voltage in kV."
+      },
+      {
+        "value": "= KVDC_I",
+        "description": "Inverter dc voltage in kV."
+      },
+      {
+        "value": "= ANGLE_R",
+        "description": "Rectifier converter angle in degrees."
+      },
+      {
+        "value": "= ANGLE_I",
+        "description": "Inverter converter angle in degrees."
+      },
+      {
+        "value": "= ANGMIN_R",
+        "description": "Rectifier minimum steady-state converter angle in degrees."
+      },
+      {
+        "value": "= ANGMIN_I",
+        "description": "Inverter minimum steady-state converter angle in degrees."
+      },
+      {
+        "value": "= ANGMAX_R",
+        "description": "Rectifier nominal maximum converter angle in degrees."
+      },
+      {
+        "value": "= ANGMAX_I",
+        "description": "Inverter nominal maximum converter angle in degrees."
+      },
+      {
+        "value": "= RC_R",
+        "description": "Rectifier commutating transformer resistance per bridge in ohms."
+      },
+      {
+        "value": "= RC_I",
+        "description": "Inverter commutating transformer resistance per bridge in ohms."
+      },
+      {
+        "value": "= XC_R",
+        "description": "Rectifier commutating transformer reactance per bridge in ohms."
+      },
+      {
+        "value": "= XC_I",
+        "description": "Inverter commutating transformer reactance per bridge in ohms."
+      },
+      {
+        "value": "= EBASE_R",
+        "description": "Rectifier primary base ac voltage in kV."
+      },
+      {
+        "value": "= EBASE_I",
+        "description": "Inverter primary base ac voltage in kV."
+      },
+      {
+        "value": "= TR_R",
+        "description": "Rectifier transformer ratio in pu."
+      },
+      {
+        "value": "= TR_I",
+        "description": "Inverter transformer ratio in pu."
+      },
+      {
+        "value": "= TAP_R",
+        "description": "Rectifier tap setting in pu."
+      },
+      {
+        "value": "= TAP_I",
+        "description": "Inverter tap setting in pu."
+      },
+      {
+        "value": "= TPMX_R",
+        "description": "Rectifier maximum tap setting in pu."
+      },
+      {
+        "value": "= TPMX_I",
+        "description": "Inverter maximum tap setting in pu."
+      },
+      {
+        "value": "= TPMN_R",
+        "description": "Rectifier minimum tap setting in pu."
+      },
+      {
+        "value": "= TPMN_I",
+        "description": "Inverter minimum tap setting in pu."
+      },
+      {
+        "value": "= STP_R",
+        "description": "Rectifier tap step in pu."
+      },
+      {
+        "value": "= STP_I",
+        "description": "Inverter tap step in pu."
+      },
+      {
+        "value": "= XCAP_R",
+        "description": "Rectifier commutating capacitor reactance magnitude per bridge in pu."
+      },
+      {
+        "value": "= XCAP_I",
+        "description": "Inverter commutating capacitor reactance magnitude per bridge in pu."
+      },
+      {
+        "value": "= CCCACC",
+        "description": "Acceleration factor for capacitor commutated converter solution."
+      },
+      {
+        "value": "= PAC_R",
+        "description": "Apparent active power flow into the dc line at the rectifier in MW."
+      },
+      {
+        "value": "= PAC_I",
+        "description": "Apparent active power flow into the dc line at the inverter in MW."
+      },
+      {
+        "value": "= QAC_R",
+        "description": "Apparent reactive power flow into the dc line at the rectifier in Mvar."
+      },
+      {
+        "value": "= QAC_I",
+        "description": "Apparent reactive power flow into the dc line at the inverter in Mvar."
+      },
+      {
+        "value": "= MVA_R",
+        "description": "Apparent ac power flow into the dc line at the rectifierin MVA."
+      },
+      {
+        "value": "= MVA_I",
+        "description": "Apparent ac power flow into the dc line at the inverter in MVA."
+      },
+      {
+        "value": "= PLOSS",
+        "description": "Active power losses in MW."
+      },
+      {
+        "value": "= QLOSS",
+        "description": "Reactive power losses in Mvar."
+      },
+      {
+        "value": "= O_PAC_R",
+        "description": "Apparent active power flow into the dc line at the rectifier (units determined by power output options)."
+      },
+      {
+        "value": "= O_PAC_I",
+        "description": "Apparent active power flow into the dc line at the inverter (units determined by power output options)."
+      },
+      {
+        "value": "= O_QAC_R",
+        "description": "Apparent reactive power flow into the dc line at the rectifier (units determined by power output options)."
+      },
+      {
+        "value": "= O_QAC_I",
+        "description": "Apparent reactive power flow into the dc line at the inverter (units determined by power output options)."
+      },
+      {
+        "value": "= O_MVA_R",
+        "description": "Apparent ac power flow into the dc line at the rectifier (units determined by power output options)."
+      },
+      {
+        "value": "= O_MVA_I",
+        "description": "Apparent ac power flow into the dc line at the inverter (units determined by power output options)."
+      },
+      {
+        "value": "= O_PLOSS",
+        "description": "Active power losses (units determined by power output options)."
+      },
+      {
+        "value": "= O_QLOSS",
+        "description": "Reactive power losses (units determined by power output options)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid TIES value."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid FLAG value."
+    },
+    {
+      "value": "= 5",
+      "description": "Invalid NSTR value."
+    },
+    {
+      "value": "= 6",
+      "description": "DIM, and hence the size of RARRAY, is not large enough."
+    },
+    {
+      "value": "= 7",
+      "description": "Invalid STRING value."
+    }
+  ]
+}

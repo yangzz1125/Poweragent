@@ -1,0 +1,134 @@
+{
+  "module": "psspy",
+  "function_name": "macint",
+  "category": "Single Element Data",
+  "description": "Use this API to return integer machine quantities. This API routine was first introduced in release 28.0.0. ierr, ival = macint(ibus, id, string)",
+  "python_syntax": "ierr, ival = macint(ibus, id, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    },
+    {
+      "name": "id",
+      "description": "Machine identifier. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the machine quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "ival",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= STATION",
+        "description": "Bus IBUS substation number (returned as 0 if bus IBUS is not in a substation)."
+      },
+      {
+        "value": "= SECTION",
+        "description": "Bus IBUS bus section number (returned as 0 if bus IBUS is not in a substation)."
+      },
+      {
+        "value": "= NODE",
+        "description": "Number of the node to which the machine is connected (returned as 0 if bus IBUS is not in a substation)."
+      },
+      {
+        "value": "= STATUS",
+        "description": "Machine status; 1 (one) for in-service else 0 (zero)."
+      },
+      {
+        "value": "= IREG",
+        "description": "Bus number of regulated bus."
+      },
+      {
+        "value": "= NREG",
+        "description": "Node number of regulated node."
+      },
+      {
+        "value": "= BASFLG",
+        "description": "Baseloaded flag value."
+      },
+      {
+        "value": "= OWNERS",
+        "description": "Number of owners."
+      },
+      {
+        "value": "= WMOD",
+        "description": "Wind machine reactive power limits mode; 0 if this machine is not a wind machine."
+      },
+      {
+        "value": "= OWN1",
+        "description": "Owner number of the first owner."
+      },
+      {
+        "value": "= OWN2",
+        "description": "Owner number of the second owner."
+      },
+      {
+        "value": "= OWN3",
+        "description": "Owner number of the third owner."
+      },
+      {
+        "value": "= OWN4",
+        "description": "Owner number of the fourth owner."
+      },
+      {
+        "value": "= PERCENT",
+        "description": "MVA loading of the machine as a percentage of machine base."
+      },
+      {
+        "value": "= CZG",
+        "description": "Grounding impedance data input/output code."
+      },
+      {
+        "value": "= NCSTYP",
+        "description": "Non-conventional source characteristic type."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Bus not found; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Machine not found; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "Bus type code is not 2 or 3; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 4",
+      "description": "Machine off-line, ‘IVAL’ returned."
+    },
+    {
+      "value": "= 5",
+      "description": "Invalid value of ‘STRING’; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 6",
+      "description": "For STRING = ‘OWNn’, n> number of owners; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 7",
+      "description": "Sequence data not in case for STRING = ‘CZG’ or ‘NCSTYP’; ‘IVAL’ unchanged."
+    }
+  ]
+}

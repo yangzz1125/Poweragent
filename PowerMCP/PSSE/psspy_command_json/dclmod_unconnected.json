@@ -1,0 +1,46 @@
+{
+  "module": "psspy",
+  "function_name": "dclmod_unconnected",
+  "category": "Dc Line Related Models",
+  "description": "Use this API to list or remove from dynamics working memory those dc line models that are assigned to dc lines that are not present in the current power flow working case (unconnected). This API routine was first introduced in release 30.2.0. ierr = dclmod_unconnected(opt)",
+  "python_syntax": "ierr = dclmod_unconnected(opt)",
+  "return_type": "error_only_listing",
+  "parameters": [
+    {
+      "name": "opt",
+      "description": "Option code. (input; 0 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "opt": [
+      {
+        "value": "= 0",
+        "description": "list unconnected dc line models."
+      },
+      {
+        "value": "= 1",
+        "description": "remove unconnected dc line models."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid OPT value."
+    },
+    {
+      "value": "= 2",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

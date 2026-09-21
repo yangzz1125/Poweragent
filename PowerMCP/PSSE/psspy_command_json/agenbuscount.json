@@ -1,0 +1,80 @@
+{
+  "module": "psspy",
+  "function_name": "agenbuscount",
+  "category": "Plant Bus Data",
+  "description": "Use this API to return the number of array entries required to accommodate the data to be returned by the remaining members of the plant bus data family. This API routine was first introduced in release 30.2.0. ierr, buses = agenbuscount(sid, flag)",
+  "python_syntax": "ierr, buses = agenbuscount(sid, flag)",
+  "return_type": "error_and_count",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the bus subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem buses to include. (input; 1 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "buses",
+      "description": "Number of buses in the subsystem indicated by sid that meet the editing criteria indicated by flag. (output)."
+    }
+  ],
+  "allowed_values": {
+    "sid": [
+      {
+        "value": "< 0",
+        "description": "to instruct the API to assume a subsystem containing all buses in the working case."
+      },
+      {
+        "value": ">= 0",
+        "description": "valid bus subsystem identifier. Valid subsystem identifiers range from 0 to 11. Subsystem SID must have been previously defined."
+      }
+    ],
+    "flag": [
+      {
+        "value": "= 1",
+        "description": "for only in-service plant buses (type code 2 or 3) with at least one in-service machine."
+      },
+      {
+        "value": "= 2",
+        "description": "for only in-service plant buses (type code 2 or 3), including those with no in- service machines."
+      },
+      {
+        "value": "= 3",
+        "description": "for all in-service buses, including those that are not plant buses."
+      },
+      {
+        "value": "= 4",
+        "description": "for all plant buses, including those with no in-service machines."
+      },
+      {
+        "value": "= 5",
+        "description": "for all buses, including those that are not plant buses."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error, BUSES returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty; BUSES returned as 0."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value; BUSES returned as 0."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid FLAG value; BUSES returned as 0."
+    }
+  ]
+}

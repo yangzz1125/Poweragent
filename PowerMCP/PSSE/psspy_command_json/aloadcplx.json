@@ -1,0 +1,190 @@
+{
+  "module": "psspy",
+  "function_name": "aloadcplx",
+  "category": "Load Data",
+  "description": "Use this API to return an array of complex values for subsystem loads. This API routine was first introduced in release 30.2.0. ierr, xarray = aloadcplx(sid, flag, string)",
+  "python_syntax": "ierr, xarray = aloadcplx(sid, flag, string)",
+  "return_type": "error_and_array",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the bus subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem loads to include. (input; 1 by default)."
+    },
+    {
+      "name": "string",
+      "description": "An array of NSTR elements specifying NSTR of the following strings indicating the bus and/or load quantities desired. NOTE: In the description below, the “net” values is the load value minus any in- service distributed generation on that load feeder. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "xarray",
+      "description": "An array of NSTR*DIM elements specifying Is an array of at least NSTR columns, each of which contains DIM elements. (output)."
+    }
+  ],
+  "allowed_values": {
+    "sid": [
+      {
+        "value": "< 0",
+        "description": "to instruct the API to assume a subsystem containing all buses in the working case."
+      },
+      {
+        "value": ">= 0",
+        "description": "valid bus subsystem identifier. Valid subsystem identifiers range from 0 to 11. Subsystem SID must have been previously defined."
+      }
+    ],
+    "flag": [
+      {
+        "value": "= 1",
+        "description": "for only in-service loads at in-service buses (type code < 4)."
+      },
+      {
+        "value": "= 2",
+        "description": "for all loads at in-service buses (type code < 4)."
+      },
+      {
+        "value": "= 3",
+        "description": "for only in-service loads, including those at type 4 buses."
+      },
+      {
+        "value": "= 4",
+        "description": "for all loads."
+      }
+    ],
+    "string": [
+      {
+        "value": "= MVAACT",
+        "description": "Actual in-service constant MVA load (in MW and Mvar)."
+      },
+      {
+        "value": "= MVANOM",
+        "description": "Nominal in-service constant MVA load at 1.0 pu voltage (in MW and Mvar)."
+      },
+      {
+        "value": "= ILACT",
+        "description": "Actual in-service constant current load (in MW and Mvar)."
+      },
+      {
+        "value": "= ILNOM",
+        "description": "Nominal in-service constant current load at 1.0 pu voltage (in MW and Mvar)."
+      },
+      {
+        "value": "= YLACT",
+        "description": "Actual total in-service constant admittance load (in MW and Mvar)."
+      },
+      {
+        "value": "= YLNOM",
+        "description": "Nominal total in-service constant admittance load at 1.0 pu voltage (in MW and Mvar)."
+      },
+      {
+        "value": "= TOTALACT",
+        "description": "Actual in-service load (in MW and Mvar)."
+      },
+      {
+        "value": "= TOTALNOM",
+        "description": "Nominal in-service load at 1.0 pu voltage (in MW and Mvar)."
+      },
+      {
+        "value": "= LDGNACT",
+        "description": "Actual in-service distributed generation."
+      },
+      {
+        "value": "= LDGNNOM",
+        "description": "Nominal in-service distributed generation."
+      },
+      {
+        "value": "= YNEG",
+        "description": "Nominal exceptional negative sequence load (at 1.0 pu voltage)."
+      },
+      {
+        "value": "= YZERO",
+        "description": "Nominal exceptional zero sequence load (at 1.0 pu voltage)."
+      },
+      {
+        "value": "= O_MVAACT",
+        "description": "Actual in-service constant MVA load (units determined by power output options)."
+      },
+      {
+        "value": "= O_MVANOM",
+        "description": "Nominal in-service constant MVA load at 1.0 pu voltage (units determined by power output options)."
+      },
+      {
+        "value": "= O_ILACT",
+        "description": "Actual in-service constant current load (units determined by power output options)."
+      },
+      {
+        "value": "= O_ILNOM",
+        "description": "Nominal in-service constant current load at 1.0 pu voltage (units determined by power output options)."
+      },
+      {
+        "value": "= O_YLACT",
+        "description": "Actual total in-service constant admittance load (units determined by power output options)."
+      },
+      {
+        "value": "= O_YLNOM",
+        "description": "Nominal total in-service constant admittance load at 1.0 pu voltage (units determined by power output options)."
+      },
+      {
+        "value": "= O_TOTALACT",
+        "description": "Actual in-service load (units determined by power output options)."
+      },
+      {
+        "value": "= O_TOTALNOM",
+        "description": "Nominal in-service load at 1.0 pu voltage (units determined by power output options)."
+      },
+      {
+        "value": "= O_LDGNACT",
+        "description": "Actual in-service distributed generation."
+      },
+      {
+        "value": "= O_LDGNNOM",
+        "description": "Nominal in-service distributed generation."
+      },
+      {
+        "value": "= O_YNEG",
+        "description": "Nominal exceptional negative sequence load (at 1.0 pu voltage)."
+      },
+      {
+        "value": "= O_YZERO",
+        "description": "Nominal exceptional zero sequence load (at 1.0 pu voltage)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid FLAG value."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid NSTR value."
+    },
+    {
+      "value": "= 5",
+      "description": "DIM, and hence the size of XARRAY, is not large enough."
+    },
+    {
+      "value": "= 6",
+      "description": "Invalid STRING value."
+    }
+  ]
+}

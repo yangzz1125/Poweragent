@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "brnnam",
+  "category": "Single Element Data",
+  "description": "Use this API to return the name of an AC branch. This API routine was first introduced in release 34.3.0. ierr, string = brnnam(ibus, jbus, ickt)",
+  "python_syntax": "ierr, string = brnnam(ibus, jbus, ickt)",
+  "return_type": "error_and_string",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "From bus number. (input)."
+    },
+    {
+      "name": "jbus",
+      "description": "To bus number. (input)."
+    },
+    {
+      "name": "ickt",
+      "description": "Circuit identifier. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "string",
+      "description": "Branch name. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘STRING’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Bus not found; ‘STRING’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Branch not found; ‘STRING’ unchanged."
+    },
+    {
+      "value": "= 4",
+      "description": "‘BRNNAM’ invalid with multisection line identifier; ‘STRING’ unchanged."
+    }
+  ]
+}

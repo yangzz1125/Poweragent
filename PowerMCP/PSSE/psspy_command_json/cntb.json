@@ -1,0 +1,192 @@
+{
+  "module": "psspy",
+  "function_name": "cntb",
+  "category": "Power Flow Operation",
+  "description": "Use this API to tabulate the voltage setpoints and desired voltage bands of voltage-controlling equipment in the working case (activity CNTB). Optionally, new scheduled voltages may be specified. This API routine was first introduced in release 28.0.0. ierr, next, bus, ckt, v = cntb(sid, all, apiopt, status, v)",
+  "python_syntax": "ierr, next, bus, ckt, v = cntb(sid, all, apiopt, status, v)",
+  "return_type": "error_and_multi_value",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid subsystem identifier. valid subsystem identifiers range from 0 to 11. subsystem sid must have been previously defined. (input; 0 by default)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem flag (used only when apiopt is 2). (input; 0 by default)."
+    },
+    {
+      "name": "apiopt",
+      "description": "Mode of operation in the api. (input)."
+    },
+    {
+      "name": "status",
+      "description": "An array of three elements specifying used to control reporting and processing options. (input)."
+    },
+    {
+      "name": "v",
+      "description": "An array of two elements specifying Voltage values. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "next",
+      "description": "Returned as the next apiopt value expected by the api. (output)."
+    },
+    {
+      "name": "bus",
+      "description": "An array of three elements specifying a returned three bus values. (output)."
+    },
+    {
+      "name": "ckt",
+      "description": "Returned as the circuit id of the transformer returned in bus(2) and bus(3) when next returned as 3. (output)."
+    },
+    {
+      "name": "v",
+      "description": "An array of two elements specifying Voltage values. (input)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 1",
+        "description": "process all buses."
+      },
+      {
+        "value": "= 0",
+        "description": "process only buses in subsystem SID."
+      }
+    ],
+    "apiopt": [
+      {
+        "value": "= 1",
+        "description": "initialize."
+      },
+      {
+        "value": "= 2",
+        "description": "specify voltage setpoint for controlled bus."
+      },
+      {
+        "value": "= 3",
+        "description": "specify voltage band for load drop compensating transformer."
+      }
+    ],
+    "status": [
+      {
+        "value": "STATUS(1)",
+        "description": "varies by APIOPT."
+      },
+      {
+        "value": "= 0",
+        "description": "For APIOPT=1, list subsystem controlled buses with conflicts. For APIOPT=2 or 3, no change."
+      },
+      {
+        "value": "= 1",
+        "description": "For APIOPT=1, list all subsystem controlled buses. For APIOPT=2, change voltage setpoints to new setpoint in V(1). For APIOPT=3, change voltage band to new voltage band in V(1) and V(2)."
+      },
+      {
+        "value": "STATUS(2)",
+        "description": "varies by APIOPT."
+      },
+      {
+        "value": "= 0",
+        "description": "For APIOPT=1, report at OPENed output device. For APIOPT=2 or 3, not used."
+      },
+      {
+        "value": "= 1",
+        "description": "For APIOPT=1, list in progress area and allow voltage schedule change. For APIOPT=2 or 3, not used."
+      },
+      {
+        "value": "STATUS(3)",
+        "description": "varies by APIOPT."
+      },
+      {
+        "value": "= 0",
+        "description": "For APIOPT=1, process all controlling elements and controlled buses. For APIOPT=2 or 3, not used."
+      },
+      {
+        "value": "= 1",
+        "description": "For APIOPT=1, process active controlling elements and controlled buses. For APIOPT=2 or 3, not used."
+      }
+    ],
+    "v": [
+      {
+        "value": "V(1)",
+        "description": "New setpoint when APIOPT=2, new VMIN when APIOPT=3. Returned as present setpoint when NEXT=2, returned as present VMIN when NEXT=3."
+      },
+      {
+        "value": "V(2)",
+        "description": "New VMAX when APIOPT=3. Returned as present VMAX when NEXT=3."
+      }
+    ],
+    "next": [
+      {
+        "value": "= 1",
+        "description": "done with this execution of CNTBNW."
+      },
+      {
+        "value": "= 2",
+        "description": "change voltage setpoint/schedule."
+      },
+      {
+        "value": "= 3",
+        "description": "change VMIN, VMAX of load drop compensating transformer."
+      }
+    ],
+    "bus": [
+      {
+        "value": "BUS(1)",
+        "description": "Returned as controlled bus for which voltage schedule may be changed when Next=2. Returned as controlled bus for which voltage schedule may be changed when Next=3."
+      },
+      {
+        "value": "BUS(2)",
+        "description": "Returned as the from bus of the transformer when Next=3."
+      },
+      {
+        "value": "BUS(3)",
+        "description": "Returned as the to bus of the transformer when Next=3."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ALL value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid STATUS value."
+    },
+    {
+      "value": "= 4",
+      "description": "invalid new voltage setpoint value (V(1) <= 0.5 or V(1) >= 1.5)."
+    },
+    {
+      "value": "= 5",
+      "description": "VMIN is not less than VMAX."
+    },
+    {
+      "value": "= 6",
+      "description": "invalid APIOPT value."
+    },
+    {
+      "value": "= 7",
+      "description": "unexpected APIOPT value."
+    },
+    {
+      "value": "= 8",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "module": "psspy",
+  "function_name": "close_powerflow",
+  "category": "Power Flow Operation",
+  "description": "Removes the current powerflow working case from PSSE’s working memory. Thus, the PSSE powerflow arrays are in the same state as they are immediately following PSSE startup. The default PSSE program option settings are unchanged. This API routine was first introduced in release 30.2.0. ierr = close_powerflow()",
+  "python_syntax": "ierr = close_powerflow()",
+  "return_type": "error_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": ""
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

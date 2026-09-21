@@ -1,0 +1,186 @@
+{
+  "module": "psspy",
+  "function_name": "wnddat",
+  "category": "Single Element Data",
+  "description": "Use this API to return three-winding transformer real values for winding connected to bus IBUS. This API routine was first introduced in release 28.0.0. ierr, rval = wnddat(ibus, jbus, kbus, ickt, string)",
+  "python_syntax": "ierr, rval = wnddat(ibus, jbus, kbus, ickt, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "From bus number. (input)."
+    },
+    {
+      "name": "jbus",
+      "description": "To bus number. (input)."
+    },
+    {
+      "name": "kbus",
+      "description": "Third bus number. (input)."
+    },
+    {
+      "name": "ickt",
+      "description": "Circuit identifier. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the transformer winding quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "rval",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= RATEA",
+        "description": "Rating set A."
+      },
+      {
+        "value": "= RATEB",
+        "description": "Rating set B."
+      },
+      {
+        "value": "= RATEC",
+        "description": "Rating set C."
+      },
+      {
+        "value": "= RATE",
+        "description": "Default rating set."
+      },
+      {
+        "value": "= RATIO",
+        "description": "Winding tap ratio."
+      },
+      {
+        "value": "= ANGLE",
+        "description": "Winding phase angle shift in degrees."
+      },
+      {
+        "value": "= SBASE",
+        "description": "Winding MVA base."
+      },
+      {
+        "value": "= NOMV",
+        "description": "Nominal winding voltage."
+      },
+      {
+        "value": "= RMAX",
+        "description": "Ratio or angle high limit."
+      },
+      {
+        "value": "= RMIN",
+        "description": "Ratio or angle low limit."
+      },
+      {
+        "value": "= VMAX",
+        "description": "Controlled quantity high limit."
+      },
+      {
+        "value": "= VMIN",
+        "description": "Controlled quantity low limit."
+      },
+      {
+        "value": "= STEP",
+        "description": "Derived tap step."
+      },
+      {
+        "value": "= CNXANG",
+        "description": "Winding connection angle in degrees."
+      },
+      {
+        "value": "= MVA",
+        "description": "Winding MVA flow."
+      },
+      {
+        "value": "= O_MVA",
+        "description": "Same as ‘MVA’ in units determined by the power output option setting."
+      },
+      {
+        "value": "= AMPS",
+        "description": "Winding current in amps."
+      },
+      {
+        "value": "= PUCUR",
+        "description": "Winding current in pu."
+      },
+      {
+        "value": "= PCTRTA",
+        "description": "Percent current loading of RATEA."
+      },
+      {
+        "value": "= PCTRTB",
+        "description": "Percent current loading of RATEB."
+      },
+      {
+        "value": "= PCTRTC",
+        "description": "Percent current loading of RATEC."
+      },
+      {
+        "value": "= PCTMVA",
+        "description": "Percent MVA loading of RATEA."
+      },
+      {
+        "value": "= PCTMVB",
+        "description": "Percent MVA loading of RATEB."
+      },
+      {
+        "value": "= PCTMVC",
+        "description": "Percent MVA loading of RATEC."
+      },
+      {
+        "value": "= PCTCPA",
+        "description": "Percent current or MVA loading (according to the transformer percent loading units program option setting) of RATEA."
+      },
+      {
+        "value": "= PCTCPB",
+        "description": "Percent current or MVA loading (according to the transformer percent loading units program option setting) of RATEB."
+      },
+      {
+        "value": "= PCTCPC",
+        "description": "Percent current or MVA loading (according to the transformer percent loading units program option setting) of RATEC."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘RVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Bus not found; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Three-winding transformer not found; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid ‘STRING’; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 4",
+      "description": "Error fetching transformer data; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 7",
+      "description": "Branch out of service; ‘RVAL’ returned set to zero."
+    },
+    {
+      "value": "= 8",
+      "description": "No base kV at IBUS; ‘RVAL’ returned = per unit current."
+    },
+    {
+      "value": "= 9",
+      "description": "Rating is zero; ‘RVAL’ returned set to zero."
+    }
+  ]
+}

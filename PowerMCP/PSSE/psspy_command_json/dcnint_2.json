@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "dcnint_2",
+  "category": "Single Element Data",
+  "description": "This API is the second release of the API that returns integer multi-terminal dc line quantities. This API routine was first introduced in release 31.0.0. ierr, ival = dcnint_2(name, string)",
+  "python_syntax": "ierr, ival = dcnint_2(name, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Multi-terminal dc line name. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the dc line quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "ival",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= MDC",
+        "description": "Control mode."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 2",
+      "description": "dc line not found; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid value of ‘STRING’; ‘IVAL’ unchanged."
+    }
+  ]
+}

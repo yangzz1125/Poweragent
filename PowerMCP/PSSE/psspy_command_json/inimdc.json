@@ -1,0 +1,25 @@
+{
+  "module": "psspy",
+  "function_name": "inimdc",
+  "category": "Single Element Data",
+  "description": "Initializes the multi-terminal dc line fetching routine ‘NXTMDC’ for retrieving multi-terminal dc lines in dc line name alphabetical order. This API routine was first introduced in release 31.0.0. ierr = inimdc()",
+  "python_syntax": "ierr = inimdc()",
+  "return_type": "error_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": ""
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error, ‘NXTMDC’ is properly initialized."
+    },
+    {
+      "value": "= 1",
+      "description": "No multi-terminal dc lines in case; ‘NXTMDC’ may not be used."
+    }
+  ]
+}

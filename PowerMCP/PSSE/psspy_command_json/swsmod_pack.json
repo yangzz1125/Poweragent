@@ -1,0 +1,25 @@
+{
+  "module": "psspy",
+  "function_name": "swsmod_pack",
+  "category": "Switched Shunt Models",
+  "description": "Use this API to remove entries that are marked as unused from the switched shunt model connection tables and the switched shunt model array allocation tables. It packs the entries remaining in these tables at the front of the various arrays. This API routine was first introduced in release 31.0.0. ierr = swsmod_pack()",
+  "python_syntax": "ierr = swsmod_pack()",
+  "return_type": "error_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": ""
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

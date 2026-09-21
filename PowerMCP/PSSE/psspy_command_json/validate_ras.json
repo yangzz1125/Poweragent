@@ -1,0 +1,29 @@
+{
+  "module": "psspy",
+  "function_name": "validate_ras",
+  "category": "Using The Vendor Neutral Contingency And Ras Auxiliary File",
+  "description": "Use this API to validate Contingency and Remedial Actions definitions in memory. This API routine was first introduced in release 34.6.0. ierr = validate_ras()",
+  "python_syntax": "ierr = validate_ras()",
+  "return_type": "error_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": ""
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "Contingency and Remedial Actions definitions not in memory."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

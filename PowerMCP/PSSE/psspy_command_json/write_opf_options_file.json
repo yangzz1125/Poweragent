@@ -1,0 +1,25 @@
+{
+  "module": "psspy",
+  "function_name": "write_opf_options_file",
+  "category": "Optimal Power Flow Operation",
+  "description": "Use this API to save the PSSE OPF solution option settings to the PSSOPF.OPT file. This API routine was first introduced in release 30.0.0. ierr = write_opf_options_file()",
+  "python_syntax": "ierr = write_opf_options_file()",
+  "return_type": "error_only_write_file",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": ""
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

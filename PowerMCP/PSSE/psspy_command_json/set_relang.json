@@ -1,0 +1,76 @@
+{
+  "module": "psspy",
+  "function_name": "set_relang",
+  "category": "Dynamic Simulation Operation",
+  "description": "Use this API to enable or disable the simulation option setting that expresses the ANGLE array relative to a designated reference angle. This API routine was first introduced in release 28.0.0. ierr = set_relang(switch, ibusex, id) ierr, switch,ibusex,id = set_relang()",
+  "python_syntax": "ierr = set_relang(switch, ibusex, id) ierr, switch,ibusex,id = set_relang()",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "switch",
+      "description": "Option setting. (input; if batch command or ICODE is 0 or negative; unchanged by default) (if ICODE is positive)."
+    },
+    {
+      "name": "ibusex",
+      "description": "Relative angle calculation to be applied. (input; if batch command or ICODE is 0 or negative; unchanged by default) (if ICODE is positive)."
+    },
+    {
+      "name": "id",
+      "description": "Machine identifier. (input; if batch command or ICODE is 0 or negative; ‘1’ by default) (if ICODE is positive)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "switch": [
+      {
+        "value": "= 0",
+        "description": "disable relative angle calculation (use absolute angles)."
+      },
+      {
+        "value": "= 1",
+        "description": "enable relative angle calculation."
+      }
+    ],
+    "ibusex": [
+      {
+        "value": "> 0",
+        "description": "use machine ID at bus IBUSEX as the reference machine."
+      },
+      {
+        "value": "= 0",
+        "description": "use system average angle."
+      },
+      {
+        "value": "= -1",
+        "description": "use system weighted average angle."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid IBUSEX value."
+    },
+    {
+      "value": "= 2",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 3",
+      "description": "machine not found."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

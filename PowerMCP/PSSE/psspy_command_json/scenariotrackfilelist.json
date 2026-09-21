@@ -1,0 +1,33 @@
+{
+  "module": "psspy",
+  "function_name": "scenariotrackfilelist",
+  "category": "Scenarios",
+  "description": "Use this API to retrieve the list of files being tracked. This API routine was first introduced in release 33.0.0. ierr, sfiles, stypes = scenariotrackfilelist()",
+  "python_syntax": "ierr, sfiles, stypes = scenariotrackfilelist()",
+  "return_type": "error_and_multi_value",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "sfiles",
+      "description": "An array of NFILES elements specifying list of files currently being tracked. (output)."
+    },
+    {
+      "name": "stypes",
+      "description": "An array of NFILES elements specifying list of file type identifiers for each file being tracked. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    }
+  ]
+}

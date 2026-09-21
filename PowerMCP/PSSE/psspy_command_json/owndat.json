@@ -1,0 +1,106 @@
+{
+  "module": "psspy",
+  "function_name": "owndat",
+  "category": "Single Element Data",
+  "description": "Returns the data associated with an owner (‘LOAD’ gets loads at buses of owner ‘IAR’, ‘LOADLD’ gets loads assigned to owner ‘IAR’). This API routine was first introduced in release 28.0.0. ierr, cmpval = owndat(iar, string)",
+  "python_syntax": "ierr, cmpval = owndat(iar, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "iar",
+      "description": "Owner number. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the owner total desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "cmpval",
+      "description": "Complex power. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= LOAD",
+        "description": "Total owner load by bus owner assignment (net of load plus in-service distributed generation on load feeder)."
+      },
+      {
+        "value": "= LOADLD",
+        "description": "Total owner load by load owner assignment."
+      },
+      {
+        "value": "= LDGN",
+        "description": "Total distributed generation on load feeder by bus owner assignment."
+      },
+      {
+        "value": "= LDGNLD",
+        "description": "Total distributed generation on load feeder by load owner assignment."
+      },
+      {
+        "value": "= GEN",
+        "description": "Total owner generation."
+      },
+      {
+        "value": "= LOSS",
+        "description": "Total owner losses; I**2 * (R + jX) for ac branches."
+      },
+      {
+        "value": "= XFRMAG",
+        "description": "Magnetizing admittance powers for transformers with winding 1 bus in the owner."
+      },
+      {
+        "value": "= INDMAC",
+        "description": "Total owner induction machine powers by bus owner assignment."
+      },
+      {
+        "value": "= INDMACMC",
+        "description": "Total owner induction machine powers by machine owner assignment."
+      },
+      {
+        "value": "= INDGEN",
+        "description": "Total owner induction generator powers by bus owner assignment."
+      },
+      {
+        "value": "= INDGENMC",
+        "description": "Total owner induction generator powers by machine owner assignment."
+      },
+      {
+        "value": "= INDMOT",
+        "description": "Total owner induction motor powers by bus owner assignment."
+      },
+      {
+        "value": "= INDMOTMC",
+        "description": "Total owner induction motor powers by machine owner assignment."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘P’ and ‘Q’ or ‘CMPVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "No in-service buses with in-service loads."
+    },
+    {
+      "value": "= 2",
+      "description": "No in-service buses with in-service loads (for ‘LOAD’), no in-service loads (for ‘LOADLD’), no type 2 or type 3 buses (for ‘GEN’), no in-service machines (for ‘GENMC’), no in-service branches (for ‘LOSS’), no in-service buses with in-service induction machines of the appropriate type (for ‘INDMAC’, ‘INDGEN’ and ‘INDMOT’), or no inservice induction machines of the appropriate type (for ‘INDMACMC’, ‘INDGENMC’ and ‘INDMOTMC’) in owner; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "Owner not found; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    },
+    {
+      "value": "= 4",
+      "description": "Bad ‘STRING’ value; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    }
+  ]
+}

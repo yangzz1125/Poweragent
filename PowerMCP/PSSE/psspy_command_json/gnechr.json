@@ -1,0 +1,58 @@
+{
+  "module": "psspy",
+  "function_name": "gnechr",
+  "category": "Single Element Data",
+  "description": "Use this API routine to return character quantities of a specified GNE device. This API routine was first introduced in release 33.0.0. ierr, cval = gnechr(name, string)",
+  "python_syntax": "ierr, cval = gnechr(name, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Gne device name. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the gne device quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "cval",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= MODEL",
+        "description": "Name of the BOSL model used by this GNE device."
+      },
+      {
+        "value": "= CHARn",
+        "description": "nth two-character identifier required by this model; n must be between 1 and the number of character identifiers required by the model to calculate its inputs."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘CVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "GNE device not found; ‘CVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid value of ‘STRING’; ‘CVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "For ‘STRING’ value ‘CHARn’, n is not valid for this model; ‘CVAL’ unchanged."
+    }
+  ]
+}

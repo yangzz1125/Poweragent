@@ -1,0 +1,46 @@
+{
+  "module": "psspy",
+  "function_name": "mbidvsc",
+  "category": "Power Flow Data",
+  "description": "Use this API to change the VSC dc line name of the specified VSC dc line. This API routine was first introduced in release 29.0.0. ierr = mbidvsc(name, namnew)",
+  "python_syntax": "ierr = mbidvsc(name, namnew)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Name of the vsc dc line for which the vsc dc line name is to be changed. (input; no default allowed)."
+    },
+    {
+      "name": "namnew",
+      "description": "New name to be assigned to the vsc dc line. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "dc line NAME not found."
+    },
+    {
+      "value": "= 2",
+      "description": "dc line NEWNAM already exists."
+    },
+    {
+      "value": "= 3",
+      "description": "a non-blank new identifier must be specified."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

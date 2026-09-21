@@ -1,0 +1,239 @@
+{
+  "module": "psspy",
+  "function_name": "setdiagrespflowcheck_2",
+  "category": "Diagram View",
+  "description": "This API routine is obsolete. It has been replaced by the API routine setdiagrespflowcheck_3, and is implemented by a call to setdiagrespflowcheck_3. Use this API to specify the Power Flow voltage and range checking annotation options in the active Slider Diagram. This API routine was first introduced in release 33.0.0. setdiagrespflowcheck_2(logarr, linlod, llodarr, llodclr, busvlt, busvltwdt, busclrr, busclrg, busclrb, brnrat, barpercent, barclrr, barclrg, barclrb)",
+  "python_syntax": "setdiagrespflowcheck_2(logarr, linlod, llodarr, llodclr, busvlt, busvltwdt, busclrr, busclrg, busclrb, brnrat, barpercent, barclrr, barclrg, barclrb)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "logarr",
+      "description": "An array of two elements specifying flag to determine what annotation is applied. Each element has only two possible values. 0 = FALSE and 1 = TRUE. (input)."
+    },
+    {
+      "name": "linlod",
+      "description": "% loading for line rating. (input)."
+    },
+    {
+      "name": "llodarr",
+      "description": "An array of two elements specifying the width and style of Diagram items that exceed the % of line loading. (input)."
+    },
+    {
+      "name": "llodclr",
+      "description": "An array of three elements specifying the color for lines that exceed the % loading rating, LINLOD. (input)."
+    },
+    {
+      "name": "busvlt",
+      "description": "An array of two elements specifying the bus voltage check Min and Max. (input)."
+    },
+    {
+      "name": "busvltwdt",
+      "description": "An array of two elements specifying the bus voltage check width of diagram items at the Min and Max. (input)."
+    },
+    {
+      "name": "busclrr",
+      "description": "An array of two elements specifying the Red color component of Diagram elements that fall in the appropriate bus voltage range, 0->255. (input)."
+    },
+    {
+      "name": "busclrg",
+      "description": "An array of two elements specifying the Green color component of Diagram elements that fall in the appropriate bus voltage range, 0->255. (input)."
+    },
+    {
+      "name": "busclrb",
+      "description": "An array of two elements specifying the Blue color component of Diagram elements that fall in the appropriate bus voltage range, 0->255. (input)."
+    },
+    {
+      "name": "brnrat",
+      "description": "Branch rating set. (input)."
+    },
+    {
+      "name": "barpercent",
+      "description": "An array of four elements specifying percent overloads at which to apply different color schemes for the line loading charts on the Diagram. (input)."
+    },
+    {
+      "name": "barclrr",
+      "description": "An array of four elements specifying the Red color component for the line loading charts on the Diagram, 0->255. (input)."
+    },
+    {
+      "name": "barclrg",
+      "description": "An array of four elements specifying the Green color component for the line loading charts on the Diagram, 0->255. (input)."
+    },
+    {
+      "name": "barclrb",
+      "description": "An array of four elements specifying the Blue color component for the line loading charts on the Diagram, 0->255. (input)."
+    }
+  ],
+  "return_values": [],
+  "allowed_values": {
+    "logarr": [
+      {
+        "value": "LOGARR(1)",
+        "description": "use Line ratings."
+      },
+      {
+        "value": "LOGARR(2)",
+        "description": "use Bus voltage."
+      }
+    ],
+    "llodarr": [
+      {
+        "value": "LLODARR(1)",
+        "description": "Line width >= 1."
+      },
+      {
+        "value": "LLODARR(2)",
+        "description": "Line style."
+      }
+    ],
+    "llodclr": [
+      {
+        "value": "LLODCLR(1)",
+        "description": "0->255 Red component."
+      },
+      {
+        "value": "LLODCLR(2)",
+        "description": "0->255 Blue component."
+      },
+      {
+        "value": "LLODCLR(3)",
+        "description": "0->255 Green component."
+      }
+    ],
+    "busvlt": [
+      {
+        "value": "BUSVLT(1)",
+        "description": "Min. bus voltage."
+      },
+      {
+        "value": "BUSVLT(2)",
+        "description": "Max. bus voltage."
+      }
+    ],
+    "busvltwdt": [
+      {
+        "value": "BUSVLTWDT(1)",
+        "description": "Min. bus voltage width >= 1."
+      },
+      {
+        "value": "BUSVLTWDT(2)",
+        "description": "Max. bus voltage width >= 1."
+      }
+    ],
+    "busclrr": [
+      {
+        "value": "BUSCLRR(1)",
+        "description": "base voltage < BUSVLTWDT(1)."
+      },
+      {
+        "value": "BUSCLRR(2)",
+        "description": "BUSVLTWDT(1) >= base voltage < BUSVLTWDT (2)."
+      }
+    ],
+    "busclrg": [
+      {
+        "value": "BUSCLRG(1)",
+        "description": "base voltage < BUSVLTWDT (1)."
+      },
+      {
+        "value": "BUSCLRG(2)",
+        "description": "BUSVLTWDT (1) >= base voltage < BUSVLTWDT (2)."
+      }
+    ],
+    "busclrb": [
+      {
+        "value": "BUSCLRB(1)",
+        "description": "base voltage < BUSVLTWDT (1)."
+      },
+      {
+        "value": "BUSCLRB(2)",
+        "description": "BUSVLTWDT(1) >= base voltage < BUSVLTWDT (2)."
+      }
+    ],
+    "brnrat": [
+      {
+        "value": "= 0",
+        "description": "RateA."
+      },
+      {
+        "value": "= 1",
+        "description": "RateB."
+      },
+      {
+        "value": "= 2",
+        "description": "RateC."
+      }
+    ],
+    "barpercent": [
+      {
+        "value": "BARPERCENT(1)",
+        "description": "first overload voltage point."
+      },
+      {
+        "value": "BARPERCENT(2)",
+        "description": "second overload voltage point."
+      },
+      {
+        "value": "BARPERCENT(3)",
+        "description": "third overload voltage point."
+      },
+      {
+        "value": "BARPERCENT(4)",
+        "description": "fourth overload voltage point."
+      }
+    ],
+    "barclrr": [
+      {
+        "value": "BARCLRR(1)",
+        "description": "first line loading chart red value."
+      },
+      {
+        "value": "BARCLRR(2)",
+        "description": "second line loading chart red value."
+      },
+      {
+        "value": "BARCLRR(3)",
+        "description": "third line loading chart red value."
+      },
+      {
+        "value": "BARCLRR(4)",
+        "description": "fourth line loading chart red value."
+      }
+    ],
+    "barclrg": [
+      {
+        "value": "BARCLRG(1)",
+        "description": "first line loading chart green value."
+      },
+      {
+        "value": "BARCLRG(2)",
+        "description": "second line loading chart green value."
+      },
+      {
+        "value": "BARCLRG(3)",
+        "description": "third line loading chart green value."
+      },
+      {
+        "value": "BARCLRG(4)",
+        "description": "fourth line loading chart green value."
+      }
+    ],
+    "barclrb": [
+      {
+        "value": "BARCLRB(1)",
+        "description": "first line loading chart blue value."
+      },
+      {
+        "value": "BARCLRB(2)",
+        "description": "second line loading chart blue value."
+      },
+      {
+        "value": "BARCLRB(3)",
+        "description": "third line loading chart blue value."
+      },
+      {
+        "value": "BARCLRB(4)",
+        "description": "fourth line loading chart blue value."
+      }
+    ]
+  }
+}

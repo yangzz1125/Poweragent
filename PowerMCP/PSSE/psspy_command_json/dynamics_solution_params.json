@@ -1,0 +1,120 @@
+{
+  "module": "psspy",
+  "function_name": "dynamics_solution_params",
+  "category": "Dynamic Simulation Operation",
+  "description": "This API routine is obsolete. It has been replaced by the API routine dynamics_solution_param_2, and is implemented by a call to dynamics_solution_param_2. Use this API to modify the dynamic simulation solution parameters in dynamics working memory. This API routine was first introduced in release 30.2.0. ierr = dynamics_solution_params(intgar, realar, outfile)",
+  "python_syntax": "ierr = dynamics_solution_params(intgar, realar, outfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "intgar",
+      "description": "An array of eight elementsNone. (input; unchanged by default)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of eight elementsNone. (input; unchanged by default)."
+    },
+    {
+      "name": "outfile",
+      "description": "Name of the channel output file (blank to bypass recording of the output channel values in a channel output file). (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "network solution maximum number of iterations."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "number of channels being monitored; must be less than or equal to the number of output channels defined."
+      },
+      {
+        "value": "INTGAR(3)",
+        "description": "number of state variables in use in the simulation model; should not normally be changed by the user."
+      },
+      {
+        "value": "INTGAR(4)",
+        "description": "next available location in the CON array."
+      },
+      {
+        "value": "INTGAR(5)",
+        "description": "next available location in the STATE array."
+      },
+      {
+        "value": "INTGAR(6)",
+        "description": "next available location in the VAR array."
+      },
+      {
+        "value": "INTGAR(7)",
+        "description": "next available location in the ICON and CHRICN arrays."
+      },
+      {
+        "value": "INTGAR(8)",
+        "description": "next available location in the channel arrays."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "acceleration sfactor used in the network solution."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "convergence tolerance used in the network solution."
+      },
+      {
+        "value": "REALAR(3)",
+        "description": "simulation time step (DELT)."
+      },
+      {
+        "value": "REALAR(4)",
+        "description": "filter time constant used in calculating bus frequency deviations."
+      },
+      {
+        "value": "REALAR(5)",
+        "description": "intermediate simulation mode time step threshold used in extended term simulations."
+      },
+      {
+        "value": "REALAR(6)",
+        "description": "large (island frequency) simulation mode time step threshold used in extended term simulations."
+      },
+      {
+        "value": "REALAR(7)",
+        "description": "large (island frequency) simulation mode acceleration factor used in extended term simulations."
+      },
+      {
+        "value": "REALAR(8)",
+        "description": "large (island frequency) simulation mode convergence tolerance used in extended term simulations."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "error opening OUTFILE."
+    },
+    {
+      "value": "= 2",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "warnings: - None."
+    }
+  ]
+}

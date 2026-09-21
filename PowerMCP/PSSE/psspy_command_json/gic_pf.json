@@ -1,0 +1,64 @@
+{
+  "module": "psspy",
+  "function_name": "gic_pf",
+  "category": "Power Flow Operation",
+  "description": "Add activity GIC calculated Mvar Qloss in scaled manner to the working case to arrive at the converged power flow solution. ierr = gic_pf(addfile, qpct=100, method=’last’, tap=None, area=None, phshift=None, dctap=None, swsh=None, flat=None, varlimit=None, nondiv=None, pfprogress=0)",
+  "python_syntax": "ierr = gic_pf(addfile, qpct=100, method=’last’, tap=None, area=None, phshift=None, dctap=None, swsh=None, flat=None, varlimit=None, nondiv=None, pfprogress=0)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "addfile",
+      "description": "RDCH raw file created by GIC activity that represents Constant Current Mvar losses due to GMD corresponding to the working case, no default allowed"
+    },
+    {
+      "name": "qpct=100",
+      "description": ""
+    },
+    {
+      "name": "method=’last’",
+      "description": ""
+    },
+    {
+      "name": "tap=None",
+      "description": ""
+    },
+    {
+      "name": "area=None",
+      "description": ""
+    },
+    {
+      "name": "phshift=None",
+      "description": ""
+    },
+    {
+      "name": "dctap=None",
+      "description": ""
+    },
+    {
+      "name": "swsh=None",
+      "description": ""
+    },
+    {
+      "name": "flat=None",
+      "description": ""
+    },
+    {
+      "name": "varlimit=None",
+      "description": ""
+    },
+    {
+      "name": "nondiv=None",
+      "description": ""
+    },
+    {
+      "name": "pfprogress=0",
+      "description": ""
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": ""
+    }
+  ]
+}

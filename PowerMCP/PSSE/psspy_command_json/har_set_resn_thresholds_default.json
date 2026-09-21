@@ -1,0 +1,10 @@
+{
+  "module": "psspy",
+  "function_name": "har_set_resn_thresholds_default",
+  "category": "Harmonics Operation",
+  "description": "Use this API to set default parameters to filter resonances from harmonic analysis frequency scan response. Two criterions are used to filters peaks that could be considered as resonances. Criterion 1: Slow rising resonance peaks. Criterion 2: Fast rising resonance peaks. This API routine was first introduced in release 35.4.0. har_set_resn_thresholds_default()",
+  "python_syntax": "har_set_resn_thresholds_default()",
+  "return_type": "void",
+  "parameters": [],
+  "return_values": []
+}

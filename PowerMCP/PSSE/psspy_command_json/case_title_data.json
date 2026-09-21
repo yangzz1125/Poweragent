@@ -1,0 +1,42 @@
+{
+  "module": "psspy",
+  "function_name": "case_title_data",
+  "category": "Power Flow Data",
+  "description": "Use this API to change the two line case title in the working case (see PSSE Program Operation Manual, Case Identification Data). This API routine was first introduced in release 28.0.0. ierr = case_title_data(line1, line2)",
+  "python_syntax": "ierr = case_title_data(line1, line2)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "line1",
+      "description": "First title line. (input; unchanged by default)."
+    },
+    {
+      "name": "line2",
+      "description": "Second title line. (input; unchanged by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - Title line exceeds 60 characters."
+    }
+  ]
+}

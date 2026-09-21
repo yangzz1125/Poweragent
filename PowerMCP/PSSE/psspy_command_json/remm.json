@@ -1,0 +1,58 @@
+{
+  "module": "psspy",
+  "function_name": "remm",
+  "category": "Power Flow Operation",
+  "description": "Use this API to read transaction event data from a transactions raw data file and add it to PSSE working memory. This API routine was first introduced in release 28.0.0. ierr = remm(opt, ifile)",
+  "python_syntax": "ierr = remm(opt, ifile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "opt",
+      "description": "Flag for new or change data records. (input; 0 by default)."
+    },
+    {
+      "name": "ifile",
+      "description": "Name of transactions raw data file. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "opt": [
+      {
+        "value": "= 0",
+        "description": "new data; replaces existing transactions data."
+      },
+      {
+        "value": "= 1",
+        "description": "change data; modifies existing transactions data."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid OPT value."
+    },
+    {
+      "value": "= 2",
+      "description": "no transactions defined; change mode invalid."
+    },
+    {
+      "value": "= 3",
+      "description": "error opening IFILE."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

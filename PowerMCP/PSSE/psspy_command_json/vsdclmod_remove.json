@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "vsdclmod_remove",
+  "category": "Dc Line Related Models",
+  "description": "Use this API to remove the VSC dc line model from a specified VSC dc line. This API routine was first introduced in release 30.2.0. ierr = vsdclmod_remove(dcname)",
+  "python_syntax": "ierr = vsdclmod_remove(dcname)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "dcname",
+      "description": "Vsc dc line name. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "VSC dc line not found."
+    },
+    {
+      "value": "= 2",
+      "description": "no model at this VSC dc line."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

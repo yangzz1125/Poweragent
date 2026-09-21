@@ -1,0 +1,126 @@
+{
+  "module": "psspy",
+  "function_name": "afxshuntcplx",
+  "category": "Fixed Shunt Data",
+  "description": "Use this API to return an array of complex values for subsystem fixed shunts. This API routine was first introduced in release 31.0.0. ierr, xarray = afxshuntcplx(sid, flag, string)",
+  "python_syntax": "ierr, xarray = afxshuntcplx(sid, flag, string)",
+  "return_type": "error_and_array",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the bus subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem fixed bus shunts to include. (input; 1 by default)."
+    },
+    {
+      "name": "string",
+      "description": "An array of NSTR elements specifying NSTR of the following strings indicating the bus and/or fixed shunt quantities desired. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "xarray",
+      "description": "An array of NSTR*DIM elements specifying Is an array of at least NSTR columns, each of which contains DIM elements. (output)."
+    }
+  ],
+  "allowed_values": {
+    "sid": [
+      {
+        "value": "< 0",
+        "description": "to instruct the API to assume a subsystem containing all buses in the working case."
+      },
+      {
+        "value": ">= 0",
+        "description": "valid bus subsystem identifier. Valid subsystem identifiers range from 0 to 11. Subsystem SID must have been previously defined."
+      }
+    ],
+    "flag": [
+      {
+        "value": "= 1",
+        "description": "for only in-service fixed shunts at in-service buses (type code < 4)."
+      },
+      {
+        "value": "= 2",
+        "description": "for all fixed shunts at in-service buses (type code < 4)."
+      },
+      {
+        "value": "= 3",
+        "description": "for only in-service fixed shunts, including those at type 4 buses."
+      },
+      {
+        "value": "= 4",
+        "description": "for all fixed bus shunts."
+      }
+    ],
+    "string": [
+      {
+        "value": "= PU_GBZERO",
+        "description": "Zero sequence nominal fixed bus shunt, in per unit."
+      },
+      {
+        "value": "= SHUNTACT",
+        "description": "Actual in-service fixed bus shunt (in MW and Mvar)."
+      },
+      {
+        "value": "= SHUNTNOM",
+        "description": "Nominal fixed bus shunt at 1.0 pu voltage (in MW and Mvar)."
+      },
+      {
+        "value": "= GBZERO",
+        "description": "Zero sequence nominal fixed bus shunt (in MW and Mvar)."
+      },
+      {
+        "value": "= O_SHUNTACT",
+        "description": "Actual in-service fixed bus shunt (units determined by power output options)."
+      },
+      {
+        "value": "= O_SHUNTNOM",
+        "description": "Nominal fixed bus shunt at 1.0 pu voltage (units determined by power output options)."
+      },
+      {
+        "value": "= O_GBZERO",
+        "description": "Zero sequence nominal fixed bus shunt (units determined by power output options)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid FLAG value."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid NSTR value."
+    },
+    {
+      "value": "= 5",
+      "description": "DIM, and hence the size of XARRAY, is not large enough."
+    },
+    {
+      "value": "= 6",
+      "description": "Invalid STRING value."
+    },
+    {
+      "value": "= 7",
+      "description": "Sequence data not in case; when STRING = ‘PU_GBZERO’, ‘GBZERO’ and ‘O_GBZERO’."
+    }
+  ]
+}

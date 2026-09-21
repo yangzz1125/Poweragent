@@ -1,0 +1,76 @@
+{
+  "module": "psspy",
+  "function_name": "bgen",
+  "category": "Power Flow Operation",
+  "description": "Use this API to convert the mismatch at boundary buses to equivalent load and/or generation (activity BGEN). It is intended to be used following the removal of a subsystem from a solved working case, with the flows to the deleted subsystem replaced by load and/or generation at those retained buses that were directly connected to the removed subsystem. This API routine was first introduced in release 28.0.0. ierr = bgen(sid, all, status)",
+  "python_syntax": "ierr = bgen(sid, all, status)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid subsystem identifier. valid subsystem identifiers range from 0 to 11. subsystem sid must have been previously defined. (input; 0 by default)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem flag. (input; 1 by default)."
+    },
+    {
+      "name": "status",
+      "description": "Type of boundary condition modification to be used. (input; 0 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 1",
+        "description": "process all buses."
+      },
+      {
+        "value": "= 0",
+        "description": "process only buses in subsystem SID."
+      }
+    ],
+    "status": [
+      {
+        "value": "= 0",
+        "description": "generator for inflow; load for outflow."
+      },
+      {
+        "value": "= 1",
+        "description": "all equivalent generators."
+      },
+      {
+        "value": "= 2",
+        "description": "all equivalent loads."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ALL value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid STATUS value."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

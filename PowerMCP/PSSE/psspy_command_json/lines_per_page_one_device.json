@@ -1,0 +1,66 @@
+{
+  "module": "psspy",
+  "function_name": "lines_per_page_one_device",
+  "category": "Power Flow Operation",
+  "description": "Use this API to specify or return the page length limit and device name for one of the four output devices. This API routine was first introduced in release 30.0.0. ierr = lines_per_page_one_device(device, ival) ierr, ival,devnam = lines_per_page_one_device(device)",
+  "python_syntax": "ierr = lines_per_page_one_device(device, ival) ierr, ival,devnam = lines_per_page_one_device(device)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "device",
+      "description": "Indicates which of the four devices is to be processed. (input; no default allowed)."
+    },
+    {
+      "name": "ival",
+      "description": "Value of the lines per page option setting of the device corresponding to device. (input; if Batch command, or for Python if specified as an argument, or for Fortran if IOCODE is 0, no change by default; else output)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "device": [
+      {
+        "value": "= 1",
+        "description": "for disk files."
+      },
+      {
+        "value": "= 2",
+        "description": "for the report window."
+      },
+      {
+        "value": "= 3",
+        "description": "for the first primary hard copy output device."
+      },
+      {
+        "value": "= 4",
+        "description": "for the second primary hard copy output device."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "negative IVAL value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid IOCODE value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid DEVICE value."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

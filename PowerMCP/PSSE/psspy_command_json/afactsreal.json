@@ -1,0 +1,314 @@
+{
+  "module": "psspy",
+  "function_name": "afactsreal",
+  "category": "Facts Device Data",
+  "description": "Use this API to return an array of real values for subsystem FACTS devices. This API routine was first introduced in release 30.3.0. ierr, rarray = afactsreal(sid, ties, flag, fcttyp, string)",
+  "python_syntax": "ierr, rarray = afactsreal(sid, ties, flag, fcttyp, string)",
+  "return_type": "error_and_array",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the bus subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "ties",
+      "description": "A flag indicating which subsystem facts devices with a series element to include (ignored if sid is negative). (input; 1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem facts devices to include. (input; 1 by default)."
+    },
+    {
+      "name": "fcttyp",
+      "description": "A flag indicating which types of facts devices to include. (input; 1 by default)."
+    },
+    {
+      "name": "string",
+      "description": "An array of NSTR elements specifying NSTR of the following strings indicating the FACTS device quantities desired. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "rarray",
+      "description": "An array of NSTR*DIM elements specifying Is an array of at least NSTR columns, each of which contains DIM elements. (output)."
+    }
+  ],
+  "allowed_values": {
+    "sid": [
+      {
+        "value": "< 0",
+        "description": "to instruct the API to assume a subsystem containing all buses in the working case."
+      },
+      {
+        "value": ">= 0",
+        "description": "valid bus subsystem identifier. Valid subsystem identifiers range from 0 to 11. Subsystem SID must have been previously defined."
+      }
+    ],
+    "ties": [
+      {
+        "value": "= 1",
+        "description": "for interior subsystem FACTS devices only."
+      },
+      {
+        "value": "= 2",
+        "description": "for subsystem tie FACTS devices only."
+      },
+      {
+        "value": "= 3",
+        "description": "for both interior subsystem FACTS devices and tie FACTS devices."
+      }
+    ],
+    "flag": [
+      {
+        "value": "= 1",
+        "description": "for only in-service FACTS devices."
+      },
+      {
+        "value": "= 2",
+        "description": "for both in-service and out-of-service FACTS devices."
+      }
+    ],
+    "fcttyp": [
+      {
+        "value": "= 1",
+        "description": "for only FACTS devices without a series element."
+      },
+      {
+        "value": "= 2",
+        "description": "for only FACTS devices with a series element."
+      },
+      {
+        "value": "= 3",
+        "description": "for both types of FACTS devices."
+      }
+    ],
+    "string": [
+      {
+        "value": "= VSET",
+        "description": "Voltage setpoint at the sending end bus in pu."
+      },
+      {
+        "value": "= VTMN",
+        "description": "Minimum voltage at the terminal end bus in pu."
+      },
+      {
+        "value": "= VTMX",
+        "description": "Maximum voltage at the terminal end bus in pu."
+      },
+      {
+        "value": "= VSMX",
+        "description": "Maximum series voltage magnitude in pu."
+      },
+      {
+        "value": "= LINX",
+        "description": "Reactance of the dummy series element."
+      },
+      {
+        "value": "= RMPCT",
+        "description": "Percentage of the total MVAR required to regulate the controlled bus voltage that are contributed by this device."
+      },
+      {
+        "value": "= VSERES",
+        "description": "Series voltage magnitude in pu."
+      },
+      {
+        "value": "= IPUSND",
+        "description": "Current flow into series element at sending end bus in pu. ‘IPUTRM’ Current flow into series element at terminal end bus in pu."
+      },
+      {
+        "value": "= IPUSHN",
+        "description": "Current flow into shunt element in pu."
+      },
+      {
+        "value": "= AMPSND",
+        "description": "Current flow into series element at sending end bus in amps."
+      },
+      {
+        "value": "= AMPTRM",
+        "description": "Current flow into series element at terminal end bus in amps."
+      },
+      {
+        "value": "= AMPSHN",
+        "description": "Current flow into shunt element in amps."
+      },
+      {
+        "value": "= PCTSND",
+        "description": "Percent series current loading at sending bus end."
+      },
+      {
+        "value": "= PCTTRM",
+        "description": "Percent series current loading at terminal bus end."
+      },
+      {
+        "value": "= PCTSHN",
+        "description": "Percent shunt current loading."
+      },
+      {
+        "value": "= PCTPBR",
+        "description": "Percent bridge active power loading."
+      },
+      {
+        "value": "= PDES",
+        "description": "Desired active power flow at the terminal bus end, in MW."
+      },
+      {
+        "value": "= QDES",
+        "description": "Desired reactive power flow at the terminal bus end, in Mvar."
+      },
+      {
+        "value": "= SHMX",
+        "description": "Maximum shunt current at the sending end bus at 1.0 pu voltage, in MVA."
+      },
+      {
+        "value": "= TRMX",
+        "description": "Maximum bridge active power transfer, in MVA."
+      },
+      {
+        "value": "= IMX",
+        "description": "Maximum series current at 1.0 pu voltage, in MVA."
+      },
+      {
+        "value": "= PSEND",
+        "description": "Active power flow into the series element at the sending end bus, in MW."
+      },
+      {
+        "value": "= QSEND",
+        "description": "Reactive power flow into the series element at the sending end bus, in Mvar."
+      },
+      {
+        "value": "= PTERM",
+        "description": "Active power flow into the series element at the terminal end bus, in MW."
+      },
+      {
+        "value": "= QTERM",
+        "description": "Reactive power flow into the series element at the terminal end bus, in Mvar."
+      },
+      {
+        "value": "= PBRDG",
+        "description": "Bridge active power exchange, in MW."
+      },
+      {
+        "value": "= QSHNT",
+        "description": "Reactive power flow into the shunt element, in Mvar."
+      },
+      {
+        "value": "= MVASND",
+        "description": "Power flow into the series element at the sending end bus, in MVA."
+      },
+      {
+        "value": "= MVATRM",
+        "description": "Power flow into the series element at the terminal end bus, in MVA."
+      },
+      {
+        "value": "= MVASHN",
+        "description": "Power flow into the shunt element, in MVA."
+      },
+      {
+        "value": "= QLOSS",
+        "description": "Reactive power losses, in Mvar."
+      },
+      {
+        "value": "= O_PDES",
+        "description": "Desired active power flow at the terminal bus end (units determined by power output options)."
+      },
+      {
+        "value": "= O_QDES",
+        "description": "Desired reactive power flow at the terminal bus end (units determined by power output options)."
+      },
+      {
+        "value": "= O_SHMX",
+        "description": "Maximum shunt current at the sending end bus at 1.0 pu voltage (units determined by power output options)."
+      },
+      {
+        "value": "= O_TRMX",
+        "description": "Maximum bridge active power transfer (units determined by power output options)."
+      },
+      {
+        "value": "= O_IMX",
+        "description": "Maximum series current at 1.0 pu voltage (units determined by power output options)."
+      },
+      {
+        "value": "= O_PSEND",
+        "description": "Active power flow into the series element at the sending end bus (units determined by power output options)."
+      },
+      {
+        "value": "= O_QSEND",
+        "description": "Reactive power flow into the series element at the sending end bus (units determined by power output options)."
+      },
+      {
+        "value": "= O_PTERM",
+        "description": "Active power flow into the series element at the terminal end bus (units determined by power output options)."
+      },
+      {
+        "value": "= O_QTERM",
+        "description": "Reactive power flow into the series element at the terminal end bus (units determined by power output options)."
+      },
+      {
+        "value": "= O_PBRDG",
+        "description": "Bridge active power exchange (units determined by power output options)."
+      },
+      {
+        "value": "= O_QSHNT",
+        "description": "Reactive power flow into the shunt element (units determined by power output options)."
+      },
+      {
+        "value": "= O_MVASND",
+        "description": "Power flow into the series element at the sending end bus (units determined by power output options)."
+      },
+      {
+        "value": "= O_MVATRM",
+        "description": "Power flow into the series element at the terminal end bus (units determined by power output options)."
+      },
+      {
+        "value": "= O_MVASHN",
+        "description": "Power flow into the shunt element (units determined by power output options)."
+      },
+      {
+        "value": "= O_QLOSS",
+        "description": "Reactive power losses (units determined by power output options)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid TIES value."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid FLAG value."
+    },
+    {
+      "value": "= 5",
+      "description": "Invalid FCTTYP value."
+    },
+    {
+      "value": "= 6",
+      "description": "Invalid NSTR value."
+    },
+    {
+      "value": "= 7",
+      "description": "DIM, and hence the size of RARRAY, is not large enough."
+    },
+    {
+      "value": "= 8",
+      "description": "Invalid STRING value."
+    }
+  ]
+}

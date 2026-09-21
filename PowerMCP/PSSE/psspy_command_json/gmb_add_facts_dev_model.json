@@ -1,0 +1,90 @@
+{
+  "module": "psspy",
+  "function_name": "gmb_add_facts_dev_model",
+  "category": "Facts Device Models",
+  "description": "Use this API to add a GMB FACTS device model to the specified FACTS device. If a model already exists at the FACTS device, it is replaced. This API routine was first introduced in release 32.0.2. ierr = gmb_add_facts_dev_model(fd,model,nicn,idata,chdata,ncon,rdata)",
+  "python_syntax": "ierr = gmb_add_facts_dev_model(fd,model,nicn,idata,chdata,ncon,rdata)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "fd",
+      "description": "Quoted name of the facts device to which the model is to be added; if an unquoted integer value is specified, the api converts it to a left-justified name. (input; no default allowed)."
+    },
+    {
+      "name": "model",
+      "description": "Model name. (input; no default allowed)."
+    },
+    {
+      "name": "nicn",
+      "description": "Number of icons required by the model. (input; no default allowed)."
+    },
+    {
+      "name": "idata",
+      "description": "An array of NICN elements specifying ICON data. (input; 0 by default). When a character value is intended for an ICON value, the corresponding IDATA entry is ignored and the integer ICON is set to 0)."
+    },
+    {
+      "name": "chdata",
+      "description": "An array of NICN elements specifying character ICON data (no default allowed for an ICON for which a character value is to be specified). When an integer value is intended for an ICON value, the corresponding CHDATA entry must be either defaulted or specified as either ‘$$’ or ‘ ‘; the character ICON is set to ‘$$’. (input; blank by default)."
+    },
+    {
+      "name": "ncon",
+      "description": "Number of cons required by the model. (input; no default allowed)."
+    },
+    {
+      "name": "rdata",
+      "description": "An array of NCON elements specifying CON data. (input; 0.0 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "FACTS device not found."
+    },
+    {
+      "value": "= 2",
+      "description": "error reading GMB model name."
+    },
+    {
+      "value": "= 3",
+      "description": "model is not a FACTS device model."
+    },
+    {
+      "value": "= 4",
+      "description": "# CONs specified is not the number expected."
+    },
+    {
+      "value": "= 5",
+      "description": "# ICONs specified is not the number expected."
+    },
+    {
+      "value": "= 6",
+      "description": "maximum number of array elements exceeded."
+    },
+    {
+      "value": "= 7",
+      "description": "FACTS device model connection tables full; use pack FACTS device model tables function."
+    },
+    {
+      "value": "= 8",
+      "description": "unlicensed GMB model name."
+    },
+    {
+      "value": "= 9",
+      "description": "number of user-defined models exceeds maximum allowed."
+    },
+    {
+      "value": "= 10",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

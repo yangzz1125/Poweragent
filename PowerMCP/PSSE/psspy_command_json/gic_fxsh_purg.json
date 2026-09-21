@@ -1,0 +1,34 @@
+{
+  "module": "psspy",
+  "function_name": "gic_fxsh_purg",
+  "category": "Gic Data",
+  "description": "Use this API to purge fixed shunt GIC shunt data from the working case. This API routine was first introduced in release 34.8.0. ierr = gic_fxsh_purg(bus,ckt)",
+  "python_syntax": "ierr = gic_fxsh_purg(bus,ckt)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "bus",
+      "description": "Base case bus number, must exist in the working case. (input; no default allowed)."
+    },
+    {
+      "name": "ckt",
+      "description": "Circuit identifier. (input; ‘1’ by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

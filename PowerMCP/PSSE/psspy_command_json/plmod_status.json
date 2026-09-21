@@ -1,0 +1,116 @@
+{
+  "module": "psspy",
+  "function_name": "plmod_status",
+  "category": "Plant Related Models",
+  "description": "Use this API to change the status of a plant related model of a designated type at a specified machine. This API routine was first introduced in release 28.0.0. ierr = plmod_status(ibus, id, mtype, status)",
+  "python_syntax": "ierr = plmod_status(ibus, id, mtype, status)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Plant bus number. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Machine identifier. (input)."
+    },
+    {
+      "name": "mtype",
+      "description": "Model type. (input; 1 by default)."
+    },
+    {
+      "name": "status",
+      "description": "New model status. (input; 1 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "mtype": [
+      {
+        "value": "= 1",
+        "description": "generator model."
+      },
+      {
+        "value": "= 2",
+        "description": "compensator model."
+      },
+      {
+        "value": "= 3",
+        "description": "stabilizer model."
+      },
+      {
+        "value": "= 4",
+        "description": "minimum excitation limiter model."
+      },
+      {
+        "value": "= 5",
+        "description": "maximum excitation limiter model."
+      },
+      {
+        "value": "= 6",
+        "description": "excitation system model."
+      },
+      {
+        "value": "= 7",
+        "description": "turbine-governor model."
+      },
+      {
+        "value": "= 8",
+        "description": "turbine-load controller model."
+      },
+      {
+        "value": "= 9",
+        "description": "stator current limiter model."
+      },
+      {
+        "value": "= 10",
+        "description": "power factor/var controller model."
+      }
+    ],
+    "status": [
+      {
+        "value": "= 0",
+        "description": "out-of-service."
+      },
+      {
+        "value": "= 1",
+        "description": "in-service."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid MTYPE value."
+    },
+    {
+      "value": "= 2",
+      "description": "no model of type MTYPE at this machine."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid STATUS value."
+    },
+    {
+      "value": "= 4",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 5",
+      "description": "machine not found."
+    },
+    {
+      "value": "= 6",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "module": "psspy",
+  "function_name": "aterminalcount",
+  "category": "Substation Terminal Data",
+  "description": "Use this API to return the number of array entries required to accommodate the data to be returned by the remaining members of the substation terminal data family. This API routine was first introduced in release 34.1.0. ierr, terminals = aterminalcount(sid, flag)",
+  "python_syntax": "ierr, terminals = aterminalcount(sid, flag)",
+  "return_type": "error_and_count",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the bus subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem substations to include. (input; 1 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "terminals",
+      "description": "Number of substation terminals in the subsystem indicated by sid that meet the editing criteria indicated by flag. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error, TERMINALS returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty; TERMINALS returned as 0."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value; TERMINALS returned as 0."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid FLAG value; TERMINALS returned as 0."
+    }
+  ]
+}

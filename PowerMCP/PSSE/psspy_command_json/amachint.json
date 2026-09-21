@@ -1,0 +1,154 @@
+{
+  "module": "psspy",
+  "function_name": "amachint",
+  "category": "Machine Data",
+  "description": "Use this API to return an array of integer values for subsystem machines. This API routine was first introduced in release 30.2.0. ierr, iarray = amachint(sid, flag, string)",
+  "python_syntax": "ierr, iarray = amachint(sid, flag, string)",
+  "return_type": "error_and_array",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the bus subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem machines to include. (input; 1 by default)."
+    },
+    {
+      "name": "string",
+      "description": "An array of NSTR elements specifying NSTR of the following strings indicating the bus and/or machine quantities desired. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "iarray",
+      "description": "An array of NSTR*DIM elements specifying Is an array of at least NSTR columns, each of which contains DIM elements. (output)."
+    }
+  ],
+  "allowed_values": {
+    "sid": [
+      {
+        "value": "< 0",
+        "description": "to instruct the API to assume a subsystem containing all buses in the working case."
+      },
+      {
+        "value": ">= 0",
+        "description": "valid bus subsystem identifier. Valid subsystem identifiers range from 0 to 11. Subsystem SID must have been previously defined."
+      }
+    ],
+    "flag": [
+      {
+        "value": "= 1",
+        "description": "for only in-service machines at in-service plants (type code 2 or 3)."
+      },
+      {
+        "value": "= 2",
+        "description": "for all machines at in-service plants (type code 2 or 3)."
+      },
+      {
+        "value": "= 3",
+        "description": "for only in-service machines, including those at Type 1 and 4 buses."
+      },
+      {
+        "value": "= 4",
+        "description": "for all machines."
+      }
+    ],
+    "string": [
+      {
+        "value": "= NUMBER",
+        "description": "Bus number."
+      },
+      {
+        "value": "= STATION",
+        "description": "Bus substation number (returned as 0 if the bus is not in a substation)."
+      },
+      {
+        "value": "= SECTION",
+        "description": "Bus section number (returned as 0 if the bus is not in a substation)."
+      },
+      {
+        "value": "= NODE",
+        "description": "Number of the node to which the machine is connected (returned as 0 if the bus is not in a substation)."
+      },
+      {
+        "value": "= BASFLG",
+        "description": "Baseloaded flag value."
+      },
+      {
+        "value": "= STATUS",
+        "description": "Machine status."
+      },
+      {
+        "value": "= WMOD",
+        "description": "Wind machine reactive power limits mode; 0 if the machine is not a wind machine."
+      },
+      {
+        "value": "= OWNERS",
+        "description": "Number of owners."
+      },
+      {
+        "value": "= OWN1",
+        "description": "First owner."
+      },
+      {
+        "value": "= OWN2",
+        "description": "Second owner."
+      },
+      {
+        "value": "= OWN3",
+        "description": "Third owner."
+      },
+      {
+        "value": "= OWN4",
+        "description": "Fourth owner."
+      },
+      {
+        "value": "= CZG",
+        "description": "Grounding impedance data input/outout (I/O) code (1 for per unit 2 for ohms)."
+      },
+      {
+        "value": "= NCSTYP",
+        "description": "Non-conventional source characteristic type."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid FLAG value."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid NSTR value."
+    },
+    {
+      "value": "= 5",
+      "description": "DIM, and hence the size of IARRAY, is not large enough."
+    },
+    {
+      "value": "= 6",
+      "description": "Invalid STRING value."
+    },
+    {
+      "value": "= 7",
+      "description": "Sequence data not in case (when STRING = ‘CZG’)."
+    }
+  ]
+}

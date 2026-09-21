@@ -1,0 +1,34 @@
+{
+  "module": "psspy",
+  "function_name": "inisws",
+  "category": "Single Element Data",
+  "description": "Initializes the switched shunt fetching routine ‘NXTSWS’ for returning switched shunts attached to bus IBUS. This API routine was first introduced in release 35.0.0. ierr = inisws(ibus)",
+  "python_syntax": "ierr = inisws(ibus)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘NXTSWS’ is properly initialized."
+    },
+    {
+      "value": "= 1",
+      "description": "Bus not found; ‘NXTSWS’ may not be used."
+    },
+    {
+      "value": "= 2",
+      "description": "Bus has no switched shunts; ‘NXTSWS’ may not be used."
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "multisection_reporting",
+  "category": "Power Flow Operation",
+  "description": "Use this API to specify or return the option to enable or disable multi-section line reporting. This API routine was first introduced in release 30.0.0. ierr = multisection_reporting(ival) ierr, ival = multisection_reporting()",
+  "python_syntax": "ierr = multisection_reporting(ival) ierr, ival = multisection_reporting()",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ival",
+      "description": "Value of the option setting. (input; if Batch command, or for Python if specified as an argument, or for Fortran if IOCODE is 0, 1 by default; else output)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "ival": [
+      {
+        "value": "= 0",
+        "description": "off."
+      },
+      {
+        "value": "= 1",
+        "description": "on."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid IVAL value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid IOCODE value."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

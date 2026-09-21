@@ -1,0 +1,36 @@
+{
+  "module": "psspy",
+  "function_name": "zonuse",
+  "category": "Single Element Data",
+  "description": "Use this API to indicate whether a zone is in use. This API routine was first introduced in release 30.0.0. ival = zonuse(iar)",
+  "python_syntax": "ival = zonuse(iar)",
+  "return_type": "value_only",
+  "parameters": [
+    {
+      "name": "iar",
+      "description": "Zone number. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ival",
+      "description": "Zone status. (output)."
+    }
+  ],
+  "allowed_values": {
+    "ival": [
+      {
+        "value": "= -1",
+        "description": "Zone number <= 0 or > largest allowable zone number."
+      },
+      {
+        "value": "= 0",
+        "description": "If no equipment is assigned to zone IAR."
+      },
+      {
+        "value": "= 1",
+        "description": "If any equipment is assigned to zone IAR."
+      }
+    ]
+  }
+}

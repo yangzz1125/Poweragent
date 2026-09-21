@@ -1,0 +1,32 @@
+{
+  "module": "psspy",
+  "function_name": "bsysisdef",
+  "category": "Single Element Data",
+  "description": "Use this API to check whether a bus subsystem has been defined for a given subsystem ID. A return value of FALSE means that the given subsystem ID is operating in ALL buses mode, e.g., all buses are operated on. This API routine was first introduced in release 30.2.0. exist = bsysisdef(sid)",
+  "python_syntax": "exist = bsysisdef(sid)",
+  "return_type": "value_only",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid bus subsystem id. valid bus subsystem ids range from 0 to 11. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "exist",
+      "description": "Function return. (output)."
+    }
+  ],
+  "allowed_values": {
+    "exist": [
+      {
+        "value": "= False",
+        "description": "no subsystem defined, operating in ALL buses mode."
+      },
+      {
+        "value": "= True",
+        "description": "subsystem is defined."
+      }
+    ]
+  }
+}

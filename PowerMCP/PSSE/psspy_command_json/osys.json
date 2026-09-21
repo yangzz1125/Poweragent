@@ -1,0 +1,42 @@
+{
+  "module": "psspy",
+  "function_name": "osys",
+  "category": "Owner Subsystems",
+  "description": "Use this API to define an owner subsystem. This API routine was first introduced in release 30.0.0. ierr = osys(sid, num, owners)",
+  "python_syntax": "ierr = osys(sid, num, owners)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Valid owner subsystem id. valid owner subsystem ids range from 0 to 11. (input)."
+    },
+    {
+      "name": "num",
+      "description": "Number of owners to set. (input)."
+    },
+    {
+      "name": "owners",
+      "description": "An array of NUM elements specifying array that contains the owners to set. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error return. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "SID is not valid."
+    },
+    {
+      "value": "= 2",
+      "description": "SID is not defined."
+    }
+  ]
+}

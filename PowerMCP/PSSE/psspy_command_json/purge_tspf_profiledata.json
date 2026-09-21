@@ -1,0 +1,42 @@
+{
+  "module": "psspy",
+  "function_name": "purge_tspf_profiledata",
+  "category": "Time Series Power Flow Data",
+  "description": "Use this API to delete Time Series Power Flow profile data by curvesetid and curvecol and index. This API routine was first introduced in release 35.4.0. ierr = purge_tspf_profiledata(curvesetid,curvecol, index)",
+  "python_syntax": "ierr = purge_tspf_profiledata(curvesetid,curvecol, index)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "curvesetid",
+      "description": "Profile curve number. (input; no default allowed)."
+    },
+    {
+      "name": "curvecol",
+      "description": "Profile curve collumn. (input; no default allowed)."
+    },
+    {
+      "name": "index",
+      "description": "Time point index. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Time point of the curve not found."
+    },
+    {
+      "value": "= 2",
+      "description": "Prerequisite requirements for API are not met."
+    }
+  ]
+}

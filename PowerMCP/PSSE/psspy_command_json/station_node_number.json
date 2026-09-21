@@ -1,0 +1,58 @@
+{
+  "module": "psspy",
+  "function_name": "station_node_number",
+  "category": "Node Breaker Data",
+  "description": "Use this API to change a node number in an existing substation. This API routine was first introduced in release 34.0.1. ierr = station_node_number(station, node, newnode)",
+  "python_syntax": "ierr = station_node_number(station, node, newnode)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "station",
+      "description": "Substation number. (input)."
+    },
+    {
+      "name": "node",
+      "description": "Number of the node to be changed. (input)."
+    },
+    {
+      "name": "newnode",
+      "description": "New number to be assigned to the node. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error return. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 1",
+      "description": "invalid substation number."
+    },
+    {
+      "value": "= 2",
+      "description": "substation not found."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid node number."
+    },
+    {
+      "value": "= 4",
+      "description": "node not found."
+    },
+    {
+      "value": "= 5",
+      "description": "invalid new node number."
+    },
+    {
+      "value": "= 6",
+      "description": "node number is already assigned to another node in the substation."
+    },
+    {
+      "value": "= 7",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

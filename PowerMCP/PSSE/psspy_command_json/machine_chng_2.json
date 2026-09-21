@@ -1,0 +1,164 @@
+{
+  "module": "psspy",
+  "function_name": "machine_chng_2",
+  "category": "Power Flow Data",
+  "description": "This API routine is obsolete. It has been replaced by the API routine machine_chng_3, and is implemented by a call to machine_chng_3. Use this API routine to modify the data of an existing machine in the working case (see PSSE Program Operation Manual, Plant Data). This API routine was first introduced in release 33.0.0. ierr = machine_chng_2(ibus, id, intgar, realar)",
+  "python_syntax": "ierr = machine_chng_2(ibus, id, intgar, realar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Machine identifier. (input; ‘1’ by default)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of six elementsNone. (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of seventeen elementsNone. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "STAT, machine status (1 by default)."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "O1, first owner number (owner of bus I by default)."
+      },
+      {
+        "value": "INTGAR(3)",
+        "description": "O2, second owner number (0 by default)."
+      },
+      {
+        "value": "INTGAR(4)",
+        "description": "O3, third owner number (0 by default)."
+      },
+      {
+        "value": "INTGAR(5)",
+        "description": "O4, fourth owner number (0 by default)."
+      },
+      {
+        "value": "INTGAR(6)",
+        "description": "WMOD, wind machine reactive power limits mode (0 if this machine is not a wind machine) (0 by default)."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "PG, machine active power (0.0 by default)."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "QG, machine reactive power (0.0 by default)."
+      },
+      {
+        "value": "REALAR(3)",
+        "description": "QT, machine reactive power upper limit (9999.0 by default)."
+      },
+      {
+        "value": "REALAR(4)",
+        "description": "QB, machine reactive power lower limit (-9999.0 by default)."
+      },
+      {
+        "value": "REALAR(5)",
+        "description": "PT, machine active power upper limit (9999.0 by default)."
+      },
+      {
+        "value": "REALAR(6)",
+        "description": "PB, machine active power lower limit (-9999.0 by default)."
+      },
+      {
+        "value": "REALAR(7)",
+        "description": "MBASE, machine MVA base (SBASE by default)."
+      },
+      {
+        "value": "REALAR(8)",
+        "description": "ZR, machine resistance (0.0 by default)."
+      },
+      {
+        "value": "REALAR(9)",
+        "description": "ZX, machine reactance (1.0 by default)."
+      },
+      {
+        "value": "REALAR(10)",
+        "description": "RT, step-up transformer resistance (0.0 by default)."
+      },
+      {
+        "value": "REALAR(11)",
+        "description": "XT, step-up transformer reactance (0.0 by default)."
+      },
+      {
+        "value": "REALAR(12)",
+        "description": "GTAP, step-up transformer tap ratio (1.0 by default)."
+      },
+      {
+        "value": "REALAR(13)",
+        "description": "F1, first owner fraction (1.0 by default)."
+      },
+      {
+        "value": "REALAR(14)",
+        "description": "F2, second owner fraction (1.0 by default)."
+      },
+      {
+        "value": "REALAR(15)",
+        "description": "F3, third owner fraction (1.0 by default)."
+      },
+      {
+        "value": "REALAR(16)",
+        "description": "F4, fourth owner fraction (1.0 by default)."
+      },
+      {
+        "value": "REALAR(17)",
+        "description": "WPF, wind machine power factor (1.0 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "machine identifier is more than two characters."
+    },
+    {
+      "value": "= 3",
+      "description": "no plant data at this bus."
+    },
+    {
+      "value": "= 7",
+      "description": "machine not found."
+    },
+    {
+      "value": "= 8",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - invalid machine status - invalid wind machine control mode - invalid wind machine power factor - invalid ZSORCE reactance - invalid owner number - invalid ownership fraction - no ownership data is specified - QMAX is less than QMIN - PMAX is less than PMIN - MBASE is not positive - non-conventional machine has negative active power - machine is no longer treated as a non-conventional machine - non-conventional machine table is full–retained as a conventional machine - capability curve is assigned to a non- conventional machine with machine control mode greater than 1 - machine ownership table is full–only first n owners retained - owner table is full."
+    }
+  ]
+}

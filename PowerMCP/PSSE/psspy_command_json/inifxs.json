@@ -1,0 +1,34 @@
+{
+  "module": "psspy",
+  "function_name": "inifxs",
+  "category": "Single Element Data",
+  "description": "Initializes the fixed bus shunt fetching routine ‘NXTFXS’ for returning fixed shunts attached to bus IBUS. This API routine was first introduced in release 31.0.0. ierr = inifxs(ibus)",
+  "python_syntax": "ierr = inifxs(ibus)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘NXTFXS’ is properly initialized."
+    },
+    {
+      "value": "= 1",
+      "description": "Bus not found; ‘NXTFXS’ may not be used."
+    },
+    {
+      "value": "= 2",
+      "description": "Bus has no fixed shunts; ‘NXTFXS’ may not be used."
+    }
+  ]
+}

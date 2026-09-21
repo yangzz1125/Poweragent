@@ -1,0 +1,62 @@
+{
+  "module": "psspy",
+  "function_name": "staint",
+  "category": "Single Element Data",
+  "description": "Use this API routine to return integer substation values. This API routine was first introduced in release 34.1.0. ierr, ival = staint(ista, string)",
+  "python_syntax": "ierr, ival = staint(ista, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ista",
+      "description": "Substation number. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "ival",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= NODES",
+        "description": "Number of nodes in the substation."
+      },
+      {
+        "value": "= PARENTS",
+        "description": "Number of parent buses in the substation."
+      },
+      {
+        "value": "= SECTIONS",
+        "description": "Number of bus sections in the substation."
+      },
+      {
+        "value": "= SWDEVS",
+        "description": "Number of switching devices in the substation."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Substation not found; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid value of ‘STRING’; ‘IVAL’ unchanged."
+    }
+  ]
+}

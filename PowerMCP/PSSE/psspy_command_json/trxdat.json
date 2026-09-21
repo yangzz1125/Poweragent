@@ -1,0 +1,46 @@
+{
+  "module": "psspy",
+  "function_name": "trxdat",
+  "category": "Single Element Data",
+  "description": "Use this API to return the inter-area transfer MW. This API routine was first introduced in release 30.0.0. ierr, rval = trxdat(iar, jar, id)",
+  "python_syntax": "ierr, rval = trxdat(iar, jar, id)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "iar",
+      "description": "From area number. (input)."
+    },
+    {
+      "name": "jar",
+      "description": "To area number. (input)."
+    },
+    {
+      "name": "id",
+      "description": "Inter-area transfer identifier. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "rval",
+      "description": "Value. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘RVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Area number <= 0 or > largest allowable area number; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Interarea transfer not found; ‘RVAL’ unchanged."
+    }
+  ]
+}

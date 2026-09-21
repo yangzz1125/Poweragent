@@ -1,0 +1,29 @@
+{
+  "module": "psspy",
+  "function_name": "avoltagedroopcount",
+  "category": "Multiple Element Data",
+  "description": "Use this API to return the number of voltage droop controls. This API routine was first introduced in release 35.3.0. ierr, vdroops = avoltagedroopcount()",
+  "python_syntax": "ierr, vdroops = avoltagedroopcount()",
+  "return_type": "error_and_count",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "vdroops",
+      "description": "Number of voltage droop controls. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty."
+    }
+  ]
+}

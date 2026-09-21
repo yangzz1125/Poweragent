@@ -1,0 +1,42 @@
+{
+  "module": "psspy",
+  "function_name": "readx",
+  "category": "Power Flow Operation",
+  "description": "This API routine is obsolete. It has been replaced by the API routine readrawx, and is implemented by a call to readrawx. Use this API to read an extended power flow raw data file and add all the data specified in it to the working case. This API routine was first introduced in release 35.0.0. ierr = readx(sfile)",
+  "python_syntax": "ierr = readx(sfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sfile",
+      "description": "Filename of the extended power flow raw data file. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid revision number."
+    },
+    {
+      "value": "= 2",
+      "description": "unable to convert file."
+    },
+    {
+      "value": "= 3",
+      "description": "error opening SFILE."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

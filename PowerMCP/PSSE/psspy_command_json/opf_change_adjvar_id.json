@@ -1,0 +1,58 @@
+{
+  "module": "psspy",
+  "function_name": "opf_change_adjvar_id",
+  "category": "Optimal Power Flow Data",
+  "description": "This API routine is obsolete. It has been replaced by the API routine opf_change_adjvar_id, and is implemented by a call to opf_change_adjvar_id. Use this API to change the identifier of an OPF adjustable bus shunt data record in the working case. This API routine was first introduced in release 34.8.0 and 35.2.0. ierr = opf_change_adjvar_id(ibus, id, idnew)",
+  "python_syntax": "ierr = opf_change_adjvar_id(ibus, id, idnew)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Opf adjustable bus shunt identifier. (input; no default allowed)."
+    },
+    {
+      "name": "idnew",
+      "description": "New opf adjustable bus shunt identifier. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid bus number specified."
+    },
+    {
+      "value": "= 2",
+      "description": "blank adjustable bus shunt identifier is invalid."
+    },
+    {
+      "value": "= 3",
+      "description": "adjustable bus shunt identifier is more than two characters."
+    },
+    {
+      "value": "= 4",
+      "description": "adjustable bus shunt not found."
+    },
+    {
+      "value": "= 5",
+      "description": "adjustable bus shunt already exists."
+    },
+    {
+      "value": "= 6",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

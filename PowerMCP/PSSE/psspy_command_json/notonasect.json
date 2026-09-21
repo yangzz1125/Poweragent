@@ -1,0 +1,42 @@
+{
+  "module": "psspy",
+  "function_name": "notonasect",
+  "category": "Single Element Data",
+  "description": "Use this API to return the bus 18-character extended bus name for a specified bus section. This API routine was first introduced in release 34.1.0. ierr, busname = notona(ibus,isect)",
+  "python_syntax": "ierr, busname = notona(ibus,isect)",
+  "return_type": "error_and_value",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    },
+    {
+      "name": "isect",
+      "description": "Section number; isect is returned as 0 if bus ibus is not represented by multiple bus sections. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "busname",
+      "description": "Bus name. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error; ‘STRING’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found; ‘STRING’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "‘STRING’ smaller than CHARACTER*16; ‘STRING’ unchanged."
+    }
+  ]
+}

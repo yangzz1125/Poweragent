@@ -1,0 +1,94 @@
+{
+  "module": "psspy",
+  "function_name": "checkvoltagelimits",
+  "category": "Power Flow Operation",
+  "description": "Use this API to tabulate those buses where voltage magnitude is beyond their normal or emergency voltage limits. This check may be performed for all buses in the working case or for all buses in a specified subsystem. This API routine was first introduced in release 33.1.0. ierr = checkvoltagelimits(sid, all, opt, thrsh)",
+  "python_syntax": "ierr = checkvoltagelimits(sid, all, opt, thrsh)",
+  "return_type": "error_only_report",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid subsystem identifier. valid subsystem identifiers range from 0 to 11. subsystem sid must have been previously defined . (input; 0 by default)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem flag . (input; 1 by default)."
+    },
+    {
+      "name": "opt",
+      "description": "Set of voltage limits to be used. (input; 1 by default)."
+    },
+    {
+      "name": "thrsh",
+      "description": "Voltage limit threshold (-0.05 < thrsh < 0.05). (input; 0.0 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code . (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 0",
+        "description": "process only buses in subsystem SID."
+      },
+      {
+        "value": "= 1",
+        "description": "process all buses."
+      }
+    ],
+    "opt": [
+      {
+        "value": "= 1",
+        "description": "normal limits."
+      },
+      {
+        "value": "= 2",
+        "description": "emergency limits."
+      }
+    ],
+    "thrsh": [
+      {
+        "value": "= 0.0",
+        "description": "log voltages above upper limit or below lower limit."
+      },
+      {
+        "value": "> 0.0",
+        "description": "log voltages beyond or within THRSH of a limit."
+      },
+      {
+        "value": "< 0.0",
+        "description": "log voltage outside a limit by more than (-THRSH)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ALL value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid OPT value."
+    },
+    {
+      "value": "= 4",
+      "description": "invalid THRSH value."
+    },
+    {
+      "value": "= 5",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

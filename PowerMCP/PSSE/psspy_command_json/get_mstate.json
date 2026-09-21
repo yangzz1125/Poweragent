@@ -1,0 +1,47 @@
+{
+  "module": "psspy",
+  "function_name": "get_mstate",
+  "category": "Single Element Data",
+  "description": "Use this API to return the MSTATE value. MSTATE is meaningful in MODEs one through four and indicates the type of simulation being run by activities STRT/RUN, MSTR/MRUN, ESTR/ERUN, GSTR/GRUN or ASTR. This API routine was first introduced in release 31.0.0. n = get_mstate()",
+  "python_syntax": "n = get_mstate()",
+  "return_type": "value_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "n",
+      "description": ""
+    }
+  ],
+  "allowed_values": {
+    "n": [
+      {
+        "value": "= -1",
+        "description": "No dynamics data is present."
+      },
+      {
+        "value": "= 0",
+        "description": "Standard state-space dynamic simulation via activities STRT and RUN, or activity ASTR."
+      },
+      {
+        "value": "= 1",
+        "description": "Excitation system response ratio test via activities ESTR and ERUN. Models other than generator and excitation system models are not called."
+      },
+      {
+        "value": "= 2",
+        "description": "Excitation system open circuit step response test via activities ESTR and ERUN. Models other than generator and excitation system models are not called."
+      },
+      {
+        "value": "= 3",
+        "description": "Governor response test via activities GSTR and GRUN. Models other than generator and turbine governor models are not called."
+      },
+      {
+        "value": "= 4",
+        "description": "Extended term dynamic simulation via activities MSTR and MRUN."
+      },
+      {
+        "value": "= 5",
+        "description": "Dynamics data is present but no initialization activity has been successfully executed."
+      }
+    ]
+  }
+}

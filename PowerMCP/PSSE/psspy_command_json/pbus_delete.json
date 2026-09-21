@@ -1,0 +1,42 @@
+{
+  "module": "psspy",
+  "function_name": "pbus_delete",
+  "category": "Power Flow Data",
+  "description": "Use this API to remove a bus from the set of buses that are participating in a transaction event. This API routine was first introduced in release 30.0.0. ierr = pbus_delete(event, ibus)",
+  "python_syntax": "ierr = pbus_delete(event, ibus)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "event",
+      "description": "Transaction event number. (input)."
+    },
+    {
+      "name": "ibus",
+      "description": "Number of the participating bus. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid transaction event number."
+    },
+    {
+      "value": "= 2",
+      "description": "transaction event not found."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

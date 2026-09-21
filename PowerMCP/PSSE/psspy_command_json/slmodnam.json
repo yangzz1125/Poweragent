@@ -1,0 +1,92 @@
+{
+  "module": "psspy",
+  "function_name": "slmodnam",
+  "category": "Single Element Data",
+  "description": "Use this API to return the subsystem load-related model name. This API routine was first introduced in release 28.0.0. ierr, cval = slmodnam(ctype, ibus, id, string)",
+  "python_syntax": "ierr, cval = slmodnam(ctype, ibus, id, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ctype",
+      "description": "Subsystem type. (input)."
+    },
+    {
+      "name": "ibus",
+      "description": "Number of bus, area, zone, or owner, depending on ctype. not used if ctype=’all’. (input)."
+    },
+    {
+      "name": "id",
+      "description": "Load identifier. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the type of load model desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "cval",
+      "description": "Model name. (output)."
+    }
+  ],
+  "allowed_values": {
+    "ctype": [
+      {
+        "value": "= BUS",
+        "description": "Subsystem specified by buses."
+      },
+      {
+        "value": "= AREA",
+        "description": "Subsystem specified by areas."
+      },
+      {
+        "value": "= ZONE",
+        "description": "Subsystem specified by zones."
+      },
+      {
+        "value": "= OWNER",
+        "description": "Subsystem specified by owners."
+      },
+      {
+        "value": "= ALL",
+        "description": "Subsystem of all loads."
+      }
+    ],
+    "string": [
+      {
+        "value": "= CHARAC",
+        "description": "Load characteristic model."
+      },
+      {
+        "value": "= RELAY",
+        "description": "Load relay model."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘CVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Invalid value of ‘CTYPE’; ‘CVAL’ returned."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid value of ‘STRING’; ‘CVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "No model of type ‘STRING’ for this load; ‘CVAL’ unchanged."
+    },
+    {
+      "value": "= 9",
+      "description": "Dynamics data not present in working memory; ‘CVAL’ unchanged."
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "module": "psspy",
+  "function_name": "staname",
+  "category": "Single Element Data",
+  "description": "Use this API routine to return a substation’s name. This API routine was first introduced in release 34.1.0. ierr, string = staname(ista)",
+  "python_syntax": "ierr, string = staname(ista)",
+  "return_type": "error_and_string",
+  "parameters": [
+    {
+      "name": "ista",
+      "description": "Substation number. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "string",
+      "description": "Substation name. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘STRING’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Substation not found; ‘STRING’ unchanged."
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "nxtlod",
+  "category": "Single Element Data",
+  "description": "Use this API to return the identifier of the next load connected to a bus. Each time ‘NXTLOD’ is called it returns the next load identifier in ascending order. ‘INILOD’ must first be called to establish the load bus number. This API routine was first introduced in release 28.0.0. ierr, id = nxtlod(ibus)",
+  "python_syntax": "ierr, id = nxtlod(ibus)",
+  "return_type": "error_and_value",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "id",
+      "description": "Load identifier. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘ID’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "No more loads at ‘IBUS’; ‘ID’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "‘INILOD’ was not called for bus ‘IBUS’; ‘ID’ unchanged."
+    }
+  ]
+}

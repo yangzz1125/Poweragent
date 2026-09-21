@@ -1,0 +1,71 @@
+{
+  "module": "psspy",
+  "function_name": "solved_ca",
+  "category": "Single Element Data",
+  "description": "Use this API to check whether the last corrective action solution attempt reached tolerance. This API routine was first introduced in release 33.3.0. ival = solved_ca()",
+  "python_syntax": "ival = solved_ca()",
+  "return_type": "value_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ival",
+      "description": ""
+    }
+  ],
+  "allowed_values": {
+    "ival": [
+      {
+        "value": "= 0",
+        "description": "Removed all limit violations successfully."
+      },
+      {
+        "value": "= 1",
+        "description": "Exceeded iteration limit (Number of AC load flows)."
+      },
+      {
+        "value": "= 2",
+        "description": "Terminated with constraint violations."
+      },
+      {
+        "value": "= 3",
+        "description": "Terminated because of insufficient controls."
+      },
+      {
+        "value": "= 4",
+        "description": "Terminated because linear programming model cannot be setup."
+      },
+      {
+        "value": "= 5",
+        "description": "Terminated because Linear Programming solution diverged."
+      },
+      {
+        "value": "= 6",
+        "description": "Terminated because AC load flow exceeded iteration limit."
+      },
+      {
+        "value": "= 7",
+        "description": "Terminated because AC load flow blown up (only when non-divergent option disabled)."
+      },
+      {
+        "value": "= 8",
+        "description": "Terminated because AC load flow terminated by non-divergent option."
+      },
+      {
+        "value": "= 9",
+        "description": "Terminated because AC load flow terminated by console interrupt."
+      },
+      {
+        "value": "= 10",
+        "description": "Terminated because AC load flow terminated by singular jacobian matrix (FNSL) or voltage= 0.0 (FDNS)."
+      },
+      {
+        "value": "= 13",
+        "description": "Terminated because AC load flow converged with stalled and/or tripped induction machines."
+      },
+      {
+        "value": "= 14",
+        "description": "Solution not attempted."
+      }
+    ]
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "module": "psspy",
+  "function_name": "aloadcount",
+  "category": "Load Data",
+  "description": "Use this API to return the number of array entries required to accommodate the data to be returned by the remaining members of the load data family. This API routine was first introduced in release 30.2.0. ierr, loads = aloadcount(sid, flag)",
+  "python_syntax": "ierr, loads = aloadcount(sid, flag)",
+  "return_type": "error_and_count",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the bus subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem loads to include. (input; 1 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "loads",
+      "description": "Number of loads in the subsystem indicated by sid that meet the editing criteria indicated by flag. (output)."
+    }
+  ],
+  "allowed_values": {
+    "sid": [
+      {
+        "value": "< 0",
+        "description": "to instruct the API to assume a subsystem containing all buses in the working case."
+      },
+      {
+        "value": ">= 0",
+        "description": "valid bus subsystem identifier. Valid subsystem identifiers range from 0 to 11. Subsystem SID must have been previously defined."
+      }
+    ],
+    "flag": [
+      {
+        "value": "= 1",
+        "description": "for only in-service loads at in-service buses (type code < 4)."
+      },
+      {
+        "value": "= 2",
+        "description": "for all loads at in-service buses (type code < 4)."
+      },
+      {
+        "value": "= 3",
+        "description": "for only in-service loads, including those at type 4 buses."
+      },
+      {
+        "value": "= 4",
+        "description": "for all loads."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error, LOADS returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty; LOADS returned as 0."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value; LOADS returned as 0."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid FLAG value; LOADS returned as 0."
+    }
+  ]
+}

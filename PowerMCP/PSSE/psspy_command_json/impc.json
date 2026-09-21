@@ -1,0 +1,66 @@
+{
+  "module": "psspy",
+  "function_name": "impc",
+  "category": "Power Flow Operation",
+  "description": "Use this API to calculate the impact of transaction events on MW flows using a linear network (dc) model. This API routine was first introduced in release 29.0.0. ierr = impc(event, dfxfile, atcfile)",
+  "python_syntax": "ierr = impc(event, dfxfile, atcfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "event",
+      "description": "Transaction event number. (input; no default allowed)."
+    },
+    {
+      "name": "dfxfile",
+      "description": "Name of dfax data file. (input; no default allowed)."
+    },
+    {
+      "name": "atcfile",
+      "description": "Name of atc updates file; blank for none. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "no transactions defined."
+    },
+    {
+      "value": "= 2",
+      "description": "transaction event not defined."
+    },
+    {
+      "value": "= 3",
+      "description": "no name of DFAX data file specified."
+    },
+    {
+      "value": "= 4",
+      "description": "error opening ATC updates file."
+    },
+    {
+      "value": "= 5",
+      "description": "error opening file DFXFILE."
+    },
+    {
+      "value": "= 6",
+      "description": "file DFXFILE is not in the form of a PSSE-25 or later DFAX file; run DFAX."
+    },
+    {
+      "value": "= 8",
+      "description": "no monitored branches or interfaces defined."
+    },
+    {
+      "value": "= 9",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

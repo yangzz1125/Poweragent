@@ -1,0 +1,142 @@
+{
+  "module": "psspy",
+  "function_name": "xfrint",
+  "category": "Single Element Data",
+  "description": "Use this API to return two-winding transformer integer parameters. This API routine was first introduced in release 28.0.0. ierr, ival = xfrint(ibus, jbus, ickt, string)",
+  "python_syntax": "ierr, ival = xfrint(ibus, jbus, ickt, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "From bus number. (input)."
+    },
+    {
+      "name": "jbus",
+      "description": "To bus number. (input)."
+    },
+    {
+      "name": "ickt",
+      "description": "Circuit identifier. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the transformer quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "ival",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= ICONT",
+        "description": "Controlled bus number."
+      },
+      {
+        "value": "= NCONT",
+        "description": "Controlled node number."
+      },
+      {
+        "value": "= SIDCOD",
+        "description": "Controlled bus side code (negative if on the winding 1 side)."
+      },
+      {
+        "value": "= TAPPED",
+        "description": "Tapped side bus number."
+      },
+      {
+        "value": "= GCIBUS",
+        "description": "Bus IBUS old grounding code (derived from CNXCOD)."
+      },
+      {
+        "value": "= GCJBUS",
+        "description": "Bus JBUS old grounding code (derived from CNXCOD)."
+      },
+      {
+        "value": "= TABLE",
+        "description": "Transformer impedance correction table number (0 if none)."
+      },
+      {
+        "value": "= CNTRL",
+        "description": "Adjustment enable flag."
+      },
+      {
+        "value": "= CNTRL2",
+        "description": "Transformer adjustment code."
+      },
+      {
+        "value": "= NTPOSN",
+        "description": "Number of tap positions."
+      },
+      {
+        "value": "= CNXCOD",
+        "description": "Connection code."
+      },
+      {
+        "value": "= CW",
+        "description": "Winding data I/O code."
+      },
+      {
+        "value": "= CZ",
+        "description": "Impedance data I/O code."
+      },
+      {
+        "value": "= CM",
+        "description": "Magnetizing admittance I/O code."
+      },
+      {
+        "value": "= CZ0",
+        "description": "Leakage impedance data I/O code."
+      },
+      {
+        "value": "= CZG",
+        "description": "Grounding impedance data I/O code."
+      },
+      {
+        "value": "= TPSTT",
+        "description": "Transformer winding one ratio limit code: (-1) low; (0) regulating; (1) high; (-2) locked; (-3) controlling dc line."
+      },
+      {
+        "value": "= ANSTT",
+        "description": "Transformer winding one angle limit code: (-1) low; (0) regulating; (1) high; (-2) locked."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Bus not found; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Branch not found; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "Branch not a transformer; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid value of ‘STRING’; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 5",
+      "description": "Sequence data not in case for STRING = ‘CNXCOD’, ‘CZ0’, ‘CZG’, ‘GCIBUS’ or ‘GCJBUS’; IVAL unchanged."
+    },
+    {
+      "value": "= 6",
+      "description": "Connection code is 6 or greater for STRING = ‘GCIBUS’ or ‘GCJBUS’; IVAL unchanged."
+    }
+  ]
+}

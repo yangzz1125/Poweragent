@@ -1,0 +1,58 @@
+{
+  "module": "psspy",
+  "function_name": "station_node_purg",
+  "category": "Node Breaker Data",
+  "description": "Use this API to delete a node in an existing substation. This API routine was first introduced in release 34.0.0. ierr = station_node_purg(station, node)",
+  "python_syntax": "ierr = station_node_purg(station, node)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "station",
+      "description": "Substation number. (input)."
+    },
+    {
+      "name": "node",
+      "description": "Node number. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error return. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "working case is empty."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid substation number."
+    },
+    {
+      "value": "= 3",
+      "description": "substation not found."
+    },
+    {
+      "value": "= 4",
+      "description": "invalid node number."
+    },
+    {
+      "value": "= 5",
+      "description": "node not found."
+    },
+    {
+      "value": "= 6",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "number_threads",
+  "category": "Power Flow Operation",
+  "description": "Use this API to specify or return the number of processors available for parallel operations. This API routine was first introduced in release 33.1.0. ierr = number_threads(ival) ierr, ival = number_threads()",
+  "python_syntax": "ierr = number_threads(ival) ierr, ival = number_threads()",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ival",
+      "description": "Value of the option setting between 1 and the number of processors of the computer. (input; if Batch command, or for Python if specified as an argument, or for Fortran if IOCODE is 0, 1 by default; else output)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid IVAL value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid IOCODE value."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

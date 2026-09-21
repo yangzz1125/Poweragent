@@ -1,0 +1,31 @@
+{
+  "module": "psspy",
+  "function_name": "selctr",
+  "category": "Single Element Data",
+  "description": "Use this API to return the activity selector indicator. This API routine was first introduced in release 28.0.0. ival = selctr()",
+  "python_syntax": "ival = selctr()",
+  "return_type": "value_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ival",
+      "description": ""
+    }
+  ],
+  "allowed_values": {
+    "ival": [
+      {
+        "value": "= 0",
+        "description": "Not at ‘ACTIVITY’."
+      },
+      {
+        "value": "= 1",
+        "description": "At power flow activity selector."
+      },
+      {
+        "value": "= 2",
+        "description": "At dynamics activity selector."
+      }
+    ]
+  }
+}

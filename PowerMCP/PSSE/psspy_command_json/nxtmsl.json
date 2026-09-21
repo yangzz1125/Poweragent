@@ -1,0 +1,45 @@
+{
+  "module": "psspy",
+  "function_name": "nxtmsl",
+  "category": "Single Element Data",
+  "description": "Use this API to return the next multi-section line member branch. This API routine was first introduced in release 28.0.0. ierr, ibus, jbus, ickt = nxtmsl()",
+  "python_syntax": "ierr, ibus, jbus, ickt = nxtmsl()",
+  "return_type": "error_and_multi_value",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "ibus",
+      "description": "From bus number. (output)."
+    },
+    {
+      "name": "jbus",
+      "description": "To bus number. (output)."
+    },
+    {
+      "name": "ickt",
+      "description": "Multi-section line identifier. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IBUS’, ‘JBUS’, and ‘ICKT’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "No more branches in multi-section line; ‘IBUS’, ‘JBUS’, and ‘ICKT’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "& not the first character of ‘ICKT’; NXTMSL may not be used."
+    },
+    {
+      "value": "= 3",
+      "description": "INIMSL was not called; ‘IBUS’, ‘JBUS’, and ‘ICKT’ unchanged."
+    }
+  ]
+}

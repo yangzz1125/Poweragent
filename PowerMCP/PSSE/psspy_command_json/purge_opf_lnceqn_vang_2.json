@@ -1,0 +1,62 @@
+{
+  "module": "psspy",
+  "function_name": "purge_opf_lnceqn_vang_2",
+  "category": "Optimal Power Flow Data",
+  "description": "Use this API to remove a participating bus voltage angle variable from a specified OPF linear constraint dependency equation in the working case. This API routine was first introduced in release 34.6.0. ierr = purge_opf_lnceqn_vang_2(iqid, eibus, enode)",
+  "python_syntax": "ierr = purge_opf_lnceqn_vang_2(iqid, eibus, enode)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "iqid",
+      "description": "Linear constraint equation identification number. (input; no default allowed)."
+    },
+    {
+      "name": "eibus",
+      "description": "Bus number. (input; no default allowed)."
+    },
+    {
+      "name": "enode",
+      "description": "The bus section number or the external node number of one of the nodes in the bus section of interest. specify 0 if bus is represented by a single bus section. if 0 is specified and bus is represented by multiple bus sections, the data of the parent bus and not that of the bus sections will be changed. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "specified linear constraint equation does not exist."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid bus number."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= 4",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 5",
+      "description": "invalid node number."
+    },
+    {
+      "value": "= 6",
+      "description": "node not found in substation of bus."
+    },
+    {
+      "value": "= 7",
+      "description": "node not connected to any bus section of bus in substation."
+    }
+  ]
+}

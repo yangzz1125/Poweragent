@@ -1,0 +1,86 @@
+{
+  "module": "psspy",
+  "function_name": "change_rlmod_chricn",
+  "category": "Line Relay Models",
+  "description": "Use this API to change the value of a character ICON (i.e., an element of the CHRICN array) of the line relay model in the designated relay slot of the from bus end of a specified branch. The corresponding integer ICON is set to 0. This API routine was first introduced in release 30.2.0. ierr = change_rlmod_chricn(ibus, jbus, id, rs, name, j, chdata)",
+  "python_syntax": "ierr = change_rlmod_chricn(ibus, jbus, id, rs, name, j, chdata)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "From bus number. (input; no default allowed)."
+    },
+    {
+      "name": "jbus",
+      "description": "To bus number. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Circuit identifier. (input)."
+    },
+    {
+      "name": "rs",
+      "description": "Relay slot (1 or 2). (input; 1 by default)."
+    },
+    {
+      "name": "name",
+      "description": "Model name. (input; no default allowed)."
+    },
+    {
+      "name": "j",
+      "description": "Icon number to change relative to the start of the block of icons assigned to this model (1 for icon(i), 2 for icon(i+1), etc.). (input; no default allowed)."
+    },
+    {
+      "name": "chdata",
+      "description": "New character icon value. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid RS value."
+    },
+    {
+      "value": "= 2",
+      "description": "unknown model NAME."
+    },
+    {
+      "value": "= 3",
+      "description": "no relay model on this branch at the bus IBUS end."
+    },
+    {
+      "value": "= 4",
+      "description": "relay model at bus IBUS end is aaa not xxx."
+    },
+    {
+      "value": "= 5",
+      "description": "no input ICONs used in model NAME."
+    },
+    {
+      "value": "= 6",
+      "description": "ICON number outside of the ICON range of this model."
+    },
+    {
+      "value": "= 7",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 8",
+      "description": "branch not found."
+    },
+    {
+      "value": "= 9",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

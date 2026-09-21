@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "addmodellibrary",
+  "category": "Dynamic Simulation Operation",
+  "description": "Use this API to add a library to the list to be searched for library models. This API routine was first introduced in release 30.3.0. ierr = addmodellibrary(libraryname)",
+  "python_syntax": "ierr = addmodellibrary(libraryname)",
+  "return_type": "error_only_listing",
+  "parameters": [
+    {
+      "name": "libraryname",
+      "description": "Name of the library of model programs. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "library not found."
+    },
+    {
+      "value": "= 2",
+      "description": "library load failed."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

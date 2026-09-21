@@ -1,0 +1,10 @@
+{
+  "module": "psspy",
+  "function_name": "setdiagrestypeopf",
+  "category": "Diagram View",
+  "description": "Use this API to set the type of results displayed in the active Slider diagram to OPF solution results. Requires that current network elements are being displayed in the diagram view. This API routine was first introduced in release 33.2.0. setdiagrestypeopf()",
+  "python_syntax": "setdiagrestypeopf()",
+  "return_type": "void",
+  "parameters": [],
+  "return_values": []
+}

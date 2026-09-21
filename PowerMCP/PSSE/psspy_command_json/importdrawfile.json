@@ -1,0 +1,15 @@
+{
+  "module": "psspy",
+  "function_name": "importdrawfile",
+  "category": "Diagram View",
+  "description": "Use this API to import a Draw Data File into an active Slider diagram in the GUI. This API routine was first introduced in release 30.0.0. importdrawfile(drawfile)",
+  "python_syntax": "importdrawfile(drawfile)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "drawfile",
+      "description": ""
+    }
+  ],
+  "return_values": []
+}

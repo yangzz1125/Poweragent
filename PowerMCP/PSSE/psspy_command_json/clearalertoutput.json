@@ -1,0 +1,10 @@
+{
+  "module": "psspy",
+  "function_name": "clearalertoutput",
+  "category": "Non-Engineering",
+  "description": "Clear the Alerts/Warnings tab of the output bar in the GUI This API routine was first introduced in release 34.1.0. clearalertoutput()",
+  "python_syntax": "clearalertoutput()",
+  "return_type": "void",
+  "parameters": [],
+  "return_values": []
+}

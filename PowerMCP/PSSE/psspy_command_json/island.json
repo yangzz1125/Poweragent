@@ -1,0 +1,29 @@
+{
+  "module": "psspy",
+  "function_name": "island",
+  "category": "Single Element Data",
+  "description": "Trips in-service branches connected to Type 4 (or greater) buses, and disconnects islands not containing a swing bus. Note: Calling ISLAND with generators converted will disconnect all buses. This API routine was first introduced in release 28.0.0. ierr = island()",
+  "python_syntax": "ierr = island()",
+  "return_type": "error_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": ""
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No errors."
+    },
+    {
+      "value": "= -1",
+      "description": "No in-service buses remaining."
+    },
+    {
+      "value": "> 0",
+      "description": "Number of islands tripped."
+    }
+  ]
+}

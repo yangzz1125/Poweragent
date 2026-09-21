@@ -1,0 +1,82 @@
+{
+  "module": "psspy",
+  "function_name": "anodechar",
+  "category": "Substation Node Data",
+  "description": "Use this API to return an array of character values for subsystem substation nodes. This API routine was first introduced in release 34.1.0. ierr, carray = anodechar(sid, flag, string)",
+  "python_syntax": "ierr, carray = anodechar(sid, flag, string)",
+  "return_type": "error_and_array",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the bus subsystem to be used. (input)."
+    },
+    {
+      "name": "flag",
+      "description": "Flag indicating which subsystem substations to include (1 by default). (input)."
+    },
+    {
+      "name": "string",
+      "description": "An array of NSTR elements specifying NSTR of the following strings indicating the substation quantities desired. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "carray",
+      "description": "An array of NSTR*DIM elements specifying Is an array of at least NSTR columns, each of which contains DIM elements. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= STATIONNAME",
+        "description": "Substation name (40 characters)."
+      },
+      {
+        "value": "= NODENAME",
+        "description": "Node name (40 characters)."
+      },
+      {
+        "value": "= BUSNAME",
+        "description": "Name of the bus to which the node is connected (12 characters)."
+      },
+      {
+        "value": "= BUSEXNAME",
+        "description": "Extended bus name of the bus to which the node is connected (18 characters)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid FLAG value."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid NSTR value."
+    },
+    {
+      "value": "= 5",
+      "description": "DIM, and hence the size of CARRAY, is not large enough."
+    },
+    {
+      "value": "= 6",
+      "description": "Invalid STRING value."
+    }
+  ]
+}

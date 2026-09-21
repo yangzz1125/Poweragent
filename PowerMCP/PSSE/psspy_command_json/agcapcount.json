@@ -1,0 +1,46 @@
+{
+  "module": "psspy",
+  "function_name": "agcapcount",
+  "category": "Multiple Element Data",
+  "description": "Use this API to return the number of data points of a GCAP curve. This API routine was first introduced in release 35.6.1. ierr, count = agcapcount(ibus, id)",
+  "python_syntax": "ierr, count = agcapcount(ibus, id)",
+  "return_type": "error_and_count",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Machine bus number. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Machine identifier. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "count",
+      "description": "Number of elements in rarray. (output; no default allowed)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error, number of GCAP data points returned."
+    },
+    {
+      "value": "= 1",
+      "description": "machine bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "no machine at the bus."
+    },
+    {
+      "value": "= 3",
+      "description": "machine not found."
+    }
+  ]
+}

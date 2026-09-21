@@ -1,0 +1,74 @@
+{
+  "module": "psspy",
+  "function_name": "purge_opf_adjvar_indv_3",
+  "category": "Optimal Power Flow Data",
+  "description": "Use this API to purge an individual OPF adjustable bus shunt data record from the working case. This API routine was first introduced in release 34.2.0. ierr = purge_opf_adjvar_indv_3(eibus, enod, shntid)",
+  "python_syntax": "ierr = purge_opf_adjvar_indv_3(eibus, enod, shntid)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "eibus",
+      "description": "Bus number. (input; no default allowed)."
+    },
+    {
+      "name": "enod",
+      "description": "The section number or the node number of one of the nodes in the bus section of interest. specify 0 (zero) if the bus is represented by a single bus section. if 0 is specified and the bus is represented by multiple bus sections, then the data of the parent bus and not that of one of the bus sections is changed. (input)."
+    },
+    {
+      "name": "shntid",
+      "description": "Bus shunt identifier. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "adjustable bus shunt identifier is more than two characters."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid bus number specified."
+    },
+    {
+      "value": "= 3",
+      "description": "blank adjustable bus shunt identifier is invalid."
+    },
+    {
+      "value": "= 4",
+      "description": "OPF adjustable bus shunt at bus not found."
+    },
+    {
+      "value": "= 5",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= 6",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 7",
+      "description": "invalid node number."
+    },
+    {
+      "value": "= 8",
+      "description": "bus does not belong to a substation."
+    },
+    {
+      "value": "= 9",
+      "description": "node is not found in the substation."
+    },
+    {
+      "value": "= 10",
+      "description": "node is not connected to any bus section of bus."
+    }
+  ]
+}

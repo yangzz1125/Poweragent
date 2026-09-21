@@ -1,0 +1,70 @@
+{
+  "module": "psspy",
+  "function_name": "opf_change_brn_flow_id",
+  "category": "Optimal Power Flow Data",
+  "description": "Use this API to change the identifier of a branch or two-winding transformer OPF flow constraint record in the working case. This API routine was first introduced in release 34.8.0 and 35.2.0. ierr = opf_change_brn_flow_id(ibus, jbus, cktid, id, idnew)",
+  "python_syntax": "ierr = opf_change_brn_flow_id(ibus, jbus, cktid, id, idnew)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "From bus number. (input; no default allowed)."
+    },
+    {
+      "name": "jbus",
+      "description": "To bus number. (input; no default allowed)."
+    },
+    {
+      "name": "cktid",
+      "description": "Circuit identifier. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Branch flow constraint identifier. (input; no default allowed)."
+    },
+    {
+      "name": "idnew",
+      "description": "New branch flow constraint identifier. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid bus number specified."
+    },
+    {
+      "value": "= 2",
+      "description": "a non-blank new identifier must be specified."
+    },
+    {
+      "value": "= 3",
+      "description": "specified branch does not exist."
+    },
+    {
+      "value": "= 4",
+      "description": "branch flow identifier is more than one character."
+    },
+    {
+      "value": "= 5",
+      "description": "branch flow constraint does not exist."
+    },
+    {
+      "value": "= 6",
+      "description": "branch flow constraint already exists."
+    },
+    {
+      "value": "= 7",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

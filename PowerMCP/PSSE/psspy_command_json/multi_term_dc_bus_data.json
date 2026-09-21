@@ -1,0 +1,102 @@
+{
+  "module": "psspy",
+  "function_name": "multi_term_dc_bus_data",
+  "category": "Power Flow Data",
+  "description": "Use this API to modify the data of a dc bus of an existing multi-terminal dc line in the working case or to add a new dc bus to a multi-terminal dc line in the working case (see PSSE Program Operation Manual, Multi-Terminal DC Transmission Line Data). The dc line must have previously been specified via the MULTI_TERM_DC_LINE_DATA API. just some stupid words to see if they show up This API routine was first introduced in release 28.0.0. ierr, realaro = multi_term_dc_bus_data(dc, idc, intgar, realari, dcname)",
+  "python_syntax": "ierr, realaro = multi_term_dc_bus_data(dc, idc, intgar, realari, dcname)",
+  "return_type": "error_and_record",
+  "parameters": [
+    {
+      "name": "dc",
+      "description": "Quoted name of the multi-terminal dc line for which data for a dc bus is to be specified; if an unquoted integer value is specified, the api converts it to a left- justified name. (input; no default allowed)."
+    },
+    {
+      "name": "idc",
+      "description": "Dc bus number (must be between 1 and the number of dc buses in multi-terminal dc line dc). (input; no default allowed)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of five elementsNone. (input)."
+    },
+    {
+      "name": "realari",
+      "description": "An array of one elements specifying one element corresponding to values REALAR(1) as described above. (input)."
+    },
+    {
+      "name": "dcname",
+      "description": "Dc bus name. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "realaro",
+      "description": "An array of one elements specifying one element corresponding to value REALAR(2) as described above. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "IB, converter bus number or zero (0 by default)."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "AREA, area number (1 by default)."
+      },
+      {
+        "value": "INTGAR(3)",
+        "description": "ZONE, zone number (1 by default)."
+      },
+      {
+        "value": "INTGAR(4)",
+        "description": "OWNER, owner number (1 by default)."
+      },
+      {
+        "value": "INTGAR(5)",
+        "description": "IDC2, second dc bus number (0 by default)."
+      }
+    ],
+    "realari": [
+      {
+        "value": "REALARI(1)",
+        "description": "RGRND, resistance to ground (0.0 by default)."
+      }
+    ],
+    "realaro": [
+      {
+        "value": "REALARO(1)",
+        "description": "dc voltage (kV) (returned)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "dc line not found."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid dc bus number."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - data for lower numbered dc bus has not yet been entered. - converter bus not found. - bus is not a converter of this multi-terminal dc line. - this dc bus is not the first dc bus of any converter. - the first dc bus of some converter is set to this dc bus. - invalid second dc bus number. - this dc bus is being connected to a converter bus. - dc bus no longer connected to some other converter. - dc bus is being specified with no converter bus. - dc bus no longer connected to converter as its first dc bus. - dc bus no longer connected to converter as its second dc bus. - bus invalid as second dc bus because it is the first dc bus of another converter. - invalid area/zone/owner number. - area table is full. - zone table is full. - owner table is full."
+    }
+  ]
+}

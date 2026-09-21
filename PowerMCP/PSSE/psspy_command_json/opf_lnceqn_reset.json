@@ -1,0 +1,34 @@
+{
+  "module": "psspy",
+  "function_name": "opf_lnceqn_reset",
+  "category": "Optimal Power Flow Data",
+  "description": "Use this API to remove all participating variables from a particular OPF linear constraint dependency equation in the working case. This API routine was first introduced in release 28.0.0. ierr = opf_lnceqn_reset(iqid)",
+  "python_syntax": "ierr = opf_lnceqn_reset(iqid)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "iqid",
+      "description": "Linear constraint equation identification number. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "Invalid linear constraint identifier specified."
+    },
+    {
+      "value": "= 2",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

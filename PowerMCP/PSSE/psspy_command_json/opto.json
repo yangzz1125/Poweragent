@@ -1,0 +1,570 @@
+{
+  "module": "psspy",
+  "function_name": "opto",
+  "category": "Optimal Power Flow Operation",
+  "description": "Please use the individual OPF option setting API’s described in this section. This API routine was first introduced in release 28.0.0. ierr = opto(sid, all, iary, rary, opfile, rcfile)",
+  "python_syntax": "ierr = opto(sid, all, iary, rary, opfile, rcfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid bus subsystem id from 0 to 11. a bus subsystem must have been previously defined. (input)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem flag. (input)."
+    },
+    {
+      "name": "iary",
+      "description": "An array of thirty six elements specifying 36 integers, which are defined as follows. (input)."
+    },
+    {
+      "name": "rary",
+      "description": "An array of nineteen elements specifying which are defined as follows. (input)."
+    },
+    {
+      "name": "opfile",
+      "description": "Name of the opf optimization log file that will be produced if iary(26) is set to 1. it is a good idea to specify the filename in quotes. (input)."
+    },
+    {
+      "name": "rcfile",
+      "description": "Name of the pti read change data file that will be produced if iary(28) is set to 1. it is a good idea to specify the filename in quotes. (not currently functional). (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 0",
+        "description": "process only specified buses."
+      },
+      {
+        "value": "= 1",
+        "description": "process all buses."
+      }
+    ],
+    "iary": [
+      {
+        "value": "IARY(1)",
+        "description": "specifies the fuel cost objective."
+      },
+      {
+        "value": "= 0",
+        "description": "do not employ minimize fuel cost objective."
+      },
+      {
+        "value": "= 1",
+        "description": "employ the minimize fuel cost objective."
+      },
+      {
+        "value": "IARY(2)",
+        "description": "specifies the active power slack bus generation objective."
+      },
+      {
+        "value": "= 0",
+        "description": "do not employ minimize active power slack bus generation objective."
+      },
+      {
+        "value": "= 1",
+        "description": "employ the minimize active power slack bus generation objective."
+      },
+      {
+        "value": "IARY(3)",
+        "description": "specifies the reactive power slack generation objective."
+      },
+      {
+        "value": "= 0",
+        "description": "do not employ the minimize reactive power slack generation objective."
+      },
+      {
+        "value": "= 1",
+        "description": "employ the minimize reactive power slack generation objective."
+      },
+      {
+        "value": "IARY(4)",
+        "description": "specifies the active power loss objective."
+      },
+      {
+        "value": "= 0",
+        "description": "do not employ the minimize active power loss objective."
+      },
+      {
+        "value": "= 1",
+        "description": "employ the minimize active power loss objective."
+      },
+      {
+        "value": "IARY(5)",
+        "description": "specifies the reactive power loss objective."
+      },
+      {
+        "value": "= 0",
+        "description": "do not employ the minimize reactive power loss objective."
+      },
+      {
+        "value": "= 1",
+        "description": "employ the minimize reactive power loss objective."
+      },
+      {
+        "value": "IARY(6)",
+        "description": "specifies the adjustable branch reactance (series compensation) objective."
+      },
+      {
+        "value": "= 0",
+        "description": "do not employ the minimize adjustable branch reactance objective."
+      },
+      {
+        "value": "= 1",
+        "description": "employ the minimize adjustable branch reactance objective."
+      },
+      {
+        "value": "IARY(7)",
+        "description": "specifies the adjustable bus shunt (var compensation) objective."
+      },
+      {
+        "value": "= 0",
+        "description": "do not employ the minimize adjustable bus shunt objective."
+      },
+      {
+        "value": "= 1",
+        "description": "employ the minimize adjustable bus shunt objective."
+      },
+      {
+        "value": "IARY(8)",
+        "description": "specifies the adjustable bus load (load shedding/increase) objective."
+      },
+      {
+        "value": "= 0",
+        "description": "do not employ the adjustable bus load objective."
+      },
+      {
+        "value": "= 1",
+        "description": "employ the adjustable bus load objective."
+      },
+      {
+        "value": "IARY(9)",
+        "description": "specifies the interface flow objective."
+      },
+      {
+        "value": "= 0",
+        "description": "do not employ the interface flow objective."
+      },
+      {
+        "value": "= 1",
+        "description": "employ the interface flow objective."
+      },
+      {
+        "value": "IARY(10)",
+        "description": "specifies the reactive generation reserve objective."
+      },
+      {
+        "value": "= 0",
+        "description": "do not employ the reactive generation reserve objective."
+      },
+      {
+        "value": "= 1",
+        "description": "employ the reactive generation reserve objective."
+      },
+      {
+        "value": "IARY(11)",
+        "description": "specifies whether to apply the power flow mismatch tolerance to the dual variable problem."
+      },
+      {
+        "value": "= 0",
+        "description": "apply tolerance to the mismatch equation only."
+      },
+      {
+        "value": "= 1",
+        "description": "apply tolerance to the entire equation."
+      },
+      {
+        "value": "IARY(12)",
+        "description": "specifies whether to apply the clamp equation to nonoptimized generators."
+      },
+      {
+        "value": "= 0",
+        "description": "do not clamp nonoptimized generators."
+      },
+      {
+        "value": "= 1",
+        "description": "clamp nonoptimized generators."
+      },
+      {
+        "value": "IARY(13)",
+        "description": "specifies whether to apply the clamp equation to nonoptimized transformers. (Not currently functional)."
+      },
+      {
+        "value": "= 0",
+        "description": "do not clamp nonoptimized transformers."
+      },
+      {
+        "value": "= 1",
+        "description": "clamp nonoptimized transformers."
+      },
+      {
+        "value": "IARY(14)",
+        "description": "specifies whether to constrain interface flows."
+      },
+      {
+        "value": "= 0",
+        "description": "do not constrain interface flows."
+      },
+      {
+        "value": "= 1",
+        "description": "constrain interface flows."
+      },
+      {
+        "value": "IARY(15)",
+        "description": "specifies whether to employ automatic scaling of the objective."
+      },
+      {
+        "value": "= 0",
+        "description": "do not employ automatic scaling."
+      },
+      {
+        "value": "= 1",
+        "description": "employ automatic scaling."
+      },
+      {
+        "value": "IARY(16)",
+        "description": "specifies whether to regulate area interchange."
+      },
+      {
+        "value": "= 0",
+        "description": "do not regulate area interchange."
+      },
+      {
+        "value": "= 1",
+        "description": "regulate area interchange."
+      },
+      {
+        "value": "IARY(17)",
+        "description": "specifies whether to fix transformer tap ratio settings."
+      },
+      {
+        "value": "= 0",
+        "description": "do not fix transformer tap ratio settings."
+      },
+      {
+        "value": "= 1",
+        "description": "fix transformer tap ratio settings."
+      },
+      {
+        "value": "IARY(18)",
+        "description": "specifies whether to fix transformer phase shift angles."
+      },
+      {
+        "value": "= 0",
+        "description": "do not fix transformer phase shift angles."
+      },
+      {
+        "value": "= 1",
+        "description": "fix transformer phase shift angles."
+      },
+      {
+        "value": "IARY(19)",
+        "description": "specifies whether to fix switched shunt settings."
+      },
+      {
+        "value": "= 0",
+        "description": "do not fix switched shunt settings."
+      },
+      {
+        "value": "= 1",
+        "description": "fix switched shunt settings."
+      },
+      {
+        "value": "IARY(20)",
+        "description": "specifies whether to treat all generators as nonoptimized."
+      },
+      {
+        "value": "= 0",
+        "description": "do not treat all generators as nonoptimized."
+      },
+      {
+        "value": "= 1",
+        "description": "treat all generators as nonoptimized."
+      },
+      {
+        "value": "IARY(21)",
+        "description": "specifies whether to employ the generator scheduled voltage."
+      },
+      {
+        "value": "= 0",
+        "description": "do not employ generator scheduled voltage."
+      },
+      {
+        "value": "= 1",
+        "description": "use generator scheduled voltage."
+      },
+      {
+        "value": "IARY(22)",
+        "description": "specifies whether to scale reactive generation limits on clamped constraint equations."
+      },
+      {
+        "value": "= 0",
+        "description": "do not scale reactive generation limits."
+      },
+      {
+        "value": "= 1",
+        "description": "scale reactive generation limits."
+      },
+      {
+        "value": "IARY(23)",
+        "description": "specifies whether to round transformer tap settings."
+      },
+      {
+        "value": "= 0",
+        "description": "do not round transformer tap settings."
+      },
+      {
+        "value": "= 1",
+        "description": "round transformer tap settings."
+      },
+      {
+        "value": "IARY(24)",
+        "description": "specifies whether to round switched shunt settings."
+      },
+      {
+        "value": "= 0",
+        "description": "do not round switched shunt settings."
+      },
+      {
+        "value": "= 1",
+        "description": "round switched shunt settings."
+      },
+      {
+        "value": "IARY(25)",
+        "description": "specifies whether to limit the step size taken during solution."
+      },
+      {
+        "value": "= 0",
+        "description": "do not limit the step size."
+      },
+      {
+        "value": "= 1",
+        "description": "limit the step size taken."
+      },
+      {
+        "value": "IARY(26)",
+        "description": "specifies whether to produce an optimization log file."
+      },
+      {
+        "value": "= 0",
+        "description": "do not produce an optimization log file."
+      },
+      {
+        "value": "= 1",
+        "description": "produce an optimization log file."
+      },
+      {
+        "value": "IARY(27)",
+        "description": "specifies whether to include a detailed listing of Lagrange multipliers in the optimization log file. IARY(26) must be set to 1 for this to take effect."
+      },
+      {
+        "value": "= 0",
+        "description": "do not print details."
+      },
+      {
+        "value": "= 1",
+        "description": "print Lagrange multipliers."
+      },
+      {
+        "value": "IARY(28)",
+        "description": "specifies whether to produce a PSSE raw data change file. (Not currently functional)."
+      },
+      {
+        "value": "= 0",
+        "description": "do not produce an Read/Change File."
+      },
+      {
+        "value": "= 1",
+        "description": "produce an Read/Change File."
+      },
+      {
+        "value": "IARY(29)",
+        "description": "specifies whether to save the OPF solution option settings to the OPF Options File, PSSOPF.OPT."
+      },
+      {
+        "value": "= 0",
+        "description": "do not save settings."
+      },
+      {
+        "value": "= 1",
+        "description": "save settings to PSSOPF.OPT."
+      },
+      {
+        "value": "IARY(30)",
+        "description": "indicates whether the program should open voltage limits to ensure an initial feasible condition."
+      },
+      {
+        "value": "= 0",
+        "description": "do not have the program open the limits for an initial feasible condition."
+      },
+      {
+        "value": "= 1",
+        "description": "have the program open the limits for an initial feasible condition."
+      },
+      {
+        "value": "IARY(31)",
+        "description": "specifies whether to impose emergency bus voltage limits or normal bus voltage limits."
+      },
+      {
+        "value": "= 0",
+        "description": "impose normal voltage limits."
+      },
+      {
+        "value": "= 1",
+        "description": "impose emergency bus voltage limits."
+      },
+      {
+        "value": "IARY(32)",
+        "description": "specifies whether to impose emergency branch flow limits or normal branch flow limits."
+      },
+      {
+        "value": "= 0",
+        "description": "impose normal branch flow limits."
+      },
+      {
+        "value": "= 1",
+        "description": "impose emergency branch flow limits."
+      },
+      {
+        "value": "IARY(33)",
+        "description": "specifies whether to include transformer adjustment data in the Read/Change File (if one is produced according to the setting of IARY(28)). (Not currently functional)."
+      },
+      {
+        "value": "= 0",
+        "description": "do not include transformer adjustment data."
+      },
+      {
+        "value": "= 1",
+        "description": "include transformer adjustment data."
+      },
+      {
+        "value": "IARY(34)",
+        "description": "specifies the maximum iteration limit (corresponds to ITMXN of the power flow solution parameters)."
+      },
+      {
+        "value": "IARY(35)",
+        "description": "specifies the bad iteration coarse limit."
+      },
+      {
+        "value": "IARY(36)",
+        "description": "specifies the bad iteration fine limit."
+      }
+    ],
+    "rary": [
+      {
+        "value": "RARY(1)",
+        "description": "specifies the initial barrier function coefficient."
+      },
+      {
+        "value": "RARY(2)",
+        "description": "specifies the final barrier function coefficient."
+      },
+      {
+        "value": "RARY(3)",
+        "description": "specifies the step length blow-up tolerance."
+      },
+      {
+        "value": "RARY(4)",
+        "description": "specifies the final clamp equation tolerance value."
+      },
+      {
+        "value": "RARY(5)",
+        "description": "specifies the initial clamp equation tolerance value."
+      },
+      {
+        "value": "RARY(6)",
+        "description": "specifies the clamp equation decay factor."
+      },
+      {
+        "value": "RARY(7)",
+        "description": "specifies the cost coefficient for the active power loss objective."
+      },
+      {
+        "value": "RARY(8)",
+        "description": "specifies the cost coefficient for the reactive power loss objective."
+      },
+      {
+        "value": "RARY(9)",
+        "description": "specifies the penalty value for power flow controls."
+      },
+      {
+        "value": "RARY(10)",
+        "description": "specifies the cost coefficient for the interface flow objective."
+      },
+      {
+        "value": "RARY(11)",
+        "description": "specifies the cost coefficient for the reactive generation reserve objective."
+      },
+      {
+        "value": "RARY(12)",
+        "description": "specifies the penalty value for fixed voltage."
+      },
+      {
+        "value": "RARY(13)",
+        "description": "specifies the lambda (Lagrange multiplier) blow-up tolerance."
+      },
+      {
+        "value": "RARY(14)",
+        "description": "specifies the minimum amount to open up tap settings by."
+      },
+      {
+        "value": "RARY(15)",
+        "description": "specifies the maximum amount to open up tap settings by."
+      },
+      {
+        "value": "RARY(16)",
+        "description": "specifies the amount to shift the interior point by during solution."
+      },
+      {
+        "value": "RARY(17)",
+        "description": "specifies the step length taken for the barrier method."
+      },
+      {
+        "value": "RARY(18)",
+        "description": "specifies the tolerance value used to determine which bus shunts get added to the Read/Change File as switched shunts (if an RDCH file is produced according to IARY(28) and the minimize added vars objective is employed according to IARY(7)). (Not currently functional)."
+      },
+      {
+        "value": "RARY(19)",
+        "description": "specifies the solution convergence tolerance, in MVA (corresponds to TOLN of the power flow solution parameters)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ALL value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid IARY value."
+    },
+    {
+      "value": "= 4",
+      "description": "invalid RARY value."
+    },
+    {
+      "value": "= 5",
+      "description": "error opening OFILE."
+    },
+    {
+      "value": "= 6",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

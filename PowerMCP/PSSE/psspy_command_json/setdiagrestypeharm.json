@@ -1,0 +1,10 @@
+{
+  "module": "psspy",
+  "function_name": "setdiagrestypeharm",
+  "category": "Diagram View",
+  "description": "Use this API to set the type of results displayed in the active Slider diagram to Harmonics solution results. Requires that current network elements are being displayed in the diagram view. This API routine was first introduced in release 34.4.0. setdiagrestypeharm()",
+  "python_syntax": "setdiagrestypeharm()",
+  "return_type": "void",
+  "parameters": [],
+  "return_values": []
+}

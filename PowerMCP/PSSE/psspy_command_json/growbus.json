@@ -1,0 +1,23 @@
+{
+  "module": "psspy",
+  "function_name": "growbus",
+  "category": "Diagram View",
+  "description": "Use this API to GROW a bus in an active Slider diagram in the GUI. Requires a current network case. This API routine was first introduced in release 30.1.0. growbus(busnumber, xposition, yposition)",
+  "python_syntax": "growbus(busnumber, xposition, yposition)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "busnumber",
+      "description": "Bus number of the bus to grow (no default). (input)."
+    },
+    {
+      "name": "xposition",
+      "description": "X coordinate of the bus on the slider diagram. (input)."
+    },
+    {
+      "name": "yposition",
+      "description": "Y coordinate of the bus on the slider diagram. (input)."
+    }
+  ],
+  "return_values": []
+}

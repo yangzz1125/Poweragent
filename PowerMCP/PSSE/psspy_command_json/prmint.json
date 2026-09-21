@@ -1,0 +1,62 @@
+{
+  "module": "psspy",
+  "function_name": "prmint",
+  "category": "Single Element Data",
+  "description": "Use this API routine to return integer-valued solution parameters. This API routine was first introduced in release 32.2.0. ierr, ival = prmint(string)",
+  "python_syntax": "ierr, ival = prmint(string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "string",
+      "description": "String indicating the solution parameter desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "ival",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= ITMX",
+        "description": "Gauss-Seidel maximum number of iterations."
+      },
+      {
+        "value": "= ITMXN",
+        "description": "Newton-Raphson maximum number of iterations."
+      },
+      {
+        "value": "= ITMXTY",
+        "description": "TYSL maximum number of iterations."
+      },
+      {
+        "value": "= MXTPSS",
+        "description": "maximum number of tap and/or switched shunt adjustment cycles that change data between iterations."
+      },
+      {
+        "value": "= MXSWIM",
+        "description": "maximum number of induction machine state switchings during a power flow solution."
+      },
+      {
+        "value": "= PFCODE",
+        "description": "last solution type performed."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Invalid value of ‘STRING’; ‘IVAL’ unchanged."
+    }
+  ]
+}

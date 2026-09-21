@@ -1,0 +1,118 @@
+{
+  "module": "psspy",
+  "function_name": "brndat",
+  "category": "Single Element Data",
+  "description": "Use this API to return real branch parameters. This API routine was first introduced in release 28.0.0. ierr, rval = brndat(ibus,jbus,ickt,string)",
+  "python_syntax": "ierr, rval = brndat(ibus,jbus,ickt,string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "From bus number. (input)."
+    },
+    {
+      "name": "jbus",
+      "description": "To bus number. (input)."
+    },
+    {
+      "name": "ickt",
+      "description": "Circuit identifier. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the branch quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "rval",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= RATEn",
+        "description": "Rating from rating set “n” (n = 1 through 12)."
+      },
+      {
+        "value": "= RATEA",
+        "description": "First rating."
+      },
+      {
+        "value": "= RATEB",
+        "description": "Second rating."
+      },
+      {
+        "value": "= RATEC",
+        "description": "Third rating."
+      },
+      {
+        "value": "= RATE",
+        "description": "Default rating."
+      },
+      {
+        "value": "= LENGTH",
+        "description": "Line length."
+      },
+      {
+        "value": "= CHARG",
+        "description": "Total branch charging."
+      },
+      {
+        "value": "= CHARGZ",
+        "description": "Zero sequence charging."
+      },
+      {
+        "value": "= FRACT1",
+        "description": "Fraction of total ownership assigned to the first owner."
+      },
+      {
+        "value": "= FRACT2",
+        "description": "Fraction of total ownership assigned to the second owner."
+      },
+      {
+        "value": "= FRACT3",
+        "description": "Fraction of total ownership assigned to the third owner."
+      },
+      {
+        "value": "= FRACT4",
+        "description": "Fraction of total ownership assigned to the fourth owner."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘RVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Bus not found; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Branch not found; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid value of ‘STRING’; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 4",
+      "description": "‘BRNDAT’ invalid with multisection line identifier; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 5",
+      "description": "Sequence data not in case; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 6",
+      "description": "For STRING = ‘FRACTn’, n > number of owners; ‘RVAL’ unchanged."
+    }
+  ]
+}

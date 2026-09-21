@@ -1,0 +1,46 @@
+{
+  "module": "psspy",
+  "function_name": "addremedialaction",
+  "category": "Using The Vendor Neutral Contingency And Ras Auxiliary File",
+  "description": "Add RemedialAction to RAS memory model This API routine was first introduced in release 35.4.0. ierr = addremedialaction(ractname, skip, memo, armingcrit, armingstat)",
+  "python_syntax": "ierr = addremedialaction(ractname, skip, memo, armingcrit, armingstat)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ractname",
+      "description": "Unique name of the remedial action. (input)."
+    },
+    {
+      "name": "skip",
+      "description": "Set to “yes” and a remedial action processor will ignore this remedial action. (input; NO by default)."
+    },
+    {
+      "name": "memo",
+      "description": "A comment field. (input)."
+    },
+    {
+      "name": "armingcrit",
+      "description": "If specified, this is the name of either a modelcondition or a modelfilter that determines the situation under which the action will be armed. if not specified, the action is considered to be armed. the specified condition is evaluated in the contingency reference case. for a remedialactionelement to be armed, its remedialaction must also be armed. (input)."
+    },
+    {
+      "name": "armingstat",
+      "description": "Set to either always, never, or check. default value used when none specified is check. always -> action is considered armed regardless of the armingcriteria never -> action is not armed check -> action is armed if armingcriteria is true or not specified. (input; Check by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "(output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error occurred."
+    },
+    {
+      "value": "= 4",
+      "description": "Req are not met."
+    }
+  ]
+}

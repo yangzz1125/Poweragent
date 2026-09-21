@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "long_title_data",
+  "category": "Power Flow Data",
+  "description": "Use this API to change the sixteen line long title in the working case (see PSSE Program Operation Manual, activity CHTI). This API routine was first introduced in release 29.0.0. ierr = long_title_data(lnglns)",
+  "python_syntax": "ierr = long_title_data(lnglns)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "lnglns",
+      "description": "An array of 16 elements specifying sixteen title lines (defaulted lines are unchanged). (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - Title line exceeds 72 characters."
+    }
+  ]
+}

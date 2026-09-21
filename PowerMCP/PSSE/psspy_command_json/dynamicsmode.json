@@ -1,0 +1,46 @@
+{
+  "module": "psspy",
+  "function_name": "dynamicsmode",
+  "category": "Dynamic Simulation Operation",
+  "description": "Use this API to return PSSE to dynamics mode following the use of the POWERFLOWMODE API while in dynamics mode. (The POWERFLOWMODE API would normally be followed by the use of one or more of the power flow data editor APIs). This API routine was first introduced in release 30.0.0. ierr = dynamicsmode(opt)",
+  "python_syntax": "ierr = dynamicsmode(opt)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "opt",
+      "description": "Factorize admittance matrix flag. (input; FALSE by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "opt": [
+      {
+        "value": "= TRUE",
+        "description": "(or T or 1 in batch command and Python) to factorize the admittance matrix."
+      },
+      {
+        "value": "= FALSE",
+        "description": "(or F or 0 in batch command and Python) to omit the matrix factorization."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "PSSE was started up at its powerflow entry point."
+    },
+    {
+      "value": "= 2",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

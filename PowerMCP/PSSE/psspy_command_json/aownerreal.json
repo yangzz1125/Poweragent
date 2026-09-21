@@ -1,0 +1,182 @@
+{
+  "module": "psspy",
+  "function_name": "aownerreal",
+  "category": "Owner Data",
+  "description": "Use this API to return an array of real values for subsystem owners. This API routine was first introduced in release 30.3.0. ierr, rarray = aownerreal(sid, flag, string)",
+  "python_syntax": "ierr, rarray = aownerreal(sid, flag, string)",
+  "return_type": "error_and_array",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the owner subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem owners to include. (input; 1 by default)."
+    },
+    {
+      "name": "string",
+      "description": "An array of NSTR elements specifying NSTR of the following strings indicating the owner quantities desired. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "rarray",
+      "description": "An array of NSTR*DIM elements specifying Is an array of at least NSTR columns, each of which contains DIM elements. (output)."
+    }
+  ],
+  "allowed_values": {
+    "sid": [
+      {
+        "value": "< 0",
+        "description": "to instruct the API to assume a subsystem containing all owners in the working case."
+      },
+      {
+        "value": ">= 0",
+        "description": "valid owner subsystem identifier. Valid subsystem identifiers range from 0 to 11. Subsystem SID must have been previously defined."
+      }
+    ],
+    "flag": [
+      {
+        "value": "= 1",
+        "description": "for only subsystem owners with at least one ac bus assigned to them."
+      },
+      {
+        "value": "= 2",
+        "description": "for subsystem owners with any equipment (ac buses, loads, machines, ac branches, FACTS devices, VSC dc lines and/or dc buses) assigned to them."
+      }
+    ],
+    "string": [
+      {
+        "value": "= PLOAD",
+        "description": "Total active power load on the owner’s buses, in MW."
+      },
+      {
+        "value": "= QLOAD",
+        "description": "Total reactive power load on the owner’s buses, in Mvar."
+      },
+      {
+        "value": "= PLOADLD",
+        "description": "Total active power load of the owner’s loads, in MW."
+      },
+      {
+        "value": "= QLOADLD",
+        "description": "Total reactive power load of the owner’s loads, in Mvar."
+      },
+      {
+        "value": "= PGEN",
+        "description": "Total active power generation on the owner’s buses, in Mw."
+      },
+      {
+        "value": "= QGEN",
+        "description": "Total reactive power generation on the owner’s buses, in Mvar."
+      },
+      {
+        "value": "= PGENMC",
+        "description": "Total active power generation on the owner’s machines, in MW."
+      },
+      {
+        "value": "= QGENMC",
+        "description": "Total reactive power generation on the owner’s machines, in Mvar."
+      },
+      {
+        "value": "= PLOSS",
+        "description": "Total active power losses assigned to the owner, in MW."
+      },
+      {
+        "value": "= QLOSS",
+        "description": "Total reactive power losses assigned to the owner, in Mvar."
+      },
+      {
+        "value": "= PXFRMAG",
+        "description": "Total active power to transformer magnetizing admittance assigned to the owner, in MW."
+      },
+      {
+        "value": "= QXFRMAG",
+        "description": "Total reactive power to transformer magnetizing admittance assigned to the owner, in MVar."
+      },
+      {
+        "value": "= O_PLOAD",
+        "description": "Total active power load on the owner’s buses (units determined by power output option)."
+      },
+      {
+        "value": "= O_QLOAD",
+        "description": "Total reactive power load on the owner’s buses (units determined by power output option)."
+      },
+      {
+        "value": "= O_PLOADLD",
+        "description": "Total active power load of the owner’s loads (units determined by power output option)."
+      },
+      {
+        "value": "= O_QLOADLD",
+        "description": "Total reactive power load of the owner’s loads (units determined by power output option)."
+      },
+      {
+        "value": "= O_PGEN",
+        "description": "Total active power generation on the owner’s buses (units determined by power output option)."
+      },
+      {
+        "value": "= O_QGEN",
+        "description": "Total reactive power generation on the owner’s buses (units determined by power output option)."
+      },
+      {
+        "value": "= O_PGENMC",
+        "description": "Total active power generation on the owner’s machines (units determined by power output option)."
+      },
+      {
+        "value": "= O_QGENMC",
+        "description": "Total reactive power generation on the owner’s machines (units determined by power output option)."
+      },
+      {
+        "value": "= O_PLOSS",
+        "description": "Total active power losses assigned to the owner (units determined by power output option)."
+      },
+      {
+        "value": "= O_QLOSS",
+        "description": "Total reactive power losses assigned to the owner (units determined by power output option)."
+      },
+      {
+        "value": "= O_PXFRMAG",
+        "description": "Total active power to transformer magnetizing admittance assigned to the owner (units determined by power output option)."
+      },
+      {
+        "value": "= O_QXFRMAG",
+        "description": "Total reactive power to transformer magnetizing admittance assigned to the owner (units determined by power output option)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid FLAG value."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid NSTR value."
+    },
+    {
+      "value": "= 5",
+      "description": "DIM, and hence the size of RARRAY, is not large enough."
+    },
+    {
+      "value": "= 6",
+      "description": "Invalid STRING value."
+    }
+  ]
+}

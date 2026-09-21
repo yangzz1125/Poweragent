@@ -1,0 +1,58 @@
+{
+  "module": "psspy",
+  "function_name": "scenariounzipsolutions",
+  "category": "Scenarios",
+  "description": "Use this API to submit potential solutions to the problems that occurred during the last unzip attempt. This API routine was first introduced in release 33.0.0. ierr = scenariounzipsolutions(nsolutions, indexes, solutions, paths)",
+  "python_syntax": "ierr = scenariounzipsolutions(nsolutions, indexes, solutions, paths)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "nsolutions",
+      "description": "Number of solutions being submitted. (input)."
+    },
+    {
+      "name": "indexes",
+      "description": "An array of NSOLUTIONS elements specifying internal problem indexes which were obtained from SCENARIOUNZIPPROBLEMS. (input; no default allowed)."
+    },
+    {
+      "name": "solutions",
+      "description": "An array of NSOLUTIONS elements specifying solutions to attempt Note: These solutions do not apply to all problems. For example if the file is missing from the archive only a solution of 0 will solve the problem. (input; no default allowed)."
+    },
+    {
+      "name": "paths",
+      "description": "An array of NSOLUTIONS elements specifying used to attempt to unzip a file to a new path or under a new name All name changes will be reflected in the Scenario. If no name is specified for a particular problem the name will not change. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Number of conflicts that occurred. (output)."
+    }
+  ],
+  "allowed_values": {
+    "solutions": [
+      {
+        "value": "= 0",
+        "description": "skip the file."
+      },
+      {
+        "value": "= 1",
+        "description": "retry to unzip, possibly with a different file name."
+      },
+      {
+        "value": "= 2",
+        "description": "to overwrite the current item on disk."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no conflicts occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "conflicts occurred."
+    }
+  ]
+}

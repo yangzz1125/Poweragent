@@ -1,0 +1,450 @@
+{
+  "module": "psspy",
+  "function_name": "gic_2",
+  "category": "Gic Operation",
+  "description": "This API routine is obsolete. It has been replaced by the API routine gic_3, and is implemented by a call to gic_3. Use this API to calculate Geomagnetically Induced Currents (GIC) in electric power system network as a result of Geomagnetic Disturbance (GMD). This API routine was first introduced in release 33.6.0. ierr = gic_2(sid, all, intgoptns, realoptns, charoptns, ejetoptns, fileoptns, rptoptns)",
+  "python_syntax": "ierr = gic_2(sid, all, intgoptns, realoptns, charoptns, ejetoptns, fileoptns, rptoptns)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid subsystem identifier. valid subsystem identifiers range from 0 to 11. subsystem sid must have been previously defined. (input; 0 by default)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem flag. (input; 1 by default)."
+    },
+    {
+      "name": "intgoptns",
+      "description": "An array of four elements specifying Integer Options. (input)."
+    },
+    {
+      "name": "realoptns",
+      "description": "An array of seven elements specifying Real Options. (input)."
+    },
+    {
+      "name": "charoptns",
+      "description": "An array of seven elements specifying Character Options. (input)."
+    },
+    {
+      "name": "ejetoptns",
+      "description": "An array of five elements specifying Electrojet Characteristics, used only if charoptns(1)=nonuniform. (input)."
+    },
+    {
+      "name": "fileoptns",
+      "description": "An array of four elements specifying File Used. (input)."
+    },
+    {
+      "name": "rptoptns",
+      "description": "An array of seven elements specifying Report Options. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 0",
+        "description": "process only buses in subsystem SID."
+      },
+      {
+        "value": "= 1",
+        "description": "process all buses."
+      }
+    ],
+    "intgoptns": [
+      {
+        "value": "INTGOPTNS(1)",
+        "description": "Number of levels of inter-tie buses to add to study subsystem (0 by default), can also be specified with keyword ‘tielevels’."
+      },
+      {
+        "value": "= 0",
+        "description": "consider only study subsystem buses, no buses from inter-ties."
+      },
+      {
+        "value": "> 0",
+        "description": "consider only study subsystem buses, no buses from inter-ties."
+      },
+      {
+        "value": "INTGOPTNS(2)",
+        "description": "Year number to scale benchmark event GMD storm. These scaling factors account in the influence of geomagnetic latitude and earth model on the estimated geoelectric field magnitude and are provided in NERC TPL-007-1. (0 by default), can also be specified with keyword ‘study_year’."
+      },
+      {
+        "value": "= 0",
+        "description": "current year, used in benchmark geoelectric field calculations only."
+      },
+      {
+        "value": "> 0",
+        "description": "specific year."
+      },
+      {
+        "value": "INTGOPTNS(3)",
+        "description": "Subsystem sid for local GMD hot spots (0 by default), can also be specified with keyword ‘sid_local’."
+      },
+      {
+        "value": "= 0",
+        "description": "No local GMD hot spots."
+      },
+      {
+        "value": "> 0",
+        "description": "subsystem number (1 - 11). Buses and branches in this subsystem will have Efield due to local GMD hot spots."
+      },
+      {
+        "value": "INTGOPTNS(4)",
+        "description": "Option for Transformer Thermal Analysis (not implemented yet) (0 by default), can also be specified with keyword ‘thermal_ana_optn’."
+      },
+      {
+        "value": "= -1",
+        "description": "perform on all transformers."
+      },
+      {
+        "value": "= 0",
+        "description": "do not perform."
+      },
+      {
+        "value": "> 0",
+        "description": "perform on these many top transformers ordered by effective GIC flow."
+      }
+    ],
+    "realoptns": [
+      {
+        "value": "REALOPTNS(1)",
+        "description": "electric field magnitude in units defined by charoptns(2), not used when charoptns(1)=nonuniform (0 by default), can also be specified with keyword ‘efield_mag’."
+      },
+      {
+        "value": "> 0",
+        "description": "when charoptns(1)=uniform, no default allowed."
+      },
+      {
+        "value": "= 0",
+        "description": "when charoptns(1)=benchmark, when specified as 0.0, it will be set to 8.0 V/km (default benchmark event strength)."
+      },
+      {
+        "value": "> 0",
+        "description": "for charoptns(1)=benchmark, used as specified."
+      },
+      {
+        "value": "REALOPTNS(2)",
+        "description": "electric field direction in degrees, range 0 to 360 degrees (0 by default), can also be specified with keyword ‘efield_deg’."
+      },
+      {
+        "value": "> 0",
+        "description": "when charoptns(1)=uniform or benchmark, not used when charoptns(1)=nonuniform."
+      },
+      {
+        "value": "REALOPTNS(3)",
+        "description": "substation grounding dc resistance in ohms (0.1 by default), can also be specified with keyword ‘substation_r’."
+      },
+      {
+        "value": "= 0",
+        "description": "Substation is ungrounded."
+      },
+      {
+        "value": "> 0",
+        "description": "Use specified grounding dc resistance."
+      },
+      {
+        "value": "REALOPTNS(4)",
+        "description": "transmission line X/R ratio, must be >0, used to calculate branch DC resistance if R=0.0 in network data (30 by default), can also be specified with keyword ‘branch_xbyr’."
+      },
+      {
+        "value": "= 0",
+        "description": "Use default."
+      },
+      {
+        "value": "> 0",
+        "description": "Use specified."
+      },
+      {
+        "value": "REALOPTNS(5)",
+        "description": "transformer winding X/R ratio, must be >0, used to calculate winding DC resistance if R=0.0 in network data (30 by default), can also be specified with keyword ‘transformer_xbyr’."
+      },
+      {
+        "value": "= 0",
+        "description": "Use default."
+      },
+      {
+        "value": "> 0",
+        "description": "Use specified."
+      },
+      {
+        "value": "REALOPTNS(6)",
+        "description": "local GMD hot spots electric field magnitude in units defined by charoptns(2), not used when charoptns(1)=nonuniform (realoptns(1) by default), can also be specified with keyword ‘efield_mag_local’."
+      },
+      {
+        "value": "> 0",
+        "description": "when charoptns(1)=uniform or benchmark, not used when charoptns(1)=nonuniform."
+      },
+      {
+        "value": "REALOPTNS(7)",
+        "description": "local GMD hot spots electric field direction in degrees, range 0 to 360 degrees (realoptns(2) by default), can also be specified with keyword ‘efield_deg_local’."
+      },
+      {
+        "value": "> 0",
+        "description": "when charoptns(1)=uniform or benchmark, not used when charoptns(1)=nonuniform."
+      }
+    ],
+    "charoptns": [
+      {
+        "value": "CHAROPTNS(1)",
+        "description": "Electric Field Type (uniform by default), can also be specified with keyword ‘efield_type’."
+      },
+      {
+        "value": "= ‘uniform’",
+        "description": "for uniform geoelectric field."
+      },
+      {
+        "value": "= ‘benchmark’",
+        "description": "for benchmark event geoelectric field."
+      },
+      {
+        "value": "= ‘nonuniform’",
+        "description": "for nonuniform geoelectric field."
+      },
+      {
+        "value": "CHAROPTNS(2)",
+        "description": "Units of Electric Field Magnitude (v/km by default), can also be specified with keyword ‘efield_unit’."
+      },
+      {
+        "value": "= ‘v/km’",
+        "description": "for volts/km."
+      },
+      {
+        "value": "= ‘v/mi’",
+        "description": "for volts/mile."
+      },
+      {
+        "value": "CHAROPTNS(3)",
+        "description": "Option to add GIC updates to base case (rdch by default), can also be specified with keyword ‘addfile_optn’."
+      },
+      {
+        "value": "= ‘sav’",
+        "description": "add updates to Saved Case."
+      },
+      {
+        "value": "= ‘rdch’",
+        "description": "create RDCH raw file of GIC updates."
+      },
+      {
+        "value": "CHAROPTNS(4)",
+        "description": "Option to select method for GIC to Mvar Calculation (kfactors by default), can also be specified with keyword ‘gic2mvar_optn’."
+      },
+      {
+        "value": "= ‘kfactors’",
+        "description": "for GIC to Mvar scaling factors from GIC data file when provided, otherwise default scaling factors."
+      },
+      {
+        "value": "= ‘capchar’",
+        "description": "for GIC to Mvar scaling factors from GIC data file when provided, otherwise scaling factors from default transformer Mvar and GIC characteristics."
+      },
+      {
+        "value": "CHAROPTNS(5)",
+        "description": "Earth Model Name. A Standard or User defined model name must be provided when Benchmark Event or Non-uniform electric field is to be modeled or Transformer Thermal Analysis is to be performed. (blank by default), can also be specified with keyword ‘earth_model_name’."
+      },
+      {
+        "value": "CHAROPTNS(6)",
+        "description": "Option to scan storm event scenarios (blank by default), can also be specified with keyword ‘scan_storm_event’."
+      },
+      {
+        "value": "= ‘ ‘",
+        "description": "no storm orientation and/or magnitude scan."
+      },
+      {
+        "value": "= ‘scan_deg’",
+        "description": "perform storm orientation scan that give maximum Var losses when charoptns(1) is uniform or benchmark, create report for only orientation that gives maximum VAR losses."
+      },
+      {
+        "value": "= ‘scan_deg_rpt’",
+        "description": "perform storm orientation scan that give maximum Var losses when charoptns(1) is uniform or benchmark, create report for each orientation scanned."
+      },
+      {
+        "value": "= ‘scan_mag’",
+        "description": "perform storm electric field magnitude that yield converged power flow solution when charoptns(1) is uniform or benchmark and charoptns(7) specifies PF method. It uses orienation specified and creates report for only final electric field magnitude."
+      },
+      {
+        "value": "= ‘scan_mag_rpt’",
+        "description": "perform storm electric field magnitude that yield converged power flow solution when charoptns(1) is uniform or benchmark and charoptns(7) specifies PF method. It uses orienation specified and creates report for each scanned electric field magnitude."
+      },
+      {
+        "value": "= ‘scan_d_m’",
+        "description": "perform storm orientation scan that give maximum Var losses when charoptns(1) is uniform or benchmark, then perform magnitude scans tiil they yield converged power flow solution, create report for only orientation that gives maximum VAR losses and final electric field magnitude."
+      },
+      {
+        "value": "= ‘scan_d_m_rpt’",
+        "description": "perform storm orientation scan that give maximum Var losses when charoptns(1) is uniform or benchmark, then perform magnitude scans till they yield converged power flow solution, create report for all orientation scans and mangitude scans performed."
+      },
+      {
+        "value": "CHAROPTNS(7)",
+        "description": "Option to solve Power Flow with GIC losses added to the base case (blank by default), can also be specified with keyword ‘power_flow_optn’."
+      },
+      {
+        "value": "= ‘ ‘",
+        "description": "do not perform power flow solution."
+      },
+      {
+        "value": "= ‘fdns’",
+        "description": "use fixed slope decoupled Newton-Raphson method."
+      },
+      {
+        "value": "= ‘fnsl’",
+        "description": "use Full Newton-Raphson method."
+      },
+      {
+        "value": "= ‘nsol’",
+        "description": "use Decoupled Newton-Raphson method."
+      }
+    ],
+    "ejetoptns": [
+      {
+        "value": "EJETOPTNS(1)",
+        "description": "eletrojet current in million amperes, must be >0 (no default allowed), can also be specified with keyword ‘ejet_million_amps’."
+      },
+      {
+        "value": "EJETOPTNS(2)",
+        "description": "Cauchy distribution half-width in km, must be >0 (no default allowed), can also be specified with keyword ‘ejet_halfwidth_km’."
+      },
+      {
+        "value": "EJETOPTNS(3)",
+        "description": "period of variation in minutes, must be >0 (no default allowed), can also be specified with keyword ‘ejet_period_min’."
+      },
+      {
+        "value": "EJETOPTNS(4)",
+        "description": "height of current in km, must be >0 (no default allowed), can also be specified with keyword ‘ejet_height_km’."
+      },
+      {
+        "value": "EJETOPTNS(5)",
+        "description": "latitude of center of electrojet in degrees (no default allowed), can also be specified with keyword ‘ejet_center_deg’."
+      }
+    ],
+    "fileoptns": [
+      {
+        "value": "FILEOPTNS(1)",
+        "description": "GIC data file name (input). (no default allowed), can also be specified with keyword ‘gicfile’."
+      },
+      {
+        "value": "FILEOPTNS(2)",
+        "description": "GIC updates to Base Case file name (output). (blank by default), can also be specified with keyword ‘addfile’."
+      },
+      {
+        "value": "= ‘ ‘",
+        "description": "no file created."
+      },
+      {
+        "value": "FILEOPTNS(3)",
+        "description": "RDCH file to remove GIC updates from GIC updated case in working memory to set it back to Base Case network condition (output). (blank by default), can also be specified with keyword ‘purgfile’."
+      },
+      {
+        "value": "= ‘ ‘",
+        "description": "no file created."
+      },
+      {
+        "value": "FILEOPTNS(4)",
+        "description": "GIC dc resistive network raw file. This represents the dc network used to calculate GIC flow. (output) (blank by default), can also be specified with keyword ‘rnwkfile’."
+      },
+      {
+        "value": "= ‘ ‘",
+        "description": "no file created."
+      }
+    ],
+    "rptoptns": [
+      {
+        "value": "RPTOPTNS(1)",
+        "description": "what to report (-1 by default), can also be specified with keyword ‘rptoptn’."
+      },
+      {
+        "value": "= -1",
+        "description": "report all."
+      },
+      {
+        "value": "= 0",
+        "description": "no report."
+      },
+      {
+        "value": "> 0",
+        "description": "Report these many maximum values in each category."
+      },
+      {
+        "value": "RPTOPTNS(2)",
+        "description": "report induced branch voltages (0 by default), can also be specified with keyword ‘rptbrn_indv’."
+      },
+      {
+        "value": "= 0",
+        "description": "No."
+      },
+      {
+        "value": "= 1",
+        "description": "Yes."
+      },
+      {
+        "value": "RPTOPTNS(3)",
+        "description": "report DC bus voltages (0 by default), can also be specified with keyword ‘rptdc_busv’."
+      },
+      {
+        "value": "= 0",
+        "description": "No."
+      },
+      {
+        "value": "= 1",
+        "description": "Yes."
+      },
+      {
+        "value": "RPTOPTNS(4)",
+        "description": "report branch GIC flows (0 by default), can also be specified with keyword ‘rptbrn_gic’."
+      },
+      {
+        "value": "= 0",
+        "description": "No."
+      },
+      {
+        "value": "= 1",
+        "description": "Yes."
+      },
+      {
+        "value": "RPTOPTNS(5)",
+        "description": "report transformer GIC flows (1 by default), can also be specified with keyword ‘rpttrn_gic’."
+      },
+      {
+        "value": "= 0",
+        "description": "No."
+      },
+      {
+        "value": "= 1",
+        "description": "Yes."
+      },
+      {
+        "value": "RPTOPTNS(6)",
+        "description": "report substation GIC flows (0 by default), can also be specified with keyword ‘rptstn_gic’."
+      },
+      {
+        "value": "= 0",
+        "description": "No."
+      },
+      {
+        "value": "= 1",
+        "description": "Yes."
+      },
+      {
+        "value": "RPTOPTNS(7)",
+        "description": "report transformer losses (1 by default), can also be specified with keyword ‘rpttrn_q’."
+      },
+      {
+        "value": "= 0",
+        "description": "No."
+      },
+      {
+        "value": "= 1",
+        "description": "Yes."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 1",
+      "description": "DLL not loaded or entry point not found."
+    }
+  ]
+}

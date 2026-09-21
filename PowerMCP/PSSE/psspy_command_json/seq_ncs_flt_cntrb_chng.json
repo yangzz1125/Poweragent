@@ -1,0 +1,42 @@
+{
+  "module": "psspy",
+  "function_name": "seq_ncs_flt_cntrb_chng",
+  "category": "Fault Analysis Data",
+  "description": "This API routine was first introduced in release 34.0.0. ierr = seq_ncs_flt_cntrb_chng(ibus, id, points, realar, cplxar)",
+  "python_syntax": "ierr = seq_ncs_flt_cntrb_chng(ibus, id, points, realar, cplxar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    },
+    {
+      "name": "id",
+      "description": "Machine identifier. (input; ‘1’ by default)."
+    },
+    {
+      "name": "points",
+      "description": "Number of data points. (input; no default allowed)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of points elements specifying Array of ‘POINTS’ values specifying Ti in seconds, in strictly ascending order of Ti. (input; no default allowed)."
+    },
+    {
+      "name": "cplxar",
+      "description": "An array of points elements specifying Array of ‘POINTS’ values specifying CiP and CiQ. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    }
+  ]
+}

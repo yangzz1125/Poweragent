@@ -1,0 +1,62 @@
+{
+  "module": "psspy",
+  "function_name": "shunt_chng",
+  "category": "Power Flow Data",
+  "description": "Use this API routine to modify the data of an existing fixed bus shunt in the working case (see PSSE Program Operation Manual, Fixed Bus Shunt Data). This API routine was first introduced in release 33.0.0. ierr = shunt_chng(ibus, id, intgar, realar)",
+  "python_syntax": "ierr = shunt_chng(ibus, id, intgar, realar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Shunt identifier. (input; ‘1’ by default)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of 1 elements specifying See the SHUNT_DATA API routine for details. (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of 2 elements specifying See the SHUNT_DATA API routine for details. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "shunt identifier is more than two characters."
+    },
+    {
+      "value": "= 5",
+      "description": "fixed bus shunt not found."
+    },
+    {
+      "value": "= 6",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - invalid shunt status."
+    }
+  ]
+}

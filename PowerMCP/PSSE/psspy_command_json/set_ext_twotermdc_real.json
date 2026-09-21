@@ -1,0 +1,54 @@
+{
+  "module": "psspy",
+  "function_name": "set_ext_twotermdc_real",
+  "category": "Extension Data Access",
+  "description": "Use this API to set two-terminal dc line real extension data. This API routine was first introduced in release 35.1.0. ierr = set_ext_twotermdc_real(name, string, rval)",
+  "python_syntax": "ierr = set_ext_twotermdc_real(name, string, rval)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Twotermdc name. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the extension twotermdc field desired. (input)."
+    },
+    {
+      "name": "rval",
+      "description": "Value indicated by string. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘RVAL’ set."
+    },
+    {
+      "value": "= 1",
+      "description": "Element not found; ‘RVAL’ not set."
+    },
+    {
+      "value": "= 2",
+      "description": "Bad value of ‘STRING’; ‘RVAL’ not set."
+    },
+    {
+      "value": "= 3",
+      "description": "Bad data type for field ‘STRING’; ‘RVAL’ not set."
+    },
+    {
+      "value": "= 4",
+      "description": "Unknown error with data access; ‘RVAL’ not set."
+    },
+    {
+      "value": "= 10",
+      "description": "API Prereqs not met; ‘RVAL’ not set."
+    }
+  ]
+}

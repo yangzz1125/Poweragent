@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "cctmscomod_remove",
+  "category": "Cct Models",
+  "description": "Use this API to remove a miscellaneous “other” type model with the specified model instance. This API routine was first introduced in release 33.0.0. ierr = cctmscomod_remove(mins)",
+  "python_syntax": "ierr = cctmscomod_remove(mins)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "mins",
+      "description": "Model instance (>0). (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "no bus other model with this model instance at this bus."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid model instance."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

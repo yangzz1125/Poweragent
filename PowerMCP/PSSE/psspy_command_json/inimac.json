@@ -1,0 +1,34 @@
+{
+  "module": "psspy",
+  "function_name": "inimac",
+  "category": "Single Element Data",
+  "description": "Initializes machine fetching routine ‘NXTMAC’ for returning machines attached to IBUS. This API routine was first introduced in release 28.0.0. ierr = inimac(ibus)",
+  "python_syntax": "ierr = inimac(ibus)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘NXTMAC’ is properly initialized."
+    },
+    {
+      "value": "= 1",
+      "description": "Bus not found; ‘NXTMAC’ may not be used."
+    },
+    {
+      "value": "= 2",
+      "description": "Bus not a generator bus; ‘NXTMAC’ may not be used."
+    }
+  ]
+}

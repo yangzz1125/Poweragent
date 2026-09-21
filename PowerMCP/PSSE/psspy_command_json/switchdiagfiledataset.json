@@ -1,0 +1,10 @@
+{
+  "module": "psspy",
+  "function_name": "switchdiagfiledataset",
+  "category": "Diagram View",
+  "description": "This API is used to rotate through values for the current element in the active data set on the active Slider diagram. Currently, this API is only used with ACCC results and is used for displaying the post contingency, post tripping and post corrective actions values. This API routine was first introduced in release 32.0.0. switchdiagfileset()",
+  "python_syntax": "switchdiagfileset()",
+  "return_type": "void",
+  "parameters": [],
+  "return_values": []
+}

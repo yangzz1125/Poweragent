@@ -1,0 +1,54 @@
+{
+  "module": "psspy",
+  "function_name": "trndat",
+  "category": "Single Element Data",
+  "description": "This API routine is obsolete. It has been replaced by the API routine XFRDAT, and is implemented by a call to XFRDAT. Return transformer Ratio and Angle. This API routine was first introduced in release 30.3.3. ierr, ratio, angle = trndat(ibus, jbus, ckt)",
+  "python_syntax": "ierr, ratio, angle = trndat(ibus, jbus, ckt)",
+  "return_type": "error_and_multi_value",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "From bus number. (input)."
+    },
+    {
+      "name": "jbus",
+      "description": "To bus number. (input)."
+    },
+    {
+      "name": "ckt",
+      "description": "Circuit identifier. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "ratio",
+      "description": "Tap position. (output)."
+    },
+    {
+      "name": "angle",
+      "description": "Phase shift angle, in degrees. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error; ‘RATIO’ and ‘ANGLE’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found; ‘RATIO’ and ‘ANGLE’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "branch not found; ‘RATIO’ and ‘ANGLE’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "branch not a transformer; ‘RATIO’ and ‘ANGLE’ unchanged."
+    }
+  ]
+}

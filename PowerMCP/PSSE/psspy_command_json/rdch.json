@@ -1,0 +1,54 @@
+{
+  "module": "psspy",
+  "function_name": "rdch",
+  "category": "Power Flow Operation",
+  "description": "Use this API to read power flow change data into the working case. This API routine was first introduced in release 28.0.0. ierr = rdch(numnam, ifile)",
+  "python_syntax": "ierr = rdch(numnam, ifile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "numnam",
+      "description": "Flag for bus number or name specification on records. (input; 0 by default)."
+    },
+    {
+      "name": "ifile",
+      "description": "Name of power flow data file, options. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "numnam": [
+      {
+        "value": "= 0",
+        "description": "bus numbers."
+      },
+      {
+        "value": "= 1",
+        "description": "bus names."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid NUMNAM."
+    },
+    {
+      "value": "= 10",
+      "description": "error opening IFILE."
+    },
+    {
+      "value": "= 11",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

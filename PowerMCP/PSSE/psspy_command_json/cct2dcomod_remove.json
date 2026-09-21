@@ -1,0 +1,42 @@
+{
+  "module": "psspy",
+  "function_name": "cct2dcomod_remove",
+  "category": "Cct Models",
+  "description": "Use this API to remove an “other” type model attached to a 2-terminal dc line. This API routine was first introduced in release 33.0.0. ierr = cct2dcomod_remove(dc, model)",
+  "python_syntax": "ierr = cct2dcomod_remove(dc, model)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "dc",
+      "description": "Quoted name of the two-terminal dc line for which model data is to be changed. (input; no default allowed)."
+    },
+    {
+      "name": "model",
+      "description": "Name of the model to be removed. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "no “other” model at this dc line."
+    },
+    {
+      "value": "= 2",
+      "description": "dc line not found."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

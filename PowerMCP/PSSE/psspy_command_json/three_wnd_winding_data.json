@@ -1,0 +1,182 @@
+{
+  "module": "psspy",
+  "function_name": "three_wnd_winding_data",
+  "category": "Power Flow Data",
+  "description": "This API routine is obsolete. It has been replaced by the API routine three_wnd_winding_data_3, and is implemented by a call to three_wnd_winding_data_3. Use this API to modify the data of one winding of an existing three-winding transformer in the working case (see PSSE Program Operation Manual, Non-Transformer Branch Data). This API routine was first introduced in release 30.0.0. ierr, realaro = three_wnd_winding_data(ibus, jbus, kbus, ckt, warg, intgar, realari)",
+  "python_syntax": "ierr, realaro = three_wnd_winding_data(ibus, jbus, kbus, ckt, warg, intgar, realari)",
+  "return_type": "error_and_record",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number of one of the buses. (input; no default allowed)."
+    },
+    {
+      "name": "jbus",
+      "description": "Bus number one of the other buses. (input; no default allowed)."
+    },
+    {
+      "name": "kbus",
+      "description": "Bus number of the third bus. (input; no default allowed)."
+    },
+    {
+      "name": "ckt",
+      "description": "Transformer circuit identifier. (input; ‘1’ by default)."
+    },
+    {
+      "name": "warg",
+      "description": "Winding number (1, 2 or 3). (input; no default allowed)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of five elementsNone. (input)."
+    },
+    {
+      "name": "realari",
+      "description": "An array of twelve elements specifying corresponding to values REALAR(1) through REALAR(12) as described above. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "realaro",
+      "description": "An array of four elements specifying corresponding to values REALAR(13) through REALAR(16) as described above. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "NTPi, number of tap positions (33 by default)."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "TABi, impedance correction table number (0 by default)."
+      },
+      {
+        "value": "INTGAR(3)",
+        "description": "CONTi, controlled bus number (0 by default)."
+      },
+      {
+        "value": "INTGAR(4)",
+        "description": "SICODi, negative for controlled bus on winding bus side (1 by default)."
+      },
+      {
+        "value": "INTGAR(5)",
+        "description": "CODi, adjustment control mode flag (-3 through +3) (0 by default)."
+      }
+    ],
+    "realari": [
+      {
+        "value": "REALARI(1)",
+        "description": "WINDVi, winding ratio or voltage (1.0 by default if CW of this transformer is 1 or 3; base voltage of the winding bus by default if CW is 2)."
+      },
+      {
+        "value": "REALARI(2)",
+        "description": "NOMVi, winding nominal voltage (0.0 by default)."
+      },
+      {
+        "value": "REALARI(3)",
+        "description": "i, winding phase shift angle (0.0 by default)."
+      },
+      {
+        "value": "REALARI(4)",
+        "description": "RATAi, winding rating set A line rating (0.0 by default)."
+      },
+      {
+        "value": "REALARI(5)",
+        "description": "RATBi, winding rating set B line rating (0.0 by default)."
+      },
+      {
+        "value": "REALARI(6)",
+        "description": "RATCi, winding rating set C line rating (0.0 by default)."
+      },
+      {
+        "value": "REALARI(7)",
+        "description": "RMAi, winding ratio/angle high limit (1.1 by default)."
+      },
+      {
+        "value": "REALARI(8)",
+        "description": "RMIi, winding ratio/angle low limit (0.9 by default)."
+      },
+      {
+        "value": "REALARI(9)",
+        "description": "VMAi, winding voltage or flow upper limit (1.1 by default)."
+      },
+      {
+        "value": "REALARI(10)",
+        "description": "VMIi, winding voltage or flow lower limit (0.9 by default)."
+      },
+      {
+        "value": "REALARI(11)",
+        "description": "CRi, winding load drop compensating resistance (0.0 by default)."
+      },
+      {
+        "value": "REALARI(12)",
+        "description": "CXi, winding load drop compensating reactance (0.0 by default)."
+      }
+    ],
+    "realaro": [
+      {
+        "value": "REALARO(1)",
+        "description": "winding nominal resistance (returned)."
+      },
+      {
+        "value": "REALARO(2)",
+        "description": "winding nominal reactance (returned)."
+      },
+      {
+        "value": "REALARO(3)",
+        "description": "winding actual resistance (returned)."
+      },
+      {
+        "value": "REALARO(4)",
+        "description": "winding actual reactance (returned)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "circuit identifier is more than two characters."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid CW, CZ and/or CM value."
+    },
+    {
+      "value": "= 4",
+      "description": "CW and/or CZ >1 but no base voltage at winding bus."
+    },
+    {
+      "value": "= 5",
+      "description": "three winding transformer not found."
+    },
+    {
+      "value": "= 6",
+      "description": "invalid winding number."
+    },
+    {
+      "value": "= 7",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - Controlled bus not found. - Invalid adjustment control mode flag. - Any two-winding transformer warnings."
+    }
+  ]
+}

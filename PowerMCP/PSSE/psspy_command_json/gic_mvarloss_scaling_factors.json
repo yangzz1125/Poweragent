@@ -1,0 +1,70 @@
+{
+  "module": "psspy",
+  "function_name": "gic_mvarloss_scaling_factors",
+  "category": "Gic Operation",
+  "description": "Specify KFACTORS to determine transformer reactive power losses due to geomagnetic currents (GICs) flow. This API routine was first introduced in release 32.2.1. ierr = gic_mvarloss_scaling_factors(kfactors)",
+  "python_syntax": "ierr = gic_mvarloss_scaling_factors(kfactors)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "kfactors",
+      "description": "An array of 9 elements specifying Kfactor values. The values are as follows. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "kfactors": [
+      {
+        "value": "KFACTORS(1)",
+        "description": "Voltage level at which these kfactors are specified."
+      },
+      {
+        "value": "KFACTORS(2)",
+        "description": "kfactor value for Shell form transformers."
+      },
+      {
+        "value": "KFACTORS(3)",
+        "description": "kfactor value for core design - Single Phase (three separate cores) transformers."
+      },
+      {
+        "value": "KFACTORS(4)",
+        "description": "kfactor value for core design - Three Phase 3 legged core form transformers."
+      },
+      {
+        "value": "KFACTORS(5)",
+        "description": "kfactor value for core design - Three Phase 5 legged core form transformers."
+      },
+      {
+        "value": "KFACTORS(6)",
+        "description": "kfactor value for core design - Three Phase 7 legged core form transformers."
+      },
+      {
+        "value": "KFACTORS(7)",
+        "description": "kfactor value for unknown core, voltage level of <=200 kV."
+      },
+      {
+        "value": "KFACTORS(8)",
+        "description": "kfactor value for unknown core, voltage level of <200 kV and <=400 kV."
+      },
+      {
+        "value": "KFACTORS(9)",
+        "description": "kfactor value for unknown core, voltage level of >400 kV."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "DLL not loaded or entry point not found."
+    }
+  ]
+}

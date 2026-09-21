@@ -1,0 +1,190 @@
+{
+  "module": "psspy",
+  "function_name": "facts_data_3",
+  "category": "Power Flow Data",
+  "description": "Use this API to modify the data of an existing FACTS device in the working case, or to add a new FACTS device to the working case (see PSSE Program Operation Manual, FACTS Device Data). This API routine was first introduced in release 34.4.0. ierr, realaro = facts_data_3(name, intgar, realari, mname)",
+  "python_syntax": "ierr, realaro = facts_data_3(name, intgar, realari, mname)",
+  "return_type": "error_and_record",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Name of the facts device. (input; no default allowed)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of seven elementsNone. (input)."
+    },
+    {
+      "name": "realari",
+      "description": "An array of thirteen elements specifying corresponding to values REALAR(1) through REALAR(13) as described above. (input)."
+    },
+    {
+      "name": "mname",
+      "description": "Name of the facts device that is the master device for this ipfc slave device. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "realaro",
+      "description": "An array of six elements specifying corresponding to values REALAR(14) through REALAR(19) as described above. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "I, sending end bus number (no default allowed)."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "J, terminal end bus number (0 for STATCON) (0 by default)."
+      },
+      {
+        "value": "INTGAR(3)",
+        "description": "MODE, control mode (1 by default)."
+      },
+      {
+        "value": "INTGAR(4)",
+        "description": "OWNER, owner number (1 by default)."
+      },
+      {
+        "value": "INTGAR(5)",
+        "description": "VSREF, series voltage reference code for modes 4 and 7 (0 for sending end voltage; 1 for series current) (0 by default)."
+      },
+      {
+        "value": "INTGAR(6)",
+        "description": "IREG, regulated bus number (0 by default)."
+      },
+      {
+        "value": "INTGAR(7)",
+        "description": "NODE, regulated node number (0 by default)."
+      }
+    ],
+    "realari": [
+      {
+        "value": "REALARI(1)",
+        "description": "PDES, desired real power at terminal bus (0.0 by default)."
+      },
+      {
+        "value": "REALARI(2)",
+        "description": "QDES, desired reactive power at terminal bus (0.0 by default)."
+      },
+      {
+        "value": "REALARI(3)",
+        "description": "VSET, sending bus voltage setpoint (1.0 by default)."
+      },
+      {
+        "value": "REALARI(4)",
+        "description": "SHMX, sending end maximum shunt current (MVA at rated voltage) (99.99 * SBASE by default)."
+      },
+      {
+        "value": "REALARI(5)",
+        "description": "TRMX, maximum bridge real power transfer (99.99 * SBASE by default)."
+      },
+      {
+        "value": "REALARI(6)",
+        "description": "VTMN, minimum terminal bus voltage magnitude (0.9 by default)."
+      },
+      {
+        "value": "REALARI(7)",
+        "description": "VTMX, maximum terminal bus voltage magnitude (1.1 by default)."
+      },
+      {
+        "value": "REALARI(8)",
+        "description": "VSMX, maximum series voltage magnitude (1.0 by default)."
+      },
+      {
+        "value": "REALARI(9)",
+        "description": "IMX, maximum series current (MVA at rated voltage) (0.0 by default)."
+      },
+      {
+        "value": "REALARI(10)",
+        "description": "LINX, pu reactance of temporary series element (0.05 by default)."
+      },
+      {
+        "value": "REALARI(11)",
+        "description": "RMPCT, percent of contributed reactive power (100.0 by default)."
+      },
+      {
+        "value": "REALARI(12)",
+        "description": "SET1, real component of constant Z (MODE = 3), magnitude of constant V (MODE = 4), or VD (MODE = 7 or 8) (0.0 by default)."
+      },
+      {
+        "value": "REALARI(13)",
+        "description": "SET2, imaginary component of constant Z (MODE = 3), angle of constant V (MODE = 4), or VQ (MODE = 7 or 8) (0.005 by default when MODE = 3; 0.0 otherwise)."
+      }
+    ],
+    "realaro": [
+      {
+        "value": "REALARO(1)",
+        "description": "real component of present effective series Z (returned)."
+      },
+      {
+        "value": "REALARO(2)",
+        "description": "imaginary component of present effective series Z (returned)."
+      },
+      {
+        "value": "REALARO(3)",
+        "description": "magnitude of present series voltage, FDVREF reference (returned)."
+      },
+      {
+        "value": "REALARO(4)",
+        "description": "le of present series voltage, FDVREF reference (returned)."
+      },
+      {
+        "value": "REALARO(5)",
+        "description": "real component of present series voltage, FDVREF reference (returned)."
+      },
+      {
+        "value": "REALARO(6)",
+        "description": "imaginary component of present series voltage, FDVREF reference (returned)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "FACTS device table is full."
+    },
+    {
+      "value": "= 2",
+      "description": "no sending end bus is specified."
+    },
+    {
+      "value": "= 3",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 4",
+      "description": "the same bus is specified for the sending and terminal end buses."
+    },
+    {
+      "value": "= 5",
+      "description": "blank FACTS device name is invalid."
+    },
+    {
+      "value": "= 7",
+      "description": "node-breaker terminal connection table is full."
+    },
+    {
+      "value": "= 8",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "warnings - one or more of: - Invalid FACTS device control mode. - Invalid owner number. - Invalid series voltage reference code. - Regulated bus not found. - Remote regulated bus is specified for a type 3 bus. - Type code of regulated bus is not 1 or 2. - Shunt element voltage setpoint must be positive. - Terminal bus voltage limit must be positive. - VTMX is less than VTMN. - Series voltage limit must be positive. - Shunt current limit must not be negative. - Bridge real power transfer limit must not be negative. - Series current limit must not be negative. - Series reactance must be positive. - Shunt current limit is not 0.0 for an IPFC device. - Bridge real power transfer limit is not 0.0 for an IPFC slave. - Impedance setpoint has reactance of 0.0. - RMPCT is not positive. - Master IPFC FACTS device not found. - Bus is dummy bus of a multi-section line. - Multi-section line grouping deleted. - Owner table is full - Invalid node number - Non-zero regulated node specified but regulated bus does not belong to a substation - Regulated node not found - Regulated node is not connected to any bus section of the regulated bus."
+    }
+  ]
+}

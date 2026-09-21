@@ -1,0 +1,58 @@
+{
+  "module": "psspy",
+  "function_name": "set_genang_2",
+  "category": "Dynamic Simulation Operation",
+  "description": "This API routine is obsolete. It has been replaced by the API routine set_genang_3, and is implemented by a call to set_genang_3. Use this API to enable or disable the simulation option setting that scans for generators for which the angle differs from the angular average by more than a specified threshold. Scanning, if enabled, will be done for all machines whose machine MVA is greater than the specified value This API routine was first introduced in release 33.0.0. ierr = set_genang_2(status, angle, mbase) ierr, status,angle,mbase = set_genang_2()",
+  "python_syntax": "ierr = set_genang_2(status, angle, mbase) ierr, status,angle,mbase = set_genang_2()",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "status",
+      "description": "Option setting. (input; if batch command or ICODE is 0 or negative; unchanged by default) (if ICODE is positive)."
+    },
+    {
+      "name": "angle",
+      "description": "Deviation threshold. (input; if batch command or ICODE is 0 or negative; unchanged by default) (if ICODE is positive)."
+    },
+    {
+      "name": "mbase",
+      "description": "Machine size (mva). (input; if batch command or ICODE is 0 or negative; unchanged by default) (if ICODE is positive). All machines whose MVAR ratings are above this threshold will be scanned)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "status": [
+      {
+        "value": "= 1",
+        "description": "enable scanning for generators exceeding angle threshold."
+      },
+      {
+        "value": "= 0",
+        "description": "disable scanning option."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid angle threshold–must be >0.0 and <360.0."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid angle threshold–must be >= 0.0."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

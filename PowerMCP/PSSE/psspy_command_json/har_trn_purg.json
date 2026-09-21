@@ -1,0 +1,42 @@
+{
+  "module": "psspy",
+  "function_name": "har_trn_purg",
+  "category": "Harmonics Data",
+  "description": "Use this API to purge specified harmonics transformer data from the working case. This API routine was first introduced in release 35.4.0. ierr = har_trn_purg(ibus,jbus,kbus,ckt)",
+  "python_syntax": "ierr = har_trn_purg(ibus,jbus,kbus,ckt)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number of from bus. (input; no default allowed)."
+    },
+    {
+      "name": "jbus",
+      "description": "Bus number of to bus. (input; no default allowed)."
+    },
+    {
+      "name": "kbus",
+      "description": "Bus number of third bus. (input; 0 by default)."
+    },
+    {
+      "name": "ckt",
+      "description": "Circuit identifier. (input; ‘1’ by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "module": "psspy",
+  "function_name": "opf_lnceqn_adjvar",
+  "category": "Optimal Power Flow Data",
+  "description": "Use this API to add a participating adjustable bus shunt variable to a specified linear constraint dependency equation in the working case. It may also be used to modify an existing record. This API routine was first introduced in release 32.0.0. ierr = opf_lnceqn_adjvar(iqid, eibus, shntid, coeff)",
+  "python_syntax": "ierr = opf_lnceqn_adjvar(iqid, eibus, shntid, coeff)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "iqid",
+      "description": "Linear constraint equation identification number. (input; no default allowed)."
+    },
+    {
+      "name": "eibus",
+      "description": "Bus number. (input; no default allowed)."
+    },
+    {
+      "name": "shntid",
+      "description": "Opf adjustable bus shunt identifier. (input; no default allowed)."
+    },
+    {
+      "name": "coeff",
+      "description": "Value of the coefficient associated with the equation variable. (input; default of 1.0 if new record, current value otherwise)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "specified linear constraint equation does not exist."
+    },
+    {
+      "value": "= 2",
+      "description": "participating equation variable table is full."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid bus number specified."
+    },
+    {
+      "value": "= 4",
+      "description": "specified adjustable bus shunt does not exist."
+    },
+    {
+      "value": "= 5",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

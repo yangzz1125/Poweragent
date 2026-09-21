@@ -1,0 +1,98 @@
+{
+  "module": "psspy",
+  "function_name": "aterminalint",
+  "category": "Substation Terminal Data",
+  "description": "Use this API to return an array of integer values for subsystem substation terminals. This API routine was first introduced in release 34.1.0. ierr, iarray = aterminalint(sid, flag, string)",
+  "python_syntax": "ierr, iarray = aterminalint(sid, flag, string)",
+  "return_type": "error_and_array",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the bus subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem substations to include. (input; 1 by default)."
+    },
+    {
+      "name": "string",
+      "description": "An array of NSTR elements specifying NSTR of the following strings indicating the substation switching device quantities desired. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "iarray",
+      "description": "An array of NSTR*DIM elements specifying Is an array of at least NSTR columns, each of which contains DIM elements. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= STATION",
+        "description": "Substation number."
+      },
+      {
+        "value": "= NODE",
+        "description": "Number of the node to which the terminal is connected."
+      },
+      {
+        "value": "= BUS",
+        "description": "Number of the bus to which the terminal’s node is connected."
+      },
+      {
+        "value": "= SECTION",
+        "description": "Section number of the bus to which the terminal’s node is connected."
+      },
+      {
+        "value": "= OTHER1BUS",
+        "description": "Number of another bus connected to this device; returned as 0 except for two- terminal branches and three-winding transformers."
+      },
+      {
+        "value": "= OTHER1SECTION",
+        "description": "Section number of another bus connected to this device; returned as 0 except for two-terminal branches and three-winding transformers."
+      },
+      {
+        "value": "= OTHER2BUS",
+        "description": "Number of another bus connected to this device; returned as 0 except for three-winding transformers."
+      },
+      {
+        "value": "= OTHER2SECTION",
+        "description": "Section number of another bus connected to this device; returned as 0 except for three-winding transformers."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid FLAG value."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid NSTR value."
+    },
+    {
+      "value": "= 5",
+      "description": "DIM, and hence the size of IARRAY, is not large enough."
+    },
+    {
+      "value": "= 6",
+      "description": "Invalid STRING value."
+    }
+  ]
+}

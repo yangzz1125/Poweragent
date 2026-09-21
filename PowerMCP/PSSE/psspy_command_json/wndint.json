@@ -1,0 +1,118 @@
+{
+  "module": "psspy",
+  "function_name": "wndint",
+  "category": "Single Element Data",
+  "description": "Use this API to return three-winding transformer integer values for winding connected to bus IBUS. This API routine was first introduced in release 28.0.0. ierr, ival = wndint(ibus, jbus, kbus, ickt, string)",
+  "python_syntax": "ierr, ival = wndint(ibus, jbus, kbus, ickt, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "From bus number. (input)."
+    },
+    {
+      "name": "jbus",
+      "description": "To bus number. (input)."
+    },
+    {
+      "name": "kbus",
+      "description": "Third bus number. (input)."
+    },
+    {
+      "name": "ickt",
+      "description": "Circuit identifier. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the transformer winding quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "ival",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= STATUS",
+        "description": "Status."
+      },
+      {
+        "value": "= CNXCOD",
+        "description": "Winding connection code."
+      },
+      {
+        "value": "= WNDNUM",
+        "description": "Winding number."
+      },
+      {
+        "value": "= ICONT",
+        "description": "Controlled bus number."
+      },
+      {
+        "value": "= SIDCOD",
+        "description": "Controlled bus side code (negative if on winding 1 side)."
+      },
+      {
+        "value": "= NCONT",
+        "description": "Controlled node number."
+      },
+      {
+        "value": "= TABLE",
+        "description": "Transformer impedance correction table number (0 if none)."
+      },
+      {
+        "value": "= CNTRL",
+        "description": "Adjustment flag."
+      },
+      {
+        "value": "= CNTRL2",
+        "description": "Transformer adjustment code."
+      },
+      {
+        "value": "= NTPOSN",
+        "description": "Number of tap positions."
+      },
+      {
+        "value": "= TPSTT",
+        "description": "Transformer winding ratio limit code: (-1) low; (0) regulating; (1) high; (-2) locked."
+      },
+      {
+        "value": "= ANSTT",
+        "description": "Transformer winding angle limit code: (-1) low; (0) regulating; (1) high; (-2) locked."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Bus not found; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Three-winding transformer not found; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid ‘STRING’; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 4",
+      "description": "Error fetching transformer data; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 5",
+      "description": "Sequence data not in case for ‘STRING’ = ‘CNXCOD’; ‘IVAL’ unchanged."
+    }
+  ]
+}

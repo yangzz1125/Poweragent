@@ -1,0 +1,25 @@
+{
+  "benchmark_id": "ieee33_bess_voltage_control_v1",
+  "dataset_version": "ieee33-bess-voltage-v1",
+  "network": "pandapower.networks.case33bw",
+  "voltage_limits_pu": {"min": 0.95, "max": 1.05},
+  "line_loading_percent_max": 100.0,
+  "solver": {
+    "algorithm": "bfsw",
+    "calculate_voltage_angles": false,
+    "init": "flat",
+    "max_iteration": 100,
+    "tolerance_mva": 1e-08
+  },
+  "agent": {
+    "max_turns": 12,
+    "max_submission_attempts": 3,
+    "max_preview_calls": 4
+  },
+  "bess": [
+    {"bess_id": "BESS_1", "bus": 8, "p_min_mw": -1.5, "p_max_mw": 1.5, "step_mw": 0.25},
+    {"bess_id": "BESS_2", "bus": 17, "p_min_mw": -1.5, "p_max_mw": 1.5, "step_mw": 0.25},
+    {"bess_id": "BESS_3", "bus": 24, "p_min_mw": -1.5, "p_max_mw": 1.5, "step_mw": 0.25},
+    {"bess_id": "BESS_4", "bus": 32, "p_min_mw": -1.5, "p_max_mw": 1.5, "step_mw": 0.25}
+  ]
+}

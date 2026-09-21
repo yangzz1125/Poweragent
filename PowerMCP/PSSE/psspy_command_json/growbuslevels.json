@@ -1,0 +1,27 @@
+{
+  "module": "psspy",
+  "function_name": "growbuslevels",
+  "category": "Diagram View",
+  "description": "Use this API to GROW a bus and all the connected buses up to the specified number of levels away in an active Slider diagram in the GUI. Requires a current network case. This API routine was first introduced in release 31.0.0. growbuslevels(busnumber, xposition, yposition, numlevels)",
+  "python_syntax": "growbuslevels(busnumber, xposition, yposition, numlevels)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "busnumber",
+      "description": "Bus number of the bus to grow (no default). (input)."
+    },
+    {
+      "name": "xposition",
+      "description": "X coordinate of the bus on the slider diagram. (input)."
+    },
+    {
+      "name": "yposition",
+      "description": "Y coordinate of the bus on the slider diagram. (input)."
+    },
+    {
+      "name": "numlevels",
+      "description": "Number of levels; include all buses up to this number of connections from busnumber in the grow operation (no default). (input)."
+    }
+  ],
+  "return_values": []
+}

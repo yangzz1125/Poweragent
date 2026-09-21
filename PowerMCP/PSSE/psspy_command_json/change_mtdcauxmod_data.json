@@ -1,0 +1,94 @@
+{
+  "module": "psspy",
+  "function_name": "change_mtdcauxmod_data",
+  "category": "Auxiliary Signal Models",
+  "description": "This API routine is obsolete. It has been replaced by the API routine CHANGE_MTDCAUXMOD_CON, CHANGE_MTDCAUXMOD_ICON, CHANGE_MTDCAUXMOD_CHRICN, and is implemented by a call to CHANGE_MTDCAUXMOD_CON, CHANGE_MTDCAUXMOD_ICON, CHANGE_MTDCAUXMOD_CHRICN. Use this API to change the value of an ICON and/or CON of an auxiliary signal model of a specified multi-terminal dc line. This API routine was first introduced in release 30.2.0. ierr = change_mtdcauxmod_data(dc,isgndx,name,j,rdata,i,idata,chdata)",
+  "python_syntax": "ierr = change_mtdcauxmod_data(dc,isgndx,name,j,rdata,i,idata,chdata)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "dc",
+      "description": "Number of the multi-terminal dc line receiving the of the auxiliary signal model. (input; no default allowed)."
+    },
+    {
+      "name": "isgndx",
+      "description": "Auxiliary signal injection point number, or the auxiliary signal index. (input; 1 by default)."
+    },
+    {
+      "name": "name",
+      "description": "Model name. (input; no default allowed)."
+    },
+    {
+      "name": "j",
+      "description": "Con number to change relative to the start of the block of cons assigned to this model, or 0 for no con change (1 for con(j), 2 for con(j+1), etc.). (input; 0 by default)."
+    },
+    {
+      "name": "rdata",
+      "description": "New con value. (input; unchanged by default)."
+    },
+    {
+      "name": "i",
+      "description": "Icon number to change relative to the start of the block of icons assigned to this model, or 0 for no icon change (1 for icon(i), 2 for icon(i+1), etc.). (input; 0 by default)."
+    },
+    {
+      "name": "idata",
+      "description": "New integer icon value. (input; unchanged by default). When a character value is intended for an ICON value, the IDATA entry is ignored and the integer ICON is set to 0)."
+    },
+    {
+      "name": "chdata",
+      "description": "New character icon value (no default allowed if the character icon is to be changed). when an integer value is intended for an icon value, the chdata entry must be either defaulted or specified as either ‘$$’ or ‘ ‘; the character icon is set to ‘$$’. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "dc line not found."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ISGNDX value for a multi-terminal dc line."
+    },
+    {
+      "value": "= 3",
+      "description": "unknown model name."
+    },
+    {
+      "value": "= 4",
+      "description": "no auxiliary signal model at this index for this multi-terminal dc line."
+    },
+    {
+      "value": "= 5",
+      "description": "model at this index for this multi-terminal dc line is aaa not xxx."
+    },
+    {
+      "value": "= 6",
+      "description": "no CONs used in model; or."
+    },
+    {
+      "value": "= 6",
+      "description": "no input ICONs used in model; or."
+    },
+    {
+      "value": "= 7",
+      "description": "CON number outside of the CON range of this model; or."
+    },
+    {
+      "value": "= 7",
+      "description": "ICON number outside of the ICON range of this model."
+    },
+    {
+      "value": "= 8",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "module": "psspy",
+  "function_name": "mrun",
+  "category": "Dynamic Simulation Operation",
+  "description": "Use this API to calculate PSSE extended term dynamic simulations. This API routine was first introduced in release 30.2.0. ierr = mrun(option, tpause, nprt, nplt, crtplt)",
+  "python_syntax": "ierr = mrun(option, tpause, nprt, nplt, crtplt)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "option",
+      "description": "Network solution convergence monitor option. (input; 0 by default)."
+    },
+    {
+      "name": "tpause",
+      "description": "Value of simulated time at which the simulation should next pause. (input; no default allowed)."
+    },
+    {
+      "name": "nprt",
+      "description": "Number of time steps between the printing of the channel values. (input; unchanged by default)."
+    },
+    {
+      "name": "nplt",
+      "description": "Number of time steps between the writing of the output channel values to the current channel output file. (input; unchanged by default)."
+    },
+    {
+      "name": "crtplt",
+      "description": "Number of time steps between the plotting of those channel values that have been designated as crt output channels. (input; unchanged by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "option": [
+      {
+        "value": "= 1",
+        "description": "automatically print the convergence monitor."
+      },
+      {
+        "value": "= 0",
+        "description": "print the convergence monitor only if it is enabled via the CM interrupt control code."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "long time step mode threshold is at or below intermediate mode threshold."
+    },
+    {
+      "value": "= 2",
+      "description": "activity MSTR needs to be executed."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid OPTION value."
+    },
+    {
+      "value": "= 4",
+      "description": "generators are not converted."
+    },
+    {
+      "value": "= 5",
+      "description": "error opening the current Channel Output File."
+    },
+    {
+      "value": "= 6",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

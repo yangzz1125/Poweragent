@@ -1,0 +1,170 @@
+{
+  "module": "psspy",
+  "function_name": "gic_branch_efield_nn",
+  "category": "Gic Operation",
+  "description": "Use this API to calculate geoelectric efield induced in the network branches from specified geoelectric efield grid data using nearest neigbor (NN) alogorithm. This API routine was first introduced in release 34.8.0 and 35.1.0. ierr = gic_branch_efield_nn(sid, all, intgoptns, realoptns)",
+  "python_syntax": "ierr = gic_branch_efield_nn(sid, all, intgoptns, realoptns)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid subsystem identifier. valid subsystem identifiers range from 0 to 11. subsystem sid must have been previously defined. (input; 0 by default)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem flag. (input; 1 by default)."
+    },
+    {
+      "name": "intgoptns",
+      "description": "An array of four elements specifying Integer Options. (input)."
+    },
+    {
+      "name": "realoptns",
+      "description": "An array of two elements specifying Real Options. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 0",
+        "description": "process only buses in subsystem SID."
+      },
+      {
+        "value": "= 1",
+        "description": "process all buses."
+      }
+    ],
+    "intgoptns": [
+      {
+        "value": "INTGOPTNS(1)",
+        "description": "Number of levels of inter-tie buses to add to study subsystem (0 by default), can also be specified with keyword ‘tielevels’."
+      },
+      {
+        "value": "= 0",
+        "description": "consider only study subsystem buses, no buses from inter-ties."
+      },
+      {
+        "value": "> 0",
+        "description": "1 through 5, consider study subsystem buses + these many levels of inter- tie buses and ignore subsystem definition voltage limits for intertie buses added."
+      },
+      {
+        "value": "< 0",
+        "description": "-1 through -5, consider study subsystem buses + these many levels of inter-tie buses and consider subsystem definition voltage limits for intertie buses added."
+      },
+      {
+        "value": "INTGOPTNS(2)",
+        "description": "Flag to do branch route segment scan to find efield grid index same as previous route point efield grid index (1 by default), can also be specified with keyword ‘brn_segscan’."
+      },
+      {
+        "value": "= 0",
+        "description": "no branch segment scan, efield grid index at each segment point is used to get segment induced voltage."
+      },
+      {
+        "value": "= 1",
+        "description": "perform branch segment scan."
+      },
+      {
+        "value": "INTGOPTNS(3)",
+        "description": "Flag to merge branch route segments with same efield grid index. This only affects how the branch route induced voltage is reported. (1 by default), can also be specified with keyword ‘brn_segmerge’."
+      },
+      {
+        "value": "= 0",
+        "description": "do not merge segments."
+      },
+      {
+        "value": "= 1",
+        "description": "merge segments."
+      },
+      {
+        "value": "INTGOPTNS(4)",
+        "description": "Report Option (1 by default), can also be specified with keyword ‘rptoptn’."
+      },
+      {
+        "value": "= 0",
+        "description": "no report."
+      },
+      {
+        "value": "= 1",
+        "description": "summary report."
+      },
+      {
+        "value": "= 2",
+        "description": "detailed report."
+      },
+      {
+        "value": "= 3",
+        "description": "both summary and detailed reports."
+      }
+    ],
+    "realoptns": [
+      {
+        "value": "REALOPTNS(1)",
+        "description": "Branch segment length in km, used to calculate branch induced voltage from Efield Grid, must be >0.0. Branch is subdivided into number of segements (points along the branch route) and NN algorithm finds nearest geoelectric efield grid data point to arrive efield at that branch route point. (5.0 by default), can also be specified with keyword ‘brn_segkm’."
+      },
+      {
+        "value": "= ‘0.0’",
+        "description": "Use default."
+      },
+      {
+        "value": "> 0",
+        "description": "Use specified."
+      },
+      {
+        "value": "REALOPTNS(2)",
+        "description": "Branch subsegment length in km, used to calculate branch induced voltage from Efield Grid, range 0.02 to 1.0 km. When efield value at branch route point changes, that branch segment is further subdivided into smaller segments to arrive at branch route point where NN efield change occurs. (0.1 by default), can also be specified with keyword ‘brn_subsegkm’."
+      },
+      {
+        "value": "= ‘0.0’",
+        "description": "Use default."
+      },
+      {
+        "value": "> 0",
+        "description": "Use specified."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "Invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid ALL value."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid INTGOPTNS value, set to default."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid REALOPTNS value, set to default."
+    },
+    {
+      "value": "= 5",
+      "description": "Topology error, bus type code and series element status inconsistencies."
+    },
+    {
+      "value": "= 6",
+      "description": "No Efield Grid Data provided’."
+    },
+    {
+      "value": "= 7",
+      "description": "No substations in the working case (or added from GIC data)."
+    },
+    {
+      "value": "= 8",
+      "description": "No buses in GIC study subsystem."
+    }
+  ]
+}

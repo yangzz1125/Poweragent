@@ -1,0 +1,83 @@
+{
+  "module": "psspy",
+  "function_name": "setdiagresmust",
+  "category": "Diagram View",
+  "description": "This API is used to set the MUST simulation annotation options in the active Slider diagram. This API routine was first introduced in release 35.1.0. setdiagresmust(setscope, option1, option2, option3, option4)",
+  "python_syntax": "setdiagresmust(setscope, option1, option2, option3, option4)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "setscope",
+      "description": "Scope of the api. (input)."
+    },
+    {
+      "name": "option1",
+      "description": "Scope of the api. (input)."
+    },
+    {
+      "name": "option2",
+      "description": "Specifies the simulation result/value to display. (input)."
+    },
+    {
+      "name": "option3",
+      "description": "Specifies the dynamic quantity to contour. (input)."
+    },
+    {
+      "name": "option4",
+      "description": "Specifies the dynamic quantity to contour. (input)."
+    }
+  ],
+  "return_values": [],
+  "allowed_values": {
+    "setscope": [
+      {
+        "value": "= 0",
+        "description": "defaults for new diagrams."
+      },
+      {
+        "value": "= 1",
+        "description": "defaults for new diagrams and settings for the active diagram."
+      },
+      {
+        "value": "= 2",
+        "description": "settings for the active diagram."
+      }
+    ],
+    "option1": [
+      {
+        "value": "= 0",
+        "description": "defaults for new diagrams."
+      },
+      {
+        "value": "= 1",
+        "description": "defaults for new diagrams and settings for the active diagram."
+      },
+      {
+        "value": "= 2",
+        "description": "settings for the active diagram."
+      }
+    ],
+    "option2": [
+      {
+        "value": "= 0",
+        "description": "voltage violations as specified by SET_VOLTAGE_REC_CHECK and SET_VOLTAGE_DIP_CHECK."
+      },
+      {
+        "value": "= 1",
+        "description": "contour simulation quantities."
+      }
+    ],
+    "option3": [
+      {
+        "value": "= 0",
+        "description": "Bus voltage - kV."
+      }
+    ],
+    "option4": [
+      {
+        "value": "= 0",
+        "description": "Bus voltage - kV."
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "scenariogroupadd",
+  "category": "Scenarios",
+  "description": "Use this API to add a group to the Scenario. This API routine was first introduced in release 33.0.0. ierr = scenariogroupadd(sgroup)",
+  "python_syntax": "ierr = scenariogroupadd(sgroup)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sgroup",
+      "description": "Name of the new group to add to the scenario. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "no Scenario in memory."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid group name."
+    }
+  ]
+}

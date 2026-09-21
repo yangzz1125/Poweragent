@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "seq_machine_ncs_data_purg",
+  "category": "Fault Analysis Data",
+  "description": "Use this API routine to delete a machine’s existing non-conventional source fault current contribution (NCSFCC) data. This API routine was first introduced in release 35.2.0. ierr = seq_machine_ncs_data_purg(ibus, id)",
+  "python_syntax": "ierr = seq_machine_ncs_data_purg(ibus, id)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    },
+    {
+      "name": "id",
+      "description": "Machine identifier. (input; ‘1’ by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "machine identifier is more than two characters."
+    },
+    {
+      "value": "= 3",
+      "description": "machine not found."
+    },
+    {
+      "value": "= 4",
+      "description": "no non-conventional source data specified for this machine."
+    }
+  ]
+}

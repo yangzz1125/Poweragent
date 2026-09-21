@@ -1,0 +1,24 @@
+{
+  "module": "psspy",
+  "function_name": "sbsgtbkv",
+  "category": "Single Element Data",
+  "description": "Use this API to get previously defined bus subsystem voltage limits. It returns BASEKV array used in the definition of BSYS. This API routine was first introduced in release 34.5.0. bskvmn, bskvmx = sbsgtbkv(sidarg)",
+  "python_syntax": "bskvmn, bskvmx = sbsgtbkv(sidarg)",
+  "return_type": "multi_value",
+  "parameters": [
+    {
+      "name": "sidarg",
+      "description": "Previously defined valid bus subsystem id. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "bskvmn",
+      "description": "Minimum basekv limit. (output)."
+    },
+    {
+      "name": "bskvmx",
+      "description": "Maximum basekv limit. (output)."
+    }
+  ]
+}

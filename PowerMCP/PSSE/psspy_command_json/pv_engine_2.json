@@ -1,0 +1,530 @@
+{
+  "module": "psspy",
+  "function_name": "pv_engine_2",
+  "category": "Power Flow Operation",
+  "description": "This API routine is obsolete. It has been replaced by the API routine pv_engine_3, and is implemented by a call to pv_engine_3. Use this API to run PV analysis calculation engine. It provides for a different set of automatic adjustments in contingency case solutions than is used in the base case transfer increment solutions. This API routine was first introduced in release 30.3.0. ierr = pv_engine_2(options, values, labels, dfxfile, thrfile, ecdfile, accfile)",
+  "python_syntax": "ierr = pv_engine_2(options, values, labels, dfxfile, thrfile, ecdfile, accfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "options",
+      "description": "An array of twenty one elements specifying solution options. (input)."
+    },
+    {
+      "name": "values",
+      "description": "An array of six elements specifying solution values. (input)."
+    },
+    {
+      "name": "labels",
+      "description": "An array of two elements specifying subsystem labels. (input)."
+    },
+    {
+      "name": "dfxfile",
+      "description": "Name of dfax file. (input; no default allowed)."
+    },
+    {
+      "name": "thrfile",
+      "description": "Name of load throwover data file; blank for none. (input; blank by default)."
+    },
+    {
+      "name": "ecdfile",
+      "description": "Name of economic dispatch data file; blank for none. (input; blank by default)."
+    },
+    {
+      "name": "accfile",
+      "description": "Name of pv results file. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "options": [
+      {
+        "value": "OPTIONS(1)",
+        "description": "base case tap adjustment flag (tap adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable stepping adjustment."
+      },
+      {
+        "value": "= 2",
+        "description": "enable direct adjustment."
+      },
+      {
+        "value": "OPTIONS(2)",
+        "description": "base case area interchange adjustment flag (area interchange adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable using tie line flows only in calculating area interchange."
+      },
+      {
+        "value": "= 2",
+        "description": "enable using tie line flows and loads in calculating area interchange."
+      },
+      {
+        "value": "OPTIONS(3)",
+        "description": "base case phase shift adjustment flag (phase shift adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTIONS(4)",
+        "description": "base case dc tap adjustment flag (dc tap adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTIONS(5)",
+        "description": "base case switched shunt adjustment flag (switched shunt adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "= 2",
+        "description": "enable continuous mode, disable discrete mode."
+      },
+      {
+        "value": "OPTIONS(6)",
+        "description": "non-divergent solution flag (non-divergent solution option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTIONS(7)",
+        "description": "solution method flag (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "FDNS."
+      },
+      {
+        "value": "= 1",
+        "description": "FNSL."
+      },
+      {
+        "value": "= 2",
+        "description": "optimized FDNS."
+      },
+      {
+        "value": "OPTIONS(8)",
+        "description": "var limit code for the contingency case power flow solutions (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "apply immediately."
+      },
+      {
+        "value": "= 1",
+        "description": "initially ignore, then apply automatically."
+      },
+      {
+        "value": "OPTIONS(9)",
+        "description": "var limit code for the base case transfer increment solutions (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "apply immediately."
+      },
+      {
+        "value": "= 1",
+        "description": "initially ignore, then apply automatically."
+      },
+      {
+        "value": "OPTIONS(10)",
+        "description": "rating set (rating set program option setting by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "RATEA."
+      },
+      {
+        "value": "= 2",
+        "description": "RATEB."
+      },
+      {
+        "value": "= 3",
+        "description": "RATEC."
+      },
+      {
+        "value": "OPTIONS(11)",
+        "description": "study (source) system transfer dispatch method (1 by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "buses and distribution factors from DFAX file for buses with positive MW machines."
+      },
+      {
+        "value": "= 2",
+        "description": "buses and distribution factors from DFAX file for buses with positive MW constant MVA load."
+      },
+      {
+        "value": "= 3",
+        "description": "buses and distribution factors from DFAX file for buses with either positive MW machines or positive MW constant MVA load."
+      },
+      {
+        "value": "= 4",
+        "description": "subsystem buses with positive MW constant MVA load in proportion to their MW load."
+      },
+      {
+        "value": "= 5",
+        "description": "subsystem buses with positive MW machines in proportion to their MW output."
+      },
+      {
+        "value": "= 6",
+        "description": "subsystem buses with positive MW machines in proportion to their MBASEs."
+      },
+      {
+        "value": "= 7",
+        "description": "subsystem buses with positive MW machines in proportion to their reserve (PMAXMC - PGENMC)."
+      },
+      {
+        "value": "= 8",
+        "description": "subsystem buses with positive MW machines via ECDI with unit commitment disabled."
+      },
+      {
+        "value": "OPTIONS(12)",
+        "description": "opposing (sink) system transfer dispatch method (1 by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "buses and distribution factors from DFAX file for buses with positive MW machines."
+      },
+      {
+        "value": "= 2",
+        "description": "buses and distribution factors from DFAX file for buses with positive MW constant MVA load."
+      },
+      {
+        "value": "= 3",
+        "description": "buses and distribution factors from DFAX file for buses with either positive MW machines or positive MW constant MVA load."
+      },
+      {
+        "value": "= 4",
+        "description": "subsystem buses with positive MW constant MVA load in proportion to their MW load."
+      },
+      {
+        "value": "= 5",
+        "description": "subsystem buses with positive MW machines in proportion to their MW output."
+      },
+      {
+        "value": "= 6",
+        "description": "subsystem buses with positive MW machines in proportion to their MBASEs."
+      },
+      {
+        "value": "= 7",
+        "description": "subsystem buses with positive MW machines in proportion to their reserve (PGENMC - PMINMC)."
+      },
+      {
+        "value": "= 8",
+        "description": "subsystem buses with positive MW machines via ECDI with unit commitment disabled."
+      },
+      {
+        "value": "OPTIONS(13)",
+        "description": "generation plant limits flag for transfer methods 1, 3, 5, 6 and 7 (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no limits."
+      },
+      {
+        "value": "= 1",
+        "description": "honor machine active power limits."
+      },
+      {
+        "value": "OPTIONS(14)",
+        "description": "positive load flag for transfer methods 2, 3 and 4 (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no limits."
+      },
+      {
+        "value": "= 1",
+        "description": "enforce non-negative net active power constant MVA load."
+      },
+      {
+        "value": "OPTIONS(15)",
+        "description": "flag to check for low voltage at any monitored bus (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable check."
+      },
+      {
+        "value": "= 1",
+        "description": "enable check."
+      },
+      {
+        "value": "OPTIONS(16)",
+        "description": "flag to check for excessive loading on any monitored branch (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable check."
+      },
+      {
+        "value": "= 1",
+        "description": "enable check."
+      },
+      {
+        "value": "OPTIONS(17)",
+        "description": "contingency case tap adjustment flag (base case tap adjustment flag, OPTIONS (1) by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable stepping adjustment."
+      },
+      {
+        "value": "= 2",
+        "description": "enable direct adjustment."
+      },
+      {
+        "value": "OPTIONS(18)",
+        "description": "contingency case area interchange adjustment flag (base case area interchange adjustment flag, OPTIONS (2) by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable using tie line flows only in calculating area interchange."
+      },
+      {
+        "value": "= 2",
+        "description": "enable using tie line flows and loads in calculating area interchange."
+      },
+      {
+        "value": "OPTIONS(19)",
+        "description": "contingency case phase shift adjustment flag (base case phase shift adjustment flag, OPTIONS (3) by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTIONS(20)",
+        "description": "contingency case dc tap adjustment flag (base case dc tap adjustment flag, OPTIONS (4) by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTIONS(21)",
+        "description": "contingency case switched shunt adjustment flag (base case switched shunt adjustment flag, OPTIONS (5) by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "= 2",
+        "description": "enable continuous mode, disable discrete mode."
+      }
+    ],
+    "values": [
+      {
+        "value": "VALUES(1)",
+        "description": "mismatch tolerance in MW and Mvar (Newton solution convergence tolerance, TOLN, by default)."
+      },
+      {
+        "value": "VALUES(2)",
+        "description": "initial transfer increment in MW (100.0 by default)."
+      },
+      {
+        "value": "VALUES(3)",
+        "description": "transfer increment tolerance in MW (10.0 by default)."
+      },
+      {
+        "value": "VALUES(4)",
+        "description": "maximum incremental transfer in MW (1000.0 by default)."
+      },
+      {
+        "value": "VALUES(5)",
+        "description": "low voltage threshold in pu in the low voltage check (0.8 by default)."
+      },
+      {
+        "value": "VALUES(6)",
+        "description": "percent of rating in the excessive branch loading check (100.0 by default)."
+      }
+    ],
+    "labels": [
+      {
+        "value": "LABELS(1)",
+        "description": "label of the study (source) system for which generation is to be increased and/or for which the load is to be decreased (no default allowed)."
+      },
+      {
+        "value": "LABELS(2)",
+        "description": "label of the opposing (sink) system for which generation is to be decreased and/or for which the load is to be increased (no default allowed)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid VALUES value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid OPTIONS value."
+    },
+    {
+      "value": "= 3",
+      "description": "generators are converted."
+    },
+    {
+      "value": "= 4",
+      "description": "buses in island(s) without a swing bus; use activity TREE."
+    },
+    {
+      "value": "= 5",
+      "description": "largest mismatch exceeds mismatch tolerance."
+    },
+    {
+      "value": "= 6",
+      "description": "initial transfer increment is less than transfer increment tolerance."
+    },
+    {
+      "value": "= 7",
+      "description": "no participating dispatch buses in study system."
+    },
+    {
+      "value": "= 8",
+      "description": "no participating dispatch buses in opposing system."
+    },
+    {
+      "value": "= 9",
+      "description": "subsystem engine error."
+    },
+    {
+      "value": "= 10",
+      "description": "ECDI engine in subsystem aaa."
+    },
+    {
+      "value": "= 11",
+      "description": "base case ECDI solution did not converge."
+    },
+    {
+      "value": "= 12",
+      "description": "no DFAX file specified."
+    },
+    {
+      "value": "= 14",
+      "description": "no economic dispatch data file specified."
+    },
+    {
+      "value": "= 15",
+      "description": "in-service induction machines are in the “stalled” or “tripped” state."
+    },
+    {
+      "value": "= 16",
+      "description": "bus type code and series element status inconsistencies."
+    },
+    {
+      "value": "= 21",
+      "description": "DFXFILE file is not in the form of a PSSE-25 or later DFAX file; run DFAX."
+    },
+    {
+      "value": "= 22",
+      "description": "monitored elements exceed limit when adding multi-section line members."
+    },
+    {
+      "value": "= 23",
+      "description": "no subsystems defined."
+    },
+    {
+      "value": "= 24",
+      "description": "subsystem not found."
+    },
+    {
+      "value": "= 25",
+      "description": "specified subsystems overlap."
+    },
+    {
+      "value": "= 26",
+      "description": "no in-service buses in subsystem WORLD."
+    },
+    {
+      "value": "= 50",
+      "description": "error opening economic dispatch data file."
+    },
+    {
+      "value": "= 51",
+      "description": "error opening PV results file."
+    },
+    {
+      "value": "= 52",
+      "description": "error opening DFAX file."
+    },
+    {
+      "value": "= 53",
+      "description": "error opening load throwover data file."
+    },
+    {
+      "value": "= 54",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= 99",
+      "description": "terminated by user interrupt or file error."
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "module": "psspy",
+  "function_name": "scenarionew",
+  "category": "Scenarios",
+  "description": "Use this API to create a new Scenario. At least one group must be added to the Scenario through SCENARIOGROUPADD before files may be added to it. If adding files through file tracking is also desired, a group must become the active group which can be done by calling SCENARIOGROUPOPEN. This API routine was first introduced in release 33.0.0. ierr = scenarionew(sfile)",
+  "python_syntax": "ierr = scenarionew(sfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sfile",
+      "description": "Full file path of the new scenario file. (input; blank by default. The name of the Scenario will be determined by the file name portion of the full file path. When the default is used no name is given to the Scenario and a full file name will be required upon saving. The root path of the Scenario will be determined by the path portion of the full file path. When the default is used the root path will default to the current working directory)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    }
+  ]
+}

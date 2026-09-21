@@ -1,0 +1,304 @@
+{
+  "module": "psspy",
+  "function_name": "accc_with_trip_parallel",
+  "category": "Power Flow Operation",
+  "description": "Use this API to run the parallel version of AC contingency calculation function with a post- contingency tripping function (use ACCC_WITH_TRIP_2 to run the function sequentially). The API distributes contingency cases among multiple processors evenly, and tests the contingency cases and following tripping actions assigned to each processor in parallel. This API routine was first introduced in release 33.4.0. ierr = accc_with_trip_parallel(tol, optacc, opttrp, label, dfxfile, accfile, thrfile, inlfile, trpfile)",
+  "python_syntax": "ierr = accc_with_trip_parallel(tol, optacc, opttrp, label, dfxfile, accfile, thrfile, inlfile, trpfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "tol",
+      "description": "Is the mismatch tolerance. (input; Newton solution convergence tolerance, TOLN, by default)."
+    },
+    {
+      "name": "optacc",
+      "description": "An array of 10 elements specifying power flow solution options. The values are as follows:. (input)."
+    },
+    {
+      "name": "opttrp",
+      "description": "An array of 3 elements specifying tripping simulation options. The values are as follows:. (input)."
+    },
+    {
+      "name": "label",
+      "description": "Is the name of the generation dispatch subsystem (blank by default; no default allowed if optacc(8) is not 0). (input)."
+    },
+    {
+      "name": "dfxfile",
+      "description": "Is the name of the distribution factor data file. (input)."
+    },
+    {
+      "name": "accfile",
+      "description": "Is the name of the contingency solution output file. (input)."
+    },
+    {
+      "name": "thrfile",
+      "description": "Is the name of the load throwover data file. (input)."
+    },
+    {
+      "name": "inlfile",
+      "description": "Is the name of the unit inertia and governor data file. (input)."
+    },
+    {
+      "name": "trpfile",
+      "description": "Is the name of the tripping element data file (input, blank for none; no default allowed if opttrp(1) is 1). (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Is the error code. . (output)."
+    }
+  ],
+  "allowed_values": {
+    "optacc": [
+      {
+        "value": "OPTACC(1)",
+        "description": "tap adjustment flag (tap adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable stepping adjustment."
+      },
+      {
+        "value": "= 2",
+        "description": "enable direct adjustment."
+      },
+      {
+        "value": "OPTACC(2)",
+        "description": "area interchange adjustment flag (area interchange adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable using tie line flows only in calculating area interchange."
+      },
+      {
+        "value": "= 2",
+        "description": "enable using tie line flows and loads in calculating area interchange."
+      },
+      {
+        "value": "OPTACC(3)",
+        "description": "phase shift adjustment flag (phase shift adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTACC(4)",
+        "description": "dc tap adjustment flag (dc tap adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTACC(5)",
+        "description": "switched shunt adjustment flag (switched shunt adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "= 2",
+        "description": "enable continuous mode, disable discrete mode."
+      },
+      {
+        "value": "OPTACC(6)",
+        "description": "solution method flag (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "FDNS."
+      },
+      {
+        "value": "= 1",
+        "description": "FNSL."
+      },
+      {
+        "value": "= 2",
+        "description": "optimized FDNS."
+      },
+      {
+        "value": "OPTACC(7)",
+        "description": "non-divergent solution flag (non-divergent solution option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTACC(8)",
+        "description": "induction motor treatment flag (applied when an induction motor fails to solve due to low terminal bus voltage). (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "stall."
+      },
+      {
+        "value": "= 1",
+        "description": "trip."
+      },
+      {
+        "value": "OPTACC(9)",
+        "description": "induction machine failure flag. (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "treat contingency as non-converged if any induction machines are placed in the “stalled” or “tripped” state."
+      },
+      {
+        "value": "= 1",
+        "description": "treat contingency as solved if it converges, even if any induction machines are placed in the “stalled” or “tripped” state."
+      },
+      {
+        "value": "OPTACC(10)",
+        "description": "dispatch mode. (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "subsystem machines (reserve)."
+      },
+      {
+        "value": "= 2",
+        "description": "subsystem machines (pmax)."
+      },
+      {
+        "value": "= 3",
+        "description": "subsystem machines (inertia)."
+      },
+      {
+        "value": "= 4",
+        "description": "subsystem machines (governor droop)."
+      }
+    ],
+    "opttrp": [
+      {
+        "value": "OPTTRP(1)",
+        "description": "tripping simulation flag (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable tripping simulation."
+      },
+      {
+        "value": "OPTTRP(2)",
+        "description": "number of tripping events per power flow (1 by default)."
+      },
+      {
+        "value": "OPTTRP(3)",
+        "description": "number of power flows per contingency (1 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid TOL value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid OPTACC value."
+    },
+    {
+      "value": "= 3",
+      "description": "generators are converted."
+    },
+    {
+      "value": "= 4",
+      "description": "buses in island(s) without a swing bus; use activity TREE."
+    },
+    {
+      "value": "= 5",
+      "description": "largest mismatch exceeds mismatch tolerance."
+    },
+    {
+      "value": "= 6",
+      "description": "generation dispatch subsystem is not defined."
+    },
+    {
+      "value": "= 7",
+      "description": "too many islands in base case."
+    },
+    {
+      "value": "= 8",
+      "description": "in-service induction machines are in the “stalled” or “tripped” state."
+    },
+    {
+      "value": "= 9",
+      "description": "buses with bus type code and series element status inconsistencies."
+    },
+    {
+      "value": "= 10",
+      "description": "Invalid OPTTRP value."
+    },
+    {
+      "value": "= 21",
+      "description": "file DFXFILE is not in the form of a PSSE 25 or later DFAX file; run DFAX."
+    },
+    {
+      "value": "= 22",
+      "description": "monitored elements exceed limit when adding multi-section line members."
+    },
+    {
+      "value": "= 49",
+      "description": "error opening Tripping Element Data File."
+    },
+    {
+      "value": "= 50",
+      "description": "error opening Unit Inertia and Governor Data File."
+    },
+    {
+      "value": "= 51",
+      "description": "error opening Contingency Solution Output File."
+    },
+    {
+      "value": "= 52",
+      "description": "error opening Distribution Factor Data File."
+    },
+    {
+      "value": "= 53",
+      "description": "error opening Load Throwover Data File."
+    },
+    {
+      "value": "= 54",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "module": "psspy",
+  "function_name": "bus_frequency_channel",
+  "category": "Assign Other Quantities To Output Channels",
+  "description": "Use this API to add an output channel containing the per unit frequency deviation at a specified bus. This API routine was first introduced in release 30.2.0. ierr = bus_frequency_channel(status, ident)",
+  "python_syntax": "ierr = bus_frequency_channel(status, ident)",
+  "return_type": "error_only_output_channel",
+  "parameters": [
+    {
+      "name": "status",
+      "description": "An array of two elementsNone. (input)."
+    },
+    {
+      "name": "ident",
+      "description": "Identifier to be assigned to the channel. if a blank channel identifier is specified, the api generates an appropriate channel identifier. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "status": [
+      {
+        "value": "STATUS(1)",
+        "description": "starting channel index, or -1 for the next available (next available by default)."
+      },
+      {
+        "value": "STATUS(2)",
+        "description": "number of the bus for which frequency deviation is to be placed in an channel is connected (no default allowed)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid STATUS value."
+    },
+    {
+      "value": "= 2",
+      "description": "starting channel number is greater than the largest channel number allowed."
+    },
+    {
+      "value": "= 3",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

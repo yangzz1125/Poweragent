@@ -1,0 +1,20 @@
+{
+  "module": "psspy",
+  "function_name": "treedat",
+  "category": "Multiple Element Data",
+  "description": "Use this API to return Swing Bus and Island Data of Working Case Network. This API routine was first introduced in release 33.5.1. treeobj = treedat(sizeislands)",
+  "python_syntax": "treeobj = treedat(sizeislands)",
+  "return_type": "value_only",
+  "parameters": [
+    {
+      "name": "sizeislands",
+      "description": "Number of (possible) islands. (input; 20 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "treeobj",
+      "description": "Returned dictionary object. (output)."
+    }
+  ]
+}

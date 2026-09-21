@@ -1,0 +1,42 @@
+{
+  "module": "psspy",
+  "function_name": "scenariosetcomments",
+  "category": "Scenarios",
+  "description": "Use this API to define or modify the Scenario comments. This API routine was first introduced in release 33.0.0. ierr = scenariosetcomments(ncommentblocks, comments, append)",
+  "python_syntax": "ierr = scenariosetcomments(ncommentblocks, comments, append)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ncommentblocks",
+      "description": "Number of 72 character strings that make up the comment. in python, this number can be set to 1 and the full comment string given as the first comment block. (input; 0 by default)."
+    },
+    {
+      "name": "comments",
+      "description": "An array of NCOMMENTBLOCKS elements specifying comment string to be defined for or added to the comments for the Scenario. (input; unchanged by default)."
+    },
+    {
+      "name": "append",
+      "description": "Flag for appending comments. if true, comments is appended to the current scenario comments. if false, the current scenario comments are overwritten by comments. (input; FALSE by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "no Scenario in memory."
+    }
+  ]
+}

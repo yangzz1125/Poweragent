@@ -1,0 +1,404 @@
+{
+  "module": "psspy",
+  "function_name": "ascc_3",
+  "category": "Fault Analysis Operation",
+  "description": "This API is used to apply a series of faults at various locations in the working case. This API routine was first introduced in release 33.0.0. ierr = ascc_3(sid, all, status, values, relfile, fcdfile, scfile)",
+  "python_syntax": "ierr = ascc_3(sid, all, status, values, relfile, fcdfile, scfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid subsystem identifier. valid subsystem identifiers range from 0 to 11. subsystem sid must have been previously defined. (input; 0 by default)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or selected subsystem flag. (input; 1 by default)."
+    },
+    {
+      "name": "status",
+      "description": "An array of seventeen elements specifying integer options. (input)."
+    },
+    {
+      "name": "values",
+      "description": "An array of one elements specifying real values. (input)."
+    },
+    {
+      "name": "relfile",
+      "description": "Relay data (.rel) file. (input; blank by default)."
+    },
+    {
+      "name": "fcdfile",
+      "description": "Fault control (.fcd) file. (input; blank by default)."
+    },
+    {
+      "name": "scfile",
+      "description": "Results (.sc) file. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 0",
+        "description": "process only buses in subsystem SID."
+      },
+      {
+        "value": "= 1",
+        "description": "process all buses."
+      }
+    ],
+    "status": [
+      {
+        "value": "STATUS(1)",
+        "description": "line-to-ground faults (0 by default), can also be specified with keyword ‘fltlg’."
+      },
+      {
+        "value": "= 0",
+        "description": "omit."
+      },
+      {
+        "value": "= 1",
+        "description": "include."
+      },
+      {
+        "value": "STATUS(2)",
+        "description": "line-out faults (0 by default), can also be specified with keyword ‘linout’."
+      },
+      {
+        "value": "= 0",
+        "description": "omit."
+      },
+      {
+        "value": "= 1",
+        "description": "include."
+      },
+      {
+        "value": "STATUS(3)",
+        "description": "line-end faults (0 by default), can also be specified with keyword ‘linend’."
+      },
+      {
+        "value": "= 0",
+        "description": "omit."
+      },
+      {
+        "value": "= 1",
+        "description": "include."
+      },
+      {
+        "value": "STATUS(4)",
+        "description": "bus voltage option (0 by default), can also be specified with keyword ‘voltop’."
+      },
+      {
+        "value": "= 0",
+        "description": "use bus voltages from power flow solution."
+      },
+      {
+        "value": "= 1",
+        "description": "set all bus voltages at specified value and at 0 deg."
+      },
+      {
+        "value": "= 2",
+        "description": "set faulted bus voltage at specified value and at 0 deg."
+      },
+      {
+        "value": "STATUS(5)",
+        "description": "fault analysis generator reactance option; ignored if generators are already “converted” (0 by default), can also be specified with keyword ‘genxop’."
+      },
+      {
+        "value": "= 0",
+        "description": "use subtransient reactance."
+      },
+      {
+        "value": "= 1",
+        "description": "use transient reactance."
+      },
+      {
+        "value": "= 2",
+        "description": "use synchronous reactance."
+      },
+      {
+        "value": "STATUS(6)",
+        "description": "report option (1 by default), can also be specified with keyword ‘rptop’."
+      },
+      {
+        "value": "= 0",
+        "description": "fault current summary table."
+      },
+      {
+        "value": "= 1",
+        "description": "total fault currents."
+      },
+      {
+        "value": "= 2",
+        "description": "fault contributions to N levels away."
+      },
+      {
+        "value": "= 3",
+        "description": "total fault currents and fault contributions to N levels away."
+      },
+      {
+        "value": "STATUS(7)",
+        "description": "number of levels back for contributions (0 by default), can also be specified with keyword ‘rptlvl’."
+      },
+      {
+        "value": ">= 0",
+        "description": "used if STATUS(6) = 2 or 3."
+      },
+      {
+        "value": "STATUS(8)",
+        "description": "transformer tap ratios and phase shift angles option (0 by default), can also be specified with keyword ‘tpunty’."
+      },
+      {
+        "value": "= 0",
+        "description": "leave tap ratios and phase shift angles unchanged."
+      },
+      {
+        "value": "= 1",
+        "description": "set tap ratios to 1.0 pu and phase shift angles to 0."
+      },
+      {
+        "value": "= 2",
+        "description": "set tap ratios to 1.0 pu and phase shift angles unchanged."
+      },
+      {
+        "value": "= 3",
+        "description": "set tap ratios unchanged and phase shift angles to 0."
+      },
+      {
+        "value": "STATUS(9)",
+        "description": "dc line and FACTS device option (0 by default), can also be specified with keyword ‘dcload’."
+      },
+      {
+        "value": "= 0",
+        "description": "blocked."
+      },
+      {
+        "value": "= 1",
+        "description": "represent as load."
+      },
+      {
+        "value": "STATUS(10)",
+        "description": "zero sequence transformer impedance correction option (1 by default), can also be specified with keyword ‘zcorec’."
+      },
+      {
+        "value": "= 0",
+        "description": "ignore."
+      },
+      {
+        "value": "= 1",
+        "description": "apply."
+      },
+      {
+        "value": "STATUS(11)",
+        "description": "three phase faults (0 by default), can also be specified with keyword ‘flt3ph’."
+      },
+      {
+        "value": "= 0",
+        "description": "omit."
+      },
+      {
+        "value": "= 1",
+        "description": "include."
+      },
+      {
+        "value": "STATUS(12)",
+        "description": "line-line-to-ground faults (0 by default), can also be specified with keyword ‘fltllg’."
+      },
+      {
+        "value": "= 0",
+        "description": "omit."
+      },
+      {
+        "value": "= 1",
+        "description": "include."
+      },
+      {
+        "value": "STATUS(13)",
+        "description": "line-to-line faults (0 by default), can also be specified with keyword ‘fltll’."
+      },
+      {
+        "value": "= 0",
+        "description": "omit."
+      },
+      {
+        "value": "= 1",
+        "description": "include."
+      },
+      {
+        "value": "STATUS(14)",
+        "description": "line charging option (0 by default), can also be specified with keyword ‘lnchrg’."
+      },
+      {
+        "value": "= 0",
+        "description": "leave unchanged."
+      },
+      {
+        "value": "= 1",
+        "description": "set to 0.0 in the positive and negative sequences."
+      },
+      {
+        "value": "= 2",
+        "description": "set to 0.0 in all sequences."
+      },
+      {
+        "value": "STATUS(15)",
+        "description": "line, fixed and switched shunts, and magnetizing admittance option (0 by default), can also be specified with keyword ‘shntop’."
+      },
+      {
+        "value": "= 0",
+        "description": "leave unchanged."
+      },
+      {
+        "value": "= 1",
+        "description": "set to 0.0 in the positive and negative sequences."
+      },
+      {
+        "value": "= 2",
+        "description": "set to 0.0 in all sequences."
+      },
+      {
+        "value": "STATUS(16)",
+        "description": "load option (0 by default), can also be specified with keyword ‘loadop’."
+      },
+      {
+        "value": "= 0",
+        "description": "leave unchanged."
+      },
+      {
+        "value": "= 1",
+        "description": "set to 0.0 in the positive and negative sequences."
+      },
+      {
+        "value": "= 2",
+        "description": "set to 0.0 in all sequences."
+      },
+      {
+        "value": "STATUS(17)",
+        "description": "synchronous and asynchronous machines power option (0 by default), can also be specified with keyword ‘machpq’."
+      },
+      {
+        "value": "= 0",
+        "description": "use real and reactive power outputs from power flow solution."
+      },
+      {
+        "value": "= 1",
+        "description": "set real and reactive power outputs to 0.0."
+      }
+    ],
+    "values": [
+      {
+        "value": "VALUES(1)",
+        "description": "User specified pu bus voltage value (Used when STATUS (4) = 1 or 2), can also be specified with keyword ‘volts’."
+      }
+    ],
+    "scfile": [
+      {
+        "value": "=",
+        "description": "temporary file created."
+      },
+      {
+        "value": "= nooutput",
+        "description": "no file created."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ALL value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid STATUS value."
+    },
+    {
+      "value": "= 4",
+      "description": "line end fault invalid; bus table is full."
+    },
+    {
+      "value": "= 5",
+      "description": "error opening RELFILE."
+    },
+    {
+      "value": "= 6",
+      "description": "error opening FCDFILE."
+    },
+    {
+      "value": "= 7",
+      "description": "prerequisite requirements for function not met."
+    },
+    {
+      "value": "= 8",
+      "description": "no faults specified."
+    },
+    {
+      "value": "= 9",
+      "description": "error opening SCFILE."
+    },
+    {
+      "value": "= 10",
+      "description": "SCFILE error."
+    },
+    {
+      "value": "= 11",
+      "description": "bus SC results not available."
+    },
+    {
+      "value": "= 12",
+      "description": "branch SC results not available."
+    },
+    {
+      "value": "= 13",
+      "description": "three winding transformer SC results not available."
+    },
+    {
+      "value": "= 14",
+      "description": "incorrect SCFILE."
+    },
+    {
+      "value": "= 15",
+      "description": "SCFILE not allowed."
+    },
+    {
+      "value": "= 16",
+      "description": "fault analysis invalid, in-service induction machines stalled or tripped state."
+    },
+    {
+      "value": "= 17",
+      "description": "invalid VALUES value."
+    },
+    {
+      "value": "= 18",
+      "description": "SC result file size exceeded. Define smaller size bus subsystems and re-run if SCFILE is required."
+    },
+    {
+      "value": "= 19",
+      "description": "topology error - bus(es) with bus type code and series element status inconsistencies."
+    },
+    {
+      "value": "= 20",
+      "description": "Number of branches at faulted bus are greater than NBRLINKS (only arrbox.fault module)."
+    },
+    {
+      "value": "= 21",
+      "description": "Re-run by specifying higher NBRLNKS value (only arrbox.fault module)."
+    },
+    {
+      "value": "= 22",
+      "description": "Network case has number of MOV and/or NCS, cannot use arrbox.ascc_currents, use arrbox.fault module."
+    }
+  ]
+}

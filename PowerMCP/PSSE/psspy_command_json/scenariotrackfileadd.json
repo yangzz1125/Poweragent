@@ -1,0 +1,42 @@
+{
+  "module": "psspy",
+  "function_name": "scenariotrackfileadd",
+  "category": "Scenarios",
+  "description": "Use this API to add the files currently being tracked. This API routine was first introduced in release 33.0.0. ierr = scenariotrackfileadd(sgroup, nfiles, indexes, discard)",
+  "python_syntax": "ierr = scenariotrackfileadd(sgroup, nfiles, indexes, discard)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sgroup",
+      "description": "Group to add tracked file to. (input; current active group by default)."
+    },
+    {
+      "name": "nfiles",
+      "description": "Number of files currently being tracked to add. (input; no default allowed)."
+    },
+    {
+      "name": "indexes",
+      "description": "An array of NFILES elements specifying indexes of the files to add based on the list from SCENARIOTRACKFILEADD. (input; no default allowed)."
+    },
+    {
+      "name": "discard",
+      "description": "A flag to specify whether or not to discard the files being tracked that were not added. (input; FALSE by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    }
+  ]
+}

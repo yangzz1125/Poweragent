@@ -1,0 +1,10 @@
+{
+  "module": "psspy",
+  "function_name": "refreshgui",
+  "category": "Non-Engineering",
+  "description": "Refresh the graphical user interface. This API routine was first introduced in release 30.0.0. refreshgui()",
+  "python_syntax": "refreshgui()",
+  "return_type": "void",
+  "parameters": [],
+  "return_values": []
+}

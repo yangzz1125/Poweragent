@@ -1,0 +1,154 @@
+{
+  "module": "psspy",
+  "function_name": "aflowcplx",
+  "category": "Branch Flow Data",
+  "description": "Use this API to return an array of complex values for subsystem branches. This API routine was first introduced in release 30.2.0. ierr, xarray = aflowcplx(sid, owner, ties, flag, string)",
+  "python_syntax": "ierr, xarray = aflowcplx(sid, owner, ties, flag, string)",
+  "return_type": "error_and_array",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the bus subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "owner",
+      "description": "A flag indicating owner usage if ownership is a subsystem selection criterion (ignored if sid is negative). (input; 1 by default)."
+    },
+    {
+      "name": "ties",
+      "description": "A flag indicating which subsystem branches to include (ignored if sid is negative). (input; 1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem branches to include. (input; 1 by default)."
+    },
+    {
+      "name": "string",
+      "description": "An array of NSTR elements specifying NSTR of the following strings indicating the branch quantities desired. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "xarray",
+      "description": "An array of NSTR*DIM elements specifying Is an array of at least NSTR columns, each of which contains DIM elements. (output)."
+    }
+  ],
+  "allowed_values": {
+    "sid": [
+      {
+        "value": "< 0",
+        "description": "to instruct the API to assume a subsystem containing all buses in the working case."
+      },
+      {
+        "value": ">= 0",
+        "description": "valid bus subsystem identifier. Valid subsystem identifiers range from 0 to 11. Subsystem SID must have been previously defined."
+      }
+    ],
+    "owner": [
+      {
+        "value": "= 1",
+        "description": "to use bus ownership."
+      },
+      {
+        "value": "= 2",
+        "description": "to use branch ownership."
+      }
+    ],
+    "ties": [
+      {
+        "value": "= 1",
+        "description": "for each end of interior subsystem branches only."
+      },
+      {
+        "value": "= 2",
+        "description": "for the subsystem bus end of tie branches only."
+      },
+      {
+        "value": "= 3",
+        "description": "for the non-subsystem bus end of tie branches only."
+      },
+      {
+        "value": "= 4",
+        "description": "for each end of tie branches only."
+      },
+      {
+        "value": "= 5",
+        "description": "for each end of interior subsystem branches and the subsystem bus end of tie branches."
+      },
+      {
+        "value": "= 6",
+        "description": "for each end of interior subsystem branches and tie branches."
+      }
+    ],
+    "flag": [
+      {
+        "value": "= 1",
+        "description": "for only in-service branches."
+      },
+      {
+        "value": "= 2",
+        "description": "for all branches."
+      }
+    ],
+    "string": [
+      {
+        "value": "= PQ",
+        "description": "P + j Q flow at from bus end (in MW and Mvar)."
+      },
+      {
+        "value": "= PQLOSS",
+        "description": "Losses (in MW and Mvar)."
+      },
+      {
+        "value": "= O_PQ",
+        "description": "P + j Q flow at from bus end (units determined by power output options)."
+      },
+      {
+        "value": "= O_PQLOSS",
+        "description": "Losses (units determined by power output options)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid OWNER value."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid TIES value."
+    },
+    {
+      "value": "= 5",
+      "description": "Invalid FLAG value."
+    },
+    {
+      "value": "= 6",
+      "description": "Invalid NSTR value."
+    },
+    {
+      "value": "= 7",
+      "description": "DIM, and hence the size of XARRAY, is not large enough."
+    },
+    {
+      "value": "= 8",
+      "description": "Invalid STRING value."
+    }
+  ]
+}

@@ -1,0 +1,182 @@
+{
+  "module": "psspy",
+  "function_name": "azonereal",
+  "category": "Zone Data",
+  "description": "Use this API to return an array of real values for subsystem zones. This API routine was first introduced in release 30.3.0. ierr, rarray = azonereal(sid, flag, string)",
+  "python_syntax": "ierr, rarray = azonereal(sid, flag, string)",
+  "return_type": "error_and_array",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the zone subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem zones to include. (input; 1 by default)."
+    },
+    {
+      "name": "string",
+      "description": "An array of NSTR elements specifying NSTR of the following strings indicating the zone quantities desired. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "rarray",
+      "description": "An array of NSTR*DIM elements specifying Is an array of at least NSTR columns, each of which contains DIM elements. (output)."
+    }
+  ],
+  "allowed_values": {
+    "sid": [
+      {
+        "value": "< 0",
+        "description": "to instruct the API to assume a subsystem containing all zones in the working case."
+      },
+      {
+        "value": ">= 0",
+        "description": "valid zone subsystem identifier. Valid subsystem identifiers range from 0 to 11. Subsystem SID must have been previously defined."
+      }
+    ],
+    "flag": [
+      {
+        "value": "= 1",
+        "description": "for only subsystem zones with at least one ac bus assigned to them."
+      },
+      {
+        "value": "= 2",
+        "description": "for subsystem zones with any equipment (ac buses, loads, and/or dc buses) assigned to them."
+      }
+    ],
+    "string": [
+      {
+        "value": "= PLOAD",
+        "description": "Total active power load on buses in the zone, in MW."
+      },
+      {
+        "value": "= QLOAD",
+        "description": "Total reactive power load on buses in the zone, in Mvar."
+      },
+      {
+        "value": "= PLOADLD",
+        "description": "Total active power load of loads in the zone, in MW."
+      },
+      {
+        "value": "= QLOADLD",
+        "description": "Total reactive power load of loads in the zone, in Mvar."
+      },
+      {
+        "value": "= PGEN",
+        "description": "Total active power generation on buses in the zone, in MW."
+      },
+      {
+        "value": "= QGEN",
+        "description": "Total reactive power generation on buses in the zone, in Mvar."
+      },
+      {
+        "value": "= PLOSS",
+        "description": "Total active power losses assigned to the zone, in MW."
+      },
+      {
+        "value": "= QLOSS",
+        "description": "Total reactive power losses assigned to the zone, in Mvar."
+      },
+      {
+        "value": "= PXFRMAG",
+        "description": "Total active power to transformer magnetizing admittance for winding 1 buses in the zone, in MW."
+      },
+      {
+        "value": "= QXFRMAG",
+        "description": "Total reactive power to transformer magnetizing admittance for winding 1 buses in the zone, in MVar."
+      },
+      {
+        "value": "= PINT",
+        "description": "Total active power net interchange from the zone, in MW."
+      },
+      {
+        "value": "= QINT",
+        "description": "Total reactive power net interchange from the zone, in Mvar."
+      },
+      {
+        "value": "= O_PLOAD",
+        "description": "Total active power load on buses in the zone (units determined by power output option)."
+      },
+      {
+        "value": "= O_QLOAD",
+        "description": "Total reactive power load on buses in the zone (units determined by power output option)."
+      },
+      {
+        "value": "= O_PLOADLD",
+        "description": "Total active power load of loads in the zone (units determined by power output option)."
+      },
+      {
+        "value": "= O_QLOADLD",
+        "description": "Total reactive power load of loads in the zone (units determined by power output option)."
+      },
+      {
+        "value": "= O_PGEN",
+        "description": "Total active power generation on buses in the zone (units determined by power output option)."
+      },
+      {
+        "value": "= O_QGEN",
+        "description": "Total reactive power generation on buses in the zone (units determined by power output option)."
+      },
+      {
+        "value": "= O_PLOSS",
+        "description": "Total active power losses assigned to the zone (units determined by power output option)."
+      },
+      {
+        "value": "= O_QLOSS",
+        "description": "Total reactive power losses assigned to the zone (units determined by power output option)."
+      },
+      {
+        "value": "= O_PXFRMAG",
+        "description": "Total active power to transformer magnetizing admittance for winding 1 buses in the zone (units determined by power output option)."
+      },
+      {
+        "value": "= O_QXFRMAG",
+        "description": "Total reactive power to transformer magnetizing admittance for winding 1 buses in the zone (units determined by power output option)."
+      },
+      {
+        "value": "= O_PINT",
+        "description": "Total active power net interchange from the zone (units determined by power output option)."
+      },
+      {
+        "value": "= O_QINT",
+        "description": "Total reactive power net interchange from the zone (units determined by power output option)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid FLAG value."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid NSTR value."
+    },
+    {
+      "value": "= 5",
+      "description": "DIM, and hence the size of RARRAY, is not large enough."
+    },
+    {
+      "value": "= 6",
+      "description": "Invalid STRING value."
+    }
+  ]
+}

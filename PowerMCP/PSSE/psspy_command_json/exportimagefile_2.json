@@ -1,0 +1,67 @@
+{
+  "module": "psspy",
+  "function_name": "exportimagefile_2",
+  "category": "Diagram View",
+  "description": "Use this API to export an image of the active Slider Diagram in the GUI to a file. This API routine was first introduced in release 35.3.0. exportimagefile_2(type, imagefile, quality, width, height, scale, x, y)",
+  "python_syntax": "exportimagefile_2(type, imagefile, quality, width, height, scale, x, y)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "type",
+      "description": "Type of image to export. (input)."
+    },
+    {
+      "name": "imagefile",
+      "description": "Name of the image file to be written. (input)."
+    },
+    {
+      "name": "quality",
+      "description": "A value, between 1 and 100, used to control the quality of the exported image if type = 2. (input)."
+    },
+    {
+      "name": "width",
+      "description": "Width of the image to capture in pixels. (input)."
+    },
+    {
+      "name": "height",
+      "description": "Height of the image to capture in pixels. (input)."
+    },
+    {
+      "name": "scale",
+      "description": "Scale at wich to capture the image. (input)."
+    },
+    {
+      "name": "x",
+      "description": "X location on the diagram that will be the center of the image. (input)."
+    },
+    {
+      "name": "y",
+      "description": "Y location on the diagram that will be the center of the image. (input)."
+    }
+  ],
+  "return_values": [],
+  "allowed_values": {
+    "type": [
+      {
+        "value": "= 1",
+        "description": "Bitmap."
+      },
+      {
+        "value": "= 2",
+        "description": "JPEG."
+      },
+      {
+        "value": "= 3",
+        "description": "PNG."
+      },
+      {
+        "value": "= 4",
+        "description": "GIF."
+      },
+      {
+        "value": "= 5",
+        "description": "TIF."
+      }
+    ]
+  }
+}

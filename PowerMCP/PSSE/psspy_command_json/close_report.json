@@ -1,0 +1,25 @@
+{
+  "module": "psspy",
+  "function_name": "close_report",
+  "category": "Power Flow Operation",
+  "description": "Sets the report output device to the standard output and sets the command line to request device selection for individual reporting activities (Activity CLOS). This API routine was first introduced in release 30.0.0. ierr = close_report()",
+  "python_syntax": "ierr = close_report()",
+  "return_type": "error_only_report",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": ""
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

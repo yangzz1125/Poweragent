@@ -1,0 +1,70 @@
+{
+  "module": "psspy",
+  "function_name": "agcapreal",
+  "category": "Multiple Element Data",
+  "description": "Use this API to return an array of real values for a GCAP curve. This API routine was first introduced in release 35.6.1. ierr, rarray = agcapreal(ibus,id,string)",
+  "python_syntax": "ierr, rarray = agcapreal(ibus,id,string)",
+  "return_type": "error_and_array",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Machine bus number. (input)."
+    },
+    {
+      "name": "id",
+      "description": "Machine identifier. (input)."
+    },
+    {
+      "name": "string",
+      "description": "An array of NSTR elements specifying NSTR of the following strings indicating the GCAP quantities desired. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "The error code . (output)."
+    },
+    {
+      "name": "rarray",
+      "description": "An array of NSTR*COUNT elements specifying Is an array of at least NSTR columns, each of which contains COUNT elements. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= PGEN",
+        "description": "active power output."
+      },
+      {
+        "value": "= QMAX",
+        "description": "Qmax at the PGEN."
+      },
+      {
+        "value": "= QMIN",
+        "description": "Qmin at the PGEN."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "bus has no generators."
+    },
+    {
+      "value": "= 3",
+      "description": "generator not found."
+    },
+    {
+      "value": "= 4",
+      "description": "invalid string."
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "module": "psspy",
+  "function_name": "opf_apdsp_tbl",
+  "category": "Optimal Power Flow Data",
+  "description": "Use this API to add an individual active power dispatch table record to the working case. It may also be used to modify an existing active power dispatch table record. This API routine was first introduced in release 28.0.0. ierr = opf_apdsp_tbl(tbl, intgar, realar)",
+  "python_syntax": "ierr = opf_apdsp_tbl(tbl, intgar, realar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "tbl",
+      "description": "Active power dispatch table number. (input; no default allowed)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of three elementsNone. (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of three elementsNone. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "cost curve type (default value of 1 if new record, current value otherwise)."
+      },
+      {
+        "value": "= 1",
+        "description": "polynomial and exponential cost curve."
+      },
+      {
+        "value": "= 2",
+        "description": "linear cost curve."
+      },
+      {
+        "value": "= 3",
+        "description": "quadratic cost curve."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "active power dispatch table status (default value of 1 if new record, current value otherwise)."
+      },
+      {
+        "value": "= 0",
+        "description": "out of service."
+      },
+      {
+        "value": "= 1",
+        "description": "in service."
+      },
+      {
+        "value": "INTGAR(3)",
+        "description": "cost table cross reference number (default value of 0, current value otherwise)."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "maximum active power generation, in MW (default value of 9999.0, current value otherwise)."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "minimum active power generation, in MW (default value of -9999.0, current value otherwise)."
+      },
+      {
+        "value": "REALAR(3)",
+        "description": "fuel cost scale coefficient (default value of 1.0, current value otherwise)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= -1",
+      "description": "non-fatal error occurred. Warning messages are as follows: - invalid cost curve type specified - invalid active power dispatch table status specified - maximum active power generation less than minimum active power generation."
+    },
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "active power dispatch table is full."
+    },
+    {
+      "value": "= 2",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

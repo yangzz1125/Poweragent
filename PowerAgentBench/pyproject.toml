@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "poweragentbench"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = [
+    "pypsa>=1.0",
+    "pandapower",
+    "numpy",
+    "pandas>=2,<3",
+]
+
+[tool.setuptools.packages.find]
+include = ["poweragentbench*"]

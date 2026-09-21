@@ -1,0 +1,70 @@
+{
+  "module": "psspy",
+  "function_name": "station_2dc_conv_term_chng",
+  "category": "Node Breaker Data",
+  "description": "This API changes both node terminal connections of an existing two-term dc rectifier and inverter terminal data in the working case. A new API, station_2dc_bus_term_chng, has been introduced at 35.5 in which the node terminal connection at one end is changed by specifying the bus and desired node. This API routine was first introduced in release 34.3.0. ierr = station_2dc_conv_term_chng(name, nodes)",
+  "python_syntax": "ierr = station_2dc_conv_term_chng(name, nodes)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Quoted name of the two-terminal dc line for which node terminal data for one or both of its converters is to be specified. (input)."
+    },
+    {
+      "name": "nodes",
+      "description": "An array of 2 elements. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error return. (output)."
+    }
+  ],
+  "allowed_values": {
+    "nodes": [
+      {
+        "value": "NODES(1)",
+        "description": "node number to which the dc rectifier end is attached."
+      },
+      {
+        "value": "NODES(2)",
+        "description": "node number to which the dc inverter end is attached."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "two-terminal dc line not found."
+    },
+    {
+      "value": "= 2",
+      "description": "bus associated with node is not part of a substation."
+    },
+    {
+      "value": "= 3",
+      "description": "node does not exist."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid node number."
+    },
+    {
+      "value": "= 5",
+      "description": "node-breaker terminal connection table is full."
+    },
+    {
+      "value": "= 6",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

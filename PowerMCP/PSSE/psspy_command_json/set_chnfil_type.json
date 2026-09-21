@@ -1,0 +1,42 @@
+{
+  "module": "psspy",
+  "function_name": "set_chnfil_type",
+  "category": "Dynamic Simulation Operation",
+  "description": "Use this API to set/Get the channel output file type (extended type or not). This API routine was first introduced in release 33.8.0. ierr = set_chnfil_type(status) ierr, status = set_chnfil_type()",
+  "python_syntax": "ierr = set_chnfil_type(status) ierr, status = set_chnfil_type()",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "status",
+      "description": "Value of the option setting. (input; if batch command or ICODE is 0 or negative; unchanged by default) (if ICODE is positive)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "status": [
+      {
+        "value": "= 0",
+        "description": "channel output file is not of extended type (.out)."
+      },
+      {
+        "value": "= 1",
+        "description": "channel output file is of extended type (.outx)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

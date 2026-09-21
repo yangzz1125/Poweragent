@@ -1,0 +1,55 @@
+{
+  "module": "psspy",
+  "function_name": "setdiagresopf_2",
+  "category": "Diagram View",
+  "description": "This API routine is obsolete. It has been replaced by the API routine setdiagresopf_3, and is implemented by a call to setdiagresopf_3. Use this API to specify the OPF annotation options in the active Slider diagram. This API routine was first introduced in release 34.0.0. setdiagresopf_2(setscope, opfbusvoltmag, opfbuspinj, opfbusqinj, opfloadsens, opffxssens, opfswssens)",
+  "python_syntax": "setdiagresopf_2(setscope, opfbusvoltmag, opfbuspinj, opfbusqinj, opfloadsens, opffxssens, opfswssens)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "setscope",
+      "description": "Is the scope of the api. (input)."
+    },
+    {
+      "name": "opfbusvoltmag",
+      "description": "Bus voltage magnitude flag. (input)."
+    },
+    {
+      "name": "opfbuspinj",
+      "description": "Bus p injection flag. (input)."
+    },
+    {
+      "name": "opfbusqinj",
+      "description": "Bus q injection flag. (input)."
+    },
+    {
+      "name": "opfloadsens",
+      "description": "Load sensitivities flag. (input)."
+    },
+    {
+      "name": "opffxssens",
+      "description": "Fixed shunt sensitivities flag. (input)."
+    },
+    {
+      "name": "opfswssens",
+      "description": "Switched shunt sensitivities flag. (input)."
+    }
+  ],
+  "return_values": [],
+  "allowed_values": {
+    "setscope": [
+      {
+        "value": "= 0",
+        "description": "defaults for new diagrams."
+      },
+      {
+        "value": "= 1",
+        "description": "defaults for new diagrams and settings for the active diagram."
+      },
+      {
+        "value": "= 2",
+        "description": "settings for the active diagram."
+      }
+    ]
+  }
+}

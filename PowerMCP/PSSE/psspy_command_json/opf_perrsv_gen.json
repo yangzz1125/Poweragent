@@ -1,0 +1,62 @@
+{
+  "module": "psspy",
+  "function_name": "opf_perrsv_gen",
+  "category": "Optimal Power Flow Data",
+  "description": "Use this API to add a participating generation reserve unit to a previously defined period reserve constraint in the working case. This API routine was first introduced in release 28.0.0. ierr = opf_perrsv_gen(rsvid, eibus, genid)",
+  "python_syntax": "ierr = opf_perrsv_gen(rsvid, eibus, genid)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "rsvid",
+      "description": "Period reserve identifier (1 through 15). (input; no default allowed)."
+    },
+    {
+      "name": "eibus",
+      "description": "Bus number. (input; no default allowed)."
+    },
+    {
+      "name": "genid",
+      "description": "Machine identifier. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid period reserve identifier specified."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid bus number specified."
+    },
+    {
+      "value": "= 3",
+      "description": "specified machine does not exist."
+    },
+    {
+      "value": "= 4",
+      "description": "specified unit does not have any generator reserve data defined."
+    },
+    {
+      "value": "= 5",
+      "description": "specified unit is already participating in the reserve constraint."
+    },
+    {
+      "value": "= 6",
+      "description": "generator reserve participating unit table full."
+    },
+    {
+      "value": "= 7",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

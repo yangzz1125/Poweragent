@@ -1,0 +1,15 @@
+{
+  "module": "psspy",
+  "function_name": "openbuslocfile",
+  "category": "Diagram View",
+  "description": "Use this API to open an existing bus location file in the GUI. The bus location file can be used to control the placement of buses on a diagram during auto-draw and grow operations This API routine was first introduced in release 30.0.1. openbuslocfile(buslocfile)",
+  "python_syntax": "openbuslocfile(buslocfile)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "buslocfile",
+      "description": ""
+    }
+  ],
+  "return_values": []
+}

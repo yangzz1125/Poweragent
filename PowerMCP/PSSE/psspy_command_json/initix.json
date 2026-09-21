@@ -1,0 +1,34 @@
+{
+  "module": "psspy",
+  "function_name": "initix",
+  "category": "Single Element Data",
+  "description": "Initializes the tie branch fetching routine ‘NXTTIE’ or ‘NXTTIE3’ for returning tie branches from area IAR. For multisection lines connected to a from area bus, the other endpoint bus is treated as the to bus. Dummy buses of multisection lines are excluded. This API routine was first introduced in release 28.0.0. ierr = initix(iar)",
+  "python_syntax": "ierr = initix(iar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "iar",
+      "description": "From area number. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error, ‘NXTTIE’ or ‘NXTTIE3’ is properly initialized."
+    },
+    {
+      "value": "= 1",
+      "description": "Area number <= 0 or > largest allowable area number; ‘NXTTIE’ or ‘NXTTIE3’ may not be used."
+    },
+    {
+      "value": "= 2",
+      "description": "No buses in area ‘IAR’; ‘NXTTIE’ or ‘NXTTIE3’ may not be used."
+    }
+  ]
+}

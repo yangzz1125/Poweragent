@@ -1,0 +1,218 @@
+{
+  "module": "psspy",
+  "function_name": "aswshint",
+  "category": "Switched Shunt Data",
+  "description": "Use this API to return an array of integer values for subsystem switched shunts. This API routine was first introduced in release 30.2.0. ierr, iarray = aswshint(sid, flag, string)",
+  "python_syntax": "ierr, iarray = aswshint(sid, flag, string)",
+  "return_type": "error_and_array",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the bus subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem switched shunts to include. (input; 1 by default)."
+    },
+    {
+      "name": "string",
+      "description": "An array of NSTR elements specifying NSTR of the following strings indicating the bus and/or switched shunt quantities desired. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "iarray",
+      "description": "An array of NSTR*DIM elements specifying Is an array of at least NSTR columns, each of which contains DIM elements. (output)."
+    }
+  ],
+  "allowed_values": {
+    "sid": [
+      {
+        "value": "< 0",
+        "description": "to instruct the API to assume a subsystem containing all buses in the working case."
+      },
+      {
+        "value": ">= 0",
+        "description": "valid bus subsystem identifier. Valid subsystem identifiers range from 0 to 11. Subsystem SID must have been previously defined."
+      }
+    ],
+    "flag": [
+      {
+        "value": "= 1",
+        "description": "for only in-service switched shunts at in-service buses (type code < 4)."
+      },
+      {
+        "value": "= 2",
+        "description": "for all switched shunts at in-service buses (type code < 4)."
+      },
+      {
+        "value": "= 3",
+        "description": "for only in-service switched shunts, including those at type 4 buses."
+      },
+      {
+        "value": "= 4",
+        "description": "for all switched shunts."
+      }
+    ],
+    "string": [
+      {
+        "value": "= NUMBER",
+        "description": "Bus number."
+      },
+      {
+        "value": "= STATION",
+        "description": "Substation number (0 if bus is not in a substation)."
+      },
+      {
+        "value": "= SECTION",
+        "description": "Bus section number (0 if bus is not represented by multiple bus sections)."
+      },
+      {
+        "value": "= NODE",
+        "description": "Node number (0 if bus is not in a substation)."
+      },
+      {
+        "value": "= TYPE",
+        "description": "Bus type code."
+      },
+      {
+        "value": "= AREA",
+        "description": "Bus area number."
+      },
+      {
+        "value": "= ZONE",
+        "description": "Bus zone number."
+      },
+      {
+        "value": "= OWNER",
+        "description": "Bus owner number."
+      },
+      {
+        "value": "= DUMMY",
+        "description": "Returns 1 if the bus is a dummy bus of a multisection line or 0 if it is not."
+      },
+      {
+        "value": "= MODE",
+        "description": "Switched shunt control mode."
+      },
+      {
+        "value": "= STATUS",
+        "description": "Switched shunt status flag."
+      },
+      {
+        "value": "= ADJMETHOD",
+        "description": "Switched shunt adjustment method."
+      },
+      {
+        "value": "= IREG",
+        "description": "Bus number of the regulated bus."
+      },
+      {
+        "value": "= NREG",
+        "description": "Node number of the regulated node."
+      },
+      {
+        "value": "= BLOCKS",
+        "description": "Number of blocks."
+      },
+      {
+        "value": "= STATUSBLOCK1",
+        "description": "Status of block 1."
+      },
+      {
+        "value": "= STATUSBLOCK2",
+        "description": "Status of block 2."
+      },
+      {
+        "value": "= STATUSBLOCK3",
+        "description": "Status of block 3."
+      },
+      {
+        "value": "= STATUSBLOCK4",
+        "description": "Status of block 4."
+      },
+      {
+        "value": "= STATUSBLOCK5",
+        "description": "Status of block 5."
+      },
+      {
+        "value": "= STATUSBLOCK6",
+        "description": "Status of block 6."
+      },
+      {
+        "value": "= STATUSBLOCK7",
+        "description": "Status of block 7."
+      },
+      {
+        "value": "= STATUSBLOCK8",
+        "description": "Status of block 8."
+      },
+      {
+        "value": "= STEPSBLOCK1",
+        "description": "Number of steps in block 1."
+      },
+      {
+        "value": "= STEPSBLOCK2",
+        "description": "Number of steps in block 2."
+      },
+      {
+        "value": "= STEPSBLOCK3",
+        "description": "Number of steps in block 3."
+      },
+      {
+        "value": "= STEPSBLOCK4",
+        "description": "Number of steps in block 4."
+      },
+      {
+        "value": "= STEPSBLOCK5",
+        "description": "Number of steps in block 5."
+      },
+      {
+        "value": "= STEPSBLOCK6",
+        "description": "Number of steps in block 6."
+      },
+      {
+        "value": "= STEPSBLOCK7",
+        "description": "Number of steps in block 7."
+      },
+      {
+        "value": "= STEPSBLOCK8",
+        "description": "Number of steps in block 8."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid FLAG value."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid NSTR value."
+    },
+    {
+      "value": "= 5",
+      "description": "DIM, and hence the size of IARRAY, is not large enough."
+    },
+    {
+      "value": "= 6",
+      "description": "Invalid STRING value."
+    }
+  ]
+}

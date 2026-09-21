@@ -1,0 +1,70 @@
+{
+  "module": "psspy",
+  "function_name": "seq_ncs_table_data",
+  "category": "Fault Analysis Data",
+  "description": "Use this API to modify the data of an existing non-conventional source fault contribution table in the working case or to add a new non-conventional source fault contribution table to the working case. This API routine was first introduced in release 35.2.0. ierr = seq_ncs_table_data(name, points, typarg, realar, cplxar)",
+  "python_syntax": "ierr = seq_ncs_table_data(name, points, typarg, realar, cplxar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Table name. (input)."
+    },
+    {
+      "name": "points",
+      "description": "Number of points specified in table ‘name’ (1 through 20). (input)."
+    },
+    {
+      "name": "typarg",
+      "description": "An array of one elements specifying characteristic type; 1 for time dependent, 2 for voltage dependent. (input; 1 by default)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of POINTS elements specifying array of ‘POINTS’ values specifying Ti in seconds or Vi in per unit, in strictly ascending order of Ti or Vi. (input)."
+    },
+    {
+      "name": "cplxar",
+      "description": "An array of POINTS elements specifying array of ‘POINTS’ values specifying CiP and CiQ . (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "blank table name is invalid."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid POINTS value."
+    },
+    {
+      "value": "= 3",
+      "description": "table does not have at least 1 point."
+    },
+    {
+      "value": "= 4",
+      "description": "maximum number of tables are already in the case."
+    },
+    {
+      "value": "= 5",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - invalid characteristic type flag - point is beyond the previous end of table - Ti or Vi is negative - Ci is (0.0,0.0) - Ti or Vi values are not in increasing order."
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "module": "psspy",
+  "function_name": "tspfprofilecurveint",
+  "category": "Single Element Data",
+  "description": "Use this API to return integer parameters of Time Series Power Flow profile curve. This API routine was first introduced in release 35.4.0. ierr, ival = tspfprofilecurveint(curveid,string)",
+  "python_syntax": "ierr, ival = tspfprofilecurveint(curveid,string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "curveid",
+      "description": "Curve id. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating name of the integer parameter desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "The error code . (output)."
+    },
+    {
+      "name": "ival",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= INTERVAL",
+        "description": "Time interval."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Curveid not found; ‘IVAL’ unchanged."
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "module": "psspy",
+  "function_name": "aindmacbuscount",
+  "category": "Induction Machine Bus Data",
+  "description": "Use this API routine to obtain the number of array entries required to accommodate the data to be returned by the remaining members of the induction machine bus data family. This API routine was first introduced in release 33.0.0. ierr, buses = aindmacbuscount(sid, flag)",
+  "python_syntax": "ierr, buses = aindmacbuscount(sid, flag)",
+  "return_type": "error_and_count",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the bus subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem buses to include. (input; 1 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "buses",
+      "description": "Number of buses in the subsystem indicated by sid that meet the editing criteria indicated by flag. (output)."
+    }
+  ],
+  "allowed_values": {
+    "sid": [
+      {
+        "value": "< 0",
+        "description": "to instruct the API routine to assume a subsystem containing all buses in the working case."
+      },
+      {
+        "value": ">= 0",
+        "description": "valid bus subsystem identifier. Valid subsystem identifiers range from 0 to 11. Subsystem SID must have been previously defined."
+      }
+    ],
+    "flag": [
+      {
+        "value": "= 1",
+        "description": "for all in-service subsystem buses (type code 1, 2 or 3) with at least one in- service induction machine."
+      },
+      {
+        "value": "= 2",
+        "description": "for all in-service subsystem buses (type code 1, 2 or 3) with at least one induction machine, even if all induction machines at the bus are out-of-service."
+      },
+      {
+        "value": "= 3",
+        "description": "for all in-service subsystem buses (type code 1, 2 or 3), including those that have no induction machines at the bus."
+      },
+      {
+        "value": "= 4",
+        "description": "for all subsystem buses with at least one induction machine, even if all induction machines at the bus are out-of-service."
+      },
+      {
+        "value": "= 5",
+        "description": "for all subsystem buses, including those that have no induction machines at the bus."
+      },
+      {
+        "value": "= 10",
+        "description": "for all in-service subsystem buses (type code 1, 2 or 3) with at least one in- service induction generator."
+      },
+      {
+        "value": "= 11",
+        "description": "for all in-service subsystem buses (type code 1, 2 or 3) with at least one induction generator, even if all induction generators at the bus are out-of-service."
+      },
+      {
+        "value": "= 12",
+        "description": "for all subsystem buses with at least one induction generator, even if all induction generators at the bus are out-of-service."
+      },
+      {
+        "value": "= 20",
+        "description": "for all in-service subsystem buses (type code 1, 2 or 3) with at least one in- service induction motor."
+      },
+      {
+        "value": "= 21",
+        "description": "for all in-service subsystem buses (type code 1, 2 or 3) with at least one induction motor, even if all induction motors at the bus are out-of-service."
+      },
+      {
+        "value": "= 22",
+        "description": "for all subsystem buses with at least one induction motor, even if all induction motors at the bus are out-of-service."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty; BUSES returned as 0."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value; BUSES returned as 0."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid FLAG value; BUSES returned as 0."
+    }
+  ]
+}

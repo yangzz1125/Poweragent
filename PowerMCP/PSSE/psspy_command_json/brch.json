@@ -1,0 +1,142 @@
+{
+  "module": "psspy",
+  "function_name": "brch",
+  "category": "Power Flow Operation",
+  "description": "This API routine is obsolete. It has been replaced by the API routine brch_2, and is implemented by a call to brch_2. Use this API to tabulate those branches where impedances or other characteristics are such that they may be detrimental to the rate of convergence of one or more of the power flow solution activities. This API routine was first introduced in release 28.0.0. ierr = brch(sid, all, dotest, tolval)",
+  "python_syntax": "ierr = brch(sid, all, dotest, tolval)",
+  "return_type": "error_only_report",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid subsystem identifier. valid subsystem identifiers range from 0 to 11. subsystem sid must have been previously defined. (input; 0 by default)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem flag. (input; 1 by default)."
+    },
+    {
+      "name": "dotest",
+      "description": "An array of ten elements specifying options. Each element determines whether a specific branch check should be applied. For DOTEST(I) = 1, the corresponding branch check is applied; for DOTEST(I) = 0, the check is bypassed. (input; 0 by default)."
+    },
+    {
+      "name": "tolval",
+      "description": "An array of seven elements specifying options. Each element contains a limit or threshold value used in one of the branch checks. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 0",
+        "description": "process only buses in subsystem SID."
+      },
+      {
+        "value": "= 1",
+        "description": "process all buses."
+      }
+    ],
+    "dotest": [
+      {
+        "value": "DOTEST(1)",
+        "description": "check for small reactances."
+      },
+      {
+        "value": "DOTEST(2)",
+        "description": "check for large reactances."
+      },
+      {
+        "value": "DOTEST(3)",
+        "description": "check for large resistance to reactance ratios (R/X)."
+      },
+      {
+        "value": "DOTEST(4)",
+        "description": "check for negative reactances."
+      },
+      {
+        "value": "DOTEST(5)",
+        "description": "check for large ratio of largest to smallest reactance at each bus."
+      },
+      {
+        "value": "DOTEST(6)",
+        "description": "check for high or negative charging."
+      },
+      {
+        "value": "DOTEST(7)",
+        "description": "check data of parallel transformers."
+      },
+      {
+        "value": "DOTEST(8)",
+        "description": "check for high tap ratios."
+      },
+      {
+        "value": "DOTEST(9)",
+        "description": "check for low tap ratios."
+      },
+      {
+        "value": "DOTEST(10)",
+        "description": "check for zero sequence non-transformer branch impedances of 0.0."
+      }
+    ],
+    "tolval": [
+      {
+        "value": "TOLVAL(1)",
+        "description": ">0.0 reactance lower limit (0.0005 by default)."
+      },
+      {
+        "value": "TOLVAL(2)",
+        "description": ">0.0 reactance upper limit (1.0 by default)."
+      },
+      {
+        "value": "TOLVAL(3)",
+        "description": ">0.0 R/X threshold (0.66667 by default)."
+      },
+      {
+        "value": "TOLVAL(4)",
+        "description": ">=10.0 Xmax/Xmin threshold (500.0 by default)."
+      },
+      {
+        "value": "TOLVAL(5)",
+        "description": ">=0.0 charging upper limit (5.0 by default)."
+      },
+      {
+        "value": "TOLVAL(6)",
+        "description": ">0.8 high tap ratio limit (1.1 by default)."
+      },
+      {
+        "value": "TOLVAL(7)",
+        "description": ">0.0 and < 1.2 low tap ratio limit (0.9 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ALL value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid DOTEST value."
+    },
+    {
+      "value": "= 4",
+      "description": "invalid TOLVAL value."
+    },
+    {
+      "value": "= 5",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "module": "psspy",
+  "function_name": "change_channel",
+  "category": "Dynamic Simulation Output Channel Operation",
+  "description": "Use this API to change the channel address and the channel identifier of a specified output channel. This API routine was first introduced in release 31.0.0. ierr = change_channel(chnarg,adrarg, idnarg)",
+  "python_syntax": "ierr = change_channel(chnarg,adrarg, idnarg)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "chnarg",
+      "description": "Channel number for which the channel address and/or channel identifier has to be changed. (input; no default allowed)."
+    },
+    {
+      "name": "adrarg",
+      "description": "Channel address. (input; unchanged by default)."
+    },
+    {
+      "name": "idnarg",
+      "description": "Channel identifier. (input; unchanged by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= -1",
+      "description": "warnings - one or more of: - channel number is larger than NCHAN."
+    },
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid channel number."
+    },
+    {
+      "value": "= 2",
+      "description": "channel number is at or beyond the next available channel."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid channel address."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

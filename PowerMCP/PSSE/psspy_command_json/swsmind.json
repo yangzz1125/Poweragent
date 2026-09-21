@@ -1,0 +1,102 @@
+{
+  "module": "psspy",
+  "function_name": "swsmind",
+  "category": "Single Element Data",
+  "description": "This API routine is obsolete. It has been replaced by the API routine swsmind_2, and is implemented by a call to swsmind_2. In versions prior to 35.0, this API would return switched shunt model starting array indices and status. Starting version 35.0, this API is being retained only for reasons of backward compatibility of python scripts. Use of this API is not recommended anymore as this will always pick the first switched shunt at a bus. This API routine was first introduced in release 31.0.0. ierr, ival = swsmind(ibus, string)",
+  "python_syntax": "ierr, ival = swsmind(ibus, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the switched shunt model quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "ival",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= CON",
+        "description": "Starting CON index."
+      },
+      {
+        "value": "= STATE",
+        "description": "Starting STATE index."
+      },
+      {
+        "value": "= VAR",
+        "description": "Starting VAR index."
+      },
+      {
+        "value": "= ICON",
+        "description": "Starting ICON index."
+      },
+      {
+        "value": "= NCON",
+        "description": "Number of CON values used by the model."
+      },
+      {
+        "value": "= NSTATE",
+        "description": "Number of STATE values used by the model."
+      },
+      {
+        "value": "= NVAR",
+        "description": "Number of VAR values used by the model."
+      },
+      {
+        "value": "= NICON",
+        "description": "Number of ICON values used by the model."
+      },
+      {
+        "value": "= STATUS",
+        "description": "Bypassed flag: 0 = bypassed; 1 = not bypassed. Does not reflect switched shunt status. For a model to be called during simulations the switched shunt must be in service the model’s bypassed flag must be not bypassed."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Switched shunt not in network but in model tables; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 2",
+      "description": "Switched shunt not in network or in model tables; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 4",
+      "description": "No model in model tables; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 5",
+      "description": "Invalid value of ‘STRING’; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 6",
+      "description": "Model does not use any of this data type; ‘IVAL’ = 0 returned."
+    },
+    {
+      "value": "= 7",
+      "description": "Bus not found; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 9",
+      "description": "Dynamics data not present in working memory; ‘IVAL’ unchanged."
+    }
+  ]
+}

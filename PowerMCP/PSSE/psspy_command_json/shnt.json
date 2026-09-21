@@ -1,0 +1,76 @@
+{
+  "module": "psspy",
+  "function_name": "shnt",
+  "category": "Power Flow Operation",
+  "description": "Use this API to tabulate fixed and/or switched bus shunts contained in the working case. This API routine was first introduced in release 28.0.0. ierr = shnt(sid, all, opt)",
+  "python_syntax": "ierr = shnt(sid, all, opt)",
+  "return_type": "error_only_report",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid subsystem identifier. valid subsystem identifiers range from 0 to 11. subsystem sid must have been previously defined. (input; 0 by default)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem flag. (input; 1 by default)."
+    },
+    {
+      "name": "opt",
+      "description": "Option to select the type of bus shunts tabulated. (input; 1 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 0",
+        "description": "process only buses in subsystem SID."
+      },
+      {
+        "value": "= 1",
+        "description": "process all buses."
+      }
+    ],
+    "opt": [
+      {
+        "value": "= 1",
+        "description": "all shunts."
+      },
+      {
+        "value": "= 2",
+        "description": "fixed bus shunts."
+      },
+      {
+        "value": "= 3",
+        "description": "switched shunts."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ALL value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid OPT value."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

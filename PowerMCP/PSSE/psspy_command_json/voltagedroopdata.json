@@ -1,0 +1,54 @@
+{
+  "module": "psspy",
+  "function_name": "voltagedroopdata",
+  "category": "Single Element Data",
+  "description": "Use this API to return voltage droop control real parameters. This API routine was first introduced in release 35.3.0. ierr, rval = voltagedroopdata(name, string)",
+  "python_syntax": "ierr, rval = voltagedroopdata(name, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Voltage droop control name. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the voltage droop control quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "rval",
+      "description": "Parameter value. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= STATUS",
+        "description": "voltage droop control status."
+      },
+      {
+        "value": "= REGBUS",
+        "description": "regulated bus of voltage droop control."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "voltage droop control ‘NAME’ not found; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid ‘STRING’; ‘RVAL’ unchanged."
+    }
+  ]
+}

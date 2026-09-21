@@ -1,0 +1,213 @@
+{
+  "module": "psspy",
+  "function_name": "setfullviewscale",
+  "category": "Graphical Analysis Output",
+  "description": "Use this API to specify the parameters of the scales used for plotting the results of PV and QV analysis. This API routine was first introduced in release 30.0.0. setfullviewscale(scale, ltval, rbval, adjust, axisplace, axisvalue, gridcalctype, gridstep, gridminlines, shownum, ltpos, inpos, rbpos, ltplaces, inplaces, rbplaces)",
+  "python_syntax": "setfullviewscale(scale, ltval, rbval, adjust, axisplace, axisvalue, gridcalctype, gridstep, gridminlines, shownum, ltpos, inpos, rbpos, ltplaces, inplaces, rbplaces)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "scale",
+      "description": "Number of the scale. (input)."
+    },
+    {
+      "name": "ltval",
+      "description": "Left value (for horizontal scale) or top value (for vertical scale). (input)."
+    },
+    {
+      "name": "rbval",
+      "description": "Right value (for horizontal scale) or bottom value (for vertical scale). (input)."
+    },
+    {
+      "name": "adjust",
+      "description": "An array of two elementsNone. (input)."
+    },
+    {
+      "name": "axisplace",
+      "description": "Place of the axis. (input)."
+    },
+    {
+      "name": "axisvalue",
+      "description": "Place of the axis. valid only in case axisplace = 1. (input)."
+    },
+    {
+      "name": "gridcalctype",
+      "description": "Way the grid is calculated. (input)."
+    },
+    {
+      "name": "gridstep",
+      "description": "Tep of the grid. valid only in case gridcalctype = 0. (input)."
+    },
+    {
+      "name": "gridminlines",
+      "description": "Minimum number of the grid lines. valid only in case gridcalctype = 1. (input)."
+    },
+    {
+      "name": "shownum",
+      "description": "An array of three elementsNone. (input)."
+    },
+    {
+      "name": "ltpos",
+      "description": "Place of the left (top) value relative to the left (top) border. (input)."
+    },
+    {
+      "name": "inpos",
+      "description": "Place of the intermediate values relative to the intermediate grid lines. (input)."
+    },
+    {
+      "name": "rbpos",
+      "description": "Place of the right (bottom) value relative to the right (bottom) border. (input)."
+    },
+    {
+      "name": "ltplaces",
+      "description": "Number of digits to the right of the decimal point for the left (top) value. (input)."
+    },
+    {
+      "name": "inplaces",
+      "description": "Number of digits to the right of the decimal point for intermediate values. (input)."
+    },
+    {
+      "name": "rbplaces",
+      "description": "Number of digits to the right of the decimal point for the right (bottom) value. (input)."
+    }
+  ],
+  "return_values": [],
+  "allowed_values": {
+    "scale": [
+      {
+        "value": "= 0",
+        "description": "QV analysis, horizontal scale for Q(V) plot."
+      },
+      {
+        "value": "= 1",
+        "description": "QV analysis, vertical scale for Q(V) plot."
+      },
+      {
+        "value": "= 2",
+        "description": "QV analysis, vertical scale for mismatch plot."
+      },
+      {
+        "value": "= 3",
+        "description": "PV analysis, horizontal scale for incremental transfer."
+      },
+      {
+        "value": "= 4",
+        "description": "PV analysis, horizontal scale for interface MW flow (bus voltage against interface flow)."
+      },
+      {
+        "value": "= 5",
+        "description": "PV analysis, vertical scale for bus voltage."
+      },
+      {
+        "value": "= 6",
+        "description": "PV analysis, vertical scale for generator MW."
+      },
+      {
+        "value": "= 7",
+        "description": "PV analysis, vertical scale for branch MVA flow."
+      },
+      {
+        "value": "= 8",
+        "description": "PV analysis, vertical scale for interface MW flow."
+      },
+      {
+        "value": "= 9",
+        "description": "PV analysis, vertical scale for bus voltage (bus voltage against interface flow)."
+      }
+    ],
+    "adjust": [
+      {
+        "value": "ADJUST(1)",
+        "description": "to adjust (or not) the left (top) value of the scale."
+      },
+      {
+        "value": "ADJUST(2)",
+        "description": "to adjust (or not) the right (bottom) value of the scale."
+      }
+    ],
+    "axisplace": [
+      {
+        "value": "= 0",
+        "description": "on the left (top) border."
+      },
+      {
+        "value": "= 1",
+        "description": "the axis place is set in AXISVALUE."
+      },
+      {
+        "value": "= 2",
+        "description": "on the right (bottom) border."
+      },
+      {
+        "value": "= 3",
+        "description": "undefined, the exact value will be calculated."
+      }
+    ],
+    "gridcalctype": [
+      {
+        "value": "= 0",
+        "description": "grid step is set in GRIDSTEP."
+      },
+      {
+        "value": "= 1",
+        "description": "grid is defined by minimum grid lines set in GRIDMINLINES."
+      }
+    ],
+    "shownum": [
+      {
+        "value": "SHOWNUM(1)",
+        "description": "to show (or not) the left (top) value of the scale."
+      },
+      {
+        "value": "SHOWNUM(2)",
+        "description": "to show (or not) all the intermediate values for the grid."
+      },
+      {
+        "value": "SHOWNUM(3)",
+        "description": "to show (or not) the right (bottom) value of the scale."
+      }
+    ],
+    "ltpos": [
+      {
+        "value": "= 0",
+        "description": "to the left of the border (above the border)."
+      },
+      {
+        "value": "= 1",
+        "description": "centered to the border."
+      },
+      {
+        "value": "= 2",
+        "description": "to the right of the border (below the border)."
+      }
+    ],
+    "inpos": [
+      {
+        "value": "= 0",
+        "description": "to the left of the line (above the line)."
+      },
+      {
+        "value": "= 1",
+        "description": "centered to the line."
+      },
+      {
+        "value": "= 2",
+        "description": "to the right of the line (below the line)."
+      }
+    ],
+    "rbpos": [
+      {
+        "value": "= 0",
+        "description": "to the left of the border (above the border)."
+      },
+      {
+        "value": "= 1",
+        "description": "centered to the border."
+      },
+      {
+        "value": "= 2",
+        "description": "to the right of the border (below the border)."
+      }
+    ]
+  }
+}

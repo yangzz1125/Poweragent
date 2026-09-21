@@ -1,0 +1,30 @@
+{
+  "module": "psspy",
+  "function_name": "har_cursrc_purg",
+  "category": "Harmonics Data",
+  "description": "Use this API to purge specified harmonics current source table data from the working case. This API routine was first introduced in release 35.4.0. ierr = har_cursrc_purg(name)",
+  "python_syntax": "ierr = har_cursrc_purg(name)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Harmonics current source table name. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

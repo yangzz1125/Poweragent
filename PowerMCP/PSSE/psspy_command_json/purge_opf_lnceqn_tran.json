@@ -1,0 +1,70 @@
+{
+  "module": "psspy",
+  "function_name": "purge_opf_lnceqn_tran",
+  "category": "Optimal Power Flow Data",
+  "description": "Use this API to remove a participating transformer control variable from a specified OPF linear constraint dependency equation in the working case. This API routine was first introduced in release 31.0.0. ierr = purge_opf_lnceqn_tran(iqid, eibus, ejbus, ekbus, cktid)",
+  "python_syntax": "ierr = purge_opf_lnceqn_tran(iqid, eibus, ejbus, ekbus, cktid)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "iqid",
+      "description": "Linear constraint equation identification number. (input; no default allowed)."
+    },
+    {
+      "name": "eibus",
+      "description": "From bus number. (input; no default allowed)."
+    },
+    {
+      "name": "ejbus",
+      "description": "To bus number. (input; no default allowed)."
+    },
+    {
+      "name": "ekbus",
+      "description": "Third bus number if a three-winding transformer is specified and zero for a two-winding transformer. (input; no default allowed)."
+    },
+    {
+      "name": "cktid",
+      "description": "Circuit identifier. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "specified linear constraint equation does not exist."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid bus number specified."
+    },
+    {
+      "value": "= 3",
+      "description": "specified branch/transformer does not exist."
+    },
+    {
+      "value": "= 4",
+      "description": "specified three-winding transformer does not exist."
+    },
+    {
+      "value": "= 5",
+      "description": "specified branch is not a transformer."
+    },
+    {
+      "value": "= 6",
+      "description": "specified branch is not a three-winding transformer."
+    },
+    {
+      "value": "= 7",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

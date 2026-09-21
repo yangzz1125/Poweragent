@@ -1,0 +1,62 @@
+{
+  "module": "psspy",
+  "function_name": "rmodnam",
+  "category": "Single Element Data",
+  "description": "Returns the branch relay model name. This API routine was first introduced in release 28.0.0. ierr, cval = rmodnam(ibus, jbus, ickt, slot)",
+  "python_syntax": "ierr, cval = rmodnam(ibus, jbus, ickt, slot)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "From bus number. (input)."
+    },
+    {
+      "name": "jbus",
+      "description": "To bus number. (input)."
+    },
+    {
+      "name": "ickt",
+      "description": "Circuit identifier. (input)."
+    },
+    {
+      "name": "slot",
+      "description": "Relay slot (1 or 2). (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "cval",
+      "description": "Model name. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘CVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Branch not in network but in model tables; ‘CVAL’ returned."
+    },
+    {
+      "value": "= 2",
+      "description": "Branch not in network or in model tables; ‘CVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid value of ‘SLOT’; ‘CVAL’ unchanged."
+    },
+    {
+      "value": "= 4",
+      "description": "No SLOT ‘SLOT’ model for this branch; ‘CVAL’ unchanged."
+    },
+    {
+      "value": "= 9",
+      "description": "Dynamics data not present in working memory; ‘CVAL’ unchanged."
+    }
+  ]
+}

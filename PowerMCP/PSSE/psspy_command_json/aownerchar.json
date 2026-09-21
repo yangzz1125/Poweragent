@@ -1,0 +1,90 @@
+{
+  "module": "psspy",
+  "function_name": "aownerchar",
+  "category": "Owner Data",
+  "description": "Use this API to return an array of character values for subsystem owners. This API routine was first introduced in release 30.3.0. ierr, carray = aownerchar(sid, flag, string)",
+  "python_syntax": "ierr, carray = aownerchar(sid, flag, string)",
+  "return_type": "error_and_array",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the owner subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem owners to include. (input; 1 by default)."
+    },
+    {
+      "name": "string",
+      "description": "An array of NSTR elements specifying NSTR of the following strings indicating the owner quantities desired. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "carray",
+      "description": "An array of NSTR*DIM elements specifying Is an array of at least NSTR columns, each of which contains DIM elements. (output)."
+    }
+  ],
+  "allowed_values": {
+    "sid": [
+      {
+        "value": "< 0",
+        "description": "to instruct the API to assume a subsystem containing all owners in the working case."
+      },
+      {
+        "value": ">= 0",
+        "description": "valid owner subsystem identifier. Valid subsystem identifiers range from 0 to 11. Subsystem SID must have been previously defined."
+      }
+    ],
+    "flag": [
+      {
+        "value": "= 1",
+        "description": "for only subsystem owners with at least one ac bus assigned to them."
+      },
+      {
+        "value": "= 2",
+        "description": "for subsystem owners with any equipment (ac buses, loads, machines, ac branches, FACTS devices, VSC dc lines and/or dc buses) assigned to them."
+      }
+    ],
+    "string": [
+      {
+        "value": "= OWNERNAME",
+        "description": "Owner name (12 characters)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid FLAG value."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid NSTR value."
+    },
+    {
+      "value": "= 5",
+      "description": "DIM, and hence the size of CARRAY, is not large enough."
+    },
+    {
+      "value": "= 6",
+      "description": "Invalid STRING value."
+    }
+  ]
+}

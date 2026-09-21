@@ -1,0 +1,198 @@
+{
+  "module": "psspy",
+  "function_name": "aareareal",
+  "category": "Area Data",
+  "description": "Use this API to return an array of real values for subsystem areas. This API routine was first introduced in release 30.3.0. ierr, rarray = aareareal(sid, flag, string)",
+  "python_syntax": "ierr, rarray = aareareal(sid, flag, string)",
+  "return_type": "error_and_array",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the area subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem areas to include. (input; 1 by default)."
+    },
+    {
+      "name": "string",
+      "description": "An array of NSTR elements specifying NSTR of the following strings indicating the area quantities desired. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "rarray",
+      "description": "An array of NSTR*DIM elements specifying Is an array of at least NSTR columns, each of which contains DIM elements. (output)."
+    }
+  ],
+  "allowed_values": {
+    "sid": [
+      {
+        "value": "< 0",
+        "description": "to instruct the API to assume a subsystem containing all areas in the working case."
+      },
+      {
+        "value": ">= 0",
+        "description": "valid area subsystem identifier. Valid subsystem identifiers range from 0 to 11. Subsystem SID must have been previously defined."
+      }
+    ],
+    "flag": [
+      {
+        "value": "= 1",
+        "description": "for only subsystem areas with at least one ac bus assigned to them."
+      },
+      {
+        "value": "= 2",
+        "description": "for subsystem areas with any equipment (ac buses, loads, and/or dc buses) assigned to them."
+      }
+    ],
+    "string": [
+      {
+        "value": "= PDES",
+        "description": "Desired net active power interchange leaving the area, in MW."
+      },
+      {
+        "value": "= PTOL",
+        "description": "Interchange tolerance bandwidth, in MW."
+      },
+      {
+        "value": "= PLOAD",
+        "description": "Total active power load on buses in the area, in MW."
+      },
+      {
+        "value": "= QLOAD",
+        "description": "Total reactive power load on buses in the area, in Mvar."
+      },
+      {
+        "value": "= PLOADLD",
+        "description": "Total active power load of loads in the area, in MW."
+      },
+      {
+        "value": "= QLOADLD",
+        "description": "Total reactive power load of loads in the area, in Mvar."
+      },
+      {
+        "value": "= PGEN",
+        "description": "Total active power generation on buses in the area, in MW."
+      },
+      {
+        "value": "= QGEN",
+        "description": "Total reactive power generation on buses in the area, in Mvar."
+      },
+      {
+        "value": "= PLOSS",
+        "description": "Total active power losses assigned to the area, in MW."
+      },
+      {
+        "value": "= QLOSS",
+        "description": "Total reactive power losses assigned to the area, in Mvar."
+      },
+      {
+        "value": "= PXFRMAG",
+        "description": "Total active power to transformer magnetizing admittance for winding 1 buses in the area, in MW."
+      },
+      {
+        "value": "= QXFRMAG",
+        "description": "Total reactive power to transformer magnetizing admittance for winding 1 buses in the area, in MVar."
+      },
+      {
+        "value": "= PINT",
+        "description": "Total active power net interchange from the area, in MW."
+      },
+      {
+        "value": "= QINT",
+        "description": "Total reactive power net interchange from the area, in Mvar."
+      },
+      {
+        "value": "= O_PDES",
+        "description": "Desired net active power interchange leaving the area (units determined by power output option)."
+      },
+      {
+        "value": "= O_PTOL",
+        "description": "Interchange tolerance bandwidth (units determined by power output option)."
+      },
+      {
+        "value": "= O_PLOAD",
+        "description": "Total active power load on buses in the area (units determined by power output option)."
+      },
+      {
+        "value": "= O_QLOAD",
+        "description": "Total reactive power load on buses in the area (units determined by power output option)."
+      },
+      {
+        "value": "= O_PLOADLD",
+        "description": "Total active power load of loads in the area (units determined by power output option)."
+      },
+      {
+        "value": "= O_QLOADLD",
+        "description": "Total reactive power load of loads in the area (units determined by power output option)."
+      },
+      {
+        "value": "= O_PGEN",
+        "description": "Total active power generation on buses in the area (units determined by power output option)."
+      },
+      {
+        "value": "= O_QGEN",
+        "description": "Total reactive power generation on buses in the area (units determined by power output option)."
+      },
+      {
+        "value": "= O_PLOSS",
+        "description": "Total active power losses assigned to the area (units determined by power output option)."
+      },
+      {
+        "value": "= O_QLOSS",
+        "description": "Total reactive power losses assigned to the area (units determined by power output option)."
+      },
+      {
+        "value": "= O_PXFRMAG",
+        "description": "Total active power to transformer magnetizing admittance for winding 1 buses in the area (units determined by power output option)."
+      },
+      {
+        "value": "= O_QXFRMAG",
+        "description": "Total reactive power to transformer magnetizing admittance for winding 1 buses in the area (units determined by power output option)."
+      },
+      {
+        "value": "= O_PINT",
+        "description": "Total active power net interchange from the area (units determined by power output option)."
+      },
+      {
+        "value": "= O_QINT",
+        "description": "Total reactive power net interchange from the area (units determined by power output option)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid FLAG value."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid NSTR value."
+    },
+    {
+      "value": "= 5",
+      "description": "DIM, and hence the size of RARRAY, is not large enough."
+    },
+    {
+      "value": "= 6",
+      "description": "Invalid STRING value."
+    }
+  ]
+}

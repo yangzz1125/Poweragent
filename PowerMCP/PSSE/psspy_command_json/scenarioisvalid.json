@@ -1,0 +1,15 @@
+{
+  "module": "psspy",
+  "function_name": "scenarioisvalid",
+  "category": "Scenarios",
+  "description": "Use this API to determine if there is a valid Scenario in memory. This API routine was first introduced in release 33.0.0. isvalid = scenarioisvalid()",
+  "python_syntax": "isvalid = scenarioisvalid()",
+  "return_type": "value_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "isvalid",
+      "description": ""
+    }
+  ]
+}

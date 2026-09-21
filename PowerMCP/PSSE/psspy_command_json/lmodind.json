@@ -1,0 +1,128 @@
+{
+  "module": "psspy",
+  "function_name": "lmodind",
+  "category": "Single Element Data",
+  "description": "Returns load-related model starting array indices and status. This API routine was first introduced in release 28.0.0. ierr, ival = lmodind(ibus, id ,string1, string2)",
+  "python_syntax": "ierr, ival = lmodind(ibus, id ,string1, string2)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    },
+    {
+      "name": "id",
+      "description": "Load identifier. (input)."
+    },
+    {
+      "name": "string1",
+      "description": "String indicating the type of load model desired. (input)."
+    },
+    {
+      "name": "string2",
+      "description": "String indicating the load model quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "ival",
+      "description": "Load model array index or status. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string1": [
+      {
+        "value": "= CHARAC",
+        "description": "Load characteristic model."
+      },
+      {
+        "value": "= RELAY",
+        "description": "Load relay model."
+      }
+    ],
+    "string2": [
+      {
+        "value": "= CON",
+        "description": "Starting CON index."
+      },
+      {
+        "value": "= STATE",
+        "description": "Starting STATE index."
+      },
+      {
+        "value": "= VAR",
+        "description": "Starting VAR index."
+      },
+      {
+        "value": "= ICON",
+        "description": "Starting ICON index."
+      },
+      {
+        "value": "= RESICON",
+        "description": "Starting reserved ICON index."
+      },
+      {
+        "value": "= NCON",
+        "description": "Number of CON values used by the model."
+      },
+      {
+        "value": "= NSTATE",
+        "description": "Number of STATE values used by the model."
+      },
+      {
+        "value": "= NVAR",
+        "description": "Number of VAR values used by the model."
+      },
+      {
+        "value": "= NICON",
+        "description": "Number of ICON values used by the model."
+      },
+      {
+        "value": "= NRESICON",
+        "description": "Number of reserved ICON values used by the model."
+      },
+      {
+        "value": "= STATUS",
+        "description": "Bypassed flag: 0 = bypassed; 1 = not bypassed. Does not reflect load status. For a model to be called during simulations the load must be in-service bus type code must be 1 or 2 and the model’s bypassed flag must be not bypassed."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Load not in network but in model tables; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 2",
+      "description": "Load not in network or in model tables; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid value of ‘STRING1’; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 4",
+      "description": "No model of type ‘STRING1’ for this load; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 5",
+      "description": "Invalid value of ‘STRING2’; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 6",
+      "description": "Model does not use any of this data type; ‘IVAL’ = 0 returned."
+    },
+    {
+      "value": "= 9",
+      "description": "Dynamics data not present in working memory; ‘IVAL’ unchanged."
+    }
+  ]
+}

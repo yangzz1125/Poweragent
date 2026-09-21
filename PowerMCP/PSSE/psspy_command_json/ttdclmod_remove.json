@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "ttdclmod_remove",
+  "category": "Dc Line Related Models",
+  "description": "Use this API to remove the two-terminal dc line model from a specified two-terminal dc line. This API routine was first introduced in release 30.2.0. ierr = ttdclmod_remove(dc)",
+  "python_syntax": "ierr = ttdclmod_remove(dc)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "dc",
+      "description": "Quoted name of the two-terminal dc line for which the model is to be removed; if an unquoted integer value is specified, the api converts it to a left-justified name. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "dc line not found."
+    },
+    {
+      "value": "= 2",
+      "description": "no model at this dc line."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

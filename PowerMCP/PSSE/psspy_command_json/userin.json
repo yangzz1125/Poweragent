@@ -1,0 +1,25 @@
+{
+  "module": "psspy",
+  "function_name": "userin",
+  "category": "Non-Engineering",
+  "description": "Get input from interactive device. This API routine was first introduced in release 30.0.0. ierr,string = userin()",
+  "python_syntax": "ierr,string = userin()",
+  "return_type": "error_and_string",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "string",
+      "description": "Buffer input by user. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "module": "psspy",
+  "function_name": "addnestedcondition",
+  "category": "Using The Vendor Neutral Contingency And Ras Auxiliary File",
+  "description": "Add NestedCondition to RAS memory model This API routine was first introduced in release 35.4.0. ierr = addnestedcondition(condname, parent)",
+  "python_syntax": "ierr = addnestedcondition(condname, parent)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "condname",
+      "description": "Unique name of the condition. (input)."
+    },
+    {
+      "name": "parent",
+      "description": "None. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "(output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error occurred."
+    },
+    {
+      "value": "= 4",
+      "description": "Req are not met."
+    }
+  ]
+}

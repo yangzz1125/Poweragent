@@ -1,0 +1,42 @@
+{
+  "module": "psspy",
+  "function_name": "macind",
+  "category": "Single Element Data",
+  "description": "Use this API to return the machine array index. This API routine was first introduced in release 28.0.0. ierr, ival = macind(ibus, id)",
+  "python_syntax": "ierr, ival = macind(ibus, id)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    },
+    {
+      "name": "id",
+      "description": "Machine identifier. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "ival",
+      "description": "Machine array index. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Bus not found; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Machine not found; ‘IVAL’ unchanged."
+    }
+  ]
+}

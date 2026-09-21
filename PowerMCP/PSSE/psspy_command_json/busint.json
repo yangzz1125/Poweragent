@@ -1,0 +1,70 @@
+{
+  "module": "psspy",
+  "function_name": "busint",
+  "category": "Single Element Data",
+  "description": "Use this API to return integer bus parameters. This API routine was first introduced in release 28.0.0. ierr, ival = busint(ibus ,string)",
+  "python_syntax": "ierr, ival = busint(ibus ,string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the bus quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "ival",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= STATION",
+        "description": "Bus IBUS substation number (returned as 0 if bus IBUS is not in a substation)."
+      },
+      {
+        "value": "= TYPE",
+        "description": "Bus type code."
+      },
+      {
+        "value": "= AREA",
+        "description": "Bus area number."
+      },
+      {
+        "value": "= ZONE",
+        "description": "Bus zone number."
+      },
+      {
+        "value": "= OWNER",
+        "description": "Bus owner number."
+      },
+      {
+        "value": "= DUMMY",
+        "description": "Returns 1 (one) if bus is a dummy bus of a multisection line else 0 (zero)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Bus not found; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Bad value of ‘STRING’; ‘IVAL’ unchanged."
+    }
+  ]
+}

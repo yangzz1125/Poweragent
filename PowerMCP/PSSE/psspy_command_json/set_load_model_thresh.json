@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "set_load_model_thresh",
+  "category": "Dynamic Simulation Operation",
+  "description": "This API is used to set the MW, P over Q, and load bus voltage thresholds for load models. This API routine was first introduced in release 34.6.0. ierr = set_load_model_thresh(lmwthresh, lpqthresh, lvtthresh) ierr, lmwthresh, lpqthresh, lvtthresh = set_load_model_thresh()",
+  "python_syntax": "ierr = set_load_model_thresh(lmwthresh, lpqthresh, lvtthresh) ierr, lmwthresh, lpqthresh, lvtthresh = set_load_model_thresh()",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "lmwthresh",
+      "description": "None. (input; MW threshold for applying load models: if batch command or ICODE is 0 or negative; unchanged by default if ICODE is positive. This threshold can be used in load models to decide whether the load model should be applied or not.)."
+    },
+    {
+      "name": "lpqthresh",
+      "description": "None. (input; P by Q (absolute value) threshold for applying load models: if batch command or ICODE is 0 or negative; unchanged by default if ICODE is positive. This threshold can be used in load models to decide whether the load model should be applied or not.)."
+    },
+    {
+      "name": "lvtthresh",
+      "description": "None. (input; pu load bus voltage threshold for applying load models: if batch command or ICODE is 0 or negative; unchanged by default if ICODE is positive. This threshold can be used in load models to decide whether the load model should be applied or not.)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API not met."
+    }
+  ]
+}

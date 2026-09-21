@@ -1,0 +1,70 @@
+{
+  "module": "psspy",
+  "function_name": "inibrx_2",
+  "category": "Single Element Data",
+  "description": "Initializes the branch fetching routine, ‘NXTBRN_2’ or ‘NXTBRN3_2’ for returning branches connected to IBUS. For multisection lines, ‘NXTBRN_2’ or ‘NXTBRN3_2’ returns the other endpoint bus as the to bus. This API routine was first introduced in release 34.2.0. ierr, isect = inibrx_2(ibus, inode, single)",
+  "python_syntax": "ierr, isect = inibrx_2(ibus, inode, single)",
+  "return_type": "error_and_value",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    },
+    {
+      "name": "inode",
+      "description": "Bus section node number. (input)."
+    },
+    {
+      "name": "single",
+      "description": "If 1, ‘nxtbrn_2’ or ‘nxtbrn3_2’ will return only branches for which the from bus (‘ibus’) number (or bus name) is lower than the to bus (or buses); if 2, then all branches connected to ‘ibus’ are returned by ‘nxtbrn_2’ or ‘nxtbrn3_2’. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "isect",
+      "description": "Bus section number. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error; ‘NXTBRN_2/NXTBRN3_2’ is properly initialized."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid bus number; ‘NXTBRN_2/NXTBRN3_3’ may not be used."
+    },
+    {
+      "value": "= 2",
+      "description": "IBUS not found; ‘NXTBRN_2/NXTBRN3_3’ may not be used."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid node number; ‘NXTBRN_2/NXTBRN3_2’ may not be used."
+    },
+    {
+      "value": "= 4",
+      "description": "IBUS is not in a substation; ‘NXTBRN_2/NXTBRN3_2’ may not be used."
+    },
+    {
+      "value": "= 5",
+      "description": "INODE is not in the substation; ‘NXTBRN_2/NXTBRN3_2’ may not be used."
+    },
+    {
+      "value": "= 6",
+      "description": "INODE is not associated with IBUS; ‘NXTBRN_2/NXTBRN3_2’ may not be used."
+    },
+    {
+      "value": "= 7",
+      "description": "invalid ‘SINGLE’ value; ‘NXTBRN_2/NXTBRN3_2’ may not be used."
+    },
+    {
+      "value": "= 8",
+      "description": "IBUS is a multi-section line dummy bus; ‘NXTBRN_2/NXTBRN3_2’ may not be used."
+    }
+  ]
+}

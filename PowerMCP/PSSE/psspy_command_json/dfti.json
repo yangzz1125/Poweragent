@@ -1,0 +1,254 @@
+{
+  "module": "psspy",
+  "function_name": "dfti",
+  "category": "Power Flow Operation",
+  "description": "Use this API to compare tie lines, as contained in the working case, with those of a designated Saved Case (activity DFTI). It must be referenced using one of the following procedures: - One reference with APIOPT=1, followed by any number of references with APIOPT=2, followed by one reference with APIOPT=3. - One reference with APIOPT=0. This automatically combines the processing of one APIOPT 1 reference, followed by one APIOPT 2 reference, followed by one APIOPT 3 reference. This API routine was first introduced in release 28.0.0. ierr, seqflg = dfti(sid, apiopt, status, thrsh, cfile)",
+  "python_syntax": "ierr, seqflg = dfti(sid, apiopt, status, thrsh, cfile)",
+  "return_type": "error_and_value",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid subsystem identifier. valid subsystem identifiers range from 0 to 11. subsystem sid must have been previously defined. (input; used only when APIOPT is 0 or 1; 0 by default)."
+    },
+    {
+      "name": "apiopt",
+      "description": "Mode of operation of dftiapi. (input; 0 by default)."
+    },
+    {
+      "name": "status",
+      "description": "An array of five elements specifying comparison options. (input)."
+    },
+    {
+      "name": "thrsh",
+      "description": "Difference threshold. (input; used only when APIOPT is 0 or 2; 0.0 by default)."
+    },
+    {
+      "name": "cfile",
+      "description": "Name of saved case file in which tie lines are to be compared to those of the working case (when apiopt is 0 or 1). (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "seqflg",
+      "description": "An array of two elements specifying returned when APIOPT=0 or 1. (output)."
+    }
+  ],
+  "allowed_values": {
+    "apiopt": [
+      {
+        "value": "= 0",
+        "description": "initialize for case comparison, run the comparison specified by STATUS(4), and run post-processing clean up."
+      },
+      {
+        "value": "= 1",
+        "description": "initialize for case comparison."
+      },
+      {
+        "value": "= 2",
+        "description": "run a comparison."
+      },
+      {
+        "value": "= 3",
+        "description": "post-processing clean up."
+      }
+    ],
+    "status": [
+      {
+        "value": "STATUS(1)",
+        "description": "defines the working case content following an APIOPT=0 or 3 reference (used only when APIOPT is 0, 1 or 3; 0, by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "original working case."
+      },
+      {
+        "value": "= 1",
+        "description": "Saved Case specified in CFILE."
+      },
+      {
+        "value": "STATUS(2)",
+        "description": "flag for method of considering buses in the two cases to be the same bus (used only when APIOPT is 0 or 1; 0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "same bus numbers."
+      },
+      {
+        "value": "= 1",
+        "description": "same extended bus names."
+      },
+      {
+        "value": "= 2",
+        "description": "same bus numbers and extended bus names."
+      },
+      {
+        "value": "STATUS(3)",
+        "description": "flag for specifying THRESH (used only when APIOPT is 0 or 2; 0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "engineering units."
+      },
+      {
+        "value": "= 1",
+        "description": "percent."
+      },
+      {
+        "value": "STATUS(4)",
+        "description": "code for the comparison to be run (used only when APIOPT is 0 or 2; 1 by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "branch status."
+      },
+      {
+        "value": "= 2",
+        "description": "line R, X, B."
+      },
+      {
+        "value": "= 3",
+        "description": "line shunts."
+      },
+      {
+        "value": "= 4",
+        "description": "line ratings."
+      },
+      {
+        "value": "= 5",
+        "description": "metered end."
+      },
+      {
+        "value": "= 6",
+        "description": "line length."
+      },
+      {
+        "value": "= 7",
+        "description": "transformers."
+      },
+      {
+        "value": "= 8",
+        "description": "flow MW or MVAR (from bus)."
+      },
+      {
+        "value": "= 9",
+        "description": "flow MW or MVAR (from & to)."
+      },
+      {
+        "value": "= 10",
+        "description": "line MW or MVAR losses."
+      },
+      {
+        "value": "= 11",
+        "description": "zero sequence R, X, B."
+      },
+      {
+        "value": "= 12",
+        "description": "zero sequence line shunts."
+      },
+      {
+        "value": "= 13",
+        "description": "transformer connection codes."
+      },
+      {
+        "value": "= 14",
+        "description": "flow MW (from bus)."
+      },
+      {
+        "value": "= 15",
+        "description": "flow MVAR (from bus)."
+      },
+      {
+        "value": "= 16",
+        "description": "flow MW (from and to buses)."
+      },
+      {
+        "value": "= 17",
+        "description": "flow MVAR (from and to buses)."
+      },
+      {
+        "value": "= 18",
+        "description": "line MW losses."
+      },
+      {
+        "value": "= 19",
+        "description": "line MVAR losses."
+      },
+      {
+        "value": "STATUS(5)",
+        "description": "line rating to be compared when STATUS(4) is 4 (used only when APIOPT is 0 or 2; 0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "all ratings."
+      },
+      {
+        "value": "= 1",
+        "description": "RATEA."
+      },
+      {
+        "value": "= 2",
+        "description": "RATEB."
+      },
+      {
+        "value": "= 3",
+        "description": "RATEC."
+      }
+    ],
+    "seqflg": [
+      {
+        "value": "SEQFLG(1)",
+        "description": "true if there is sequence data in the working case."
+      },
+      {
+        "value": "SEQFLG(2)",
+        "description": "true if there is sequence data in the Saved Case in file CFILE."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid STATUS value."
+    },
+    {
+      "value": "= 3",
+      "description": "CFILE is blank."
+    },
+    {
+      "value": "= 4",
+      "description": "no ties to compare."
+    },
+    {
+      "value": "= 5",
+      "description": "invalid APIOPT value."
+    },
+    {
+      "value": "= 6",
+      "description": "unexpected APIOPT value."
+    },
+    {
+      "value": "= 7",
+      "description": "invalid THRSH value."
+    },
+    {
+      "value": "= 8",
+      "description": "error reading the comparison case."
+    },
+    {
+      "value": "= 9",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

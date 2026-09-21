@@ -1,0 +1,58 @@
+{
+  "module": "psspy",
+  "function_name": "cctmscomod_status",
+  "category": "Cct Models",
+  "description": "Use this API to change status of a miscellaneous “other” type model with the specified model instance. This API routine was first introduced in release 33.0.0. ierr = cctmscomod_status(mins, status)",
+  "python_syntax": "ierr = cctmscomod_status(mins, status)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "mins",
+      "description": "Model instance (>0). (input; no default allowed)."
+    },
+    {
+      "name": "status",
+      "description": "New model status. (input; 1 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "status": [
+      {
+        "value": "= 0",
+        "description": "out-of-service."
+      },
+      {
+        "value": "= 1",
+        "description": "in-service."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "no miscellaneous other model with this model instance."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid STATUS value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid model instance."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

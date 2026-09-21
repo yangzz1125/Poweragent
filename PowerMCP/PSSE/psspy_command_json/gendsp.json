@@ -1,0 +1,152 @@
+{
+  "module": "psspy",
+  "function_name": "gendsp",
+  "category": "Power Flow Operation",
+  "description": "Use this API to impose a contingency specified in the Distribution Factor Data file and apply the generation dispatch algorithm used in contingency analysis on the working case. The network can then be solved by power flow solutions. This API routine was first introduced in release 31.0.0. ierr = gendsp(options, labels, dfxfile, thrfile, inlfile)",
+  "python_syntax": "ierr = gendsp(options, labels, dfxfile, thrfile, inlfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "options",
+      "description": "An array of two elements specifying options. (input)."
+    },
+    {
+      "name": "labels",
+      "description": "An array of two elements specifying subsystem labels. (input)."
+    },
+    {
+      "name": "dfxfile",
+      "description": "Name of the distribution factor data file. (input; no default allowed)."
+    },
+    {
+      "name": "thrfile",
+      "description": "Name of the load throwover data file. (input; blank by default)."
+    },
+    {
+      "name": "inlfile",
+      "description": "Name of the unit inertia and governor data file. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "options": [
+      {
+        "value": "OPTIONS(1)",
+        "description": "dispatch mode (1 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable dispatch."
+      },
+      {
+        "value": "= 1",
+        "description": "subsystem machines (RESERVE)."
+      },
+      {
+        "value": "= 2",
+        "description": "subsystem machines (PMAX)."
+      },
+      {
+        "value": "= 3",
+        "description": "subsystem machines (INERTIA)."
+      },
+      {
+        "value": "= 4",
+        "description": "subsystem machines (GOVERNOR DROOP)."
+      },
+      {
+        "value": "OPTIONS(2)",
+        "description": "study case (1 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "impose a contingency case on the working case."
+      },
+      {
+        "value": "= 1",
+        "description": "working case."
+      }
+    ],
+    "labels": [
+      {
+        "value": "LABELS(1)",
+        "description": "label of generation dispatch subsystem (blank by default, no default allowed if OPTIONS(1) is from 1 to 4)."
+      },
+      {
+        "value": "LABELS(2)",
+        "description": "contingency label (blank by default, no default allowed if OPTIONS(2) is 0)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid OPTIONS value."
+    },
+    {
+      "value": "= 2",
+      "description": "no dispatch subsystem specified."
+    },
+    {
+      "value": "= 3",
+      "description": "no contingency specified."
+    },
+    {
+      "value": "= 4",
+      "description": "no Distribution Factor Data File specified."
+    },
+    {
+      "value": "= 5",
+      "description": "generators are converted."
+    },
+    {
+      "value": "= 6",
+      "description": "too many islands in base case."
+    },
+    {
+      "value": "= 7",
+      "description": "contingency not found in Distribution Factor Data File."
+    },
+    {
+      "value": "= 21",
+      "description": "file is not in the form of a PSSE-25 or later DFAX file; run DFAX."
+    },
+    {
+      "value": "= 23",
+      "description": "no subsystem defined in Distribution Factor Data file."
+    },
+    {
+      "value": "= 24",
+      "description": "subsystem not found."
+    },
+    {
+      "value": "= 51",
+      "description": "error opening Distribution Factor Data File."
+    },
+    {
+      "value": "= 52",
+      "description": "error opening Load Throwover Data File."
+    },
+    {
+      "value": "= 53",
+      "description": "error opening Unit Inertia and Governor Data File."
+    },
+    {
+      "value": "= 54",
+      "description": "error opening or writing temporary Saved Case File."
+    },
+    {
+      "value": "= 55",
+      "description": "prerequisite requirements for function not met."
+    }
+  ]
+}

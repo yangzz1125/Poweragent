@@ -1,0 +1,104 @@
+{
+  "module": "psspy",
+  "function_name": "seq_switched_shunt_data_3",
+  "category": "Fault Analysis Data",
+  "description": "Use this API to modify the zero sequence data of an existing switched shunt in the working case (see PSSE Program Operation Manual, Zero Sequence Switched Shunt Data). This API routine was first introduced in release 35.0.0. ierr, realaro = seq_switched_shunt_data_3(ibus, id, realari)",
+  "python_syntax": "ierr, realaro = seq_switched_shunt_data_3(ibus, id, realari)",
+  "return_type": "error_and_record",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Switched shunt identifier. (input; 1 by default)."
+    },
+    {
+      "name": "realari",
+      "description": "An array of eight elements specifying corresponding to values REALAR(1) through REALAR(8) as described above. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "realaro",
+      "description": "An array of one elements specifying one element corresponding to value REALAR(9) as described above. (output)."
+    }
+  ],
+  "allowed_values": {
+    "realari": [
+      {
+        "value": "REALARI(1)",
+        "description": "BZ1, zero sequence increment in MVAR per step for block 1."
+      },
+      {
+        "value": "REALARI(2)",
+        "description": "BZ2, zero sequence increment in MVAR per step for block 2."
+      },
+      {
+        "value": "REALARI(3)",
+        "description": "BZ3, zero sequence increment in MVAR per step for block 3."
+      },
+      {
+        "value": "REALARI(4)",
+        "description": "BZ4, zero sequence increment in MVAR per step for block 4."
+      },
+      {
+        "value": "REALARI(5)",
+        "description": "BZ5, zero sequence increment in MVAR per step for block 5."
+      },
+      {
+        "value": "REALARI(6)",
+        "description": "BZ6, zero sequence increment in MVAR per step for block 6."
+      },
+      {
+        "value": "REALARI(7)",
+        "description": "BZ7, zero sequence increment in MVAR per step for block 7."
+      },
+      {
+        "value": "REALARI(8)",
+        "description": "BZ8, zero sequence increment in MVAR per step for block 8."
+      }
+    ],
+    "realaro": [
+      {
+        "value": "REALARO(1)",
+        "description": "present zero sequence switched shunt admittance in MVAR (returned)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "shunt identifier is more than two characters."
+    },
+    {
+      "value": "= 2",
+      "description": "switched shunt not found."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - Block has N zero and B non-zero. - Block has admittances with different signs in positive and zero sequences."
+    }
+  ]
+}

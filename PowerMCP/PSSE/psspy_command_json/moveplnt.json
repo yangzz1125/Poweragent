@@ -1,0 +1,54 @@
+{
+  "module": "psspy",
+  "function_name": "moveplnt",
+  "category": "Power Flow Operation",
+  "description": "Use this API to disconnect all of the machines from the specified bus, and reconnect it to a designated bus. Bus TOBUS must not have any plant data associated with it at the time this API is called. This API routine was first introduced in release 28.0.0. ierr = moveplnt(ibus, newbus)",
+  "python_syntax": "ierr = moveplnt(ibus, newbus)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus on which plant data currently exists. (input; no default allowed)."
+    },
+    {
+      "name": "newbus",
+      "description": "Bus to which the plant on bus ibus is to be moved. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "no plant at bus IBUS."
+    },
+    {
+      "value": "= 3",
+      "description": "IBUS and NEWBUS are the same bus."
+    },
+    {
+      "value": "= 4",
+      "description": "NEWBUS already has plant data (move individual machines)."
+    },
+    {
+      "value": "= 5",
+      "description": "node-breaker terminal connection table is full."
+    },
+    {
+      "value": "= 6",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

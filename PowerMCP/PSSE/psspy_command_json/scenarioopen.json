@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "scenarioopen",
+  "category": "Scenarios",
+  "description": "Use this API to open a previously created Scenario. This API routine was first introduced in release 33.0.0. ierr = scenarioopen(sfile, sgroup)",
+  "python_syntax": "ierr = scenarioopen(sfile, sgroup)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sfile",
+      "description": "Full file path of the scenario file to open. (input)."
+    },
+    {
+      "name": "sgroup",
+      "description": "Name of the group to open when the scenario is loaded. when the default is used the startup group will be opened if one is defined in the scenario. if the name of a group in the scenario is given, that group will be opened. if the string is blank or does not match any of the group names in the scenario, no group is opened. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 2",
+      "description": "file path is invalid."
+    }
+  ]
+}

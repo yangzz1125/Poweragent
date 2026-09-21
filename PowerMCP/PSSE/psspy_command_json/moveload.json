@@ -1,0 +1,66 @@
+{
+  "module": "psspy",
+  "function_name": "moveload",
+  "category": "Power Flow Operation",
+  "description": "Use this API to disconnect the specified load from the bus to which it is currently connected, and reconnect it to a designated bus. This API routine was first introduced in release 28.0.0. ierr = moveload(ibus, id, newbus, newid)",
+  "python_syntax": "ierr = moveload(ibus, id, newbus, newid)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus to which the load id is connected. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Load identifier of the load to be moved. (input; ‘1’ by default)."
+    },
+    {
+      "name": "newbus",
+      "description": "Number of the bus to which the load is to be moved. (input; no default allowed)."
+    },
+    {
+      "name": "newid",
+      "description": "New load identifier to be assigned to the relocated load. (input; ID by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "load not found."
+    },
+    {
+      "value": "= 3",
+      "description": "IBUS and NEWBUS are the same bus."
+    },
+    {
+      "value": "= 4",
+      "description": "load NEWID at bus NEWBUS already exists."
+    },
+    {
+      "value": "= 5",
+      "description": "invalid new identifier; must not be blank."
+    },
+    {
+      "value": "= 6",
+      "description": "node-breaker terminal connection table is full."
+    },
+    {
+      "value": "= 7",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

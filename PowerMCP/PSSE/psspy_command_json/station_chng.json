@@ -1,0 +1,78 @@
+{
+  "module": "psspy",
+  "function_name": "station_chng",
+  "category": "Node Breaker Data",
+  "description": "Use this API to modify the data of an existing substation data in the working case. This API routine was first introduced in release 34.0.0. ierr = station_chng(station, realar, namear)",
+  "python_syntax": "ierr = station_chng(station, realar, namear)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "station",
+      "description": "Substation number. (input; no default allowed)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of 3 elementsNone. (input)."
+    },
+    {
+      "name": "namear",
+      "description": "Substation name. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "substation latitude."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "substation longitude."
+      },
+      {
+        "value": "REALAR(3)",
+        "description": "substation grounding resistance."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid substation number."
+    },
+    {
+      "value": "= 2",
+      "description": "substation not found."
+    },
+    {
+      "value": "= 3",
+      "description": "substation name has been used."
+    },
+    {
+      "value": "= 4",
+      "description": "substation table is full."
+    },
+    {
+      "value": "= 5",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - Latitude/longitude out of range - Substation grounding dc resistance is less than 0.0 - Substation name is more than STATIONNAMLEN characters."
+    }
+  ]
+}

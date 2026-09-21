@@ -1,0 +1,30 @@
+{
+  "module": "psspy",
+  "function_name": "purge_tspf_profile",
+  "category": "Time Series Power Flow Data",
+  "description": "Use this API to delete Time Series Power Flow profile by profile name. This API routine was first introduced in release 35.4.0. ierr = purge_tspf_profile(name)",
+  "python_syntax": "ierr = purge_tspf_profile(name)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Unique name of the profile data. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Error while deleting profile."
+    }
+  ]
+}

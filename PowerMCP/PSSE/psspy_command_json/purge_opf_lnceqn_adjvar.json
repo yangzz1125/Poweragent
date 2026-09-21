@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "purge_opf_lnceqn_adjvar",
+  "category": "Optimal Power Flow Data",
+  "description": "Use this API to remove a participating adjustable bus shunt variable from a specified OPF linear constraint dependency equation in the working case. This API routine was first introduced in release 31.0.0. ierr = purge_opf_lnceqn_adjvar(iqid, eibus, shntid)",
+  "python_syntax": "ierr = purge_opf_lnceqn_adjvar(iqid, eibus, shntid)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "iqid",
+      "description": "Linear constraint equation identification number. (input; no default allowed)."
+    },
+    {
+      "name": "eibus",
+      "description": "Bus number. (input; no default allowed)."
+    },
+    {
+      "name": "shntid",
+      "description": "Adjustable bus shunt identifier. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "specified linear constraint equation does not exist."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid bus number specified."
+    },
+    {
+      "value": "= 3",
+      "description": "specified adjustable bus shunt does not exist."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

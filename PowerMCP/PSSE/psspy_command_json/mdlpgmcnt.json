@@ -1,0 +1,15 @@
+{
+  "module": "psspy",
+  "function_name": "mdlpgmcnt",
+  "category": "Single Element Data",
+  "description": "Use this API to returns the number of model programs loaded from dynamics model libraries. This API routine was first introduced in release 33.3.0. nsiz = mdlpgmcnt()",
+  "python_syntax": "nsiz = mdlpgmcnt()",
+  "return_type": "value_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "nsiz",
+      "description": ""
+    }
+  ]
+}

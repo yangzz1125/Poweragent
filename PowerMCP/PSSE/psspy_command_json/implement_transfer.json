@@ -1,0 +1,232 @@
+{
+  "module": "psspy",
+  "function_name": "implement_transfer",
+  "category": "Power Flow Operation",
+  "description": "This API routine is obsolete. It has been replaced by the API routine implement_transfer_2, and is implemented by a call to implement_transfer_2. Use this API to apply a specified transfer using the same transfer dispatch methods that are available in the PV analysis calculation engine. This API routine was first introduced in release 30.2.0. ierr = implement_transfer(options, rval, labels, dfxfile, ecdfile)",
+  "python_syntax": "ierr = implement_transfer(options, rval, labels, dfxfile, ecdfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "options",
+      "description": "An array of four elements specifying transfer implementation options. (input)."
+    },
+    {
+      "name": "rval",
+      "description": "Transfer increment in mw. (input; no default allowed)."
+    },
+    {
+      "name": "labels",
+      "description": "An array of two elements specifying subsystem labels. (input)."
+    },
+    {
+      "name": "dfxfile",
+      "description": "Name of the dfax data file. (input; no default allowed)."
+    },
+    {
+      "name": "ecdfile",
+      "description": "Name of the economic dispatch data file; blank for none. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "options": [
+      {
+        "value": "OPTIONS(1)",
+        "description": "study (source) system transfer dispatch method (1 by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "buses and distribution factors from DFAX file for buses with positive MW machines."
+      },
+      {
+        "value": "= 2",
+        "description": "buses and distribution factors from DFAX file for buses with positive MW constant MVA load."
+      },
+      {
+        "value": "= 3",
+        "description": "buses and distribution factors from DFAX file for buses with either positive MW machines or positive MW constant MVA load."
+      },
+      {
+        "value": "= 4",
+        "description": "subsystem buses with positive MW constant MVA load in proportion to their MW load."
+      },
+      {
+        "value": "= 5",
+        "description": "subsystem buses with positive MW machines in proportion to their MW output."
+      },
+      {
+        "value": "= 6",
+        "description": "subsystem buses with positive MW machines in proportion to their MBASEs."
+      },
+      {
+        "value": "= 7",
+        "description": "subsystem buses with positive MW machines in proportion to their reserve (PMAXMC - PGENMC)."
+      },
+      {
+        "value": "= 8",
+        "description": "subsystem buses with positive MW machines via ECDI."
+      },
+      {
+        "value": "OPTIONS(2)",
+        "description": "opposing (sink) system transfer dispatch method (1 by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "buses and distribution factors from DFAX file for buses with positive MW machines."
+      },
+      {
+        "value": "= 2",
+        "description": "buses and distribution factors from DFAX file for buses with positive MW constant MVA load."
+      },
+      {
+        "value": "= 3",
+        "description": "buses and distribution factors from DFAX file for buses with either positive MW machines or positive MW constant MVA load."
+      },
+      {
+        "value": "= 4",
+        "description": "subsystem buses with positive MW constant MVA load in proportion to their MW load."
+      },
+      {
+        "value": "= 5",
+        "description": "subsystem buses with positive MW machines in proportion to their MW output."
+      },
+      {
+        "value": "= 6",
+        "description": "subsystem buses with positive MW machines in proportion to their MBASEs."
+      },
+      {
+        "value": "= 7",
+        "description": "subsystem buses with positive MW machines in proportion to their reserve (PGENMC - PMINMC)."
+      },
+      {
+        "value": "= 8",
+        "description": "subsystem buses with positive MW machines via ECDI."
+      },
+      {
+        "value": "OPTIONS(3)",
+        "description": "generation plant limits flag for transfer methods 1, 3, 5, 6 and 7 (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no limits."
+      },
+      {
+        "value": "= 1",
+        "description": "honor machine active power limits."
+      },
+      {
+        "value": "OPTIONS(4)",
+        "description": "positive load flag for transfer methods 2, 3 and 4 (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no limits."
+      },
+      {
+        "value": "= 1",
+        "description": "enforce non-negative net active power constant MVA load."
+      }
+    ],
+    "labels": [
+      {
+        "value": "LABELS(1)",
+        "description": "label of the study (source) system for which generation is to be increased and/or for which load is to be decreased (no default allowed)."
+      },
+      {
+        "value": "LABELS(2)",
+        "description": "label of the opposing (sink) system for which generation is to be decreased and/or for which load is to be increased (no default allowed)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid RVAL value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid OPTIONS value."
+    },
+    {
+      "value": "= 3",
+      "description": "generators are converted."
+    },
+    {
+      "value": "= 4",
+      "description": "buses in island(s) without a swing bus; use activity TREE."
+    },
+    {
+      "value": "= 5",
+      "description": "no DFAX data file specified."
+    },
+    {
+      "value": "= 6",
+      "description": "no economic dispatch data file specified."
+    },
+    {
+      "value": "= 7",
+      "description": "no participating dispatch buses in study system."
+    },
+    {
+      "value": "= 8",
+      "description": "no participating dispatch buses in opposing system."
+    },
+    {
+      "value": "= 9",
+      "description": "subsystem engine error."
+    },
+    {
+      "value": "= 10",
+      "description": "unable to implement transfer in study system."
+    },
+    {
+      "value": "= 11",
+      "description": "unable to implement transfer in opposing system."
+    },
+    {
+      "value": "= 21",
+      "description": "file DFXFILE is not in the form of a PSSE-25 or later DFAX file; run DFAX."
+    },
+    {
+      "value": "= 22",
+      "description": "monitored elements exceed limit when adding multi-section line members."
+    },
+    {
+      "value": "= 23",
+      "description": "no subsystems defined."
+    },
+    {
+      "value": "= 24",
+      "description": "subsystem not found."
+    },
+    {
+      "value": "= 25",
+      "description": "specified subsystems overlap."
+    },
+    {
+      "value": "= 26",
+      "description": "no in-service buses in subsystem WORLD."
+    },
+    {
+      "value": "= 50",
+      "description": "error opening economic dispatch data file."
+    },
+    {
+      "value": "= 52",
+      "description": "error opening DFAX data file."
+    },
+    {
+      "value": "= 54",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

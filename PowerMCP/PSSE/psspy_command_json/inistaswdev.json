@@ -1,0 +1,30 @@
+{
+  "module": "psspy",
+  "function_name": "inistaswdev",
+  "category": "Single Element Data",
+  "description": "Use this API routine to initialize the switching device fetching routine ‘NXTSTASWDEV’ for retrieving the switching devices in a substation. This API routine was first introduced in release 34.1.0. ierr = inistaswdev(ista)",
+  "python_syntax": "ierr = inistaswdev(ista)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ista",
+      "description": "Substation number. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error; ‘NXTSTASWDEV’ is properly initialized."
+    },
+    {
+      "value": "= 1",
+      "description": "substation not found; ‘ NXTSTASWDEV’ may not be used."
+    }
+  ]
+}

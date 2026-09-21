@@ -1,0 +1,34 @@
+{
+  "module": "psspy",
+  "function_name": "iniind",
+  "category": "Single Element Data",
+  "description": "Initializes induction machine fetching routine ‘NXTIND’ for returning induction machines attached to IBUS. This API routine was first introduced in release 33.0.0. ierr = iniind(ibus)",
+  "python_syntax": "ierr = iniind(ibus)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘NXTIND’ is properly initialized."
+    },
+    {
+      "value": "= 1",
+      "description": "Bus not found; ‘NXTIND’ may not be used."
+    },
+    {
+      "value": "= 2",
+      "description": "Bus has no induction machines connected to it; ‘NXTIND’ may not be used."
+    }
+  ]
+}

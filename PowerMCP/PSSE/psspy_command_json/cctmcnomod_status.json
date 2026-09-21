@@ -1,0 +1,70 @@
+{
+  "module": "psspy",
+  "function_name": "cctmcnomod_status",
+  "category": "Cct Models",
+  "description": "Use this API to change status of a machine “other” model attached to the specified machine. This API routine was first introduced in release 33.0.0. ierr = cctmcnomod_status(ibus, id, model, status)",
+  "python_syntax": "ierr = cctmcnomod_status(ibus, id, model, status)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Machine bus number. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Machine identifier. (input; no default allowed)."
+    },
+    {
+      "name": "model",
+      "description": "Name of the model whose status is to be changed. (input; no default allowed)."
+    },
+    {
+      "name": "status",
+      "description": "New model status. (input; 1 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "status": [
+      {
+        "value": "= 0",
+        "description": "out-of-service."
+      },
+      {
+        "value": "= 1",
+        "description": "in-service."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "no machine other model at this machine."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid STATUS value."
+    },
+    {
+      "value": "= 3",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 4",
+      "description": "machine not found."
+    },
+    {
+      "value": "= 5",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "module": "psspy",
+  "function_name": "openun",
+  "category": "Single Element Data",
+  "description": "Connects an IPLAN unit number to the Fortran unit used by activity OPEN and returns that IPLAN unit number. This API routine was first introduced in release 28.0.0. n = openun()",
+  "python_syntax": "n = openun()",
+  "return_type": "value_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "n",
+      "description": ""
+    }
+  ]
+}

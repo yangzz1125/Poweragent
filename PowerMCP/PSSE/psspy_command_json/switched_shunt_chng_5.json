@@ -1,0 +1,204 @@
+{
+  "module": "psspy",
+  "function_name": "switched_shunt_chng_5",
+  "category": "Power Flow Data",
+  "description": "Use this API routine to modify the data of an existing switched shunt in the working case (see PSSE Program Operation Manual, Switched Shunt Data). This API routine was first introduced in release 35.0.0. ierr = switched_shunt_chng_5(ibus, id, intgar, realar, rmidnt)",
+  "python_syntax": "ierr = switched_shunt_chng_5(ibus, id, intgar, realar, rmidnt)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Switched shunt identifier. (input; ‘1’ by default)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of twenty one elementsNone. (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of twelve elementsNone. (input)."
+    },
+    {
+      "name": "rmidnt",
+      "description": "Vsc dc line name (modsw =4) or facts device name (modsw = 6). (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "N1, number of steps for block 1 (0 by default)."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "N2, number of steps for block 2 (0 by default)."
+      },
+      {
+        "value": "INTGAR(3)",
+        "description": "N3, number of steps for block 3 (0 by default)."
+      },
+      {
+        "value": "INTGAR(4)",
+        "description": "N4, number of steps for block 4 (0 by default)."
+      },
+      {
+        "value": "INTGAR(5)",
+        "description": "N5, number of steps for block 5 (0 by default)."
+      },
+      {
+        "value": "INTGAR(6)",
+        "description": "N6, number of steps for block 6 (0 by default)."
+      },
+      {
+        "value": "INTGAR(7)",
+        "description": "N7, number of steps for block 7 (0 by default)."
+      },
+      {
+        "value": "INTGAR(8)",
+        "description": "N8, number of steps for block 8 (0 by default)."
+      },
+      {
+        "value": "INTGAR(9)",
+        "description": "MODSW, control mode (1 by default)."
+      },
+      {
+        "value": "INTGAR(10)",
+        "description": "SWREM, regulated bus number (0 by default)."
+      },
+      {
+        "value": "INTGAR(11)",
+        "description": "NODE, regulated node number (0 by default)."
+      },
+      {
+        "value": "INTGAR(12)",
+        "description": "STAT, status (1 by default)."
+      },
+      {
+        "value": "INTGAR(13)",
+        "description": "ADJM, adjustment method (0 by default)."
+      },
+      {
+        "value": "INTGAR(14)",
+        "description": "ST1, status of block 1 (1 by default)."
+      },
+      {
+        "value": "INTGAR(15)",
+        "description": "ST2, status of block 2 (1 by default)."
+      },
+      {
+        "value": "INTGAR(16)",
+        "description": "ST3, status of block 3 (1 by default)."
+      },
+      {
+        "value": "INTGAR(17)",
+        "description": "ST4, status of block 4 (1 by default)."
+      },
+      {
+        "value": "INTGAR(18)",
+        "description": "ST5, status of block 5 (1 by default)."
+      },
+      {
+        "value": "INTGAR(19)",
+        "description": "ST6, status of block 6 (1 by default)."
+      },
+      {
+        "value": "INTGAR(20)",
+        "description": "ST7, status of block 7 (1 by default)."
+      },
+      {
+        "value": "INTGAR(21)",
+        "description": "ST8, status of block 8 (1 by default)."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "B1, admittance increment per step for block 1 (0.0 by default)."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "B2, admittance increment per step for block 2 (0.0 by default)."
+      },
+      {
+        "value": "REALAR(3)",
+        "description": "B3, admittance increment per step for block 3 (0.0 by default)."
+      },
+      {
+        "value": "REALAR(4)",
+        "description": "B4, admittance increment per step for block 4 (0.0 by default)."
+      },
+      {
+        "value": "REALAR(5)",
+        "description": "B5, admittance increment per step for block 5 (0.0 by default)."
+      },
+      {
+        "value": "REALAR(6)",
+        "description": "B6, admittance increment per step for block 6 (0.0 by default)."
+      },
+      {
+        "value": "REALAR(7)",
+        "description": "B7, admittance increment per step for block 7 (0.0 by default)."
+      },
+      {
+        "value": "REALAR(8)",
+        "description": "B8, admittance increment per step for block 8 (0.0 by default)."
+      },
+      {
+        "value": "REALAR(9)",
+        "description": "VSWHI, desired voltage upper limit (1.0 by default)."
+      },
+      {
+        "value": "REALAR(10)",
+        "description": "VSWLO, desired voltage lower limit (1.0 by default)."
+      },
+      {
+        "value": "REALAR(11)",
+        "description": "BINIT, present switched shunt admittance (0.0 by default)."
+      },
+      {
+        "value": "REALAR(12)",
+        "description": "RMPCT, percent of contributed reactive power (100.0 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 3",
+      "description": "identifier is more than two characters."
+    },
+    {
+      "value": "= 5",
+      "description": "switched shunt not found."
+    },
+    {
+      "value": "= 6",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "warnings - one or more of: - Invalid switched shunt control mode - Control mode is 4 and a blank VSC dc line name is specified - VSC dc line not found - Control mode is 6 and a blank FACTS device name is specified - FACTS device not found - Non-blank device name specified with control mode 0, 1, 2, 3 or 5 - Regulated bus not found - Type code of regulated bus is not 1 or 2 - VHIGH is less than VLOW for voltage controlling switched shunt - No regulated bus specified for plant, VSC converter, or switched shunt control - Control mode is 3 and the regulated bus has no generation - Control mode is 4 and the regulated bus is not a converter of the specified VSC dc line - Control mode is 5 and the regulated bus has no switched shunt - Regulated bus is not the sending end bus of the specified FACTS device - VLOW is not less than VHIGH for plant, VSC converter, switched shunt, or FACTS device control - VHIGH is greater than 1.0 for plant, VSC converter, switched shunt, or FACTS device control - VLOW is less than 0.0 for plant, VSC converter, switched shunt, or FACTS device control - RMPCT is not positive - Block has N or B zero and the other non-zero - Invalid number of steps in block - Block with non-zero N is beyond a previous N=0 block - Block 1 has no steps. - Reactor block is out of sequence. - Initial admittance is below minimum. - Initial admittance is above maximum. - Initial admittance is not on a step. - Block has admittances with different signs in positive and zero sequences. - Invalid switched shunt status. - Invalid switched shunt adjustment method - Invalid node number - Non-zero regulated node specified but regulated bus does not belong to a substation - Regulated node not found - Regulated node is not connected to any bus section of the regulated bus - Regulated bus is 0 but a non-zero regulated node is specified - A remote regulated bus is specified for a type 3 bus."
+    }
+  ]
+}

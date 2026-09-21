@@ -1,0 +1,30 @@
+{
+  "module": "psspy",
+  "function_name": "zsysinit",
+  "category": "Zone Subsystems",
+  "description": "Use this API to initialize or re-initialize a zone subsystem. This API routine was first introduced in release 31.0.0. ierr = zsysinit(sid)",
+  "python_syntax": "ierr = zsysinit(sid)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid zone subsystem id. valid zone subsystem ids range from 0 to 11. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error return. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "SID is not valid."
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "module": "psspy",
+  "function_name": "tspf_profilecurveset_data",
+  "category": "Time Series Power Flow Data",
+  "description": "Use this API routine to modify the data of an existing Time Series Power Flow profile curve set, or to add a new Time Series Power Flow profile curve set. This API routine was first introduced in release 35.4.0. ierr = tspf_profilecurveset_data(curvesetid, intgar, intmult, start)",
+  "python_syntax": "ierr = tspf_profilecurveset_data(curvesetid, intgar, intmult, start)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "curvesetid",
+      "description": "Profile curve set number. (input; no default allowed)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of two elementsNone. (input)."
+    },
+    {
+      "name": "intmult",
+      "description": "Time interval multiplier. (input; 1.0 by default)."
+    },
+    {
+      "name": "start",
+      "description": "Start time. (input; “2001-01-01 00:00:00” by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "time step (1 by default)."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "time interval (5 by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "year."
+      },
+      {
+        "value": "= 2",
+        "description": "month."
+      },
+      {
+        "value": "= 3",
+        "description": "week."
+      },
+      {
+        "value": "= 4",
+        "description": "day."
+      },
+      {
+        "value": "= 5",
+        "description": "hour."
+      },
+      {
+        "value": "= 6",
+        "description": "minute."
+      },
+      {
+        "value": "= 7",
+        "description": "second."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Invalid curve set number."
+    },
+    {
+      "value": "= 2",
+      "description": "Error: invalid time step, set to 1."
+    },
+    {
+      "value": "= 3",
+      "description": "Error: invalid time interval, set to 5."
+    },
+    {
+      "value": "= 4",
+      "description": "profile curve set table I/O error."
+    },
+    {
+      "value": "= 5",
+      "description": "Prerequisite requirements for API are not met."
+    }
+  ]
+}

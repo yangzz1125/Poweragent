@@ -1,0 +1,82 @@
+{
+  "module": "psspy",
+  "function_name": "add_mtdcline_model",
+  "category": "Dc Line Related Models",
+  "description": "Use this API to add a multi-terminal dc line model to the specified multi-terminal dc line. If a model already exists at the multi-terminal dc line, it is replaced. This API routine was first introduced in release 30.2.0. ierr = add_mtdcline_model(dc, model, nicn, idata, chdata, ncon, rdata)",
+  "python_syntax": "ierr = add_mtdcline_model(dc, model, nicn, idata, chdata, ncon, rdata)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "dc",
+      "description": "Quoted name of the multi-terminal dc line to which the model is to be added; if an unquoted integer value is specified, the api converts it to a left-justified name. (input; no default allowed)."
+    },
+    {
+      "name": "model",
+      "description": "Model name. (input; no default allowed)."
+    },
+    {
+      "name": "nicn",
+      "description": "Number of icons required by the model. (input; no default allowed)."
+    },
+    {
+      "name": "idata",
+      "description": "An array of NICN elements specifying ICON data. (input; 0 by default). When a character value is intended for an ICON value, the corresponding IDATA entry is ignored and the integer ICON is set to 0)."
+    },
+    {
+      "name": "chdata",
+      "description": "An array of NICN elements specifying character ICON data (no default allowed for an ICON for which a character value is to be specified). When an integer value is intended for an ICON value, the corresponding CHDATA entry must be either defaulted or specified as either ‘$$’ or ‘ ‘; the character ICON is set to ‘$$’. (input; blank by default)."
+    },
+    {
+      "name": "ncon",
+      "description": "Number of cons required by the model. (input; no default allowed)."
+    },
+    {
+      "name": "rdata",
+      "description": "An array of NCON elements specifying CON data. (input; 0.0 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "dc line not found."
+    },
+    {
+      "value": "= 2",
+      "description": "multi-terminal dc line model connection tables full–use pack dc line model tables function."
+    },
+    {
+      "value": "= 3",
+      "description": "unknown model name."
+    },
+    {
+      "value": "= 4",
+      "description": "model is not a multi-terminal dc line model."
+    },
+    {
+      "value": "= 5",
+      "description": "# CONs specified is not the number expected."
+    },
+    {
+      "value": "= 6",
+      "description": "# ICONs specified is not the number expected."
+    },
+    {
+      "value": "= 7",
+      "description": "maximum number of array elements exceeded."
+    },
+    {
+      "value": "= 8",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

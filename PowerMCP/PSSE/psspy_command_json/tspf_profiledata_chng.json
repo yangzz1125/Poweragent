@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "tspf_profiledata_chng",
+  "category": "Time Series Power Flow Data",
+  "description": "Use this API routine to modify the data of an existing Time Series Power Flow profile curve value. This API routine was first introduced in release 35.4.0. ierr = tspf_profiledata_chng(curvesetid,curvecol,index,value)",
+  "python_syntax": "ierr = tspf_profiledata_chng(curvesetid,curvecol,index,value)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "curvesetid",
+      "description": "Profile curve set number. (input; no default allowed)."
+    },
+    {
+      "name": "curvecol",
+      "description": "Profile curve col number. (input; no default allowed)."
+    },
+    {
+      "name": "index",
+      "description": "Curve value index. (input; no default allowed)."
+    },
+    {
+      "name": "value",
+      "description": "Value. (input; 0.0 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "The time point of the given profile curve set and curve number not found."
+    },
+    {
+      "value": "= 2",
+      "description": "Profile table I/O error."
+    },
+    {
+      "value": "= 3",
+      "description": "Prerequisite requirements for API are not met."
+    }
+  ]
+}

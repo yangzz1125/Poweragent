@@ -1,0 +1,46 @@
+{
+  "module": "psspy",
+  "function_name": "bsysdelo",
+  "category": "Bus Subsystems",
+  "description": "Use this API to delete a single bus from a bus subsystem. This API routine was first introduced in release 33.4.0. ierr = bsysdelo(sid, busnum)",
+  "python_syntax": "ierr = bsysdelo(sid, busnum)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Valid bus subsystem id. valid bus subsystem ids range from 0 to 11. (input)."
+    },
+    {
+      "name": "busnum",
+      "description": "Bus number to delete from the subsystem. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error return. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "SID is not valid."
+    },
+    {
+      "value": "= 2",
+      "description": "bus subsystem is not defined."
+    },
+    {
+      "value": "= 3",
+      "description": "no buses defined in subsystem."
+    },
+    {
+      "value": "= 4",
+      "description": "BUSNUM doesn’t exist in subsystem."
+    }
+  ]
+}

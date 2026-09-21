@@ -1,0 +1,85 @@
+{
+  "module": "psspy",
+  "function_name": "openaccfile_2",
+  "category": "Diagram View",
+  "description": "This API is used to open an existing ACC results file for displaying results on diagram. This API routine was first introduced in release 33.2.0. openaccfile_2(nbaserate, ncntgrate, nbasevoltlim, ncntgvoltlim, fperrate, szfilename)",
+  "python_syntax": "openaccfile_2(nbaserate, ncntgrate, nbasevoltlim, ncntgvoltlim, fperrate, szfilename)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "nbaserate",
+      "description": "Base case rating to use for results display . (input)."
+    },
+    {
+      "name": "ncntgrate",
+      "description": "Contingency case rating to use for results display . (input)."
+    },
+    {
+      "name": "nbasevoltlim",
+      "description": "Base case voltage limit for results display . (input)."
+    },
+    {
+      "name": "ncntgvoltlim",
+      "description": "Contingencyt case voltage limit for results display. (input)."
+    },
+    {
+      "name": "fperrate",
+      "description": "Loading percentage to use for results display . (input)."
+    },
+    {
+      "name": "szfilename",
+      "description": "Acc file to open . (input)."
+    }
+  ],
+  "return_values": [],
+  "allowed_values": {
+    "nbaserate": [
+      {
+        "value": "= 1",
+        "description": "RateA."
+      },
+      {
+        "value": "= 2",
+        "description": "RateB."
+      },
+      {
+        "value": "= 3",
+        "description": "RateC."
+      }
+    ],
+    "ncntgrate": [
+      {
+        "value": "= 1",
+        "description": "RateA."
+      },
+      {
+        "value": "= 2",
+        "description": "RateB."
+      },
+      {
+        "value": "= 3",
+        "description": "RateC."
+      }
+    ],
+    "nbasevoltlim": [
+      {
+        "value": "= 1",
+        "description": "Don’t use the limit."
+      },
+      {
+        "value": "= 2",
+        "description": "Use the limit."
+      }
+    ],
+    "ncntgvoltlim": [
+      {
+        "value": "= 1",
+        "description": "don’t use the limit."
+      },
+      {
+        "value": "= 2",
+        "description": "use the limit."
+      }
+    ]
+  }
+}

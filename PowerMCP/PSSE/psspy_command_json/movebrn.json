@@ -1,0 +1,74 @@
+{
+  "module": "psspy",
+  "function_name": "movebrn",
+  "category": "Power Flow Operation",
+  "description": "Use this API to disconnect the to bus of a specified non-transformer branch or two-winding transformer from the bus to which it is currently connected, and reconnect it to a designated bus. This API routine was first introduced in release 28.0.0. ierr = movebrn(ibus, jbus, ckt, newtobus, newckt)",
+  "python_syntax": "ierr = movebrn(ibus, jbus, ckt, newtobus, newckt)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "One of the buses connected by the branch; the branch will remain connected to this bus. (input; no default allowed)."
+    },
+    {
+      "name": "jbus",
+      "description": "Other bus connected by the branch; this connection will be severed and the branch connected to bus newtobus. (input; no default allowed)."
+    },
+    {
+      "name": "ckt",
+      "description": "Circuit identifier of the branch to be rerouted. (input; ‘1’ by default)."
+    },
+    {
+      "name": "newtobus",
+      "description": "Number of the bus to which the branch is to be connected. (input; no default allowed)."
+    },
+    {
+      "name": "newckt",
+      "description": "New circuit identifier to be assigned to the rerouted branch. (input; CKT by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "circuit CKT from IBUS to JBUS not found."
+    },
+    {
+      "value": "= 3",
+      "description": "new connection bus must not be the present from or to bus."
+    },
+    {
+      "value": "= 4",
+      "description": "circuit NEWCKT from IBUS to NEWTOBUS already exists."
+    },
+    {
+      "value": "= 5",
+      "description": "invalid new identifier; cannot start with &, * or @"
+    },
+    {
+      "value": "= 6",
+      "description": "invalid new identifier; must not be blank."
+    },
+    {
+      "value": "= 7",
+      "description": "node-breaker terminal connection table is full."
+    },
+    {
+      "value": "= 8",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,210 @@
+{
+  "module": "psspy",
+  "function_name": "agenbusreal",
+  "category": "Plant Bus Data",
+  "description": "Use this API to return an array of real values for subsystem buses. This API routine was first introduced in release 30.2.0. ierr, rarray = agenbusreal(sid, flag, string)",
+  "python_syntax": "ierr, rarray = agenbusreal(sid, flag, string)",
+  "return_type": "error_and_array",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the bus subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem buses to include. (input; 1 by default)."
+    },
+    {
+      "name": "string",
+      "description": "An array of NSTR elements specifying NSTR of the following strings indicating the bus and/or plant quantities desired. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "rarray",
+      "description": "An array of NSTR*DIM elements specifying Is an array of at least NSTR columns, each of which contains DIM elements. (output)."
+    }
+  ],
+  "allowed_values": {
+    "sid": [
+      {
+        "value": "< 0",
+        "description": "to instruct the API to assume a subsystem containing all buses in the working case."
+      },
+      {
+        "value": ">= 0",
+        "description": "valid bus subsystem identifier. Valid subsystem identifiers range from 0 to 11. Subsystem SID must have been previously defined."
+      }
+    ],
+    "flag": [
+      {
+        "value": "= 1",
+        "description": "for only in-service plant buses (type code 2 or 3) with at least one in-service machine."
+      },
+      {
+        "value": "= 2",
+        "description": "for only in-service plant buses (type code 2 or 3), including those with no in- service machines."
+      },
+      {
+        "value": "= 3",
+        "description": "for all in-service buses, including those that are not plant buses."
+      },
+      {
+        "value": "= 4",
+        "description": "for all plant buses, including those with no in-service machines."
+      },
+      {
+        "value": "= 5",
+        "description": "for all buses, including those that are not plant buses."
+      }
+    ],
+    "string": [
+      {
+        "value": "= BASE",
+        "description": "Bus base voltage in kV."
+      },
+      {
+        "value": "= PU",
+        "description": "Actual bus voltage magnitude, in pu."
+      },
+      {
+        "value": "= KV",
+        "description": "Actual bus voltage magnitude, in kV (in pu if base voltage is 0.0)."
+      },
+      {
+        "value": "= ANGLE",
+        "description": "Bus voltage phase angle, in radians."
+      },
+      {
+        "value": "= ANGLED",
+        "description": "Bus voltage phase angle, in degrees."
+      },
+      {
+        "value": "= PERCENT",
+        "description": "MVA loading as a percentage of total plant MVA base, MBASE."
+      },
+      {
+        "value": "= IREGBASE",
+        "description": "Regulated bus base voltage, in kV."
+      },
+      {
+        "value": "= IREGPU",
+        "description": "Actual regulated bus voltage magnitude, in pu."
+      },
+      {
+        "value": "= IREGKV",
+        "description": "Actual regulated bus voltage magnitude, in kV (in pu if base voltage is 0.0)."
+      },
+      {
+        "value": "= VSPU",
+        "description": "Regulated bus scheduled voltage magnitude, in pu."
+      },
+      {
+        "value": "= VSKV",
+        "description": "Regulated bus scheduled voltage magnitude, in kV (in pu if base voltage is 0.0)."
+      },
+      {
+        "value": "= RMPCT",
+        "description": "Percent of total Mvar to be contributed by this plant."
+      },
+      {
+        "value": "= PGEN",
+        "description": "Active power output of in-service machines at this plant, in MW."
+      },
+      {
+        "value": "= QGEN",
+        "description": "Reactive power output of in-service machines at this plant, in Mvar."
+      },
+      {
+        "value": "= MVA",
+        "description": "abs(PGEN+jQGEN) of in-service machines at this plant, in MVA."
+      },
+      {
+        "value": "= PMAX",
+        "description": "Active power upper limit of in-service machines at this plant, in MW."
+      },
+      {
+        "value": "= PMIN",
+        "description": "Active power lower limit of in-service machines at this plant, in MW."
+      },
+      {
+        "value": "= QMAX",
+        "description": "Reactive power upper limit of in-service machines at this plant, in Mvar."
+      },
+      {
+        "value": "= QMIN",
+        "description": "Reactive power lower limit of in-service machines at this plant, in Mvar."
+      },
+      {
+        "value": "= MISMATCH",
+        "description": "Bus mismatch, in MVA (0.0 if bus type code > 3)."
+      },
+      {
+        "value": "= O_PGEN",
+        "description": "Active power output of in-service machines at this plant (units determined by power output options)."
+      },
+      {
+        "value": "= O_QGEN",
+        "description": "Reactive power output of in-service machines at this plant (units determined by power output options)."
+      },
+      {
+        "value": "= O_MVA",
+        "description": "abs(PGEN+jQGEN) of in-service machines at this plant (units determined by power output options)."
+      },
+      {
+        "value": "= O_PMAX",
+        "description": "Active power upper limit of in-service machines at this plant (units determined by power output options)."
+      },
+      {
+        "value": "= O_PMIN",
+        "description": "Active power lower limit of in-service machines at this plant (units determined by power output options)."
+      },
+      {
+        "value": "= O_QMAX",
+        "description": "Reactive power upper limit of in-service machines at this plant (units determined by power output options)."
+      },
+      {
+        "value": "= O_QMIN",
+        "description": "Reactive power lower limit of in-service machines at this plant (units determined by power output options)."
+      },
+      {
+        "value": "= O_MISMATCH",
+        "description": "Bus mismatch (0.0 if bus type code > 3) (units determined by power output options)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid FLAG value."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid NSTR value."
+    },
+    {
+      "value": "= 5",
+      "description": "DIM, and hence the size of RARRAY, is not large enough."
+    },
+    {
+      "value": "= 6",
+      "description": "Invalid STRING value."
+    }
+  ]
+}

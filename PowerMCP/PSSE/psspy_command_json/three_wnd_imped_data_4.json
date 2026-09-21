@@ -1,0 +1,270 @@
+{
+  "module": "psspy",
+  "function_name": "three_wnd_imped_data_4",
+  "category": "Power Flow Data",
+  "description": "Use this API routine to modify the impedance data of an existing three-winding transformer in the working case, or to add a new three-winding transformer to the working case (see PSSE Program Operation Manual, Non-Transformer Branch Data). This API routine was first introduced in release 34.0.0. ierr, realaro = three_wnd_imped_data_4(ibus, jbus, kbus, ckt, intgar, realari, namear, vgrpar)",
+  "python_syntax": "ierr, realaro = three_wnd_imped_data_4(ibus, jbus, kbus, ckt, intgar, realari, namear, vgrpar)",
+  "return_type": "error_and_record",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number of one of the buses. (input; no default allowed)."
+    },
+    {
+      "name": "jbus",
+      "description": "Bus number one of the other buses. (input; no default allowed)."
+    },
+    {
+      "name": "kbus",
+      "description": "Bus number of the third bus. (input; no default allowed)."
+    },
+    {
+      "name": "ckt",
+      "description": "Transformer circuit identifier. (input; ‘1’ by default)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of thirteen elementsNone. (input)."
+    },
+    {
+      "name": "realari",
+      "description": "An array of seventeen elements specifying corresponding to values REALAR(1) through REALAR(17) as described above. (input)."
+    },
+    {
+      "name": "namear",
+      "description": "Transformer name. (input)."
+    },
+    {
+      "name": "vgrpar",
+      "description": "Vector group name. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "None. (output)."
+    },
+    {
+      "name": "realaro",
+      "description": "An array of six elements specifying corresponding to values REALAR(18) through REALAR(23) as described above. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "O1, first owner number (owner of bus IBUS by default)."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "O2, second owner number (0 by default)."
+      },
+      {
+        "value": "INTGAR(3)",
+        "description": "O3, third owner number (0 by default)."
+      },
+      {
+        "value": "INTGAR(4)",
+        "description": "O4, fourth owner number (0 by default)."
+      },
+      {
+        "value": "INTGAR(5)",
+        "description": "CW, winding data I/O code (1 by default)."
+      },
+      {
+        "value": "INTGAR(6)",
+        "description": "CZ, impedance data I/O code (1 by default)."
+      },
+      {
+        "value": "INTGAR(7)",
+        "description": "CM, magnetizing admittance data I/O code (1 by default)."
+      },
+      {
+        "value": "INTGAR(8)",
+        "description": "STAT, branch status (1 by default)."
+      },
+      {
+        "value": "INTGAR(9)",
+        "description": "NMETBS, non-metered end bus number (IBUS, JBUS or KBUS) (JBUS by default)."
+      },
+      {
+        "value": "INTGAR(10)",
+        "description": "WN1BUS, winding one side bus number (IBUS, JBUS or KBUS) (IBUS by default)."
+      },
+      {
+        "value": "INTGAR(11)",
+        "description": "WN2BUS, winding two side bus number (IBUS, JBUS or KBUS) (JBUS by default)."
+      },
+      {
+        "value": "INTGAR(12)",
+        "description": "WN3BUS, winding three side bus number (IBUS, JBUS or KBUS) (KBUS by default)."
+      },
+      {
+        "value": "INTGAR(13)",
+        "description": "ZCOD, transformer impedance adjustment code (0 for winding impedances, 1 for bus-to-bus impedances) (0 by default)."
+      }
+    ],
+    "realari": [
+      {
+        "value": "REALARI(1)",
+        "description": "R1-2, nominal bus one to two transformer resistance (0.0 by default)."
+      },
+      {
+        "value": "REALARI(2)",
+        "description": "X1-2, nominal bus one to two transformer reactance (0.0002 by default)."
+      },
+      {
+        "value": "REALARI(3)",
+        "description": "R2-3, nominal bus two to three transformer resistance (0.0 by default)."
+      },
+      {
+        "value": "REALARI(4)",
+        "description": "X2-3, nominal bus two to three transformer reactance (0.0002 by default)."
+      },
+      {
+        "value": "REALARI(5)",
+        "description": "R3-1, nominal bus three to one transformer resistance (0.0 by default)."
+      },
+      {
+        "value": "REALARI(6)",
+        "description": "X3-1, nominal bus three to one transformer reactance (0.0002 by default)."
+      },
+      {
+        "value": "REALARI(7)",
+        "description": "SBS1-2, winding one to two base MVA (SBASE by default)."
+      },
+      {
+        "value": "REALARI(8)",
+        "description": "SBS2-3, winding two to three base MVA (SBASE by default)."
+      },
+      {
+        "value": "REALARI(9)",
+        "description": "SBS3-1, winding three to one base MVA (SBASE by default)."
+      },
+      {
+        "value": "REALARI(10)",
+        "description": "MAG1, magnetizing conductance or no-load losses (0.0 by default)."
+      },
+      {
+        "value": "REALARI(11)",
+        "description": "MAG2, magnetizing susceptance or exciting current (0.0 by default)."
+      },
+      {
+        "value": "REALARI(12)",
+        "description": "F1, first owner fraction (1.0 by default)."
+      },
+      {
+        "value": "REALARI(13)",
+        "description": "F2, second owner fraction (0.0 by default)."
+      },
+      {
+        "value": "REALARI(14)",
+        "description": "F3, third owner fraction (0.0 by default)."
+      },
+      {
+        "value": "REALARI(15)",
+        "description": "F4, fourth owner fraction (0.0 by default)."
+      },
+      {
+        "value": "REALARI(16)",
+        "description": "VMSTAR, star bus voltage magnitude (1.0 by default)."
+      },
+      {
+        "value": "REALARI(17)",
+        "description": "TAR, star bus voltage angle (0.0 by default)."
+      }
+    ],
+    "realaro": [
+      {
+        "value": "REALARO(1)",
+        "description": "actual bus one to two resistance (returned)."
+      },
+      {
+        "value": "REALARO(2)",
+        "description": "actual bus one to two reactance (returned)."
+      },
+      {
+        "value": "REALARO(3)",
+        "description": "actual bus two to three resistance (returned)."
+      },
+      {
+        "value": "REALARO(4)",
+        "description": "actual bus two to three reactance (returned)."
+      },
+      {
+        "value": "REALARO(5)",
+        "description": "actual bus three to one resistance (returned)."
+      },
+      {
+        "value": "REALARO(6)",
+        "description": "actual bus three to one reactance (returned)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "circuit identifier is more than two characters."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid CW, CZ and/or CM value."
+    },
+    {
+      "value": "= 4",
+      "description": "CW, CZ and/or CM >1 but at least one endpoint bus has no base voltage."
+    },
+    {
+      "value": "= 5",
+      "description": "three different buses must be specified."
+    },
+    {
+      "value": "= 6",
+      "description": "blank circuit identifier is invalid."
+    },
+    {
+      "value": "= 7",
+      "description": "transformer circuit identifier may not start with &, * or @"
+    },
+    {
+      "value": "= 8",
+      "description": "three-winding transformer table is full."
+    },
+    {
+      "value": "= 9",
+      "description": "bus table is full."
+    },
+    {
+      "value": "= 10",
+      "description": "not enough branch table entries are available."
+    },
+    {
+      "value": "= 11",
+      "description": "not enough two-winding transformer table entries are available."
+    },
+    {
+      "value": "= 12",
+      "description": "not enough branch ownership table entries are available."
+    },
+    {
+      "value": "= 14",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - Invalid set of winding buses. - Invalid CW, CZ and/or CM data value. - Invalid transformer status. - Invalid non-metered end bus. - Winding side buses interchanged. - Losses are too big relative to total impedance at winding base MVA. - Magnitude of winding impedance is less than 0.00001. - Vector group not found. - Any two-winding transformer warnings defined in two_winding_data_6."
+    }
+  ]
+}

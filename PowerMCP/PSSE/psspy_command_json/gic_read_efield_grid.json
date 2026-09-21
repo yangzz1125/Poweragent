@@ -1,0 +1,54 @@
+{
+  "module": "psspy",
+  "function_name": "gic_read_efield_grid",
+  "category": "Gic Operation",
+  "description": "Use this API to read Geoelectric Efield Grid Data File into the working case memory. This API routine was first introduced in release 34.8.0 and 35.1.0. ierr = gic_read_efield_grid(ftyp, fnam)",
+  "python_syntax": "ierr = gic_read_efield_grid(ftyp, fnam)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ftyp",
+      "description": "File format type. (input; 0 by default)."
+    },
+    {
+      "name": "fnam",
+      "description": "Efield grid data file name. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "ftyp": [
+      {
+        "value": "= 0",
+        "description": "csv format, column order: latitude (deg), longitude (deg), Ee (V/km), En (V/km)."
+      },
+      {
+        "value": "= 1",
+        "description": "USGS json format [coordinates [lon, lat] in deg, Ex(=En) and Ey(=Ee) in mV/km."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= 2",
+      "description": "error opening Efield Grid data file."
+    },
+    {
+      "value": "= 3",
+      "description": "error reading Efield Grid data file."
+    }
+  ]
+}

@@ -1,0 +1,216 @@
+{
+  "module": "psspy",
+  "function_name": "ascc_1a",
+  "category": "Fault Analysis Operation",
+  "description": "This API routine is obsolete. It has been replaced by the API routine ASCC_2, and is implemented by a call to ASCC_2. This API is used to apply a series of faults at various locations in the working case. This API routine was first introduced in release 33.0.0. ierr = ascc_1a(sid, all, status, relfile, fcdfile)",
+  "python_syntax": "ierr = ascc_1a(sid, all, status, relfile, fcdfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid subsystem identifier. valid subsystem identifiers range from 0 to 11. subsystem sid must have been previously defined. (input; 0 by default)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem flag. (input; 1 by default)."
+    },
+    {
+      "name": "status",
+      "description": "An array of ten elements specifying integer options. (input)."
+    },
+    {
+      "name": "relfile",
+      "description": "Relay data (.rel) file. (input; blank by default)."
+    },
+    {
+      "name": "fcdfile",
+      "description": "Fault control (.fcd) file. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 0",
+        "description": "process only buses in subsystem SID."
+      },
+      {
+        "value": "= 1",
+        "description": "process all buses."
+      }
+    ],
+    "status": [
+      {
+        "value": "STATUS(1)",
+        "description": "Three phase and line-to-ground fault (0 by default), can also be specified with keyword ‘flt3phlg’."
+      },
+      {
+        "value": "= 0",
+        "description": "three phase faults only."
+      },
+      {
+        "value": "= 1",
+        "description": "three phase and line-to-ground faults."
+      },
+      {
+        "value": "STATUS(2)",
+        "description": "line-out faults (0 by default), can also be specified with keyword ‘linout’."
+      },
+      {
+        "value": "= 0",
+        "description": "omit."
+      },
+      {
+        "value": "= 1",
+        "description": "include."
+      },
+      {
+        "value": "STATUS(3)",
+        "description": "line-end faults (0 by default), can also be specified with keyword ‘linend’."
+      },
+      {
+        "value": "= 0",
+        "description": "omit."
+      },
+      {
+        "value": "= 1",
+        "description": "include."
+      },
+      {
+        "value": "STATUS(4)",
+        "description": "flat conditions option (0 by default), can also be specified with keyword ‘flatop’."
+      },
+      {
+        "value": "= 0",
+        "description": "pre-fault conditions taken from working case."
+      },
+      {
+        "value": "= 1",
+        "description": "impose flat conditions as pre-fault condition."
+      },
+      {
+        "value": "STATUS(5)",
+        "description": "fault analysis generator reactance option; ignored if generators are already “converted” (0 by default), can also be specified with keyword ‘genxop’."
+      },
+      {
+        "value": "= 0",
+        "description": "use subtransient reactance."
+      },
+      {
+        "value": "= 1",
+        "description": "use transient reactance."
+      },
+      {
+        "value": "= 2",
+        "description": "use synchronous reactance."
+      },
+      {
+        "value": "STATUS(6)",
+        "description": "option (1 by default), can also be specified with keyword ‘rptop’."
+      },
+      {
+        "value": "= 1",
+        "description": "full output at home bus and N levels away."
+      },
+      {
+        "value": "= 2",
+        "description": "full output at home bus, summary N levels away."
+      },
+      {
+        "value": "= 3",
+        "description": "fault current summary table."
+      },
+      {
+        "value": "STATUS(7)",
+        "description": "number of levels back for contributions if STATUS(6) = 1 or 2. STATUS(7) > 0 (0 by default), can also be specified with keyword ‘rptlvl’."
+      },
+      {
+        "value": "STATUS(8)",
+        "description": "branch quantity code for line to ground faults (0 by default), can also be specified with keyword ‘brnop’."
+      },
+      {
+        "value": "= 0",
+        "description": "A phase."
+      },
+      {
+        "value": "= 1",
+        "description": "3 * IO."
+      },
+      {
+        "value": "= 2",
+        "description": "both."
+      },
+      {
+        "value": "STATUS(9)",
+        "description": "dc line and FACTS device option (0 by default), can also be specified with keyword ‘dcload’."
+      },
+      {
+        "value": "= 0",
+        "description": "blocked."
+      },
+      {
+        "value": "= 1",
+        "description": "represent as load."
+      },
+      {
+        "value": "STATUS(10)",
+        "description": "transformer impedance correction option (1 by default), can also be specified with keyword ‘zcorec’."
+      },
+      {
+        "value": "= 0",
+        "description": "do not apply to zero sequence."
+      },
+      {
+        "value": "= 1",
+        "description": "apply to zero sequence."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ALL value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid STATUS value."
+    },
+    {
+      "value": "= 4",
+      "description": "line end fault is invalid; bus table is full."
+    },
+    {
+      "value": "= 5",
+      "description": "fault analysis is invalid due to the presence of in-service induction machines that are in the “stalled” or “tripped” state."
+    },
+    {
+      "value": "= 6",
+      "description": "bus type code and series element status inconsistencies."
+    },
+    {
+      "value": "= 7",
+      "description": "error opening RELFILE."
+    },
+    {
+      "value": "= 8",
+      "description": "error opening FCDFILE."
+    },
+    {
+      "value": "= 9",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

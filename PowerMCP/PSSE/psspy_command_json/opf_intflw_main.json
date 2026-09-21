@@ -1,0 +1,100 @@
+{
+  "module": "psspy",
+  "function_name": "opf_intflw_main",
+  "category": "Optimal Power Flow Data",
+  "description": "Use this API to add an interface flow constraint record to the working case. It may also be used to modify an existing interface flow constraint record. This API must be invoked prior to adding any participating branch or three-winding transformer flows to the interface flow constraint. This API routine was first introduced in release 28.0.0. ierr = opf_intflw_main(ifid, labl, intgar, realar)",
+  "python_syntax": "ierr = opf_intflw_main(ifid, labl, intgar, realar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ifid",
+      "description": "Interface flow identifier. (input; no default allowed)."
+    },
+    {
+      "name": "labl",
+      "description": "Interface flow description made up of, at most, 32 characters. (input; ‘ ‘ by default)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of two elementsNone. (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of three elementsNone. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "interface flow type (default value of 1 if new record, current value otherwise)."
+      },
+      {
+        "value": "= 1",
+        "description": "MW."
+      },
+      {
+        "value": "= 2",
+        "description": "Mvar."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "interface flow limit type (default value of 1 if new record, current value otherwise)."
+      },
+      {
+        "value": "= 0",
+        "description": "reporting only."
+      },
+      {
+        "value": "= 1",
+        "description": "hard limit."
+      },
+      {
+        "value": "= 2",
+        "description": "linear soft limit."
+      },
+      {
+        "value": "= 3",
+        "description": "quadratic soft limit."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "maximum interface flow, in physical units (default value of 0.0 if new record, current value otherwise)."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "minimum interface flow, in physical units (default value of 0.0 if new record, current value otherwise)."
+      },
+      {
+        "value": "REALAR(3)",
+        "description": "soft limit penalty weight (default value of 1.0 if new record, current value otherwise)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "interface flow constraint table is full."
+    },
+    {
+      "value": "= 2",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "non-fatal error occurred. Possible warning messages are: - Invalid flow type specified. - Invalid interface flow limit type specified. - Maximum interface flow is less than the minimum interface flow."
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+
+# Comment line starts with # or //
+
+# Sample parameters and criterias
+
+################### parameters ####################
+starttimeflag 	0			//	0 (user defined fixed start time) or 1 (based upon when fault is cleared)
+starttime	1.0			//	time to start checking for viol (used when starttimeflag is 0)
+postfaultdelay	0.1			//	time delay from when fault is cleared to start checking for violations
+
+initvalflag		0		// 0 (user defined) 1 (let program automatically figure out)
+initvaltime		0.5		// initial conditions time ( if initvalflag is 0 )
+
+
+
+####################### criteria's #######################
+minvolt		area	1	999	perdev	30	nonload	"none" 0 per 0.0 0 per 0.0 0 per 0.0 0 per 0.0
+minvolt		area	1 	999	perdev	25	load	"none" 0 per 0.0 0 per 0.0 0 per 0.0 0 per 0.0
+
+minvoltdur	area	1	999	perdev	20		cycles	20	load "none" 0 per 0.0 0 per 0.0 0 per 0.0 0 per 0.0
+minfreqdur	area	1	999	val		59.6	cycles	6	load "none" 0 per 0.0 0 per 0.0 0 per 0.0 0 per 0.0
+
+
+category "p1,p2,p3,p4,p5,p6,p7"
+{
+minvoltdur	area	1	9999	per	80	seconds	20	load    "none" 0 per 0.0 0 per 0.0 0 per 0.0 0 per 0.0
+
+minvoltdur	area	1	9999	per	70	cycles	30	load    "none" 0 per 0.0 0 per 0.0 1 per 80.0 0 per 0.0
+minvoltdur	area	1	9999	per	80	seconds	2	load    "none" 0 per 0.0 0 per 0.0 1 per 80.0 0 per 0.0
+}
+
+category "p2.1"
+{ 
+minvoltdur	area	1	999	per	70	cycles	30	load    "none" 0 per 0.0 0 per 0.0 0 per 80.0 0 per 0.0
+minvoltdur	area	1	999	per	80	seconds	2	load    "none" 0 per 0.0 0 per 0.0 0 per 80.0 0 per 0.0
+}

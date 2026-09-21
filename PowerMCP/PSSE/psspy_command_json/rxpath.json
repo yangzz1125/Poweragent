@@ -1,0 +1,78 @@
+{
+  "module": "psspy",
+  "function_name": "rxpath",
+  "category": "Multiple Element Data",
+  "description": "Use this API to return buses from starting bus to ending bus with shortest electricity distance in terms of one of two options, impedance and number of buses. The total values do not include line charging, off-nominal turns ratio, phase shifter angle etc. This API routine was first introduced in release 34.8.0 and 35.1.0. ierr, iarray, rxvalue = rxpath(iopt, ifrom, itobus, tdim)",
+  "python_syntax": "ierr, iarray, rxvalue = rxpath(iopt, ifrom, itobus, tdim)",
+  "return_type": "error_and_array_plus",
+  "parameters": [
+    {
+      "name": "iopt",
+      "description": "The option to calculate the electricity distance. (input; 0 by default)."
+    },
+    {
+      "name": "ifrom",
+      "description": "Starting bus. (input; 1 by default)."
+    },
+    {
+      "name": "itobus",
+      "description": "Ending bus. (input; 1 by default)."
+    },
+    {
+      "name": "tdim",
+      "description": "Number of buses along the path. (input; 1 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "iarray",
+      "description": "An array of TDIM elements specifying the list of buses from starting bus to ending bus. (output)."
+    },
+    {
+      "name": "rxvalue",
+      "description": "Total value defined by iopt from starting bus to ending bus. (output)."
+    }
+  ],
+  "allowed_values": {
+    "iopt": [
+      {
+        "value": "= 0",
+        "description": "impedance."
+      },
+      {
+        "value": "= 1",
+        "description": "number of buses."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid starting bus number."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid ending bus number."
+    },
+    {
+      "value": "= 4",
+      "description": "TDIM is zero."
+    },
+    {
+      "value": "= 5",
+      "description": "Number of buses along the path is greater than TDIM."
+    }
+  ]
+}

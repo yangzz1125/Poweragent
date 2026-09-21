@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "gic_vscdc_purg",
+  "category": "Gic Data",
+  "description": "Use this API to purge new vscdc GIC shunt data from the working case. This API routine was first introduced in release 34.8.0. ierr = gic_vscdc_purg(name,bus,ckt)",
+  "python_syntax": "ierr = gic_vscdc_purg(name,bus,ckt)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Vscdc line name, must exist in the working case. (input; no default allowed)."
+    },
+    {
+      "name": "bus",
+      "description": "Base case bus number, must exist in the working case. (input; no default allowed)."
+    },
+    {
+      "name": "ckt",
+      "description": "Gic dc shunt circuit identifier. (input; ‘1’ by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

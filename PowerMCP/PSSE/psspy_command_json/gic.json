@@ -1,0 +1,268 @@
+{
+  "module": "psspy",
+  "function_name": "gic",
+  "category": "Gic Operation",
+  "description": "This API routine is obsolete. It has been replaced by the API routine gic_2, and is implemented by a call to gic_2. Use this API to calculate Geomagnetically Induced Currents (GIC) in electric power system network as a result of Geomagnetic Disturbance (GMD). This API routine was first introduced in release 32.2.0 and 33.3.0. ierr = gic(sid, all, apioptns, values, rptoptns, gicdatafil, gicaddfil, gicpurgfil, gicrnwkfil)",
+  "python_syntax": "ierr = gic(sid, all, apioptns, values, rptoptns, gicdatafil, gicaddfil, gicpurgfil, gicrnwkfil)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid subsystem identifier. valid subsystem identifiers range from 0 to 11. subsystem sid must have been previously defined. (input; 0 by default)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem flag. (input; 1 by default)."
+    },
+    {
+      "name": "apioptns",
+      "description": "An array of four elements specifying Integer Options. (input)."
+    },
+    {
+      "name": "values",
+      "description": "An array of five elements specifying Real Options. (input)."
+    },
+    {
+      "name": "rptoptns",
+      "description": "An array of seven elements specifying Report Options. (input)."
+    },
+    {
+      "name": "gicdatafil",
+      "description": "Gic data file name (input). (input; no default allowed)."
+    },
+    {
+      "name": "gicaddfil",
+      "description": "Gic updates to base case file name (output). (input; blank by default)."
+    },
+    {
+      "name": "gicpurgfil",
+      "description": "Rdch file to remove gic updates from gic updated case in working memory to set it back to base case network condition (output). (input; blank by default)."
+    },
+    {
+      "name": "gicrnwkfil",
+      "description": "Gic dc resistive network raw file. this represents the dc network used to calculate gic flow (output). (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 0",
+        "description": "process only buses in subsystem SID."
+      },
+      {
+        "value": "= 1",
+        "description": "process all buses."
+      }
+    ],
+    "apioptns": [
+      {
+        "value": "APIOPTNS(1)",
+        "description": "Electric Field Type (0 by default), can also be specified with keyword ‘efield_type’."
+      },
+      {
+        "value": "= 0",
+        "description": "for uniform geoelectric field."
+      },
+      {
+        "value": "APIOPTNS(2)",
+        "description": "Units of Electric Field Magnitude (0 by default), can also be specified with keyword ‘efield_unit’."
+      },
+      {
+        "value": "= 0",
+        "description": "for volts/km."
+      },
+      {
+        "value": "= 1",
+        "description": "for volts/mile."
+      },
+      {
+        "value": "APIOPTNS(3)",
+        "description": "Option to add GIC updates to base case (1 by default), can also be specified with keyword ‘addfile_optn’."
+      },
+      {
+        "value": "= 0",
+        "description": "add updates to Saved Case."
+      },
+      {
+        "value": "= 1",
+        "description": "create RDCH raw file of GIC updates."
+      },
+      {
+        "value": "APIOPTNS(4)",
+        "description": "Number of levels of inter-tie buses to add to study subsystem (0 by default), can also be specified with keyword ‘tielevels’."
+      },
+      {
+        "value": "= 0",
+        "description": "consider only study subsystem buses, no buses from inter-ties."
+      },
+      {
+        "value": "> 0",
+        "description": "consider only study subsystem buses, no buses from inter-ties."
+      }
+    ],
+    "values": [
+      {
+        "value": "VALUES(1)",
+        "description": "electric field magnitude in units defined by charoptns(2), not used when charoptns(1)=nonuniform (0 by default), can also be specified with keyword ‘efield_mag’."
+      },
+      {
+        "value": "> 0",
+        "description": "when charoptns(1)=uniform, no default allowed."
+      },
+      {
+        "value": "= 0",
+        "description": "when charoptns(1)=benchmark, when specified as 0.0, it will be set to 8.0 V/km (default benchmark event strength)."
+      },
+      {
+        "value": "> 0",
+        "description": "for charoptns(1)=benchmark, used as specified."
+      },
+      {
+        "value": "VALUES(2)",
+        "description": "electric field direction in degrees, range 0 to 360 degrees (0 by default), can also be specified with keyword ‘efield_deg’."
+      },
+      {
+        "value": "> 0",
+        "description": "when charoptns(1)=uniform or benchmark, not used when charoptns(1)=nonuniform."
+      },
+      {
+        "value": "VALUES(3)",
+        "description": "substation grounding dc resistance in ohms (0.1 by default), can also be specified with keyword ‘substation_r’."
+      },
+      {
+        "value": "= 0",
+        "description": "Substation is ungrounded."
+      },
+      {
+        "value": "> 0",
+        "description": "Use specified grounding dc resistance."
+      },
+      {
+        "value": "VALUES(4)",
+        "description": "transmission line X/R ratio, must be >0, used to calculate branch DC resistance if R=0.0 in network data (30 by default), can also be specified with keyword ‘branch_xbyr’."
+      },
+      {
+        "value": "= 0",
+        "description": "Use default."
+      },
+      {
+        "value": "> 0",
+        "description": "Use specified."
+      },
+      {
+        "value": "VALUES(5)",
+        "description": "transformer winding X/R ratio, must be >0, used to calculate winding DC resistance if R=0.0 in network data (30 by default), can also be specified with keyword ‘transformer_xbyr’."
+      },
+      {
+        "value": "= 0",
+        "description": "Use default."
+      },
+      {
+        "value": "> 0",
+        "description": "Use specified."
+      }
+    ],
+    "rptoptns": [
+      {
+        "value": "RPTOPTNS(1)",
+        "description": "what to report (-1 by default), can also be specified with keyword ‘rptoptn’."
+      },
+      {
+        "value": "= -1",
+        "description": "report all."
+      },
+      {
+        "value": "= 0",
+        "description": "no report."
+      },
+      {
+        "value": "> 0",
+        "description": "Report these many maximum values in each category."
+      },
+      {
+        "value": "RPTOPTNS(2)",
+        "description": "report induced branch voltages (0 by default), can also be specified with keyword ‘rptbrn_indv’."
+      },
+      {
+        "value": "= 0",
+        "description": "No."
+      },
+      {
+        "value": "= 1",
+        "description": "Yes."
+      },
+      {
+        "value": "RPTOPTNS(3)",
+        "description": "report DC bus voltages (0 by default), can also be specified with keyword ‘rptdc_busv’."
+      },
+      {
+        "value": "= 0",
+        "description": "No."
+      },
+      {
+        "value": "= 1",
+        "description": "Yes."
+      },
+      {
+        "value": "RPTOPTNS(4)",
+        "description": "report branch GIC flows (0 by default), can also be specified with keyword ‘rptbrn_gic’."
+      },
+      {
+        "value": "= 0",
+        "description": "No."
+      },
+      {
+        "value": "= 1",
+        "description": "Yes."
+      },
+      {
+        "value": "RPTOPTNS(5)",
+        "description": "report transformer GIC flows (1 by default), can also be specified with keyword ‘rpttrn_gic’."
+      },
+      {
+        "value": "= 0",
+        "description": "No."
+      },
+      {
+        "value": "= 1",
+        "description": "Yes."
+      },
+      {
+        "value": "RPTOPTNS(6)",
+        "description": "report substation GIC flows (0 by default), can also be specified with keyword ‘rptstn_gic’."
+      },
+      {
+        "value": "= 0",
+        "description": "No."
+      },
+      {
+        "value": "= 1",
+        "description": "Yes."
+      },
+      {
+        "value": "RPTOPTNS(7)",
+        "description": "report transformer losses (1 by default), can also be specified with keyword ‘rpttrn_q’."
+      },
+      {
+        "value": "= 0",
+        "description": "No."
+      },
+      {
+        "value": "= 1",
+        "description": "Yes."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 1",
+      "description": "DLL not loaded or entry point not found."
+    }
+  ]
+}

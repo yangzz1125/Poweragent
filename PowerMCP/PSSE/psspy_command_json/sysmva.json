@@ -1,0 +1,15 @@
+{
+  "module": "psspy",
+  "function_name": "sysmva",
+  "category": "Single Element Data",
+  "description": "Use this API to return the system base MVA. This API routine was first introduced in release 28.0.0. mvabas = sysmva()",
+  "python_syntax": "mvabas = sysmva()",
+  "return_type": "value_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "mvabas",
+      "description": ""
+    }
+  ]
+}

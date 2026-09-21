@@ -1,0 +1,25 @@
+{
+  "module": "psspy",
+  "function_name": "inivsc",
+  "category": "Single Element Data",
+  "description": "Initializes the VSC dc line fetching routine ‘NXTVSC’ for retrieving VSC dc lines in dc line name alphabetical order. This API routine was first introduced in release 31.0.0. ierr = inivsc()",
+  "python_syntax": "ierr = inivsc()",
+  "return_type": "error_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": ""
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error, ‘NXTVSC’ is properly initialized."
+    },
+    {
+      "value": "= 1",
+      "description": "No VSC dc lines in case; ‘NXTVSC’ may not be used."
+    }
+  ]
+}

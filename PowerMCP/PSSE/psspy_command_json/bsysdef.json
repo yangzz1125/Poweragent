@@ -1,0 +1,46 @@
+{
+  "module": "psspy",
+  "function_name": "bsysdef",
+  "category": "Bus Subsystems",
+  "description": "Use this API to set the definition of a bus subsystem. This can be used to toggle a particular bus subsystem on or off. This API routine was first introduced in release 31.0.0. ierr = bsysdef(sid, defined)",
+  "python_syntax": "ierr = bsysdef(sid, defined)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Valid bus subsystem id. valid bus subsystem ids range from 0 to 11. (input)."
+    },
+    {
+      "name": "defined",
+      "description": "Flag used to mark the bus subsystem as undefined/defined. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error return. (output)."
+    }
+  ],
+  "allowed_values": {
+    "defined": [
+      {
+        "value": "= 0",
+        "description": "mark the bus subsystem as undefined."
+      },
+      {
+        "value": "= 1",
+        "description": "mark the bus subsystem as defined."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "SID is not valid."
+    }
+  ]
+}

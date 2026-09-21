@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "q_losses_cost_coeff",
+  "category": "Optimal Power Flow Operation",
+  "description": "Use this API to set or return the value of the coefficient for the reactive power loss objective. This API works in conjunction with the API option to MINIMIZE_Q_LOSSES. This API routine was first introduced in release 30.0.0. ierr = q_losses_cost_coeff(rval) ierr, rval = q_losses_cost_coeff()",
+  "python_syntax": "ierr = q_losses_cost_coeff(rval) ierr, rval = q_losses_cost_coeff()",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "rval",
+      "description": "Value of the reactive power loss cost coefficient. (input; if Batch command, or for Python if specified as an argument, or for Fortran if IOCODE is 0, then input of 0 by default; else output)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid RVAL value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid IOCODE value."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

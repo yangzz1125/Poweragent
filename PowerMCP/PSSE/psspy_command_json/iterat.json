@@ -1,0 +1,15 @@
+{
+  "module": "psspy",
+  "function_name": "iterat",
+  "category": "Single Element Data",
+  "description": "Use this API to return the number of iterations used in the last solution attempt. This API routine was first introduced in release 30.1.0. ival = iterat()",
+  "python_syntax": "ival = iterat()",
+  "return_type": "value_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ival",
+      "description": ""
+    }
+  ]
+}

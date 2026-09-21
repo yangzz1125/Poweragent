@@ -1,0 +1,54 @@
+{
+  "module": "psspy",
+  "function_name": "bus_number",
+  "category": "Power Flow Data",
+  "description": "Use this API to change the bus number of an existing bus in the working case. This API routine was first introduced in release 28.0.0. ierr = bus_number(ibus, newbus)",
+  "python_syntax": "ierr = bus_number(ibus, newbus)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Current bus number of the bus for which the number is to be changed. (input; no default allowed)."
+    },
+    {
+      "name": "newbus",
+      "description": "New bus number. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid new bus number."
+    },
+    {
+      "value": "= 3",
+      "description": "bus number NEWBUS is already assigned to another bus."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - None."
+    }
+  ]
+}

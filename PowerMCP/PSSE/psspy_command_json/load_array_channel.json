@@ -1,0 +1,78 @@
+{
+  "module": "psspy",
+  "function_name": "load_array_channel",
+  "category": "Dynamic Simulation Operation",
+  "description": "Use this API to add an output channel containing the active or reactive component of a designated load. This API routine was first introduced in release 30.2.0. ierr = load_array_channel(status, id, ident)",
+  "python_syntax": "ierr = load_array_channel(status, id, ident)",
+  "return_type": "error_only_output_channel",
+  "parameters": [
+    {
+      "name": "status",
+      "description": "An array of three elementsNone. (input)."
+    },
+    {
+      "name": "id",
+      "description": "Load identifier. (input; ‘1’ by default)."
+    },
+    {
+      "name": "ident",
+      "description": "Identifier to be assigned to the channel. if a blank channel identifier is specified, the api generates an appropriate channel identifier. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "status": [
+      {
+        "value": "STATUS(1)",
+        "description": "starting channel index, or -1 for the next available (next available by default)."
+      },
+      {
+        "value": "STATUS(2)",
+        "description": "used to indicate the quantity to be placed in an channel (1 by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "PLOAD."
+      },
+      {
+        "value": "= 2",
+        "description": "QLOAD."
+      },
+      {
+        "value": "STATUS(3)",
+        "description": "number of the bus to which the load for which quantity is to be placed in an channel is connected (no default allowed)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid STATUS value."
+    },
+    {
+      "value": "= 2",
+      "description": "starting channel number is greater than the largest channel number allowed."
+    },
+    {
+      "value": "= 3",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 4",
+      "description": "load not found."
+    },
+    {
+      "value": "= 5",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

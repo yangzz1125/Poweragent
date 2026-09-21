@@ -1,0 +1,712 @@
+{
+  "module": "psspy",
+  "function_name": "abrnreal",
+  "category": "Branch Data",
+  "description": "Use this API to return an array of real values for subsystem branches. This API routine was first introduced in release 30.2.0. ierr, rarray = abrnreal(sid, owner, ties, flag, entry, string)",
+  "python_syntax": "ierr, rarray = abrnreal(sid, owner, ties, flag, entry, string)",
+  "return_type": "error_and_array",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the bus subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "owner",
+      "description": "A flag indicating owner usage if ownership is a subsystem selection criterion (ignored if sid is negative). (input; 1 by default)."
+    },
+    {
+      "name": "ties",
+      "description": "A flag indicating which subsystem branches to include (ignored if sid is negative). (input; 1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem branches to include. (input; 1 by default)."
+    },
+    {
+      "name": "entry",
+      "description": "A flag indicating organization. (input; 1 by default)."
+    },
+    {
+      "name": "string",
+      "description": "An array of NSTR elements specifying NSTR of the following strings indicating the branch quantities desired. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "rarray",
+      "description": "An array of NSTR*DIM elements specifying Is an array of at least NSTR columns, each of which contains DIM elements. (output)."
+    }
+  ],
+  "allowed_values": {
+    "sid": [
+      {
+        "value": "< 0",
+        "description": "to instruct the API to assume a subsystem containing all buses in the working case."
+      },
+      {
+        "value": ">= 0",
+        "description": "valid bus subsystem identifier. Valid subsystem identifiers range from 0 to 11. Subsystem SID must have been previously defined."
+      }
+    ],
+    "owner": [
+      {
+        "value": "= 1",
+        "description": "to use bus ownership."
+      },
+      {
+        "value": "= 2",
+        "description": "to use branch ownership."
+      }
+    ],
+    "ties": [
+      {
+        "value": "= 1",
+        "description": "for interior subsystem branches only."
+      },
+      {
+        "value": "= 2",
+        "description": "for subsystem tie branches only."
+      },
+      {
+        "value": "= 3",
+        "description": "for both interior subsystem branches and tie branches."
+      }
+    ],
+    "flag": [
+      {
+        "value": "= 1",
+        "description": "for only in-service non-transformer branches."
+      },
+      {
+        "value": "= 2",
+        "description": "for all non-transformer branches."
+      },
+      {
+        "value": "= 3",
+        "description": "for only in-service non-transformer branches and two-winding transformers."
+      },
+      {
+        "value": "= 4",
+        "description": "for all non-transformer branches and two-winding transformers."
+      },
+      {
+        "value": "= 5",
+        "description": "for only in-service two-winding transformers."
+      },
+      {
+        "value": "= 6",
+        "description": "for all two-winding transformers."
+      }
+    ],
+    "entry": [
+      {
+        "value": "= 1",
+        "description": "for single entry (each branch once)."
+      },
+      {
+        "value": "= 2",
+        "description": "for double entry (each branch in both directions)."
+      }
+    ],
+    "string": [
+      {
+        "value": "= AMPS",
+        "description": "Branch current, in amps (0.0 if bus base voltage is 0.0)."
+      },
+      {
+        "value": "= PUCUR",
+        "description": "Branch current, in pu."
+      },
+      {
+        "value": "= PCTRATE",
+        "description": "Percent from bus current of default rating set."
+      },
+      {
+        "value": "= PCTRATEA",
+        "description": "Percent from bus current of rating set A."
+      },
+      {
+        "value": "= PCTRATEB",
+        "description": "Percent from bus current of rating set B."
+      },
+      {
+        "value": "= PCTRATEC",
+        "description": "Percent from bus current of rating set C."
+      },
+      {
+        "value": "= PCTRATE1",
+        "description": "Percent from bus current of rating set 1."
+      },
+      {
+        "value": "= PCTRATE2",
+        "description": "Percent from bus current of rating set 2."
+      },
+      {
+        "value": "= PCTRATE3",
+        "description": "Percent from bus current of rating set 3."
+      },
+      {
+        "value": "= PCTRATE4",
+        "description": "Percent from bus current of rating set 4."
+      },
+      {
+        "value": "= PCTRATE5",
+        "description": "Percent from bus current of rating set 5."
+      },
+      {
+        "value": "= PCTRATE6",
+        "description": "Percent from bus current of rating set 6."
+      },
+      {
+        "value": "= PCTRATE7",
+        "description": "Percent from bus current of rating set 7."
+      },
+      {
+        "value": "= PCTRATE8",
+        "description": "Percent from bus current of rating set 8."
+      },
+      {
+        "value": "= PCTRATE9",
+        "description": "Percent from bus current of rating set 9."
+      },
+      {
+        "value": "= PCTRATE10",
+        "description": "Percent from bus current of rating set 10."
+      },
+      {
+        "value": "= PCTRATE11",
+        "description": "Percent from bus current of rating set 11."
+      },
+      {
+        "value": "= PCTRATE12",
+        "description": "Percent from bus current of rating set 12."
+      },
+      {
+        "value": "= PCTMVARATE",
+        "description": "Percent from bus MVA of default rating set."
+      },
+      {
+        "value": "= PCTMVARATEA",
+        "description": "Percent from bus MVA of rating set A."
+      },
+      {
+        "value": "= PCTMVARATEB",
+        "description": "Percent from bus MVA of rating set B."
+      },
+      {
+        "value": "= PCTMVARATEC",
+        "description": "Percent from bus MVA of rating set C."
+      },
+      {
+        "value": "= PCTMVARATE1",
+        "description": "Percent from bus MVA of rating set 1."
+      },
+      {
+        "value": "= PCTMVARATE2",
+        "description": "Percent from bus MVA of rating set 2."
+      },
+      {
+        "value": "= PCTMVARATE3",
+        "description": "Percent from bus MVA of rating set 3."
+      },
+      {
+        "value": "= PCTMVARATE4",
+        "description": "Percent from bus MVA of rating set 4."
+      },
+      {
+        "value": "= PCTMVARATE5",
+        "description": "Percent from bus MVA of rating set 5."
+      },
+      {
+        "value": "= PCTMVARATE6",
+        "description": "Percent from bus MVA of rating set 6."
+      },
+      {
+        "value": "= PCTMVARATE7",
+        "description": "Percent from bus MVA of rating set 7."
+      },
+      {
+        "value": "= PCTMVARATE8",
+        "description": "Percent from bus MVA of rating set 8."
+      },
+      {
+        "value": "= PCTMVARATE9",
+        "description": "Percent from bus MVA of rating set 9."
+      },
+      {
+        "value": "= PCTMVARATE10",
+        "description": "Percent from bus MVA of rating set 10."
+      },
+      {
+        "value": "= PCTMVARATE11",
+        "description": "Percent from bus MVA of rating set 11."
+      },
+      {
+        "value": "= PCTMVARATE12",
+        "description": "Percent from bus MVA of rating set 12."
+      },
+      {
+        "value": "= PCTCORPRATE",
+        "description": "Percent from bus current or MVA loading (according to the appropriate percent loading units program option setting) of default rating set."
+      },
+      {
+        "value": "= PCTCORPRATEA",
+        "description": "Percent from bus current or MVA loading (according to the appropriate percent loading units program option setting) of rating set A."
+      },
+      {
+        "value": "= PCTCORPRATEB",
+        "description": "Percent from bus current or MVA loading (according to the appropriate percent loading units program option setting) of rating set B."
+      },
+      {
+        "value": "= PCTCORPRATEC",
+        "description": "Percent from bus current or MVA loading (according to the appropriate percent loading units program option setting) of rating set C."
+      },
+      {
+        "value": "= PCTCRPRATE",
+        "description": "Percent from bus current or MVA loading (according to the appropriate percent loading units program option setting) of default rating set."
+      },
+      {
+        "value": "= PCTCRPRATE1",
+        "description": "Percent from bus current or MVA loading (according to the appropriate percent loading units program option setting) of rating set 1."
+      },
+      {
+        "value": "= PCTCRPRATE2",
+        "description": "Percent from bus current or MVA loading (according to the appropriate percent loading units program option setting) of rating set 2."
+      },
+      {
+        "value": "= PCTCRPRATE3",
+        "description": "Percent from bus current or MVA loading (according to the appropriate percent loading units program option setting) of rating set 3."
+      },
+      {
+        "value": "= PCTCRPRATE4",
+        "description": "Percent from bus current or MVA loading (according to the appropriate percent loading units program option setting) of rating set 4."
+      },
+      {
+        "value": "= PCTCRPRATE5",
+        "description": "Percent from bus current or MVA loading (according to the appropriate percent loading units program option setting) of rating set 5."
+      },
+      {
+        "value": "= PCTCRPRATE6",
+        "description": "Percent from bus current or MVA loading (according to the appropriate percent loading units program option setting) of rating set 6."
+      },
+      {
+        "value": "= PCTCRPRATE7",
+        "description": "Percent from bus current or MVA loading (according to the appropriate percent loading units program option setting) of rating set 7."
+      },
+      {
+        "value": "= PCTCRPRATE8",
+        "description": "Percent from bus current or MVA loading (according to the appropriate percent loading units program option setting) of rating set 8."
+      },
+      {
+        "value": "= PCTCRPRATE9",
+        "description": "Percent from bus current or MVA loading (according to the appropriate percent loading units program option setting) of rating set 9."
+      },
+      {
+        "value": "= PCTCRPRATE10",
+        "description": "Percent from bus current or MVA loading (according to the appropriate percent loading units program option setting) of rating set 10."
+      },
+      {
+        "value": "= PCTCRPRATE11",
+        "description": "Percent from bus current or MVA loading (according to the appropriate percent loading units program option setting) of rating set 11."
+      },
+      {
+        "value": "= PCTCRPRATE12",
+        "description": "Percent from bus current or MVA loading (according to the appropriate percent loading units program option setting) of rating set 12."
+      },
+      {
+        "value": "= MAXPCTRATE",
+        "description": "Larger of percent from/to bus current of default rating set."
+      },
+      {
+        "value": "= MAXPCTRATEA",
+        "description": "Larger of percent from/to bus current of rating set A."
+      },
+      {
+        "value": "= MAXPCTRATEB",
+        "description": "Larger of percent from/to bus current of rating set B."
+      },
+      {
+        "value": "= MAXPCTRATEC",
+        "description": "Larger of percent from/to bus current of rating set C."
+      },
+      {
+        "value": "= MAXPCTRATE1",
+        "description": "Larger of percent from/to bus current of rating set 1."
+      },
+      {
+        "value": "= MAXPCTRATE2",
+        "description": "Larger of percent from/to bus current of rating set 2."
+      },
+      {
+        "value": "= MAXPCTRATE3",
+        "description": "Larger of percent from/to bus current of rating set 3."
+      },
+      {
+        "value": "= MAXPCTRATE4",
+        "description": "Larger of percent from/to bus current of rating set 4."
+      },
+      {
+        "value": "= MAXPCTRATE5",
+        "description": "Larger of percent from/to bus current of rating set 5."
+      },
+      {
+        "value": "= MAXPCTRATE6",
+        "description": "Larger of percent from/to bus current of rating set 6."
+      },
+      {
+        "value": "= MAXPCTRATE7",
+        "description": "Larger of percent from/to bus current of rating set 7."
+      },
+      {
+        "value": "= MAXPCTRATE8",
+        "description": "Larger of percent from/to bus current of rating set 8."
+      },
+      {
+        "value": "= MAXPCTRATE9",
+        "description": "Larger of percent from/to bus current of rating set 9."
+      },
+      {
+        "value": "= MAXPCTRATE10",
+        "description": "Larger of percent from/to bus current of rating set 10."
+      },
+      {
+        "value": "= MAXPCTRATE11",
+        "description": "Larger of percent from/to bus current of rating set 11."
+      },
+      {
+        "value": "= MAXPCTRATE12",
+        "description": "Larger of percent from/to bus current of rating set 12."
+      },
+      {
+        "value": "= MXPCTMVARAT",
+        "description": "Larger of percent from/to bus MVA of default rating set."
+      },
+      {
+        "value": "= MXPCTMVARATA",
+        "description": "Larger of percent from/to bus MVA of rating set A."
+      },
+      {
+        "value": "= MXPCTMVARATB",
+        "description": "Larger of percent from/to bus MVA of rating set B."
+      },
+      {
+        "value": "= MXPCTMVARATC",
+        "description": "Larger of percent from/to bus MVA of rating set C."
+      },
+      {
+        "value": "= MXPCTPRATE",
+        "description": "Larger of percent from/to bus MVA of rating set C."
+      },
+      {
+        "value": "= MXPCTPRATE1",
+        "description": "Larger of percent from/to bus MVA of rating set 1."
+      },
+      {
+        "value": "= MXPCTPRATE2",
+        "description": "Larger of percent from/to bus MVA of rating set 2."
+      },
+      {
+        "value": "= MXPCTPRATE3",
+        "description": "Larger of percent from/to bus MVA of rating set 3."
+      },
+      {
+        "value": "= MXPCTPRATE4",
+        "description": "Larger of percent from/to bus MVA of rating set 4."
+      },
+      {
+        "value": "= MXPCTPRATE5",
+        "description": "Larger of percent from/to bus MVA of rating set 5."
+      },
+      {
+        "value": "= MXPCTPRATE6",
+        "description": "Larger of percent from/to bus MVA of rating set 6."
+      },
+      {
+        "value": "= MXPCTPRATE7",
+        "description": "Larger of percent from/to bus MVA of rating set 7."
+      },
+      {
+        "value": "= MXPCTPRATE8",
+        "description": "Larger of percent from/to bus MVA of rating set 8."
+      },
+      {
+        "value": "= MXPCTPRATE9",
+        "description": "Larger of percent from/to bus MVA of rating set 9."
+      },
+      {
+        "value": "= MXPCTPRATE10",
+        "description": "Larger of percent from/to bus MVA of rating set 10."
+      },
+      {
+        "value": "= MXPCTPRATE11",
+        "description": "Larger of percent from/to bus MVA of rating set 11."
+      },
+      {
+        "value": "= MXPCTPRATE12",
+        "description": "Larger of percent from/to bus MVA of rating set 12."
+      },
+      {
+        "value": "= MXPCTCRPRAT",
+        "description": "Larger of percent from/to bus current or MVA loading (according to the appropriate percent loading units program option setting) of default rating set."
+      },
+      {
+        "value": "= MXPCTCRPRATA",
+        "description": "Larger of percent from/to bus current or MVA loading (according to the appropriate percent loading units program option setting) of rating set A."
+      },
+      {
+        "value": "= MXPCTCRPRATB",
+        "description": "Larger of percent from/to bus current or MVA loading (according to the appropriate percent loading units program option setting) of rating set B."
+      },
+      {
+        "value": "= MXPCTCRPRATC",
+        "description": "Larger of percent from/to bus current or MVA loading (according to the appropriate percent loading units program option setting) of rating set C."
+      },
+      {
+        "value": "= MXPCTCRPRA",
+        "description": "Larger of percent from/to bus current or MVA loading (according to the appropriate percent loading units program option setting) of default rating set."
+      },
+      {
+        "value": "= MXPCTCRPRA1",
+        "description": "Larger of percent from/to bus current or MVA loading (according to the appropriate percent loading units program option setting) of rating set 1."
+      },
+      {
+        "value": "= MXPCTCRPRA2",
+        "description": "Larger of percent from/to bus current or MVA loading (according to the appropriate percent loading units program option setting) of rating set 2."
+      },
+      {
+        "value": "= MXPCTCRPRA3",
+        "description": "Larger of percent from/to bus current or MVA loading (according to the appropriate percent loading units program option setting) of rating set 3."
+      },
+      {
+        "value": "= MXPCTCRPRA4",
+        "description": "Larger of percent from/to bus current or MVA loading (according to the appropriate percent loading units program option setting) of rating set 4."
+      },
+      {
+        "value": "= MXPCTCRPRA5",
+        "description": "Larger of percent from/to bus current or MVA loading (according to the appropriate percent loading units program option setting) of rating set 5."
+      },
+      {
+        "value": "= MXPCTCRPRA6",
+        "description": "Larger of percent from/to bus current or MVA loading (according to the appropriate percent loading units program option setting) of rating set 6."
+      },
+      {
+        "value": "= MXPCTCRPRA7",
+        "description": "Larger of percent from/to bus current or MVA loading (according to the appropriate percent loading units program option setting) of rating set 7."
+      },
+      {
+        "value": "= MXPCTCRPRA8",
+        "description": "Larger of percent from/to bus current or MVA loading (according to the appropriate percent loading units program option setting) of rating set 8."
+      },
+      {
+        "value": "= MXPCTCRPRA9",
+        "description": "Larger of percent from/to bus current or MVA loading (according to the appropriate percent loading units program option setting) of rating set 9."
+      },
+      {
+        "value": "= MXPCTCRPRA10",
+        "description": "Larger of percent from/to bus current or MVA loading (according to the appropriate percent loading units program option setting) of rating set 10."
+      },
+      {
+        "value": "= MXPCTCRPRA11",
+        "description": "Larger of percent from/to bus current or MVA loading (according to the appropriate percent loading units program option setting) of rating set 11."
+      },
+      {
+        "value": "= MXPCTCRPRA12",
+        "description": "Larger of percent from/to bus current or MVA loading (according to the appropriate percent loading units program option setting) of rating set 12."
+      },
+      {
+        "value": "= FRACT1",
+        "description": "First owner fraction."
+      },
+      {
+        "value": "= FRACT2",
+        "description": "Second owner fraction."
+      },
+      {
+        "value": "= FRACT3",
+        "description": "Third owner fraction."
+      },
+      {
+        "value": "= FRACT4",
+        "description": "Fourth owner fraction."
+      },
+      {
+        "value": "= RATE",
+        "description": "Rating from default rating set."
+      },
+      {
+        "value": "= RATEA",
+        "description": "Rating from rating set A."
+      },
+      {
+        "value": "= RATEB",
+        "description": "Rating from rating set B."
+      },
+      {
+        "value": "= RATEC",
+        "description": "Rating from rating set C."
+      },
+      {
+        "value": "= RATE1",
+        "description": "Rating from rating set 1."
+      },
+      {
+        "value": "= RATE2",
+        "description": "Rating from rating set 2."
+      },
+      {
+        "value": "= RATE3",
+        "description": "Rating from rating set 3."
+      },
+      {
+        "value": "= RATE4",
+        "description": "Rating from rating set 4."
+      },
+      {
+        "value": "= RATE5",
+        "description": "Rating from rating set 5."
+      },
+      {
+        "value": "= RATE6",
+        "description": "Rating from rating set 6."
+      },
+      {
+        "value": "= RATE7",
+        "description": "Rating from rating set 7."
+      },
+      {
+        "value": "= RATE8",
+        "description": "Rating from rating set 8."
+      },
+      {
+        "value": "= RATE9",
+        "description": "Rating from rating set 9."
+      },
+      {
+        "value": "= RATE10",
+        "description": "Rating from rating set 10."
+      },
+      {
+        "value": "= RATE11",
+        "description": "Rating from rating set 11."
+      },
+      {
+        "value": "= RATE12",
+        "description": "Rating from rating set 12."
+      },
+      {
+        "value": "= LENGTH",
+        "description": "Line length."
+      },
+      {
+        "value": "= CHARGING",
+        "description": "Total charging capacitance, in pu."
+      },
+      {
+        "value": "= CHARGINGZERO",
+        "description": "Zero sequence total charging capacitance, in pu."
+      },
+      {
+        "value": "= MOVIRATED",
+        "description": "MOV Rated Current for series capacitor branch, in kA."
+      },
+      {
+        "value": "= P",
+        "description": "Active power flow at from bus end, in MW."
+      },
+      {
+        "value": "= Q",
+        "description": "Reactive power flow at from bus end, in Mvar."
+      },
+      {
+        "value": "= MVA",
+        "description": "abs(P+jQ) at from bus end, in MVA."
+      },
+      {
+        "value": "= MAXMVA",
+        "description": "abs(P+jQ) at from bus or to bus end whichever is larger, in MVA."
+      },
+      {
+        "value": "= PLOSS",
+        "description": "Active power losses, in MW."
+      },
+      {
+        "value": "= QLOSS",
+        "description": "Reactive power losses, in Mvar."
+      },
+      {
+        "value": "= O_P",
+        "description": "Active power flow at from bus end (units determined by power output options)."
+      },
+      {
+        "value": "= O_Q",
+        "description": "Reactive power flow at from bus end (units determined by power output options)."
+      },
+      {
+        "value": "= O_MVA",
+        "description": "abs(P+jQ) at from bus end (units determined by power output options)."
+      },
+      {
+        "value": "= O_MAXMVA",
+        "description": "abs(P+jQ) at from bus or to bus end whichever is larger (units determined by power output options)."
+      },
+      {
+        "value": "= O_PLOSS",
+        "description": "Active power losses (units determined by power output options)."
+      },
+      {
+        "value": "= O_QLOSS",
+        "description": "Reactive power losses (units determined by power output options)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid OWNER value."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid TIES value."
+    },
+    {
+      "value": "= 5",
+      "description": "Invalid FLAG value."
+    },
+    {
+      "value": "= 6",
+      "description": "Invalid ENTRY value."
+    },
+    {
+      "value": "= 7",
+      "description": "Invalid NSTR value."
+    },
+    {
+      "value": "= 8",
+      "description": "DIM, and hence the size of RARRAY, is not large enough."
+    },
+    {
+      "value": "= 9",
+      "description": "Invalid STRING value."
+    },
+    {
+      "value": "= 10",
+      "description": "Sequence data not in case (when STRING = ‘CHARGINGZERO’)."
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "module": "psspy",
+  "function_name": "dlst",
+  "category": "Dynamic Simulation Operation",
+  "description": "Use this API to tabulate specified portions of one or more of the PSSE dynamics data storage arrays. This API routine was first introduced in release 30.2.0. ierr = dlst(ntype, atype, first, last)",
+  "python_syntax": "ierr = dlst(ntype, atype, first, last)",
+  "return_type": "error_only_report",
+  "parameters": [
+    {
+      "name": "ntype",
+      "description": "Number of array portion specifications to be supplied; must be between 1 and 6, inclusive. (input; no default allowed)."
+    },
+    {
+      "name": "atype",
+      "description": "An array of NTYPE elements specifying a list of PSSE array type codes. No more than one occurrence of each of the valid ATYPE values is allowed in each use of this API. (input; no default allowed)."
+    },
+    {
+      "name": "first",
+      "description": "An array of NTYPE elements specifying a list of starting indices in the data array(s) specified by the corresponding ATYPE entry. (input; 1 by default)."
+    },
+    {
+      "name": "last",
+      "description": "An array of NTYPE elements specifying a list of ending indices in the data array(s) specified by the corresponding ATYPE entry. (input; next available - 1 by default for ATYPE = 1 through 5; 6 by default for ATYPE = 6)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "atype": [
+      {
+        "value": "= 1",
+        "description": "for CONs."
+      },
+      {
+        "value": "= 2",
+        "description": "for STATEs."
+      },
+      {
+        "value": "= 3",
+        "description": "for VARs."
+      },
+      {
+        "value": "= 4",
+        "description": "for ICONs and CHRICNs."
+      },
+      {
+        "value": "= 5",
+        "description": "for output channels."
+      },
+      {
+        "value": "= 6",
+        "description": "for CRT plot channels."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid NTYPE value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ATYPE value (entry skipped)."
+    },
+    {
+      "value": "= 3",
+      "description": "ATYPE value previously specified (entry skipped)."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

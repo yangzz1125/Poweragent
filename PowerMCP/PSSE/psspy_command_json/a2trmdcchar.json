@@ -1,0 +1,160 @@
+{
+  "module": "psspy",
+  "function_name": "a2trmdcchar",
+  "category": "Two-Terminal Dc Line Data",
+  "description": "Use this API to return an array of character values for subsystem two-terminal dc lines. This API routine was first introduced in release 30.3.0. ierr, carray = a2trmdcchar(sid, ties, flag, string)",
+  "python_syntax": "ierr, carray = a2trmdcchar(sid, ties, flag, string)",
+  "return_type": "error_and_array",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the bus subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "ties",
+      "description": "A flag indicating which subsystem two-terminal dc lines to include (ignored if sid is negative). (input; 1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem two-terminal dc lines to include. (input; 1 by default)."
+    },
+    {
+      "name": "string",
+      "description": "An array of NSTR elements specifying NSTR of the following strings indicating the two-terminal dc line quantities desired. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "carray",
+      "description": "An array of NSTR*DIM elements specifying Is an array of at least NSTR columns, each of which contains DIM elements. (output)."
+    }
+  ],
+  "allowed_values": {
+    "sid": [
+      {
+        "value": "< 0",
+        "description": "to instruct the API to assume a subsystem containing all buses in the working case."
+      },
+      {
+        "value": ">= 0",
+        "description": "valid bus subsystem identifier. Valid subsystem identifiers range from 0 to 11. Subsystem SID must have been previously defined."
+      }
+    ],
+    "ties": [
+      {
+        "value": "= 1",
+        "description": "for interior subsystem two-terminal dc lines only."
+      },
+      {
+        "value": "= 2",
+        "description": "for subsystem tie two-terminal dc lines only."
+      },
+      {
+        "value": "= 3",
+        "description": "for both interior subsystem two-terminal dc lines and tie two-terminal dc lines."
+      }
+    ],
+    "flag": [
+      {
+        "value": "= 1",
+        "description": "for only in-service two-terminal dc lines."
+      },
+      {
+        "value": "= 2",
+        "description": "for all two-terminal dc lines."
+      }
+    ],
+    "string": [
+      {
+        "value": "= DCNAME",
+        "description": "dc line name (12 characters)."
+      },
+      {
+        "value": "= FROMNAME",
+        "description": "Rectifier bus name (12 characters)."
+      },
+      {
+        "value": "= FROMEXNAME",
+        "description": "Rectifier bus extended bus name (18 characters)."
+      },
+      {
+        "value": "= TONAME",
+        "description": "Inverter bus name (12 characters)."
+      },
+      {
+        "value": "= TOEXNAME",
+        "description": "Inverter bus extended bus name (18 characters)."
+      },
+      {
+        "value": "= METERNAME",
+        "description": "Metered bus name (12 characters)."
+      },
+      {
+        "value": "= METEREXNAME",
+        "description": "Metered bus extended bus name (18 characters)."
+      },
+      {
+        "value": "= NMETERNAME",
+        "description": "Non-metered bus name (12 characters)."
+      },
+      {
+        "value": "= NMETEREXNAME",
+        "description": "Non-metered bus extended bus name (18 characters)."
+      },
+      {
+        "value": "= IFRNAME",
+        "description": "Rectifier firing angle measuring bus name (12 characters)."
+      },
+      {
+        "value": "= IFREXNAME",
+        "description": "Rectifier firing angle measuring bus extended bus name (18 characters)."
+      },
+      {
+        "value": "= IFINAME",
+        "description": "Inverter firing angle measuring bus name (12 characters)."
+      },
+      {
+        "value": "= IFIEXNAME",
+        "description": "Inverter firing angle measuring bus extended bus name (18 characters)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid TIES value."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid FLAG value."
+    },
+    {
+      "value": "= 5",
+      "description": "Invalid NSTR value."
+    },
+    {
+      "value": "= 6",
+      "description": "DIM, and hence the size of CARRAY, is not large enough."
+    },
+    {
+      "value": "= 7",
+      "description": "Invalid STRING value."
+    }
+  ]
+}

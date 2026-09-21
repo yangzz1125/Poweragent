@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "non_divergent",
+  "category": "Power Flow Operation",
+  "description": "Use this API to specify or return the option to specify or return the option to enable or disable the non-divergent Newton power flow solution. This API routine was first introduced in release 30.0.0. ierr = non_divergent(ival) ierr, ival = non_divergent()",
+  "python_syntax": "ierr = non_divergent(ival) ierr, ival = non_divergent()",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ival",
+      "description": "Value of the option setting. (input; if Batch command, or for Python if specified as an argument, or for Fortran if IOCODE is 0, 0 by default; else output)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "ival": [
+      {
+        "value": "= 0",
+        "description": "disable non-divergent Newton solution option."
+      },
+      {
+        "value": "= 1",
+        "description": "enable non-divergent Newton solution option."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid IVAL value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid IOCODE value."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

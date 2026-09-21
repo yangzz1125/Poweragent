@@ -1,0 +1,54 @@
+{
+  "module": "psspy",
+  "function_name": "set_opf_report_subsystem",
+  "category": "Optimal Power Flow Operation",
+  "description": "Use this API to define the subsystem to be used when producing the opf output report. The records contained in the report will be limited to just the equipment residing within the defined subsystem. This includes bounded and infeasible reactive power generation, regulated buses, transformer tap ratios, transformer phase shift angles and bounded switched shunts. This API routine was first introduced in release 32.0.0. ierr = set_opf_report_subsystem(osid, all)",
+  "python_syntax": "ierr = set_opf_report_subsystem(osid, all)",
+  "return_type": "error_only_report",
+  "parameters": [
+    {
+      "name": "osid",
+      "description": "Indicates the previously defined subsystem number to be used for the opf report. (input; no default allowed)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem flag. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 0",
+        "description": "process only specified buses."
+      },
+      {
+        "value": "= 1",
+        "description": "process all buses."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ALL value."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

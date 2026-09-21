@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "ordbussect",
+  "category": "Single Element Data",
+  "description": "This API routine returns the bus number and section number corresponding to the specified position in the ordered list (numeric or alphabetic) of non-star point buses (i.e., star point buses are excluded). Dummy buses of multi-section lines are included; hidden star point buses of three-winding transformers are not included; topological buses of buses represented by multiple bus sections are included. This API routine was first introduced in release 34.1.0. ierr, ibus, isect = ordbussect(iord)",
+  "python_syntax": "ierr, ibus, isect = ordbussect(iord)",
+  "return_type": "error_and_multi_value",
+  "parameters": [
+    {
+      "name": "iord",
+      "description": "Ordinal position; 1 through the number of non-star point buses in the working case. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "ibus",
+      "description": "Bus number. (output)."
+    },
+    {
+      "name": "isect",
+      "description": "Section number; isect is returned as 0 if bus ibus is not represented by multiple bus sections. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IBUS’ and ‘ISECT’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "‘IORD’ outside of range 1 through the number of non-start point buses in the working case; ‘IBUS’ and ‘ISECT’ unchanged."
+    }
+  ]
+}

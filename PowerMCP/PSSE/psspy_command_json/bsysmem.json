@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "bsysmem",
+  "category": "Bus Subsystems",
+  "description": "Use this API to replicate the specified bus subsystem in a bus subsystem file. This bus subsystem file may then be recalled at a later time to restore the specified bus subsystem. This API routine was first introduced in release 28.0.0. ierr = bsysmem(sid, sfile)",
+  "python_syntax": "ierr = bsysmem(sid, sfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid bus subsystem id. valid bus subsystem ids range from 0 to 11. (input)."
+    },
+    {
+      "name": "sfile",
+      "description": "Bus subsystem filename. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error return. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "SID is not valid."
+    },
+    {
+      "value": "= 2",
+      "description": "error opening SFILE."
+    }
+  ]
+}

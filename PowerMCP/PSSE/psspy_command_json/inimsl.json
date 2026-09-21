@@ -1,0 +1,46 @@
+{
+  "module": "psspy",
+  "function_name": "inimsl",
+  "category": "Single Element Data",
+  "description": "Initializes the multi-section line member fetching routine ‘NXTMSL’ for retrieving lines that are sections of the specified multi-section line from IBUS to JBUS. This API routine was first introduced in release 28.0.0. ierr = inimsl(ibus, jbus, ickt)",
+  "python_syntax": "ierr = inimsl(ibus, jbus, ickt)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "From bus number. (input)."
+    },
+    {
+      "name": "jbus",
+      "description": "To bus number. (input)."
+    },
+    {
+      "name": "ickt",
+      "description": "Multi-section line identifier (must begin with &). (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; NXTMSL properly initialized."
+    },
+    {
+      "value": "= 1",
+      "description": "Bus not found; NXTMSL may not be used."
+    },
+    {
+      "value": "= 2",
+      "description": "& not the first character of ‘ICKT’; NXTMSL may not be used."
+    },
+    {
+      "value": "= 3",
+      "description": "Multi-section line not found; NXTMSL may not be used."
+    }
+  ]
+}

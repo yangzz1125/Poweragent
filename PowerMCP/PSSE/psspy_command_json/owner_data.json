@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "owner_data",
+  "category": "Power Flow Data",
+  "description": "Use this API to modify owner data in the working case (see PSSE Program Operation Manual, Interarea Transfer Data). This API routine was first introduced in release 28.0.0. ierr = owner_data(iowner, owname)",
+  "python_syntax": "ierr = owner_data(iowner, owname)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "iowner",
+      "description": "Owner number between 1 and 9999. (input; no default allowed)."
+    },
+    {
+      "name": "owname",
+      "description": "Owner name. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid owner number."
+    },
+    {
+      "value": "= 2",
+      "description": "owner table is full."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - no equipment is assigned to owner."
+    }
+  ]
+}

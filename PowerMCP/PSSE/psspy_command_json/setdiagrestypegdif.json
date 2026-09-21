@@ -1,0 +1,35 @@
+{
+  "module": "psspy",
+  "function_name": "setdiagrestypegdif",
+  "category": "Diagram View",
+  "description": "Use this API to set the type of results displayed in the active Slider diagram to the differences in values between the current network case and a supplied comparison case. This API routine was first introduced in release 30.0.0. setdiagrestypegdif(namearg, sfile)",
+  "python_syntax": "setdiagrestypegdif(namearg, sfile)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "namearg",
+      "description": "Flag indicating how to match up buses in the two cases. (input)."
+    },
+    {
+      "name": "sfile",
+      "description": "Name of an existing saved case to compare the current case against. (input)."
+    }
+  ],
+  "return_values": [],
+  "allowed_values": {
+    "namearg": [
+      {
+        "value": "= 0",
+        "description": "by bus number only."
+      },
+      {
+        "value": "= 1",
+        "description": "by extended bus name only."
+      },
+      {
+        "value": "= 2",
+        "description": "by both number and name."
+      }
+    ]
+  }
+}

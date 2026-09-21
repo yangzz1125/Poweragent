@@ -1,0 +1,30 @@
+{
+  "module": "psspy",
+  "function_name": "inibus",
+  "category": "Single Element Data",
+  "description": "Initializes the bus fetching routine ‘NXTBUS’ for retrieving buses in ascending numerical order. Dummy buses for multisection lines are included. Hidden star point buses of three-winding transformers are excluded. This API routine was first introduced in release 28.0.0. ierr = inibus(ibus)",
+  "python_syntax": "ierr = inibus(ibus)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Starting bus number, 0 for first bus in ordered list. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error; ‘NXTBUS’ is properly initialized."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found; ‘NXTBUS’ may not be used."
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "module": "psspy",
+  "function_name": "mbidgne",
+  "category": "Power Flow Data",
+  "description": "Use this API routine to change the GNE device name of the specified GNE device. This API routine was first introduced in release 32.0.2. ierr = mbidgne(name, namnew)",
+  "python_syntax": "ierr = mbidgne(name, namnew)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Name of the gne device for which the gne device name is to be changed. (input; no default allowed)."
+    },
+    {
+      "name": "namnew",
+      "description": "New name to be assigned to the gne device. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "GNE device NAME not found."
+    },
+    {
+      "value": "= 2",
+      "description": "GNE device NEWNAM already exists."
+    },
+    {
+      "value": "= 3",
+      "description": "a non-blank new identifier must be specified."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

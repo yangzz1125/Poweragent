@@ -1,0 +1,82 @@
+{
+  "module": "psspy",
+  "function_name": "swsint",
+  "category": "Single Element Data",
+  "description": "This API routine is obsolete. It has been replaced by the API routine SWSINT_2, and is implemented by a call to SWSINT_2. Use this API to return switched shunt ‘1’ integer parameters. This API routine was first introduced in release 28.0.0. ierr, ival = swsint(ibus, string)",
+  "python_syntax": "ierr, ival = swsint(ibus, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the switched shunt quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "ival",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= STATION",
+        "description": "Bus IBUS substation number (returned as 0 if bus IBUS is not in a substation)."
+      },
+      {
+        "value": "= SECTION",
+        "description": "Bus IBUS bus section number (returned as 0 if bus IBUS is not in a substation)."
+      },
+      {
+        "value": "= NODE",
+        "description": "Number of the node to which the switched shunt is connected (returned as 0 if bus IBUS is not in a substation)."
+      },
+      {
+        "value": "= MODE",
+        "description": "Control mode."
+      },
+      {
+        "value": "= STATUS",
+        "description": "Status flag."
+      },
+      {
+        "value": "= ADJM",
+        "description": "Adjustment method."
+      },
+      {
+        "value": "= REMOTE",
+        "description": "Bus number of regulated bus; zero for none."
+      },
+      {
+        "value": "= IREG",
+        "description": "Bus number of regulated bus; zero for none."
+      },
+      {
+        "value": "= NREG",
+        "description": "Node number of regulated node."
+      },
+      {
+        "value": "= BLOCKS",
+        "description": "Number of blocks."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IVAL’ returned."
+    },
+    {
+      "value": "> 0",
+      "description": "SWSINT_2 error code."
+    }
+  ]
+}

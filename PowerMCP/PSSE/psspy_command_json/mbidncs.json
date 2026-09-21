@@ -1,0 +1,46 @@
+{
+  "module": "psspy",
+  "function_name": "mbidncs",
+  "category": "Fault Analysis Data",
+  "description": "Use this API to change the table name of the specified non-conventional source fault contribution table in the working case. This API routine was first introduced in release 35.2.0. ierr = mbidncs(name, namnew)",
+  "python_syntax": "ierr = mbidncs(name, namnew)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Name of the ncsfcc table for which the ncsfcc table name is to be changed. (input; no default allowed)."
+    },
+    {
+      "name": "namnew",
+      "description": "New name to be assigned to the ncsfcc table. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "NCSFCC table NAME not found."
+    },
+    {
+      "value": "= 2",
+      "description": "NCSFCC table NEWNAM already exists."
+    },
+    {
+      "value": "= 3",
+      "description": "a non-blank new identifier must be specified."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

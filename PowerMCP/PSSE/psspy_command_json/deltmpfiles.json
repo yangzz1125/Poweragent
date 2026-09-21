@@ -1,0 +1,21 @@
+{
+  "module": "psspy",
+  "function_name": "deltmpfiles",
+  "category": "Power Flow Operation",
+  "description": "Delete closed temporary files. PSSE creates a subdirectory within the user’s “temporary” directory; only files there are removed. This API routine was first introduced in release 32.2.0. ierr = deltmpfiles()",
+  "python_syntax": "ierr = deltmpfiles()",
+  "return_type": "error_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": ""
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

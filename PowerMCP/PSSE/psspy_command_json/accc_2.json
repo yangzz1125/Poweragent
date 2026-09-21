@@ -1,0 +1,86 @@
+{
+  "module": "psspy",
+  "function_name": "accc_2",
+  "category": "Power Flow Operation",
+  "description": "This API routine is obsolete. It has been replaced by the API routine accc_with_dsp_3, and is implemented by a call to accc_with_dsp_3. Use this API to apply the AC contingency calculation function (activity ACCC). This API routine was first introduced in release 33.0.0. ierr = accc_2(tol, options, dfxfile, accfile, thrfile)",
+  "python_syntax": "ierr = accc_2(tol, options, dfxfile, accfile, thrfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "tol",
+      "description": "Mismatch tolerance. (input; Newton solution convergence tolerance, TOLN, by default)."
+    },
+    {
+      "name": "options",
+      "description": "An array of nine elements specifying solution options. (input)."
+    },
+    {
+      "name": "dfxfile",
+      "description": "Name of the distribution factor data file. (input; no default allowed)."
+    },
+    {
+      "name": "accfile",
+      "description": "Name of the contingency solution output file. (input; no default allowed)."
+    },
+    {
+      "name": "thrfile",
+      "description": "Name of the load throwover data file; blank for none. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Is an error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "options": [
+      {
+        "value": "OPTIONS(1)",
+        "description": "tap adjustment flag (tap adjustment option setting by default)."
+      },
+      {
+        "value": "OPTIONS(2)",
+        "description": "area interchange adjustment flag (area interchange adjustment option setting by default)."
+      },
+      {
+        "value": "OPTIONS(3)",
+        "description": "phase shift adjustment flag (phase shift adjustment option setting by default)."
+      },
+      {
+        "value": "OPTIONS(4)",
+        "description": "dc tap adjustment flag (dc tap adjustment option setting by default)."
+      },
+      {
+        "value": "OPTIONS(5)",
+        "description": "switched shunt adjustment flag (switched shunt adjustment option setting by default)."
+      },
+      {
+        "value": "OPTIONS(6)",
+        "description": "solution method flag (0 by default)."
+      },
+      {
+        "value": "OPTIONS(7)",
+        "description": "non-divergent solution flag (non-divergent solution option setting by default)."
+      },
+      {
+        "value": "OPTIONS(8)",
+        "description": "induction motor treatment flag (0 by default)."
+      },
+      {
+        "value": "OPTIONS(9)",
+        "description": "induction machine failure flag (0 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "as for ACCC_WITH_DSP_3."
+    }
+  ]
+}

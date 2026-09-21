@@ -1,0 +1,86 @@
+{
+  "module": "psspy",
+  "function_name": "accc_multiple_merge",
+  "category": "Power Flow Operation",
+  "description": "Use this API to merge a number of AC contingency solution files (acc files) into one acc file. The acc files must be based on the same base case and MON file. This API routine was first introduced in release 34.0.0. ierr = accc_multiple_merge(option, nfiles, acfiles, accfile)",
+  "python_syntax": "ierr = accc_multiple_merge(option, nfiles, acfiles, accfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "option",
+      "description": "Options for merging acc files. (input)."
+    },
+    {
+      "name": "nfiles",
+      "description": "The number of contingency acc files to be merged. . (input)."
+    },
+    {
+      "name": "acfiles",
+      "description": "An array of nfiles elements specifying An array of names of acc files. . (input)."
+    },
+    {
+      "name": "accfile",
+      "description": "The name of the merged contingency acc file. . (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "option": [
+      {
+        "value": "= 0",
+        "description": "Do not merge .acc files if some .acc files have different solving options, sub files or .mon files."
+      },
+      {
+        "value": "= 1",
+        "description": "Merge the.acc files even if some .acc files have different solving options, sub files or .mon files."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occured."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid OPTION value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid NFILES value."
+    },
+    {
+      "value": "= 3",
+      "description": "error opening a Contingency Solution Output File."
+    },
+    {
+      "value": "= 4",
+      "description": "file is not in the form of a current Contingency Solution Output File."
+    },
+    {
+      "value": "= 5",
+      "description": "some input .acc files have different information (.sav, .sub, .mon, PSSE version, solution options)."
+    },
+    {
+      "value": "= 6",
+      "description": "error reading or writing Contingency Solution Output file."
+    },
+    {
+      "value": "= 7",
+      "description": "error reading a Contingency Solution Output File."
+    },
+    {
+      "value": "= 8",
+      "description": "error closing a Contingency Solution Output file."
+    },
+    {
+      "value": "= 9",
+      "description": "Prerequisite requirements for function not met."
+    }
+  ]
+}

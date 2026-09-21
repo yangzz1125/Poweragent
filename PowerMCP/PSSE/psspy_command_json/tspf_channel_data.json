@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "tspf_channel_data",
+  "category": "Time Series Power Flow Data",
+  "description": "Use this API to select time series power flow Cchannels. This API routine was first introduced in release 35.4.0. ierr = tspf_channel_data(element,field,option)",
+  "python_syntax": "ierr = tspf_channel_data(element,field,option)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "element",
+      "description": "Element to be monitored. (input)."
+    },
+    {
+      "name": "field",
+      "description": "Data quantity to be monitored. (input)."
+    },
+    {
+      "name": "option",
+      "description": "Flag to skip the monitored element. (input; 0 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 1",
+      "description": "element not found."
+    },
+    {
+      "value": "= 2",
+      "description": "Unrecognized data type of the element."
+    },
+    {
+      "value": "= 3",
+      "description": "element table is full."
+    },
+    {
+      "value": "= 4",
+      "description": "status is wrong."
+    },
+    {
+      "value": "= 5",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

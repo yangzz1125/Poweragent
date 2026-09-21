@@ -1,0 +1,66 @@
+{
+  "module": "psspy",
+  "function_name": "gic_brn_chng",
+  "category": "Gic Data",
+  "description": "Use this API to modify new GIC branch data from the working case. This API routine was first introduced in release 34.8.0. ierr = gic_brn_chng(ibus,jbus,ckt,realar)",
+  "python_syntax": "ierr = gic_brn_chng(ibus,jbus,ckt,realar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "From bus number of the branch as in the working case. (input; no default allowed)."
+    },
+    {
+      "name": "jbus",
+      "description": "To bus number of the branch as in the working case. (input; no default allowed)."
+    },
+    {
+      "name": "ckt",
+      "description": "Branch circuit identifier. (input; ‘1’ by default)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of five elementsNone. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "DC resistance of the branch in ohms/phase. When RBRN is not specified, working case resistance is used to determine RBRN. (0.0 by default), can also be specified with keyword ‘rbrn’."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "Real part of total branch GMD-induced geoelectric field in volts. When INDVP is not specified, it is calculated as per GMD event. (no default allowed), can also be specified with keyword ‘indvp’."
+      },
+      {
+        "value": "REALAR(3)",
+        "description": "Imaginary part of total branch GMD-induced geoelectric field in volts. When INDVP is not specified, it is calculated as per GMD event. (no default allowed), can also be specified with keyword ‘indvq’."
+      },
+      {
+        "value": "REALAR(4)",
+        "description": "DC resistance in ohms/phase of the line shunt at bus IBUS end of the branch. When RLNSHI=0.0 or not specified, there is no ground path this line shunt in DC network. (0.0 by default), can also be specified with keyword ‘rlnshi’."
+      },
+      {
+        "value": "REALAR(5)",
+        "description": "DC resistance in ohms/phase of the line shunt at bus JBUS end of the branch. When RLNSHJ=0.0 or not specified, there is no ground path this line shunt in DC network. (0.0 by default), can also be specified with keyword ‘rlnshj’."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

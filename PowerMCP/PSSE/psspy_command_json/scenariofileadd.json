@@ -1,0 +1,58 @@
+{
+  "module": "psspy",
+  "function_name": "scenariofileadd",
+  "category": "Scenarios",
+  "description": "Use this API to add a file to the specified group. This API routine was first introduced in release 33.0.0. ierr = scenariofileadd(sgroup, sfile, stype, load, sargs)",
+  "python_syntax": "ierr = scenariofileadd(sgroup, sfile, stype, load, sargs)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sgroup",
+      "description": "Name of the group to add a file to. (input; no default allowed)."
+    },
+    {
+      "name": "sfile",
+      "description": "Name of the file to add. (input; no default allowed)."
+    },
+    {
+      "name": "stype",
+      "description": "File type identifier for the specified file. (input; blank by default)."
+    },
+    {
+      "name": "load",
+      "description": "File’s position in the load order of its group. a load order of 0 specifies that the file is not loaded. (input; 0 by default)."
+    },
+    {
+      "name": "sargs",
+      "description": "Argument string to be used for the file when automatically opening the file. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "no Scenario in memory."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid file name."
+    },
+    {
+      "value": "= 3",
+      "description": "specified group not found."
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "module": "psspy",
+  "function_name": "apply_var_limits",
+  "category": "Power Flow Operation",
+  "description": "Use this API to specify or return the option for the default VAR limits setting; either apply automatically, apply immediately, ignore, or apply on a specific iteration This API routine was first introduced in release 35.0.0. ierr = apply_var_limits(ival) ierr, ival = apply_var_limits()",
+  "python_syntax": "ierr = apply_var_limits(ival) ierr, ival = apply_var_limits()",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ival",
+      "description": "Value of the option setting. (input; if Batch command, or for Python if specified as an argument, or for Fortran if IOCODE is 0, 0 by default; else output)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "ival": [
+      {
+        "value": "= -1",
+        "description": "ignore."
+      },
+      {
+        "value": "= 0",
+        "description": "apply immediately."
+      },
+      {
+        "value": "= >0",
+        "description": "apply on the specified iteration or when the largest reactive power mismatch is less than a pre-programmed tolerance."
+      },
+      {
+        "value": "= 99",
+        "description": "apply automatically."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid IVAL value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid IOCODE value."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "get_ext_rowcount",
+  "category": "Extension Data Access",
+  "description": "Use this API to get extension data table row count. This API routine was first introduced in release 35.1.0. ierr, nrows = get_ext_rowcount(tblname)",
+  "python_syntax": "ierr, nrows = get_ext_rowcount(tblname)",
+  "return_type": "error_and_count",
+  "parameters": [
+    {
+      "name": "tblname",
+      "description": "Extension table name. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "nrows",
+      "description": "Number of rows in table indicated by tblname. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘NROWS’ set."
+    },
+    {
+      "value": "= 1",
+      "description": "Table not found; ‘NROWS’ not set."
+    },
+    {
+      "value": "= 4",
+      "description": "Unknown error with data access; ‘NROWS’ not set."
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "zonnum",
+  "category": "Single Element Data",
+  "description": "Use this API to return the zone number. This API routine was first introduced in release 28.0.0. ierr, iar = zonnum(string)",
+  "python_syntax": "ierr, iar = zonnum(string)",
+  "return_type": "error_and_value",
+  "parameters": [
+    {
+      "name": "string",
+      "description": "Zone name (string. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code (integer. (output)."
+    },
+    {
+      "name": "iar",
+      "description": "Zone number (integer. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error, ‘IAR’ is returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Zone with name ‘STRING’ not found."
+    },
+    {
+      "value": "> 1",
+      "description": "Multiple zones with the name ‘STRING’ found, ‘IAR’ returned as lowest number of these."
+    }
+  ]
+}

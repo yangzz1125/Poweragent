@@ -1,0 +1,62 @@
+{
+  "module": "psspy",
+  "function_name": "strt",
+  "category": "Dynamic Simulation Operation",
+  "description": "This API routine is obsolete. It has been replaced by the API routine strt_2, and is implemented by a call to strt_2. Use this API to initialize a PSSE dynamic simulation for state-space simulations (i.e., in preparation for activity RUN) and to specify the channel output file into which the output channel values are to be recorded during the dynamic simulation. This API routine was first introduced in release 30.2.0. ierr = strt(option, outfile)",
+  "python_syntax": "ierr = strt(option, outfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "option",
+      "description": "Network solution convergence monitor option. (input; 0 by default)."
+    },
+    {
+      "name": "outfile",
+      "description": "Name of the channel output file (blank to bypass recording of the output channel values in a channel output file). (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "option": [
+      {
+        "value": "= 0",
+        "description": "print the convergence monitor only if it is enabled via the CM interrupt control code."
+      },
+      {
+        "value": "= 1",
+        "description": "automatically print the convergence monitor."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "generators are not converted."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid OPTION value."
+    },
+    {
+      "value": "= 3",
+      "description": "Prior initialization modified the loads–pick up original converted case."
+    },
+    {
+      "value": "= 4",
+      "description": "error opening OUTFILE."
+    },
+    {
+      "value": "= 5",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

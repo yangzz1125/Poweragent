@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "scenariosave",
+  "category": "Scenarios",
+  "description": "Use this API to save the currently open Scenario. This API routine was first introduced in release 33.0.0. ierr = scenariosave(sfile)",
+  "python_syntax": "ierr = scenariosave(sfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sfile",
+      "description": "Full file path to save the scenario file to. (input; unchanged by default. When the default is used the Scenario will be saved to the last filename given in a SCENARIONEW, SCENARIOOPEN, or SCENARIOSAVE operation, if a call to SCENARIONEW with default arguments was the previous call, the Scenario will not be saved due to no previous filename being available)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "no Scenario in memory."
+    },
+    {
+      "value": "= 2",
+      "description": "file path is invalid."
+    }
+  ]
+}

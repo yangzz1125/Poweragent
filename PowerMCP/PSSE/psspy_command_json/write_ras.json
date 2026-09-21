@@ -1,0 +1,126 @@
+{
+  "module": "psspy",
+  "function_name": "write_ras",
+  "category": "Using The Vendor Neutral Contingency And Ras Auxiliary File",
+  "description": "Use this API to write a Contingency Definition and Remedial Actions auxiliary file from memory. This API routine was first introduced in release 34.6.0. ierr = write_ras(ifile,options)",
+  "python_syntax": "ierr = write_ras(ifile,options)",
+  "return_type": "error_only_write_file",
+  "parameters": [
+    {
+      "name": "ifile",
+      "description": "Contingency definition and remedial actions auxiliary file. (input; no default allowed)."
+    },
+    {
+      "name": "options",
+      "description": "An array of eight elements. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "(output)."
+    }
+  ],
+  "allowed_values": {
+    "options": [
+      {
+        "value": "OPTIONS(1)",
+        "description": "write records with bad ID fields (0 by default), can also be specified with keyword ‘includebadid’."
+      },
+      {
+        "value": "= 0",
+        "description": "do not write records with bad ID fields."
+      },
+      {
+        "value": "= 1",
+        "description": "write records with bad ID fields."
+      },
+      {
+        "value": "OPTIONS(2)",
+        "description": "write internal contents of fields with bad data (0 by default), can also be specified with keyword ‘includebaddata’."
+      },
+      {
+        "value": "= 0",
+        "description": "do not write fields with bad data."
+      },
+      {
+        "value": "= 1",
+        "description": "write all fields with data input, even if values are invalid."
+      },
+      {
+        "value": "OPTIONS(3)",
+        "description": "write all defined fields (0 by default), can also be specified with keyword ‘includeallfields’."
+      },
+      {
+        "value": "= 0",
+        "description": "write fields only if at least on record had data for that field."
+      },
+      {
+        "value": "= 1",
+        "description": "write all fields, including fields defined for RAS analysis for which no data was entered on any record."
+      },
+      {
+        "value": "= 3",
+        "description": "label."
+      },
+      {
+        "value": "OPTIONS(4)",
+        "description": "(future use) write bus numbers or names (0 by default), can also be specified with keyword ‘busoutput’."
+      },
+      {
+        "value": "= 0",
+        "description": "bus number."
+      },
+      {
+        "value": "= 1",
+        "description": "bus name."
+      },
+      {
+        "value": "= 2",
+        "description": "bus name and kV."
+      },
+      {
+        "value": "= 3",
+        "description": "label."
+      },
+      {
+        "value": "OPTIONS(5)",
+        "description": "future use (0 by default)."
+      },
+      {
+        "value": "OPTIONS(6)",
+        "description": "future use (0 by default)."
+      },
+      {
+        "value": "OPTIONS(7)",
+        "description": "future use (0 by default)."
+      },
+      {
+        "value": "OPTIONS(8)",
+        "description": "future use (0 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "Contingency and Remedial Actions definitions not in memory."
+    },
+    {
+      "value": "= 2",
+      "description": "error opening IFILE."
+    },
+    {
+      "value": "= 3",
+      "description": "error closing IFILE."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

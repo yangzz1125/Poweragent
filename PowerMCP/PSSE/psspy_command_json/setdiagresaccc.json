@@ -1,0 +1,85 @@
+{
+  "module": "psspy",
+  "function_name": "setdiagresaccc",
+  "category": "Diagram View",
+  "description": "This API routine is obsolete. It has been replaced by the API routine setdiagresaccc_2, and is implemented by a call to setdiagresaccc_2. Use this API to set the ACCC analysis annotation options in the active Slider diagram. This API routine was first introduced in release 32.0.0. setdiagresaccc(rate, cntgopt, contour, cntropt, loadper, file)",
+  "python_syntax": "setdiagresaccc(rate, cntgopt, contour, cntropt, loadper, file)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "rate",
+      "description": "Branch rating set. (input)."
+    },
+    {
+      "name": "cntgopt",
+      "description": "Contingencies to view. (input)."
+    },
+    {
+      "name": "contour",
+      "description": "Contour selection. (input)."
+    },
+    {
+      "name": "cntropt",
+      "description": "Contour value selection. (input)."
+    },
+    {
+      "name": "loadper",
+      "description": "Loading percentage. (input)."
+    },
+    {
+      "name": "file",
+      "description": "Accc contingency solution data file. (input; Not Allowed by default)."
+    }
+  ],
+  "return_values": [],
+  "allowed_values": {
+    "rate": [
+      {
+        "value": "= 1",
+        "description": "RateA."
+      },
+      {
+        "value": "= 2",
+        "description": "RateB."
+      },
+      {
+        "value": "= 3",
+        "description": "RateC."
+      }
+    ],
+    "cntgopt": [
+      {
+        "value": "= 1",
+        "description": "all contingencies."
+      },
+      {
+        "value": "= 2",
+        "description": "contingencies causing overload violations."
+      },
+      {
+        "value": "= 3",
+        "description": "contingencies causing any violations."
+      }
+    ],
+    "contour": [
+      {
+        "value": "= 0",
+        "description": "display data values as text."
+      },
+      {
+        "value": "= 1",
+        "description": "display data values as a contour."
+      }
+    ],
+    "cntropt": [
+      {
+        "value": "= 0",
+        "description": "contour bus voltages."
+      },
+      {
+        "value": "= 1",
+        "description": "contour % branch flows."
+      }
+    ]
+  }
+}

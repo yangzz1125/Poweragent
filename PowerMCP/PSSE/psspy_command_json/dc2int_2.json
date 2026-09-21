@@ -1,0 +1,102 @@
+{
+  "module": "psspy",
+  "function_name": "dc2int_2",
+  "category": "Single Element Data",
+  "description": "This API is the second release of the API that returns integer two-terminal dc line quantities. This API routine was first introduced in release 31.0.0. ierr, ival = dc2int_2(name, string)",
+  "python_syntax": "ierr, ival = dc2int_2(name, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Two-terminal dc line name. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the dc line quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "ival",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= MDC",
+        "description": "dc line control mode."
+      },
+      {
+        "value": "= RECT",
+        "description": "Bus number of rectifier end of dc line."
+      },
+      {
+        "value": "= INV",
+        "description": "Bus number of inverter end of dc line."
+      },
+      {
+        "value": "= METER",
+        "description": "Bus number of metered end of dc line."
+      },
+      {
+        "value": "= NBR",
+        "description": "Number of bridges in series rectifier end."
+      },
+      {
+        "value": "= NBI",
+        "description": "Number of bridges in series inverter end."
+      },
+      {
+        "value": "= ICR",
+        "description": "Rectifier firing angle measuring bus."
+      },
+      {
+        "value": "= ICI",
+        "description": "Inverter firing angle measuring bus."
+      },
+      {
+        "value": "= NDR",
+        "description": "Rectifier firing angle measuring node."
+      },
+      {
+        "value": "= NDI",
+        "description": "Inverter firing angle measuring node."
+      },
+      {
+        "value": "= ANSTTR",
+        "description": "Firing angle status rectifier end: (-1) low; (0) regulating; (1) high."
+      },
+      {
+        "value": "= ANSTTI",
+        "description": "Firing angle status inverter end: (-1) low; (0) regulating (1) high."
+      },
+      {
+        "value": "= TPSTTR",
+        "description": "Tap status rectifier end: (-1) low; (0) regulating; (1) high; (-2) locked."
+      },
+      {
+        "value": "= TPSTTI",
+        "description": "Tap status inverter end: (-1) low; (0) regulating; (1) high; (-2) locked."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 2",
+      "description": "dc line not found; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid value of ‘STRING’; ‘IVAL’ unchanged."
+    }
+  ]
+}

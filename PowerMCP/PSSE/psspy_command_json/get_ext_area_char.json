@@ -1,0 +1,54 @@
+{
+  "module": "psspy",
+  "function_name": "get_ext_area_char",
+  "category": "Extension Data Access",
+  "description": "Use this API to get area character extension data. This API routine was first introduced in release 35.1.0. ierr, cval = get_ext_area_char(iarea, string)",
+  "python_syntax": "ierr, cval = get_ext_area_char(iarea, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "iarea",
+      "description": "Area iarea. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the extension area field desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "cval",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘CVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Element not found; ‘CVAL’ not returned."
+    },
+    {
+      "value": "= 2",
+      "description": "Bad value of ‘STRING’; ‘CVAL’ not returned."
+    },
+    {
+      "value": "= 3",
+      "description": "Bad data type for field ‘STRING’; ‘CVAL’ not returned."
+    },
+    {
+      "value": "= 4",
+      "description": "Unknown error with data access; ‘CVAL’ not returned."
+    },
+    {
+      "value": "= 10",
+      "description": "API Prereqs not met; ‘CVAL’ not returned."
+    }
+  ]
+}

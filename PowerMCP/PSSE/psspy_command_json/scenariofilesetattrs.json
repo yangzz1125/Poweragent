@@ -1,0 +1,58 @@
+{
+  "module": "psspy",
+  "function_name": "scenariofilesetattrs",
+  "category": "Scenarios",
+  "description": "Use this API to modify the attributes of the specified file. This API routine was first introduced in release 33.0.0. ierr = scenariofilesetattrs(sgroup, sfile, stype, load, sargs)",
+  "python_syntax": "ierr = scenariofilesetattrs(sgroup, sfile, stype, load, sargs)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sgroup",
+      "description": "Group that contains the specified file. (input; no default allowed)."
+    },
+    {
+      "name": "sfile",
+      "description": "Name of the file whose attributes are to be modified. (input; no default allowed)."
+    },
+    {
+      "name": "stype",
+      "description": "New file type identifier for the specified file. (input; ignored by default)."
+    },
+    {
+      "name": "load",
+      "description": "File’s new position in the load order of its group. a load order of 0 specifies that the file is not loaded. (input; ignored by default)."
+    },
+    {
+      "name": "sargs",
+      "description": "Argument string to be used for the file when automatically opening the file. (input; ignored by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "no Scenario in memory."
+    },
+    {
+      "value": "= 3",
+      "description": "specified group not found."
+    },
+    {
+      "value": "= 4",
+      "description": "specified file not found."
+    }
+  ]
+}

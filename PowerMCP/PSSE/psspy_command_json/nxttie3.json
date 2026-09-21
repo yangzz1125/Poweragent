@@ -1,0 +1,45 @@
+{
+  "module": "psspy",
+  "function_name": "nxttie3",
+  "category": "Single Element Data",
+  "description": "Use this API to return the next tie branch from an area, including three-winding transformers. IBUS will be in the area IAR specified in the call to ‘INITIE’ or ‘INITIX’, which must be called first; JBUS will be in the other area. This API routine was first introduced in release 28.0.0. ierr, ibus, jbus, kbus, ickt = nxttie3()",
+  "python_syntax": "ierr, ibus, jbus, kbus, ickt = nxttie3()",
+  "return_type": "error_and_multi_value",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "ibus",
+      "description": "From bus number. (output)."
+    },
+    {
+      "name": "jbus",
+      "description": "To bus number. (output)."
+    },
+    {
+      "name": "kbus",
+      "description": "Third bus number. (output)."
+    },
+    {
+      "name": "ickt",
+      "description": "Circuit identifier. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error, ‘IBUS’, ‘JBUS’, ‘KBUS’, and ‘ICKT’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "No more tie branches from area ‘IAR’; ‘IBUS’, ‘JBUS’, ‘KBUS’ returned set to 0, ‘ICKT’ returned set to spaces."
+    },
+    {
+      "value": "= 2",
+      "description": "‘INITIE’ or ‘INITIX’ was not called; ‘IBUS’, ‘JBUS’, ‘KBUS’, and ‘ICKT’ unchanged."
+    }
+  ]
+}

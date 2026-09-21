@@ -1,0 +1,88 @@
+{
+  "module": "psspy",
+  "function_name": "transfer_chng",
+  "category": "Power Flow Data",
+  "description": "Use this API routine to modify the data of an inter-area transfer in the working case (see PSSE Program Operation Manual, Zone Data). This API routine was first introduced in release 33.0.0. ierr = transfer_chng(applyf, arfrom, arto, trid, realar)",
+  "python_syntax": "ierr = transfer_chng(applyf, arfrom, arto, trid, realar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "applyf",
+      "description": "Applyf = 1 to modify from and to area desired net interchange entries (desint). (input)."
+    },
+    {
+      "name": "arfrom",
+      "description": "From area number (must be an area already defined). (input; no default allowed)."
+    },
+    {
+      "name": "arto",
+      "description": "To area number (must be an area already defined). (input; no default allowed)."
+    },
+    {
+      "name": "trid",
+      "description": "Inter-area transfer identifier. (input; ‘1’ by default)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of one elementsNone. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "applyf": [
+      {
+        "value": "= 2",
+        "description": "to leave DESINT entries unchanged. (Input; no default allowed.)."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "PTRAN, MW comprising this inter-area transfer (0.0 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid area number."
+    },
+    {
+      "value": "= 2",
+      "description": "inter-area transfer identifier is more than one character."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid APPLYF value."
+    },
+    {
+      "value": "= 8",
+      "description": "area not found."
+    },
+    {
+      "value": "= 9",
+      "description": "inter-area transfer not found."
+    },
+    {
+      "value": "= 10",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - Changes to desired area net interchanges if APPLYF = 1."
+    }
+  ]
+}

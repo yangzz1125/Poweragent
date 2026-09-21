@@ -1,0 +1,473 @@
+{
+  "module": "psspy",
+  "function_name": "setdiagrespflowcheck",
+  "category": "Diagram View",
+  "description": "This API routine is obsolete. It has been replaced by the API routine setdiagrespflowcheck_2, and is implemented by a call to setdiagrespflowcheck_2. Use this API to specify the Power Flow voltage and range checking annotation options in the active Slider diagram. This API routine was first introduced in release 30.0.0. setdiagrespflowcheck(logarr, vlnwdt, vlnsty, vltval, vlnclrr, vlnclrg, vlnclrb, linlod, llodarr, llodclr, busvlt, busvltwdt, busclrr, busclrg, busclrb, outarr, outclr, brnrat, barpercent, barclrr, barclrg, barclrb)",
+  "python_syntax": "setdiagrespflowcheck(logarr, vlnwdt, vlnsty, vltval, vlnclrr, vlnclrg, vlnclrb, linlod, llodarr, llodclr, busvlt, busvltwdt, busclrr, busclrg, busclrb, outarr, outclr, brnrat, barpercent, barclrr, barclrg, barclrb)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "logarr",
+      "description": "An array of four elements specifying flag to determine what annotation is applied. Each element has only two possible values. 0 = FALSE and 1 = TRUE. (input)."
+    },
+    {
+      "name": "vlnwdt",
+      "description": "An array of eight elements specifying the width of diagram elements that fall in the appropriate voltage range. (input)."
+    },
+    {
+      "name": "vlnsty",
+      "description": "An array of eight elements specifying the line style of diagram elements that fall in the appropriate voltage range. (input)."
+    },
+    {
+      "name": "vltval",
+      "description": "An array of 7 elements specifying set the voltage ranges used to assign annotation diagram. Base voltage values should be in ascending order. (input)."
+    },
+    {
+      "name": "vlnclrr",
+      "description": "An array of eight elements specifying the Red color component of diagram elements that fall in the appropriate voltage range, 0->255. (input)."
+    },
+    {
+      "name": "vlnclrg",
+      "description": "An array of eight elements specifying the Green color component of diagram elements that fall in the appropriate voltage range, 0->255. (input)."
+    },
+    {
+      "name": "vlnclrb",
+      "description": "An array of eight elements specifying the Blue color component of diagram elements that fall in the appropriate voltage range, 0->255. (input)."
+    },
+    {
+      "name": "linlod",
+      "description": "% loading for line rating. (input)."
+    },
+    {
+      "name": "llodarr",
+      "description": "An array of two elements specifying the width and style of diagram items that exceed the % of line loading. (input)."
+    },
+    {
+      "name": "llodclr",
+      "description": "An array of three elements specifying color for lines that exceed the % loading rating, LINLOD. (input)."
+    },
+    {
+      "name": "busvlt",
+      "description": "An array of two elements specifying the bus voltage check Min and Max. (input)."
+    },
+    {
+      "name": "busvltwdt",
+      "description": "An array of two elements specifying the bus voltage check width of diagram items at the Min and Max. (input)."
+    },
+    {
+      "name": "busclrr",
+      "description": "An array of two elements specifying the Red color component of diagram elements that fall in the appropriate bus voltage range, 0->255. (input)."
+    },
+    {
+      "name": "busclrg",
+      "description": "An array of two elements specifying the Green color component of diagram elements that fall in the appropriate bus voltage range, 0->255. (input)."
+    },
+    {
+      "name": "busclrb",
+      "description": "An array of two elements specifying the Blue color component of diagram elements that fall in the appropriate bus voltage range, 0->255. (input)."
+    },
+    {
+      "name": "outarr",
+      "description": "An array of two elements specifying the width and style of diagram items that are out of service. (input)."
+    },
+    {
+      "name": "outclr",
+      "description": "An array of three elements specifying color for diagram items that are out of service. (input)."
+    },
+    {
+      "name": "brnrat",
+      "description": "Branch rating set. (input)."
+    },
+    {
+      "name": "barpercent",
+      "description": "An array of four elements specifying percent overloads at which to apply different color schemes for the line loading charts on the diagram. (input)."
+    },
+    {
+      "name": "barclrr",
+      "description": "An array of four elements specifying the Red color component for the line loading charts on the diagram, 0->255. (input)."
+    },
+    {
+      "name": "barclrg",
+      "description": "An array of four elements specifying the Green color component for the line loading charts on the diagram, 0->255. (input)."
+    },
+    {
+      "name": "barclrb",
+      "description": "An array of four elements specifying the Blue color component for the line loading charts on the diagram, 0->255. (input)."
+    }
+  ],
+  "return_values": [],
+  "allowed_values": {
+    "logarr": [
+      {
+        "value": "LOGARR(1)",
+        "description": "use Voltage level thresholds."
+      },
+      {
+        "value": "LOGARR(2)",
+        "description": "use Line ratings."
+      },
+      {
+        "value": "LOGARR(3)",
+        "description": "use Bus voltage."
+      },
+      {
+        "value": "LOGARR(4)",
+        "description": "use out of service."
+      }
+    ],
+    "vlnwdt": [
+      {
+        "value": "VLNWDT(1)",
+        "description": "base voltage < VLTVAL(1)."
+      },
+      {
+        "value": "VLNWDT(2)",
+        "description": "VLTVAL(1) >= base voltage < VLTVAL(2)."
+      },
+      {
+        "value": "VLNWDT(3)",
+        "description": "VLTVAL(2) >= base voltage < VLTVAL(3)."
+      },
+      {
+        "value": "VLNWDT(4)",
+        "description": "VLTVAL(3) >= base voltage < VLTVAL(4)."
+      },
+      {
+        "value": "VLNWDT(5)",
+        "description": "VLTVAL(4) >= base voltage < VLTVAL(5)."
+      },
+      {
+        "value": "VLNWDT(6)",
+        "description": "VLTVAL(5) >= base voltage < VLTVAL(6)."
+      },
+      {
+        "value": "VLNWDT(7)",
+        "description": "VLTVAL(6) >= base voltage < VLTVAL(7)."
+      },
+      {
+        "value": "VLNWDT(8)",
+        "description": "base voltage >= VLTVAL(7)."
+      }
+    ],
+    "vlnsty": [
+      {
+        "value": "VLNSTY(1)",
+        "description": "base voltage < VLTVAL(1)."
+      },
+      {
+        "value": "VLNSTY(2)",
+        "description": "VLTVAL(1) >= base voltage < VLTVAL(2)."
+      },
+      {
+        "value": "VLNSTY(3)",
+        "description": "VLTVAL(2) >= base voltage < VLTVAL(3)."
+      },
+      {
+        "value": "VLNSTY(4)",
+        "description": "VLTVAL(3) >= base voltage < VLTVAL(4)."
+      },
+      {
+        "value": "VLNSTY(5)",
+        "description": "VLTVAL(4) >= base voltage < VLTVAL(5)."
+      },
+      {
+        "value": "VLNSTY(6)",
+        "description": "VLTVAL(5) >= base voltage < VLTVAL(6)."
+      },
+      {
+        "value": "VLNSTY(7)",
+        "description": "VLTVAL(6) >= base voltage < VLTVAL(7)."
+      },
+      {
+        "value": "VLNSTY(8)",
+        "description": "base voltage >= VLTVAL(7)."
+      }
+    ],
+    "vlnclrr": [
+      {
+        "value": "VLNCLRR(1)",
+        "description": "base voltage < VLTVAL(1)."
+      },
+      {
+        "value": "VLNCLRR(2)",
+        "description": "VLTVAL(1) >= base voltage < VLTVAL(2)."
+      },
+      {
+        "value": "VLNCLRR(3)",
+        "description": "VLTVAL(2) >= base voltage < VLTVAL(3)."
+      },
+      {
+        "value": "VLNCLRR(4)",
+        "description": "VLTVAL(3) >= base voltage < VLTVAL(4)."
+      },
+      {
+        "value": "VLNCLRR(5)",
+        "description": "VLTVAL(4) >= base voltage < VLTVAL(5)."
+      },
+      {
+        "value": "VLNCLRR(6)",
+        "description": "VLTVAL(5) >= base voltage < VLTVAL(6)."
+      },
+      {
+        "value": "VLNCLRR(7)",
+        "description": "VLTVAL(6) >= base voltage < VLTVAL(7)."
+      },
+      {
+        "value": "VLNCLRR(8)",
+        "description": "base voltage >= VLTVAL(7)."
+      }
+    ],
+    "vlnclrg": [
+      {
+        "value": "VLNCLRG(1)",
+        "description": "base voltage < VLTVAL(1)."
+      },
+      {
+        "value": "VLNCLRG(2)",
+        "description": "VLTVAL(1) >= base voltage < VLTVAL(2)."
+      },
+      {
+        "value": "VLNCLRG(3)",
+        "description": "VLTVAL(2) >= base voltage < VLTVAL(3)."
+      },
+      {
+        "value": "VLNCLRG(4)",
+        "description": "VLTVAL(3) >= base voltage < VLTVAL(4)."
+      },
+      {
+        "value": "VLNCLRG(5)",
+        "description": "VLTVAL(4) >= base voltage < VLTVAL(5)."
+      },
+      {
+        "value": "VLNCLRG(6)",
+        "description": "VLTVAL(5) >= base voltage < VLTVAL(6)."
+      },
+      {
+        "value": "VLNCLRG(7)",
+        "description": "VLTVAL(6) >= base voltage < VLTVAL(7)."
+      },
+      {
+        "value": "VLNCLRG(8)",
+        "description": "base voltage >= VLTVAL(7)."
+      }
+    ],
+    "vlnclrb": [
+      {
+        "value": "VLNCLRB(1)",
+        "description": "base voltage < VLTVAL(1)."
+      },
+      {
+        "value": "VLNCLRB(2)",
+        "description": "VLTVAL(1) >= base voltage < VLTVAL(2)."
+      },
+      {
+        "value": "VLNCLRB(3)",
+        "description": "VLTVAL(2) >= base voltage < VLTVAL(3)."
+      },
+      {
+        "value": "VLNCLRB(4)",
+        "description": "VLTVAL(3) >= base voltage < VLTVAL(4)."
+      },
+      {
+        "value": "VLNCLRB(5)",
+        "description": "VLTVAL(4) >= base voltage < VLTVAL(5)."
+      },
+      {
+        "value": "VLNCLRB(6)",
+        "description": "VLTVAL(5) >= base voltage < VLTVAL(6)."
+      },
+      {
+        "value": "VLNCLRB(7)",
+        "description": "VLTVAL(6) >= base voltage < VLTVAL(7)."
+      },
+      {
+        "value": "VLNCLRB(8)",
+        "description": "base voltage >= VLTVAL(7)."
+      }
+    ],
+    "llodarr": [
+      {
+        "value": "LLODARR(1)",
+        "description": "Line width >= 1."
+      },
+      {
+        "value": "LLODARR(2)",
+        "description": "Line style."
+      }
+    ],
+    "llodclr": [
+      {
+        "value": "LLODCLR(1)",
+        "description": "0->255 Red component."
+      },
+      {
+        "value": "LLODCLR(2)",
+        "description": "0->255 Blue component."
+      },
+      {
+        "value": "LLODCLR(3)",
+        "description": "0->255 Green component."
+      }
+    ],
+    "busvlt": [
+      {
+        "value": "BUSVLT(1)",
+        "description": "Min. bus voltage."
+      },
+      {
+        "value": "BUSVLT(2)",
+        "description": "Max. bus voltage."
+      }
+    ],
+    "busvltwdt": [
+      {
+        "value": "BUSVLTWDT(1)",
+        "description": "Min. bus voltage width >= 1."
+      },
+      {
+        "value": "BUSVLTWDT(2)",
+        "description": "Max. bus voltage width >= 1."
+      }
+    ],
+    "busclrr": [
+      {
+        "value": "BUSCLRR(1)",
+        "description": "base voltage < BUSVLTWDT(1)."
+      },
+      {
+        "value": "BUSCLRR(2)",
+        "description": "BUSVLTWDT(1) >= base voltage < BUSVLTWDT (2)."
+      }
+    ],
+    "busclrg": [
+      {
+        "value": "BUSCLRG(1)",
+        "description": "base voltage < BUSVLTWDT (1)."
+      },
+      {
+        "value": "BUSCLRG(2)",
+        "description": "BUSVLTWDT (1) >= base voltage < BUSVLTWDT (2)."
+      }
+    ],
+    "busclrb": [
+      {
+        "value": "BUSCLRB(1)",
+        "description": "base voltage < BUSVLTWDT (1)."
+      },
+      {
+        "value": "BUSCLRB(2)",
+        "description": "BUSVLTWDT(1) >= base voltage < BUSVLTWDT (2)."
+      }
+    ],
+    "outarr": [
+      {
+        "value": "OUTARR(1)",
+        "description": "Line width >= 1."
+      },
+      {
+        "value": "OUTARR(2)",
+        "description": "Line style."
+      }
+    ],
+    "outclr": [
+      {
+        "value": "OUTCLR(1)",
+        "description": "0->255 Red component."
+      },
+      {
+        "value": "OUTCLR(2)",
+        "description": "0->255 Blue component."
+      },
+      {
+        "value": "OUTCLR(3)",
+        "description": "0->255 Green component."
+      }
+    ],
+    "brnrat": [
+      {
+        "value": "= 0",
+        "description": "RateA."
+      },
+      {
+        "value": "= 1",
+        "description": "RateB."
+      },
+      {
+        "value": "= 2",
+        "description": "RateC."
+      }
+    ],
+    "barpercent": [
+      {
+        "value": "BARPERCENT(1)",
+        "description": "first overload voltage point."
+      },
+      {
+        "value": "BARPERCENT(2)",
+        "description": "second overload voltage point."
+      },
+      {
+        "value": "BARPERCENT(3)",
+        "description": "third overload voltage point."
+      },
+      {
+        "value": "BARPERCENT(4)",
+        "description": "fourth overload voltage point."
+      }
+    ],
+    "barclrr": [
+      {
+        "value": "BARCLRR(1)",
+        "description": "first line loading chart red value."
+      },
+      {
+        "value": "BARCLRR(2)",
+        "description": "second line loading chart red value."
+      },
+      {
+        "value": "BARCLRR(3)",
+        "description": "third line loading chart red value."
+      },
+      {
+        "value": "BARCLRR(4)",
+        "description": "fourth line loading chart red value."
+      }
+    ],
+    "barclrg": [
+      {
+        "value": "BARCLRG(1)",
+        "description": "first line loading chart green value."
+      },
+      {
+        "value": "BARCLRG(2)",
+        "description": "second line loading chart green value."
+      },
+      {
+        "value": "BARCLRG(3)",
+        "description": "third line loading chart green value."
+      },
+      {
+        "value": "BARCLRG(4)",
+        "description": "fourth line loading chart green value."
+      }
+    ],
+    "barclrb": [
+      {
+        "value": "BARCLRB(1)",
+        "description": "first line loading chart blue value."
+      },
+      {
+        "value": "BARCLRB(2)",
+        "description": "second line loading chart blue value."
+      },
+      {
+        "value": "BARCLRB(3)",
+        "description": "third line loading chart blue value."
+      },
+      {
+        "value": "BARCLRB(4)",
+        "description": "fourth line loading chart blue value."
+      }
+    ]
+  }
+}

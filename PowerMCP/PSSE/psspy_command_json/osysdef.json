@@ -1,0 +1,46 @@
+{
+  "module": "psspy",
+  "function_name": "osysdef",
+  "category": "Owner Subsystems",
+  "description": "Use this API to set the definition of an owner subsystem. This can be used to toggle a particular owner subsystem on or off. This API routine was first introduced in release 31.0.0. ierr = osysdef(sid, defined)",
+  "python_syntax": "ierr = osysdef(sid, defined)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid owner subsystem id. valid owner subsystem ids range from 0 to 11. (input)."
+    },
+    {
+      "name": "defined",
+      "description": "Flag to mark the owner subsystem as undefined/defined. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error return. (output)."
+    }
+  ],
+  "allowed_values": {
+    "defined": [
+      {
+        "value": "= 0",
+        "description": "mark the owner subsystem as undefined."
+      },
+      {
+        "value": "= 1",
+        "description": "mark the owner subsystem as defined."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "SID is not valid."
+    }
+  ]
+}

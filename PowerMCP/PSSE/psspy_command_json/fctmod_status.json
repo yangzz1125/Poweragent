@@ -1,0 +1,58 @@
+{
+  "module": "psspy",
+  "function_name": "fctmod_status",
+  "category": "Facts Device Models",
+  "description": "Use this API to change the status of the FACTS device model at a specified FACTS device. This API routine was first introduced in release 30.2.0. ierr = fctmod_status(fd, status)",
+  "python_syntax": "ierr = fctmod_status(fd, status)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "fd",
+      "description": "Quoted name of the facts device for which the model status is to be changed; if an unquoted integer value is specified, the api converts it to a left-justified name. (input; no default allowed)."
+    },
+    {
+      "name": "status",
+      "description": "New model status. (input; 1 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "status": [
+      {
+        "value": "= 0",
+        "description": "out-of-service."
+      },
+      {
+        "value": "= 1",
+        "description": "in-service."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "FACTS device not found."
+    },
+    {
+      "value": "= 2",
+      "description": "no model at this FACTS device."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid STATUS value."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

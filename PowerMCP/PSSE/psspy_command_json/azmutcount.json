@@ -1,0 +1,130 @@
+{
+  "module": "psspy",
+  "function_name": "azmutcount",
+  "category": "Zero Sequence Mutuals Data",
+  "description": "Use this API to return the number of array entries required to accommodate the data to be returned by the remaining members of the branch zero sequence mutual data family. This API routine was first introduced in release 33.12.0 and 34.0.2. ierr, mutuals = azmutcount(sid, owner, ties, flag, brns)",
+  "python_syntax": "ierr, mutuals = azmutcount(sid, owner, ties, flag, brns)",
+  "return_type": "error_and_count",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the bus subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "owner",
+      "description": "A flag indicating owner usage if ownership is a subsystem selection criterion (ignored if sid is negative). (input; 1 by default)."
+    },
+    {
+      "name": "ties",
+      "description": "A flag indicating which subsystem branches to include (ignored if sid is negative). (input; 1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem branches to include. (input; 1 by default)."
+    },
+    {
+      "name": "brns",
+      "description": "A flag indicating which subsystem branches to include (ignored if sid is negative). (input; 1 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "mutuals",
+      "description": "Number of array entries required for the subsystem indicated by sid and owner that meet the editing criteria indicated by ties, flag and brns. (output)."
+    }
+  ],
+  "allowed_values": {
+    "sid": [
+      {
+        "value": "< 0",
+        "description": "to instruct the API to assume a subsystem containing all buses in the working case."
+      },
+      {
+        "value": ">= 0",
+        "description": "valid bus subsystem identifier. Valid subsystem identifiers range from 0 to 11. Subsystem SID must have been previously defined."
+      }
+    ],
+    "owner": [
+      {
+        "value": "= 1",
+        "description": "to use bus ownership."
+      },
+      {
+        "value": "= 2",
+        "description": "to use branch ownership."
+      }
+    ],
+    "ties": [
+      {
+        "value": "= 1",
+        "description": "for interior subsystem branches only."
+      },
+      {
+        "value": "= 2",
+        "description": "for subsystem tie branches only."
+      },
+      {
+        "value": "= 3",
+        "description": "for both interior subsystem branches and tie branches."
+      }
+    ],
+    "flag": [
+      {
+        "value": "= 1",
+        "description": "for both mutually coupled branches must be in-service."
+      },
+      {
+        "value": "= 2",
+        "description": "for all mutually coupled branches."
+      }
+    ],
+    "brns": [
+      {
+        "value": "= 1",
+        "description": "for at least one mutually coupled branch in subsystem."
+      },
+      {
+        "value": "= 2",
+        "description": "for both mutually coupled branches in subsystem."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error, MUTUALS returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty; MUTUALS returned as 0."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value; MUTUALS returned as 0."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid OWNER value; MUTUALS returned as 0."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid TIES value; MUTUALS returned as 0."
+    },
+    {
+      "value": "= 5",
+      "description": "Invalid FLAG value; MUTUALS returned as 0."
+    },
+    {
+      "value": "= 6",
+      "description": "Invalid BRNS value; MUTUALS returned as 0."
+    },
+    {
+      "value": "= 10",
+      "description": "Sequence data not in case."
+    }
+  ]
+}

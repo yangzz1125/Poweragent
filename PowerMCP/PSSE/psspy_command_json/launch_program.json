@@ -1,0 +1,28 @@
+{
+  "module": "psspy",
+  "function_name": "launch_program",
+  "category": "Non-Engineering",
+  "description": "This API routine was first introduced in release 34.1.0. ierr = launch_program(program, numargs, args)",
+  "python_syntax": "ierr = launch_program(program, numargs, args)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "program",
+      "description": "Name of program to launch. (input)."
+    },
+    {
+      "name": "numargs",
+      "description": "Number of argument strings to pass to launched program. (input)."
+    },
+    {
+      "name": "args",
+      "description": "An array of NUMARGS elements specifying argument strings to pass to launched program. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "None. (output)."
+    }
+  ]
+}

@@ -1,0 +1,178 @@
+{
+  "module": "psspy",
+  "function_name": "mwmi",
+  "category": "Power Flow Operation",
+  "description": "Use this API to apply the MAPP MW-mile calculation . This API routine was first introduced in release 30.0.0. ierr = mwmi(sid, all, status, values, inpfile, trnfile, outfile)",
+  "python_syntax": "ierr = mwmi(sid, all, status, values, inpfile, trnfile, outfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid area subsystem identifier. valid subsystem identifiers range from 0 to 11. area subsystem sid must have been previously defined. (input; 0 by default)."
+    },
+    {
+      "name": "all",
+      "description": "All areas or specified subsystem flag. (input; 1 by default)."
+    },
+    {
+      "name": "status",
+      "description": "An array of four elements specifying solution options. (input)."
+    },
+    {
+      "name": "values",
+      "description": "An array of three elements specifying solution parameters. (input)."
+    },
+    {
+      "name": "inpfile",
+      "description": "Name of mwmi data file. (input; no default allowed)."
+    },
+    {
+      "name": "trnfile",
+      "description": "Name of the transactions raw data file; blank for none. (input; blank by default)."
+    },
+    {
+      "name": "outfile",
+      "description": "Name of the detailed branch output file; blank for none. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 0",
+        "description": "only areas in area subsystem SID are in the pool."
+      },
+      {
+        "value": "= 1",
+        "description": "all areas are in the pool."
+      }
+    ],
+    "status": [
+      {
+        "value": "STATUS(1)",
+        "description": "rating used (default rating set program option setting by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "RATEA."
+      },
+      {
+        "value": "= 2",
+        "description": "RATEB."
+      },
+      {
+        "value": "= 3",
+        "description": "RATEC."
+      },
+      {
+        "value": "STATUS(2)",
+        "description": "option to list data (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no."
+      },
+      {
+        "value": "= 1",
+        "description": "yes."
+      },
+      {
+        "value": "STATUS(3)",
+        "description": "option to include buyer and seller branches in the detailed branch output file (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no."
+      },
+      {
+        "value": "= 1",
+        "description": "yes."
+      },
+      {
+        "value": "STATUS(4)",
+        "description": "action code if the MW mismatch exceeds 0.5 MW (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "discontinue."
+      },
+      {
+        "value": "= 1",
+        "description": "continue."
+      }
+    ],
+    "values": [
+      {
+        "value": "VALUES(1)",
+        "description": "percent load reduction for calculating capacity for serving load (10.0 by default)."
+      },
+      {
+        "value": "VALUES(2)",
+        "description": "MW for each transaction; used when no transactions data file is specified (10.0 by default)."
+      },
+      {
+        "value": "VALUES(3)",
+        "description": "distribution factor threshold for detailed branch (0.0 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ALL value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid STATUS value."
+    },
+    {
+      "value": "= 4",
+      "description": "invalid VALUES value."
+    },
+    {
+      "value": "= 5",
+      "description": "INPFILE is blank."
+    },
+    {
+      "value": "= 6",
+      "description": "generators are converted."
+    },
+    {
+      "value": "= 7",
+      "description": "buses in island(s) without a swing bus; use activity TREE."
+    },
+    {
+      "value": "= 8",
+      "description": "largest mismatch exceeds 0.5 MW."
+    },
+    {
+      "value": "= 9",
+      "description": "error opening INPFILE."
+    },
+    {
+      "value": "= 10",
+      "description": "error opening OUTFILE."
+    },
+    {
+      "value": "= 11",
+      "description": "error opening TRNFILE."
+    },
+    {
+      "value": "= 12",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

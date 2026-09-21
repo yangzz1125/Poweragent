@@ -1,0 +1,91 @@
+{
+  "module": "psspy",
+  "function_name": "setdiagresaccc_3",
+  "category": "Diagram View",
+  "description": "Use this API to set the ACCC analysis annotation options in the active Slider diagram. This API routine was first introduced in release 34.0.0. setdiagresaccc_3(setscope, cntgopt, selcntg, contour, cntropt)",
+  "python_syntax": "setdiagresaccc_3(setscope, cntgopt, selcntg, contour, cntropt)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "setscope",
+      "description": "Scope of the api. (input)."
+    },
+    {
+      "name": "cntgopt",
+      "description": "Contingency to view. (input)."
+    },
+    {
+      "name": "selcntg",
+      "description": "Selected contingency. (input)."
+    },
+    {
+      "name": "contour",
+      "description": "Contour selection. (input)."
+    },
+    {
+      "name": "cntropt",
+      "description": "Contour value selection. (input)."
+    }
+  ],
+  "return_values": [],
+  "allowed_values": {
+    "setscope": [
+      {
+        "value": "= 0",
+        "description": "defaults for new diagrams."
+      },
+      {
+        "value": "= 1",
+        "description": "defaults for new diagrams and settings for the active diagram."
+      },
+      {
+        "value": "= 2",
+        "description": "settings for the active diagram."
+      }
+    ],
+    "cntgopt": [
+      {
+        "value": "= 1",
+        "description": "all contingencies."
+      },
+      {
+        "value": "= 2",
+        "description": "contingencies causing overload violations."
+      },
+      {
+        "value": "= 3",
+        "description": "contingencies causing any violations."
+      }
+    ],
+    "selcntg": [
+      {
+        "value": "= 0",
+        "description": "none selected."
+      },
+      {
+        "value": "!= 0",
+        "description": "selected contingency from list determined by CNTGOPT."
+      }
+    ],
+    "contour": [
+      {
+        "value": "= 0",
+        "description": "display data values as text."
+      },
+      {
+        "value": "= 1",
+        "description": "display data values as a contour."
+      }
+    ],
+    "cntropt": [
+      {
+        "value": "= 0",
+        "description": "contour bus voltages."
+      },
+      {
+        "value": "= 1",
+        "description": "contour % branch flows."
+      }
+    ]
+  }
+}

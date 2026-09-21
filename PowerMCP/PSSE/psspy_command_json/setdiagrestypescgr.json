@@ -1,0 +1,115 @@
+{
+  "module": "psspy",
+  "function_name": "setdiagrestypescgr",
+  "category": "Diagram View",
+  "description": "Use this API to set the type of results displayed in the active Slider diagram to the results of a short circuit analysis. This API routine was first introduced in release 30.0.0. setdiagrestypescgr(options)",
+  "python_syntax": "setdiagrestypescgr(options)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "options",
+      "description": ""
+    }
+  ],
+  "return_values": [],
+  "allowed_values": {
+    "options": [
+      {
+        "value": "OPTIONS(1)",
+        "description": "faults."
+      },
+      {
+        "value": "= 0",
+        "description": "3 phase."
+      },
+      {
+        "value": "= 1",
+        "description": "3 phase and L-G."
+      },
+      {
+        "value": "OPTIONS(2)",
+        "description": "L-G fault."
+      },
+      {
+        "value": "= 0",
+        "description": "A phase."
+      },
+      {
+        "value": "= 1",
+        "description": "zero sequence."
+      },
+      {
+        "value": "OPTIONS(3)",
+        "description": "fault location."
+      },
+      {
+        "value": "= 0",
+        "description": "all."
+      },
+      {
+        "value": "> 0",
+        "description": "faulted bus number."
+      },
+      {
+        "value": "OPTIONS(4)",
+        "description": "flat conditions."
+      },
+      {
+        "value": "= 0",
+        "description": "no."
+      },
+      {
+        "value": "= 1",
+        "description": "yes."
+      },
+      {
+        "value": "OPTIONS(5)",
+        "description": "double precision."
+      },
+      {
+        "value": "= 0",
+        "description": "no."
+      },
+      {
+        "value": "= 1",
+        "description": "yes (ignored)."
+      },
+      {
+        "value": "OPTIONS(6)",
+        "description": "dc line/FACTS device option."
+      },
+      {
+        "value": "= 0",
+        "description": "block."
+      },
+      {
+        "value": "= 1",
+        "description": "model as load."
+      },
+      {
+        "value": "OPTIONS(7)",
+        "description": "zero sequence transformer impedance correction option."
+      },
+      {
+        "value": "= 0",
+        "description": "ignore."
+      },
+      {
+        "value": "= 1",
+        "description": "apply."
+      },
+      {
+        "value": "OPTIONS(8)",
+        "description": "branch quantity option."
+      },
+      {
+        "value": "= 0",
+        "description": "currents."
+      },
+      {
+        "value": "= 1",
+        "description": "apparent impedances."
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "module": "psspy",
+  "function_name": "scenariotrackfilenum",
+  "category": "Scenarios",
+  "description": "Use this API to retrieve the current number of files being tracked. This API routine was first introduced in release 33.0.0. ierr, nfiles = scenariotrackfilenum()",
+  "python_syntax": "ierr, nfiles = scenariotrackfilenum()",
+  "return_type": "error_and_count",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "nfiles",
+      "description": "Number of files currently being tracked. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    }
+  ]
+}

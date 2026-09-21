@@ -1,0 +1,54 @@
+{
+  "module": "psspy",
+  "function_name": "dfax_contingency",
+  "category": "Power Flow Operation",
+  "description": "Use this API to combine one contingency in the first Distribution Factor file with one contingency in the second Distribution Factor file and so on, till specified contingency level is reached, to create multiple event contingencies and then export resulting contingencies to user defined report device. This API routine was first introduced in release 31.0.0. ierr = dfax_contingency(option, confile, dfxfile)",
+  "python_syntax": "ierr = dfax_contingency(option, confile, dfxfile)",
+  "return_type": "error_only_report",
+  "parameters": [
+    {
+      "name": "option",
+      "description": "Level of multiple contingencies. (input; from 1 to 3; 1 by default)."
+    },
+    {
+      "name": "confile",
+      "description": "Name of contingency description data file. (input; blank by default)."
+    },
+    {
+      "name": "dfxfile",
+      "description": "An array of OPTION elements specifying OPTION names of Distribution Factor Data Files where contingencies are combined each other to build OPTION level contingencies. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid OPTION value."
+    },
+    {
+      "value": "= 2",
+      "description": "Input file is not a Distribution Factor Data File."
+    },
+    {
+      "value": "= 3",
+      "description": "error reading Distribution Factor Data File."
+    },
+    {
+      "value": "= 51",
+      "description": "error opening Contingency Description Data File."
+    },
+    {
+      "value": "= 52",
+      "description": "error opening Distribution Factor Data File."
+    }
+  ]
+}

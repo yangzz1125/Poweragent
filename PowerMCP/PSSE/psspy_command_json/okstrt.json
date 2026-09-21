@@ -1,0 +1,29 @@
+{
+  "module": "psspy",
+  "function_name": "okstrt",
+  "category": "Single Element Data",
+  "description": "Routine which may be called after activity STRT or MSTR to indicate the presence of INITIAL CONDITIONS SUSPECT errors (for activity STRT) or at least one MODEL NOT AVAILABLE IN MSTR/MRUN message (for MSTR). This API routine was first introduced in release 28.0.0. ierr = okstrt()",
+  "python_syntax": "ierr = okstrt()",
+  "return_type": "error_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": ""
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Simulation initialization errors were detected."
+    },
+    {
+      "value": "= 9",
+      "description": "Dynamics data not present in working memory."
+    }
+  ]
+}

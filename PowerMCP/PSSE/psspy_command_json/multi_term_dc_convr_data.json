@@ -1,0 +1,178 @@
+{
+  "module": "psspy",
+  "function_name": "multi_term_dc_convr_data",
+  "category": "Power Flow Data",
+  "description": "Use this API to modify the data of a dc converter of an existing multi-terminal dc line in the working case or to add a new converter to a multi-terminal dc line in the working case (see PSSE Program Operation Manual, Multi-Terminal DC Transmission Line Data). The dc line must have previously been specified via the MULTI_TERM_DC_LINE_DATA API. This API routine was first introduced in release 30.0.0. ierr, realaro = multi_term_dc_convr_data(dc, intgar, realari)",
+  "python_syntax": "ierr, realaro = multi_term_dc_convr_data(dc, intgar, realari)",
+  "return_type": "error_and_record",
+  "parameters": [
+    {
+      "name": "dc",
+      "description": "Quoted name of the multi-terminal dc line for which data for a converter is to be specified; if an unquoted integer value is specified, the api converts it to a left-justified name. (input; no default allowed)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of four elementsNone. (input)."
+    },
+    {
+      "name": "realari",
+      "description": "An array of thirteen elements specifying corresponding to values REALAR(1) through REALAR(13) as described above. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "realaro",
+      "description": "An array of four elements specifying corresponding to values REALAR(14) through REALAR(17) as described above. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "IB, converter bus number (no default allowed)."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "N, number of bridges in series (1 by default)."
+      },
+      {
+        "value": "INTGAR(3)",
+        "description": "CNVCOD, pole code (0 by default)."
+      },
+      {
+        "value": ">= 0",
+        "description": "for a positive pole converter."
+      },
+      {
+        "value": "< 0",
+        "description": "for a negative pole converter."
+      },
+      {
+        "value": "INTGAR(4)",
+        "description": "VCCFLG, pole’s voltage controlling converter flag (0 by default)."
+      },
+      {
+        "value": "<= 0",
+        "description": "no."
+      },
+      {
+        "value": "> 0",
+        "description": "yes."
+      }
+    ],
+    "realari": [
+      {
+        "value": "REALARI(1)",
+        "description": "SETVL, scheduled current (amps), power (MW) or voltage (kv) (0.0 by default)."
+      },
+      {
+        "value": "REALARI(2)",
+        "description": "MN, minimum firing angle (0.0 by default)."
+      },
+      {
+        "value": "REALARI(3)",
+        "description": "MX, maximum firing angle (90.0 by default)."
+      },
+      {
+        "value": "REALARI(4)",
+        "description": "TR, transformer ratio (1.0 by default)."
+      },
+      {
+        "value": "REALARI(5)",
+        "description": "RC, commutating resistance (0.0 by default)."
+      },
+      {
+        "value": "REALARI(6)",
+        "description": "XC, commutating reactance (0.0 by default)."
+      },
+      {
+        "value": "REALARI(7)",
+        "description": "EBAS, primary base ac voltage (1.0 by default)."
+      },
+      {
+        "value": "REALARI(8)",
+        "description": "TAP, tap setting (1.0 by default)."
+      },
+      {
+        "value": "REALARI(9)",
+        "description": "TPMX, maximum tap setting (1.5 by default)."
+      },
+      {
+        "value": "REALARI(10)",
+        "description": "TPMN, minimum tap setting (0.51 by default)."
+      },
+      {
+        "value": "REALARI(11)",
+        "description": "TSTP, tap step (0.00625 by default)."
+      },
+      {
+        "value": "REALARI(12)",
+        "description": "MARG, margin (pu) (0.0 by default)."
+      },
+      {
+        "value": "REALARI(13)",
+        "description": "DCPF, converter participation factor (1.0 by default)."
+      }
+    ],
+    "realaro": [
+      {
+        "value": "REALARO(1)",
+        "description": "firing angle (returned)."
+      },
+      {
+        "value": "REALARO(2)",
+        "description": "converter current (amps) (returned)."
+      },
+      {
+        "value": "REALARO(3)",
+        "description": "active power into converter (MW or kW) (returned)."
+      },
+      {
+        "value": "REALARO(4)",
+        "description": "reactive power into converter (MW or kW) (returned)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "dc line not found."
+    },
+    {
+      "value": "= 2",
+      "description": "no converter bus is specified."
+    },
+    {
+      "value": "= 3",
+      "description": "converter bus not found."
+    },
+    {
+      "value": "= 4",
+      "description": "too many converters specified."
+    },
+    {
+      "value": "= 5",
+      "description": "node-breaker terminal connection table is full."
+    },
+    {
+      "value": "= 6",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - converter bus is a dummy bus of a multi-section line. - multi-section line grouping deleted. - invalid number of bridges. - invalid base ac voltage. - converter maximum angle is less than its minimum angle. - converter maximum tap is less than its minimum tap. - invalid tap step. - dc voltage setpoint is not positive. - scheduled voltage is less than mode switch voltage. - this converter bus is now on the other pole; it is no longer the voltage controlling converter of its previous pole. - there is no voltage controlling converter on a pole. - this converter replaces another converter as its pole’s voltage controlling converter. - this converter must remain its pole’s voltage controlling converter because it is the only converter on the pole."
+    }
+  ]
+}

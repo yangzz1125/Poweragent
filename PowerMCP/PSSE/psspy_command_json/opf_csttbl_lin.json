@@ -1,0 +1,62 @@
+{
+  "module": "psspy",
+  "function_name": "opf_csttbl_lin",
+  "category": "Optimal Power Flow Data",
+  "description": "Use this API to add a linear cost curve table record to the working case. It may also be used to modify an existing linear cost curve table record. This API routine was first introduced in release 28.0.0. ierr = opf_csttbl_lin(tbl, labl, nprs, xy)",
+  "python_syntax": "ierr = opf_csttbl_lin(tbl, labl, nprs, xy)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "tbl",
+      "description": "Linear cost curve table number. (input; no default allowed)."
+    },
+    {
+      "name": "labl",
+      "description": "Cost table description of, at most, 12 characters. (input; ‘ ‘ by default)."
+    },
+    {
+      "name": "nprs",
+      "description": "Number of (xi, yi) coordinate pairs being specified. (input; no default allowed)."
+    },
+    {
+      "name": "xy",
+      "description": "An array of 2*NPRS elements specifying Coordinate pairs from 1 to NPRS. Xi is the control variable value. Yi is the total cost or energy consumption value. (input; Xi and Yi have defaults of 0.0 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "cost table data table is full."
+    },
+    {
+      "value": "= 2",
+      "description": "exceeded maximum number of allowable cost curve data pairs."
+    },
+    {
+      "value": "= 3",
+      "description": "number of data pairs must not be less than zero."
+    },
+    {
+      "value": "= 4",
+      "description": "incremental costs are not monotonically increasing."
+    },
+    {
+      "value": "= 5",
+      "description": "MW values are not monotonically increasing."
+    },
+    {
+      "value": "= 6",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

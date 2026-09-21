@@ -1,0 +1,78 @@
+{
+  "module": "psspy",
+  "function_name": "accc_ras",
+  "category": "Using The Vendor Neutral Contingency And Ras Auxiliary File",
+  "description": "This API routine is obsolete. It has been replaced by the API routine accc_ras_2, and is implemented by a call to accc_ras_2. Use this API to run AC contingency calculation function with RAS model. This API routine was first introduced in release 34.6.0. ierr = accc_ras(accfile)",
+  "python_syntax": "ierr = accc_ras(accfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "accfile",
+      "description": "Is the name of the contingency solution output file. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Is the error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid tolerance value from RAS file."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid solution option value from RAS file."
+    },
+    {
+      "value": "= 3",
+      "description": "generators are converted."
+    },
+    {
+      "value": "= 4",
+      "description": "buses in island(s) without a swing bus; use activity TREE."
+    },
+    {
+      "value": "= 5",
+      "description": "largest mismatch exceeds mismatch tolerance."
+    },
+    {
+      "value": "= 7",
+      "description": "too many islands in base case."
+    },
+    {
+      "value": "= 9",
+      "description": "no AC Contingency Solution Output File specified."
+    },
+    {
+      "value": "= 10",
+      "description": "in-service induction machines are in the “stalled” or “tripped” state."
+    },
+    {
+      "value": "= 11",
+      "description": "buses with bus type code and series element status inconsistencies."
+    },
+    {
+      "value": "= 16",
+      "description": "Contingency and Remedial Actions definitions not in memory."
+    },
+    {
+      "value": "= 17",
+      "description": "Contingency and Remedial Actions definitions have not been validated."
+    },
+    {
+      "value": "= 51",
+      "description": "error opening Contingency Solution Output File."
+    },
+    {
+      "value": "= 56",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "module": "psspy",
+  "function_name": "join",
+  "category": "Power Flow Operation",
+  "description": "The API combines two buses into a single bus. This API routine was first introduced in release 28.0.0. ierr = join(ibus, jbus, status) ierr, idtrns = join(ibus, jbus, status, nid)",
+  "python_syntax": "ierr = join(ibus, jbus, status) ierr, idtrns = join(ibus, jbus, status, nid)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Retained bus number. (input)."
+    },
+    {
+      "name": "jbus",
+      "description": "Eliminated bus number. (input)."
+    },
+    {
+      "name": "status",
+      "description": "Line shunt option. (input; 1 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "status": [
+      {
+        "value": "= 0",
+        "description": "ignore line shunts of deleted branches."
+      },
+      {
+        "value": "= 1",
+        "description": "add line shunts of deleted branches to shunt of retained bus."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid STATUS value."
+    },
+    {
+      "value": "= 2",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid NID value."
+    },
+    {
+      "value": "= 4",
+      "description": "IDTRNS is not big enough."
+    },
+    {
+      "value": "= 5",
+      "description": "JOIN processing error."
+    },
+    {
+      "value": "= 6",
+      "description": "bus is part of a substation."
+    },
+    {
+      "value": "= 7",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

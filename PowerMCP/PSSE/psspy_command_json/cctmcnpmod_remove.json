@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "cctmcnpmod_remove",
+  "category": "Cct Models",
+  "description": "Use this API to remove a machine protection model attached to the specified machine. This API routine was first introduced in release 33.0.0. ierr = cctmcnpmod_remove(ibus, id, model)",
+  "python_syntax": "ierr = cctmcnpmod_remove(ibus, id, model)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Machine bus number. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Machine identifier. (input; no default allowed)."
+    },
+    {
+      "name": "model",
+      "description": "Name of the model to be removed. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "no machine protection model at this machine."
+    },
+    {
+      "value": "= 2",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 3",
+      "description": "machine not found."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

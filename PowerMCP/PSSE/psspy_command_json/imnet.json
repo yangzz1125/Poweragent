@@ -1,0 +1,72 @@
+{
+  "module": "psspy",
+  "function_name": "imnet",
+  "category": "Power Flow Operation",
+  "description": "Use this API routine to change the status of induction machines that are in-service to out-of- service, and to replace the power flowing from the network into the machine with constant power load. The routine can be directed to process either all in-service induction machines, all in- service induction machines within a specified subsystem, or all in-service induction machines outside of a specified subsystem. This API routine was first introduced in release 33.0.0. ierr = imnet(sid, all, inout)",
+  "python_syntax": "ierr = imnet(sid, all, inout)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid subsystem identifier. valid subsystem identifiers range from 0 to 11. subsystem sid must have been previously defined. (input; 0 by default)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem flag. (input; 1 by default)."
+    },
+    {
+      "name": "inout",
+      "description": "Include or exclude induction machines in subsystem sid. (input; 0 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 0",
+        "description": "process only induction machines within, or outside of, subsystem SID."
+      },
+      {
+        "value": "= 1",
+        "description": "process all induction machines."
+      }
+    ],
+    "inout": [
+      {
+        "value": "= 0",
+        "description": "process only machines inside of subsystem SID."
+      },
+      {
+        "value": "= 1",
+        "description": "process only machines outside of subsystem SID."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ALL value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid INOUT value."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "module": "psspy",
+  "function_name": "three_wnd_p_channel",
+  "category": "Assign Branch Quantities To Output Channels",
+  "description": "Use this API to add an output channel containing the active power flow at the from bus of a specified three-winding transformer, along with a corresponding call to the FLOW3 monitoring model. This API routine was first introduced in release 30.2.0. ierr = three_wnd_p_channel(status, id, ident)",
+  "python_syntax": "ierr = three_wnd_p_channel(status, id, ident)",
+  "return_type": "error_only_output_channel",
+  "parameters": [
+    {
+      "name": "status",
+      "description": "An array of six elementsNone. (input)."
+    },
+    {
+      "name": "id",
+      "description": "Circuit identifier. (input; ‘1’ by default)."
+    },
+    {
+      "name": "ident",
+      "description": "Identifier to be assigned to the channel. if a blank channel identifier is specified, the api generates an appropriate channel identifier. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "status": [
+      {
+        "value": "STATUS(1)",
+        "description": "starting channel index, or -1 for the next available (next available by default)."
+      },
+      {
+        "value": "STATUS(2)",
+        "description": "starting VAR index, or -1 for the next available (next available by default)."
+      },
+      {
+        "value": "STATUS(3)",
+        "description": "starting ICON index, or -1 for the next available (next available by default)."
+      },
+      {
+        "value": "STATUS(4)",
+        "description": "number of the from bus of the three-winding transformer for which active power flow is to be placed in an channel (no default allowed)."
+      },
+      {
+        "value": "STATUS(5)",
+        "description": "number of one of the to buses of the three-winding transformer for which active power flow is to be placed in an channel (no default allowed)."
+      },
+      {
+        "value": "STATUS(6)",
+        "description": "number of the third bus of the three-winding transformer for which active power flow is to be placed in an channel (no default allowed)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid STATUS value."
+    },
+    {
+      "value": "= 2",
+      "description": "starting channel number is greater than the largest channel number allowed."
+    },
+    {
+      "value": "= 3",
+      "description": "starting VAR index is greater than the largest VAR index allowed."
+    },
+    {
+      "value": "= 4",
+      "description": "starting ICON index is greater than the largest ICON index allowed."
+    },
+    {
+      "value": "= 5",
+      "description": "model FLOW3 needs 4 ICONs but the last one exceeds the largest ICON index allowed."
+    },
+    {
+      "value": "= 6",
+      "description": "the maximum number of channel monitoring models has already been specified."
+    },
+    {
+      "value": "= 7",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 8",
+      "description": "branch not found."
+    },
+    {
+      "value": "= 9",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

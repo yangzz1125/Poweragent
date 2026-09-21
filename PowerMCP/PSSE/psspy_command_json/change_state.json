@@ -1,0 +1,54 @@
+{
+  "module": "psspy",
+  "function_name": "change_state",
+  "category": "Dynamic Simulation Operation",
+  "description": "Use this API to change the value of an element of the STATE array, as well as the values of the corresponding time derivative (DSTATE) and the associated memory cell used in the integration algorithm (STORE). The element is specified relative to the beginning of the STATE array. Note: Although this API may be used to modify the value of a state variable (along with its time derivative and integration memory cell) used in state-space and response test simulations, this ability is rarely required in normal dynamic simulation work. Unless some very special purpose is being served, this API should not be used. Note: This API should never be used during extended term simulations. This API routine was first introduced in release 30.2.0. ierr = change_state(number, newval)",
+  "python_syntax": "ierr = change_state(number, newval)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "number",
+      "description": "State number or array index (must be between 1 and the number of states allowed at the present size level of psse). (input; no default allowed)."
+    },
+    {
+      "name": "newval",
+      "description": "An array of three elementsNone. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "newval": [
+      {
+        "value": "NEWVAL(1)",
+        "description": "new value to be assigned to STATE(NUMBER) (unchanged by default)."
+      },
+      {
+        "value": "NEWVAL(2)",
+        "description": "new value to be assigned to DSTATE(NUMBER) (unchanged by default)."
+      },
+      {
+        "value": "NEWVAL(3)",
+        "description": "new value to be assigned to STORE(NUMBER) (unchanged by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid STATE index."
+    },
+    {
+      "value": "= 2",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

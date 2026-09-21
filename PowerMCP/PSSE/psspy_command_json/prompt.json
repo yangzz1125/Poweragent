@@ -1,0 +1,15 @@
+{
+  "module": "psspy",
+  "function_name": "prompt",
+  "category": "Non-Engineering",
+  "description": "Send output to prompt device. Prompts are stored until the next terminal input request. Up to 36 buffers of up to 220 characters can be stored. Note: A Fortran program that calls PROMPTS must also include a USE statement for KEYPTI. This API routine was first introduced in release 30.0.0. prompt(string)",
+  "python_syntax": "prompt(string)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "string",
+      "description": ""
+    }
+  ],
+  "return_values": []
+}

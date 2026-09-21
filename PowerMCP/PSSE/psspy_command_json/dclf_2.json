@@ -1,0 +1,188 @@
+{
+  "module": "psspy",
+  "function_name": "dclf_2",
+  "category": "Power Flow Operation",
+  "description": "Use this API routine to apply the dc analogy network solution algorithm to the network modeled in the working case (activity DCLF). This API routine was first introduced in release 34.0.0. ierr = dclf_2(sid, all, status, brnch, ckt)",
+  "python_syntax": "ierr = dclf_2(sid, all, status, brnch, ckt)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Is a valid subsystem identifier. valid subsystem identifiers range from 0 to 11. subsystem sid must have been previously defined. (input; 1 by default)."
+    },
+    {
+      "name": "all",
+      "description": "Is the all buses or specified subsystem flag. (input; 1 by default)."
+    },
+    {
+      "name": "status",
+      "description": "An array of 6 elements specifying calculation options. The value of each element is as follows. (input)."
+    },
+    {
+      "name": "brnch",
+      "description": "An array of 3 elements specifying calculation options. The use of each element is as follows. The values can all be zero or defaulted if no branch is to be changed for the solution. (input)."
+    },
+    {
+      "name": "ckt",
+      "description": "Is the circuit id of the branch for which status is to be changed for the solution. (input; ‘1’ by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Is the error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "status": [
+      {
+        "value": "STATUS(1)",
+        "description": "is the loss estimate option. (1 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "exclude loss estimate."
+      },
+      {
+        "value": "= 1",
+        "description": "use the present voltage vector to estimate losses and apply them as “hidden loads”."
+      },
+      {
+        "value": "STATUS(2)",
+        "description": "is the regulating phase shifter code (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "fixed phase shift angles in the base case and the change case."
+      },
+      {
+        "value": "= 1",
+        "description": "fixed MW in the base case, fixed phase shift angles in the change case."
+      },
+      {
+        "value": "= 2",
+        "description": "fixed MW in the base case and the change case."
+      },
+      {
+        "value": "STATUS(3)",
+        "description": "is rating used in tabulating the report; 1 through 12 (default rating set program option setting by default)."
+      },
+      {
+        "value": "STATUS(4)",
+        "description": "is the voltage that should be saved. (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "original voltages."
+      },
+      {
+        "value": "= 1",
+        "description": "base case dc power flow voltages."
+      },
+      {
+        "value": "= 2",
+        "description": "change case dc power flow voltages."
+      },
+      {
+        "value": "STATUS(5)",
+        "description": "is status of the changed branch upon completion (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "leave unchanged."
+      },
+      {
+        "value": "= 1",
+        "description": "save changed status."
+      },
+      {
+        "value": "STATUS(6)",
+        "description": "is action code if the MW mismatch exceeds 0.5 MW. (1 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "discontinue."
+      },
+      {
+        "value": "= 1",
+        "description": "continue."
+      }
+    ],
+    "brnch": [
+      {
+        "value": "BRNCH(1)",
+        "description": "is the from bus of the branch for which status is to be changed for the solution (0 by default)."
+      },
+      {
+        "value": "BRNCH(2)",
+        "description": "is the to bus of the branch for which status is to be changed for the solution (0 by default)."
+      },
+      {
+        "value": "BRNCH(3)",
+        "description": "is the third bus connected by a three-winding transformer, or zero for a nontransformer branch or a two-winding transformer (0 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ALL value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid STATUS value."
+    },
+    {
+      "value": "= 4",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 5",
+      "description": "branch not found."
+    },
+    {
+      "value": "= 6",
+      "description": "three-winding transformer not found."
+    },
+    {
+      "value": "= 7",
+      "description": "multi-section line specified but multi-section line reporting option is disabled."
+    },
+    {
+      "value": "= 8",
+      "description": "closing a multi-section line is invalid in DCLF."
+    },
+    {
+      "value": "= 9",
+      "description": "returning a Type 4 bus to service is not allowed in DCLF."
+    },
+    {
+      "value": "= 10",
+      "description": "closing a three-winding transformer is not allowed in DCLF."
+    },
+    {
+      "value": "= 11",
+      "description": "generators are converted."
+    },
+    {
+      "value": "= 12",
+      "description": "buses in island(s) without a swing bus; use activity TREE."
+    },
+    {
+      "value": "= 13",
+      "description": "largest mismatch exceeds 0.5 MW."
+    },
+    {
+      "value": "= 14",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

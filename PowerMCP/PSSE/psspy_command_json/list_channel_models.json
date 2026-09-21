@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "list_channel_models",
+  "category": "Dynamic Simulation Output Channel Operation",
+  "description": "Use this API to tabulate the output channel monitoring models referenced in the dynamic model. This API routine was first introduced in release 30.2.0. ierr = list_channel_models(status)",
+  "python_syntax": "ierr = list_channel_models(status)",
+  "return_type": "error_only_report",
+  "parameters": [
+    {
+      "name": "status",
+      "description": "Category of channel monitoring models to be listed. (input; 0 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "status": [
+      {
+        "value": "= 0",
+        "description": "all output channel monitoring models."
+      },
+      {
+        "value": "= 1",
+        "description": "only models monitoring equipment that exists in the power flow working case."
+      },
+      {
+        "value": "= 2",
+        "description": "only models monitoring equipment that is not present in the power flow working case."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid STATUS value."
+    },
+    {
+      "value": "= 2",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

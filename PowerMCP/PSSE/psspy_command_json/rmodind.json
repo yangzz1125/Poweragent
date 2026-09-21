@@ -1,0 +1,114 @@
+{
+  "module": "psspy",
+  "function_name": "rmodind",
+  "category": "Single Element Data",
+  "description": "Returns the branch relay model starting array indices and status. This API routine was first introduced in release 28.0.0. ierr, ival = rmodind(ibus, jbus, ckt, slot, string)",
+  "python_syntax": "ierr, ival = rmodind(ibus, jbus, ckt, slot, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "From bus number. (input)."
+    },
+    {
+      "name": "jbus",
+      "description": "To bus number. (input)."
+    },
+    {
+      "name": "ckt",
+      "description": "Circuit identifier. (input)."
+    },
+    {
+      "name": "slot",
+      "description": "Relay slot (1 or 2). (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the relay model quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "ival",
+      "description": "Branch model index or status. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= CON",
+        "description": "starting CON index."
+      },
+      {
+        "value": "= STATE",
+        "description": "starting STATE index."
+      },
+      {
+        "value": "= VAR",
+        "description": "starting VAR index."
+      },
+      {
+        "value": "= ICON",
+        "description": "starting ICON index."
+      },
+      {
+        "value": "= NCON",
+        "description": "number of CON values used by the model."
+      },
+      {
+        "value": "= NSTATE",
+        "description": "number of STATE values used by the model."
+      },
+      {
+        "value": "= NVAR",
+        "description": "number of VAR values used by the model."
+      },
+      {
+        "value": "= NICON",
+        "description": "number of ICON values used by the model."
+      },
+      {
+        "value": "= STATUS",
+        "description": "bypassed flag: 0 = bypassed; 1 = not bypassed. Does not reflect branch status. For a model to be called during simulations the branch must be in-service and the model’s bypassed flag must be not bypassed."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "branch not in network but in model tables; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 2",
+      "description": "branch not in network or in model tables; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid value of ‘SLOT’; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 4",
+      "description": "no SLOT ‘SLOT’ model for this branch; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 5",
+      "description": "invalid value of ‘STRING’; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 6",
+      "description": "model does not use any of this data type; ‘IVAL’ = 0 returned."
+    },
+    {
+      "value": "= 9",
+      "description": "dynamics data not present in working memory; ‘IVAL’ unchanged."
+    }
+  ]
+}

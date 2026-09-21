@@ -1,0 +1,118 @@
+{
+  "module": "psspy",
+  "function_name": "vsccdt",
+  "category": "Single Element Data",
+  "description": "Use this API to return VSC dc line real parameters. This API routine was first introduced in release 28.0.0. ierr, rval = vsccdt(id, ibus, string)",
+  "python_syntax": "ierr, rval = vsccdt(id, ibus, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "id",
+      "description": "Vsc dc line name. (input)."
+    },
+    {
+      "name": "ibus",
+      "description": "Converter bus number. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the vsc dc line quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "rval",
+      "description": "Parameter value. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= PAC",
+        "description": "Real power into dc line at converter bus in MW."
+      },
+      {
+        "value": "= O_PAC",
+        "description": "Same as ‘PAC’ in units determined by the power output option setting."
+      },
+      {
+        "value": "= QAC",
+        "description": "Reactive power into dc line at converter bus in MV."
+      },
+      {
+        "value": "= O_QAC",
+        "description": "Same as ‘QAC’ in units determined by the power output option setting."
+      },
+      {
+        "value": "= MVA",
+        "description": "Apparent ac flow into the dc line in MVA."
+      },
+      {
+        "value": "= O_MVA",
+        "description": "Same as ‘MVA’ in units determined by the power output option setting."
+      },
+      {
+        "value": "= PCTMVA",
+        "description": "ac loading percent of limit."
+      },
+      {
+        "value": "= ACAMPS",
+        "description": "ac current in amps."
+      },
+      {
+        "value": "= PUCUR",
+        "description": "ac current in pu."
+      },
+      {
+        "value": "= KVDC",
+        "description": "Voltage at controlling converter in kV."
+      },
+      {
+        "value": "= DCCUR",
+        "description": "dc current in amps."
+      },
+      {
+        "value": "= DCSET",
+        "description": "dc setpoint in pu."
+      },
+      {
+        "value": "= ACSET",
+        "description": "ac setpoint in pu."
+      },
+      {
+        "value": "= RDC",
+        "description": "dc line resistance in ohms."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘RVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "VSC dc line ‘ID’ not found; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid ‘STRNG’; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "Bus ‘IBUS’ not a converter of this dc line; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 4",
+      "description": "dc line blocked; ‘RVAL’ returned as 0.0."
+    },
+    {
+      "value": "= 5",
+      "description": "No base kV at bus; ‘RVAL’ returned as the per unit current."
+    }
+  ]
+}

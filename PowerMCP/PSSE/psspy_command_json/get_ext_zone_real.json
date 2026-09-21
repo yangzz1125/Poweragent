@@ -1,0 +1,54 @@
+{
+  "module": "psspy",
+  "function_name": "get_ext_zone_real",
+  "category": "Extension Data Access",
+  "description": "Use this API to get zone real extension data. This API routine was first introduced in release 35.1.0. ierr, rval = get_ext_zone_real(izone, string)",
+  "python_syntax": "ierr, rval = get_ext_zone_real(izone, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "izone",
+      "description": "Zone izone. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the extension zone field desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "rval",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘RVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Element not found; ‘RVAL’ not returned."
+    },
+    {
+      "value": "= 2",
+      "description": "Bad value of ‘STRING’; ‘RVAL’ not returned."
+    },
+    {
+      "value": "= 3",
+      "description": "Bad data type for field ‘STRING’; ‘RVAL’ not returned."
+    },
+    {
+      "value": "= 4",
+      "description": "Unknown error with data access; ‘RVAL’ not returned."
+    },
+    {
+      "value": "= 10",
+      "description": "API Prereqs not met; ‘RVAL’ not returned."
+    }
+  ]
+}

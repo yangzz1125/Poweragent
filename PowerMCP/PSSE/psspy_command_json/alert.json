@@ -1,0 +1,15 @@
+{
+  "module": "psspy",
+  "function_name": "alert",
+  "category": "Non-Engineering",
+  "description": "Use this API to send output to the alert device. Note: A Fortran program that calls ALERTS must also include a USE statement for KEYPTI. This API routine was first introduced in release 30.0.0. alert(string)",
+  "python_syntax": "alert(string)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "string",
+      "description": ""
+    }
+  ],
+  "return_values": []
+}

@@ -1,0 +1,184 @@
+{
+  "module": "psspy",
+  "function_name": "system_swd_chng",
+  "category": "Node Breaker Data",
+  "description": "Use this API to modify the data of an existing system switching device in the working case, or to add a new system switching device to the working case. This API routine was first introduced in release 34.0.0. ierr = system_swd_chng(ibus, jbus, cktarg, intgar, rbrxar, realar, namear)",
+  "python_syntax": "ierr = system_swd_chng(ibus, jbus, cktarg, intgar, rbrxar, realar, namear)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "From bus number. (input)."
+    },
+    {
+      "name": "jbus",
+      "description": "To bus number. (input)."
+    },
+    {
+      "name": "cktarg",
+      "description": "Circuit identifier. (input)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of four elementsNone. (input)."
+    },
+    {
+      "name": "rbrxar",
+      "description": "Nominal branch reactance. (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of twelve elementsNone. (input)."
+    },
+    {
+      "name": "namear",
+      "description": "Switching device name. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "device status."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "device normal status."
+      },
+      {
+        "value": "INTGAR(3)",
+        "description": "metered end bus number."
+      },
+      {
+        "value": "INTGAR(4)",
+        "description": "device type."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "rating set 1 rating."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "rating set 2 rating."
+      },
+      {
+        "value": "REALAR(3)",
+        "description": "rating set 3 rating."
+      },
+      {
+        "value": "REALAR(4)",
+        "description": "rating set 4 rating."
+      },
+      {
+        "value": "REALAR(5)",
+        "description": "rating set 5 rating."
+      },
+      {
+        "value": "REALAR(6)",
+        "description": "rating set 6 rating."
+      },
+      {
+        "value": "REALAR(7)",
+        "description": "rating set 7 rating."
+      },
+      {
+        "value": "REALAR(8)",
+        "description": "rating set 8 rating."
+      },
+      {
+        "value": "REALAR(9)",
+        "description": "rating set 9 rating."
+      },
+      {
+        "value": "REALAR(10)",
+        "description": "rating set 10 rating."
+      },
+      {
+        "value": "REALAR(11)",
+        "description": "rating set 11 rating."
+      },
+      {
+        "value": "REALAR(12)",
+        "description": "rating set 12 rating."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus is not found."
+    },
+    {
+      "value": "= 2",
+      "description": "circuit identifier is more than two characters."
+    },
+    {
+      "value": "= 3",
+      "description": "branch exists but it is a two-winding transformer."
+    },
+    {
+      "value": "= 4",
+      "description": "branch exists but it is a regular, non-transformer barhcn."
+    },
+    {
+      "value": "= 5",
+      "description": "switching device from bus to itself."
+    },
+    {
+      "value": "= 6",
+      "description": "blank circuit identifier is invalid."
+    },
+    {
+      "value": "= 7",
+      "description": "circuit identifier may not start with &"
+    },
+    {
+      "value": "= 8",
+      "description": "branch table is full."
+    },
+    {
+      "value": "= 9",
+      "description": "branch ownership table is full."
+    },
+    {
+      "value": "= 10",
+      "description": "switching device table is full."
+    },
+    {
+      "value": "= 11",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= 12",
+      "description": "zero impedance line table is full."
+    },
+    {
+      "value": "= 13",
+      "description": "branch not found."
+    },
+    {
+      "value": "= 14",
+      "description": "node-breaker terminal connection table is full."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - switching device reactance is 0.0 or greater than zero impedance line threshold. - invalid metered end bus. - invalid switching device status. - system switching device name has too many characters - system switching device rate is negative - zero impedance line table is full - multi-section line grouping deleted - name is already assigned to a branch - name contains invalid characters."
+    }
+  ]
+}

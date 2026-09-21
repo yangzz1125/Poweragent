@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "line_shunt_reporting",
+  "category": "Power Flow Operation",
+  "description": "Use this API to specify or return the option to enable or disable the line shunt reporting. This API routine was first introduced in release 29.0.0. ierr = line_shunt_reporting(ival) ierr, ival = line_shunt_reporting()",
+  "python_syntax": "ierr = line_shunt_reporting(ival) ierr, ival = line_shunt_reporting()",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ival",
+      "description": "Value of the option setting. (input; if Batch command, or for Python if specified as an argument, or for Fortran if IOCODE is 0, 0 by default; else output)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "ival": [
+      {
+        "value": "= 0",
+        "description": "no special reporting of line shunts in POUT, LOUT and LAMP."
+      },
+      {
+        "value": "= 1",
+        "description": "include special reporting of line shunts in POUT, LOUT and LAMP."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid IVAL value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid IOCODE value."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

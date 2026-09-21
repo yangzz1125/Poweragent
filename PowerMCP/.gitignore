@@ -1,0 +1,122 @@
+# Environments
+.venv/
+.venv-*/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Python
+**/__pycache__/**
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# AI Tools
+.claude/
+.gemini/
+.cursor/
+
+# Personal Configuration
+myconfig.json
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Power System Tools Output & Temporary Files
+
+# PSLF / ProvisoHD
+soln.log
+output.crf
+output.sum
+temp.wrk
+cont.otg
+contproc-run-status.csv
+control.cntl
+datacheck.txt
+runs.cases
+duplicate.txt
+sstools.sav
+term.log
+case.pcrf
+output.pcrf
+Output.xlsx
+run.bat
+template.ctab
+contproc-run-status_contingency_errors.csv
+font-color
+gediwork.drw
+gediworkScan.drw
+winter.sav
+summer.drw
+summer.sav
+hs_err*
+basecase.sav
+temp.sav
+
+# PyLTSpice
+simulation_output/
+*.raw
+*.net
+*.log
+*.plt
+
+# ANDES
+.andes_runs/
+mcp_server.log
+pf_*/
+td_*/
+eig_*/
+
+# PyPSA
+*.nc
+
+# PowerWorld
+*.pwd
+# ...but keep the vendored .pwd display fixture the powerio tests decode.
+!tests/data/powerworld/ACTIVSg200.pwd
+# Note: .pwb files might be case files you want to keep (like IEEE 39 bus.pwb),
+# so we don't ignore them globally.
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Type checkers, linters, and tool caches
+.mypy_cache/
+.ruff_cache/
+.pytype/
+.tox/
+.nox/
+
+# PSCAD generated docs (can be re-synced)
+PSCAD/docs/
+
+# GenX run artifacts, when a case or log dir is kept inside the checkout
+GenX/run_logs/
+GenX/plots/

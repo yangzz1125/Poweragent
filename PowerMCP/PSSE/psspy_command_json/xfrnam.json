@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "xfrnam",
+  "category": "Single Element Data",
+  "description": "Use this API to return two-winding transformer name. This API routine was first introduced in release 28.0.0. ierr, string = xfrnam(ibus, jbus, ickt)",
+  "python_syntax": "ierr, string = xfrnam(ibus, jbus, ickt)",
+  "return_type": "error_and_string",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "From bus number. (input)."
+    },
+    {
+      "name": "jbus",
+      "description": "To bus number. (input)."
+    },
+    {
+      "name": "ickt",
+      "description": "Circuit identifier. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "string",
+      "description": "Transformer name. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘STRING’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Bus not found; ‘STRING’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Transformer not found; ‘STRING’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "Branch not a transformer; ‘STRING’ unchanged."
+    }
+  ]
+}

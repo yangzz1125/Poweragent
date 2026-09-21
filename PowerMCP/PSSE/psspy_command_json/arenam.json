@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "arenam",
+  "category": "Single Element Data",
+  "description": "Use this API to return the area name. This API routine was first introduced in release 28.0.0. ierr, cval = arenam(iar)",
+  "python_syntax": "ierr, cval = arenam(iar)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "iar",
+      "description": "Area number. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "cval",
+      "description": "Area name. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘CVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Area number <= 0 or > largest allowable area number; ‘CVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Area not found; ‘CVAL’ unchanged."
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "module": "psspy",
+  "function_name": "openeventstudyfile",
+  "category": "Event Studies",
+  "description": "Use this API to open a new or existing event study file in the GUI. This API routine was first introduced in release 32.0.0. openeventstudyfile(sfile)",
+  "python_syntax": "openeventstudyfile(sfile)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "sfile",
+      "description": ""
+    }
+  ],
+  "return_values": []
+}

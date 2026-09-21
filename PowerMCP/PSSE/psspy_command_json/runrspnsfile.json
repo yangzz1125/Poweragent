@@ -1,0 +1,15 @@
+{
+  "module": "psspy",
+  "function_name": "runrspnsfile",
+  "category": "Non-Engineering",
+  "description": "Run a response file. Operates by replacing standard input with a file. Then begin and continue reading from terminal until standard input is no longer redirected using PSSE command line techniques (allowing interaction with IPLAN programs, for example). Pass any results to Command Line Interface (CLI). The CLI can recognize batch commands and Line Mode commands and direct them to the proper interpreters. This API routine was first introduced in release 30.0.0. runrspnsfile(rspname)",
+  "python_syntax": "runrspnsfile(rspname)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "rspname",
+      "description": ""
+    }
+  ],
+  "return_values": []
+}

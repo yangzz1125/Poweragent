@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "scenariogroupsetcomments",
+  "category": "Scenarios",
+  "description": "Use this API to define or modify the comments for the specified group. This API routine was first introduced in release 33.0.0. ierr = scenariogroupsetcomments(sgroup, ncommentblocks, comments, append)",
+  "python_syntax": "ierr = scenariogroupsetcomments(sgroup, ncommentblocks, comments, append)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sgroup",
+      "description": "Name of the group whose comments are to be modified. (input; no default allowed)."
+    },
+    {
+      "name": "ncommentblocks",
+      "description": "Number of 72 character strings that make up the comment. in python, this number can be set to 1 and the full comment string given as the first comment block. (input; 0 by default)."
+    },
+    {
+      "name": "comments",
+      "description": "An array of NCOMMENTBLOCKS elements specifying comment string to be defined for or added to the comments for the specified group. (input; unchanged by default)."
+    },
+    {
+      "name": "append",
+      "description": "Flag for appending comments. if true, comments is appended to the current comments. if false, the current comments are overwritten by comments. (input; FALSE by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "no Scenario in memory."
+    },
+    {
+      "value": "= 3",
+      "description": "specified group not found."
+    }
+  ]
+}

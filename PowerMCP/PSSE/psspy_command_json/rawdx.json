@@ -1,0 +1,166 @@
+{
+  "module": "psspy",
+  "function_name": "rawdx",
+  "category": "Power Flow Operation",
+  "description": "This API routine is obsolete. It has been replaced by the API routine writerawxsubsys, and is implemented by a call to writerawxsubsys. Use this API to replicate the working case in the form of an extended power flow raw data file. This API routine was first introduced in release 35.0.0. ierr = rawdx(sid, all, status, out, ofile)",
+  "python_syntax": "ierr = rawdx(sid, all, status, out, ofile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid subsystem identifier. valid subsystem identifiers range from 0 to 11. subsystem sid must have been previously defined. (input; 0 by default)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem flag. (input; 1 by default)."
+    },
+    {
+      "name": "status",
+      "description": "An array of six elements specifying options. (input)."
+    },
+    {
+      "name": "out",
+      "description": "Destination selection. (input; 1 by default)."
+    },
+    {
+      "name": "ofile",
+      "description": "Name of the file to which data records are to be written (when out is 0). (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 0",
+        "description": "process only buses in subsystem SID."
+      },
+      {
+        "value": "= 1",
+        "description": "process all buses when STATUS(4) = 0; area ties only when STATUS(4) = 1."
+      }
+    ],
+    "status": [
+      {
+        "value": "STATUS(1)",
+        "description": "include records for Type 4 buses (1 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no."
+      },
+      {
+        "value": "= 1",
+        "description": "yes."
+      },
+      {
+        "value": "STATUS(2)",
+        "description": "include records for out-of-service branches (1 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no."
+      },
+      {
+        "value": "= 1",
+        "description": "yes."
+      },
+      {
+        "value": "STATUS(3)",
+        "description": "include records for equipment in the subsystem (1 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no."
+      },
+      {
+        "value": "= 1",
+        "description": "yes."
+      },
+      {
+        "value": "STATUS(4)",
+        "description": "include records for subsystem ties (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no."
+      },
+      {
+        "value": "= 1",
+        "description": "yes."
+      },
+      {
+        "value": "STATUS(5)",
+        "description": "include load record option (honored when ALL=0) (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "for all loads at subsystem buses."
+      },
+      {
+        "value": "= 1",
+        "description": "for subsystem loads at all buses."
+      },
+      {
+        "value": "= 2",
+        "description": "for all loads at subsystem buses and subsystem loads at non-subsystem buses."
+      },
+      {
+        "value": "STATUS(6)",
+        "description": "Raw Data File type (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "for activity READX with IC=0."
+      },
+      {
+        "value": "= 1",
+        "description": "for activity READX with IC=1."
+      }
+    ],
+    "out": [
+      {
+        "value": "= 0",
+        "description": "direct output to a data file specified by OFILE."
+      },
+      {
+        "value": "= 1",
+        "description": "direct output to the current report device."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 2",
+      "description": "rawx write error."
+    },
+    {
+      "value": "= 3",
+      "description": "error opening SFILE."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= 5",
+      "description": "invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 6",
+      "description": "invalid ALL value."
+    },
+    {
+      "value": "= 7",
+      "description": "invalid STATUS value."
+    }
+  ]
+}

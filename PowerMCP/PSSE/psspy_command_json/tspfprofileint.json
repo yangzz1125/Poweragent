@@ -1,0 +1,54 @@
+{
+  "module": "psspy",
+  "function_name": "tspfprofileint",
+  "category": "Single Element Data",
+  "description": "Use this API to return integer parameters of Time Series Power Flow profile. This API routine was first introduced in release 35.4.0. ierr, ival = tspfprofileint(name,string)",
+  "python_syntax": "ierr, ival = tspfprofileint(name,string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Profile name. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating name of the integer parameter desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "The error code . (output)."
+    },
+    {
+      "name": "ival",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= MWLIMITS",
+        "description": "Enforce Machine MW Limits."
+      },
+      {
+        "value": "= CURVEID",
+        "description": "Profile Curve Number."
+      },
+      {
+        "value": "= ADJMODE",
+        "description": "Profile Adjustment Mode."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Profile not found; ‘IVAL’ unchanged."
+    }
+  ]
+}

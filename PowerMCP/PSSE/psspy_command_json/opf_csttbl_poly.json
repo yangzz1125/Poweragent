@@ -1,0 +1,62 @@
+{
+  "module": "psspy",
+  "function_name": "opf_csttbl_poly",
+  "category": "Optimal Power Flow Data",
+  "description": "Use this API to add a polynomial and exponential cost curve table record to the working case. It may also be used to modify an existing polynomial and exponential cost curve table record. This API routine was first introduced in release 28.0.0. ierr = opf_csttbl_poly(tbl, labl, cost, lincst, quacst, expcst, expon)",
+  "python_syntax": "ierr = opf_csttbl_poly(tbl, labl, cost, lincst, quacst, expcst, expon)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "tbl",
+      "description": "Polynomial and exponential cost curve table number. (input; no default allowed)."
+    },
+    {
+      "name": "labl",
+      "description": "Cost table description of, at most, 12 characters. (input; ‘ ‘ by default)."
+    },
+    {
+      "name": "cost",
+      "description": "Cost integration constant. (input; 0.0 by default)."
+    },
+    {
+      "name": "lincst",
+      "description": "Linear cost coefficient value. (input; 1.0 by default)."
+    },
+    {
+      "name": "quacst",
+      "description": "Quadratic cost coefficient value. (input; 1.0 by default)."
+    },
+    {
+      "name": "expcst",
+      "description": "Exponential cost coefficient value. (input; 0.0 by default)."
+    },
+    {
+      "name": "expon",
+      "description": "Exponent of the exponential cost coefficient. (input; 0.0 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "cost table data table full."
+    },
+    {
+      "value": "= 2",
+      "description": "exceeded maximum number of allowable cost curve data values."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "module": "psspy",
+  "function_name": "swsblk_2",
+  "category": "Single Element Data",
+  "description": "Use this API to return data for a specified block of a specified switched shunt. This API routine was first introduced in release 35.0.0. ierr, istat, nstep, rval = swsblk_2(ibus, id, iblk, string)",
+  "python_syntax": "ierr, istat, nstep, rval = swsblk_2(ibus, id, iblk, string)",
+  "return_type": "error_and_multi_value",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    },
+    {
+      "name": "id",
+      "description": "Switched shunt identifier. (input)."
+    },
+    {
+      "name": "iblk",
+      "description": "Switched shunt block number (1 through 8). (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the switched shunt quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "istat",
+      "description": "Status of block “iblk”. (output)."
+    },
+    {
+      "name": "nstep",
+      "description": "Number of steps in block “iblk”. (output)."
+    },
+    {
+      "name": "rval",
+      "description": "Admittance value indicated by string, per step in block “iblk”. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= BSTEP",
+        "description": "Admittance in Mvar per step in block “IBLK”."
+      },
+      {
+        "value": "= PU_ZSTEP",
+        "description": "Zero sequence admittance in pu per step in block “IBLK”."
+      },
+      {
+        "value": "= MVAR_ZSTEP",
+        "description": "Zero sequence admittance in Mvar per step in block “IBLK”."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘ISTAT’, ‘NSTEP’ and ‘RVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Bus not found; ‘ISTAT’, ‘NSTEP’ and ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Switched shunt not found; ‘ISTAT’, ‘NSTEP’ and ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "Bad value of ‘IBLK’; ‘ISTAT’, ‘NSTEP’ and ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 4",
+      "description": "Bus type code greater than or equal to 4; ‘ISTAT’, ‘NSTEP’ and ‘RVAL’ returned."
+    },
+    {
+      "value": "= 5",
+      "description": "Status is 0; ‘ISTAT’, ‘NSTEP’ and ‘RVAL’ returned."
+    },
+    {
+      "value": "= 6",
+      "description": "Invalid ‘STRING’; ‘ISTAT’, ‘NSTEP’ and ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 7",
+      "description": "Sequence data not in case when STRING is ‘PU_ZSTEP’ or ‘MVAR_ZSTEP’; ‘ISTAT’, ‘NSTEP’ and ‘RVAL’ returned."
+    }
+  ]
+}

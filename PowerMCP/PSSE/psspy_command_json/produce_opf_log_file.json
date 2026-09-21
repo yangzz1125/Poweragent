@@ -1,0 +1,54 @@
+{
+  "module": "psspy",
+  "function_name": "produce_opf_log_file",
+  "category": "Optimal Power Flow Operation",
+  "description": "Use this API to set or return the value of the OPF solution option to produce an OPF solution log file, and if so, the name of the log file. This API can be used in conjunction with the ADD_DETAILS_TO_OPF_LOG API if additional details of the Lagrange multipliers are desired. This API routine was first introduced in release 30.0.0. ierr = produce_opf_log_file(ival, ofile) ierr, ival,ofile = produce_opf_log_file()",
+  "python_syntax": "ierr = produce_opf_log_file(ival, ofile) ierr, ival,ofile = produce_opf_log_file()",
+  "return_type": "error_only_report",
+  "parameters": [
+    {
+      "name": "ival",
+      "description": "Indicates whether to produce an opf optimization log file. (input; if Batch command or for Python if specified as an argument, or for Fortran if IOCODE is 0; else 0 by default for input)."
+    },
+    {
+      "name": "ofile",
+      "description": "Opf optimization log output filename. (input; if Batch command or for Python if specified as an argument, or for FORTRAN if IOCODE is 0; else DETAIL.DAT by default for input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "ival": [
+      {
+        "value": "= 0",
+        "description": "do not produce an OPF solution log file."
+      },
+      {
+        "value": "= 1",
+        "description": "produce an OPF solution log file."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid IVAL value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid IOCODE value."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

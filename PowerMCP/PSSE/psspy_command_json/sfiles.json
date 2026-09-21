@@ -1,0 +1,19 @@
+{
+  "module": "psspy",
+  "function_name": "sfiles",
+  "category": "Single Element Data",
+  "description": "Use this API to return the current Saved Case and Snapshot filenames. This API routine was first introduced in release 28.0.0. savfilnam, snpfilnam = sfiles()",
+  "python_syntax": "savfilnam, snpfilnam = sfiles()",
+  "return_type": "multi_value",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "savfilnam",
+      "description": "Current saved case file. (output)."
+    },
+    {
+      "name": "snpfilnam",
+      "description": "Current snapshot file. (output)."
+    }
+  ]
+}

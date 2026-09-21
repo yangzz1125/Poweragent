@@ -1,0 +1,27 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "powerskills",
+  "description": "PowerSkills — agent skills for power-system engineering on top of PowerMCP. A progressive-disclosure tool layer for grid and circuit software, plus senior-engineer mitigation playbooks.",
+  "owner": {
+    "name": "Power-Agent / PowerSkills",
+    "url": "https://github.com/Power-Agent/PowerSkills"
+  },
+  "plugins": [
+    {
+      "name": "powerskills-tool",
+      "source": "./powerskills-tool",
+      "version": "0.2.0",
+      "category": "science",
+      "description": "Progressive-disclosure workflows for the power-system software exposed by PowerMCP: ANDES, Egret, LTSpice, OpenDSS, PSLF, PSS/E, PowerWorld, PyPSA, pandapower, and surge, plus potpourri for AC/DC and multi-period optimal power flow on pandapower distribution grids. Each skill exposes load, inspect, solve, modify, then advanced studies, and escalates to the powerskills-engineering playbooks when a study finds a real problem.",
+      "keywords": ["power-systems", "power-flow", "opf", "contingency", "pypsa", "pandapower", "potpourri", "psse", "powerworld", "opendss", "andes", "egret", "ltspice", "surge", "powermcp", "distribution-grid", "multi-period", "storage", "pyomo"]
+    },
+    {
+      "name": "powerskills-engineering",
+      "source": "./powerskills-engineering",
+      "version": "0.2.0",
+      "category": "science",
+      "description": "Senior power-engineer mitigation playbooks: voltage violations, thermal overloads, contingency (N-1/N-2) findings, dynamic-stability problems, operations/planning infeasibilities, convergence failures, short-circuit duty, frequency response, interconnection impacts, and DER hosting capacity. Issue-driven, software-agnostic, and triggered from the escalation tables in the powerskills-tool skills.",
+      "keywords": ["power-systems", "grid-operations", "voltage", "thermal-overload", "contingency", "n-1", "stability", "frequency-response", "short-circuit", "interconnection", "der", "hosting-capacity", "mitigation", "powermcp"]
+    }
+  ]
+}

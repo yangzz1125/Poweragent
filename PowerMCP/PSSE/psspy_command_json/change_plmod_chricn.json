@@ -1,0 +1,78 @@
+{
+  "module": "psspy",
+  "function_name": "change_plmod_chricn",
+  "category": "Plant Related Models",
+  "description": "Use this API to change the value of a character ICON (i.e., an element of the CHRICN array) of a designated plant related model at a specified machine. The corresponding integer ICON is set to 0. This API routine was first introduced in release 30.2.0. ierr = change_plmod_chricn(ibus, id, name, j, chdata)",
+  "python_syntax": "ierr = change_plmod_chricn(ibus, id, name, j, chdata)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Plant bus number. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Machine identifier. (input)."
+    },
+    {
+      "name": "name",
+      "description": "Model name. (input; no default allowed)."
+    },
+    {
+      "name": "j",
+      "description": "Icon number to change relative to the start of the block of icons assigned to this model (1 for icon(i), 2 for icon(i+1), etc.). (input; no default allowed)."
+    },
+    {
+      "name": "chdata",
+      "description": "New character icon value. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "unknown model NAME."
+    },
+    {
+      "value": "= 2",
+      "description": "model NAME is not a plant-related model."
+    },
+    {
+      "value": "= 3",
+      "description": "no <model type> model at this machine."
+    },
+    {
+      "value": "= 4",
+      "description": "the <model type> model at this machine is aaa not NAME."
+    },
+    {
+      "value": "= 5",
+      "description": "no input ICONs used in model NAME."
+    },
+    {
+      "value": "= 6",
+      "description": "ICON number outside of the ICON range of this model."
+    },
+    {
+      "value": "= 7",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 8",
+      "description": "machine not found."
+    },
+    {
+      "value": "= 9",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

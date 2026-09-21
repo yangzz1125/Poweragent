@@ -1,0 +1,43 @@
+{
+  "module": "psspy",
+  "function_name": "poly_print",
+  "category": "Graphical Analysis Output",
+  "description": "Use this API to print the results of activity POLY from a .pol results file. This API routine was first introduced in release 30.0.0. poly_print(nplot, plotarray, boundval, prtparams, resfile)",
+  "python_syntax": "poly_print(nplot, plotarray, boundval, prtparams, resfile)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "nplot",
+      "description": "Number of plots. (input)."
+    },
+    {
+      "name": "plotarray",
+      "description": "An array of NPLOT elements specifying an array of the numbers of plots, selected for printing. The base case is marked by 0, then there are all the contingencies, beginning from 1, and the last number means all the cases together. The array consists of the set of these numbers. The size of the array is equal to NPLOT. (input)."
+    },
+    {
+      "name": "boundval",
+      "description": "Boundary value for the plot area. it is equal to maximum opposing system delta interchange used for calculations. (input)."
+    },
+    {
+      "name": "prtparams",
+      "description": "Print (or not) the set of parameters used for calculations. (input)."
+    },
+    {
+      "name": "resfile",
+      "description": "Name of the existing poly results file (.pol) file. (input)."
+    }
+  ],
+  "return_values": [],
+  "allowed_values": {
+    "prtparams": [
+      {
+        "value": "= 0",
+        "description": "no printing of parameters."
+      },
+      {
+        "value": "= 1",
+        "description": "the set of parameters will be printed."
+      }
+    ]
+  }
+}

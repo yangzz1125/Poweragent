@@ -1,0 +1,42 @@
+{
+  "module": "psspy",
+  "function_name": "apierrstr",
+  "category": "Single Element Data",
+  "description": "Use this API to return the message string associated with a specific error code returned from a recordable PSSE API routine. This API routine was first introduced in release 34.4.0. ierr, string = apierrstr(api, errcode)",
+  "python_syntax": "ierr, string = apierrstr(api, errcode)",
+  "return_type": "error_and_string",
+  "parameters": [
+    {
+      "name": "api",
+      "description": "Name of the api. (input)."
+    },
+    {
+      "name": "errcode",
+      "description": "Error code for api. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "string",
+      "description": "Error message for api and errcode. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘STRING’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "API not found; ‘STRING’ set to spaces."
+    },
+    {
+      "value": "= 2",
+      "description": "ERRCODE out of range; ‘STRING’ set to spaces."
+    }
+  ]
+}

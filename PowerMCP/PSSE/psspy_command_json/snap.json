@@ -1,0 +1,70 @@
+{
+  "module": "psspy",
+  "function_name": "snap",
+  "category": "Dynamic Simulation Operation",
+  "description": "Use this API to save PSSE dynamics working memory into a Snapshot file. This API routine was first introduced in release 28.0.0. ierr = snap(status, sfile)",
+  "python_syntax": "ierr = snap(status, sfile)",
+  "return_type": "error_only_write_file",
+  "parameters": [
+    {
+      "name": "status",
+      "description": "An array of five elements specifying save options. For each entry, -1 may be specified to indicate that the number of elements of the corresponding array(s) to save in the Snapshot File is 1 through the next available - 1. (input)."
+    },
+    {
+      "name": "sfile",
+      "description": "Snapshot file; ‘*’ to use the most recently accessed snapshot file in the current execution of psse. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "status": [
+      {
+        "value": "STATUS(1)",
+        "description": "number of CONs to save (next available-1 by default)."
+      },
+      {
+        "value": "STATUS(2)",
+        "description": "number of STATEs to save (next available-1 by default)."
+      },
+      {
+        "value": "STATUS(3)",
+        "description": "number of VARs to save (next available-1 by default)."
+      },
+      {
+        "value": "STATUS(4)",
+        "description": "number of ICONs to save (next available-1 by default)."
+      },
+      {
+        "value": "STATUS(5)",
+        "description": "number of channels to save (next available-1 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid STATUS value."
+    },
+    {
+      "value": "= 2",
+      "description": "error opening SFILE."
+    },
+    {
+      "value": "= 3",
+      "description": "error writing to SFILE."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,214 @@
+{
+  "module": "psspy",
+  "function_name": "amachreal",
+  "category": "Machine Data",
+  "description": "Use this API to return an array of real values for subsystem machines. This API routine was first introduced in release 30.2.0. ierr, rarray = amachreal(sid, flag, string)",
+  "python_syntax": "ierr, rarray = amachreal(sid, flag, string)",
+  "return_type": "error_and_array",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the bus subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem machines to include. (input; 1 by default)."
+    },
+    {
+      "name": "string",
+      "description": "An array of NSTR elements specifying NSTR of the following strings indicating the bus and/or machine quantities desired. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "rarray",
+      "description": "An array of NSTR*DIM elements specifying Is an array of at least NSTR columns, each of which contains DIM elements. (output)."
+    }
+  ],
+  "allowed_values": {
+    "sid": [
+      {
+        "value": "< 0",
+        "description": "to instruct the API to assume a subsystem containing all buses in the working case."
+      },
+      {
+        "value": ">= 0",
+        "description": "valid bus subsystem identifier. Valid subsystem identifiers range from 0 to 11. Subsystem SID must have been previously defined."
+      }
+    ],
+    "flag": [
+      {
+        "value": "= 1",
+        "description": "for only in-service machines at in-service plants (type code 2 or 3)."
+      },
+      {
+        "value": "= 2",
+        "description": "for all machines at in-service plants (type code 2 or 3)."
+      },
+      {
+        "value": "= 3",
+        "description": "for only in-service machines, including those at Type 1 and 4 buses."
+      },
+      {
+        "value": "= 4",
+        "description": "for all machines."
+      }
+    ],
+    "string": [
+      {
+        "value": "= FRACT1",
+        "description": "First owner fraction."
+      },
+      {
+        "value": "= FRACT2",
+        "description": "Second owner fraction."
+      },
+      {
+        "value": "= FRACT3",
+        "description": "Third owner fraction."
+      },
+      {
+        "value": "= FRACT4",
+        "description": "Fourth owner fraction."
+      },
+      {
+        "value": "= PERCENT",
+        "description": "MVA loading as a percentage of machine MVA base, MBASE."
+      },
+      {
+        "value": "= MBASE",
+        "description": "Machine MVA base."
+      },
+      {
+        "value": "= GENTAP",
+        "description": "Step-up transformer tap ratio."
+      },
+      {
+        "value": "= WPF",
+        "description": "Power factor used in setting reactive power limits for the wind machine when its WMOD is 2 or 3; 1.0 if the machine is not a wind machine."
+      },
+      {
+        "value": "= RPOS",
+        "description": "Positive sequence fault analysis machine resistance."
+      },
+      {
+        "value": "= XSUBTR",
+        "description": "Positive sequence fault analysis machine subtransient reactance."
+      },
+      {
+        "value": "= XTRANS",
+        "description": "Positive sequence fault analysis machine transient reactance."
+      },
+      {
+        "value": "= XSYNCH",
+        "description": "Positive sequence fault analysis machine synchronous reactance."
+      },
+      {
+        "value": "= PGEN",
+        "description": "Active power output, in MW."
+      },
+      {
+        "value": "= QGEN",
+        "description": "Reactive power output, in Mvar."
+      },
+      {
+        "value": "= MVA",
+        "description": "abs(PGEN+jQGEN), in MVA."
+      },
+      {
+        "value": "= PMAX",
+        "description": "Active power upper limit, in MW."
+      },
+      {
+        "value": "= PMIN",
+        "description": "Active power lower limit, in MW."
+      },
+      {
+        "value": "= QMAX",
+        "description": "Reactive power upper limit, in Mvar."
+      },
+      {
+        "value": "= QMIN",
+        "description": "Reactive power lower limit, in Mvar."
+      },
+      {
+        "value": "= O_PGEN",
+        "description": "Active power output (units determined by power output options)."
+      },
+      {
+        "value": "= O_QGEN",
+        "description": "Reactive power output (units determined by power output options)."
+      },
+      {
+        "value": "= O_MVA",
+        "description": "abs(PGEN+jQGEN) (units determined by power output options)."
+      },
+      {
+        "value": "= O_PMAX",
+        "description": "Active power upper limit (units determined by power output options)."
+      },
+      {
+        "value": "= O_PMIN",
+        "description": "Active power lower limit (units determined by power output options)."
+      },
+      {
+        "value": "= O_QMAX",
+        "description": "Reactive power upper limit (units determined by power output options)."
+      },
+      {
+        "value": "= O_QMIN",
+        "description": "Reactive power lower limit (units determined by power output options)."
+      },
+      {
+        "value": "= IFMAX",
+        "description": "Non-conventional source per unit maximum total fault current magnitude."
+      },
+      {
+        "value": "= DBVMIN",
+        "description": "Non-conventional source per unit dead-band minimum voltage."
+      },
+      {
+        "value": "= DBVMAX",
+        "description": "Non-conventional source per unit dead-band maximum voltage."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid FLAG value."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid NSTR value."
+    },
+    {
+      "value": "= 5",
+      "description": "DIM, and hence the size of RARRAY, is not large enough."
+    },
+    {
+      "value": "= 6",
+      "description": "Invalid STRING value."
+    },
+    {
+      "value": "= 7",
+      "description": "Sequence data not in case (when STRING = ‘RPOS’, ‘XSUBTR’, ‘XTRANS’, or ‘XSYNCH’)."
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "module": "psspy",
+  "function_name": "setdiagrestyperel",
+  "category": "Diagram View",
+  "description": "Use this API to set the type of results displayed in the active Slider diagram to reliability analysis results. Requires that current network elements are being displayed in the diagram view. This API routine was first introduced in release 31.0.0. setdiagrestyperel()",
+  "python_syntax": "setdiagrestyperel()",
+  "return_type": "void",
+  "parameters": [],
+  "return_values": []
+}

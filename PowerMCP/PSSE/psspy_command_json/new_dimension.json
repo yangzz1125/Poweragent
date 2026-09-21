@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "new_dimension",
+  "category": "Power Flow Operation",
+  "description": "Use this API to reset PSSE to an increased bus size level. This API routine was first introduced in release 32.0.0. ierr = new_dimension(buses)",
+  "python_syntax": "ierr = new_dimension(buses)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "buses",
+      "description": "Maximum number of buses allowed at the new size level if buses is less than the current maximum number of buses, psse’s capacity limits are not changed. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid BUSES value."
+    },
+    {
+      "value": "= 2",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= 3",
+      "description": "Unable to change network to new bus size. PSSE Xplore is limited to 50 buses."
+    }
+  ]
+}

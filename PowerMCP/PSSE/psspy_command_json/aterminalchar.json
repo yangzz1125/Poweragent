@@ -1,0 +1,110 @@
+{
+  "module": "psspy",
+  "function_name": "aterminalchar",
+  "category": "Substation Terminal Data",
+  "description": "Use this API to return an array of integer values for subsystem substation terminals. This API routine was first introduced in release 34.1.0. ierr, carray = aterminalchar(sid, flag, string)",
+  "python_syntax": "ierr, carray = aterminalchar(sid, flag, string)",
+  "return_type": "error_and_array",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the bus subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem substations to include. (input; 1 by default)."
+    },
+    {
+      "name": "string",
+      "description": "An array of NSTR elements specifying NSTR of the following strings indicating the substation switching device quantities desired. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "carray",
+      "description": "An array of NSTR*DIM elements specifying Is an array of at least NSTR columns, each of which contains DIM elements. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= STATIONNAME",
+        "description": "Substation name (40 characters)."
+      },
+      {
+        "value": "= NODENAME",
+        "description": "Name of the node to which the terminal is connected (40 characters)."
+      },
+      {
+        "value": "= BUSNAME",
+        "description": "Name of the bus to which the terminal’s node is connected (12 characters)."
+      },
+      {
+        "value": "= BUSEXNAME",
+        "description": "Extended bus name of the bus to which the terminal’s node is connected (18 characters)."
+      },
+      {
+        "value": "= OTHER1NAME",
+        "description": "Name of another bus connected to this device; returned as blanks except for two-terminal branches and three-winding transformers (12 characters)."
+      },
+      {
+        "value": "= OTHER1EXNAME",
+        "description": "Extended bus name of another bus connected to this device; returned as blanks except for two-terminal branches and three-winding transformers (18 characters)."
+      },
+      {
+        "value": "= OTHER2NAME",
+        "description": "Name of another bus connected to this device; returned as blanks except for three-winding transformers (12 characters)."
+      },
+      {
+        "value": "= OTHER2EXNAME",
+        "description": "Extended bus name of another bus connected to this device; returned as blanks except for three-winding transformers (18 characters)."
+      },
+      {
+        "value": "= ID",
+        "description": "Machine, load, fixed shunt, or circuit identifier (2 characters)."
+      },
+      {
+        "value": "= TERMINALTYPE",
+        "description": "Flag indicatinm the type of terminal “L” for Load, “M” for Machine, “F” for Fixed Shunt, “S” for Switched Shunt, “2” for AC Line or Two-Winding Transformer, “3” for Three-Winding Transformer, “A” for FACTs, “V” for VSC DC line, “D” for two terminal DC line and “T” for multiple terminal DC line (1 characters)."
+      },
+      {
+        "value": "= BRANCHNAME",
+        "description": "Name of branch, transformer, FACTs, DC line, VSC DC line, mutliple terminal DC line (40 characters)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid FLAG value."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid NSTR value."
+    },
+    {
+      "value": "= 5",
+      "description": "DIM, and hence the size of CARRAY, is not large enough."
+    },
+    {
+      "value": "= 6",
+      "description": "Invalid STRING value."
+    }
+  ]
+}

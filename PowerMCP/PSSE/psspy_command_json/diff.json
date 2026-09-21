@@ -1,0 +1,398 @@
+{
+  "module": "psspy",
+  "function_name": "diff",
+  "category": "Power Flow Operation",
+  "description": "Use this API to compare specified power flow data and solution results, as contained in the working case, with those of a designated Saved Case (activity DIFF). It must be referenced first with APIOPT=1, followed by any number of references with APIOPT=2, followed by one reference with APIOPT=3: This API routine was first introduced in release 28.0.0. ierr, seqflg = diff(sid, all, apiopt, status, thrsh, cfile)",
+  "python_syntax": "ierr, seqflg = diff(sid, all, apiopt, status, thrsh, cfile)",
+  "return_type": "error_and_value",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid subsystem identifier. valid subsystem identifiers range from 0 to 11. subsystem sid must have been previously defined. (input)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem flag. (input; 1 by default)."
+    },
+    {
+      "name": "apiopt",
+      "description": "Mode of operation in the api. (input)."
+    },
+    {
+      "name": "status",
+      "description": "An array of 4 elements specifying STATUS contains various processing options and has different values or meanings depending on the value of APIOPT. (input)."
+    },
+    {
+      "name": "thrsh",
+      "description": "An array of three elements specifying thresholds (only used when APIOPT is 2). (input)."
+    },
+    {
+      "name": "cfile",
+      "description": "Saved case to be compared against the data currently in the working case (only used when apiopt is 1). (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "seqflg",
+      "description": "An array of two elements specifying returned when APIOPT = 1. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 0",
+        "description": "process only buses in subsystem SID."
+      },
+      {
+        "value": "= 1",
+        "description": "process all buses."
+      }
+    ],
+    "apiopt": [
+      {
+        "value": "= 1",
+        "description": "initialize for case comparison."
+      },
+      {
+        "value": "= 2",
+        "description": "run case comparison for specified data category."
+      },
+      {
+        "value": "= 3",
+        "description": "postprocessing housekeeping."
+      }
+    ],
+    "status": [
+      {
+        "value": "STATUS(1)",
+        "description": "working case or threshold option (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "If APIOPT=1 or 3, leave original case as working case. If APIOPT=2, thresholds are in enginering units."
+      },
+      {
+        "value": "= 1",
+        "description": "If APIOPT=1 or 3, leave comparison case (CFILE) as working case. If APIOPT=2, thresholds are percentages."
+      },
+      {
+        "value": "STATUS(2)",
+        "description": "comparison options."
+      },
+      {
+        "value": "= 0",
+        "description": "If APIOPT=1, bus numbers must be the same to match (default for APIOPT=1 or 3)."
+      },
+      {
+        "value": "= 1",
+        "description": "If APIOPT=1, bus names must be the same to match. If APIOPT=2, compare bus identifiers (default for APIOPT=2)."
+      },
+      {
+        "value": "= 2",
+        "description": "If APIOPT=1, bus numbers and names must be the same to match. If APIOPT=2, compare bus type codes."
+      },
+      {
+        "value": "= 3",
+        "description": "(If APIOPT=2) compare machine statuses."
+      },
+      {
+        "value": "= 4",
+        "description": "(If APIOPT=2) compare generator MW."
+      },
+      {
+        "value": "= 5",
+        "description": "(If APIOPT=2) compare generator MW or MVAR."
+      },
+      {
+        "value": "= 6",
+        "description": "(If APIOPT=2) compare bus loads."
+      },
+      {
+        "value": "= 7",
+        "description": "(If APIOPT=2) compare bus shunts."
+      },
+      {
+        "value": "= 8",
+        "description": "(If APIOPT=2) compare switched shunts."
+      },
+      {
+        "value": "= 9",
+        "description": "(If APIOPT=2) compare voltage."
+      },
+      {
+        "value": "= 10",
+        "description": "(If APIOPT=2) compare bus voltage & angle."
+      },
+      {
+        "value": "= 11",
+        "description": "(If APIOPT=2) compare MBASE & ZSORCE."
+      },
+      {
+        "value": "= 12",
+        "description": "(If APIOPT=2) compare MBASE & RPOS+jX."
+      },
+      {
+        "value": "= 13",
+        "description": "(If APIOPT=2) compare MBASE & ZNEG."
+      },
+      {
+        "value": "= 14",
+        "description": "(If APIOPT=2) compare MBASE & ZZERO."
+      },
+      {
+        "value": "= 15",
+        "description": "(If APIOPT=2) compare negative sequence loads."
+      },
+      {
+        "value": "= 16",
+        "description": "(If APIOPT=2) compare zero sequence loads."
+      },
+      {
+        "value": "= 17",
+        "description": "(If APIOPT=2) compare branch status."
+      },
+      {
+        "value": "= 18",
+        "description": "(If APIOPT=2) compare line R, X, & B."
+      },
+      {
+        "value": "= 19",
+        "description": "(If APIOPT=2) compare line shunts."
+      },
+      {
+        "value": "= 20",
+        "description": "(If APIOPT=2) compare line ratings."
+      },
+      {
+        "value": "= 21",
+        "description": "(If APIOPT=2) compare metered end."
+      },
+      {
+        "value": "= 22",
+        "description": "(If APIOPT=2) compare transformers."
+      },
+      {
+        "value": "= 23",
+        "description": "(If APIOPT=2) compare from P or Q flow."
+      },
+      {
+        "value": "= 24",
+        "description": "(If APIOPT=2) compare from and to P or Q flow."
+      },
+      {
+        "value": "= 25",
+        "description": "(If APIOPT=2) compare P or Q losses."
+      },
+      {
+        "value": "= 26",
+        "description": "(If APIOPT=2) compare zero sequence R, X, & B."
+      },
+      {
+        "value": "= 27",
+        "description": "(If APIOPT=2) compare zero sequence line shunts."
+      },
+      {
+        "value": "= 28",
+        "description": "(If APIOPT=2) compare connection codes."
+      },
+      {
+        "value": "= 29",
+        "description": "(If APIOPT=2) compare zero sequence mutuals."
+      },
+      {
+        "value": "= 30",
+        "description": "(If APIOPT=2) compare multisection lines."
+      },
+      {
+        "value": "= 31",
+        "description": "(If APIOPT=2) compare multisection line metered end."
+      },
+      {
+        "value": "= 32",
+        "description": "(If APIOPT=2) compare load status."
+      },
+      {
+        "value": "= 33",
+        "description": "(If APIOPT=2) compare line lengths."
+      },
+      {
+        "value": "= 34",
+        "description": "(If APIOPT=2) compare generator Q."
+      },
+      {
+        "value": "= 35",
+        "description": "(If APIOPT=2) compare from P flow."
+      },
+      {
+        "value": "= 36",
+        "description": "(If APIOPT=2) compare from Q flow."
+      },
+      {
+        "value": "= 37",
+        "description": "(If APIOPT=2) compare from and to P flow."
+      },
+      {
+        "value": "= 38",
+        "description": "(If APIOPT=2) compare from and to Q flow."
+      },
+      {
+        "value": "= 39",
+        "description": "(If APIOPT=2) compare line P losses."
+      },
+      {
+        "value": "= 40",
+        "description": "(If APIOPT=2) compare line Q losses."
+      },
+      {
+        "value": "= 41",
+        "description": "(If APIOPT=2) compare shunt status."
+      },
+      {
+        "value": "= 42",
+        "description": "(If APIOPT=2) compare switched shunt status."
+      },
+      {
+        "value": "= 43",
+        "description": "(If APIOPT=2) compare load scalable flag."
+      },
+      {
+        "value": "= 44",
+        "description": "(If APIOPT=2) compare MBASE & RPOS+jX’."
+      },
+      {
+        "value": "= 45",
+        "description": "(If APIOPT=2) compare MBASE & RPOS+jXs."
+      },
+      {
+        "value": "= 46",
+        "description": "(If APIOPT=2) compare bus substation."
+      },
+      {
+        "value": "= 47",
+        "description": "(If APIOPT=2) compare node status."
+      },
+      {
+        "value": "= 48",
+        "description": "(If APIOPT=2) compare switching device status."
+      },
+      {
+        "value": "= 49",
+        "description": "(If APIOPT=2) compare switching device P or Q flow."
+      },
+      {
+        "value": "= 50",
+        "description": "(If APIOPT=2) compare switching device P flow."
+      },
+      {
+        "value": "= 51",
+        "description": "(If APIOPT=2) compare switching device Q flow."
+      },
+      {
+        "value": "STATUS(3)",
+        "description": "load characteric comparison option (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "use total nominal load (only used if APIOPT=2)."
+      },
+      {
+        "value": "= 1",
+        "description": "use contant MVA (only used if APIOPT=2)."
+      },
+      {
+        "value": "= 2",
+        "description": "use constant current (only used if APIOPT=2)."
+      },
+      {
+        "value": "= 3",
+        "description": "use constant admittance (only used if APIOPT=2)."
+      },
+      {
+        "value": "STATUS(4)",
+        "description": "line rating to use. (1 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "use all ratings (only used if APIOPT=2)."
+      },
+      {
+        "value": "= ‘1-12’",
+        "description": "use rating specified (only used if APIOPT=2)."
+      }
+    ],
+    "thrsh": [
+      {
+        "value": "THRSH(1)",
+        "description": "difference threshold (0.0 by default)."
+      },
+      {
+        "value": "THRSH(2)",
+        "description": "voltage or tap ratio threshold (0.0 by default)."
+      },
+      {
+        "value": "THRSH(3)",
+        "description": "angle threshold (0.0 by default)."
+      }
+    ],
+    "seqflg": [
+      {
+        "value": "SEQFLG(1)",
+        "description": "true if there is sequence data in the working case."
+      },
+      {
+        "value": "SEQFLG(2)",
+        "description": "true if there is sequence data in the Saved Case in file CFILE."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ALL value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid APIOPT value."
+    },
+    {
+      "value": "= 4",
+      "description": "invalid STATUS value."
+    },
+    {
+      "value": "= 5",
+      "description": "invalid THRSH value."
+    },
+    {
+      "value": "= 6",
+      "description": "CFILE is blank."
+    },
+    {
+      "value": "= 7",
+      "description": "unexpected APIOPT value."
+    },
+    {
+      "value": "= 8",
+      "description": "error building the case to case translation files."
+    },
+    {
+      "value": "= 9",
+      "description": "error reading the comparison case."
+    },
+    {
+      "value": "= 10",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "powerskills-tool",
+  "description": "Progressive-disclosure workflows for power-system software exposed by PowerMCP: ANDES, Egret, LTSpice, OpenDSS, PSLF, PSS/E, PowerWorld, PyPSA, pandapower, and surge, plus potpourri for AC/DC and multi-period optimal power flow on pandapower distribution grids. Each skill exposes load, inspect, solve, modify, then advanced studies, so an agent starts with the lowest-risk action and only escalates once the base case is credible.",
+  "version": "0.2.0",
+  "author": {
+    "name": "Power-Agent",
+    "url": "https://github.com/Power-Agent/PowerSkills"
+  },
+  "homepage": "https://github.com/Power-Agent/PowerSkills",
+  "keywords": ["power-systems", "power-flow", "opf", "contingency", "pypsa", "pandapower", "potpourri", "psse", "powerworld", "opendss", "andes", "egret", "ltspice", "surge", "powermcp", "distribution-grid", "multi-period", "storage", "pyomo"]
+}

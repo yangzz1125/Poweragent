@@ -1,0 +1,25 @@
+{
+  "module": "psspy",
+  "function_name": "newopf",
+  "category": "Optimal Power Flow Data",
+  "description": "Use this API to initialize the working case with default OPF data for all bus oriented data records. It must be called prior to introducing any OPF data records. It has no effect if OPF data already exists in the working case. This API routine was first introduced in release 28.0.0. ierr = newopf()",
+  "python_syntax": "ierr = newopf()",
+  "return_type": "error_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": ""
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "module": "psspy",
+  "function_name": "dist_bus_fault",
+  "category": "Set Disturbance",
+  "description": "This API routine is obsolete. It has been replaced by the API routine dist_3phase_bus_fault, and is implemented by a call to dist_3phase_bus_fault. Use this API to apply a fault at a bus during dynamic simulations. This API routine was first introduced in release 30.2.0. ierr = dist_bus_fault(ibus, units, basekv, values)",
+  "python_syntax": "ierr = dist_bus_fault(ibus, units, basekv, values)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number of the bus at which the fault is to be placed. (input; no default allowed)."
+    },
+    {
+      "name": "units",
+      "description": "Units in which fault admittance or impedance is specified in values. (input; 1 by default)."
+    },
+    {
+      "name": "basekv",
+      "description": "Base voltage in kv used to calculate the per unit fault admittance if units is 2 or 3; ignored if units is 1. if basekv is specified as 0.0, the base voltage of bus ibus is used. (input; 0.0 by default)."
+    },
+    {
+      "name": "values",
+      "description": "An array of two elementsNone. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "units": [
+      {
+        "value": "= 1",
+        "description": "admittance in MVA."
+      },
+      {
+        "value": "= 2",
+        "description": "admittance in mhos."
+      },
+      {
+        "value": "= 3",
+        "description": "impedance in ohms."
+      }
+    ],
+    "values": [
+      {
+        "value": "VALUES(1)",
+        "description": "real component of the complex fault admittance or impedance according to the value specified for UNITS (0.0 by default)."
+      },
+      {
+        "value": "VALUES(2)",
+        "description": "reactive component of the complex fault admittance or impedance according to the value specified for UNITS (-2.0E11 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "as in DIST_3PHASE_BUS_FAULT."
+    }
+  ]
+}

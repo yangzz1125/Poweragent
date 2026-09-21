@@ -1,0 +1,46 @@
+{
+  "module": "psspy",
+  "function_name": "wnmod_user",
+  "category": "Wind Related Models",
+  "description": "Use this API to list user-written renewable machine model definitions or to remove user-written renewable machine model definitions that are not assigned to any renewable machines (unused) from the user model definition tables. This API routine was first introduced in release 31.0.0. ierr = wnmod_user(opt)",
+  "python_syntax": "ierr = wnmod_user(opt)",
+  "return_type": "error_only_listing",
+  "parameters": [
+    {
+      "name": "opt",
+      "description": "Option code. (input; 0 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "opt": [
+      {
+        "value": "= 0",
+        "description": "list user-written renewable machine model definitions."
+      },
+      {
+        "value": "= 1",
+        "description": "remove unused user-written renewable machine model definitions."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid OPT value."
+    },
+    {
+      "value": "= 2",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

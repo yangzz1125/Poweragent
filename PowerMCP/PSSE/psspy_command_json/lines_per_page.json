@@ -1,0 +1,76 @@
+{
+  "module": "psspy",
+  "function_name": "lines_per_page",
+  "category": "Power Flow Operation",
+  "description": "Use this API to specify or return the page length limits for the four output devices; also retrieve device names. This API routine was first introduced in release 30.0.0. ierr = lines_per_page(ival) ierr, ival,devnam = lines_per_page()",
+  "python_syntax": "ierr = lines_per_page(ival) ierr, ival,devnam = lines_per_page()",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ival",
+      "description": "An array of four elements specifying the page length limits. (input; if Batch command, or for Python if specified as an argument, or for Fortran if IOCODE is 0, unchanged by default; else output)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "ival": [
+      {
+        "value": "IVAL(1)",
+        "description": "lines per page for disk files (no change by default)."
+      },
+      {
+        "value": "IVAL(2)",
+        "description": "lines per page for the report window (no change by default)."
+      },
+      {
+        "value": "IVAL(3)",
+        "description": "lines per page for the first primary hard copy device (no change by default)."
+      },
+      {
+        "value": "IVAL(4)",
+        "description": "lines per page for the second primary hard copy device (no change by default)."
+      }
+    ],
+    "devnam": [
+      {
+        "value": "DEVNAM(1)",
+        "description": "‘FILE."
+      },
+      {
+        "value": "DEVNAM(2)",
+        "description": "‘REPORT WINDOW’."
+      },
+      {
+        "value": "DEVNAM(3)",
+        "description": "name of first primary hard copy device."
+      },
+      {
+        "value": "DEVNAM(4)",
+        "description": "name of second primary hard copy device."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "negative IVAL value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid IOCODE value."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "module": "psspy",
+  "function_name": "tspf_profile_data",
+  "category": "Time Series Power Flow Data",
+  "description": "Use this API routine to modify the data of an existing Time Series Power Flow profile, or to add a new Time Series Power Flow profile. This API routine was first introduced in release 35.4.0. ierr = tspf_profile_data(name, intgar, realar, element)",
+  "python_syntax": "ierr = tspf_profile_data(name, intgar, realar, element)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Unique name of the profile data. (input; no default allowed)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of six elementsNone. (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of two elementsNone. (input)."
+    },
+    {
+      "name": "element",
+      "description": "Name of the element which profile is applied. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "field (1 by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "LOADMW."
+      },
+      {
+        "value": "= 2",
+        "description": "LOADWVAR."
+      },
+      {
+        "value": "= 3",
+        "description": "GENMW."
+      },
+      {
+        "value": "= 4",
+        "description": "STATUS."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "status (1 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "Off."
+      },
+      {
+        "value": "= 1",
+        "description": "On."
+      },
+      {
+        "value": "INTGAR(3)",
+        "description": "profile Curve Set Number (1 by default)."
+      },
+      {
+        "value": "INTGAR(4)",
+        "description": "profile Curve column Number (1 by default)."
+      },
+      {
+        "value": "INTGAR(5)",
+        "description": "profile Adjustment Mode (1 by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "Absolute."
+      },
+      {
+        "value": "= 2",
+        "description": "Scale."
+      },
+      {
+        "value": "= 3",
+        "description": "Deviation."
+      },
+      {
+        "value": "= 3",
+        "description": "Schedule."
+      },
+      {
+        "value": "INTGAR(6)",
+        "description": "enforce Machine MW Limits (0 by default)."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "Offset (0.0 by default)."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "Scale Factor (1.0 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Empty profile name."
+    },
+    {
+      "value": "= 2",
+      "description": "profile table I/O error."
+    },
+    {
+      "value": "= 3",
+      "description": "Element not found."
+    },
+    {
+      "value": "= 4",
+      "description": "Error: invalid status, set to 1."
+    },
+    {
+      "value": "= 5",
+      "description": "Error: invalid adjustment mode."
+    },
+    {
+      "value": "= 6",
+      "description": "prerequisite requirements for function not met."
+    }
+  ]
+}

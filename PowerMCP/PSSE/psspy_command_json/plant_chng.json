@@ -1,0 +1,72 @@
+{
+  "module": "psspy",
+  "function_name": "plant_chng",
+  "category": "Power Flow Data",
+  "description": "This API routine is obsolete. It has been replaced by the API routine plant_chng_3, and is implemented by a call to plant_chng_3. Use this API routine to modify the data of an existing plant in the working case, if the plant bus is not a bus section within a substation. Use plant_chng_3 if data is to be modified at a plant associated with a bus section. This API routine was first introduced in release 33.0.0. ierr = plant_chng(ibus, intgar, realar)",
+  "python_syntax": "ierr = plant_chng(ibus, intgar, realar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input; no default allowed)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of one elementsNone. (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of two elementsNone. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "IREG, remote bus number (0 to control voltage at bus IBUS) (0 by default)."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "VS, scheduled voltage magnitude (1.0 by default)."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "RMPCT, percent of contributed reactive power (100.0 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 3",
+      "description": "no plant at bus."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - invalid scheduled voltage - regulated bus not found - plant specified as remotely regulating itself - type code of regulated bus is not 1 or 2 - RMPCT is not positive."
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "module": "psspy",
+  "function_name": "loddt1",
+  "category": "Single Element Data",
+  "description": "Returns load quantities in MVA. This API routine was first introduced in release 28.0.0. ierr, rval = loddt1(ibus, id ,string1, string2)",
+  "python_syntax": "ierr, rval = loddt1(ibus, id ,string1, string2)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    },
+    {
+      "name": "id",
+      "description": "Load identifier. (input)."
+    },
+    {
+      "name": "string1",
+      "description": "String indicating the load characteristic desired. (input)."
+    },
+    {
+      "name": "string2",
+      "description": "String indicating the units to be used. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "rval",
+      "description": "Magnitude of the complex value indicated by string1 in the units indicated by string2. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string1": [
+      {
+        "value": "= MVA",
+        "description": "constant MVA load."
+      },
+      {
+        "value": "= IL",
+        "description": "constant current load."
+      },
+      {
+        "value": "= YL",
+        "description": "constant admittance load."
+      },
+      {
+        "value": "= TOTAL",
+        "description": "total load."
+      },
+      {
+        "value": "= YNEG",
+        "description": "exceptional nominal negative sequence load."
+      },
+      {
+        "value": "= YZERO",
+        "description": "exceptional nominal zero sequence load."
+      }
+    ],
+    "string2": [
+      {
+        "value": "= ACT",
+        "description": "actual load (nominal load for STRING1 = ‘YNEG’ or ‘YZERO’). ‘P’ ‘Q’ returned in MW Mvar."
+      },
+      {
+        "value": "= O_ACT",
+        "description": "actual load (nominal load for STRING1 = ‘YNEG’ or ‘YZERO’). ‘P’ ‘Q’ in units determined by the power output option setting."
+      },
+      {
+        "value": "= NOM",
+        "description": "nominal load (at 1.0 pu voltage). ‘RVAL’ returned in MVA."
+      },
+      {
+        "value": "= O_NOM",
+        "description": "nominal load (at 1.0 pu voltage). ‘RVAL’ in units determined by the power output option setting."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error; ‘RVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Bbus not found; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Load not found; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "Bbus type code is not 1, 2 or 3; ‘RVAL’ returned."
+    },
+    {
+      "value": "= 4",
+      "description": "Lload out-of-service; ‘RVAL’ returned."
+    },
+    {
+      "value": "= 5",
+      "description": "Iinvalid value of ‘STRING1’ or ‘STRING2’; ‘RVAL’ unchanged."
+    },
+    {
+      "value": "= 6",
+      "description": "Ssequence data not in case for ‘STRING1’ = ‘YNEG’ or ‘YZERO’; ‘RVAL’ unchanged."
+    }
+  ]
+}

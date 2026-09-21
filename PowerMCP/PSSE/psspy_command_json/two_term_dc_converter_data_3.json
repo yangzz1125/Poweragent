@@ -1,0 +1,184 @@
+{
+  "module": "psspy",
+  "function_name": "two_term_dc_converter_data_3",
+  "category": "Power Flow Data",
+  "description": "Use this API to modify the data of a dc converter of an existing two-terminal dc line in the working case (see PSSE Program Operation Manual, Area Interchange Data). The dc line must have previously been specified via the TWO_TERMINAL_DC_LINE_DATA API. This API routine was first introduced in release 34.4.0. ierr, realaro = two_term_dc_converter_data_3(cnvflg, name, intgar, realari, id)",
+  "python_syntax": "ierr, realaro = two_term_dc_converter_data_3(cnvflg, name, intgar, realari, id)",
+  "return_type": "error_and_record",
+  "parameters": [
+    {
+      "name": "cnvflg",
+      "description": "Converter type. (input; no default allowed)."
+    },
+    {
+      "name": "name",
+      "description": "Name of the two-terminal dc line for which data for one of its converters is to be specified. (input; no default allowed)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of six elementsNone. (input)."
+    },
+    {
+      "name": "realari",
+      "description": "An array of 11 elements specifying values REALAR(1) through REALAR(11) as described above. (input)."
+    },
+    {
+      "name": "id",
+      "description": "Ac transformer circuit identifier, idr or idi. (input; ‘1’ by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "realaro",
+      "description": "An array of 4 elements specifying values REALAR(12) through REALAR(15) as described above. (output)."
+    }
+  ],
+  "allowed_values": {
+    "cnvflg": [
+      {
+        "value": "= 1",
+        "description": "for rectifier data."
+      },
+      {
+        "value": "= 2",
+        "description": "for inverter data."
+      }
+    ],
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "IPR or IPI, converter bus number (no default allowed)."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "NBR or NBI, number of bridges in series (0 by default)."
+      },
+      {
+        "value": "INTGAR(3)",
+        "description": "ICR or ICI, zero or bus number of firing angle bus (0 by default)."
+      },
+      {
+        "value": "INTGAR(4)",
+        "description": "NDR or NDI, zero or node number of firing angle bus node (0 by default)."
+      },
+      {
+        "value": "INTGAR(5)",
+        "description": "IFR or IFI, zero or bus number of winding one side of a two-winding ac transformer (0 by default)."
+      },
+      {
+        "value": "INTGAR(6)",
+        "description": "ITR or ITI, zero or bus number of winding two side of a two-winding ac transformer (0 by default)."
+      }
+    ],
+    "realari": [
+      {
+        "value": "REALARI(1)",
+        "description": "NR or ANMNI, minimum firing angle (90.0 by default)."
+      },
+      {
+        "value": "REALARI(2)",
+        "description": "XR or ANMXI, maximum firing angle (0.0 by default)."
+      },
+      {
+        "value": "REALARI(3)",
+        "description": "RCR or RCI, commutating resistance (0.0 by default)."
+      },
+      {
+        "value": "REALARI(4)",
+        "description": "XCR or XCI, commutating reactance (0.0 by default)."
+      },
+      {
+        "value": "REALARI(5)",
+        "description": "EBASR or EBASI, primary base ac voltage (0.0 by default)."
+      },
+      {
+        "value": "REALARI(6)",
+        "description": "TRR or TRI, transformer ratio (1.0 by default)."
+      },
+      {
+        "value": "REALARI(7)",
+        "description": "TAPR or TAPI, tap setting (1.0 by default)."
+      },
+      {
+        "value": "REALARI(8)",
+        "description": "TMXR or TMXI, maximum tap setting (1.5 by default)."
+      },
+      {
+        "value": "REALARI(9)",
+        "description": "TMNR or TMNI, minimum tap setting (0.51 by default)."
+      },
+      {
+        "value": "REALARI(10)",
+        "description": "STPR or STPI, tap step (0.00625 by default)."
+      },
+      {
+        "value": "REALARI(11)",
+        "description": "XCAPR or XCAPI, capacitive reactance of CCC type converter (0.0 by default)."
+      }
+    ],
+    "realaro": [
+      {
+        "value": "REALARO(1)",
+        "description": "firing angle (returned)."
+      },
+      {
+        "value": "REALARO(2)",
+        "description": "dc voltage (kV) (returned)."
+      },
+      {
+        "value": "REALARO(3)",
+        "description": "real power into converter (PWRCOD) (returned)."
+      },
+      {
+        "value": "REALARO(4)",
+        "description": "reactive power into converter (PWRCOD) (returned)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "dc line not found."
+    },
+    {
+      "value": "= 2",
+      "description": "converter type is not 1 or 2."
+    },
+    {
+      "value": "= 3",
+      "description": "transformer circuit identifier is more than two characters."
+    },
+    {
+      "value": "= 4",
+      "description": "no converter bus is specified."
+    },
+    {
+      "value": "= 5",
+      "description": "converter bus not found."
+    },
+    {
+      "value": "= 6",
+      "description": "node-breaker terminal connection table is full."
+    },
+    {
+      "value": "= 7",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - Converter bus is dummy bus of a multi-section line. - Multi-section line grouping deleted. - Converter maximum angle is less than its minimum angle. - Converter maximum tap is less than its minimum tap. - Invalid tap step. - Commutating bus not found. - ac transformer bus not found. - Specified branch not found. - Specified branch is not a transformer. - From bus of specified branch is not winding one side bus."
+    }
+  ]
+}

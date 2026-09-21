@@ -1,0 +1,70 @@
+{
+  "module": "psspy",
+  "function_name": "change_cctswsomod_chricn_2",
+  "category": "Cct Models",
+  "description": "Use this API to change the value of a character ICON (i.e., an element of the CHRICN array) of the “other” type model attached to a specified switched shunt. The corresponding integer ICON is set to 0. This API routine was first introduced in release 35.0.0. ierr = change_cctswsomod_chricn_2(ibus, id, model, j, chdata)",
+  "python_syntax": "ierr = change_cctswsomod_chricn_2(ibus, id, model, j, chdata)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Switched shunt bus number. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Switched shunt identifier. (input)."
+    },
+    {
+      "name": "model",
+      "description": "Model name. (input; no default allowed)."
+    },
+    {
+      "name": "j",
+      "description": "Icon number to change (j is relative to the start of the block of icons assigned to this model, e,g., 1 for first icon(m), 2 for icon(m+1), etc.). (input; no default allowed)."
+    },
+    {
+      "name": "chdata",
+      "description": "New character icon value. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "unknown model name."
+    },
+    {
+      "value": "= 2",
+      "description": "no CCT table entry for the model."
+    },
+    {
+      "value": "= 3",
+      "description": "model names do not match - model is aaa not xxx."
+    },
+    {
+      "value": "= 4",
+      "description": "no ICONs used in the model."
+    },
+    {
+      "value": "= 5",
+      "description": "ICON number outside of the ICON range of this model."
+    },
+    {
+      "value": "= 6",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 7",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

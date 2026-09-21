@@ -1,0 +1,78 @@
+{
+  "module": "psspy",
+  "function_name": "station_mtdc_term_chng",
+  "category": "Node Breaker Data",
+  "description": "This API changes both node terminal connections of an existing multi-terminal converter in the working case. A new API, station_mtdc_bus_term_chng, has been introduced at 35.5 in which the node terminal connection at one end is changed by specifying the converter bus number and desired node. This API routine was first introduced in release 34.3.0. ierr = station_mtdc_term_chng(name, intgar)",
+  "python_syntax": "ierr = station_mtdc_term_chng(name, intgar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Quoted name of the multi-terminal dc line for which node terminal data is to be specified for one of the ac converter buses. (input)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of 2 elements. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error return. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "converter bus to which the node is attached."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "node number to which the converter end is attached."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "multi-terminal dc line not found."
+    },
+    {
+      "value": "= 2",
+      "description": "bus does not belong to substation."
+    },
+    {
+      "value": "= 3",
+      "description": "node does not exist."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid node number."
+    },
+    {
+      "value": "= 5",
+      "description": "node-breaker terminal connection table is full."
+    },
+    {
+      "value": "= 6",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 7",
+      "description": "bus is not a converter bus of this multi-term dc line."
+    },
+    {
+      "value": "= 8",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

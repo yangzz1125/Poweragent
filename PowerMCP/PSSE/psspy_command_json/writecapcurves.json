@@ -1,0 +1,118 @@
+{
+  "module": "psspy",
+  "function_name": "writecapcurves",
+  "category": "Power Flow Operation",
+  "description": "Use this API to write the capability curve data in the working case in the form of a Capability Curve Raw Data File. This API routine was first introduced in release 35.0.0. ierr = writecapcurves(sid, all, status, out, ofile)",
+  "python_syntax": "ierr = writecapcurves(sid, all, status, out, ofile)",
+  "return_type": "error_only_write_file",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid subsystem identifier. valid subsystem identifiers range from 0 to 11. subsystem sid must have been previously defined. (input; 0 by default)."
+    },
+    {
+      "name": "all",
+      "description": "All machines or those in the specified subsystem. (input; 1 by default)."
+    },
+    {
+      "name": "status",
+      "description": "An array of two elements specifying options. (input)."
+    },
+    {
+      "name": "out",
+      "description": "Destination selection. (input; 1 by default)."
+    },
+    {
+      "name": "ofile",
+      "description": "Name of the file to which data records are to be written (when out is 0). (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 0",
+        "description": "process only machines in subsystem SID."
+      },
+      {
+        "value": "= 1",
+        "description": "process all machines."
+      }
+    ],
+    "status": [
+      {
+        "value": "STATUS(1)",
+        "description": "include records for out-of-service machines (1 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no."
+      },
+      {
+        "value": "= 1",
+        "description": "yes."
+      },
+      {
+        "value": "STATUS(2)",
+        "description": "‘IC” value on the first record (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "for API routine ReadCapCurves with IC=0."
+      },
+      {
+        "value": "= 1",
+        "description": "for API routine ReadCapCurves with IC=1."
+      }
+    ],
+    "out": [
+      {
+        "value": "= 0",
+        "description": "direct output to a data file specified by OFILE."
+      },
+      {
+        "value": "= 1",
+        "description": "direct output to the current report device."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ALL value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid STATUS value."
+    },
+    {
+      "value": "= 4",
+      "description": "invalid OUT value."
+    },
+    {
+      "value": "= 5",
+      "description": "capability curve data is not in the working case."
+    },
+    {
+      "value": "= 6",
+      "description": "error opening OFILE."
+    },
+    {
+      "value": "= 7",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

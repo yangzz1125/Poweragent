@@ -1,0 +1,62 @@
+{
+  "module": "psspy",
+  "function_name": "station_sws_shunt_term_chng",
+  "category": "Node Breaker Data",
+  "description": "This API routine is obsolete. It has been replaced by the API routine station_sws_shunt_term_chng_2, and is implemented by a call to station_sws_shunt_term_chng_2. Use this API to change a substation switched shunt node terminal connection in the working case. This API routine was first introduced in release 34.0.0. ierr = station_sws_shunt_term_chng(bus, intgar)",
+  "python_syntax": "ierr = station_sws_shunt_term_chng(bus, intgar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "bus",
+      "description": "None. (input)."
+    },
+    {
+      "name": "intgar",
+      "description": "None. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error return. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus does not exist."
+    },
+    {
+      "value": "= 2",
+      "description": "switched shunt does not exist."
+    },
+    {
+      "value": "= 3",
+      "description": "bus does not belong to a substation."
+    },
+    {
+      "value": "= 4",
+      "description": "node not found in substation."
+    },
+    {
+      "value": "= 5",
+      "description": "invalid node number."
+    },
+    {
+      "value": "= 6",
+      "description": "error when moving switched shunt terminal connection."
+    },
+    {
+      "value": "= 7",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

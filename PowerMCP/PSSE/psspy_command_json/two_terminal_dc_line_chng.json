@@ -1,0 +1,118 @@
+{
+  "module": "psspy",
+  "function_name": "two_terminal_dc_line_chng",
+  "category": "Power Flow Data",
+  "description": "Use this API routine to modify the link data of an existing two-terminal dc line in the working case (see PSSE Program Operation Manual, Area Interchange Data). Converter data for the rectifier and inverter are specified via the TWO_TERM_DC_CONVR_DATA API routine. This API routine was first introduced in release 33.0.0. ierr, realaro = two_terminal_dc_line_chng(dc, intgar, realari, meter)",
+  "python_syntax": "ierr, realaro = two_terminal_dc_line_chng(dc, intgar, realari, meter)",
+  "return_type": "error_and_record",
+  "parameters": [
+    {
+      "name": "dc",
+      "description": "Quoted name of the two-terminal dc line for which data is to be specified; if an unquoted integer value is specified, the api converts it to a left-justified name. (input; no default allowed)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of two elementsNone. (input)."
+    },
+    {
+      "name": "realari",
+      "description": "An array of eight elements specifying values REALAR(1) through REALAR(8) as described above. (input)."
+    },
+    {
+      "name": "meter",
+      "description": "Metered end flag: ‘r’ or ‘i’. (input; ‘I’ by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "realaro",
+      "description": "An array of one elements specifying value REALAR(9) as described above. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "MDC, control mode (0, 1 or 2) (0 by default)."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "CCITMX, CCC Newton solution iteration limit (20 by default)."
+      }
+    ],
+    "realari": [
+      {
+        "value": "REALARI(1)",
+        "description": "SETVL, scheduled current (amps) or power (MW) demand (0.0 by default)."
+      },
+      {
+        "value": "REALARI(2)",
+        "description": "VSCHD, scheduled dc voltage (kV) (1.0 by default)."
+      },
+      {
+        "value": "REALARI(3)",
+        "description": "VCMOD, mode switch dc voltage (kV) (0.0 by default)."
+      },
+      {
+        "value": "REALARI(4)",
+        "description": "DELTI, margin (pu, > 0) (0.0 by default)."
+      },
+      {
+        "value": "REALARI(5)",
+        "description": "RDC, dc line resistance (0.0 by default)."
+      },
+      {
+        "value": "REALARI(6)",
+        "description": "RCOMP, compounding resistance (0.0 by default)."
+      },
+      {
+        "value": "REALARI(7)",
+        "description": "DCVMIN, minimum dc voltage (kV) (0.0 by default)."
+      },
+      {
+        "value": "REALARI(8)",
+        "description": "CCCACC, CCC Newton solution acceleration (1.0 by default)."
+      }
+    ],
+    "realaro": [
+      {
+        "value": "REALARO(1)",
+        "description": "dc line current (amps) (returned)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 2",
+      "description": "metered end code is more than one character."
+    },
+    {
+      "value": "= 3",
+      "description": "blank dc line name is invalid."
+    },
+    {
+      "value": "= 4",
+      "description": "two-terminal dc line not found."
+    },
+    {
+      "value": "= 5",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - invalid dc line control mode - invalid dc line resistance - invalid compounding resistance - compounding resistance exceeds line resistance - scheduled voltage must exceed mode switch voltage - invalid metered end code."
+    }
+  ]
+}

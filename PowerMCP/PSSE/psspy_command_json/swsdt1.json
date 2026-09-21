@@ -1,0 +1,62 @@
+{
+  "module": "psspy",
+  "function_name": "swsdt1",
+  "category": "Single Element Data",
+  "description": "This API routine is obsolete. It has been replaced by the API routine SWSDAT_2, and is implemented by a call to SWSDAT_2. Use this API to return switched shunt ‘1’ real data. This API routine was first introduced in release 30.0.0. ierr, rval = swsdt1(ibus, string)",
+  "python_syntax": "ierr, rval = swsdt1(ibus, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the switched shunt quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "rval",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= VSWHI",
+        "description": "Controlled quantity upper limit."
+      },
+      {
+        "value": "= VSWLO",
+        "description": "Controlled quantity lower limit."
+      },
+      {
+        "value": "= RMPCT",
+        "description": "Percentage of total Mvar required to regulate controlled bus voltage."
+      },
+      {
+        "value": "= BINIT",
+        "description": "Present admittance switched on in Mvar at unity voltage."
+      },
+      {
+        "value": "= O_BINIT",
+        "description": "Same as ‘BINIT’ units determined by power output option."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘RVAL’ returned."
+    },
+    {
+      "value": "> 0",
+      "description": "SWSDAT_2 error code."
+    }
+  ]
+}

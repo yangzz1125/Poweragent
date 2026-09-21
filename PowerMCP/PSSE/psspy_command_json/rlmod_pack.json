@@ -1,0 +1,25 @@
+{
+  "module": "psspy",
+  "function_name": "rlmod_pack",
+  "category": "Line Relay Models",
+  "description": "Use this API to remove entries that are marked as unused from the line relay model connection tables and the line relay model array allocation tables. It packs the entries remaining in these tables at the front of the various arrays. This API routine was first introduced in release 28.0.0. ierr = rlmod_pack()",
+  "python_syntax": "ierr = rlmod_pack()",
+  "return_type": "error_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": ""
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

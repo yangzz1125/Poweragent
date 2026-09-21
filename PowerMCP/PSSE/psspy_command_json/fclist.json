@@ -1,0 +1,76 @@
+{
+  "module": "psspy",
+  "function_name": "fclist",
+  "category": "Dynamic Simulation Operation",
+  "description": "Use this API to list FACTS device models connected to subsystem buses along with their storage locations in the dynamics data arrays. This API routine was first introduced in release 30.2.0. ierr = fclist(sid, all, status)",
+  "python_syntax": "ierr = fclist(sid, all, status)",
+  "return_type": "error_only_listing",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid subsystem identifier. valid subsystem identifiers range from 0 to 11. subsystem sid must have been previously defined. (input; 0 by default)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem flag. (input; 1 by default)."
+    },
+    {
+      "name": "status",
+      "description": "Active/bypassed flag. (input; 0 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 0",
+        "description": "process only buses in subsystem SID."
+      },
+      {
+        "value": "= 1",
+        "description": "process all buses."
+      }
+    ],
+    "status": [
+      {
+        "value": "= 0",
+        "description": "active and bypassed models."
+      },
+      {
+        "value": "= 1",
+        "description": "active models only."
+      },
+      {
+        "value": "= 2",
+        "description": "bypassed models only."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ALL value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid STATUS value."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

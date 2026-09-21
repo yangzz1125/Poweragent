@@ -1,0 +1,202 @@
+{
+  "module": "psspy",
+  "function_name": "a2trmdcconvreal",
+  "category": "Two-Terminal Dc Line Converter Data",
+  "description": "Use this API to return an array of real values for subsystem two-terminal dc line converters. This API routine was first introduced in release 30.3.0. ierr, rarray = a2trmdcconvreal(sid, ties, flag, entry, string)",
+  "python_syntax": "ierr, rarray = a2trmdcconvreal(sid, ties, flag, entry, string)",
+  "return_type": "error_and_array",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the bus subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "ties",
+      "description": "A flag indicating which subsystem converter buses of two-terminal dc lines to include (ignored if sid is negative). (input; 1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem two-terminal dc line converters to include. (input; 1 by default)."
+    },
+    {
+      "name": "entry",
+      "description": "A flag indicating organization. (input; 1 by default)."
+    },
+    {
+      "name": "string",
+      "description": "An array of NSTR elements specifying NSTR of the following strings indicating the two-terminal dc line converter quantities desired. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "rarray",
+      "description": "An array of NSTR*DIM elements specifying Is an array of at least NSTR columns, each of which contains DIM elements. (output)."
+    }
+  ],
+  "allowed_values": {
+    "sid": [
+      {
+        "value": "< 0",
+        "description": "to instruct the API to assume a subsystem containing all buses in the working case."
+      },
+      {
+        "value": ">= 0",
+        "description": "valid bus subsystem identifier. Valid subsystem identifiers range from 0 to 11. Subsystem SID must have been previously defined."
+      }
+    ],
+    "ties": [
+      {
+        "value": "= 1",
+        "description": "for each end of interior subsystem two-terminal dc lines only."
+      },
+      {
+        "value": "= 2",
+        "description": "for the subsystem bus end of tie two-terminal dc lines only."
+      },
+      {
+        "value": "= 3",
+        "description": "for the non-subsystem bus end of tie two-terminal dc lines only."
+      },
+      {
+        "value": "= 4",
+        "description": "for each end of tie two-terminal dc lines only."
+      },
+      {
+        "value": "= 5",
+        "description": "for each end of interior subsystem two-terminal dc lines and the subsystem bus end of tie two-terminal dc lines."
+      },
+      {
+        "value": "= 6",
+        "description": "for each end of interior subsystem two-terminal dc lines and tie two-terminal dc lines."
+      }
+    ],
+    "flag": [
+      {
+        "value": "= 1",
+        "description": "for only in-service two-terminal dc lines."
+      },
+      {
+        "value": "= 2",
+        "description": "for all two-terminal dc lines."
+      }
+    ],
+    "entry": [
+      {
+        "value": "= 1",
+        "description": "for converter bus order."
+      },
+      {
+        "value": "= 2",
+        "description": "for dc line name order."
+      }
+    ],
+    "string": [
+      {
+        "value": "= DCCUR",
+        "description": "dc line current in amps."
+      },
+      {
+        "value": "= ACAMPS",
+        "description": "ac current in amps at the from bus."
+      },
+      {
+        "value": "= PUCUR",
+        "description": "ac current in pu at the from bus."
+      },
+      {
+        "value": "= KVDC",
+        "description": "From bus dc voltage in kV."
+      },
+      {
+        "value": "= ANGLE",
+        "description": "From bus converter angle in degrees."
+      },
+      {
+        "value": "= TAP",
+        "description": "From bus tap setting in pu."
+      },
+      {
+        "value": "= PAC",
+        "description": "Apparent active power flow into the dc line at the from bus."
+      },
+      {
+        "value": "= QAC",
+        "description": "Apparent reactive power flow into the dc line at the from bus."
+      },
+      {
+        "value": "= MVA",
+        "description": "Apparent ac power flow into the dc line at the from bus."
+      },
+      {
+        "value": "= PLOSS",
+        "description": "Active power losses."
+      },
+      {
+        "value": "= QLOSS",
+        "description": "Reactive power losses."
+      },
+      {
+        "value": "= O_PAC",
+        "description": "Apparent active power flow into the dc line at the from bus (units determined by power output options)."
+      },
+      {
+        "value": "= O_QAC",
+        "description": "Apparent reactive power flow into the dc line at the from bus (units determined by power output options)."
+      },
+      {
+        "value": "= O_MVA",
+        "description": "Apparent ac power flow into the dc line at the from bus (units determined by power output options)."
+      },
+      {
+        "value": "= O_PLOSS",
+        "description": "Active power losses (units determined by power output options)."
+      },
+      {
+        "value": "= O_QLOSS",
+        "description": "Reactive power losses (units determined by power output options)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid TIES value."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid FLAG value."
+    },
+    {
+      "value": "= 5",
+      "description": "Invalid ENTRY value."
+    },
+    {
+      "value": "= 6",
+      "description": "Invalid NSTR value."
+    },
+    {
+      "value": "= 7",
+      "description": "DIM, and hence the size of RARRAY, is not large enough."
+    },
+    {
+      "value": "= 8",
+      "description": "Invalid STRING value."
+    }
+  ]
+}

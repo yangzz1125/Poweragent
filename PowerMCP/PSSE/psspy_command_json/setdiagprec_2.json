@@ -1,0 +1,35 @@
+{
+  "module": "psspy",
+  "function_name": "setdiagprec_2",
+  "category": "Diagram View",
+  "description": "Use this API to specify the precision of results displayed in Slider Diagrams. This API routine was first introduced in release 34.0.0. setdiagprec_2(setscop, diagprec)",
+  "python_syntax": "setdiagprec_2(setscop, diagprec)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "setscop",
+      "description": "Scope of the api. (input)."
+    },
+    {
+      "name": "diagprec",
+      "description": "An array of eight elements specifying number of digits after the decimal point for various result types. DIAGPREC(1) is used for power flow results, DIAGPREC(2) is used for short circuit results, DIAGPREC(3) is used for OPF results and DIAGPREC(4) is used for PU values. Valid values are 1 through 4. (input)."
+    }
+  ],
+  "return_values": [],
+  "allowed_values": {
+    "setscop": [
+      {
+        "value": "= 0",
+        "description": "defaults for new diagrams."
+      },
+      {
+        "value": "= 1",
+        "description": "defaults for new diagrams and settings for the active diagram."
+      },
+      {
+        "value": "= 2",
+        "description": "dettings for the active diagram."
+      }
+    ]
+  }
+}

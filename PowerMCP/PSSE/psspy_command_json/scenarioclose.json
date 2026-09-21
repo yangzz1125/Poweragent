@@ -1,0 +1,29 @@
+{
+  "module": "psspy",
+  "function_name": "scenarioclose",
+  "category": "Scenarios",
+  "description": "Use this API to close the currently open Scenario. If a file in the active group has was specified to “Load Last”, this file will be opened prior to the closing of the Scenario. This API routine was first introduced in release 33.0.0. ierr = scenarioclose()",
+  "python_syntax": "ierr = scenarioclose()",
+  "return_type": "error_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": ""
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "no Scenario in memory."
+    }
+  ]
+}

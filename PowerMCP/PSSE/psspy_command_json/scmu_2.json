@@ -1,0 +1,766 @@
+{
+  "module": "psspy",
+  "function_name": "scmu_2",
+  "category": "Fault Analysis Operation",
+  "description": "Use this API to calculate simultaneous unbalances. It must be called once with APIOPT set to 1, once for each of the simultaneous faults to be applied with APIOPT set to 2, and once with APIOPT set to 3. This API routine was first introduced in release 34.1.0. ierr = scmu_2(apiopt, options, rval, cktarg)",
+  "python_syntax": "ierr = scmu_2(apiopt, options, rval, cktarg)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "apiopt",
+      "description": "Mode of operation. (input; no default allowed)."
+    },
+    {
+      "name": "options",
+      "description": "An array of seven elements specifying options and input values to be used in the current calculation phase. It is ignored when APIOPT is 3 or 4. When APIOPT is 1, OPTIONS(1), OPTIONS(2) and OPTIONS(3) define options to be used in the construction of the sequence admittance matrices. These values are used only when the sequence network setup option is enabled, and activity SEQD is to be automatically executed. (input)."
+    },
+    {
+      "name": "rval",
+      "description": "An array of five elements specifying input values used to define the current fault; ignored except when APIOPT is 2. The elements of RVAL are dependent on the value specified for OPTIONS(1). (input)."
+    },
+    {
+      "name": "cktarg",
+      "description": "Circuit identifier of branch to be faulted; ignored except when apiopt is 2 and options(1) is 8 or 9. (input; ‘1’ by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "apiopt": [
+      {
+        "value": "= 1",
+        "description": "Initialize; automatically runs activity SEQD if the sequence network setup option setting is enabled."
+      },
+      {
+        "value": "= 2",
+        "description": "Specify an unbalance to be applied; must be called once for each simultaneous unbalance to be imposed."
+      },
+      {
+        "value": "= 3",
+        "description": "Solve in the presence of the specified unbalances and terminate."
+      },
+      {
+        "value": "= 4",
+        "description": "Remove specified unbalances (cancels any unbalances specified by any preceding APIOPT 2 references, and leaves memory as it is immediately following an APIOPT 1 reference)."
+      }
+    ],
+    "options": [
+      {
+        "value": "OPTIONS(1)",
+        "description": "Specify it per additional conditions as below."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=1, dc line and FACTS device option, 0 by default."
+      },
+      {
+        "value": "= 0",
+        "description": "Block and ignore."
+      },
+      {
+        "value": "= 1",
+        "description": "Convert to constant admittance load."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2, define the type of unbalance to be applied, no default allowed"
+      },
+      {
+        "value": "= 1",
+        "description": "First line-to-ground fault."
+      },
+      {
+        "value": "= 2",
+        "description": "Second line-to-ground fault."
+      },
+      {
+        "value": "= 3",
+        "description": "First line-to-line or line-to-line-to-ground fault."
+      },
+      {
+        "value": "= 4",
+        "description": "Second line-to-line or line-to-line-to-ground fault."
+      },
+      {
+        "value": "= 5",
+        "description": "One phase closed."
+      },
+      {
+        "value": "= 6",
+        "description": "Two phases closed."
+      },
+      {
+        "value": "= 7",
+        "description": "Three-phase fault (uses fault types 2 and 4)."
+      },
+      {
+        "value": "= 8",
+        "description": "Branch unbalance with one end opened."
+      },
+      {
+        "value": "= 9",
+        "description": "Branch unbalance with both ends closed."
+      },
+      {
+        "value": "OPTIONS(2)",
+        "description": "Specify it per additional conditions as below."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=1, transformer impedance correction option, 1 by default."
+      },
+      {
+        "value": "= 0",
+        "description": "Do not apply to zero sequence."
+      },
+      {
+        "value": "= 1",
+        "description": "Apply to zero sequence."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2 and OPTIONS(1)=1 or 2 (LG), no default allowed."
+      },
+      {
+        "value": "",
+        "description": "Bus to be faulted."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2 and OPTIONS(1)=3 or 4 (LLG), no default allowed."
+      },
+      {
+        "value": "",
+        "description": "Bus to be faulted."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2 and OPTIONS(1)=5 (1 phase closed), no default allowed."
+      },
+      {
+        "value": "",
+        "description": "One of the buses to be connected by the phase closed unbalance."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2 and OPTIONS(1)=6 (2 phases closed), no default allowed."
+      },
+      {
+        "value": "",
+        "description": "One of the buses to be connected by the phase closed unbalance."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2 and OPTIONS(1)=7 (3PH), no default allowed."
+      },
+      {
+        "value": "",
+        "description": "Bus to be faulted."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2 and OPTIONS(1)=8 (one end open), no default allowed."
+      },
+      {
+        "value": "",
+        "description": "One of the buses connected by the branch to be faulted."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2 and OPTIONS(1)=9 (both ends closed), no default allowed."
+      },
+      {
+        "value": "",
+        "description": "One of the buses connected by the branch to be faulted."
+      },
+      {
+        "value": "OPTIONS(3)",
+        "description": "Specify it per additional conditions as below."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=1, fault analysis generator reactance option, ignored if generators are already “converted”, 0 by default."
+      },
+      {
+        "value": "= 0",
+        "description": "Use subtransient reactance."
+      },
+      {
+        "value": "= 1",
+        "description": "Use transient reactance."
+      },
+      {
+        "value": "= 2",
+        "description": "Use synchronous reactance."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2 and OPTIONS(1)=1 or 2 (LG), 0 by default."
+      },
+      {
+        "value": "",
+        "description": "Number of node whose bus section is to be faulted."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2 and OPTIONS(1)=3 or 4 (LLG), 0 by default."
+      },
+      {
+        "value": "",
+        "description": "Number of node whose bus section is to be faulted."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2 and OPTIONS(1)=5 (1 phase closed), 0 by default."
+      },
+      {
+        "value": "",
+        "description": "Number of node whose bus section is to be connected."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2 and OPTIONS(1)=6 (2 phases closed), 0 by default."
+      },
+      {
+        "value": "",
+        "description": "Number of node whose bus section is to be connected."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2 and OPTIONS(1)=7 (3PH), 0 by default."
+      },
+      {
+        "value": "",
+        "description": "Number of node whose bus section is to be faulted."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2 and OPTIONS(1)=8 (one end open), no default allowed."
+      },
+      {
+        "value": "",
+        "description": "Another bus connected by the branch to be faulted."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2 and OPTIONS(1)=9 (both ends closed), no default allowed."
+      },
+      {
+        "value": "",
+        "description": "The other bus connected by the branch to be faulted."
+      },
+      {
+        "value": "OPTIONS(4)",
+        "description": "Specify it per additional conditions as below."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2 and OPTIONS(1)=1 or 2 (LG), faulted phase, 1 by default."
+      },
+      {
+        "value": "= 1",
+        "description": "Phase A."
+      },
+      {
+        "value": "= 2",
+        "description": "Phase B."
+      },
+      {
+        "value": "= 3",
+        "description": "Phase C."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2 and OPTIONS(1)=3 or 4 (LLG), excluded phase, 1 by default."
+      },
+      {
+        "value": "= 1",
+        "description": "Phase A."
+      },
+      {
+        "value": "= 2",
+        "description": "Phase B."
+      },
+      {
+        "value": "= 3",
+        "description": "Phase C."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2 and OPTIONS(1)=5 (1 phase closed), no default allowed."
+      },
+      {
+        "value": "",
+        "description": "The other bus to be connected by the phase closed unbalance."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2 and OPTIONS(1)=6 (2 phases closed), no default allowed."
+      },
+      {
+        "value": "",
+        "description": "The other bus to be connected by the phase closed unbalance."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2 and OPTIONS(1)=8 (one end open), 0 by default."
+      },
+      {
+        "value": "",
+        "description": "Third bus connected by the three-winding transformer to be faulted, or zero for a two terminal branch."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2 and OPTIONS(1)=9 (both ends closed), type of in-line fault to be applied (1 by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "Line-to-ground."
+      },
+      {
+        "value": "= 2",
+        "description": "Line-to-line or line-to-line-to-ground fault."
+      },
+      {
+        "value": "= 3",
+        "description": "Three-phase."
+      },
+      {
+        "value": "OPTIONS(5)",
+        "description": "Specify it per additional conditions as below."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2 and OPTIONS(1)=5 (1 phase closed), 0 by default."
+      },
+      {
+        "value": "",
+        "description": "Number of node whose bus section is to be connected."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2 and OPTIONS(1)=6 (2 phases closed), 0 by default."
+      },
+      {
+        "value": "",
+        "description": "Number of node whose bus section is to be connected."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2 and OPTIONS(1)=8 (one end open), type of in-line fault to be applied (1 by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "Line-to-ground."
+      },
+      {
+        "value": "= 2",
+        "description": "Line-to-line or line-to-line-to-ground fault."
+      },
+      {
+        "value": "= 3",
+        "description": "Three-phase."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2, OPTIONS(1)=9 (both ends closed) and OPTIONS(4)=1, faulted phase (1 by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "Phase A."
+      },
+      {
+        "value": "= 2",
+        "description": "Phase B."
+      },
+      {
+        "value": "= 3",
+        "description": "Phase C."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2, OPTIONS(1)=9 (both ends closed) and OPTIONS(4)=2, excluded phase (1 by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "Phase A."
+      },
+      {
+        "value": "= 2",
+        "description": "Phase B."
+      },
+      {
+        "value": "= 3",
+        "description": "Phase C."
+      },
+      {
+        "value": "OPTIONS(6)",
+        "description": "Specify it per additional conditions as below."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2 and OPTIONS(1)=5 (1 phase closed), phase to be closed, 1 by default."
+      },
+      {
+        "value": "= 1",
+        "description": "Phase A."
+      },
+      {
+        "value": "= 2",
+        "description": "Phase B."
+      },
+      {
+        "value": "= 3",
+        "description": "Phase C."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2 and OPTIONS(1)=6 (2 phases closed), excluded phase, 1 by default."
+      },
+      {
+        "value": "= 1",
+        "description": "Phase A."
+      },
+      {
+        "value": "= 2",
+        "description": "Phase B."
+      },
+      {
+        "value": "= 3",
+        "description": "Phase C."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2, OPTIONS(1)=8 (one end open) and OPTIONS(5)=1, faulted phase (1 by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "Phase A."
+      },
+      {
+        "value": "= 2",
+        "description": "Phase B."
+      },
+      {
+        "value": "= 3",
+        "description": "Phase C."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2, OPTIONS(1)=8 (one end open) and OPTIONS(5)=2, excluded phase (1 by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "Phase A."
+      },
+      {
+        "value": "= 2",
+        "description": "Phase B."
+      },
+      {
+        "value": "= 3",
+        "description": "Phase C."
+      },
+      {
+        "value": "OPTIONS(7)",
+        "description": "Specify it per additional conditions as below."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2, OPTIONS(1)=8 (one end open), OPTIONS(2) by default."
+      },
+      {
+        "value": "",
+        "description": "Opened end bus (must be identical to one of OPTIONS(2), OPTIONS(3), or, if it is non-zero, OPTIONS(4))."
+      }
+    ],
+    "rval": [
+      {
+        "value": "RVAL(1)",
+        "description": "Specify it per additional conditions as below."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2, OPTIONS(1)=1 or 2 (LG), 0.0 by default."
+      },
+      {
+        "value": "",
+        "description": "Resistance of the complex L-G fault impedance in pu."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2, OPTIONS(1)=3 or 4 (LLG), 0.0 by default."
+      },
+      {
+        "value": "",
+        "description": "Resistance of the complex L-L fault impedance in pu."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2, OPTIONS(1)=5 (1 phase closed), 0.0 by default."
+      },
+      {
+        "value": "",
+        "description": "Resistance of the complex phase impedance in pu."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2, OPTIONS(1)=6 (2 phases closed), 0.0 by default."
+      },
+      {
+        "value": "",
+        "description": "Resistance of the complex phase impedance in pu."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2, OPTIONS(1)=8 (one end open), OPTIONS(5)=1, 0.0 by default."
+      },
+      {
+        "value": "",
+        "description": "Resistance of the complex L-G fault impedance in pu."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2, OPTIONS(1)=8 (one end open), OPTIONS(5)=2, 0.0 by default."
+      },
+      {
+        "value": "",
+        "description": "Resistance of the complex L-L fault impedance in pu."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2, OPTIONS(1)=9 (both ends closed), OPTIONS(4)=1, 0.0 by default."
+      },
+      {
+        "value": "",
+        "description": "Resistance of the complex L-G fault impedance in pu."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2, OPTIONS(1)=9 (both ends closed), OPTIONS(4)=2, 0.0 by default."
+      },
+      {
+        "value": "",
+        "description": "Resistance of the complex L-L fault impedance in pu."
+      },
+      {
+        "value": "RVAL(2)",
+        "description": "Specify it per additional conditions as below."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2, OPTIONS(1)=1 or 2 (LG), 0.0 by default."
+      },
+      {
+        "value": "",
+        "description": "Reactance of the complex L-G fault impedance in pu."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2, OPTIONS(1)=3 or 4 (LLG), 0.0 by default."
+      },
+      {
+        "value": "",
+        "description": "Reactance of the complex L-L fault impedance in pu."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2, OPTIONS(1)=5 (1 phase closed), 0.0 by default."
+      },
+      {
+        "value": "",
+        "description": "Reactance of the complex phase impedance in pu."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2, OPTIONS(1)=6 (2 phases closed), 0.0 by default."
+      },
+      {
+        "value": "",
+        "description": "Reactance of the complex phase impedance in pu."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2, OPTIONS(1)=8 (one end open), OPTIONS(5)=1, 0.0 by default."
+      },
+      {
+        "value": "",
+        "description": "Reactance of the complex L-G fault impedance in pu."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2, OPTIONS(1)=8 (one end open), OPTIONS(5)=2, 0.0 by default."
+      },
+      {
+        "value": "",
+        "description": "Reactance of the complex L-L fault impedance in pu."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2, OPTIONS(1)=9 (both ends closed), OPTIONS(4)=1, 0.0 by default."
+      },
+      {
+        "value": "",
+        "description": "Reactance of the complex L-G fault impedance in pu."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2, OPTIONS(1)=9 (both ends closed), OPTIONS(4)=2, 0.0 by default."
+      },
+      {
+        "value": "",
+        "description": "Reactance of the complex L-L fault impedance in pu."
+      },
+      {
+        "value": "RVAL(3)",
+        "description": "Specify it per additional conditions as below."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2, OPTIONS(1)=3 or 4 (LLG), 0.0 by default."
+      },
+      {
+        "value": "",
+        "description": "Resistance of the complex L-G fault impedance in pu."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2, OPTIONS(1)=8 (one end open), OPTIONS(5)=2, 0.0 by default."
+      },
+      {
+        "value": "",
+        "description": "Resistance of the complex L-G fault impedance in pu."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2, OPTIONS(1)=9 (both ends closed), OPTIONS(4)=2, 0.0 by default."
+      },
+      {
+        "value": "",
+        "description": "Resistance of the complex L-G fault impedance in pu."
+      },
+      {
+        "value": "RVAL(4)",
+        "description": "Specify it per additional conditions as below."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2, OPTIONS(1)=3 or 4 (LLG), 0.0 by default."
+      },
+      {
+        "value": "",
+        "description": "Reactance of the complex L-G fault impedance in pu."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2, OPTIONS(1)=8 (one end open), OPTIONS(5)=2, 0.0 by default."
+      },
+      {
+        "value": "",
+        "description": "Reactance of the complex L-G fault impedance in pu."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2, OPTIONS(1)=9 (both ends closed), OPTIONS(4)=2, 0.0 by default."
+      },
+      {
+        "value": "",
+        "description": "Reactance of the complex L-G fault impedance in pu."
+      },
+      {
+        "value": "RVAL(5)",
+        "description": "Specify it per additional conditions as below."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2, OPTIONS(1)=8 (one end open), 1.0 by default."
+      },
+      {
+        "value": "",
+        "description": "fault location from closed end bus in pu of total line length; must be 1.0 if the branch is a transformer."
+      },
+      {
+        "value": "",
+        "description": "When APIOPT=2, OPTIONS(1)=9 (both ends closed), 0.5 by default."
+      },
+      {
+        "value": "",
+        "description": "fault location from bus OPTIONS(2) in pu of total line length."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "unexpected APIOPT value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid APIOPT value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid unbalance type."
+    },
+    {
+      "value": "= 4",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 5",
+      "description": "bus is out-of-service."
+    },
+    {
+      "value": "= 6",
+      "description": "invalid phase value."
+    },
+    {
+      "value": "= 7",
+      "description": "branch not found."
+    },
+    {
+      "value": "= 8",
+      "description": "three-winding transformer not found."
+    },
+    {
+      "value": "= 9",
+      "description": "invalid open end bus."
+    },
+    {
+      "value": "= 10",
+      "description": "invalid distance factor."
+    },
+    {
+      "value": "= 11",
+      "description": "terminated due to invalid fault specification or application."
+    },
+    {
+      "value": "= 12",
+      "description": "SEQD results are not compatible with the working case."
+    },
+    {
+      "value": "= 13",
+      "description": "fault analysis is invalid due to the presence of in-service induction machines that are in the “stalled” or “tripped” state."
+    },
+    {
+      "value": "= 14",
+      "description": "bus type code and series element status inconsistencies."
+    },
+    {
+      "value": "= 15",
+      "description": "invalid OPTIONS value (from SEQD)."
+    },
+    {
+      "value": "= 16",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

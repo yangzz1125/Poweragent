@@ -1,0 +1,244 @@
+{
+  "module": "psspy",
+  "function_name": "rsol",
+  "category": "Power Flow Operation",
+  "description": "Use this API to perform a robust power flow solution (activity RSOL). This API routine was first introduced in release 35.0.0. ierr = rsol(options, realar)",
+  "python_syntax": "ierr = rsol(options, realar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "options",
+      "description": "An array of ten elementsNone. (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of two elementsNone. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "options": [
+      {
+        "value": "OPTIONS(1)",
+        "description": "Initial solution method (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "Fixed Slope Decoupled Newton-Raphson (FDNS)."
+      },
+      {
+        "value": "= 1",
+        "description": "Full Newton-Raphson (FNSL)."
+      },
+      {
+        "value": "= 2",
+        "description": "Decoupled Newton-Raphson (NSOL)."
+      },
+      {
+        "value": "OPTIONS(2)",
+        "description": "Initial tap adjustment flag (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable stepping adjustment."
+      },
+      {
+        "value": "= 2",
+        "description": "enable direct adjustment."
+      },
+      {
+        "value": "OPTIONS(3)",
+        "description": "Initial area interchange adjustment flag (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable using tie line flows only in calculating area interchange."
+      },
+      {
+        "value": "= 2",
+        "description": "enable using tie line flows and loads in calculating area interchange."
+      },
+      {
+        "value": "OPTIONS(4)",
+        "description": "Initial phase shift adjustment flag (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTIONS(5)",
+        "description": "Initial dc tap adjustment flag (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTIONS(6)",
+        "description": "Initial switch shunt adjustment flag (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "= 2",
+        "description": "enable continuous mode, disable discrete mode."
+      },
+      {
+        "value": "OPTIONS(7)",
+        "description": "Initial flat start flag (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "do not flat start."
+      },
+      {
+        "value": "= 1",
+        "description": "flat start."
+      },
+      {
+        "value": "= 2",
+        "description": "flat start, then estimate voltage magnitudes."
+      },
+      {
+        "value": "= 3",
+        "description": "flat start, then estimate voltage phase angles."
+      },
+      {
+        "value": "= 4",
+        "description": "flat start, then estimate voltage magnitudes and phase angles."
+      },
+      {
+        "value": "OPTIONS(8)",
+        "description": "Initial var limit flag (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "apply var limits immediately."
+      },
+      {
+        "value": "> 0",
+        "description": "apply var limits on iteration n (or sooner if mismatch gets small)."
+      },
+      {
+        "value": "= -1",
+        "description": "ignore var limits."
+      },
+      {
+        "value": "OPTIONS(9)",
+        "description": "Initial non-divergent flag (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTIONS(10)",
+        "description": "Solution failure option (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "do not restore solution or settings on solution failure."
+      },
+      {
+        "value": "= 1",
+        "description": "restore original solution and settings on solution failure."
+      },
+      {
+        "value": "= 2",
+        "description": "restore best found (lowest mismatch) solution and settings on solution failure."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "Bus mismatch threshold for smoothing (200.0 by default)."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "Var band (0.4 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "Prerequisites for api not met."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid OPTIONS value."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid realar value."
+    },
+    {
+      "value": "= 4",
+      "description": "Solution error occured."
+    },
+    {
+      "value": "= 5",
+      "description": "Error getting mismatch."
+    },
+    {
+      "value": "= 6",
+      "description": "Error creating temporary case files."
+    },
+    {
+      "value": "= 7",
+      "description": "Error reading from temporary case files."
+    },
+    {
+      "value": "= 8",
+      "description": "Error writing to temporary case files."
+    },
+    {
+      "value": "= 9",
+      "description": "Error deleting temporary case files."
+    },
+    {
+      "value": "= 10",
+      "description": "Error creating script file."
+    },
+    {
+      "value": "= 11",
+      "description": "Error writing to script file."
+    }
+  ]
+}

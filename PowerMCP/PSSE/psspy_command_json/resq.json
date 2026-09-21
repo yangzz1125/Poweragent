@@ -1,0 +1,34 @@
+{
+  "module": "psspy",
+  "function_name": "resq",
+  "category": "Power Flow Operation",
+  "description": "Use this API to read sequence data from a sequence data file and add it to the working case. This API routine was first introduced in release 28.0.0. ierr = resq(ifile)",
+  "python_syntax": "ierr = resq(ifile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ifile",
+      "description": "Name of the power flow sequence data file. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "error opening IFILE."
+    },
+    {
+      "value": "= 2",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "module": "psspy",
+  "function_name": "add_loadc_model",
+  "category": "Load Component Models",
+  "description": "Use this API to add a load component model of a designated type to a specified load or subsystem. If a component model of the designated type already exists at the load or subsystem, it is replaced. This API routine was first introduced in release 35.5. ierr = add_loadc_model(ibus, ltypname, id, name, mcomp, nicn, idata, chdata, ncon, rdata)",
+  "python_syntax": "ierr = add_loadc_model(ibus, ltypname, id, name, mcomp, nicn, idata, chdata, ncon, rdata)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus, owner, zone or area number. ignored when an all type load model is specified (unless an all type load model is specified). (input; no default allowed)."
+    },
+    {
+      "name": "ltypname",
+      "description": "Load type, or “ “ if the model is not applied to applied to “load type”subsystem. (input; blank by default)."
+    },
+    {
+      "name": "id",
+      "description": "Load identifier, or “*” if the model is applied to all loads in the subsystem. (input; blank by default)."
+    },
+    {
+      "name": "name",
+      "description": "Model name. (input; no default allowed)."
+    },
+    {
+      "name": "mcomp",
+      "description": "Model component number. (input; no default allowed)."
+    },
+    {
+      "name": "nicn",
+      "description": "Number of icons required by the model. (input; no default allowed)."
+    },
+    {
+      "name": "idata",
+      "description": "An array of NICN elements specifying ICON data. (input; 0 by default). When a character value is intended for an ICON value, the corresponding IDATA entry is ignored and the integer ICON is set to 0)."
+    },
+    {
+      "name": "chdata",
+      "description": "An array of NICN elements specifying character ICON data (no default allowed for an ICON for which a character value is to be specified). When an integer value is intended for an ICON value, the corresponding CHDATA entry must be either defaulted or specified as either ‘$$’ or ‘ ‘; the character ICON is set to ‘$$’. (input; blank by default)."
+    },
+    {
+      "name": "ncon",
+      "description": "Number of cons required by the model. (input; no default allowed)."
+    },
+    {
+      "name": "rdata",
+      "description": "An array of NCON elements specifying CON data. (input; 0.0 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "load model connection tables full–use pack load model tables function."
+    },
+    {
+      "value": "= 2",
+      "description": "model NAME is not a load component model."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid Load Model <NAME>(5th and 6th chacaracters in Model Name must be BL/OW/ZN/AR/AL/LT)."
+    },
+    {
+      "value": "= 4",
+      "description": "invalid Component number Mcomp for <load type> Model <NAME> for <subsystem> IBUS, load id <ID>"
+    },
+    {
+      "value": "= 5",
+      "description": "invalid Component number Mcomp for <load type> Model <NAME> for <subsystem type> IBUS, load id <ID>"
+    },
+    {
+      "value": "= 6",
+      "description": "unknown model NAME."
+    },
+    {
+      "value": "= 7",
+      "description": "model NAME is not a load component model."
+    },
+    {
+      "value": "= 8",
+      "description": "model NAME is not a <STYPE> model."
+    },
+    {
+      "value": "= 9",
+      "description": "# CONs specified is not the number expected."
+    },
+    {
+      "value": "= 10",
+      "description": "# ICONs specified is not the number expected."
+    },
+    {
+      "value": "= 11",
+      "description": "maximum number of array elements exceeded."
+    },
+    {
+      "value": "= 12",
+      "description": "<STYPE> type load model table is full."
+    },
+    {
+      "value": "= 13",
+      "description": "no loads with the specified load identifier."
+    },
+    {
+      "value": "= 14",
+      "description": "invalid area or owner or zone number."
+    },
+    {
+      "value": "= 15",
+      "description": "no loads with the specified load identifier."
+    },
+    {
+      "value": "= 16",
+      "description": "no loads at bus."
+    },
+    {
+      "value": "= 17",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 18",
+      "description": "load not found."
+    },
+    {
+      "value": "= 19",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

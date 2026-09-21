@@ -1,0 +1,10 @@
+{
+  "module": "psspy",
+  "function_name": "checkdiagfile",
+  "category": "Diagram View",
+  "description": "Use this API to check the active Slider Diagram in the GUI against the current network case. This API routine was first introduced in release 30.0.0. checkdiagfile()",
+  "python_syntax": "checkdiagfile()",
+  "return_type": "void",
+  "parameters": [],
+  "return_values": []
+}

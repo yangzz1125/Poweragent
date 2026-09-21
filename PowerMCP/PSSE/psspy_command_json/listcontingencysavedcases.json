@@ -1,0 +1,54 @@
+{
+  "module": "psspy",
+  "function_name": "listcontingencysavedcases",
+  "category": "Power Flow Operation",
+  "description": "Use this API routine to obtain a report listing some or all of the system conditions preserved in a ZIP Archive Output File that was created during a previous run of one of the members of the the AC contingency calculation family. This API routine was first introduced in release 33.4.0. ierr = listcontingencysavedcases(pathzip, label)",
+  "python_syntax": "ierr = listcontingencysavedcases(pathzip, label)",
+  "return_type": "error_only_report",
+  "parameters": [
+    {
+      "name": "pathzip",
+      "description": "Is the name of the zip archive output file . (input)."
+    },
+    {
+      "name": "label",
+      "description": "Is a label indicating the system condition(s) that are to be tabulated. blank: list all system conditions. contingency label: list all system conditions for the specified contingency label. base case: list all system conditions for the base case; use only for zip archive output files written by the p-v and q-v analysis functions. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Is the error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "error opening the file Names.phy in the ZIP Archive Output File."
+    },
+    {
+      "value": "= 2",
+      "description": "error reading the file Names.phy in the ZIP Archive Output File."
+    },
+    {
+      "value": "= 3",
+      "description": "error closing the file Names.phy in the ZIP Archive Output File."
+    },
+    {
+      "value": "= 4",
+      "description": "internal error."
+    },
+    {
+      "value": "= 5",
+      "description": "internal error."
+    },
+    {
+      "value": "= 6",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

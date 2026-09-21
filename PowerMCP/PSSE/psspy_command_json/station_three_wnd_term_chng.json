@@ -1,0 +1,102 @@
+{
+  "module": "psspy",
+  "function_name": "station_three_wnd_term_chng",
+  "category": "Node Breaker Data",
+  "description": "Use this API to access existing substation three-winding transformer terminal data in the working case. This API routine was first introduced in release 34.0.0. ierr = station_three_wnd_term_chng(ibus, jbus, kbus, cktarg, intgar)",
+  "python_syntax": "ierr = station_three_wnd_term_chng(ibus, jbus, kbus, cktarg, intgar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "From bus number. (input)."
+    },
+    {
+      "name": "jbus",
+      "description": "To bus number. (input)."
+    },
+    {
+      "name": "kbus",
+      "description": "To bus number. (input)."
+    },
+    {
+      "name": "cktarg",
+      "description": "Circuit identifier. (input)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of three elementsNone. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error return. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "from node number."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "to node number."
+      },
+      {
+        "value": "INTGAR(3)",
+        "description": "to node number."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus does not exist."
+    },
+    {
+      "value": "= 2",
+      "description": "bus does not belong to a substation."
+    },
+    {
+      "value": "= 3",
+      "description": "node does not exist."
+    },
+    {
+      "value": "= 4",
+      "description": "node number is invalid."
+    },
+    {
+      "value": "= 5",
+      "description": "circuit identifier is more than two characters."
+    },
+    {
+      "value": "= 6",
+      "description": "circuit identifier may not start with &"
+    },
+    {
+      "value": "= 7",
+      "description": "circuit does not exist."
+    },
+    {
+      "value": "= 8",
+      "description": "error when moving winding terminal connection."
+    },
+    {
+      "value": "= 9",
+      "description": "node-breaker terminal connection table is full."
+    },
+    {
+      "value": "= 10",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

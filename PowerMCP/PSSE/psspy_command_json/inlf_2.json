@@ -1,0 +1,182 @@
+{
+  "module": "psspy",
+  "function_name": "inlf_2",
+  "category": "Power Flow Operation",
+  "description": "Use this API routine to run the second release of the inertial and governor response power flow calculation. This API routine was first introduced in release 33.0.0. ierr = inlf_2(options, ifile)",
+  "python_syntax": "ierr = inlf_2(options, ifile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "options",
+      "description": "An array of eight elements specifying solution options. (input)."
+    },
+    {
+      "name": "ifile",
+      "description": "Name of unit inertia and governor data file; blank for none. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "options": [
+      {
+        "value": "OPTIONS(1)",
+        "description": "solution type (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "inertial."
+      },
+      {
+        "value": "= 1",
+        "description": "governor response."
+      },
+      {
+        "value": "OPTIONS(2)",
+        "description": "tap adjustment flag (tap adjustment option setting by default)."
+      },
+      {
+        "value": "= -1",
+        "description": "solution type default (inertial => disable; governor => stepping)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable stepping adjustment."
+      },
+      {
+        "value": "= 2",
+        "description": "enable direct adjustment."
+      },
+      {
+        "value": "OPTIONS(3)",
+        "description": "phase shift adjustment flag (phase shift adjustment option setting by default)."
+      },
+      {
+        "value": "= -1",
+        "description": "solution type default (inertial => disable; governor => enable)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTIONS(4)",
+        "description": "dc tap adjustment flag (dc tap adjustment option setting by default)."
+      },
+      {
+        "value": "= -1",
+        "description": "solution type default (inertial => disable; governor => enable)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTIONS(5)",
+        "description": "switched shunt adjustment flag (switched shunt adjustment option setting by default)."
+      },
+      {
+        "value": "= -1",
+        "description": "solution type default (inertial => enable; governor => enable)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "= 2",
+        "description": "enable continuous mode, disable discrete mode."
+      },
+      {
+        "value": "OPTIONS(6)",
+        "description": "generator var limit flag (-1 (inertial) or 99 (governor) by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "apply var limits immediately."
+      },
+      {
+        "value": "> 0",
+        "description": "apply var limits on iteration n (or sooner if mismatch gets small)."
+      },
+      {
+        "value": "= -1",
+        "description": "ignore var limits."
+      },
+      {
+        "value": "OPTIONS(7)",
+        "description": "induction motor treatment flag; applied when an induction motor fails to solve due to low terminal voltage (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "stall."
+      },
+      {
+        "value": "= 1",
+        "description": "trip."
+      },
+      {
+        "value": "OPTIONS(8)",
+        "description": "missing active power limits flag (only used in governor response power flow) (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "pre-PSSE-29 approach (0.0 to 1.0 pu for machines with no Unit Inertia and Governor Data File record read; working case values for machines with PMAX defaulted on ECDI data record)."
+      },
+      {
+        "value": "= 1",
+        "description": "0.0 to 1.0 pu for both categories of machines."
+      },
+      {
+        "value": "= 2",
+        "description": "working case values for both categories of machines."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid OPTIONS value."
+    },
+    {
+      "value": "= 2",
+      "description": "generators are converted."
+    },
+    {
+      "value": "= 3",
+      "description": "bus type code and series element status inconsistencies."
+    },
+    {
+      "value": "= 4",
+      "description": "error opening IFILE."
+    },
+    {
+      "value": "= 5",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

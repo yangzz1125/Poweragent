@@ -1,0 +1,334 @@
+{
+  "module": "psspy",
+  "function_name": "accor_3",
+  "category": "Power Flow Operation",
+  "description": "This API is the third release of corrective action function. Use this API to specify voltage limits in determining voltage violations. This API routine was first introduced in release 33.2.0. ierr = accor_3(options, values, labels, dfxfile)",
+  "python_syntax": "ierr = accor_3(options, values, labels, dfxfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "options",
+      "description": "An array of 14 elements specifying solution options. The values are as follows:. (input)."
+    },
+    {
+      "name": "values",
+      "description": "An array of 10 elements specifying AC corrective actions parameters. The values are as follows:. (input)."
+    },
+    {
+      "name": "labels",
+      "description": "An array of 6 elements specifying subsystem labels (input). The values are as follows:. (input)."
+    },
+    {
+      "name": "dfxfile",
+      "description": "Is the name of the distribution factor data file. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Is the error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "options": [
+      {
+        "value": "OPTIONS(1)",
+        "description": "tap adjustment flag (tap adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable stepping adjustment."
+      },
+      {
+        "value": "= 2",
+        "description": "enable direct adjustment."
+      },
+      {
+        "value": "OPTIONS(2)",
+        "description": "area interchange adjustment flag (area interchange adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable using tie line flows only in calculating area interchange."
+      },
+      {
+        "value": "= 2",
+        "description": "enable using tie line flows and loads in calculating area interchange."
+      },
+      {
+        "value": "OPTIONS(3)",
+        "description": "phase shift adjustment flag (phase shift adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTIONS(4)",
+        "description": "dc tap adjustment flag (dc tap adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTIONS(5)",
+        "description": "switched shunt adjustment flag (switched shunt adjustment option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "= 2",
+        "description": "enable continuous mode, disable discrete mode."
+      },
+      {
+        "value": "OPTIONS(6)",
+        "description": "rating set (rating set program option setting by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "rating A."
+      },
+      {
+        "value": "= 2",
+        "description": "rating B."
+      },
+      {
+        "value": "= 3",
+        "description": "rating C."
+      },
+      {
+        "value": "OPTIONS(7)",
+        "description": "voltage limit."
+      },
+      {
+        "value": "= 1",
+        "description": "normal."
+      },
+      {
+        "value": "= 2",
+        "description": "emergency."
+      },
+      {
+        "value": "OPTIONS(8)",
+        "description": "number of power flow solutions (from 1 to 10; 1 by default)."
+      },
+      {
+        "value": "OPTIONS(9)",
+        "description": "generator control flag (1 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTIONS(10)",
+        "description": "load control flag. (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTIONS(11)",
+        "description": "phase shifter control flag (1 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTIONS(12)",
+        "description": "off-line generator control flag (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTIONS(13)",
+        "description": "tap setting adjustment flag (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTIONS(14)",
+        "description": "switched shunt control flag (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      }
+    ],
+    "values": [
+      {
+        "value": "VALUES(1)",
+        "description": "MW mismatch tolerance (Newton solution convergence tolerance, TOLN, by default)."
+      },
+      {
+        "value": "VALUES(2)",
+        "description": "percent of rating set (100.0 by default)."
+      },
+      {
+        "value": "VALUES(3)",
+        "description": "bus voltage violation tolerance (0.1 by default)."
+      },
+      {
+        "value": "VALUES(4)",
+        "description": "branch flow overload tolerance (0.1 by default)."
+      },
+      {
+        "value": "VALUES(5)",
+        "description": "generator control weighting factor (1.0 by default)."
+      },
+      {
+        "value": "VALUES(6)",
+        "description": "load control weighting factor (1.0 by default)."
+      },
+      {
+        "value": "VALUES(7)",
+        "description": "phase shifter control weighting factor (1.0 by default)."
+      },
+      {
+        "value": "VALUES(8)",
+        "description": "off-line generator control weighting factor (1.0 by default)."
+      },
+      {
+        "value": "VALUES(9)",
+        "description": "tap setting adjustment weighting factor (1.0 by default)."
+      },
+      {
+        "value": "VALUES(10)",
+        "description": "switched shunt control weighting factor (1.0 by default)."
+      }
+    ],
+    "labels": [
+      {
+        "value": "LABELS(1)",
+        "description": "label of generator control subsystem (blank by default; no default allowed if OPTIONS(9) is 1)."
+      },
+      {
+        "value": "LABELS(2)",
+        "description": "label of load control subsystem (blank by default; no default allowed if OPTIONS(10) is 1)."
+      },
+      {
+        "value": "LABELS(3)",
+        "description": "label of phase shifter control subsystem (blank by default; no default allowed if OPTIONS(11) is 1)."
+      },
+      {
+        "value": "LABELS(4)",
+        "description": "off-line generator control subsystem (blank by default; no default allowed if OPTIONS(12) is 1)."
+      },
+      {
+        "value": "LABELS(5)",
+        "description": "tap setting adjustment subsystem (blank by default; no default allowed if OPTIONS(13) is 1)."
+      },
+      {
+        "value": "LABELS(6)",
+        "description": "switched shunt control subsystem (blank by default; no default allowed if OPTIONS(14) is 1)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid OPTIONS value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid VALUES value."
+    },
+    {
+      "value": "= 3",
+      "description": "generators are converted."
+    },
+    {
+      "value": "= 4",
+      "description": "buses in island(s) without a swing bus; use activity TREE."
+    },
+    {
+      "value": "= 5",
+      "description": "No controls."
+    },
+    {
+      "value": "= 6",
+      "description": "control subsystem not defined."
+    },
+    {
+      "value": "= 7",
+      "description": "Distribution Factor Data File not specified."
+    },
+    {
+      "value": "= 8",
+      "description": "largest mismatch exceeds tolerance."
+    },
+    {
+      "value": "= 21",
+      "description": "file DFXFILE is not in the form of a PSSE 25 or later DFAX file; run DFAX."
+    },
+    {
+      "value": "= 22",
+      "description": "monitored elements exceed limit when adding multi-section line members."
+    },
+    {
+      "value": "= 51",
+      "description": "error opening Distribution Factor Data File."
+    },
+    {
+      "value": "= 52",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

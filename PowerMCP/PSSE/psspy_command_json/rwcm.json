@@ -1,0 +1,80 @@
+{
+  "module": "psspy",
+  "function_name": "rwcm",
+  "category": "Power Flow Operation",
+  "description": "Use this API to replicate the working case in IEEE common tape format. This API routine was first introduced in release 28.0.0. ierr = rwcm(opt, out, ofile)",
+  "python_syntax": "ierr = rwcm(opt, out, ofile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "opt",
+      "description": "Dc line/facts/gne device option. (input; 0 by default)."
+    },
+    {
+      "name": "out",
+      "description": "Selection option. (input; 1 by default)."
+    },
+    {
+      "name": "ofile",
+      "description": "Name of the output file (when out is 0). (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "opt": [
+      {
+        "value": "= 0",
+        "description": "ignore dc lines, FACTS devices, and GNE devices."
+      },
+      {
+        "value": "= 1",
+        "description": "add powers to loads."
+      }
+    ],
+    "out": [
+      {
+        "value": "= 0",
+        "description": "direct output to the data file specified by OFILE."
+      },
+      {
+        "value": "= 1",
+        "description": "direct output to the current report device."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid OPT value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid OUT value."
+    },
+    {
+      "value": "= 3",
+      "description": "buses in case with 5 or 6 digit bus numbers."
+    },
+    {
+      "value": "= 4",
+      "description": "n buses in case but IEEE common format can handle only 9999."
+    },
+    {
+      "value": "= 5",
+      "description": "error opening OFILE."
+    },
+    {
+      "value": "= 6",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

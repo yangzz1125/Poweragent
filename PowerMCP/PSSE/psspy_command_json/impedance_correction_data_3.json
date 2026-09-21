@@ -1,0 +1,66 @@
+{
+  "module": "psspy",
+  "function_name": "impedance_correction_data_3",
+  "category": "Power Flow Data",
+  "description": "Use this API to modify the data of an existing transformer impedance correction table in the working case or to add a new transformer impedance correction table to the working case (see PSSE Program Operation Manual, Transformer Impedance Correction Table Data). This API routine was first introduced in release 34.0.0. ierr = impedance_correction_data_3(i, points, realar, cplxar)",
+  "python_syntax": "ierr = impedance_correction_data_3(i, points, realar, cplxar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "i",
+      "description": "Table number (must be between 1 and the number of tables allowed at the present size level . (input)."
+    },
+    {
+      "name": "points",
+      "description": "Number of points specified in table ‘i’ (2 through 99). (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of POINTS elements specifying array of ‘POINTS’ values specifying either off-nominal turns ratios in pu or phase shift angles in degrees in strictly ascending order. (input)."
+    },
+    {
+      "name": "cplxar",
+      "description": "An array of POINTS elements specifying array of ‘POINTS’ complex scaling factors by which transformer nominal impedance is to be multiplied to obtain the actual transformer impedance for the corresponding ‘REALAR’ value . (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid transformer impedance correction table number."
+    },
+    {
+      "value": "= 3",
+      "description": "REALAR values are not in ascending order."
+    },
+    {
+      "value": "= 4",
+      "description": "REALAR value is outside of the range of -180 to +180."
+    },
+    {
+      "value": "= 5",
+      "description": "table has fewer than 2 points."
+    },
+    {
+      "value": "= 6",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - point is beyond previous end of table - invalid scaling factor."
+    }
+  ]
+}

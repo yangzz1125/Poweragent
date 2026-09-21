@@ -1,0 +1,54 @@
+{
+  "module": "psspy",
+  "function_name": "cctmdlnam_swso_2",
+  "category": "Single Element Data",
+  "description": "Use this API to return model name of the CCT switched shunt other type models. This API routine was first introduced in release 35.0.0. ierr, model = cctmdlnam_swso_2(ibus, id)",
+  "python_syntax": "ierr, model = cctmdlnam_swso_2(ibus, id)",
+  "return_type": "error_and_model",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    },
+    {
+      "name": "id",
+      "description": "Switched shunt identifier. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "model",
+      "description": "Model name. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; MODEL name is returned."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not in case; MODEL name is returned as blank."
+    },
+    {
+      "value": "= 2",
+      "description": "No CCT models in case."
+    },
+    {
+      "value": "= 3",
+      "description": "No switched shunt other type model attached to the specified switched shunte."
+    },
+    {
+      "value": "= 4",
+      "description": "Dynamics data not present in working memory."
+    },
+    {
+      "value": "= 5",
+      "description": "switched shunt not in case."
+    }
+  ]
+}

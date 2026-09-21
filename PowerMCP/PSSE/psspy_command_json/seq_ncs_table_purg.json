@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "seq_ncs_table_purg",
+  "category": "Fault Analysis Data",
+  "description": "Use this API to delete an existing non-conventional source fault contribution table from the working case. This API routine was first introduced in release 35.2.0. ierr = seq_ncs_table_purg(name)",
+  "python_syntax": "ierr = seq_ncs_table_purg(name)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Table name. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "table not found."
+    },
+    {
+      "value": "= 2",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

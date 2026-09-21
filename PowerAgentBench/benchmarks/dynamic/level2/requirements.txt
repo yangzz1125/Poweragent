@@ -1,0 +1,25 @@
+# Core — needed for KPI computation and the MCP server.
+# Versions below are the ones the benchmark was developed and tested against.
+fastmcp>=3.2
+pandas>=2.2
+numpy>=2.1
+
+# Semantic memory — needed to BUILD the memory and to use the
+# query_semantic_memory tool. Pulls in torch (~2 GB), so it is the heaviest
+# dependency by far. The prebuilt semantic_memory.json/.npz are shipped with
+# the repository, so you only need this to rebuild or to run queries.
+sentence-transformers>=3.0
+
+# PowerFactory result plots (Agent_DIgSILENT grid graph export).
+matplotlib>=3.10
+
+# ── Optional: LLM providers for agent_scenario_ranker.py ──────────────────
+# Install only the provider you intend to use.
+# groq>=1.1
+# google-genai>=1.7
+
+# ── Not installable via pip ───────────────────────────────────────────────
+# `powerfactory` ships with DIgSILENT PowerFactory itself. Point the
+# POWERFACTORY_PYTHON_PATH environment variable at the Python folder of your
+# installation (see README). It is only required for running simulations;
+# KPI analysis on existing CSVs works without it.

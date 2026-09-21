@@ -1,0 +1,88 @@
+{
+  "module": "psspy",
+  "function_name": "seq_3_wind_grounding_data",
+  "category": "Fault Analysis Data",
+  "description": "Use this API to modify the zero sequence grounding data of an existing three-winding transformer in the working case (see PSSE Program Operation Manual, Zero Sequence Transformer Data). This API routine was first introduced in release 30.0.0. ierr = seq_3_wind_grounding_data(ibus, jbus, kbus, ckt, intgar, realar)",
+  "python_syntax": "ierr = seq_3_wind_grounding_data(ibus, jbus, kbus, ckt, intgar, realar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number of one of the buses. (input; no default allowed)."
+    },
+    {
+      "name": "jbus",
+      "description": "Bus number one of the other buses. (input; no default allowed)."
+    },
+    {
+      "name": "kbus",
+      "description": "Bus number of the third bus. (input; no default allowed)."
+    },
+    {
+      "name": "ckt",
+      "description": "Transformer circuit identifier. (input; ‘1’ by default)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of one elements specifying one element (defaulted data items are unchanged). (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of two elements specifying (defaulted data items are unchanged). (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "CC, connection code."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "RG, zero sequence grounding resistance."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "XG, zero sequence grounding reactance."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "circuit identifier is more than two characters."
+    },
+    {
+      "value": "= 3",
+      "description": "three-winding transformer not found."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - Invalid winding connection code. - Connection code is such that more than one winding requires a grounding impedance."
+    }
+  ]
+}

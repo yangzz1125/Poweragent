@@ -1,0 +1,238 @@
+{
+  "module": "psspy",
+  "function_name": "dccor_2",
+  "category": "Power Flow Operation",
+  "description": "Use this API to apply corrective actions to the base case using linear programming methods. The corrective actions are to eliminate flow overloads with the objective of minimizing the control adjustments, including load shedding, MW generations dispatch, and phase shifter angle adjustments. This API routine was first introduced in release 35.1.0. ierr = dccor_2(options, values, labels, dfxfile)",
+  "python_syntax": "ierr = dccor_2(options, values, labels, dfxfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "options",
+      "description": "An array of eight elements specifying DC corrective actions solution options. (input)."
+    },
+    {
+      "name": "values",
+      "description": "An array of seven elements specifying DC corrective actions parameters. (input)."
+    },
+    {
+      "name": "labels",
+      "description": "An array of four elements specifying subsystem labels. (input)."
+    },
+    {
+      "name": "dfxfile",
+      "description": "Name of the distribution factor data file. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "options": [
+      {
+        "value": "OPTIONS(1)",
+        "description": "rating set (rating set program option setting by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "rating A."
+      },
+      {
+        "value": "= 2",
+        "description": "rating B."
+      },
+      {
+        "value": "= 3",
+        "description": "rating C."
+      },
+      {
+        "value": "OPTIONS(2)",
+        "description": "generator control flag (1 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTIONS(3)",
+        "description": "load control flag (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTIONS(4)",
+        "description": "phase shifter control flag (1 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTIONS(5)",
+        "description": "off-line generator control flag (1 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTIONS(6)",
+        "description": "convert MVA ratings to estimated MW ratings (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable."
+      },
+      {
+        "value": "= 1",
+        "description": "enable."
+      },
+      {
+        "value": "OPTIONS(7)",
+        "description": "code to discontinue activity if MW mismatch exceeds tolerance (VALUES(1) (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable (i.e. continue, do not discontinue activity)."
+      },
+      {
+        "value": "= 1",
+        "description": "enable (i.e. discontinue)."
+      },
+      {
+        "value": "OPTIONS(8)",
+        "description": "modify network data with corrective actions solutions (1 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "disable (i.e. do not modify network data)."
+      },
+      {
+        "value": "= 1",
+        "description": "enable (i.e. allow network data to be modified)."
+      }
+    ],
+    "values": [
+      {
+        "value": "VALUES(1)",
+        "description": "MW mismatch tolerance for continuing (Newton solution convergence tolerance, TOLN, by default)."
+      },
+      {
+        "value": "VALUES(2)",
+        "description": "percent of rating set (100.0 by default)."
+      },
+      {
+        "value": "VALUES(3)",
+        "description": "branch flow overload tolerance (0.1 by default)."
+      },
+      {
+        "value": "VALUES(4)",
+        "description": "generator control weighting factor (1.0 by default)."
+      },
+      {
+        "value": "VALUES(5)",
+        "description": "load control weighting factor (1.0 by default)."
+      },
+      {
+        "value": "VALUES(6)",
+        "description": "phase shifter control weighting factor (1.0 by default)."
+      },
+      {
+        "value": "VALUES(7)",
+        "description": "off-line generator control weighting factor (1.0 by default)."
+      }
+    ],
+    "labels": [
+      {
+        "value": "LABELS(1)",
+        "description": "label of generator control subsystem (blank by default; no default allowed if OPTIONS(2) is 1)."
+      },
+      {
+        "value": "LABELS(2)",
+        "description": "label of load control subsystem (blank by default; no default allowed if OPTIONS(3) is 1)."
+      },
+      {
+        "value": "LABELS(3)",
+        "description": "label of phase shifter control subsystem (blank by default; no default allowed if OPTIONS(4) is 1)."
+      },
+      {
+        "value": "LABELS(4)",
+        "description": "label of off-line generator control subsystem (blank by default; no default allowed if OPTIONS(5) is 1)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid OPTIONS value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid VALUES value."
+    },
+    {
+      "value": "= 3",
+      "description": "generators are converted."
+    },
+    {
+      "value": "= 4",
+      "description": "buses in island(s) without a swing bus; use activity TREE."
+    },
+    {
+      "value": "= 5",
+      "description": "No controls."
+    },
+    {
+      "value": "= 6",
+      "description": "control subsystem not defined."
+    },
+    {
+      "value": "= 7",
+      "description": "Distribution Factor Data File not specified."
+    },
+    {
+      "value": "= 8",
+      "description": "largest mismatch exceeds tolerance."
+    },
+    {
+      "value": "= 21",
+      "description": "file DFXFILE is not in the form of a PSSE-25 or later DFAX file; run DFAX."
+    },
+    {
+      "value": "= 22",
+      "description": "monitored elements exceed limit when adding multi-section line members."
+    },
+    {
+      "value": "= 51",
+      "description": "error opening Distribution Factor Data File."
+    },
+    {
+      "value": "= 52",
+      "description": "prerequisite requirements for function not met."
+    }
+  ]
+}

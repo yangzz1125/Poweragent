@@ -1,0 +1,19 @@
+{
+  "module": "psspy",
+  "function_name": "getbatdefaults",
+  "category": "Non-Engineering",
+  "description": "Retrieve “no input” value for integers and reals. This API routine was first introduced in release 30.0.0. idef,rdef = getbatdefaults()",
+  "python_syntax": "idef,rdef = getbatdefaults()",
+  "return_type": "multi_value",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "idef",
+      "description": "Default integer value used in the batch command processor. (output)."
+    },
+    {
+      "name": "rdef",
+      "description": "Default real value used in the batch command processor. (output)."
+    }
+  ]
+}

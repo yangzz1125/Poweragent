@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "get_char_length",
+  "category": "Character Data",
+  "description": "Use this API to return the number of characters required to accommodate the data corresponding to the specified STRING entries, which can be for any of the a*Char data retrieval functions. This API routine was first introduced in release 30.2.0. ierr, nchars = get_char_length(string)",
+  "python_syntax": "ierr, nchars = get_char_length(string)",
+  "return_type": "error_and_count",
+  "parameters": [
+    {
+      "name": "string",
+      "description": "An array of NSTR elements specifying NSTR valid strings for the a*Char data retrieval functions to be used. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "nchars",
+      "description": "An array of NSTR elements specifying NSTR entries containing the number of characters of each element of the array associated with the corresponding STRING value. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1-50",
+      "description": "Position of an element in the array STRING that contains a value that is not recognized by any of the a*Char API routines."
+    },
+    {
+      "value": "= 99",
+      "description": "Invalid NSTR value."
+    }
+  ]
+}

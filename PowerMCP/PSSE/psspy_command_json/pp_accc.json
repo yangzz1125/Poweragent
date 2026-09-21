@@ -1,0 +1,194 @@
+{
+  "module": "psspy",
+  "function_name": "pp_accc",
+  "category": "Power Flow Operation",
+  "description": "Use this API to report the results of the AC contingency calculation function. This API routine was first introduced in release 28.0.0. ierr = pp_accc(options, intval, realval, accfile)",
+  "python_syntax": "ierr = pp_accc(options, intval, realval, accfile)",
+  "return_type": "error_only_report",
+  "parameters": [
+    {
+      "name": "options",
+      "description": "An array of five elements specifying reporting options. (input)."
+    },
+    {
+      "name": "intval",
+      "description": "An array of five elements specifying integer reporting parameters. (input)."
+    },
+    {
+      "name": "realval",
+      "description": "An array of six elements specifying real reporting parameters. (input)."
+    },
+    {
+      "name": "accfile",
+      "description": "Name of the contingency solution output file. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "options": [
+      {
+        "value": "OPTIONS(1)",
+        "description": "contingency case rating (rating set program option setting by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "RATEA."
+      },
+      {
+        "value": "= 1",
+        "description": "RATEB."
+      },
+      {
+        "value": "= 2",
+        "description": "RATEC."
+      },
+      {
+        "value": "OPTIONS(2)",
+        "description": "report format (3 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "spreadsheet overload report."
+      },
+      {
+        "value": "= 1",
+        "description": "spreadsheet loading table."
+      },
+      {
+        "value": "= 2",
+        "description": "available capacity table."
+      },
+      {
+        "value": "= 3",
+        "description": "non-spreadsheet overload report."
+      },
+      {
+        "value": "= 4",
+        "description": "non-spreadsheet loading table."
+      },
+      {
+        "value": "= 5",
+        "description": "non-converged networks report."
+      },
+      {
+        "value": "OPTIONS(3)",
+        "description": "exclude interfaces from report (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no."
+      },
+      {
+        "value": "= 1",
+        "description": "yes."
+      },
+      {
+        "value": "OPTIONS(4)",
+        "description": "run voltage limit check (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no."
+      },
+      {
+        "value": "= 1",
+        "description": "yes."
+      },
+      {
+        "value": "OPTIONS(5)",
+        "description": "exclude cases with no overloads from non-spreadsheet overload report (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no."
+      },
+      {
+        "value": "= 1",
+        "description": "yes."
+      }
+    ],
+    "intval": [
+      {
+        "value": "INTVAL(1)",
+        "description": "number of low voltage range violations (0 by default)."
+      },
+      {
+        "value": "INTVAL(2)",
+        "description": "number of high voltage range violations (0 by default)."
+      },
+      {
+        "value": "INTVAL(3)",
+        "description": "number of voltage deviation violations (0 by default)."
+      },
+      {
+        "value": "INTVAL(4)",
+        "description": "number of buses in the largest disconnected island (0 by default)."
+      },
+      {
+        "value": "INTVAL(5)",
+        "description": "maximum number of elements in available capacity table (no limit by default)."
+      }
+    ],
+    "realval": [
+      {
+        "value": "REALVAL(1)",
+        "description": "percent of flow rating (100.0 by default)."
+      },
+      {
+        "value": "REALVAL(2)",
+        "description": "minimum contingency case flow change for overload report (0.0 by default)."
+      },
+      {
+        "value": "REALVAL(3)",
+        "description": "cutoff threshold for available capacity table (99999.0 by default)."
+      },
+      {
+        "value": "REALVAL(4)",
+        "description": "minimum contingency case voltage change for range violations (0.0 by default)."
+      },
+      {
+        "value": "REALVAL(5)",
+        "description": "bus mismatch converged tolerance (MW or Mvar) (0.5 by default)."
+      },
+      {
+        "value": "REALVAL(6)",
+        "description": "system mismatch converged tolerance (MVA) (5.0 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid OPTIONS value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid INTVAL value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid REALVAL value."
+    },
+    {
+      "value": "= 4",
+      "description": "error opening RFILE."
+    },
+    {
+      "value": "= 5",
+      "description": "error reading RFILE."
+    },
+    {
+      "value": "= 6",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

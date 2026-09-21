@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "fcdauxmnam",
+  "category": "Single Element Data",
+  "description": "Use this API to return the auxiliary signal model name associated with a FACTS device for the specified auxiliary signal index. This API routine was first introduced in release 31.0.0. ierr, cval = fcdauxmnam(name, isgndx)",
+  "python_syntax": "ierr, cval = fcdauxmnam(name, isgndx)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Facts device name. (input)."
+    },
+    {
+      "name": "isgndx",
+      "description": "Auxiliary signal index. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "cval",
+      "description": "Model name. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘CVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "FACTS device not in network but auxiliary signal model in model tables; ‘CVAL’ returned."
+    },
+    {
+      "value": "= 2",
+      "description": "FACTS device not in network and auxiliary signal model not in model tables; ‘CVAL’ unchanged."
+    },
+    {
+      "value": "= 4",
+      "description": "No model in model tables for the given auxiliary signal index; ‘CVAL’ unchanged."
+    },
+    {
+      "value": "= 9",
+      "description": "Dynamics data not present in working memory; ‘CVAL’ unchanged."
+    }
+  ]
+}

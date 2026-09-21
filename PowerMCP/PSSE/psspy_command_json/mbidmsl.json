@@ -1,0 +1,58 @@
+{
+  "module": "psspy",
+  "function_name": "mbidmsl",
+  "category": "Power Flow Data",
+  "description": "Use this API to change the identifier of the specified multi-section line. This API routine was first introduced in release 28.0.0. ierr = mbidmsl(ibus, jbus, id, idnew)",
+  "python_syntax": "ierr = mbidmsl(ibus, jbus, id, idnew)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "One of the endpoint buses connected by the multi-section line. (input; no default allowed)."
+    },
+    {
+      "name": "jbus",
+      "description": "Other endpoint bus connected by the multi-section line. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Present multi-section identifier of the multi-section line for which the identifier is to be changed. (input; ‘&1’ by default)."
+    },
+    {
+      "name": "idnew",
+      "description": "New identifier to be assigned to the multi-section line. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "multi-section line ID from IBUS to JBUS not found."
+    },
+    {
+      "value": "= 3",
+      "description": "multi-section line ID from IBUS to JBUS already exists."
+    },
+    {
+      "value": "= 4",
+      "description": "invalid new identifier; must start with &"
+    },
+    {
+      "value": "= 5",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

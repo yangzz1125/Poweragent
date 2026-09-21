@@ -1,0 +1,46 @@
+{
+  "module": "psspy",
+  "function_name": "rev29_names",
+  "category": "Power Flow Operation",
+  "description": "Use this API to set the extended bus name input format to either the PSSE-29 or PSSE-30 format. This API routine was first introduced in release 30.0.0. ierr = rev29_names(ival)",
+  "python_syntax": "ierr = rev29_names(ival)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ival",
+      "description": "Extended bus name option flag. (input; 0 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "ival": [
+      {
+        "value": "= 0",
+        "description": "PSSE-30 format (12 characters plus base voltage)."
+      },
+      {
+        "value": "= 1",
+        "description": "PSSE-29 or earlier format (8 characters plus base voltage)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid IVAL value."
+    },
+    {
+      "value": "= 2",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

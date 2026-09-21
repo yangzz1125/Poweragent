@@ -1,0 +1,34 @@
+{
+  "module": "psspy",
+  "function_name": "scenariozipopen",
+  "category": "Scenarios",
+  "description": "Use this API to open a zipped Scenario. This API routine was first introduced in release 33.0.0. ierr = scenariozipopen(sfile, sgroup)",
+  "python_syntax": "ierr = scenariozipopen(sfile, sgroup)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sfile",
+      "description": "Full file path of the scenario file to open. (input)."
+    },
+    {
+      "name": "sgroup",
+      "description": "Reserved for future use. (input; ignored by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    }
+  ]
+}

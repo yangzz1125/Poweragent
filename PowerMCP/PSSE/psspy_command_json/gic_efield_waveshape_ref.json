@@ -1,0 +1,25 @@
+{
+  "module": "psspy",
+  "function_name": "gic_efield_waveshape_ref",
+  "category": "Gic Operation",
+  "description": "For Transformer Thermal Impact assessement due to geomagnetic disturbance event, set the geoelectric field waveshape as NERC TPL-007-2 benhcmark event. This API routine was first introduced in release 33.10.0 and 34.2.0. ierr = gic_efield_waveshape_ref()",
+  "python_syntax": "ierr = gic_efield_waveshape_ref()",
+  "return_type": "error_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": ""
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "DLL not loaded or entry point not found."
+    }
+  ]
+}

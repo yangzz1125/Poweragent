@@ -1,0 +1,42 @@
+{
+  "module": "psspy",
+  "function_name": "save",
+  "category": "Power Flow Operation",
+  "description": "Use this API to save the PSSE working case in a saved case file. This API routine was first introduced in release 28.0.0. ierr = save(sfile)",
+  "python_syntax": "ierr = save(sfile)",
+  "return_type": "error_only_write_file",
+  "parameters": [
+    {
+      "name": "sfile",
+      "description": "Name of the psse saved case file if sfile is “*”, savenw attempts to use the most recently accessed saved case file. if no saved case file was accessed in the current execution of psse, savenw returns an error code. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "SFILE is blank."
+    },
+    {
+      "value": "= 2",
+      "description": "error writing to SFILE."
+    },
+    {
+      "value": "= 3",
+      "description": "error opening SFILE."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

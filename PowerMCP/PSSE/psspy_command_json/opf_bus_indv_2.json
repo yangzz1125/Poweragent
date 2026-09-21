@@ -1,0 +1,132 @@
+{
+  "module": "psspy",
+  "function_name": "opf_bus_indv_2",
+  "category": "Optimal Power Flow Data",
+  "description": "Use this API to add OPF bus voltage magnitude data to the working case. This API routine was first introduced in release 34.2.0. ierr = opf_bus_indv_2(eibus, enod, intgar, realar)",
+  "python_syntax": "ierr = opf_bus_indv_2(eibus, enod, intgar, realar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "eibus",
+      "description": "Bus number. (input; no default allowed)."
+    },
+    {
+      "name": "enod",
+      "description": "The bus section number or the external node number of one of the nodes in the bus section of interest. specify 0 if bus is represented by a single bus section. if 0 is specified and bus is represented by multiple bus sections, the data of the parent bus and not that of the bus sections will be changed. (input)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of two elementsNone. (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of five elementsNone. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "limit type imposed on the bus voltage limits (default is the current value; initialized to 1)."
+      },
+      {
+        "value": "= 0",
+        "description": "reporting only."
+      },
+      {
+        "value": "= 1",
+        "description": "hard limit."
+      },
+      {
+        "value": "= 2",
+        "description": "linear soft limit."
+      },
+      {
+        "value": "= 3",
+        "description": "quadratic soft limit."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "indicates what to do with the defined voltage limits (default treatment same as value of 0)."
+      },
+      {
+        "value": "= 0",
+        "description": "leave voltage limits as defined by REALAR(1) and REALAR(2)."
+      },
+      {
+        "value": "= 1",
+        "description": "fix normal voltage limit at present voltage values, ignoring any values defined by REALAR(1) and REALAR(2)."
+      },
+      {
+        "value": "= 2",
+        "description": "allow normal voltage limits to open up if they exceed the bounds defined by REALAR(1) or REALAR(2)."
+      },
+      {
+        "value": "= 3",
+        "description": "set normal and emergency OPF voltage limits to the normal and emergency voltage limits as defined in the network bus data."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "normal maximum voltage limit in pu (default is the current value; initialized to 9999.0)."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "normal minimum voltage limit in pu (default is the current value; initialized to -9999.0)."
+      },
+      {
+        "value": "REALAR(3)",
+        "description": "emergency maximum voltage limit in pu (default is the current value; initialized to 9999.0)."
+      },
+      {
+        "value": "REALAR(4)",
+        "description": "emergency minimum voltage limit in pu (default is the current value; initialized to -9999.0)."
+      },
+      {
+        "value": "REALAR(5)",
+        "description": "soft-limit penalty weight (default is the current value; initialized to 1.0)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= -1",
+      "description": "non-fatal error occurred. Warning messages are as follows: - Invalid limit type specified. - Maximum normal voltage limit less than minimum limit. - Maximum emergency voltage limit less than minimum limit."
+    },
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid bus number."
+    },
+    {
+      "value": "= 2",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid node number."
+    },
+    {
+      "value": "= 4",
+      "description": "node not found in substation of bus."
+    },
+    {
+      "value": "= 5",
+      "description": "node not connected to any bus section of bus in substation."
+    },
+    {
+      "value": "= 6",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,184 @@
+{
+  "module": "psspy",
+  "function_name": "readsub",
+  "category": "Power Flow Operation",
+  "description": "Use this API to read a power flow raw data file and add subsystem data specified in it to the working case. This API routine was first introduced in release 28.0.0. ierr = readsub(numnam, ifile, status, usekv, basekv, sidarea, sidowner, sidzone)",
+  "python_syntax": "ierr = readsub(numnam, ifile, status, usekv, basekv, sidarea, sidowner, sidzone)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "numnam",
+      "description": "Flag for bus number or name specification on records. (input; 0 by default)."
+    },
+    {
+      "name": "ifile",
+      "description": "Name of the power flow raw data file. (input; no default allowed)."
+    },
+    {
+      "name": "status",
+      "description": "An array of three elements specifying options. (input)."
+    },
+    {
+      "name": "usekv",
+      "description": "Subsystem base voltage flag. (input; 0 by default)."
+    },
+    {
+      "name": "basekv",
+      "description": "An array of two elements specifying the base voltage range. (input)."
+    },
+    {
+      "name": "sidarea",
+      "description": "Area subsystem identifier (0 through 11), or -1 to bypass subsystem specification by area. (input; -1 by default)."
+    },
+    {
+      "name": "sidowner",
+      "description": "Owner subsystem identifier (0 through 11), or -1 to bypass subsystem specification by owner. (input; -1 by default)."
+    },
+    {
+      "name": "sidzone",
+      "description": "Zone subsystem identifier (0 through 11), or -1 to bypass subsystem specification by zone. (input; -1 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "numnam": [
+      {
+        "value": "= 0",
+        "description": "bus numbers."
+      },
+      {
+        "value": "= 1",
+        "description": "bus names."
+      }
+    ],
+    "status": [
+      {
+        "value": "STATUS(1)",
+        "description": "append flag (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "initialize working case before reading data."
+      },
+      {
+        "value": "= 1",
+        "description": "append data to that already in the working case."
+      },
+      {
+        "value": "STATUS(2)",
+        "description": "boundary bus identification flag (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "do not change type codes of boundary buses."
+      },
+      {
+        "value": "= 1",
+        "description": "change type codes of boundary buses in preparation for the equivalencing calculation."
+      },
+      {
+        "value": "STATUS(3)",
+        "description": "data option (1 by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "add only data from within subsystem."
+      },
+      {
+        "value": "= 2",
+        "description": "add only ties from subsystem."
+      },
+      {
+        "value": "= 3",
+        "description": "add subsystem data plus ties."
+      }
+    ],
+    "usekv": [
+      {
+        "value": "= 0",
+        "description": "do not use base voltage as a subsystem selection criterion."
+      },
+      {
+        "value": "= 1",
+        "description": "use base voltage as a subsystem selection criterion."
+      }
+    ],
+    "basekv": [
+      {
+        "value": "BASEKV(1)",
+        "description": "minimum base voltage (0.0 by default)."
+      },
+      {
+        "value": "BASEKV(2)",
+        "description": "maximum base voltage (BASEKV (1) by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid NUMNAM value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid STATUS value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid USEKV value."
+    },
+    {
+      "value": "= 4",
+      "description": "invalid BASEKV value(s)."
+    },
+    {
+      "value": "= 5",
+      "description": "BASEKV(1) is greater than BASEKV(2)."
+    },
+    {
+      "value": "= 6",
+      "description": "invalid SIDAREA value or area subsystem SIDAREA is not defined."
+    },
+    {
+      "value": "= 7",
+      "description": "invalid SIDOWNER value or owner subsystem SIDOWNER is not defined."
+    },
+    {
+      "value": "= 8",
+      "description": "invalid SIDZONE value or zone subsystem SIDZONE is not defined."
+    },
+    {
+      "value": "= 9",
+      "description": "no subsystem specified."
+    },
+    {
+      "value": "= 10",
+      "description": "error opening IFILE."
+    },
+    {
+      "value": "= 11",
+      "description": "invalid revision number."
+    },
+    {
+      "value": "= 12",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= 14",
+      "description": "unable to convert file."
+    },
+    {
+      "value": "= 15",
+      "description": "error opening temporary file."
+    }
+  ]
+}

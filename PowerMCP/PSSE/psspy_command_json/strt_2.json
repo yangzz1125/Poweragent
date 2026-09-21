@@ -1,0 +1,78 @@
+{
+  "module": "psspy",
+  "function_name": "strt_2",
+  "category": "Dynamic Simulation Operation",
+  "description": "This API routine is the second release of the dynamic simulation initialization function. Use this API routine to initialize a PSSE dynamic simulation for state-space simulations (i.e., in preparation for activity RUN) and to specify the channel output file into which the output channel values are to be recorded during the dynamic simulation. This API routine was first introduced in release 33.9.0 and 34.2.0. ierr = strt_2(options, outfile)",
+  "python_syntax": "ierr = strt_2(options, outfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "options",
+      "description": "An array of two elements specifying simulation initialization options. (input; 0 by default)."
+    },
+    {
+      "name": "outfile",
+      "description": "Channel output file (blank to bypass recording of the output channel values in a channel output file). (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "options": [
+      {
+        "value": "OPTIONS(1)",
+        "description": "Network solution convergence monitor option."
+      },
+      {
+        "value": "= 0",
+        "description": "bypass printing of the network solution convergence monitor."
+      },
+      {
+        "value": "= 1",
+        "description": "print the network solution convergence monitor."
+      },
+      {
+        "value": "OPTIONS(2)",
+        "description": "Missing machine model netting option."
+      },
+      {
+        "value": "= 0",
+        "description": "treat as a fatal error."
+      },
+      {
+        "value": "= 1",
+        "description": "net machine power."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "generators are not converted."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid OPTIONS value."
+    },
+    {
+      "value": "= 3",
+      "description": "prior initialization modified the loads - pick up original converted case."
+    },
+    {
+      "value": "= 4",
+      "description": "error opening OUTFILE."
+    },
+    {
+      "value": "= 5",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

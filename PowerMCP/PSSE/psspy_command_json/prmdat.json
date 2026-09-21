@@ -1,0 +1,114 @@
+{
+  "module": "psspy",
+  "function_name": "prmdat",
+  "category": "Single Element Data",
+  "description": "Use this API routine to return real-valued solution parameters. This API routine was first introduced in release 32.2.0. ierr, rval = prmdat(string)",
+  "python_syntax": "ierr, rval = prmdat(string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "string",
+      "description": "String indicating the solution parameter desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "rval",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= ACCP",
+        "description": "Gauss-Seidel real component acceleration factor."
+      },
+      {
+        "value": "= ACCQ",
+        "description": "Gauss-Seidel imaginary component acceleration factor."
+      },
+      {
+        "value": "= ACCM",
+        "description": "special MSLV acceleration factor."
+      },
+      {
+        "value": "= TOL",
+        "description": "Gauss-Seidel convergence tolerance."
+      },
+      {
+        "value": "= ACCN",
+        "description": "Newton-Raphson acceleration factor."
+      },
+      {
+        "value": "= TOLN",
+        "description": "Newton_Raphson mismatch convergence tolerance."
+      },
+      {
+        "value": "= ACCTY",
+        "description": "TYSL acceleration factor."
+      },
+      {
+        "value": "= TOLTY",
+        "description": "TYSL convergence tolerance."
+      },
+      {
+        "value": "= BLOWUP",
+        "description": "blown-up voltage change threshold."
+      },
+      {
+        "value": "= PQBRAK",
+        "description": "constant power load characteristic breakpoint."
+      },
+      {
+        "value": "= THRSHZ",
+        "description": "zero impedance line threshold."
+      },
+      {
+        "value": "= ADJTHR",
+        "description": "automatic adjustment threshold tolerance."
+      },
+      {
+        "value": "= ACCTAP",
+        "description": "tap movement deceleration factor."
+      },
+      {
+        "value": "= TAPLIM",
+        "description": "maximum tap change per adjustment cycle."
+      },
+      {
+        "value": "= DVLIM",
+        "description": "largest abs(delta V) / abs(V) for Newton-Raphson solutions."
+      },
+      {
+        "value": "= NDVFCT",
+        "description": "non-divergent required improvement factor."
+      },
+      {
+        "value": "= VCTOLQ",
+        "description": "Newton-Raphson controlled bus reactive power mismatch convergence tolerance."
+      },
+      {
+        "value": "= VCTOLV",
+        "description": "Newton-Raphson controlled bus voltage error convergence tolerance."
+      },
+      {
+        "value": "= SWVBND",
+        "description": "percent of voltage controlling band mode switched shunts to be adjusted."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘RVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Invalid value of ‘STRING’; ‘RVAL’ unchanged."
+    }
+  ]
+}

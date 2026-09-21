@@ -1,0 +1,106 @@
+{
+  "module": "psspy",
+  "function_name": "add_relay_model",
+  "category": "Line Relay Models",
+  "description": "Use this API to add a line relay model in the designated relay slot of the from bus end of a specified branch. If a model already exists in the designated relay slot at the from bus end of the branch, it is replaced. This API routine was first introduced in release 28.0.0. ierr = add_relay_model(ibus,jbus,id,rs,name,nicn,idata,chdata,ncon,rdata)",
+  "python_syntax": "ierr = add_relay_model(ibus,jbus,id,rs,name,nicn,idata,chdata,ncon,rdata)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "From bus number. (input; no default allowed)."
+    },
+    {
+      "name": "jbus",
+      "description": "To bus number. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Circuit identifier. (input)."
+    },
+    {
+      "name": "rs",
+      "description": "Relay slot (1 or 2). (input; 1 by default)."
+    },
+    {
+      "name": "name",
+      "description": "Model name. (input; no default allowed)."
+    },
+    {
+      "name": "nicn",
+      "description": "Number of icons required by the model. (input; no default allowed)."
+    },
+    {
+      "name": "idata",
+      "description": "An array of NICN elements specifying ICON data. (input; 0 by default). When a character value is intended for an ICON value, the corresponding IDATA entry is ignored and the integer ICON is set to 0)."
+    },
+    {
+      "name": "chdata",
+      "description": "An array of NICN elements specifying character ICON data (no default allowed for an ICON for which a character value is to be specified). When an integer value is intended for an ICON value, the corresponding CHDATA entry must be either defaulted or specified as either ‘$$’ or ‘ ‘; the character ICON is set to ‘$$’. (input; blank by default)."
+    },
+    {
+      "name": "ncon",
+      "description": "Number of cons required by the model. (input; no default allowed)."
+    },
+    {
+      "name": "rdata",
+      "description": "An array of NCON elements specifying CON data. (input; 0.0 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid RS value."
+    },
+    {
+      "value": "= 2",
+      "description": "unknown model NAME."
+    },
+    {
+      "value": "= 3",
+      "description": "model is not a line relay model."
+    },
+    {
+      "value": "= 4",
+      "description": "# CONs specified is not the number expected."
+    },
+    {
+      "value": "= 5",
+      "description": "# ICONs specified is not the number expected."
+    },
+    {
+      "value": "= 6",
+      "description": "maximum number of array elements exceeded."
+    },
+    {
+      "value": "= 7",
+      "description": "line relay model connection tables full–use pack line relay model tables function."
+    },
+    {
+      "value": "= 8",
+      "description": "line relay model tables are corrupt."
+    },
+    {
+      "value": "= 9",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 10",
+      "description": "branch not found."
+    },
+    {
+      "value": "= 11",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

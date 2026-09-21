@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "minimize_load_adjustments",
+  "category": "Optimal Power Flow Operation",
+  "description": "Use this API to specify or return the value of the OPF minimize adjustable bus load objective option. This API routine was first introduced in release 30.0.0. ierr = minimize_load_adjustments(ival) ierr, ival = minimize_load_adjustments()",
+  "python_syntax": "ierr = minimize_load_adjustments(ival) ierr, ival = minimize_load_adjustments()",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ival",
+      "description": "Indicates whether to enable the minimize adjustable bus loads objective. (input; if Batch command, or for Python if specified as an argument, or for Fortran if IOCODE is 0, then input of 0 by default; else output)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "ival": [
+      {
+        "value": "= 0",
+        "description": "do not enable the minimize adjustable bus loads objective."
+      },
+      {
+        "value": "= 1",
+        "description": "enable the minimize adjustable bus loads objective."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid IVAL value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid IOCODE value."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

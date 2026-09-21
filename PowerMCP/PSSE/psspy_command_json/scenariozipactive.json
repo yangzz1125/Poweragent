@@ -1,0 +1,15 @@
+{
+  "module": "psspy",
+  "function_name": "scenariozipactive",
+  "category": "Scenarios",
+  "description": "Use this API to determine if the Scenario is currently in Zip Mode. This API routine was first introduced in release 33.0.0. active = scenariozipactive()",
+  "python_syntax": "active = scenariozipactive()",
+  "return_type": "value_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "active",
+      "description": ""
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "_comment": "Copy to mcp_config.json and replace the paths. Used by run_eval_with_mcp.py to launch the surge MCP server inside `claude -p` subprocesses.",
+  "mcpServers": {
+    "surge": {
+      "command": "/path/to/venv/bin/python",
+      "args": [
+        "/path/to/Power-Agent/PowerMCP/surge/surge_mcp.py"
+      ]
+    }
+  }
+}

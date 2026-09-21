@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "gic_swsh_chng",
+  "category": "Gic Data",
+  "description": "Use this API to modify GIC switched shunt data from the working case. Use this when switched shunt is described by the bus number and its circuit identifier. This API routine was first introduced in release 34.8.0. ierr = gic_swsh_chng(bus,ckt,realar)",
+  "python_syntax": "ierr = gic_swsh_chng(bus,ckt,realar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "bus",
+      "description": "Base case bus number, must exist in the working case. (input; no default allowed)."
+    },
+    {
+      "name": "ckt",
+      "description": "Circuit identifier. (input; ‘1’ by default)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of two elementsNone. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "DC resistance in ohms/phase. R must be > 0. When R is not specified or R=0, switched shunt is ignored in DC network. (0.0 by default), can also be specified with keyword ‘r’."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "Grounding DC resistance in ohms/phase. When RG is not specified or RG=0, switched shunt is treated as solidly grounded when part of DC network. (0.0 by default), can also be specified with keyword ‘rg’."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "module": "psspy",
+  "function_name": "stanodename",
+  "category": "Single Element Data",
+  "description": "Use this API routine to return the name of a substation node. This API routine was first introduced in release 34.1.0. ierr, string = stanodename(ista, node)",
+  "python_syntax": "ierr, string = stanodename(ista, node)",
+  "return_type": "error_and_string",
+  "parameters": [
+    {
+      "name": "ista",
+      "description": "Substation number. (input)."
+    },
+    {
+      "name": "node",
+      "description": "Node number. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "string",
+      "description": "Node name. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘STRING’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Substation not found; ‘STRING’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Node not found; ‘STRING’ unchanged."
+    }
+  ]
+}

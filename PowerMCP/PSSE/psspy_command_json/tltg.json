@@ -1,0 +1,374 @@
+{
+  "module": "psspy",
+  "function_name": "tltg",
+  "category": "Power Flow Operation",
+  "description": "Use this API to calculate transmission interchange limits using a linear network (dc) model. This API routine was first introduced in release 29.0.0. ierr = tltg(options, values, labels, dfxfile)",
+  "python_syntax": "ierr = tltg(options, values, labels, dfxfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "options",
+      "description": "An array of seventeen elements specifying calculation and reporting options. (input)."
+    },
+    {
+      "name": "values",
+      "description": "An array of seven elements specifying tolerances and thresholds. (input)."
+    },
+    {
+      "name": "labels",
+      "description": "An array of eight elements specifying subsystem and interface labels. (input)."
+    },
+    {
+      "name": "dfxfile",
+      "description": "Name of dfax data file. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "options": [
+      {
+        "value": "OPTIONS(1)",
+        "description": "base case rating set (rating set program option setting by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "RATEA."
+      },
+      {
+        "value": "= 2",
+        "description": "RATEB."
+      },
+      {
+        "value": "= 3",
+        "description": "RATEC."
+      },
+      {
+        "value": "OPTIONS(2)",
+        "description": "contingency case rating set (rating set program option setting by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "RATEA."
+      },
+      {
+        "value": "= 2",
+        "description": "RATEB."
+      },
+      {
+        "value": "= 3",
+        "description": "RATEC."
+      },
+      {
+        "value": "OPTIONS(3)",
+        "description": "base case line flow code (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "dc base case."
+      },
+      {
+        "value": "= 1",
+        "description": "ac base case."
+      },
+      {
+        "value": "OPTIONS(4)",
+        "description": "phase shifter code (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "locked in base case shift solutions."
+      },
+      {
+        "value": "= 1",
+        "description": "regulating in base case shift solutions."
+      },
+      {
+        "value": "OPTIONS(5)",
+        "description": "code for the treatment of base case line flow constraints in contingency cases (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "ignore."
+      },
+      {
+        "value": "= 1",
+        "description": "include."
+      },
+      {
+        "value": "OPTIONS(6)",
+        "description": "list study system buses (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no."
+      },
+      {
+        "value": "= 1",
+        "description": "yes."
+      },
+      {
+        "value": "OPTIONS(7)",
+        "description": "list opposing system buses (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no."
+      },
+      {
+        "value": "= 1",
+        "description": "yes."
+      },
+      {
+        "value": "OPTIONS(8)",
+        "description": "list study system tie lines (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no."
+      },
+      {
+        "value": "= 1",
+        "description": "yes."
+      },
+      {
+        "value": "OPTIONS(9)",
+        "description": "add study system tie lines to monitored line list (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no."
+      },
+      {
+        "value": "= 1",
+        "description": "yes."
+      },
+      {
+        "value": "OPTIONS(10)",
+        "description": "format code (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "summary output."
+      },
+      {
+        "value": "= 1",
+        "description": "full output."
+      },
+      {
+        "value": "OPTIONS(11)",
+        "description": "interchange limit code (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "incremental transfer capability."
+      },
+      {
+        "value": "= 1",
+        "description": "total transfer capability."
+      },
+      {
+        "value": "OPTIONS(12)",
+        "description": "apply summary minimum distribution factor, VALUES(4), to solution reports (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no."
+      },
+      {
+        "value": "= 1",
+        "description": "yes."
+      },
+      {
+        "value": "OPTIONS(13)",
+        "description": "convert MVA ratings to estimated MW ratings (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no."
+      },
+      {
+        "value": "= 1",
+        "description": "yes."
+      },
+      {
+        "value": "OPTIONS(14)",
+        "description": "code to discontinue activity if MW mismatch exceeds VALUES(1) (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "discontinue."
+      },
+      {
+        "value": "= 1",
+        "description": "continue."
+      },
+      {
+        "value": "OPTIONS(15)",
+        "description": "summary table contingency descriptions (1 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "contingency labels."
+      },
+      {
+        "value": "= 1",
+        "description": "contingency events."
+      },
+      {
+        "value": "= 2",
+        "description": "both contingency labels and events."
+      },
+      {
+        "value": "OPTIONS(16)",
+        "description": "number of elements to include in flow tables (60000 by default)."
+      },
+      {
+        "value": "OPTIONS(17)",
+        "description": "summary table maximum times for reporting the same element (5 by default)."
+      }
+    ],
+    "values": [
+      {
+        "value": "VALUES(1)",
+        "description": "required MW mismatch tolerance for continuing (Newton solution convergence tolerance, TOLN, by default)."
+      },
+      {
+        "value": "VALUES(2)",
+        "description": "percent of rating for reporting an element as overloaded (100.0 by default)."
+      },
+      {
+        "value": "VALUES(3)",
+        "description": "summary table maximum import or export (>0.) (99999.0 by default)."
+      },
+      {
+        "value": "VALUES(4)",
+        "description": "summary table minimum distribution factor magnitude (0.0 by default)."
+      },
+      {
+        "value": "VALUES(5)",
+        "description": "minimum contingency case pre-shift flow change (0.0 by default)."
+      },
+      {
+        "value": "VALUES(6)",
+        "description": "minimum contingency case distribution factor change (0.0 by default)."
+      },
+      {
+        "value": "VALUES(7)",
+        "description": "study system generation shift (100.0 by default)."
+      }
+    ],
+    "labels": [
+      {
+        "value": "LABELS(1)",
+        "description": "study system label (no default allowed)."
+      },
+      {
+        "value": "LABELS(2)",
+        "description": "opposing system label (no default allowed)."
+      },
+      {
+        "value": "LABELS(3)",
+        "description": "interface label for optional interface limits summary table (blank for none) (blank by default)."
+      },
+      {
+        "value": "LABELS(4)",
+        "description": "interface label for optional interface limits summary table (blank for none) (blank by default)."
+      },
+      {
+        "value": "LABELS(5)",
+        "description": "interface label for optional interface limits summary table (blank for none) (blank by default)."
+      },
+      {
+        "value": "LABELS(6)",
+        "description": "interface label for optional interface limits summary table (blank for none) (blank by default)."
+      },
+      {
+        "value": "LABELS(7)",
+        "description": "interface label for optional interface limits summary table (blank for none) (blank by default)."
+      },
+      {
+        "value": "LABELS(8)",
+        "description": "interface label for optional interface limits summary table (blank for none) (blank by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid OPTIONS value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid VALUES value."
+    },
+    {
+      "value": "= 3",
+      "description": "no DFAX data file specified."
+    },
+    {
+      "value": "= 4",
+      "description": "same label specified for study and opposing systems."
+    },
+    {
+      "value": "= 5",
+      "description": "generators are converted."
+    },
+    {
+      "value": "= 6",
+      "description": "buses in island(s) without a swing bus; use activity TREE."
+    },
+    {
+      "value": "= 7",
+      "description": "largest mismatch exceeds mismatch tolerance."
+    },
+    {
+      "value": "= 8",
+      "description": "error opening file DFXFILE."
+    },
+    {
+      "value": "= 9",
+      "description": "file DFXFILE is not in the form of a PSSE-25 or later DFAX file; run DFAX."
+    },
+    {
+      "value": "= 10",
+      "description": "file DFXFILE does not contain distribution factors; run DFAX with distribution factor option enabled."
+    },
+    {
+      "value": "= 11",
+      "description": "no monitored branches or interfaces defined."
+    },
+    {
+      "value": "= 12",
+      "description": "no subsystems defined."
+    },
+    {
+      "value": "= 13",
+      "description": "subsystem not found."
+    },
+    {
+      "value": "= 14",
+      "description": "specified subsystems overlap."
+    },
+    {
+      "value": "= 15",
+      "description": "no in-service buses in subsystem WORLD."
+    },
+    {
+      "value": "= 16",
+      "description": "no tie lines from study system."
+    },
+    {
+      "value": "= 17",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

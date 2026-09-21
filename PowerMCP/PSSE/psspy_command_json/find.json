@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "find",
+  "category": "Power Flow Operation",
+  "description": "Use this API to tabulate a list of buses matching a partial extended bus name (activity FIND). This API routine was first introduced in release 29.0.0. ierr = find(name, bskv)",
+  "python_syntax": "ierr = find(name, bskv)",
+  "return_type": "error_only_report",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Bus name, including imbedded asterisks that are treated as wildcard characters. (input; blank by default)."
+    },
+    {
+      "name": "bskv",
+      "description": "Bus base voltage. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "error decoding BSKV."
+    },
+    {
+      "value": "= 2",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

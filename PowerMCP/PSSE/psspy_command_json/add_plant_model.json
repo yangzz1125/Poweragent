@@ -1,0 +1,162 @@
+{
+  "module": "psspy",
+  "function_name": "add_plant_model",
+  "category": "Plant Related Models",
+  "description": "Use this API to add a plant related model of a designated type to a specified machine. If a model of the designated type already exists at the machine, it is replaced. This API routine was first introduced in release 28.0.0. ierr = add_plant_model(ibus, id, mtype, name, ibus2, id2, nicn, idata, chdata, ncon, rdata)",
+  "python_syntax": "ierr = add_plant_model(ibus, id, mtype, name, ibus2, id2, nicn, idata, chdata, ncon, rdata)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Plant bus number. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Machine identifier. (input; blank by default)."
+    },
+    {
+      "name": "mtype",
+      "description": "Model type. (input; 1 by default)."
+    },
+    {
+      "name": "name",
+      "description": "Model name. (input; no default allowed)."
+    },
+    {
+      "name": "ibus2",
+      "description": "Bus number of the second machine if this is a two machine model, or 0 for a single machine model. (input; 0 by default)."
+    },
+    {
+      "name": "id2",
+      "description": "Machine identifier of the second machine if this is a two machine model, or ‘ ‘ for a single machine model. (input; blank by default)."
+    },
+    {
+      "name": "nicn",
+      "description": "Number of icons required by the model. (input; no default allowed)."
+    },
+    {
+      "name": "idata",
+      "description": "An array of NICN elements specifying ICON data. (input; 0 by default). When a character value is intended for an ICON value, the corresponding IDATA entry is ignored and the integer ICON is set to 0)."
+    },
+    {
+      "name": "chdata",
+      "description": "An array of NICN elements specifying character ICON data (no default allowed for an ICON for which a character value is to be specified). When an integer value is intended for an ICON value, the corresponding CHDATA entry must be either defaulted or specified as either ‘$$’ or ‘ ‘; the character ICON is set to ‘$$’. (input; blank by default)."
+    },
+    {
+      "name": "ncon",
+      "description": "Number of cons required by the model. (input; no default allowed)."
+    },
+    {
+      "name": "rdata",
+      "description": "An array of NCON elements specifying CON data. (input; 0.0 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "mtype": [
+      {
+        "value": "= 1",
+        "description": "generator model."
+      },
+      {
+        "value": "= 2",
+        "description": "compensator model."
+      },
+      {
+        "value": "= 3",
+        "description": "stabilizer model."
+      },
+      {
+        "value": "= 4",
+        "description": "minimum excitation limiter model."
+      },
+      {
+        "value": "= 5",
+        "description": "maximum excitation limiter model."
+      },
+      {
+        "value": "= 6",
+        "description": "excitation system model."
+      },
+      {
+        "value": "= 7",
+        "description": "turbine-governor model."
+      },
+      {
+        "value": "= 8",
+        "description": "turbine-load controller model."
+      },
+      {
+        "value": "= 9",
+        "description": "stator current limiter model."
+      },
+      {
+        "value": "= 10",
+        "description": "power factor/var controller model."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "machine model connection tables full–use pack plant model tables function."
+    },
+    {
+      "value": "= 2",
+      "description": "plant model tables are corrupt."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid MTYPE value."
+    },
+    {
+      "value": "= 4",
+      "description": "unknown model NAME."
+    },
+    {
+      "value": "= 5",
+      "description": "model is not consistent with MTYPE."
+    },
+    {
+      "value": "= 6",
+      "description": "# CONs specified is not the number expected."
+    },
+    {
+      "value": "= 7",
+      "description": "# ICONs specified is not the number expected."
+    },
+    {
+      "value": "= 8",
+      "description": "second machine not found where one is required."
+    },
+    {
+      "value": "= 9",
+      "description": "same machine specified as the first and second machines."
+    },
+    {
+      "value": "= 10",
+      "description": "maximum number of array elements exceeded."
+    },
+    {
+      "value": "= 11",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 12",
+      "description": "machine not found."
+    },
+    {
+      "value": "= 13",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

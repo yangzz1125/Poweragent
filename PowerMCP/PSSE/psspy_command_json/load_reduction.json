@@ -1,0 +1,72 @@
+{
+  "module": "psspy",
+  "function_name": "load_reduction",
+  "category": "Power Flow Operation",
+  "description": "Use this API to tabulate the amount of load reduction in a specified subsystem due to the voltage at the bus to which the load is connected being below PQBRAK (for constant MVA load) or 0.5 (for constant current load. This API routine was first introduced in release 32.0.0. ierr = load_reduction(sid, all, aozopt)",
+  "python_syntax": "ierr = load_reduction(sid, all, aozopt)",
+  "return_type": "error_only_report",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid subsystem identifier. valid subsystem identifiers range from 0 to 11. subsystem sid must have been previously defined. (input; 0 by default)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem flag. (input; 1 by default)."
+    },
+    {
+      "name": "aozopt",
+      "description": "Subsystem selection option when area, owner and/or zone are included in the subsystem selection criteria. (input; 1 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 0",
+        "description": "process only loads in subsystem SID."
+      },
+      {
+        "value": "= 1",
+        "description": "process all loads."
+      }
+    ],
+    "aozopt": [
+      {
+        "value": "= 1",
+        "description": "use the area, owner and/or zone assignments of the bus to which the load is connected."
+      },
+      {
+        "value": "= 2",
+        "description": "use the area, owner and/or zone assignments of the load."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ALL value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid AOZOPT value."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

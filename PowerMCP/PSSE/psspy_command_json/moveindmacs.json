@@ -1,0 +1,54 @@
+{
+  "module": "psspy",
+  "function_name": "moveindmacs",
+  "category": "Power Flow Operation",
+  "description": "Use this API routine to disconnect all of the induction machines at the specified bus, and reconnect them to a designated bus. Bus TOBUS must not have any induction machines connected to it at the time this API routine is called. This API routine was first introduced in release 33.0.0. ierr = moveindmacs(ibus, newbus)",
+  "python_syntax": "ierr = moveindmacs(ibus, newbus)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus at which one or more induction machines currently exist. (input; no default allowed)."
+    },
+    {
+      "name": "newbus",
+      "description": "Bus to which the induction machines on bus ibus are to be moved. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "no induction machines at bus IBUS."
+    },
+    {
+      "value": "= 3",
+      "description": "IBUS and NEWBUS are the same bus."
+    },
+    {
+      "value": "= 4",
+      "description": "NEWBUS already has induction machines (move individual machines)."
+    },
+    {
+      "value": "= 5",
+      "description": "node-breaker terminal connection table is full."
+    },
+    {
+      "value": "= 6",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

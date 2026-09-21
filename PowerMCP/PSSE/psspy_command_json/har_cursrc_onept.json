@@ -1,0 +1,46 @@
+{
+  "module": "psspy",
+  "function_name": "har_cursrc_onept",
+  "category": "Harmonics Data",
+  "description": "Use this API to modify or add new one data point to harmonics current source table in the working case. This API is used to add one new data point of H, I/I0, and Angle data to existing table of existing working case harmonics data. This can be used to change H, V/V0, and Angle data points of existing harmonic number in the table. This API cannot be used to change table name. This API routine was first introduced in release 35.4.0. ierr = har_cursrc_onept(name, hptold, hpt, ipt, anpt)",
+  "python_syntax": "ierr = har_cursrc_onept(name, hptold, hpt, ipt, anpt)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Harmonics current source data table name. (input; no default allowed)."
+    },
+    {
+      "name": "hptold",
+      "description": "Harmonics number at point in data table where provided data is added or changed. when hptold is specified and found, the h, i/i0, and angle values specified will be used to change existing data. when hptold is zero, the h, i/i0, and angle values specified will be used to add data point to existing data. (input; no default allowed)."
+    },
+    {
+      "name": "hpt",
+      "description": "New harmonics number to be added or changed at specified data point. (input; no default allowed)."
+    },
+    {
+      "name": "ipt",
+      "description": "Current source magnitude for harmonics number hpt to be added or changed. (input; 1 by default)."
+    },
+    {
+      "name": "anpt",
+      "description": "Current source angle for harmonics number hpt to be added or changed. (input; 1 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

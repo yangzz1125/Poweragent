@@ -1,0 +1,42 @@
+{
+  "module": "psspy",
+  "function_name": "asys",
+  "category": "Area Subsystems",
+  "description": "Use this API to define an area subsystem. This API routine was first introduced in release 30.0.0. ierr = asys(sid, num, areas)",
+  "python_syntax": "ierr = asys(sid, num, areas)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Valid area subsystem id. valid area subsystem ids range from 0 to 11. (input)."
+    },
+    {
+      "name": "num",
+      "description": "Number of areas to set. (input)."
+    },
+    {
+      "name": "areas",
+      "description": "An array of NUM elements specifying array that contains the areas to set. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error return. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "SID is not valid."
+    },
+    {
+      "value": "= 2",
+      "description": "SID is not defined."
+    }
+  ]
+}

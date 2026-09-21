@@ -1,0 +1,166 @@
+{
+  "module": "psspy",
+  "function_name": "machine_array_channel",
+  "category": "Assign Machine Quantities To Output Channels",
+  "description": "Use this API to add an output channel containing a plant related model variable of a designated type for a specified machine. This API routine was first introduced in release 30.2.0. ierr = machine_array_channel(status, id, ident)",
+  "python_syntax": "ierr = machine_array_channel(status, id, ident)",
+  "return_type": "error_only_output_channel",
+  "parameters": [
+    {
+      "name": "status",
+      "description": "An array of three elementsNone. (input)."
+    },
+    {
+      "name": "id",
+      "description": "Machine identifier. (input; ‘1’ by default)."
+    },
+    {
+      "name": "ident",
+      "description": "Identifier to be assigned to the channel. if a blank channel identifier is specified, the api generates an appropriate channel identifier. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "status": [
+      {
+        "value": "STATUS(1)",
+        "description": "starting channel index, or -1 for the next available (next available by default)."
+      },
+      {
+        "value": "STATUS(2)",
+        "description": "used to indicate the quantity to be placed in an channel (1 by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "ANGLE, machine relative rotor angle (degrees)."
+      },
+      {
+        "value": "= 2",
+        "description": "PELEC, machine electrical power (pu on SBASE)."
+      },
+      {
+        "value": "= 3",
+        "description": "QELEC, machine reactive power."
+      },
+      {
+        "value": "= 4",
+        "description": "ETERM, machine terminal voltage (pu)."
+      },
+      {
+        "value": "= 5",
+        "description": "EFD, generator main field voltage (pu)."
+      },
+      {
+        "value": "= 6",
+        "description": "PMECH, turbine mechanical power (pu on MBASE)."
+      },
+      {
+        "value": "= 7",
+        "description": "SPEED, machine speed deviation from nominal (pu)."
+      },
+      {
+        "value": "= 8",
+        "description": "XADIFD, machine field current (pu)."
+      },
+      {
+        "value": "= 9",
+        "description": "ECOMP, voltage regulator compensated voltage (pu)."
+      },
+      {
+        "value": "= 10",
+        "description": "VOTHSG, stabilizer output signal (pu)."
+      },
+      {
+        "value": "= 11",
+        "description": "VREF, voltage regulator voltage setpoint (pu)."
+      },
+      {
+        "value": "= 12",
+        "description": "VUEL, minimum excitation limiter output signal (pu)."
+      },
+      {
+        "value": "= 13",
+        "description": "VOEL, maximum excitation limiter output signal (pu)."
+      },
+      {
+        "value": "= 14",
+        "description": "GREF, turbine governor reference."
+      },
+      {
+        "value": "= 15",
+        "description": "LCREF, turbine load control reference."
+      },
+      {
+        "value": "= 16",
+        "description": "WVLCTY, wind velocity (m/s)."
+      },
+      {
+        "value": "= 17",
+        "description": "WTRBSP, wind turbine rotor speed deviation (pu)."
+      },
+      {
+        "value": "= 18",
+        "description": "WPITCH, pitch angle (degrees)."
+      },
+      {
+        "value": "= 19",
+        "description": "WAEROT, aerodynamic torque (pu on MBASE)."
+      },
+      {
+        "value": "= 20",
+        "description": "WROTRV, rotor voltage (pu on MBASE)."
+      },
+      {
+        "value": "= 21",
+        "description": "WROTRI, rotor current (pu on MBASE)."
+      },
+      {
+        "value": "= 22",
+        "description": "WPCMND, active power command from wind control (pu on MBASE)."
+      },
+      {
+        "value": "= 23",
+        "description": "WQCMND, reactive power command from wind control (pu on MBASE)."
+      },
+      {
+        "value": "= 24",
+        "description": "WAUXSG, output of wind auxiliary control (pu on MBASE)."
+      },
+      {
+        "value": "STATUS(3)",
+        "description": "number of the bus to which the machine for which the quantity is to be placed in an channel is connected (no default allowed)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid STATUS value."
+    },
+    {
+      "value": "= 2",
+      "description": "starting channel number is greater than the largest channel number allowed."
+    },
+    {
+      "value": "= 3",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 4",
+      "description": "machine not found."
+    },
+    {
+      "value": "= 5",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

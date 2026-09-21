@@ -1,0 +1,116 @@
+{
+  "module": "psspy",
+  "function_name": "opf_adjvar_indv",
+  "category": "Optimal Power Flow Data",
+  "description": "This API routine is obsolete. It has been replaced by the API routine opf_adjvar_indv_2, and is implemented by a call to opf_adjvar_indv_2. Use this API to add an individual OPF adjustable bus shunt data record to the working case. It may also be used to modify an existing adjustable bus shunt data record. This API routine was first introduced in release 28.0.0. ierr = opf_adjvar_indv(eibus, shntid, intgar, realar)",
+  "python_syntax": "ierr = opf_adjvar_indv(eibus, shntid, intgar, realar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "eibus",
+      "description": "Bus number. (input; no default allowed)."
+    },
+    {
+      "name": "shntid",
+      "description": "Bus shunt identifier. (input; no default allowed)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of three elements specifying The value of each is as follows. (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of four elementsNone. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "cost curve type. This value is not currently used by the program."
+      },
+      {
+        "value": "= 1",
+        "description": "polynomial and exponential cost curve."
+      },
+      {
+        "value": "= 2",
+        "description": "linear cost curve."
+      },
+      {
+        "value": "= 3",
+        "description": "quadratic cost curve."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "status (default value of 1 if new record, current value otherwise)."
+      },
+      {
+        "value": "= 0",
+        "description": "out of service."
+      },
+      {
+        "value": "= 1",
+        "description": "in service."
+      },
+      {
+        "value": "INTGAR(3)",
+        "description": "cost table cross reference number. This value is not currently used by the program."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "initial bus shunt susceptance in Mvar at nominal voltage (default value of 0.0 if new record, current value otherwise)."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "maximum bus shunt susceptance in Mvar (default value of 0.0 if new record, current value otherwise)."
+      },
+      {
+        "value": "REALAR(3)",
+        "description": "minimum bus shunt susceptance in Mvar (default value of 0.0 if new record, current value otherwise)."
+      },
+      {
+        "value": "REALAR(4)",
+        "description": "cost scale coefficient in $/Mvar (default value of 1.0 if new record, current value otherwise)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= -1",
+      "description": "non-fatal error occurred. Possible warning messages are as follows: - Invalid cost curve type specified. - Invalid adjustable bus shunt status specified. - Maximum shunt susceptance less than minimum shunt susceptance."
+    },
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "adjustable bus shunt identifier is more than two characters."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid bus number specified."
+    },
+    {
+      "value": "= 3",
+      "description": "blank adjustable bus shunt identifier is invalid."
+    },
+    {
+      "value": "= 4",
+      "description": "adjustable bus shunt table is full."
+    },
+    {
+      "value": "= 5",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

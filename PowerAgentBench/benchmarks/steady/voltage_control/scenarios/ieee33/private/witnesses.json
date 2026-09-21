@@ -1,0 +1,170 @@
+[
+  {
+    "dispatch": [
+      {
+        "bess_id": "BESS_1",
+        "p_mw": 0.25
+      },
+      {
+        "bess_id": "BESS_2",
+        "p_mw": 0.25
+      },
+      {
+        "bess_id": "BESS_3",
+        "p_mw": 0.0
+      },
+      {
+        "bess_id": "BESS_4",
+        "p_mw": 0.0
+      }
+    ],
+    "scenario_id": "V0001"
+  },
+  {
+    "dispatch": [
+      {
+        "bess_id": "BESS_1",
+        "p_mw": 0.0
+      },
+      {
+        "bess_id": "BESS_2",
+        "p_mw": 0.25
+      },
+      {
+        "bess_id": "BESS_3",
+        "p_mw": 0.0
+      },
+      {
+        "bess_id": "BESS_4",
+        "p_mw": 0.5
+      }
+    ],
+    "scenario_id": "V0002"
+  },
+  {
+    "dispatch": [
+      {
+        "bess_id": "BESS_1",
+        "p_mw": 0.0
+      },
+      {
+        "bess_id": "BESS_2",
+        "p_mw": 0.5
+      },
+      {
+        "bess_id": "BESS_3",
+        "p_mw": 0.0
+      },
+      {
+        "bess_id": "BESS_4",
+        "p_mw": 0.75
+      }
+    ],
+    "scenario_id": "V0003"
+  },
+  {
+    "dispatch": [
+      {
+        "bess_id": "BESS_1",
+        "p_mw": 0.25
+      },
+      {
+        "bess_id": "BESS_2",
+        "p_mw": 0.75
+      },
+      {
+        "bess_id": "BESS_3",
+        "p_mw": 0.0
+      },
+      {
+        "bess_id": "BESS_4",
+        "p_mw": 0.75
+      }
+    ],
+    "scenario_id": "V0004"
+  },
+  {
+    "dispatch": [
+      {
+        "bess_id": "BESS_1",
+        "p_mw": -0.25
+      },
+      {
+        "bess_id": "BESS_2",
+        "p_mw": -0.5
+      },
+      {
+        "bess_id": "BESS_3",
+        "p_mw": 0.0
+      },
+      {
+        "bess_id": "BESS_4",
+        "p_mw": 0.0
+      }
+    ],
+    "scenario_id": "V0005"
+  },
+  {
+    "dispatch": [
+      {
+        "bess_id": "BESS_1",
+        "p_mw": -0.25
+      },
+      {
+        "bess_id": "BESS_2",
+        "p_mw": -1.0
+      },
+      {
+        "bess_id": "BESS_3",
+        "p_mw": 0.0
+      },
+      {
+        "bess_id": "BESS_4",
+        "p_mw": 0.0
+      }
+    ],
+    "scenario_id": "V0006"
+  },
+  {
+    "dispatch": [
+      {
+        "bess_id": "BESS_1",
+        "p_mw": -0.25
+      },
+      {
+        "bess_id": "BESS_2",
+        "p_mw": -1.5
+      },
+      {
+        "bess_id": "BESS_3",
+        "p_mw": 0.0
+      },
+      {
+        "bess_id": "BESS_4",
+        "p_mw": -0.25
+      }
+    ],
+    "scenario_id": "V0007"
+  },
+  {
+    "dispatch": [
+      {
+        "bess_id": "BESS_1",
+        "p_mw": -0.25
+      },
+      {
+        "bess_id": "BESS_2",
+        "p_mw": -0.75
+      },
+      {
+        "bess_id": "BESS_3",
+        "p_mw": 0.0
+      },
+      {
+        "bess_id": "BESS_4",
+        "p_mw": 0.0
+      }
+    ],
+    "scenario_id": "V0008"
+  }
+]

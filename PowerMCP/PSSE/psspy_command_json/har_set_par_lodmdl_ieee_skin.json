@@ -1,0 +1,62 @@
+{
+  "module": "psspy",
+  "function_name": "har_set_par_lodmdl_ieee_skin",
+  "category": "Harmonics Data",
+  "description": "Use this API to set parameters for harmonics load data user model IEEE_SKIN. This API routine was first introduced in release 35.5.0. ierr = har_set_par_lodmdl_ieee_skin(ibus,id,realar)",
+  "python_syntax": "ierr = har_set_par_lodmdl_ieee_skin(ibus,id,realar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Load identifier. (input; ‘1’ by default)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of two elements specifying Refer model schematic diagram in PAG Harmonics chapter for information on each real constant. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "Real Constant K1 (0.1 by default), can also be specified with keyword ‘k1’."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "Real Constant K2 (0.9 by default), can also be specified with keyword ‘k2’."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= 2",
+      "description": "Harmonics load model parameters not set: load not found."
+    },
+    {
+      "value": "= 3",
+      "description": "Harmonics load model parameters not set: model HTYP not allowed."
+    },
+    {
+      "value": "= 4",
+      "description": "Harmonics load model parameters not set: model does not take parameters."
+    }
+  ]
+}

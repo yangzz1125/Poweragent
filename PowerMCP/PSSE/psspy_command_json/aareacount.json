@@ -1,0 +1,68 @@
+{
+  "module": "psspy",
+  "function_name": "aareacount",
+  "category": "Area Data",
+  "description": "Use this API to return the number of array entries required to accommodate the data to be returned by the remaining members of the area data family. This API routine was first introduced in release 30.3.0. ierr, areas = aareacount(sid, flag)",
+  "python_syntax": "ierr, areas = aareacount(sid, flag)",
+  "return_type": "error_and_count",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the area subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem areas to include. (input; 1 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "areas",
+      "description": "Number of areas in the subsystem indicated by sid that meet the editing criteria indicated by flag. (output)."
+    }
+  ],
+  "allowed_values": {
+    "sid": [
+      {
+        "value": "< 0",
+        "description": "to instruct the API to assume a subsystem containing all areas in the working case."
+      },
+      {
+        "value": ">= 0",
+        "description": "valid area subsystem identifier. Valid subsystem identifiers range from 0 to 11. Subsystem SID must have been previously defined."
+      }
+    ],
+    "flag": [
+      {
+        "value": "= 1",
+        "description": "for only subsystem areas with at least one ac bus assigned to them."
+      },
+      {
+        "value": "= 2",
+        "description": "for subsystem areas with any equipment (ac buses, loads, and/or dc buses) assigned to them."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error, AREAS returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty; AREAS returned as 0."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value; AREAS returned as 0."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid FLAG value; AREAS returned as 0."
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "module": "psspy",
+  "function_name": "tree",
+  "category": "Power Flow Operation",
+  "description": "Use this API to check for the existence of in-service ac islands that do not contain a Type 3 (swing) bus. Following each successful call, it returns BUSES as the number of buses in a swingless island (0 for no more swingless islands). When a BUSES value of 0 is returned, no further calls are needed. The API must be called once with APIOPT set to 1. If BUSES is returned as 0 (i.e., there are no swingless islands), no further calls are needed. Otherwise, if BUSES is greater than zero, it must be called one or more times with APIOPT set to 2 and OPTION set to indicate the disposition of the current swingless island. APIOPT 2 calls are required until either BUSES is returned as zero or an APIOPT 2 call is made with OPTION set to a negative value. This API routine was first introduced in release 29.0.0. ierr, buses = tree(apiopt, option)",
+  "python_syntax": "ierr, buses = tree(apiopt, option)",
+  "return_type": "error_and_count",
+  "parameters": [
+    {
+      "name": "apiopt",
+      "description": "Mode of operation. (input; no default allowed)."
+    },
+    {
+      "name": "option",
+      "description": "Option for the handling of previously detected swingless island. (input; used only when APIOPT is 2; -1 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "buses",
+      "description": "Returned as the number of buses in this swingless island; 0 if no more swingless islands. (output)."
+    }
+  ],
+  "allowed_values": {
+    "apiopt": [
+      {
+        "value": "= 1",
+        "description": "initialize and check for the presence of a swingless island."
+      },
+      {
+        "value": "= 2",
+        "description": "process previously detected island as dictated by OPTION; then check for the presence of another swingless island."
+      }
+    ],
+    "option": [
+      {
+        "value": "< 0",
+        "description": "leave this island alone and terminate activity TREE."
+      },
+      {
+        "value": "= 0",
+        "description": "leave this island alone and check for another swingless island."
+      },
+      {
+        "value": "> 0",
+        "description": "disconnect this island, then check for another swingless island."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid APIOPT value."
+    },
+    {
+      "value": "= 2",
+      "description": "unexpected APIOPT value."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

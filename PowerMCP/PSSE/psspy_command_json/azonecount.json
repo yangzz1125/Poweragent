@@ -1,0 +1,68 @@
+{
+  "module": "psspy",
+  "function_name": "azonecount",
+  "category": "Zone Data",
+  "description": "Use this API to return the number of array entries required to accommodate the data to be returned by the remaining members of the zone data family. This API routine was first introduced in release 30.3.0. ierr, zones = azonecount(sid, flag)",
+  "python_syntax": "ierr, zones = azonecount(sid, flag)",
+  "return_type": "error_and_count",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the zone subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem zones to include. (input; 1 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "zones",
+      "description": "Number of zones in the subsystem indicated by sid that meet the editing criteria indicated by flag. (output)."
+    }
+  ],
+  "allowed_values": {
+    "sid": [
+      {
+        "value": "< 0",
+        "description": "to instruct the API to assume a subsystem containing all zones in the working case."
+      },
+      {
+        "value": ">= 0",
+        "description": "valid zone subsystem identifier. Valid subsystem identifiers range from 0 to 11. Subsystem SID must have been previously defined."
+      }
+    ],
+    "flag": [
+      {
+        "value": "= 1",
+        "description": "for only subsystem zones with at least one ac bus assigned to them."
+      },
+      {
+        "value": "= 2",
+        "description": "for subsystem zones with any equipment (ac buses, loads, and/or dc buses) assigned to them."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error, ZONES returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty; ZONES returned as 0."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value; ZONES returned as 0."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid FLAG value; ZONES returned as 0."
+    }
+  ]
+}

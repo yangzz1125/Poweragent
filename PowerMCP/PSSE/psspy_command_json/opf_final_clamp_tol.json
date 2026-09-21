@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "opf_final_clamp_tol",
+  "category": "Optimal Power Flow Operation",
+  "description": "Use this API to specify or return the value of the final clamp tolerance. This API works in conjunction with the API option to CLAMP_NONOPTIMIZED_GENS, and is associated with the APIs for OPF_INITIAL_CLAMP_TOL and the OPF_CLAMP_DECAY_FACTOR. This API routine was first introduced in release 30.0.0. ierr = opf_final_clamp_tol(rval) ierr, rval = opf_final_clamp_tol()",
+  "python_syntax": "ierr = opf_final_clamp_tol(rval) ierr, rval = opf_final_clamp_tol()",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "rval",
+      "description": "Value of the final clamp tolerance. (input; if Batch command, or for Python if specified as an argument, or for Fortran if IOCODE is 0, then input of 0 by default; else output)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid RVAL value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid IOCODE value."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

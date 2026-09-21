@@ -1,0 +1,86 @@
+{
+  "module": "psspy",
+  "function_name": "seqd_2",
+  "category": "Fault Analysis Operation",
+  "description": "Use this API routine to factorize the sequence matrices in preparation for unbalanced fault calculations SCMU and SPCB. This API routine was first introduced in release 33.0.0. ierr = seqd_2(options)",
+  "python_syntax": "ierr = seqd_2(options)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "options",
+      "description": "An array of three elements specifying options to be used in constructing the sequence matrices. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "options": [
+      {
+        "value": "OPTIONS(1)",
+        "description": "dc line and FACTS device option (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "block and ignore."
+      },
+      {
+        "value": "= 1",
+        "description": "convert to constant admittance load."
+      },
+      {
+        "value": "OPTIONS(2)",
+        "description": "transformer impedance correction option (1 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "do not apply to zero sequence."
+      },
+      {
+        "value": "= 1",
+        "description": "apply to zero sequence."
+      },
+      {
+        "value": "OPTIONS(3)",
+        "description": "fault analysis generator reactance option; ignored if generators are already “converted” (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "use subtransient reactance."
+      },
+      {
+        "value": "= 1",
+        "description": "use transient reactance."
+      },
+      {
+        "value": "= 2",
+        "description": "use synchronous reactance."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid OPTIONS value."
+    },
+    {
+      "value": "= 2",
+      "description": "fault analysis is invalid due to the presence of in-service induction machines that are in the “stalled” or “tripped” state."
+    },
+    {
+      "value": "= 3",
+      "description": "bus type code and series element status inconsistencies."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

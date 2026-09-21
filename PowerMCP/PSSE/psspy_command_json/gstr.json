@@ -1,0 +1,66 @@
+{
+  "module": "psspy",
+  "function_name": "gstr",
+  "category": "Dynamic Simulation Operation",
+  "description": "Use this API to initialize a PSSE dynamic simulation for governor response simulations and to specify the Channel Output File into which the output channel values are to be recorded during the simulation. This API routine was first introduced in release 30.2.0. ierr = gstr(option, pinitial, pdelta, outfile)",
+  "python_syntax": "ierr = gstr(option, pinitial, pdelta, outfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "option",
+      "description": "Bus flag indicating those buses to be tested. (input; 0 by default)."
+    },
+    {
+      "name": "pinitial",
+      "description": "Initial per unit loading of all machines being tested. (input; 0.8 by default)."
+    },
+    {
+      "name": "pdelta",
+      "description": "Per unit loading step applied at time = 0.0. (input; 0.1 by default)."
+    },
+    {
+      "name": "outfile",
+      "description": "Name of the channel output file (blank to bypass recording of the output channel values in a channel output file). (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "option": [
+      {
+        "value": "= 0",
+        "description": "run test on all in-service machines with turbine-governor models."
+      },
+      {
+        "value": "= 0",
+        "description": "bus number for which machines are to be tested."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "error opening OUTFILE."
+    },
+    {
+      "value": "= 3",
+      "description": "generators are not, “converted”"
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

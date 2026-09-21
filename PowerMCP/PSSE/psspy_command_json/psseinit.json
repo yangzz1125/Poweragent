@@ -1,0 +1,20 @@
+{
+  "module": "psspy",
+  "function_name": "psseinit",
+  "category": "Non-Engineering",
+  "description": "Initialize PSSE. This API routine was first introduced in release 30.0.0. ierr = psseinit(buses)",
+  "python_syntax": "ierr = psseinit(buses)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "buses",
+      "description": "Requested bus size; zero for default size level. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. this is future use. no errors are currently defined. (output)."
+    }
+  ]
+}

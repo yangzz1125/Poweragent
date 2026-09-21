@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "har_facts_purg",
+  "category": "Harmonics Data",
+  "description": "Use this API to purge specified harmonics FACTS device data from the working case. This API routine was first introduced in release 35.4.0. ierr = har_facts_purg(name,sendbus,termbus)",
+  "python_syntax": "ierr = har_facts_purg(name,sendbus,termbus)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "name",
+      "description": "Facts device name. (input; no default allowed)."
+    },
+    {
+      "name": "sendbus",
+      "description": "Facts device sending bus number. (input; no default allowed)."
+    },
+    {
+      "name": "termbus",
+      "description": "Facts device terminal bus number. (input; 0 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

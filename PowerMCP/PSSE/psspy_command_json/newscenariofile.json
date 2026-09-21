@@ -1,0 +1,15 @@
+{
+  "module": "psspy",
+  "function_name": "newscenariofile",
+  "category": "Scenarios",
+  "description": "This API routine is obsolete. It has been replaced by the API routine SCENARIONEW, and is implemented by a call to SCENARIONEW. Use this API to create a new Scenario. At least one group must be added to the Scenario through SCENARIOGROUPADD before files may be added to it. If adding files through file tracking is also desired, a group must become the active group which can be done by calling SCENARIOGROUPOPEN. This API routine was first introduced in release 32.0.0. newscenariofile(sfile)",
+  "python_syntax": "newscenariofile(sfile)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "sfile",
+      "description": ""
+    }
+  ],
+  "return_values": []
+}

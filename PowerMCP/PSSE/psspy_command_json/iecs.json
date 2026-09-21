@@ -1,0 +1,154 @@
+{
+  "module": "psspy",
+  "function_name": "iecs",
+  "category": "Fault Analysis Operation",
+  "description": "This API routine is obsolete. It has been replaced by the API routine iecs_2, and is implemented by a call to iecs_2. Use this API to apply a series of faults at various locations in the working case to compute short circuit currents according to IEC 60909 standard. This API routine was first introduced in release 31.0.0. ierr = iecs(sid, all, status, brktim, iecfile, fcdfile)",
+  "python_syntax": "ierr = iecs(sid, all, status, brktim, iecfile, fcdfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid subsystem identifier. valid subsystem identifiers range from 0 to 11. subsystem sid must have been previously defined. (input; 0 by default)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem flag. (input; 1 by default)."
+    },
+    {
+      "name": "status",
+      "description": "An array of eight elements specifying integer options. (input)."
+    },
+    {
+      "name": "brktim",
+      "description": "Breaker contact parting time in seconds. (input; 5/BaseFrequency by default)."
+    },
+    {
+      "name": "iecfile",
+      "description": "Iec fault calculation data (.iec) file. (input; blank by default)."
+    },
+    {
+      "name": "fcdfile",
+      "description": "Fault control (.fcd) file. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 1",
+        "description": "process all buses."
+      },
+      {
+        "value": "= 0",
+        "description": "process only buses in subsystem SID."
+      }
+    ],
+    "status": [
+      {
+        "value": "STATUS(1)",
+        "description": "three phase faults (0 by default), can also be specified with keyword ‘flt3ph’."
+      },
+      {
+        "value": "= 0",
+        "description": "omit."
+      },
+      {
+        "value": "= 1",
+        "description": "include."
+      },
+      {
+        "value": "STATUS(2)",
+        "description": "line-to-ground faults (0 by default), can also be specified with keyword ‘fltlg’."
+      },
+      {
+        "value": "= 0",
+        "description": "omit."
+      },
+      {
+        "value": "= 1",
+        "description": "include."
+      },
+      {
+        "value": "STATUS(3)",
+        "description": "line-line-to-ground faults (0 by default), can also be specified with keyword ‘fltllg’."
+      },
+      {
+        "value": "= 0",
+        "description": "omit."
+      },
+      {
+        "value": "= 1",
+        "description": "include."
+      },
+      {
+        "value": "STATUS(4)",
+        "description": "line-to-line faults (0 by default), can also be specified with keyword ‘fltll’."
+      },
+      {
+        "value": "= 0",
+        "description": "omit."
+      },
+      {
+        "value": "= 1",
+        "description": "include."
+      },
+      {
+        "value": "STATUS(5)",
+        "description": "report option (1 by default), can also be specified with keyword ‘rptop’."
+      },
+      {
+        "value": "= 1",
+        "description": "total fault currents."
+      },
+      {
+        "value": "= 2",
+        "description": "fault contributions to N levels away."
+      },
+      {
+        "value": "= 3",
+        "description": "total fault currents and fault contributions to N levels away."
+      },
+      {
+        "value": "STATUS(6)",
+        "description": "number of levels back for contributions (0 by default), can also be specified with keyword ‘rptlvl’."
+      },
+      {
+        "value": ">= 0",
+        "description": "used if STATUS(5) = 2 or 3."
+      },
+      {
+        "value": "STATUS(7)",
+        "description": "location of fault (0 by default), can also be specified with keyword ‘fltloc’."
+      },
+      {
+        "value": "= 1",
+        "description": "fault at network bus."
+      },
+      {
+        "value": "= 2",
+        "description": "fault at LV bus of Power Station Unit (PSU)."
+      },
+      {
+        "value": "= 3",
+        "description": "fault at auxiliary transformer (connected to PSU) LV bus."
+      },
+      {
+        "value": "STATUS(8)",
+        "description": "report total fault currents in descending order of magnitude (AMPS) (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "do not order."
+      },
+      {
+        "value": "= 1",
+        "description": "descending order."
+      }
+    ]
+  }
+}

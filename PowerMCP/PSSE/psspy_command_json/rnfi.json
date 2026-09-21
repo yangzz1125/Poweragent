@@ -1,0 +1,126 @@
+{
+  "module": "psspy",
+  "function_name": "rnfi",
+  "category": "Power Flow Operation",
+  "description": "Use this API to reproduce the results of a working case bus renumbering operation in auxiliary data input files. This API routine was first introduced in release 29.0.0. ierr = rnfi(ftype, trnfile, inpfile, outfile)",
+  "python_syntax": "ierr = rnfi(ftype, trnfile, inpfile, outfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ftype",
+      "description": "Type of data file to be processed. (input; 1 by default)."
+    },
+    {
+      "name": "trnfile",
+      "description": "Name of bus renumbering translation file. (input; no default allowed)."
+    },
+    {
+      "name": "inpfile",
+      "description": "Name of data file to be renumbered. (input; no default allowed)."
+    },
+    {
+      "name": "outfile",
+      "description": "Name of data file (blank for output to the report window). (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "ftype": [
+      {
+        "value": "= 1",
+        "description": "sequence data file."
+      },
+      {
+        "value": "= 2",
+        "description": "drawing coordinate data file."
+      },
+      {
+        "value": "= 3",
+        "description": "dynamics data file."
+      },
+      {
+        "value": "= 4",
+        "description": "machine impedance data file."
+      },
+      {
+        "value": "= 5",
+        "description": "economic dispatch data file."
+      },
+      {
+        "value": "= 6",
+        "description": "inertia and governor response data file."
+      },
+      {
+        "value": "= 7",
+        "description": "breaker duty data file."
+      },
+      {
+        "value": "= 8",
+        "description": "fault dspecification data file."
+      },
+      {
+        "value": "= 9",
+        "description": "fault control data file."
+      },
+      {
+        "value": "= 10",
+        "description": "machine capability Curve data file."
+      },
+      {
+        "value": "= 11",
+        "description": "load throwover data file."
+      },
+      {
+        "value": "= 12",
+        "description": "ANSI fault specification data file."
+      },
+      {
+        "value": "= 13",
+        "description": "subsystem description data file."
+      },
+      {
+        "value": "= 14",
+        "description": "monitored element data file."
+      },
+      {
+        "value": "= 15",
+        "description": "contingency description data file."
+      },
+      {
+        "value": "= 16",
+        "description": "tripping element data file."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid FTYPE value."
+    },
+    {
+      "value": "= 2",
+      "description": "error opening translation file."
+    },
+    {
+      "value": "= 3",
+      "description": "error opening input data file."
+    },
+    {
+      "value": "= 4",
+      "description": "error opening output data file."
+    },
+    {
+      "value": "= 5",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "module": "psspy",
+  "function_name": "change_fctmod_var",
+  "category": "Facts Device Models",
+  "description": "Use this API to change the value of a VAR of the FACTS device model of a specified FACTS device. This API routine was first introduced in release 32.0.0. ierr = change_fctmod_var(fd, model, j, rdata)",
+  "python_syntax": "ierr = change_fctmod_var(fd, model, j, rdata)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "fd",
+      "description": "Quoted name of the facts device for which model data is to be changed; if an unquoted integer value is specified, the api converts it to a left-justified name. (input; no default allowed)."
+    },
+    {
+      "name": "model",
+      "description": "Model name. (input; no default allowed)."
+    },
+    {
+      "name": "j",
+      "description": "Var number to change relative to the start of the block of vars assigned to this model (1 for var(j), 2 for var(j+1), etc.). (input; no default allowed)."
+    },
+    {
+      "name": "rdata",
+      "description": "New var value. (input; unchanged by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "FACTS device not found."
+    },
+    {
+      "value": "= 2",
+      "description": "unknown model name."
+    },
+    {
+      "value": "= 3",
+      "description": "no model at this FACTS device."
+    },
+    {
+      "value": "= 4",
+      "description": "model at this FACTS device is aaa not xxx."
+    },
+    {
+      "value": "= 5",
+      "description": "no VARs used in model."
+    },
+    {
+      "value": "= 6",
+      "description": "VAR number outside of the VAR range of this model."
+    },
+    {
+      "value": "= 7",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

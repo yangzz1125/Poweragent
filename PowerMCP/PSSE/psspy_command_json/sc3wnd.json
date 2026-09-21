@@ -1,0 +1,94 @@
+{
+  "module": "psspy",
+  "function_name": "sc3wnd",
+  "category": "Single Element Data",
+  "description": "Returns the three-winding transformer short circuit currents arriving at IBUS following activity SCMU. This API routine was first introduced in release 30.0.0. ierr, cmpval = sc3wnd(ibus, jbus, kbus, ickt, string)",
+  "python_syntax": "ierr, cmpval = sc3wnd(ibus, jbus, kbus, ickt, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "From bus number. (input)."
+    },
+    {
+      "name": "jbus",
+      "description": "To bus number. (input)."
+    },
+    {
+      "name": "kbus",
+      "description": "Third bus number. (input)."
+    },
+    {
+      "name": "ickt",
+      "description": "Circuit identifier (string. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the short circuit current desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "cmpval",
+      "description": "Complex current indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= IPOS",
+        "description": "Positive sequence."
+      },
+      {
+        "value": "= INEG",
+        "description": "Negative sequence."
+      },
+      {
+        "value": "= IZERO",
+        "description": "Zero sequence."
+      },
+      {
+        "value": "= IA",
+        "description": "A-phase."
+      },
+      {
+        "value": "= IB",
+        "description": "B-phase."
+      },
+      {
+        "value": "= IC",
+        "description": "C-phase."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘P’ and ‘Q’ or ‘CMPVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "‘SCINIT’ not successfully called; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Bus not found; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "Branch value not found; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid ‘STRING’; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    },
+    {
+      "value": "= 5",
+      "description": "Branch out of service; ‘P’ and ‘Q’ of 0.0 or ‘CMPVAL’ of (0.0,0.0) returned."
+    }
+  ]
+}

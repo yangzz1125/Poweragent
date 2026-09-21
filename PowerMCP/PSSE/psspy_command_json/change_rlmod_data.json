@@ -1,0 +1,102 @@
+{
+  "module": "psspy",
+  "function_name": "change_rlmod_data",
+  "category": "Line Relay Models",
+  "description": "This API routine is obsolete. It has been replaced by the API routine CHANGE_RLMOD_CON, CHANGE_RLMOD_ICON, CHANGE_RLMOD_CHRICN, and is implemented by a call to CHANGE_RLMOD_CON, CHANGE_RLMOD_ICON, CHANGE_RLMOD_CHRICN. Use this API to change the value of an ICON and/or CON of the line relay model in the designated relay slot of the from bus end of a specified branch. This API routine was first introduced in release 28.0.0. ierr = change_rlmod_data(ibus,jbus,id,rs,name,j,rdata,i,idata,chdata)",
+  "python_syntax": "ierr = change_rlmod_data(ibus,jbus,id,rs,name,j,rdata,i,idata,chdata)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "From bus number. (input; no default allowed)."
+    },
+    {
+      "name": "jbus",
+      "description": "To bus number. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Circuit identifier. (input)."
+    },
+    {
+      "name": "rs",
+      "description": "Relay slot (1 or 2). (input; 1 by default)."
+    },
+    {
+      "name": "name",
+      "description": "Model name. (input; no default allowed)."
+    },
+    {
+      "name": "j",
+      "description": "Con number to change relative to the start of the block of cons assigned to this model, or 0 for no con change (1 for con(j), 2 for con(j+1), etc.). (input; 0 by default)."
+    },
+    {
+      "name": "rdata",
+      "description": "New con value. (input; unchanged by default)."
+    },
+    {
+      "name": "i",
+      "description": "Icon number to change relative to the start of the block of icons assigned to this model, or 0 for no icon change (1 for icon(i), 2 for icon(i+1), etc.). (input; 0 by default)."
+    },
+    {
+      "name": "idata",
+      "description": "New integer icon value. (input; unchanged by default). When a character value is intended for an ICON value, the IDATA entry is ignored and the integer ICON is set to 0)."
+    },
+    {
+      "name": "chdata",
+      "description": "New character icon value (no default allowed if the character icon is to be changed). when an integer value is intended for an icon value, the chdata entry must be either defaulted or specified as either ‘$$’ or ‘ ‘; the character icon is set to ‘$$’. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid RS value."
+    },
+    {
+      "value": "= 2",
+      "description": "unknown model NAME."
+    },
+    {
+      "value": "= 3",
+      "description": "no relay model on this branch at the bus IBUS end."
+    },
+    {
+      "value": "= 4",
+      "description": "relay model at bus IBUS end is aaa not xxx."
+    },
+    {
+      "value": "= 5",
+      "description": "CON number exceeds the number of CONs used by the model."
+    },
+    {
+      "value": "= 6",
+      "description": "ICON number exceeds the number of ICONs used by the model."
+    },
+    {
+      "value": "= 7",
+      "description": "neither the CON nor ICON number is positive."
+    },
+    {
+      "value": "= 8",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 9",
+      "description": "branch not found."
+    },
+    {
+      "value": "= 10",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

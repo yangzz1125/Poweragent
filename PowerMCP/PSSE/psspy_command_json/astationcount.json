@@ -1,0 +1,46 @@
+{
+  "module": "psspy",
+  "function_name": "astationcount",
+  "category": "Substation Data",
+  "description": "Use this API to return the number of array entries required to accommodate the data to be returned by the remaining members of the substation data family. This API routine was first introduced in release 34.1.0. ierr, stations = astationcount(sid, flag)",
+  "python_syntax": "ierr, stations = astationcount(sid, flag)",
+  "return_type": "error_and_count",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the bus subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem substations to include. (input; 1 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "stations",
+      "description": "Number of substations in the subsystem indicated by sid that meet the editing criteria indicated by flag. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error, STATIONS returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty; STATIONS returned as 0."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value; STATIONS returned as 0."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid FLAG value; STATIONS returned as 0."
+    }
+  ]
+}

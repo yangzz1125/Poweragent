@@ -1,0 +1,130 @@
+{
+  "module": "psspy",
+  "function_name": "dist_bus_fault_2",
+  "category": "Set Disturbance",
+  "description": "This API routine is obsolete. It has been replaced by the API routine dist_bus_fault_3, and is implemented by a call to dist_bus_fault_3. Use this API to apply a fault at a bus during dynamic simulations. This API routine was first introduced in release 34.0.0. ierr = dist_bus_fault_2(units, basekv, options, values)",
+  "python_syntax": "ierr = dist_bus_fault_2(units, basekv, options, values)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "units",
+      "description": "Units in which fault admittance or impedance is specified in values. (input; 1 by default)."
+    },
+    {
+      "name": "basekv",
+      "description": "Base voltage in kv used to calculate the per unit fault admittance if units is 2 or 3; ignored if units is 1. if basekv is specified as 0.0, the base voltage of bus ibus is used. (input; 0.0 by default)."
+    },
+    {
+      "name": "options",
+      "description": "An array of four elements specifying options and values. The first element of OPTIONS defines the option to be used in the construction of the sequence admittance matrices; the remaining entries define the fault to be applied. (input)."
+    },
+    {
+      "name": "values",
+      "description": "An array of six elements specifying values used to define the fault. The first two elements of VALUES define the fault admittance or impedance to be used in the simulation; the remaining entries are used to define the fault if phase voltages are to be calculated during the simulation. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "units": [
+      {
+        "value": "= 1",
+        "description": "admittance in MVA."
+      },
+      {
+        "value": "= 2",
+        "description": "admittance in mhos."
+      },
+      {
+        "value": "= 3",
+        "description": "impedance in ohms."
+      }
+    ],
+    "options": [
+      {
+        "value": "OPTIONS(1)",
+        "description": "transformer impedance correction option (1 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "do not apply to zero sequence."
+      },
+      {
+        "value": "= 1",
+        "description": "apply to zero sequence."
+      },
+      {
+        "value": "OPTIONS(2)",
+        "description": "unbalanced type (1 by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "line-to-ground fault."
+      },
+      {
+        "value": "= 2",
+        "description": "line-to-line or line-to-line-to-ground fault."
+      },
+      {
+        "value": "OPTIONS(3)",
+        "description": "bus to be faulted (no default allowed)."
+      },
+      {
+        "value": "OPTIONS(4)",
+        "description": "exceptional phase (1 by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "phase A."
+      },
+      {
+        "value": "= 2",
+        "description": "phase B."
+      },
+      {
+        "value": "= 3",
+        "description": "phase C."
+      }
+    ],
+    "values": [
+      {
+        "value": "VALUES(1)",
+        "description": "real component of the complex fault admittance or impedance according to the value specified for UNITS (0.0 by default)."
+      },
+      {
+        "value": "VALUES(2)",
+        "description": "reactive component of the complex fault admittance or impedance according to the value specified for UNITS (-2.0E11 by default)."
+      },
+      {
+        "value": "VALUES(3)",
+        "description": "resistance of the complex L-G (if OPTIONS(3) is 1) or L-L (if OPTIONS(2) is 2) fault impedance in pu (0.0 by default)."
+      },
+      {
+        "value": "VALUES(4)",
+        "description": "reactance of the complex L-G (if OPTIONS(3) is 1) or L-L (if OPTIONS(2) is 2) fault impedance in pu (0.0 by default)."
+      },
+      {
+        "value": "VALUES(5)",
+        "description": "resistance of the complex L-G fault impedance in pu (if OPTIONS(2) is 2) (0.0 by default)."
+      },
+      {
+        "value": "VALUES(6)",
+        "description": "reactance of the complex L-G fault impedance in pu (if OPTIONS(2) is 2) (0.0 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "as in DIST_BUS_FAULT_3."
+    }
+  ]
+}

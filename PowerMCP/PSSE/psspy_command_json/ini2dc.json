@@ -1,0 +1,25 @@
+{
+  "module": "psspy",
+  "function_name": "ini2dc",
+  "category": "Single Element Data",
+  "description": "Initializes the two-terminal dc line fetching routine ‘NXT2DC’ for retrieving two-terminal dc lines in dc line name alphabetical order. This API routine was first introduced in release 31.0.0. ierr = ini2dc()",
+  "python_syntax": "ierr = ini2dc()",
+  "return_type": "error_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": ""
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error, ‘NXT2DC’ is properly initialized."
+    },
+    {
+      "value": "= 1",
+      "description": "No two-terminal dc lines in case; ‘NXT2DC’ may not be used."
+    }
+  ]
+}

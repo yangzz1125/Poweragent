@@ -1,0 +1,132 @@
+{
+  "module": "psspy",
+  "function_name": "seq_branch_data_3",
+  "category": "Fault Analysis Data",
+  "description": "Use this API to modify the zero sequence data of an existing non-transformer branch in the working case (see PSSE Program Operation Manual, Zero Sequence Non-Transformer Branch Data). This API routine was first introduced in release 33.1.0. ierr = seq_branch_data_3(ibus, jbus, ckt, intgar, realar)",
+  "python_syntax": "ierr = seq_branch_data_3(ibus, jbus, ckt, intgar, realar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number of from bus. (input; no default allowed)."
+    },
+    {
+      "name": "jbus",
+      "description": "Bus number of to bus. (input; no default allowed)."
+    },
+    {
+      "name": "ckt",
+      "description": "Circuit identifier. (input; ‘1’ by default)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of one elements specifying MOV-protected series capacitor flag. (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of eight elements specifying (defaulted data items are unchanged). (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "MOV-protected series capacitor flag."
+      },
+      {
+        "value": "= 0",
+        "description": "not a MOV-protected branch."
+      },
+      {
+        "value": "= 1",
+        "description": "MOV-protected series capacitor with MOV protection enabled."
+      },
+      {
+        "value": "= 2",
+        "description": "MOV-protected series capacitor with MOV protection disabled."
+      },
+      {
+        "value": "= 3",
+        "description": "spark gap protection enabled."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "RLINZ, zero sequence branch resistance."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "XLINZ, zero sequence branch reactance."
+      },
+      {
+        "value": "REALAR(3)",
+        "description": "BCHZ, zero sequence total line charging."
+      },
+      {
+        "value": "REALAR(4)",
+        "description": "GI, zero sequence active line shunt at bus IBUS end."
+      },
+      {
+        "value": "REALAR(5)",
+        "description": "BI, zero sequence reactive line shunt at bus IBUS end."
+      },
+      {
+        "value": "REALAR(6)",
+        "description": "GJ, zero sequence active line shunt at bus JBUS end."
+      },
+      {
+        "value": "REALAR(7)",
+        "description": "BJ, zero sequence reactive line shunt at bus JBUS end."
+      },
+      {
+        "value": "REALAR(8)",
+        "description": "MOVI, mov protected current level in kA."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "circuit identifier is more than two characters."
+    },
+    {
+      "value": "= 3",
+      "description": "circuit identifier may not start with &"
+    },
+    {
+      "value": "= 4",
+      "description": "branch not found."
+    },
+    {
+      "value": "= 5",
+      "description": "branch exists but it is a two-winding transformer."
+    },
+    {
+      "value": "= 6",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - branch is treated as a zero impedance line but its zero sequence impedance is non- zero."
+    }
+  ]
+}

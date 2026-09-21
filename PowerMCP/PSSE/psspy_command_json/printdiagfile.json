@@ -1,0 +1,35 @@
+{
+  "module": "psspy",
+  "function_name": "printdiagfile",
+  "category": "Diagram View",
+  "description": "This API routine is obsolete. It has been replaced by the API routine printdiagfile_2, and is implemented by a call to printdiagfile_2. Use this API to print the active Slider diagram in the GUI. This API routine was first introduced in release 30.0.0. printdiagfile(sdev, copies, orient)",
+  "python_syntax": "printdiagfile(sdev, copies, orient)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "sdev",
+      "description": "Name of valid attached windows printer. (input)."
+    },
+    {
+      "name": "copies",
+      "description": "Number of copies to print. (input)."
+    },
+    {
+      "name": "orient",
+      "description": "Orientation. (input)."
+    }
+  ],
+  "return_values": [],
+  "allowed_values": {
+    "orient": [
+      {
+        "value": "= 1",
+        "description": "Portrait."
+      },
+      {
+        "value": "= 2",
+        "description": "Landscape."
+      }
+    ]
+  }
+}

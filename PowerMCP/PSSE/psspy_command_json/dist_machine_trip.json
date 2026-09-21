@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "dist_machine_trip",
+  "category": "Set Disturbance",
+  "description": "Use this API to set a machine to out-of-service during dynamic simulations. This API routine was first introduced in release 30.2.0. ierr = dist_machine_trip(ibus,id)",
+  "python_syntax": "ierr = dist_machine_trip(ibus,id)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number of machine to be tripped. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Machine identifier. (input; ‘1’ by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "STRT or MSTR not successfully executed."
+    },
+    {
+      "value": "= 2",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 3",
+      "description": "machine not found."
+    },
+    {
+      "value": "= 4",
+      "description": "machine is already out-of-service."
+    },
+    {
+      "value": "= 5",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

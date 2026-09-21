@@ -1,0 +1,54 @@
+{
+  "module": "psspy",
+  "function_name": "cctbrnomod_remove",
+  "category": "Cct Models",
+  "description": "Use this API to remove a branch “other” model attached to the specified branch. This API routine was first introduced in release 33.6.0. ierr = cctbrnomod_remove(ibus, jbus, id, model)",
+  "python_syntax": "ierr = cctbrnomod_remove(ibus, jbus, id, model)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "From bus number. (input; Not Allowed by default)."
+    },
+    {
+      "name": "jbus",
+      "description": "To bus number. (input; Not Allowed by default)."
+    },
+    {
+      "name": "id",
+      "description": "Circuit identifier. (input; Not Allowed by default)."
+    },
+    {
+      "name": "model",
+      "description": "Model name. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "no branch other model on the branch."
+    },
+    {
+      "value": "= 2",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 3",
+      "description": "branch not found."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,132 @@
+{
+  "module": "psspy",
+  "function_name": "mlst",
+  "category": "Dynamic Simulation Operation",
+  "description": "Use this API to list plant models connected to subsystem machines along with their storage locations in the dynamics data arrays. This API routine was first introduced in release 28.0.0. ierr = mlst(sid, all, status)",
+  "python_syntax": "ierr = mlst(sid, all, status)",
+  "return_type": "error_only_listing",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Valid subsystem identifier. valid subsystem identifiers range from 0 to 11. subsystem sid must have been previously defined. (input; 0 by default)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem flag. (input; 1 by default)."
+    },
+    {
+      "name": "status",
+      "description": "An array of three elements specifying a three-element array. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 1",
+        "description": "process all buses."
+      },
+      {
+        "value": "= 0",
+        "description": "process only buses in subsystem SID."
+      }
+    ],
+    "status": [
+      {
+        "value": "STATUS(1)",
+        "description": "connected/unconnected flag (1 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "list all unconnected models."
+      },
+      {
+        "value": "= 1",
+        "description": "list connected subsystem models."
+      },
+      {
+        "value": "STATUS(2)",
+        "description": "active/bypassed flag (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "active and bypassed models."
+      },
+      {
+        "value": "= 1",
+        "description": "active models only."
+      },
+      {
+        "value": "= 2",
+        "description": "bypassed models only."
+      },
+      {
+        "value": "STATUS(3)",
+        "description": "plant model type (1 by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "all plant models."
+      },
+      {
+        "value": "= 2",
+        "description": "generator models."
+      },
+      {
+        "value": "= 3",
+        "description": "compensator models."
+      },
+      {
+        "value": "= 4",
+        "description": "stabilizer models."
+      },
+      {
+        "value": "= 5",
+        "description": "minimum excitation models."
+      },
+      {
+        "value": "= 6",
+        "description": "maximum excitation models."
+      },
+      {
+        "value": "= 7",
+        "description": "excitation system models."
+      },
+      {
+        "value": "= 8",
+        "description": "governor models."
+      },
+      {
+        "value": "= 9",
+        "description": "turbine load controller models."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ALL value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid STATUS value."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

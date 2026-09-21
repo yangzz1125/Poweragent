@@ -1,0 +1,114 @@
+{
+  "module": "psspy",
+  "function_name": "cctmind_3wtd",
+  "category": "Single Element Data",
+  "description": "Use this API to return starting array indices and status of CCT 3-winding transformer device models. This API routine was first introduced in release 33.9.0. ierr, ival = cctmind_3wtd(ibus, jbus, kbus, id, string)",
+  "python_syntax": "ierr, ival = cctmind_3wtd(ibus, jbus, kbus, id, string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "“from” bus number of the 3-winding transformer. (input)."
+    },
+    {
+      "name": "jbus",
+      "description": "“to” bus number of the 3-winding transformer. (input)."
+    },
+    {
+      "name": "kbus",
+      "description": "“third” bus number of the 3-winding transformer. (input)."
+    },
+    {
+      "name": "id",
+      "description": "2-winding transformer circuit identifier. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the model quantity desired. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "ival",
+      "description": "Value indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= CON",
+        "description": "Starting CON index."
+      },
+      {
+        "value": "= STATE",
+        "description": "Starting STATE index."
+      },
+      {
+        "value": "= VAR",
+        "description": "Starting VAR index."
+      },
+      {
+        "value": "= ICON",
+        "description": "Starting ICON index."
+      },
+      {
+        "value": "= NCON",
+        "description": "Number of CON values used by the model."
+      },
+      {
+        "value": "= NSTATE",
+        "description": "Number of STATE values used by the model."
+      },
+      {
+        "value": "= NVAR",
+        "description": "Number of VAR values used by the model."
+      },
+      {
+        "value": "= NICON",
+        "description": "Number of ICON values used by the model."
+      },
+      {
+        "value": "= STATUS",
+        "description": "Bypassed flag: 0 = bypassed; 1 = not bypassed. Does not reflect 3-winding transformer status."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "4-winding transformer not in case; ‘IVAL’ returned as 0."
+    },
+    {
+      "value": "= 2",
+      "description": "No CCT models in case."
+    },
+    {
+      "value": "= 3",
+      "description": "No device model attached to the specified 3-winding transformer; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid value of ‘STRING’; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 5",
+      "description": "Model does not use any of this data type; ‘IVAL’ = 0 returned."
+    },
+    {
+      "value": "= 6",
+      "description": "Dynamics data not present in working memory; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 7",
+      "description": "Specified branch is not a transformer; ‘IVAL’ unchanged."
+    }
+  ]
+}

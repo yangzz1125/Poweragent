@@ -1,0 +1,374 @@
+{
+  "module": "psspy",
+  "function_name": "dyda",
+  "category": "Dynamic Simulation Operation",
+  "description": "Use this API to replicate dynamics model data in the form of a Dynamics Data Input file. This API routine was first introduced in release 28.0.0. ierr = dyda(sid, all, status, out, ofile)",
+  "python_syntax": "ierr = dyda(sid, all, status, out, ofile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid subsystem identifier. valid subsystem identifiers range from 0 to 11. subsystem sid must have been previously defined. (input; 0 by default)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem flag. (input; 1 by default)."
+    },
+    {
+      "name": "status",
+      "description": "An array of three elements specifying a three-element array. (input)."
+    },
+    {
+      "name": "out",
+      "description": "Destination selection. (input; 1 by default)."
+    },
+    {
+      "name": "ofile",
+      "description": "Name of the file to which data records are to be written (when out is 0). (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 1",
+        "description": "process all buses."
+      },
+      {
+        "value": "= 0",
+        "description": "process only buses in subsystem SID."
+      }
+    ],
+    "status": [
+      {
+        "value": "STATUS(1)",
+        "description": "models to process (2 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "process all CONEC models."
+      },
+      {
+        "value": "= 1",
+        "description": "process all CONET models."
+      },
+      {
+        "value": "= 2",
+        "description": "process models by subsystem."
+      },
+      {
+        "value": "= 3",
+        "description": "process Miscellaneous other type models."
+      },
+      {
+        "value": "STATUS(2)",
+        "description": "value depends on the value of STATUS(1). If STATUS(1) = 2 then STATUS(2) is the type of model for which data is to be processed (1 by default)."
+      },
+      {
+        "value": "",
+        "description": "If STATUS(1) = 3:"
+      },
+      {
+        "value": "= 0",
+        "description": "Miscellaneous, “Other,” model DYDA for every model instance."
+      },
+      {
+        "value": "> 0",
+        "description": "Miscellaneous, “Other,” model DYDA for the specificed model instance."
+      },
+      {
+        "value": "",
+        "description": "If STATUS(1) = 2:"
+      },
+      {
+        "value": "= 1",
+        "description": "all models."
+      },
+      {
+        "value": "= 2",
+        "description": "all plant models."
+      },
+      {
+        "value": "= 3",
+        "description": "generator models."
+      },
+      {
+        "value": "= 4",
+        "description": "compensator models."
+      },
+      {
+        "value": "= 5",
+        "description": "stabilizer models."
+      },
+      {
+        "value": "= 6",
+        "description": "minimum excitation limiter models."
+      },
+      {
+        "value": "= 7",
+        "description": "maximum excitation limiter models."
+      },
+      {
+        "value": "= 8",
+        "description": "excitation system models."
+      },
+      {
+        "value": "= 9",
+        "description": "turbine governor models."
+      },
+      {
+        "value": "= 10",
+        "description": "load characteristic models."
+      },
+      {
+        "value": "= 11",
+        "description": "load relay models."
+      },
+      {
+        "value": "= 12",
+        "description": "line relay models."
+      },
+      {
+        "value": "= 13",
+        "description": "auxiliary signal models."
+      },
+      {
+        "value": "= 14",
+        "description": "two-terminal dc line models."
+      },
+      {
+        "value": "= 15",
+        "description": "multi-terminal dc line models."
+      },
+      {
+        "value": "= 16",
+        "description": "VSC dc line models."
+      },
+      {
+        "value": "= 17",
+        "description": "FACTS device models."
+      },
+      {
+        "value": "= 18",
+        "description": "CONEC models."
+      },
+      {
+        "value": "= 19",
+        "description": "CONET models."
+      },
+      {
+        "value": "= 20",
+        "description": "turbine load controller."
+      },
+      {
+        "value": "= 21",
+        "description": "switched shunt models."
+      },
+      {
+        "value": "= 22",
+        "description": "all renewable models."
+      },
+      {
+        "value": "= 23",
+        "description": "renewable generator models."
+      },
+      {
+        "value": "= 24",
+        "description": "renewable electrical control models."
+      },
+      {
+        "value": "= 25",
+        "description": "renewable mechanical system models."
+      },
+      {
+        "value": "= 26",
+        "description": "renewable pitch models."
+      },
+      {
+        "value": "= 27",
+        "description": "renewable aerodynamic models."
+      },
+      {
+        "value": "= 28",
+        "description": "renewable gust models."
+      },
+      {
+        "value": "= 29",
+        "description": "renewable plant control models."
+      },
+      {
+        "value": "= 30",
+        "description": "induction machine models."
+      },
+      {
+        "value": "= 31",
+        "description": "branch device models."
+      },
+      {
+        "value": "= 32",
+        "description": "two-winding transformer device models."
+      },
+      {
+        "value": "= 33",
+        "description": "three-winding transformer models."
+      },
+      {
+        "value": "= 34",
+        "description": "protection models associated with machines."
+      },
+      {
+        "value": "= 35",
+        "description": "“other” models associated with machines."
+      },
+      {
+        "value": "= 36",
+        "description": "“other” models associated with bus."
+      },
+      {
+        "value": "= 37",
+        "description": "“other” models associated with two-terminal dc lines."
+      },
+      {
+        "value": "= 39",
+        "description": "renewable torque control models."
+      },
+      {
+        "value": "= 40",
+        "description": "“other” models associated with branch."
+      },
+      {
+        "value": "= 41",
+        "description": "“other” models associated with switched shunt."
+      },
+      {
+        "value": "= 42",
+        "description": "renewable weak grid control models."
+      },
+      {
+        "value": "= 43",
+        "description": "renewable Paux Control models."
+      },
+      {
+        "value": "= 44",
+        "description": "all load component models."
+      },
+      {
+        "value": "= 45",
+        "description": "load main component models."
+      },
+      {
+        "value": "= 46",
+        "description": "load distribution component models."
+      },
+      {
+        "value": "= 47",
+        "description": "load individualcomponent # 1 models."
+      },
+      {
+        "value": "= 48",
+        "description": "load individualcomponent # 2 models."
+      },
+      {
+        "value": "= 49",
+        "description": "load individualcomponent # 3 models."
+      },
+      {
+        "value": "= 50",
+        "description": "load individualcomponent # 4 models."
+      },
+      {
+        "value": "= 51",
+        "description": "load individualcomponent # 5 models."
+      },
+      {
+        "value": "= 52",
+        "description": "load individualcomponent # 6 models."
+      },
+      {
+        "value": "= 53",
+        "description": "load individualcomponent # 7 models."
+      },
+      {
+        "value": "= 54",
+        "description": "load individualcomponent # 8 models."
+      },
+      {
+        "value": "= 55",
+        "description": "load individualcomponent # 9 models."
+      },
+      {
+        "value": "= 56",
+        "description": "load individualcomponent # 10 models."
+      },
+      {
+        "value": "= 57",
+        "description": "load individualcomponent # 11 models."
+      },
+      {
+        "value": "= 58",
+        "description": "Stator Current Limiter models."
+      },
+      {
+        "value": "= 59",
+        "description": "Power Factor Controller models."
+      },
+      {
+        "value": "STATUS(3)",
+        "description": "load model option (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "include all subsystem load models attached to loads in the specified subsystem."
+      },
+      {
+        "value": "= 1",
+        "description": "exclude subsystem load models attached to loads in the specified subsystem except when subsystem number is explicitly in the list."
+      }
+    ],
+    "out": [
+      {
+        "value": "= 0",
+        "description": "direct output to a data file specified by OFILE."
+      },
+      {
+        "value": "= 1",
+        "description": "direct output to the current report device."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ALL value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid STATUS value."
+    },
+    {
+      "value": "= 4",
+      "description": "invalid OUT value."
+    },
+    {
+      "value": "= 5",
+      "description": "error opening OFILE."
+    },
+    {
+      "value": "= 6",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "module": "psspy",
+  "function_name": "increment_swsref_2",
+  "category": "Dynamic Simulation Operation",
+  "description": "Use this API to add a specified value to the value of the element of the SWREF (switched shunt reference) array associated with a specified switched shunt. This API routine was first introduced in release 35.0.0. ierr = increment_swsref_2(ibus, id, newval)",
+  "python_syntax": "ierr = increment_swsref_2(ibus, id, newval)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Switched shunt bus number. (input)."
+    },
+    {
+      "name": "id",
+      "description": "Switched shunt identifier. (input)."
+    },
+    {
+      "name": "newval",
+      "description": "New value to be added to the swref array entry associated with switched shunt at bus ibus. (input; 0.0 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "switched shunt not found."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "warnings - one or more of: - no table model for switched shunt at this bus. - switched shunt dynamic model as this bus is bypassed."
+    }
+  ]
+}

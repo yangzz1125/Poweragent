@@ -1,0 +1,160 @@
+{
+  "module": "psspy",
+  "function_name": "spcb",
+  "category": "Power Flow Operation",
+  "description": "Use this API to calculate positive sequence equivalents of branch unbalances. This API routine was first introduced in release 28.0.0. ierr = spcb(ibus, jbus, ckt, options, values)",
+  "python_syntax": "ierr = spcb(ibus, jbus, ckt, options, values)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "From bus of branch subjected to unbalance. (input; no default allowed)."
+    },
+    {
+      "name": "jbus",
+      "description": "To bus of branch subjected to unbalance. (input; no default allowed)."
+    },
+    {
+      "name": "ckt",
+      "description": "Circuit identifier of branch subjected to unbalance. (input; ‘1’ by default)."
+    },
+    {
+      "name": "options",
+      "description": "An array of four elements specifying unbalance OPTIONS. (input)."
+    },
+    {
+      "name": "values",
+      "description": "An array of three elements specifying unbalance parameters. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "options": [
+      {
+        "value": "OPTIONS(1)",
+        "description": "unbalance code (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no unbalance; Thevenin impedances only."
+      },
+      {
+        "value": "= 1",
+        "description": "one phase open."
+      },
+      {
+        "value": "= 2",
+        "description": "two phases open."
+      },
+      {
+        "value": "= 3",
+        "description": "in-line fault."
+      },
+      {
+        "value": "= 4",
+        "description": "one breaker open."
+      },
+      {
+        "value": "= 5",
+        "description": "no unbalance."
+      },
+      {
+        "value": "OPTIONS(2)",
+        "description": "path to ground code (used when OPTIONS(1) is 1 or 4) (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "no path to ground."
+      },
+      {
+        "value": "= 1",
+        "description": "include a path to ground."
+      },
+      {
+        "value": "OPTIONS(3)",
+        "description": "type of in-line fault code (used when OPTIONS(1) is 3) (1 by default)."
+      },
+      {
+        "value": "= 1",
+        "description": "line-to-ground."
+      },
+      {
+        "value": "= 2",
+        "description": "line-to-line-to-ground."
+      },
+      {
+        "value": "= 3",
+        "description": "three-phase."
+      },
+      {
+        "value": "OPTIONS(4)",
+        "description": "open end code (used when OPTIONS(1) is 4) (1 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "breaker at to bus is open."
+      },
+      {
+        "value": "= 1",
+        "description": "breaker at from bus is open."
+      }
+    ],
+    "values": [
+      {
+        "value": "VALUES(1)",
+        "description": "fault location as fraction of line from from bus; 0.0 < VALUES(1) < 1.0 (used when OPTIONS(1) is 1 or 4 and OPTIONS(2) is 1; or when OPTIONS(1) is 3) (0.5 by default)."
+      },
+      {
+        "value": "VALUES(2)",
+        "description": "& (3) Rl-g and Xl-g (used when OPTIONS(1) is 1 or 4 and OPTIONS(2) is 1; or when OPTIONS(1) is 3 and OPTIONS(3) is 1 or 2) (0.0 by default)."
+      },
+      {
+        "value": "VALUES(3)",
+        "description": "& (5) Rl-l and Xl-l (used when OPTIONS(1) is 3 and OPTIONS(3) is 2) (0.0 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid with two phase modeling option enabled."
+    },
+    {
+      "value": "= 2",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid OPTIONS value."
+    },
+    {
+      "value": "= 4",
+      "description": "invalid VALUES value."
+    },
+    {
+      "value": "= 5",
+      "description": "SEQD temporary file is not open."
+    },
+    {
+      "value": "= 6",
+      "description": "SEQD results are not compatible with the working case."
+    },
+    {
+      "value": "= 7",
+      "description": "terminated due to invalid fault specification or application."
+    },
+    {
+      "value": "= 8",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "module": "psspy",
+  "function_name": "chktre",
+  "category": "Single Element Data",
+  "description": "Use this API to check for Type 4 (or greater) buses with in-service branches connected to them. If none are found, it then counts number of ac islands not containing a Type 3 (swing) bus. It may be inappropriate to call this subroutine with generators converted; in this case, there are no Type 3 buses, so there is normally one or more swingless islands. This API routine was first introduced in release 28.0.0. ival = chktre()",
+  "python_syntax": "ival = chktre()",
+  "return_type": "value_only",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "ival",
+      "description": ""
+    }
+  ],
+  "allowed_values": {
+    "ival": [
+      {
+        "value": "= 0",
+        "description": "None of the following found."
+      },
+      {
+        "value": "= -1",
+        "description": "No in-service buses remaining."
+      },
+      {
+        "value": "= -2",
+        "description": "There are Type 4 buses with in-service branches connected to them."
+      },
+      {
+        "value": "> 0",
+        "description": "Number of islands without a Type 3 bus."
+      }
+    ]
+  }
+}

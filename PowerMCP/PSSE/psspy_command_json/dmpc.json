@@ -1,0 +1,136 @@
+{
+  "module": "psspy",
+  "function_name": "dmpc",
+  "category": "Dynamic Simulation Output Channel Operation",
+  "description": "Use this API to replicate the output channel specifications from dynamics working memory in the form of a response file suitable for transferring them to another snapshot that models essentially the same system. This API routine was first introduced in release 30.2.0. ierr = dmpc(options, out, ofile)",
+  "python_syntax": "ierr = dmpc(options, out, ofile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "options",
+      "description": "An array of four elementsNone. (input)."
+    },
+    {
+      "name": "out",
+      "description": "Destination selection. (input; 1 by default)."
+    },
+    {
+      "name": "ofile",
+      "description": "Name of the file to which data records are to be written (when out is 0). (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "options": [
+      {
+        "value": "OPTIONS(1)",
+        "description": "channel selection code (1 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "skip channels containing STATEs or VARs not associated with channel monitoring models."
+      },
+      {
+        "value": "= 1",
+        "description": "include all channels."
+      },
+      {
+        "value": "OPTIONS(2)",
+        "description": "starting channel code (-1 by default)."
+      },
+      {
+        "value": "< 0",
+        "description": "start at next available channel."
+      },
+      {
+        "value": "= 0",
+        "description": "keep existing channel numbers."
+      },
+      {
+        "value": "> 0",
+        "description": "starting channel number."
+      },
+      {
+        "value": "OPTIONS(3)",
+        "description": "starting VAR code for channel monitoring models (-1 by default)."
+      },
+      {
+        "value": "< 0",
+        "description": "start at next available VAR."
+      },
+      {
+        "value": "= 0",
+        "description": "keep existing VAR indices."
+      },
+      {
+        "value": "> 0",
+        "description": "starting VAR index."
+      },
+      {
+        "value": "OPTIONS(4)",
+        "description": "starting ICON code for channel monitoring models (-1 by default)."
+      },
+      {
+        "value": "< 0",
+        "description": "start at next available ICON."
+      },
+      {
+        "value": "= 0",
+        "description": "keep existing ICON indices."
+      },
+      {
+        "value": "> 0",
+        "description": "starting ICON index."
+      }
+    ],
+    "out": [
+      {
+        "value": "= 0",
+        "description": "direct output to a data file specified by OFILE."
+      },
+      {
+        "value": "= 1",
+        "description": "direct output to the current report device."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid OPTIONS(1) value."
+    },
+    {
+      "value": "= 2",
+      "description": "starting channel number is greater than the largest channel number allowed."
+    },
+    {
+      "value": "= 3",
+      "description": "starting VAR index is greater than the largest VAR index allowed."
+    },
+    {
+      "value": "= 4",
+      "description": "starting ICON index is greater than the largest ICON index allowed."
+    },
+    {
+      "value": "= 5",
+      "description": "invalid OUT value."
+    },
+    {
+      "value": "= 6",
+      "description": "error opening file OFILE."
+    },
+    {
+      "value": "= 7",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "module": "psspy",
+  "function_name": "plant_data_4",
+  "category": "Power Flow Data",
+  "description": "Use this API to modify the data of an existing plant in the working case, or to add a new plant to the working case (see PSSE Program Operation Manual, Fixed Bus Shunt Data). This API routine was first introduced in release 34.4.0. ierr = plant_data_4(ibus, inode, intgar, realar)",
+  "python_syntax": "ierr = plant_data_4(ibus, inode, intgar, realar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input; no default allowed)."
+    },
+    {
+      "name": "inode",
+      "description": "Bus section node number. (input; no default allowed)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of two elementsNone. (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of two elementsNone. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "IREG, remote bus number (0 to control voltage at bus IBUS) (0 by default)."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "NREG, regulated bus node number (0 to control voltage at the “parent” bus section of bus IBUS) (0 by default)."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "VS, scheduled voltage magnitude (1.0 by default)."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "RMPCT, percent of contributed reactive power (100.0 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "plant table is full."
+    },
+    {
+      "value": "= 4",
+      "description": "invalid bus number."
+    },
+    {
+      "value": "= 5",
+      "description": "INODE is an invalid node number."
+    },
+    {
+      "value": "= 6",
+      "description": "bus IBUS does not belong to a substation."
+    },
+    {
+      "value": "= 7",
+      "description": "node INODE is not found in the substation of bus IBUS."
+    },
+    {
+      "value": "= 8",
+      "description": "node INODE is not connected to any bus section of bus IBUS."
+    },
+    {
+      "value": "= 9",
+      "description": "INODE must be 0 for a bus that is not yet a generator bus."
+    },
+    {
+      "value": "= 10",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - invalid scheduled voltage - regulated bus not found - type code of regulated bus is not 1 or 2 - RMPCT is not positive - per unit scheduled voltage is outside of the band 0.5 to 1.5 p.u. - invalid node number - non-zero regulated node specified but regulated bus does not belong to a substation - regulated node not found - regulated node is not connected to any bus section of the regulated bus - a remote regulated bus is specified for a type 3 bus."
+    }
+  ]
+}

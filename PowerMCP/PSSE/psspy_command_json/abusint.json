@@ -1,0 +1,118 @@
+{
+  "module": "psspy",
+  "function_name": "abusint",
+  "category": "Bus Data",
+  "description": "Use this API to return an array of integer values for subsystem buses. This API routine was first introduced in release 30.2.0. ierr, iarray = abusint(sid, flag, string)",
+  "python_syntax": "ierr, iarray = abusint(sid, flag, string)",
+  "return_type": "error_and_array",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the bus subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem buses to include. (input; 1 by default)."
+    },
+    {
+      "name": "string",
+      "description": "An array of NSTR elements specifying NSTR of the following strings indicating the bus quantities desired. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "iarray",
+      "description": "An array of NSTR*DIM elements specifying Is an array of at least NSTR columns, each of which contains DIM elements. (output)."
+    }
+  ],
+  "allowed_values": {
+    "sid": [
+      {
+        "value": "< 0",
+        "description": "to instruct the API to assume a subsystem containing all buses in the working case."
+      },
+      {
+        "value": ">= 0",
+        "description": "valid bus subsystem identifier. Valid subsystem identifiers range from 0 to 11. Subsystem SID must have been previously defined."
+      }
+    ],
+    "flag": [
+      {
+        "value": "= 1",
+        "description": "for only in-service buses."
+      },
+      {
+        "value": "= 2",
+        "description": "for all buses."
+      }
+    ],
+    "string": [
+      {
+        "value": "= NUMBER",
+        "description": "Bus number."
+      },
+      {
+        "value": "= TYPE",
+        "description": "Bus type code."
+      },
+      {
+        "value": "= AREA",
+        "description": "Bus area number."
+      },
+      {
+        "value": "= ZONE",
+        "description": "Bus zone number."
+      },
+      {
+        "value": "= OWNER",
+        "description": "Bus owner number."
+      },
+      {
+        "value": "= SECTION",
+        "description": "Bus section number, 0 if bus is not in a substation."
+      },
+      {
+        "value": "= STATION",
+        "description": "Bus substation number, 0 if bus is not in a substation."
+      },
+      {
+        "value": "= DUMMY",
+        "description": "Returns 1 if the bus is a dummy bus of a multisection line, or 0 if it is not."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid FLAG value."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid NSTR value."
+    },
+    {
+      "value": "= 5",
+      "description": "DIM, and hence the size of IARRAY, is not large enough."
+    },
+    {
+      "value": "= 6",
+      "description": "Invalid STRING value."
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "module": "psspy",
+  "function_name": "report",
+  "category": "Non-Engineering",
+  "description": "Send output to report device. Note: A Fortran program that calls REPORTS must also include a USE statement for KEYPTI. This API routine was first introduced in release 30.0.0. report(string)",
+  "python_syntax": "report(string)",
+  "return_type": "void",
+  "parameters": [
+    {
+      "name": "string",
+      "description": ""
+    }
+  ],
+  "return_values": []
+}

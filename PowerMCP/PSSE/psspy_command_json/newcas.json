@@ -1,0 +1,42 @@
+{
+  "module": "psspy",
+  "function_name": "newcas",
+  "category": "Power Flow Operation",
+  "description": "This API routine is obsolete. It has been replaced by the API routine newcase_2, and is implemented by a call to newcase_2. Use this API to initialize a new power flow case. All existing working case data will be lost upon execution of this API. This API routine was first introduced in release 28.0.0. ierr = newcas(basemva, titl1, titl2)",
+  "python_syntax": "ierr = newcas(basemva, titl1, titl2)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "basemva",
+      "description": "New system base mva. valid base mva values range from 1.0 to 10,000.0. (input; 100.0 by default)."
+    },
+    {
+      "name": "titl1",
+      "description": "First line of the new case title. (input; blank by default)."
+    },
+    {
+      "name": "titl2",
+      "description": "Second line of the new case title. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid BASEMVA value."
+    },
+    {
+      "value": "= 2",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

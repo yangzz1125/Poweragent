@@ -1,0 +1,46 @@
+{
+  "module": "psspy",
+  "function_name": "getcontingencysavedcase",
+  "category": "Power Flow Operation",
+  "description": "Use this API routine to place the working case in the form of a specified system condition as calculated during a previous run of one of the members of the the AC contingency calculation family. This function retrieves data from a ZIP Archive Ouptut File that was created during the contingency calculation. This API routine was first introduced in release 33.4.0. ierr = getcontingencysavedcase(pathzip, isvfile)",
+  "python_syntax": "ierr = getcontingencysavedcase(pathzip, isvfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "pathzip",
+      "description": "Is the name of the zip archive output file. (input)."
+    },
+    {
+      "name": "isvfile",
+      "description": "Is the name of an incremental saved case file (.isv file) contained in pathzip. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Is the error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "unable to pick up the base Saved Case File from the ZIP Archive File."
+    },
+    {
+      "value": "= 2",
+      "description": "error opening the Incremental Saved Case File."
+    },
+    {
+      "value": "= 3",
+      "description": "error closing the Incremental Saved Case File."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "module": "psspy",
+  "function_name": "purge_opf_gendsp_subsys",
+  "category": "Optimal Power Flow Data",
+  "description": "Use this API to purge generator dispatch data for all records from a specified subsystem of the working case. This API routine was first introduced in release 30.0.0. ierr = purge_opf_gendsp_subsys(sid, all)",
+  "python_syntax": "ierr = purge_opf_gendsp_subsys(sid, all)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid subsystem id from 0 to 11. a subsystem must have been previously defined. (input; no default allowed)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem flag. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 0",
+        "description": "process only specified buses."
+      },
+      {
+        "value": "= 1",
+        "description": "process all buses, use existing data values."
+      },
+      {
+        "value": "= 2",
+        "description": "process all buses, use default data values."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ALL value."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

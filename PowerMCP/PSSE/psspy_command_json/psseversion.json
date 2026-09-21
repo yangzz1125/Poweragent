@@ -1,0 +1,35 @@
+{
+  "module": "psspy",
+  "function_name": "psseversion",
+  "category": "Non-Engineering",
+  "description": "Get PSSE version information. This API routine was first introduced in release 30.1.0. name,major,minor,update,date,stat = psseversion()",
+  "python_syntax": "name,major,minor,update,date,stat = psseversion()",
+  "return_type": "multi_value",
+  "parameters": [],
+  "return_values": [
+    {
+      "name": "name",
+      "description": "Product name. (output)."
+    },
+    {
+      "name": "major",
+      "description": "Major release number. (output)."
+    },
+    {
+      "name": "minor",
+      "description": "Minor release number. (output)."
+    },
+    {
+      "name": "update",
+      "description": "Update release number. (output)."
+    },
+    {
+      "name": "date",
+      "description": "Release date. (output)."
+    },
+    {
+      "name": "stat",
+      "description": "Any special release information. (output)."
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "module": "psspy",
+  "function_name": "zone_2",
+  "category": "Power Flow Operation",
+  "description": "Use this API to tabulate zone totals by zone. This API routine was first introduced in release 32.0.0. ierr = zone_2(sid, all, opt)",
+  "python_syntax": "ierr = zone_2(sid, all, opt)",
+  "return_type": "error_only_report",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid zone subsystem identifier. valid subsystem identifiers range from 0 to 11. zone subsystem sid must have been previously defined. (input; 0 by default)."
+    },
+    {
+      "name": "all",
+      "description": "All zones or specified subsystem flag. (input; 1 by default)."
+    },
+    {
+      "name": "opt",
+      "description": "Load reporting option. (input; 2 by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 0",
+        "description": "process only zones in zone subsystem SID."
+      },
+      {
+        "value": "= 1",
+        "description": "process all zones."
+      }
+    ],
+    "opt": [
+      {
+        "value": "= 1",
+        "description": "tabulate load connected to zone buses."
+      },
+      {
+        "value": "= 2",
+        "description": "tabulate load assigned to the zone."
+      },
+      {
+        "value": "= 3",
+        "description": "tabulate three load subtotals for each zone: zone load connected to zone buses; zone load connected to non-zone buses; non-zone load connected to zone buses."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid SID value or subsystem SID is not defined."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid ALL value."
+    },
+    {
+      "value": "= 3",
+      "description": "invalid OPT value."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

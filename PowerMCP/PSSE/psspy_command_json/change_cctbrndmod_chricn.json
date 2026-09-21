@@ -1,0 +1,78 @@
+{
+  "module": "psspy",
+  "function_name": "change_cctbrndmod_chricn",
+  "category": "Cct Models",
+  "description": "Use this API to change the value of a character ICON (i.e., an element of the CHRICN array) of the branch device model of a specified branch. The corresponding integer ICON is set to 0. This API routine was first introduced in release 33.0.0. ierr = change_cctbrndmod_chricn(ibus, jbus, id, model, j, chdata)",
+  "python_syntax": "ierr = change_cctbrndmod_chricn(ibus, jbus, id, model, j, chdata)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "From bus number. (input; no default allowed)."
+    },
+    {
+      "name": "jbus",
+      "description": "To bus number. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Circuit identifier. (input; no default allowed)."
+    },
+    {
+      "name": "model",
+      "description": "Model name. (input; no default allowed)."
+    },
+    {
+      "name": "j",
+      "description": "Icon number to change (j is relative to the start of the block of icons assigned to this model, e,g., 1 for first icon(m), 2 for icon(m+1), etc.). (input; no default allowed)."
+    },
+    {
+      "name": "chdata",
+      "description": "New character icon value. (input; blank by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "unknown model name."
+    },
+    {
+      "value": "= 2",
+      "description": "no CCT table entry for the model."
+    },
+    {
+      "value": "= 3",
+      "description": "model names do not match - model is aaa not xxx."
+    },
+    {
+      "value": "= 4",
+      "description": "no ICONs used in the model."
+    },
+    {
+      "value": "= 5",
+      "description": "ICON number outside of the ICON range of this model."
+    },
+    {
+      "value": "= 6",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 7",
+      "description": "branch not found."
+    },
+    {
+      "value": "= 8",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

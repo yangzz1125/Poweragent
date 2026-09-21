@@ -1,0 +1,122 @@
+{
+  "module": "psspy",
+  "function_name": "seq_mutual_data",
+  "category": "Fault Analysis Data",
+  "description": "Use this API to modify existing zero sequence mutual impedance data in the working case or to add a new zero sequence mutual coupling to the working case (see PSSE Program Operation Manual, Zero Sequence Mutual Impedance Data). This API routine was first introduced in release 28.0.0. ierr = seq_mutual_data(ibus, jbus, ckt1, kbus, lbus, ckt2, realar)",
+  "python_syntax": "ierr = seq_mutual_data(ibus, jbus, ckt1, kbus, lbus, ckt2, realar)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number of the from bus of the first branch. (input; no default allowed)."
+    },
+    {
+      "name": "jbus",
+      "description": "Bus number of the to bus of the first branch. (input; no default allowed)."
+    },
+    {
+      "name": "ckt1",
+      "description": "First branch circuit identifier. (input; ‘1’ by default)."
+    },
+    {
+      "name": "kbus",
+      "description": "Bus number of the from bus of the second branch. (input; no default allowed)."
+    },
+    {
+      "name": "lbus",
+      "description": "Bus number of the to bus of the second branch to bus. (input; no default allowed)."
+    },
+    {
+      "name": "ckt2",
+      "description": "Second branch circuit identifier. (input; ‘1’ by default)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of six elementsNone. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "RM, branch-to-branch mutual resistance (0.0 by default)."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "XM, branch-to-branch mutual reactance (0.0 by default)."
+      },
+      {
+        "value": "REALAR(3)",
+        "description": "BIJ1, B factor at IBUS end of the first branch (0.0 by default)."
+      },
+      {
+        "value": "REALAR(4)",
+        "description": "BIJ2, B factor at JBUS end of the first branch (1.0 by default)."
+      },
+      {
+        "value": "REALAR(5)",
+        "description": "BKL1, B factor at KBUS end of the second branch (0.0 by default)."
+      },
+      {
+        "value": "REALAR(6)",
+        "description": "BKL2, B factor at LBUS end of the second branch (1.0 by default)."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "circuit identifier is more than two characters."
+    },
+    {
+      "value": "= 3",
+      "description": "circuit identifier may not start with &"
+    },
+    {
+      "value": "= 4",
+      "description": "branch not found."
+    },
+    {
+      "value": "= 5",
+      "description": "mutual couples a branch to itself."
+    },
+    {
+      "value": "= 6",
+      "description": "branch is a transformer."
+    },
+    {
+      "value": "= 7",
+      "description": "branch is a zero impedance line."
+    },
+    {
+      "value": "= 8",
+      "description": "mutual coupling table is full."
+    },
+    {
+      "value": "= 9",
+      "description": "prerequisite requirements for API are not met."
+    },
+    {
+      "value": "= -1",
+      "description": "data error, warning and information messages; one or more of: - Invalid B factor (<0.0 or >1.0). - B1 is not less than B2."
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+{
+  "module": "psspy",
+  "function_name": "astationint",
+  "category": "Substation Data",
+  "description": "Use this API to return an array of integer values for subsystem substations. This API routine was first introduced in release 34.1.0. ierr, iarray = astationint(sid, flag, string)",
+  "python_syntax": "ierr, iarray = astationint(sid, flag, string)",
+  "return_type": "error_and_array",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the bus subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem substations to include. (input; 1 by default)."
+    },
+    {
+      "name": "string",
+      "description": "An array of NSTR elements specifying NSTR of the following strings indicating the substation quantities desired. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "iarray",
+      "description": "An array of NSTR*DIM elements specifying Is an array of at least NSTR columns, each of which contains DIM elements. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= NUMBER",
+        "description": "Substation number."
+      },
+      {
+        "value": "= NODES",
+        "description": "Number of nodes in the substation."
+      },
+      {
+        "value": "= PARENTS",
+        "description": "Number of parent buses in the substation."
+      },
+      {
+        "value": "= SECTIONS",
+        "description": "Number of bus sections in the substation."
+      },
+      {
+        "value": "= SWDEVS",
+        "description": "Number of substation switching devices in the substation."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid FLAG value."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid NSTR value."
+    },
+    {
+      "value": "= 5",
+      "description": "DIM, and hence the size of IARRAY, is not large enough."
+    },
+    {
+      "value": "= 6",
+      "description": "Invalid STRING value."
+    }
+  ]
+}

@@ -1,0 +1,296 @@
+{
+  "module": "psspy",
+  "function_name": "atrnint",
+  "category": "Two-Winding Transformer Data",
+  "description": "Use this API to return an array of integer values for subsystem two-winding transformers. This API routine was first introduced in release 30.2.0. ierr, iarray = atrnint(sid, owner, ties, flag, entry, string)",
+  "python_syntax": "ierr, iarray = atrnint(sid, owner, ties, flag, entry, string)",
+  "return_type": "error_and_array",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "Defines the bus subsystem to be used. (input; -1 by default)."
+    },
+    {
+      "name": "owner",
+      "description": "A flag indicating owner usage if ownership is a subsystem selection criterion (ignored if sid is negative). (input; 1 by default)."
+    },
+    {
+      "name": "ties",
+      "description": "A flag indicating which subsystem two-winding transformers to include (ignored if sid is negative). (input; 1 by default)."
+    },
+    {
+      "name": "flag",
+      "description": "A flag indicating which subsystem two-winding transformers to include. (input; 1 by default)."
+    },
+    {
+      "name": "entry",
+      "description": "A flag indicating organization. (input; 1 by default)."
+    },
+    {
+      "name": "string",
+      "description": "An array of NSTR elements specifying NSTR of the following strings indicating the transformer quantities desired. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "iarray",
+      "description": "An array of NSTR*DIM elements specifying Is an array of at least NSTR columns, each of which contains DIM elements. (output)."
+    }
+  ],
+  "allowed_values": {
+    "sid": [
+      {
+        "value": "< 0",
+        "description": "to instruct the API to assume a subsystem containing all buses in the working case."
+      },
+      {
+        "value": ">= 0",
+        "description": "valid bus subsystem identifier. Valid subsystem identifiers range from 0 to 11. Subsystem SID must have been previously defined."
+      }
+    ],
+    "owner": [
+      {
+        "value": "= 1",
+        "description": "to use bus ownership."
+      },
+      {
+        "value": "= 2",
+        "description": "to use transformer ownership."
+      }
+    ],
+    "ties": [
+      {
+        "value": "= 1",
+        "description": "for interior subsystem two-winding transformers only."
+      },
+      {
+        "value": "= 2",
+        "description": "for subsystem tie two-winding transformers only."
+      },
+      {
+        "value": "= 3",
+        "description": "for both interior subsystem and tie two-winding transformers."
+      }
+    ],
+    "flag": [
+      {
+        "value": "= 1",
+        "description": "for only in-service two-winding transformers."
+      },
+      {
+        "value": "= 2",
+        "description": "for all two-winding transformers."
+      }
+    ],
+    "entry": [
+      {
+        "value": "= 1",
+        "description": "for single entry (each branch once)."
+      },
+      {
+        "value": "= 2",
+        "description": "for double entry (each branch in both directions)."
+      }
+    ],
+    "string": [
+      {
+        "value": "= FROMNUMBER",
+        "description": "From bus number."
+      },
+      {
+        "value": "= TONUMBER",
+        "description": "To bus number."
+      },
+      {
+        "value": "= FROMSTATION",
+        "description": "From bus substation number (0 if bus is not in a substation)."
+      },
+      {
+        "value": "= TOSTATION",
+        "description": "To bus substation number (0 if bus is not in a substation)."
+      },
+      {
+        "value": "= FROMSECTION",
+        "description": "From bus section number (0 if bus is not represented by multiple bus sections)."
+      },
+      {
+        "value": "= TOSECTION",
+        "description": "To bus section number (0 if bus is not represented by multiple bus sections)."
+      },
+      {
+        "value": "= FROMNODE",
+        "description": "From bus node number (0 if bus is not in a substation)."
+      },
+      {
+        "value": "= TONODE",
+        "description": "To bus node number (0 if bus is not in a substation)."
+      },
+      {
+        "value": "= STATUS",
+        "description": "Transformer status."
+      },
+      {
+        "value": "= METERNUMBER",
+        "description": "Metered end bus number."
+      },
+      {
+        "value": "= NMETERNUMBER",
+        "description": "Non-metered end bus number."
+      },
+      {
+        "value": "= OWNERS",
+        "description": "Number of owners."
+      },
+      {
+        "value": "= OWN1",
+        "description": "First owner."
+      },
+      {
+        "value": "= OWN2",
+        "description": "Second owner."
+      },
+      {
+        "value": "= OWN3",
+        "description": "Third owner."
+      },
+      {
+        "value": "= OWN4",
+        "description": "Fourth owner."
+      },
+      {
+        "value": "= ICONTNUMBER",
+        "description": "Controlled bus number."
+      },
+      {
+        "value": "= NCONT",
+        "description": "Controlled node number."
+      },
+      {
+        "value": "= WIND1NUMBER",
+        "description": "Winding 1 bus number."
+      },
+      {
+        "value": "= WIND2NUMBER",
+        "description": "Winding 2 bus number."
+      },
+      {
+        "value": "= WIND1STATION",
+        "description": "Winding 1 bus substation number (0 if bus is not in a substation)."
+      },
+      {
+        "value": "= WIND2STATION",
+        "description": "Winding 2 bus substation number (0 if bus is not in a substation)."
+      },
+      {
+        "value": "= WIND1SECTION",
+        "description": "Winding 1 bus section number (0 if bus is not represented by multiple bus sections)."
+      },
+      {
+        "value": "= WIND2SECTION",
+        "description": "Winding 2 bus section number (0 if bus is not represented by multiple bus sections)."
+      },
+      {
+        "value": "= WIND1NODE",
+        "description": "Winding 1 bus node number (0 if bus is not in a substation)."
+      },
+      {
+        "value": "= WIND2NODE",
+        "description": "Winding 2 bus node number (0 if bus is not in a substation)."
+      },
+      {
+        "value": "= TABLE",
+        "description": "Transformer impedance adjustment table number."
+      },
+      {
+        "value": "= CODE",
+        "description": "Transformer control mode for automatic adjustments."
+      },
+      {
+        "value": "= NTPOSN",
+        "description": "Number of tap positions."
+      },
+      {
+        "value": "= CW",
+        "description": "Winding data I/O code."
+      },
+      {
+        "value": "= CZ",
+        "description": "Impedance data I/O code."
+      },
+      {
+        "value": "= CM",
+        "description": "Magnetizing admittance I/O code."
+      },
+      {
+        "value": "= CZ0",
+        "description": "Leakage impedance data I/O code."
+      },
+      {
+        "value": "= CZG",
+        "description": "Grounding impedance data I/O code."
+      },
+      {
+        "value": "= CNXCOD",
+        "description": "Connection code."
+      },
+      {
+        "value": "= TPSTT",
+        "description": "Winding 1 ratio limit code: -1 for low, 0 for regulating, 1 for high, -2 for locked, -3 for controlling a dc line."
+      },
+      {
+        "value": "= ANSTT",
+        "description": "Winding 1 angle limit code: -1 for low, 0 for regulating, 1 for high, -2 for locked."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error."
+    },
+    {
+      "value": "= 1",
+      "description": "Working case is empty."
+    },
+    {
+      "value": "= 2",
+      "description": "Invalid SID value."
+    },
+    {
+      "value": "= 3",
+      "description": "Invalid OWNER value."
+    },
+    {
+      "value": "= 4",
+      "description": "Invalid TIES value."
+    },
+    {
+      "value": "= 5",
+      "description": "Invalid FLAG value."
+    },
+    {
+      "value": "= 6",
+      "description": "Invalid ENTRY value."
+    },
+    {
+      "value": "= 7",
+      "description": "Invalid NSTR value."
+    },
+    {
+      "value": "= 8",
+      "description": "DIM, and hence the size of IARRAY, is not large enough."
+    },
+    {
+      "value": "= 9",
+      "description": "Invalid STRING value."
+    },
+    {
+      "value": "= 10",
+      "description": "Sequence data not in case (when STRING = ‘CZ0’, ‘CZG’ or ‘CNXCOD’)."
+    }
+  ]
+}

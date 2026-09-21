@@ -1,0 +1,13 @@
+# Pandapower Agent Skill Requirements
+# Install: pip install -r requirements.txt
+
+pandapower>=3.0.0
+pandas>=1.5.0
+numpy>=1.23.0
+
+# Optional but recommended for plotting and advanced features
+matplotlib>=3.5.0
+networkx>=2.8.0
+
+# For enhanced performance (optional)
+numba>=0.56.0

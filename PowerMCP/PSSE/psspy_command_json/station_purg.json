@@ -1,0 +1,46 @@
+{
+  "module": "psspy",
+  "function_name": "station_purg",
+  "category": "Node Breaker Data",
+  "description": "Use this API to delete a substation and all node-breaker components within that substation from the working case. All network elements will remain in the working case and any bus sections will be merged back into the original bus. This API routine was first introduced in release 34.0.0. ierr = station_purg(station)",
+  "python_syntax": "ierr = station_purg(station)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "station",
+      "description": "Substation number. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no errors occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "invalid substation number."
+    },
+    {
+      "value": "= 2",
+      "description": "substation not found."
+    },
+    {
+      "value": "= 3",
+      "description": "unable to move all connections back to original network bus."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

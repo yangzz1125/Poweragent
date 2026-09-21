@@ -1,0 +1,50 @@
+{
+  "module": "psspy",
+  "function_name": "opf_lnceqn_intflow",
+  "category": "Optimal Power Flow Data",
+  "description": "Use this API to add a participating interface flow constraint variable to a specified linear constraint dependency equation in the working case. It may also be used to modify an existing record. This API routine was first introduced in release 32.0.0. ierr = opf_lnceqn_intflow(iqid, itbl, coeff)",
+  "python_syntax": "ierr = opf_lnceqn_intflow(iqid, itbl, coeff)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "iqid",
+      "description": "Linear constraint equation identification number. (input; no default allowed)."
+    },
+    {
+      "name": "itbl",
+      "description": "Interface flow identifier. (input; no default allowed)."
+    },
+    {
+      "name": "coeff",
+      "description": "Value of the coefficient associated with the equation variable. (input; Default value of 1.0 if new record, current value otherwise., by default)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "specified linear constraint equation does not exist."
+    },
+    {
+      "value": "= 2",
+      "description": "participating equation variable table is full."
+    },
+    {
+      "value": "= 3",
+      "description": "specified interface identifier does not exist."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

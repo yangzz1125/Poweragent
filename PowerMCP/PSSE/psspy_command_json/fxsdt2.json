@@ -1,0 +1,94 @@
+{
+  "module": "psspy",
+  "function_name": "fxsdt2",
+  "category": "Single Element Data",
+  "description": "Use this API to return complex fixed bus shunt. This API routine was first introduced in release 31.0.0. ierr, cmpval = fxsdt2(ibus, id ,string)",
+  "python_syntax": "ierr, cmpval = fxsdt2(ibus, id ,string)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus number. (input)."
+    },
+    {
+      "name": "id",
+      "description": "Shunt identifier. (input)."
+    },
+    {
+      "name": "string",
+      "description": "String indicating the units to be used. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "cmpval",
+      "description": "Complex shunt in the units indicated by string. (output)."
+    }
+  ],
+  "allowed_values": {
+    "string": [
+      {
+        "value": "= ACT",
+        "description": "Actual shunt. ‘CMPVAL’ returned in MW Mvar."
+      },
+      {
+        "value": "= O_ACT",
+        "description": "Actual shunt. ‘CMPVAL’ in units determined by the power output option setting."
+      },
+      {
+        "value": "= NOM",
+        "description": "Nominal shunt (at 1.0 pu voltage). ‘CMPVAL’ returned in MW Mvar."
+      },
+      {
+        "value": "= O_NOM",
+        "description": "Nominal shunt (at 1.0 pu voltage). ‘CMPVAL’ in units determined by the power output option setting."
+      },
+      {
+        "value": "= PQZERO",
+        "description": "Nominal zero sequence shunt (at 1.0 pu voltage). ‘CMPVAL’ returned in per unit."
+      },
+      {
+        "value": "= PQZ",
+        "description": "Nominal zero sequence shunt (at 1.0 pu voltage). ‘CMPVAL’ returned in MW Mvar."
+      },
+      {
+        "value": "= O_PQZ",
+        "description": "Nominal zero sequence shunt (at 1.0 pu voltage). ‘CMPVAL’ returned in units determined by the power output option setting."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘P’ and ‘Q’ or ‘CMPVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Bus not found; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Shunt not found; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    },
+    {
+      "value": "= 3",
+      "description": "Bus type code is not 1, 2 or 3; ‘P’ and ‘Q’ or ‘CMPVAL’ returned."
+    },
+    {
+      "value": "= 4",
+      "description": "Shunt out-of-service; ‘P’ and ‘Q’ or ‘CMPVAL’ returned."
+    },
+    {
+      "value": "= 5",
+      "description": "Invalid value of ‘STRING’; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    },
+    {
+      "value": "= 6",
+      "description": "Sequence data not in case for ‘STRING1’ = ‘PQZERO’, ‘PQZ’ or ‘O_PQZ’; ‘P’ and ‘Q’ or ‘CMPVAL’ unchanged."
+    }
+  ]
+}

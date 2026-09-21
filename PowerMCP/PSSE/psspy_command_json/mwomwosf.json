@@ -1,0 +1,42 @@
+{
+  "module": "psspy",
+  "function_name": "mwomwosf",
+  "category": "Power Flow Operation",
+  "description": "Use this API to tabulate generation (MW) on MW-ohm shift factors for a specified transaction event. This API routine was first introduced in release 30.0.0. ierr = mwomwosf(event)",
+  "python_syntax": "ierr = mwomwosf(event)",
+  "return_type": "error_only_report",
+  "parameters": [
+    {
+      "name": "event",
+      "description": "Transaction event number. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "no transactions defined."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid transaction event number."
+    },
+    {
+      "value": "= 3",
+      "description": "transaction event not defined."
+    },
+    {
+      "value": "= 4",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

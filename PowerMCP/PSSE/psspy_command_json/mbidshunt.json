@@ -1,0 +1,54 @@
+{
+  "module": "psspy",
+  "function_name": "mbidshunt",
+  "category": "Power Flow Data",
+  "description": "Use this API to change the identifier of the specified fixed bus shunt. This API routine was first introduced in release 31.0.0. ierr = mbidshunt(ibus, id, idnew)",
+  "python_syntax": "ierr = mbidshunt(ibus, id, idnew)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "Bus to which the shunt id is connected. (input; no default allowed)."
+    },
+    {
+      "name": "id",
+      "description": "Present shunt identifier of the shunt for which the identifier is to be changed. (input; ‘1’ by default)."
+    },
+    {
+      "name": "idnew",
+      "description": "New identifier to be assigned to the shunt. (input; no default allowed)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "bus not found."
+    },
+    {
+      "value": "= 2",
+      "description": "shunt ID at bus IBUS not found."
+    },
+    {
+      "value": "= 3",
+      "description": "shunt ID at bus IBUS already exists."
+    },
+    {
+      "value": "= 4",
+      "description": "a non-blank new identifier must be specified."
+    },
+    {
+      "value": "= 5",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "module": "psspy",
+  "function_name": "filein",
+  "category": "Non-Engineering",
+  "description": "Get input from file (Fortran unit number). This API routine was first introduced in release 30.0.0. ierr, string, flags = filein(lunit)",
+  "python_syntax": "ierr, string, flags = filein(lunit)",
+  "return_type": "error_and_multi_value",
+  "parameters": [
+    {
+      "name": "lunit",
+      "description": "Fortran logical unit number of the file. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "string",
+      "description": "Buffer read from file. (output)."
+    },
+    {
+      "name": "flags",
+      "description": "An array of two elements specifying the first element of flags is set to true if an end-of-file is encountered; the second element of flags is set to true if the file is closed after the read attempt. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    }
+  ]
+}

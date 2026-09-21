@@ -1,0 +1,58 @@
+{
+  "module": "psspy",
+  "function_name": "brnstt",
+  "category": "Single Element Data",
+  "description": "This API routine is obsolete. It has been replaced by the API routine BRNINT, and is implemented by a call to BRNINT. Return branch status. This API routine was first introduced in release 28.0.0. ierr, ival = brnstt(ibus,jbus,ickt)",
+  "python_syntax": "ierr, ival = brnstt(ibus,jbus,ickt)",
+  "return_type": "error_and_scalar",
+  "parameters": [
+    {
+      "name": "ibus",
+      "description": "From bus number. (input)."
+    },
+    {
+      "name": "jbus",
+      "description": "To bus number. (input)."
+    },
+    {
+      "name": "ickt",
+      "description": "Circuit or multisection line identifier. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    },
+    {
+      "name": "ival",
+      "description": "Branch status. (output)."
+    }
+  ],
+  "allowed_values": {
+    "ival": [
+      {
+        "value": "= 0",
+        "description": "out of service."
+      },
+      {
+        "value": "= 1",
+        "description": "in-service."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "No error; ‘IVAL’ returned."
+    },
+    {
+      "value": "= 1",
+      "description": "Bus not found; ‘IVAL’ unchanged."
+    },
+    {
+      "value": "= 2",
+      "description": "Branch not found; ‘IVAL’ unchanged."
+    }
+  ]
+}

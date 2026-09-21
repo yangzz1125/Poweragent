@@ -1,0 +1,248 @@
+{
+  "module": "psspy",
+  "function_name": "har_analysis",
+  "category": "Harmonics Operation",
+  "description": "This API routine is obsolete. It has been replaced by the API routine har_analysis_2, and is implemented by a call to har_analysis_2. Use this API to run harmonics analysis. This API routine was first introduced in release 35.4.0. ierr = har_analysis(sid, all, intgar, realar, filear)",
+  "python_syntax": "ierr = har_analysis(sid, all, intgar, realar, filear)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid subsystem identifier. valid subsystem identifiers range from 0 to 11. subsystem sid must have been previously defined. (input; 0 by default)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem flag. (input; no default allowed)."
+    },
+    {
+      "name": "intgar",
+      "description": "An array of eight elements specifying Integer Argument Inputs. (input)."
+    },
+    {
+      "name": "realar",
+      "description": "An array of three elements specifying Real Argument Inputs. (input)."
+    },
+    {
+      "name": "filear",
+      "description": "An array of three elements specifying File Argument Inputs. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 0",
+        "description": "process only buses in subsystem SID."
+      },
+      {
+        "value": "= 1",
+        "description": "process all buses."
+      }
+    ],
+    "intgar": [
+      {
+        "value": "INTGAR(1)",
+        "description": "Analysis Option (0 by default), can also be specified with keyword ‘anaoptn’."
+      },
+      {
+        "value": "= 0",
+        "description": "Frequency scan, voltage and current distortion calculations."
+      },
+      {
+        "value": "= 1",
+        "description": "Only frequency scan calculations."
+      },
+      {
+        "value": "= 2",
+        "description": "Only voltage and vurrent distortion calculations."
+      },
+      {
+        "value": "INTGAR(2)",
+        "description": "Transmission Line Model (0 by default), can also be specified with keyword ‘linmdl’."
+      },
+      {
+        "value": "= 0",
+        "description": "Nominal PI Line Model, no long line effects, no skin effects."
+      },
+      {
+        "value": "= 1",
+        "description": "Distributed Parameter Line Model, long line effects and skin effects modeled."
+      },
+      {
+        "value": "= 2",
+        "description": "Distributed Parameter Line Model, long line effects modeled, but skin effects not modeled."
+      },
+      {
+        "value": "INTGAR(3)",
+        "description": "Bus report option in distortion analysis. Note- Frequency scan is always done for study subsystem buses only. The distortion calculations are done for these buses. (0 by default), can also be specified with keyword ‘dstnbuop’."
+      },
+      {
+        "value": "= 0",
+        "description": "All buses in the case."
+      },
+      {
+        "value": "= 1",
+        "description": "Only study subsystem buses."
+      },
+      {
+        "value": "INTGAR(4)",
+        "description": "Report format option in distortion analysis (0 by default), can also be specified with keyword ‘dstnrptop’."
+      },
+      {
+        "value": "= 0",
+        "description": "Report voltage and current Total Harmonic Distortion (THD) Factors."
+      },
+      {
+        "value": "= 1",
+        "description": "Report THDs and current contributions."
+      },
+      {
+        "value": "INTGAR(5)",
+        "description": "Induction Machine Impedance Option. Note - The zero sequence impedance data always derived from sequence data. When sequence data is not specified, they are treated as open circuit. (0 by default), can also be specified with keyword ‘imachimpop’."
+      },
+      {
+        "value": "= 0",
+        "description": "Use positive sequence impedance derived from power flow data."
+      },
+      {
+        "value": "= 1",
+        "description": "Use positive sequence impedance derived from sequence data."
+      },
+      {
+        "value": "INTGAR(6)",
+        "description": "Two Terminal, VSC and Multi Terminal DC equivalent Impedance Option in frequency scan. Note - In distortion calculations, these are represented by either harmonic current sources when specified or equivalent impedances. (0 by default), can also be specified with keyword ‘dcimpop’."
+      },
+      {
+        "value": "= 0",
+        "description": "Do not add equivalent impedance to admittance matrix during frequency scan."
+      },
+      {
+        "value": "= 1",
+        "description": "Add equivalent impedance to admittance matrix during frequency scan."
+      },
+      {
+        "value": "INTGAR(7)",
+        "description": "Triplen harmonics treatment option in distortion calculations (0 by default), can also be specified with keyword ‘triplenop’."
+      },
+      {
+        "value": "= 0",
+        "description": "Ignore triplen harmonics."
+      },
+      {
+        "value": "= 1",
+        "description": "Consider triplen harmonics."
+      },
+      {
+        "value": "INTGAR(8)",
+        "description": "Generator Impedance Option. (0 by default), can also be specified with keyword ‘genimpop’."
+      },
+      {
+        "value": "= 0",
+        "description": "Use ZSORCE impedance from power flow data."
+      },
+      {
+        "value": "= 1",
+        "description": "Use subtransient impedance from sequence data."
+      },
+      {
+        "value": "= 2",
+        "description": "Use transient impedance from sequence data."
+      },
+      {
+        "value": "= 3",
+        "description": "Use synchronous impedance from sequence data."
+      },
+      {
+        "value": "= 4",
+        "description": "Use negative sequence impedance from sequence data."
+      }
+    ],
+    "realar": [
+      {
+        "value": "REALAR(1)",
+        "description": "Minimum Harmonic Order, must be >0. Specify hord_min=1.0 for fundamental frequency. When hord_min=0.0, hord_min is set to hord_stp. (0.0 by default), can also be specified with keyword ‘hord_min’."
+      },
+      {
+        "value": "= ‘0.0’",
+        "description": "Use default."
+      },
+      {
+        "value": "> 0",
+        "description": "Use specified."
+      },
+      {
+        "value": "REALAR(2)",
+        "description": "Maximum Harmonic Order, must be >0. A frequency range upto 50th order harmonics is used in typical power quality assessments. When hord_max=0.0, hord_max is set to hord_stp. (50.0 by default), can also be specified with keyword ‘hord_max’."
+      },
+      {
+        "value": "= ‘0.0’",
+        "description": "Use default."
+      },
+      {
+        "value": "> 0",
+        "description": "Use specified."
+      },
+      {
+        "value": "REALAR(3)",
+        "description": "Harmonic Order Step, must be >0. Specify hord_stp=1.0 for scan in increments of base power frequency. (0.1 by default), can also be specified with keyword ‘hord_stp’."
+      },
+      {
+        "value": "= ‘0.0’",
+        "description": "Use default."
+      },
+      {
+        "value": "> 0",
+        "description": "Use specified."
+      }
+    ],
+    "filear": [
+      {
+        "value": "FILEAR(1)",
+        "description": "Harmonics Analysis Results Output file name (.hrs). (blank by default), can also be specified with keyword ‘hrsfile’."
+      },
+      {
+        "value": "= ‘’ ‘’",
+        "description": "temporary file created."
+      },
+      {
+        "value": "= ‘nooutput’",
+        "description": "no file created."
+      },
+      {
+        "value": "FILEAR(2)",
+        "description": "Harmonic Analysis Distortion Calculation Report File Name (.txt). (blank by default), can also be specified with keyword ‘dstnfile’."
+      },
+      {
+        "value": "= ‘’ ‘’",
+        "description": "report created in report window."
+      },
+      {
+        "value": "= ‘nooutput’",
+        "description": "no report file created."
+      },
+      {
+        "value": "FILEAR(3)",
+        "description": "Harmonic Analysis Frequency Scan Resonance Report File Name (.txt). (blank by default), can also be specified with keyword ‘resnfile’."
+      },
+      {
+        "value": "= ‘’ ‘’",
+        "description": "report created in report window."
+      },
+      {
+        "value": "= ‘nooutput’",
+        "description": "no report file created."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    }
+  ]
+}

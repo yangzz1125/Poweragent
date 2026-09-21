@@ -1,0 +1,34 @@
+{
+  "module": "psspy",
+  "function_name": "scenariozip",
+  "category": "Scenarios",
+  "description": "Use this API to zip up the current Scenario. This API routine was first introduced in release 33.0.0. ierr = scenariozip(sfile)",
+  "python_syntax": "ierr = scenariozip(sfile)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sfile",
+      "description": "Full file path of the file to zip the scenario to. (input; unchanged by default). When the default is used the name of the zip will be the same name as the Scenario but with the ZIP extension instead of the PSSXML extension. If a different name is given the Scenario’s name and the Scenario PSSXML file name will be changed to reflect the new name)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 0",
+      "description": "no error occurred."
+    },
+    {
+      "value": "> 0",
+      "description": "fatal error occurred."
+    },
+    {
+      "value": "= 1",
+      "description": "no Scenario in memory."
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "module": "psspy",
+  "function_name": "scgr",
+  "category": "Fault Analysis Operation",
+  "description": "This API routine is obsolete. It has been replaced by the API routine ascc_2, and is implemented by a call to ascc_2. This API no longer performs any action. Usage in previous releases described below. Use this API routine to calculate three phase and line-to-ground fault solutions. Results may be programmatically accessed via the internally accessible fetch routines SCGTXT, SCGBUS, SCGBRN, and SCG3WN. Usage is: - invoke SCGR API with APIOPT = 0; - multiple calls to fetch routines; - optionally, repeat of above steps for different fault and/or different pre-fault conditions; - final invocation of SCGR API with APIOPT = 1. This API routine was first introduced in release 29.0.0. ierr = scgr(sid, all, apiopt, status)",
+  "python_syntax": "ierr = scgr(sid, all, apiopt, status)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "sid",
+      "description": "A valid subsystem identifier. valid subsystem identifiers range from 0 to 11. subsystem sid must have been previously defined. (input; 0 by default)."
+    },
+    {
+      "name": "all",
+      "description": "All buses or specified subsystem flag. (input; 1 by default)."
+    },
+    {
+      "name": "apiopt",
+      "description": "Mode of operation of scgrapi. (input; 0 by default)."
+    },
+    {
+      "name": "status",
+      "description": "An array of eight elements specifying fault and options. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "all": [
+      {
+        "value": "= 0",
+        "description": "process only buses in subsystem SID."
+      },
+      {
+        "value": "= 1",
+        "description": "process all buses."
+      }
+    ],
+    "apiopt": [
+      {
+        "value": "= 0",
+        "description": "apply fault calculations and fill arrays used by fetch routines."
+      },
+      {
+        "value": "= 1",
+        "description": "deallocate arrays used by fetch routines."
+      }
+    ],
+    "status": [
+      {
+        "value": "STATUS(1)",
+        "description": "fault type (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "three-phase."
+      },
+      {
+        "value": "= 1",
+        "description": "line-to-ground."
+      },
+      {
+        "value": "STATUS(2)",
+        "description": "L-G fault (ignored if STATUS(1) is 0) (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "A phase."
+      },
+      {
+        "value": "= 1",
+        "description": "3 * I0."
+      },
+      {
+        "value": "STATUS(3)",
+        "description": "fault location (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "all buses in subsystem."
+      },
+      {
+        "value": "> 0",
+        "description": "bus number of the subsystem bus to be faulted."
+      },
+      {
+        "value": "STATUS(4)",
+        "description": "flat conditions option (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "working case conditions."
+      },
+      {
+        "value": "= 1",
+        "description": "flat conditions."
+      },
+      {
+        "value": "STATUS(5)",
+        "description": "double-precision fault calculation option (ignored, but must be specified as 0 or 1; 0 by default; double precision always used)."
+      },
+      {
+        "value": "STATUS(6)",
+        "description": "dc line and FACTS device option (ignored if STATUS(4) is 1) (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "block."
+      },
+      {
+        "value": "= 1",
+        "description": "represent as load."
+      },
+      {
+        "value": "STATUS(7)",
+        "description": "transformer impedance correction option (ignored if STATUS(1) is 0 or STATUS(4) is 1 (1 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "do not apply to zero sequence."
+      },
+      {
+        "value": "= 1",
+        "description": "apply to zero sequence."
+      },
+      {
+        "value": "STATUS(8)",
+        "description": "branch results option (0 by default)."
+      },
+      {
+        "value": "= 0",
+        "description": "currents."
+      },
+      {
+        "value": "= 1",
+        "description": "apparent impedances."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 1",
+      "description": "SCGR is obsolete; use “Fault>Automatic sequencing fault calculation (ASCC)..” (API routine ASCC_2)."
+    },
+    {
+      "value": "= 8",
+      "description": "prerequisite requirements for API are not met."
+    }
+  ]
+}

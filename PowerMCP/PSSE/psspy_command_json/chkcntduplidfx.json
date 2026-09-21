@@ -1,0 +1,38 @@
+{
+  "module": "psspy",
+  "function_name": "chkcntduplidfx",
+  "category": "Power Flow Operation",
+  "description": "Check duplicate labels in DFAX file. This API routine was first introduced in release 33.10.0 and 34.2.0. ierr, dnum = chkcntduplidfx(dfxfile)",
+  "python_syntax": "ierr, dnum = chkcntduplidfx(dfxfile)",
+  "return_type": "error_and_value",
+  "parameters": [
+    {
+      "name": "dfxfile",
+      "description": "Contingency file name. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "None. (output)."
+    },
+    {
+      "name": "dnum",
+      "description": "Total number of duplicated contingency labels in the dfax file. (output; 0 by default)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= 1",
+      "description": "no DFAX file specified."
+    },
+    {
+      "value": "= 2",
+      "description": "error opening DFAX file."
+    },
+    {
+      "value": "= 3",
+      "description": "prerequisite requirements for function not met."
+    }
+  ]
+}

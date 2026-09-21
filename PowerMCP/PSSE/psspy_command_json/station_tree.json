@@ -1,0 +1,62 @@
+{
+  "module": "psspy",
+  "function_name": "station_tree",
+  "category": "Node Breaker Operation",
+  "description": "Use this API routine to check the node breaker model and the consistency between node breaker and bus branch models. This API routine was first introduced in release 34.0.0. ierr = station_tree(intopt, station)",
+  "python_syntax": "ierr = station_tree(intopt, station)",
+  "return_type": "error_only",
+  "parameters": [
+    {
+      "name": "intopt",
+      "description": "Operation mode. (input; 1 by default)."
+    },
+    {
+      "name": "station",
+      "description": "Substation number. used if intopt = 2. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error code. (output)."
+    }
+  ],
+  "allowed_values": {
+    "intopt": [
+      {
+        "value": "= 0",
+        "description": "check all changed substations."
+      },
+      {
+        "value": "= 1",
+        "description": "check all substations."
+      },
+      {
+        "value": "= 2",
+        "description": "check individual substation."
+      }
+    ]
+  },
+  "error_codes": [
+    {
+      "value": "= 1",
+      "description": "invalid INTOPT value."
+    },
+    {
+      "value": "= 2",
+      "description": "invalid substation number."
+    },
+    {
+      "value": "= 3",
+      "description": "substation does not exist."
+    },
+    {
+      "value": "= 4",
+      "description": "topology error in bus branch model."
+    },
+    {
+      "value": "= 5",
+      "description": "Prerequisite requirements for function not met."
+    }
+  ]
+}

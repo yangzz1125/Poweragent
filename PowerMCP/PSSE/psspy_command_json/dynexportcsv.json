@@ -1,0 +1,42 @@
+{
+  "module": "psspy",
+  "function_name": "dynexportcsv",
+  "category": "Dynamic Simulation Operation",
+  "description": "Use this API to export dynamics engine and dynamics model messages that are displayed after running a dynamics simulation to CSV file format. If applicable the following data will be included in the specified output file: type, severity, model, model type, bus number, bus name, base kv, area number, owner number, and engine/model messages This API routine was first introduced in release 33.10.0 and 34.2.0. ierr = dynexportcsv(csvfilename)",
+  "python_syntax": "ierr = dynexportcsv(csvfilename)",
+  "return_type": "error_only_write_file",
+  "parameters": [
+    {
+      "name": "csvfilename",
+      "description": "Name of the csv file to hold exported data. (input)."
+    }
+  ],
+  "return_values": [
+    {
+      "name": "ierr",
+      "description": "Error return. (output)."
+    }
+  ],
+  "error_codes": [
+    {
+      "value": "= -1",
+      "description": "Prerequisite requirements for API not met."
+    },
+    {
+      "value": "= 0",
+      "description": "no error."
+    },
+    {
+      "value": "= 1",
+      "description": "error opening csv file."
+    },
+    {
+      "value": "= 2",
+      "description": "error closing csv file; data may not have been written to file."
+    },
+    {
+      "value": "= 3",
+      "description": "error writing data to csv file."
+    }
+  ]
+}

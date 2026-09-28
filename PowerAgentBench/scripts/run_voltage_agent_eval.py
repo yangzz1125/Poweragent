@@ -11,6 +11,7 @@ from typing import Any
 from poweragentbench.llm_agent_adapter import parse_json_command
 from poweragentbench.ollama_client import OllamaGenerateClient
 from poweragentbench.openai_client import OpenAIResponsesClient
+from poweragentbench.openai_chat_client import OpenAIChatClient
 from poweragentbench.voltage_agentic import (
     LLMVoltageAgent,
     aggregate_voltage_metrics,
@@ -76,7 +77,8 @@ def parse_args() -> argparse.Namespace:
         description="Evaluate an LLM on IEEE 33-bus BESS voltage correction."
     )
     parser.add_argument("--provider", choices=["openai", "ollama"], required=True)
-    parser.add_argument("--model", required=True)
+    parser.add_argument("--model", default=os.getenv("POWERAGENTBENCH_OPENAI_MODEL"))
+    parser.add_argument("--api-mode", choices=["chat", "responses"], default=os.getenv("POWERAGENTBENCH_OPENAI_API_MODE", "responses"))
     parser.add_argument("--url")
     parser.add_argument("--api-key")
     parser.add_argument("--scenario-root", type=Path, default=DEFAULT_SCENARIO_ROOT)
@@ -98,7 +100,10 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--temperature", type=float, default=0.0)
     parser.add_argument("--timeout", type=float, default=300.0)
     parser.add_argument("--continue-on-error", action="store_true")
-    return parser.parse_args()
+    args = parser.parse_args()
+    if not args.model:
+        parser.error("set POWERAGENTBENCH_OPENAI_MODEL in .env or pass --model")
+    return args
 
 
 def make_client(args: argparse.Namespace):
@@ -117,15 +122,21 @@ def make_client(args: argparse.Namespace):
     api_key = args.api_key or os.getenv("POWERAGENTBENCH_OPENAI_API_KEY")
     if not api_key:
         raise SystemExit("OpenAI requires --api-key or POWERAGENTBENCH_OPENAI_API_KEY")
-    return OpenAIResponsesClient(
+    mode = getattr(args, "api_mode", "responses")
+    client_class = OpenAIChatClient if mode == "chat" else OpenAIResponsesClient
+    default_url = "https://api.openai.com/v1"
+    url = (args.url or os.getenv("POWERAGENTBENCH_OPENAI_URL") or default_url).rstrip("/")
+    path = "chat/completions" if mode == "chat" else "responses"
+    if url.endswith(("/chat/completions", "/responses")):
+        if not url.endswith("/" + path):
+            raise ValueError("API URL endpoint does not match --api-mode")
+    else:
+        url += "/" + path
+    return client_class(
         api_key=api_key,
         model=args.model,
-        url=args.url
-        or os.getenv(
-            "POWERAGENTBENCH_OPENAI_URL", "https://api.openai.com/v1/responses"
-        ),
-        temperature=None if args.temperature == 0.0 else args.temperature,
-        structured_outputs=True,
+        url=url,
+        temperature=args.temperature,
         timeout=args.timeout,
     )
 

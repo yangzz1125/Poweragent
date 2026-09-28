@@ -119,7 +119,7 @@ class OpenAIResponsesClient:
             payload["reasoning"] = reasoning
         return payload
 
-    def _post(self, payload: Dict[str, Any], *, allow_temperature_retry: bool = True) -> Dict[str, Any]:
+    def _post(self, payload: Dict[str, Any]) -> Dict[str, Any]:
         self.retry_count_last_call = 0
         self.last_error = None
         last_exc: BaseException | None = None
@@ -134,21 +134,6 @@ class OpenAIResponsesClient:
                 body = exc.read().decode("utf-8", errors="replace")
                 last_exc = exc
                 self.last_error = f"HTTP {exc.code}: {body[:500]}"
-                if (
-                    allow_temperature_retry
-                    and exc.code == 400
-                    and "temperature" in body.lower()
-                    and payload.get("temperature") is not None
-                ):
-                    # Some reasoning models reject temperature entirely. If a user
-                    # supplied it through an old .env file, retry once without it.
-                    retry_payload = dict(payload)
-                    retry_payload.pop("temperature", None)
-                    self.temperature = None
-                    self.last_client_warning = (
-                        "OpenAI model rejected temperature. Retried once with temperature omitted."
-                    )
-                    return self._post(retry_payload, allow_temperature_retry=False)
                 if exc.code not in TRANSIENT_HTTP_STATUS or attempt >= self.max_retries:
                     raise RuntimeError(f"OpenAI API request failed with HTTP {exc.code}: {body}") from exc
             except (TimeoutError, urllib.error.URLError) as exc:

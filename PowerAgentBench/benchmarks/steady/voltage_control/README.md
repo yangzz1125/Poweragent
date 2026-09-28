@@ -21,11 +21,24 @@ changing the existing N-1, N-2, or RestoreBench tracks.
 `config/experiments.json` defines the 2x2x2 design for domain-specific interface, agent-visible
 verification and recovery. Independent evaluator verification is always enabled.
 
+## Research corpus
+
+The eight `ieee33` scenarios are regression cases. For the 24 Dev / 96 Test research corpus,
+see [`docs/BENCHMARK_SPEC.md`](../../../docs/BENCHMARK_SPEC.md) and
+`scripts/generate_voltage_corpus.py`. Keep generated evaluator-only files outside the
+agent-visible filesystem; a `private/` directory in a public checkout is not private.
+
 ## Build and run
 
 ```bash
 python scripts/build_voltage_cases.py
 python scripts/run_voltage_baselines.py
+
+# Corpus lives outside the agent-visible checkout; no API call on --dry-run.
+python -m scripts.run_voltage_experiment_matrix --split dev \
+  --scenario-root E:/work/voltage_corpus_v1/dev --model <model-id> --dry-run
+# After providing .env + an explicit API spending/token limit, remove --dry-run;
+# rerun the same command/output directory to resume unfinished episodes.
 
 python scripts/run_voltage_agent_eval.py \
   --provider openai --model <model-id> \

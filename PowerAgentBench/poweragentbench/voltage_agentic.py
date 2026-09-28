@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import time
 from collections.abc import Callable, Mapping
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -35,6 +36,17 @@ class VoltageAgentOutput:
     auto_finalized: float = 0.0
     preview_calls: float = 0.0
     power_flow_calls: float = 0.0
+    n_llm_turns: int = 0
+    input_tokens: int | None = None
+    output_tokens: int | None = None
+    total_tokens: int | None = None
+    usage_unavailable: bool = False
+    api_retries: int = 0
+    latency_seconds: float = 0.0
+    n_preview_requests: int = 0
+    n_submit_calls: int = 0
+    n_evaluator_calls: int = 0
+    n_actual_power_flows: int = 0
 
 
 class LLMVoltageAgent:
@@ -62,6 +74,7 @@ class LLMVoltageAgent:
         self.config_path = Path(config_path)
 
     def run(self, scenario_id: str) -> VoltageAgentOutput:
+        started = time.monotonic()
         server = VoltageToolServer(
             scenario_id,
             scenario_root=self.scenario_root,
@@ -75,43 +88,50 @@ class LLMVoltageAgent:
         responses: list[str] = []
         invalid = 0
         submitted = 0.0
+        usages: list[dict[str, Any] | None] = []
+        retries = 0
         for _ in range(self.max_turns):
             response = self.llm(messages) or ""
+            raw_usage = (getattr(self.llm, "last_debug", None) or {}).get("usage")
+            usages.append(raw_usage if isinstance(raw_usage, dict) else None)
+            retries += int(getattr(self.llm, "retry_count_last_call", 0))
             responses.append(response)
             messages.append({"role": "assistant", "content": response})
             try:
                 command = parse_json_command(response)
-                tool = str(command.get("tool", ""))
-                args = command.get("args", {}) or {}
-                observation, done = server.execute(tool, args)
-                if "error" in observation:
-                    invalid += 1
-                if tool.strip().lower() == "submit":
-                    submitted = 1.0
-                tool_log.append(
-                    {"tool": tool, "args": args, "observation": observation}
-                )
-                messages.append(
-                    {
-                        "role": "user",
-                        "content": json.dumps({"observation": observation}),
-                    }
-                )
-                if done:
-                    break
-            except Exception as exc:  # noqa: BLE001 - tool/adapter faults are recoverable observations
+            except ValueError:
                 invalid += 1
                 observation = {
-                    "error": str(exc),
+                    "error": "invalid JSON command",
                     "instruction": "Return exactly one JSON command with fields 'tool' and 'args'.",
                 }
                 tool_log.append({"tool": "parse_error", "observation": observation})
-                messages.append(
-                    {
-                        "role": "user",
-                        "content": json.dumps({"observation": observation}),
-                    }
-                )
+                messages.append({"role": "user", "content": json.dumps({"observation": observation})})
+                continue
+            tool = str(command.get("tool", ""))
+            args = command.get("args", {}) or {}
+            if not isinstance(args, dict):
+                invalid += 1
+                observation = {"error": "args must be a JSON object"}
+                tool_log.append({"tool": "parse_error", "observation": observation})
+                messages.append({"role": "user", "content": json.dumps({"observation": observation})})
+                continue
+            observation, done = server.execute(tool, args)
+            if "error" in observation:
+                invalid += 1
+            if tool.strip().lower() == "submit":
+                submitted = 1.0
+            tool_log.append(
+                {"tool": tool, "args": args, "observation": observation}
+            )
+            messages.append(
+                {
+                    "role": "user",
+                    "content": json.dumps({"observation": observation}),
+                }
+            )
+            if done:
+                break
         dispatch = (
             server.state.final_dispatch
             if server.state.final_dispatch is not None
@@ -120,9 +140,25 @@ class LLMVoltageAgent:
         auto = 0.0
         if not submitted:
             auto = 1.0
+        def token_sum(*fields: str) -> int | None:
+            values = [next((usage[key] for key in fields if key in usage), None) if usage else None for usage in usages]
+            return sum(values) if values and all(isinstance(value, int) for value in values) else None
+
+        input_tokens = token_sum("input_tokens", "prompt_tokens")
+        output_tokens = token_sum("output_tokens", "completion_tokens")
+        total_tokens = token_sum("total_tokens")
+        if total_tokens is None and input_tokens is not None and output_tokens is not None:
+            total_tokens = input_tokens + output_tokens
         return VoltageAgentOutput(
             name=self.name,
             dispatch=dispatch,
+            n_llm_turns=len(responses),
+            input_tokens=input_tokens,
+            output_tokens=output_tokens,
+            total_tokens=total_tokens,
+            usage_unavailable=bool(usages and (input_tokens is None or output_tokens is None)),
+            api_retries=retries,
+            latency_seconds=time.monotonic() - started,
             attempts=server.state.attempts,
             tool_log=tool_log,
             raw_responses=responses,
@@ -130,9 +166,11 @@ class LLMVoltageAgent:
             submitted_explicitly=submitted,
             auto_finalized=auto,
             preview_calls=float(server.state.preview_calls),
-            power_flow_calls=float(
-                len(server.state.attempts) + server.state.preview_calls
-            ),
+            power_flow_calls=float(server.state.actual_power_flows),
+            n_preview_requests=server.state.preview_requests,
+            n_submit_calls=len(server.state.attempts),
+            n_evaluator_calls=server.state.evaluator_calls,
+            n_actual_power_flows=server.state.actual_power_flows,
         )
 
     def _initial_messages(self, server: VoltageToolServer) -> list[Message]:
@@ -301,13 +339,31 @@ def score_voltage_output(
         scenario_root=scenario_root,
         config_path=config_path,
     )
+    if output.auto_finalized and not output.attempts:
+        report["valid_action"] = 0.0
+        report["success"] = 0.0
     report.update(
         {
             "agent": output.name,
             "n_attempts": float(len(output.attempts)),
             "n_recovery_steps": float(max(0, len(output.attempts) - 1)),
             "preview_calls": float(output.preview_calls),
-            "n_power_flows": float(1 + output.power_flow_calls),
+            "n_power_flows": float(report["n_actual_power_flows"] + output.power_flow_calls),
+            "n_llm_turns": output.n_llm_turns,
+            "n_preview_calls": int(output.preview_calls),
+            "n_preview_requests": output.n_preview_requests,
+            "n_submit_calls": output.n_submit_calls or len(output.attempts),
+            "n_evaluator_calls": 1 + output.n_evaluator_calls,
+            "n_actual_power_flows": report["n_actual_power_flows"] + output.n_actual_power_flows,
+            "input_tokens": output.input_tokens,
+            "output_tokens": output.output_tokens,
+            "total_tokens": output.total_tokens,
+            "usage_unavailable": output.usage_unavailable,
+            "api_retries": output.api_retries,
+            "latency_seconds": output.latency_seconds,
+            "first_pass_success": int(bool(output.attempts and output.attempts[0]["success"] == 1.0)),
+            "recovered": int(bool(output.attempts and output.attempts[0]["success"] != 1.0 and report["success"] == 1.0)),
+            "first_submit_failed": int(bool(output.attempts and output.attempts[0]["success"] != 1.0)),
             "invalid_tool_calls": float(output.invalid_tool_calls),
             "submitted_explicitly": float(output.submitted_explicitly),
             "auto_finalized": float(output.auto_finalized),

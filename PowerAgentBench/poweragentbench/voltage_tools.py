@@ -21,6 +21,10 @@ from poweragentbench.voltage_evaluator import evaluate_voltage_dispatch
 class VoltageToolState:
     attempts: list[dict[str, Any]] = field(default_factory=list)
     preview_calls: int = 0
+    preview_requests: int = 0
+    submit_requests: int = 0
+    evaluator_calls: int = 0
+    actual_power_flows: int = 0
     final_dispatch: Any = None
 
 
@@ -88,6 +92,7 @@ class VoltageToolServer:
                 "sign_convention": "positive p_mw discharges/injects; negative p_mw charges/withdraws",
             }, False
         if tool == "preview_bess_dispatch":
+            self.state.preview_requests += 1
             if not self.verification:
                 return {
                     "error": "preview_bess_dispatch is disabled in this experimental condition"
@@ -104,11 +109,16 @@ class VoltageToolServer:
                 scenario_root=self.scenario_root,
                 config_path=self.config_path,
             )
+            self.state.evaluator_calls += 1
+            self.state.actual_power_flows += report["n_actual_power_flows"]
             return {
                 "preview": _feedback(report),
                 "preview_calls_remaining": self.max_previews - self.state.preview_calls,
             }, False
         if tool == "submit":
+            self.state.submit_requests += 1
+            if len(self.state.attempts) >= self.max_attempts:
+                return {"error": "submission budget exhausted"}, True
             self.state.final_dispatch = args.get("dispatch")
             report = evaluate_voltage_dispatch(
                 self.scenario_id,
@@ -117,6 +127,8 @@ class VoltageToolServer:
                 config_path=self.config_path,
             )
             self.state.attempts.append(report)
+            self.state.evaluator_calls += 1
+            self.state.actual_power_flows += report["n_actual_power_flows"]
             success = report.get("success") == 1.0
             exhausted = len(self.state.attempts) >= self.max_attempts
             done = bool(success or not self.recovery or exhausted)
@@ -150,5 +162,5 @@ def _feedback(report: Mapping[str, Any]) -> dict[str, Any]:
         "voltage_violation_magnitude": report.get("final_violation_magnitude"),
         "voltage_improvement": report.get("voltage_improvement"),
         "new_thermal_violation": bool(report.get("new_thermal_violation")),
-        "error": report.get("error"),
+        "error": "power flow failed" if not report.get("converged") else None,
     }

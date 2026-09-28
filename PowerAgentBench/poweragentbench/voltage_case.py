@@ -103,12 +103,13 @@ def load_scenario_network(
 def public_scenario_card(
     metadata: dict[str, Any], *, domain_specific: bool
 ) -> dict[str, Any]:
-    """Render information-equivalent generic/domain-specific scenario interfaces."""
+    """Render voltage observations; topology/capabilities have their own tools.
+
+    The domain interface preprocesses observations; it is not information-equivalent.
+    """
     common = {
         "scenario_id": metadata["scenario_id"],
-        "network": metadata["network"],
         "voltage_limits_pu": metadata["voltage_limits_pu"],
-        "bess": metadata["bess"],
     }
     state = metadata["initial_state"]
     if domain_specific:

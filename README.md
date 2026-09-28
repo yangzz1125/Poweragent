@@ -1,346 +1,129 @@
 # Poweragent
 
-面向配电网电压越限校正的 LLM Agent Benchmark。
+研究 Agent Harness 如何影响电力系统控制任务中 LLM 的可靠性，以及提升可靠性需要多少工具、潮流计算和 token 成本。
 
-本项目基于现有的 [PowerAgentBench](https://github.com/Power-Agent/PowerAgentBench)、[PowerMCP](https://github.com/Power-Agent/PowerMCP) 和 [PowerSkills](https://github.com/Power-Agent/PowerSkills) 进行最小侵入式扩展，研究以下问题：
+主任务：IEEE 33-bus 配电网中，Agent 仅调节 4 台 BESS 有功功率，让所有节点电压回到 0.95–1.05 pu。使用完整 **2×2×2** 设计比较领域接口（I）、真实潮流预验证（V）、失败恢复（R），不以“LLM 打败传统控制器”为目标。
 
-> Domain-specific interface、verification 和 recovery 机制如何影响 LLM Agent 在配电网电压越限校正任务中的表现？
+## 当前状态：开发中，尚未冻结
 
-当前版本以 IEEE 33-bus 配电网为对象，允许 Agent 仅通过 BESS 有功功率调节消除欠电压或过电压，并由独立 pandapower evaluator 重新执行潮流、验证结果。
+| 项目 | 已验证范围 |
+|---|---|
+| 回归场景 | 仓库内 V0001–V0008，供 sanity/regression 使用 |
+| 候选 corpus | 本地 24 Dev + 96 Test，Test 每个欠压/过压×severity 三档格子 16 个；不是已冻结论文数据 |
+| 基线 | 24 Dev：No-action 0/24，nearest 和 sensitivity greedy 各 24/24 |
+| 模型 | DeepSeek 官方 `deepseek-flash`，Responses；只跑过 1 个真实 Dev 冒烟 episode |
+| 工程 | 8 组矩阵、断点续跑、CSV/JSONL、逐回合 token、实际 PF 计数已有实现及离线测试 |
+| 分析 | 聚类 bootstrap、factorial 和图表脚本只通过合成数据检查，不代表已获得科研结果 |
+| 尚未完成 | 完整 Pilot、难度有效性审查、freeze/tag、2304 次主实验、跨模型验证、正式分析 |
 
-## 核心特点
+**冻结阻塞：** generator 当前只接受能被等功率同向 BESS 调节解决的候选，存在筛选偏差；severity 大不等于控制困难。不要为压低基线成功率删除 case。先在 Dev 比较简单策略、控制余量与搜索成本，再设计新候选生成/可行性验证协议；现有 corpus 保留作开发参考，不覆盖其哈希。详见 [研究规范](PowerAgentBench/docs/BENCHMARK_SPEC.md)。
 
-- 复用 PowerAgentBench 的模型客户端、JSON tool-command 协议、runner 风格、scripted baseline、日志和 CSV/JSONL 输出机制。
-- 使用 pandapower 构建和验证 IEEE 33-bus 配电网场景。
-- 同时覆盖欠电压与过电压任务。
-- 每个正式结果都从冻结的网络 JSON 重新加载并独立重放，不信任 Agent 自报结果。
-- 支持 domain-specific interface、verification、recovery 三因素 `2×2×2` 全因子实验。
-- 使用 SHA-256 固定 scenario、benchmark config 和 prompt，记录 solver 与 pandapower 版本。
-- 不修改原有 N-1、N-2 和 RestoreBench 执行链。
-
-## 系统流程
-
-```mermaid
-flowchart LR
-    S[Frozen IEEE 33-bus scenario] --> I[Generic or domain-specific interface]
-    I --> A[LLM or scripted agent]
-    A --> T[Voltage tool server]
-    T -->|optional preview| P[pandapower power flow]
-    A --> D[BESS active-power dispatch]
-    D --> E[Independent evaluator]
-    S --> E
-    E --> V{All voltages within limits?}
-    V -->|Yes| OK[Success]
-    V -->|No and recovery enabled| F[Structured failure feedback]
-    F --> A
-    V -->|No recovery or budget exhausted| FAIL[Failure]
-```
-
-## 仓库结构
+## 目录用途
 
 ```text
-power_agent/
-├── PowerAgentBench/   主 benchmark、场景、Agent、evaluator 和运行脚本
-├── PowerMCP/          电力软件与 MCP 工具层参考实现
-├── PowerSkills/       电力领域 workflow 与 Agent interface 参考
-├── agent.md           面向后续 Agent/开发者的完整项目交接文档
-└── README.md          项目首页
+PowerAgentBench/                  主实验代码和本地 .venv
+  poweragentbench/                Agent loop、工具、独立 evaluator、模型客户端
+  benchmarks/steady/voltage_control/
+    config/                      物理约束、solver、预算、8 条件
+    prompts/                     系统提示
+    scenarios/ieee33/            8 个回归场景（不是主实验 Test）
+  scripts/                       生成、运行、分析入口
+  tests/                         离线回归与 mock 测试
+  results/                       本地日志/结果，git-ignored
+  docs/                          研究规范与验收记录
+PowerMCP/                        电力软件 MCP 连接器；当前主实验不依赖
+PowerSkills/                     领域技能/工作流参考；当前主实验不导入
+plans/                           项目执行计划（历史步骤不替代最新验收状态）
+agent.md                         开发交接与操作注意事项
 ```
 
-三部分的职责边界：
+候选 corpus 当前位于 `E:/work/voltage_corpus_v1`，不随 GitHub 上传。仓库之外的目录**不是**操作系统隔离：当前只测无 shell/文件权限的托管 LLM，Coding Agent 评测尚未获隔离验收。
 
-| 模块 | 本项目中的用途 |
-|---|---|
-| PowerAgentBench | 主实验框架和所有新增 benchmark 代码 |
-| PowerMCP | pandapower/电力工具语义参考；当前不直接依赖其全局 MCP server 状态 |
-| PowerSkills | 电压治理、DER 和 pandapower workflow 的设计参考 |
+## 本机运行
 
-## Benchmark 定义
-
-当前第一阶段范围：
-
-- 网络：`pandapower.networks.case33bw()`；
-- 电压合格范围：`0.95–1.05 pu`；
-- 场景：8 个冻结快照，其中 4 个欠电压、4 个过电压；
-- BESS 位置：bus 8、17、24、32；
-- 单台 BESS 有功范围：`[-1.5, 1.5] MW`；
-- 动作步长：`0.25 MW`；
-- 潮流算法：backward/forward sweep (`bfsw`)；
-- 最大提交次数：3；
-- 最大 preview 次数：4；
-- 最大 LLM turns：12。
-
-暂不考虑：
-
-- 时序和多时段调度；
-- SOC 与能量容量约束；
-- 充放电效率；
-- BESS 无功与 inverter capability curve；
-- 电力电子暂态；
-- 保护和动态稳定问题。
-
-### BESS 符号约定
-
-Agent、prompt、日志和结果文件统一使用：
-
-- `p_mw > 0`：BESS 放电，向电网注入有功；
-- `p_mw < 0`：BESS 充电，从电网吸收有功。
-
-这与 pandapower `storage.p_mw` 的原始符号相反。符号转换只发生在 evaluator 的 pandapower 适配层。
-
-## 实验设计
-
-实验矩阵定义在 [`experiments.json`](PowerAgentBench/benchmarks/steady/voltage_control/config/experiments.json)：
-
-| 因素 | 关闭 | 开启 |
-|---|---|---|
-| Domain-specific interface | 原始 bus voltage 数据 | 越限分类、关键极值和领域符号提示 |
-| Verification | 不允许提交前 preview | 允许有限次数的候选 dispatch 潮流预演 |
-| Recovery | 第一次 submit 后结束 | 接收独立失败反馈并重新规划 |
-
-condition id 使用 `I0-V0-R0` 至 `I1-V1-R1`。
-
-无论 Agent-visible verification 是否开启，最终 independent evaluator 始终执行。
-
-## 快速开始
-
-### 1. 安装环境
-
-建议使用 Python 3.11 和 [uv](https://docs.astral.sh/uv/)。
+已有 `PowerAgentBench/.venv` 时直接使用，不必重建或开启 Docker。新机器安装：
 
 ```powershell
 cd PowerAgentBench
-uv venv --python 3.11 .venv
+uv venv --python 3.13 .venv
 uv pip install --python .venv\Scripts\python.exe -e . pytest
-```
-
-项目将 pandas 限制为 `>=2,<3`，以避免当前 pandapower 版本与 pandas 3 的结果表写回兼容问题。
-
-### 2. 构建并验证冻结场景
-
-```powershell
-.venv\Scripts\python.exe scripts\build_voltage_cases.py
-```
-
-构建器会：
-
-1. 创建 IEEE 33-bus 欠压和过压快照；
-2. 写入 public/full scenario artifacts；
-3. 生成 SHA-256 manifest；
-4. 搜索 private witness dispatch；
-5. 使用 independent evaluator 重放 witness；
-6. 拒绝没有真实越限或无法校正的场景。
-
-### 3. 运行 scripted baselines
-
-```powershell
-.venv\Scripts\python.exe scripts\run_voltage_baselines.py
-```
-
-当前 baseline：
-
-- `No-action`
-- `Nearest-BESS-greedy`
-- `Voltage-sensitivity-greedy`
-
-### 4. 运行测试
-
-```powershell
+uv pip check --python .venv\Scripts\python.exe
 .venv\Scripts\python.exe -m pytest -q tests
 ```
 
-代码检查：
+配置约束：Python >=3.11，PyPSA >=1.0,<1.3，pandas >=2,<3。当前本机验证过 Python 3.13.14、PyPSA 1.2.4、pandas 2.3.3；尚无正式实验锁定环境。
+
+### API 配置
+
+不存在 `.env` 时才复制，避免覆盖已有密钥：
 
 ```powershell
-uvx ruff check poweragentbench scripts tests
+if (!(Test-Path .env)) { Copy-Item .env.example .env }
 ```
 
-## 运行 LLM Agent
+编辑 `.env`（不要提交或回显密钥）：
 
-### OpenAI
+```dotenv
+POWERAGENTBENCH_OPENAI_URL=https://api.deepseek.com
+POWERAGENTBENCH_OPENAI_API_KEY=YOUR_DEEPSEEK_API_KEY
+POWERAGENTBENCH_OPENAI_MODEL=deepseek-flash
+POWERAGENTBENCH_OPENAI_API_MODE=responses
+```
+
+runner 自动补 `/responses`，也兼容完整端点 URL。Responses 目前承载文本 JSON 命令，不是原生 function-call 循环；DeepSeek Responses 无状态，每回合需传历史。
+
+### 无 API 成本检查
+
+以下命令从 `PowerAgentBench/` 执行：
 
 ```powershell
-$env:POWERAGENTBENCH_OPENAI_API_KEY="your-api-key"
-
-.venv\Scripts\python.exe scripts\run_voltage_agent_eval.py `
-  --provider openai `
-  --model <model-id> `
-  --domain-interface `
-  --verification `
-  --recovery `
-  --repeats 3
+.venv\Scripts\python.exe -m scripts.run_voltage_experiment_matrix --split dev --scenario-root E:/work/voltage_corpus_v1/dev --dry-run
+.venv\Scripts\python.exe scripts/run_voltage_baselines.py --scenario-root E:/work/voltage_corpus_v1/dev --output-dir results/voltage_control/dev_baselines
 ```
 
-### Ollama
+Dev dry-run 应列出 192 个任务；`--split test --repeats 3` 对应 2304 个任务，但不要因此运行正式 Test。
+
+明确调用预算后才能运行付费 Dev 检查；新接口应使用新输出目录，不续写旧 smoke 数据：
 
 ```powershell
-$env:POWERAGENTBENCH_OLLAMA_URL="http://localhost:11434/api/generate"
-
-.venv\Scripts\python.exe scripts\run_voltage_agent_eval.py `
-  --provider ollama `
-  --model <local-model> `
-  --domain-interface `
-  --verification `
-  --recovery
+.venv\Scripts\python.exe -m scripts.run_voltage_experiment_matrix --split dev --scenario-root E:/work/voltage_corpus_v1/dev --output-dir results/voltage_control/dev_compact_smoke --max-episodes 8 --max-total-tokens 100000
 ```
 
-关闭实验因素：
+这里 100000 是示例软上限，不是用户已授权额度；检查发生在 episode 边界，可能超出一局。继续相同输出目录会跳过完成项，错误需显式 `--retry-errors`。缺失 usage 无法可靠预算；日志/断点等边界还需完整 Pilot 验收。
 
-```text
---no-domain-interface
---no-verification
---no-recovery
+## 工具与物理约定
+
+- `case_summary`：网络静态信息（含 topology/load）、工具列表和预算。
+- `inspect_voltage_state`：仅电压观察与约束，不重复发送 network/BESS 表；I0 提供原始电压，I1 提供任务语义预处理，不声称信息等价。
+- `get_bess_capabilities`：BESS 边界、步长和符号。
+- `preview_bess_dispatch`：仅 V1 可用；运行真实潮流。
+- `submit`：正式提交；R1 失败后在预算内重规划。
+
+BESS bus：8/17/24/32；每台 ±1.5 MW、0.25 MW 步长。正功率放电注入，负功率充电吸收；evaluator 内转换 pandapower storage 符号。默认预算 12 turns、4 previews、3 submits。
+
+独立 evaluator 每次重载冻结 JSON，检查 ID/有限值/边界/步长，再跑锁定 bfsw 潮流。成功仅要求收敛且全部电压合格；线路热负载只记录诊断。非法动作不计实际 PF。最后一次失败提交不能用此前成功动作替代。
+
+删除重复字段减少了 observation 大小，但完整历史仍会重传，不能把字节减少比例等同真实 token 降幅；真实成本需新 Dev pilot 测量。
+
+## 结果与分析
+
+矩阵 runner：`run.json`、`episodes.jsonl`、`episodes.csv`、`traces.jsonl`；出现错误/重试时另有 `errors.jsonl`/`retries.jsonl`。旧单条件脚本 `run_voltage_agent_eval.py` 仍使用 prefix 命名，不要混用两套结果。
+
+```powershell
+.venv\Scripts\python.exe -m scripts.analyze_voltage_experiments --episodes results/voltage_control/dev_compact_smoke/episodes.csv --output-dir results/voltage_control/dev_analysis --allow-incomplete
 ```
 
-API key 和私有 endpoint 应放在环境变量或本地 `.env` 中，不要提交到仓库。
+`--allow-incomplete` 只用于开发诊断。统计脚本已有 CI、factorial 分离检测和图表输出，但正式分析仍需验证完整任务集合、错误分母、依赖版本与 freeze 清单。当前没有论文级统计结论。
 
-## Agent 工具接口
+## 研究记录与图片
 
-LLM 每轮返回一个 JSON command：
+AI 在本项目中使用 Markdown（`.md`）记录研究问题、方法、实验配置、结果和结论，供后续人工编写 LaTeX 论文和 PPT 时参考；有用的配图可按需另行保存，不保留无用的旧图片，也不以生成 PPT 文件作为交付要求。
 
-```json
-{"tool": "<tool_name>", "args": {}}
-```
+## 文档与来源
 
-可用工具：
+- [开发交接](agent.md) / [研究规范与验收](PowerAgentBench/docs/BENCHMARK_SPEC.md)
+- [执行计划](plans/voltage-benchmark-completion.md)
+- 上游：[PowerAgentBench](https://github.com/Power-Agent/PowerAgentBench)、[PowerMCP](https://github.com/Power-Agent/PowerMCP)、[PowerSkills](https://github.com/Power-Agent/PowerSkills)
+- 仓库：<https://github.com/yangzz1125/Poweragent>
 
-- `case_summary`
-- `inspect_voltage_state`
-- `get_bess_capabilities`
-- `preview_bess_dispatch`，仅 verification 开启时存在
-- `submit`
-
-提交示例：
-
-```json
-{
-  "tool": "submit",
-  "args": {
-    "dispatch": [
-      {"bess_id": "BESS_1", "p_mw": 0.25},
-      {"bess_id": "BESS_2", "p_mw": -0.50}
-    ]
-  }
-}
-```
-
-## Independent evaluator
-
-正式评分链：
-
-```text
-scenario_id + submitted dispatch
-    → 验证 manifest 与 benchmark config hash
-    → 从 full/Vxxxx.json 重新加载网络
-    → 验证 BESS id、功率边界、步长和数值合法性
-    → 转换 benchmark/pandapower 功率符号
-    → 重新运行锁定参数的 pandapower 潮流
-    → 从 res_bus 独立检测全部电压越限
-```
-
-成功要求：
-
-1. 潮流收敛；
-2. 所有 bus 电压均位于 `[0.95, 1.05] pu`。
-
-标准 `case33bw()` 不提供研究级线路热限值，因此 line loading 只记录为诊断指标，不进入成功判定。
-
-## 输出文件
-
-默认输出目录：
-
-```text
-PowerAgentBench/results/voltage_control/
-```
-
-LLM 实验输出：
-
-```text
-<prefix>_per_case.csv
-<prefix>_summary.csv
-<prefix>_tool_logs.jsonl
-<prefix>_attempts.jsonl
-<prefix>_api_debug.jsonl
-<prefix>_errors.jsonl
-```
-
-结果记录包含：
-
-- scenario、config 和 prompt hash；
-- dataset、pandapower 和 solver 版本；
-- model/provider/condition/repetition；
-- 初始与最终电压越限；
-- dispatch、动作成本和潮流调用次数；
-- preview、recovery、invalid tool call 和 workflow 指标。
-
-`results/` 默认不进入 Git。
-
-## 当前验证结果
-
-### 测试
-
-```text
-11 passed
-ruff: All checks passed
-```
-
-8 个 private witnesses 均已通过独立重放验证。重复构建已确认 full scenario hashes 稳定。
-
-### Scripted baselines
-
-| Agent | Success rate | Mean action L1 |
-|---|---:|---:|
-| No-action | 0% | 0 MW |
-| Nearest-BESS-greedy | 100% | 1.9375 MW |
-| Voltage-sensitivity-greedy | 100% | 1.15625 MW |
-
-旧 PowerAgentBench N-2 baseline 已完成兼容性 smoke test，原执行链仍可运行。
-
-## 主要代码入口
-
-| 文件 | 用途 |
-|---|---|
-| [`voltage_case.py`](PowerAgentBench/poweragentbench/voltage_case.py) | 场景构建、加载与 hash 校验 |
-| [`voltage_tools.py`](PowerAgentBench/poweragentbench/voltage_tools.py) | Agent-facing tools 与实验开关 |
-| [`voltage_agentic.py`](PowerAgentBench/poweragentbench/voltage_agentic.py) | LLM loop、baseline 和 metrics |
-| [`voltage_evaluator.py`](PowerAgentBench/poweragentbench/voltage_evaluator.py) | 独立 pandapower 重放评分 |
-| [`build_voltage_cases.py`](PowerAgentBench/scripts/build_voltage_cases.py) | corpus 构建与 witness 验证 |
-| [`run_voltage_baselines.py`](PowerAgentBench/scripts/run_voltage_baselines.py) | scripted baseline runner |
-| [`run_voltage_agent_eval.py`](PowerAgentBench/scripts/run_voltage_agent_eval.py) | OpenAI/Ollama Agent runner |
-
-## 当前限制与后续工作
-
-当前限制：
-
-- corpus 只有 8 个确定性场景；
-- 尚未完成真实模型的全量 `2×2×2` 实验；
-- 每次 runner 调用只执行一个 condition；
-- tool protocol 当前是复用 Level 2 的文本 JSON command，并非真实 MCP transport；
-- 没有 SOC、时序、效率、无功和暂态模型；
-- private witness 位于开放仓库，sealed evaluation 时必须隔离。
-
-建议下一步：
-
-1. 增加全因子 campaign/sweep runner；
-2. 扩充并分层划分 scenario corpus；
-3. 建立 sealed evaluation packaging；
-4. 完成多模型、多 repetitions pilot；
-5. 增加 factorial/interaction effect 与 bootstrap CI 分析；
-6. benchmark 稳定后，再向 PowerMCP 增加 BESS 查询和设定工具；
-7. 第二阶段再引入 SOC 和多时段任务。
-
-## 文档
-
-- [完整项目交接文档](agent.md)
-- [Voltage benchmark 说明](PowerAgentBench/benchmarks/steady/voltage_control/README.md)
-- [PowerAgentBench 原始文档](PowerAgentBench/README.md)
-- [PowerMCP 文档](PowerMCP/README.md)
-- [PowerSkills 文档](PowerSkills/README.md)
-
-## GitHub
-
-<https://github.com/yangzz1125/Poweragent>
-
-## License 与来源
-
-本工作区聚合了多个上游项目。代码、数据集和第三方 case 可能适用不同许可证与引用要求；重新分发或发表实验结果前，请分别查看各子项目中的 `LICENSE`、`NOTICE` 和 dataset license 文件，并保留原始项目的 attribution。
+各子项目和数据适用各自许可证；发表和再分发时核查 LICENSE/NOTICE 与案例引用要求，保留 attribution。

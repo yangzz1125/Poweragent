@@ -46,7 +46,17 @@ Choose an output directory inaccessible to the tested agent. A different environ
 - Offline P10/P11 preparation: `scripts/analyze_voltage_experiments.py` generates scenario-cluster bootstrap CIs, paired factor differences, factorial logit (or separation warning), Figures 1–6 and Tables 1–4. Mock-data test only; no real analysis claims. Full offline suite previously passed (24 tests including 8-condition × 2-repeat mock execution).
 - P6 **Responses smoke only**, not pilot: user supplied DeepSeek official API `.env`; default API mode changed to `responses` for all conditions. On one Dev D0005, I0-V0-R0, max 6 turns: success=1, 5 LLM turns, 1 submit, 2 actual PF, input/output tokens=21093/6328, total=27421, latency=35.7 s; tool sequence included one parse error. No 8-condition smoke or full Dev pilot yet. Results at git-ignored `results/voltage_control/responses_smoke/`; no Test used. Protocol choice alone does not prove Responses is more reliable than Chat. P7–P12 pending.
 
-## Next gate: hosted API Pilot
+## Corpus review blocks freeze
+
+Dev greedy success alone does not establish LLM difficulty. More importantly, `generate_voltage_corpus.py::candidate` only retains cases solvable by one of six uniform same-direction BESS dispatches: this is explicit selection bias. Current 24/96 data is a **development candidate corpus**, not validated paper Test. Severity thirds describe voltage exceedance, not control difficulty. Within each bin the current split also assigns the low-severity prefix to Dev; a revised generator should use a seeded within-stratum split instead.
+
+Do not overwrite the current corpus or select Test cases for low baseline success. Before any freeze, use Dev-only studies to define broader spatial load/PV sampling and discrete witness search independent of the uniform heuristic, document search failures/budgets, compare fixed one-shot and simulator-guided strategies with their PF costs, then generate a separate version under a predeclared protocol. This methodological work is **pending**, not fixed by relabeling existing cases.
+
+## Compact observation change (pre-freeze)
+
+`inspect_voltage_state` no longer embeds the static network or BESS capability table. Those remain available through `case_summary` and `get_bess_capabilities` in every condition. No voltage values, constraints or evaluator verdicts change. For V0001, serialized inspection observation shrank from 6551 to 1044 bytes (generic) and 6144 to 637 bytes (domain). These are JSON byte counts, not measured API-token savings. Full stateless conversation history is still sent. Use a new output directory for the changed tool interface; do not merge old smoke episodes with new Pilot data. Full voltage test directory: **27 passed** after the change.
+
+## Next gate: Dev difficulty review and hosted API Pilot
 
 Copy `PowerAgentBench/.env.example` to `PowerAgentBench/.env` (git-ignored) and replace `YOUR_DEEPSEEK_API_KEY`. The template uses DeepSeek's official base URL (`https://api.deepseek.com`) and `deepseek-flash` model ID. The runner appends `/responses` for the selected `responses` mode (or `/chat/completions` for `chat`). This project's Dev pilot uses Responses for every condition; keep that mode fixed at freeze and during Test. Do not paste keys into chat or commit them. Before paid Pilot runs, provide an explicit token/price limit or permission. From `PowerAgentBench/`, verify the task count *without* an API call:
 

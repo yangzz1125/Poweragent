@@ -37,7 +37,8 @@ dependencies = [
     # 0.35.2 is the last Python 3.10-compatible modern optimizer line and the
     # first floor we verify against today's dependency resolver. Python 3.11+
     # naturally resolves to PyPSA 1.x; keep the next major opt-in.
-    "pypsa>=0.35.2,<2",
+    # PyPSA 1.3+ requires pandas 3, incompatible with the pandapower constraint below.
+    "pypsa>=0.35.2,<1.3",
     "numpy>=1.24",
     # pandapower's PYPOWER converter does not support pandas 3 yet.
     "pandas>=2.0,<3",

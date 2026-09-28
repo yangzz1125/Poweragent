@@ -5,9 +5,9 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "poweragentbench"
 version = "0.1.0"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 dependencies = [
-    "pypsa>=1.0",
+    "pypsa>=1.0,<1.3",
     "pandapower",
     "numpy",
     "pandas>=2,<3",

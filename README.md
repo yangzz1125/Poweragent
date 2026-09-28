@@ -16,7 +16,7 @@
 | 分析 | 聚类 bootstrap、factorial 和图表脚本只通过合成数据检查，不代表已获得科研结果 |
 | 尚未完成 | 完整 Pilot、难度有效性审查、freeze/tag、2304 次主实验、跨模型验证、正式分析 |
 
-**冻结阻塞：** generator 当前只接受能被等功率同向 BESS 调节解决的候选，存在筛选偏差；severity 大不等于控制困难。不要为压低基线成功率删除 case。先在 Dev 比较简单策略、控制余量与搜索成本，再设计新候选生成/可行性验证协议；现有 corpus 保留作开发参考，不覆盖其哈希。详见 [研究规范](PowerAgentBench/docs/BENCHMARK_SPEC.md)。
+**候选集更新：** generator 已用空间负荷/PV 采样和非均匀 coordinate witness 搜索替换均匀策略过滤。新 v2 候选集位于 `E:/work/voltage_corpus_v2_candidate`，24 Dev / 96 Test、全 witness 重放通过；新 Dev nearest 为 22/24、sensitivity 为 24/24。仍有搜索方法筛选偏差，不能把 severity 标签当控制难度。旧 v1 保留，尚未冻结；详见 [v2 验收](PowerAgentBench/docs/CORPUS_V2_CANDIDATE.md)。
 
 ## 目录用途
 
@@ -83,13 +83,13 @@ runner 自动补 `/responses`，也兼容完整端点 URL。Responses 目前承�
 
 Dev dry-run 应列出 192 个任务；`--split test --repeats 3` 对应 2304 个任务，但不要因此运行正式 Test。
 
-明确调用预算后才能运行付费 Dev 检查；新接口应使用新输出目录，不续写旧 smoke 数据：
+本次用户授权：单局 ¥0.20、开发测试和 Pilot 共用 ¥10，仅 DeepSeek 低谷。新接口必须用新输出目录，不能续写旧 smoke 数据；默认 campaign 固定为 `results/voltage_control/cny_pilot_campaign`，不要换目录重置花费：
 
 ```powershell
-.venv\Scripts\python.exe -m scripts.run_voltage_experiment_matrix --split dev --scenario-root E:/work/voltage_corpus_v1/dev --output-dir results/voltage_control/dev_compact_smoke --max-episodes 8 --max-total-tokens 100000
+.venv\Scripts\python.exe -m scripts.run_voltage_experiment_matrix --split dev --scenario-root E:/work/voltage_corpus_v2_candidate/dev --output-dir results/voltage_control/v2_cny_pilot --max-episodes 8 --campaign-stage smoke
 ```
 
-这里 100000 是示例软上限，不是用户已授权额度；检查发生在 episode 边界，可能超出一局。继续相同输出目录会跳过完成项，错误需显式 `--retry-errors`。缺失 usage 无法可靠预算；日志/断点等边界还需完整 Pilot 验收。
+默认人民币模式在每次实际 HTTP 请求结束后核算（含重试），允许最后一次请求少量超额；smoke 阶段限 ¥1，包含在 campaign ¥10 中。只有 smoke 账本验收后才用 `--campaign-stage pilot` 继续；`--max-episodes` 是本次新增 episode 的上限，不改变计划任务集。高峰/总额暂停保存 checkpoint，失败重试保留旧费用。API usage 未知、orphan 请求或损坏账本会阻止自动收费续跑，需人工核对，不可删日志绕过。token/USD 旧参数不能与默认人民币 campaign 混用。历史结果目录保留但不能混入新的分析。
 
 ## 工具与物理约定
 
@@ -114,6 +114,16 @@ BESS bus：8/17/24/32；每台 ±1.5 MW、0.25 MW 步长。正功率放电注入
 ```
 
 `--allow-incomplete` 只用于开发诊断。统计脚本已有 CI、factorial 分离检测和图表输出，但正式分析仍需验证完整任务集合、错误分母、依赖版本与 freeze 清单。当前没有论文级统计结论。
+
+### 人民币与行为日志
+
+新增 campaign 的 `campaign.json` / `requests.jsonl` 与 run 的 `events.jsonl` / `checkpoints/`：按实际请求记录价格版本、缓存、失败、已知费用和未知计费。低谷按 UTC+8 工作日 09–12、14–18 高峰的保守排除规则，不擅自假定节假日；高峰前留单次 timeout 窗口。`cost_cny` 是用量估算，不是官方账单。
+
+```powershell
+.venv\Scripts\python.exe -m scripts.analyze_voltage_trajectories --run-dir results/voltage_control/v2_cny_pilot --campaign-dir results/voltage_control/cny_pilot_campaign --output-dir results/voltage_control/v2_cny_behavior
+```
+
+输出首次失败条件概率、连续错误恢复、preview 改善/重复动作、一阶动作转移、费用分布和终止原因。单场景 smoke 不给假确定性的 CI；暂停和基础设施错误不混作物理失败。详见 [计量合同](PowerAgentBench/docs/RMB_MEASUREMENT_SPEC.md) 与 [行为分析口径](PowerAgentBench/docs/RMB_BEHAVIOR_ANALYSIS.md)。
 
 ## 研究记录与图片
 

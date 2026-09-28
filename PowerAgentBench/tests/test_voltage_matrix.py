@@ -33,6 +33,8 @@ def test_factorial_repeats_cover_all_cells():
     conditions = read_json(BENCHMARK_DIR / 'config' / 'experiments.json')['conditions']
     tasks = ordered_tasks([{'scenario_id': 'V0001'}], conditions, 2)
     assert len({(entry['scenario_id'], condition['id'], repeat) for entry, condition, repeat in tasks}) == 16
+    assert tasks == ordered_tasks([{'scenario_id': 'V0001'}], conditions, 2)
+    assert [c['id'] for _, c, _ in tasks[:8]] != [c['id'] for c in conditions]
 
 
 def test_matrix_resume_and_metadata(tmp_path):
@@ -54,8 +56,20 @@ def test_matrix_resume_and_metadata(tmp_path):
     assert required <= set(rows[0])
     assert all(r['dataset_sha256'] and r['benchmark_config_sha256'] for r in rows)
     assert 'api_key' not in (args.output_dir / 'run.json').read_text(encoding='utf-8')
+    identity = read_json(args.output_dir / 'run.json')
+    assert len(identity['planned_tasks']) == 64
+    assert len(identity['source_sha256']) == 64
     with pytest.raises(ValueError, match='metadata mismatch'):
         run_matrix(options(tmp_path, temperature=0.4), lambda _: MockClient())
+
+
+def test_source_change_refuses_resume(tmp_path, monkeypatch):
+    import scripts.run_voltage_experiment_matrix as runner
+    args = options(tmp_path, max_episodes=1)
+    run_matrix(args, lambda _: MockClient())
+    monkeypatch.setattr(runner, 'source_identity', lambda: 'changed-source')
+    with pytest.raises(ValueError, match='metadata mismatch'):
+        run_matrix(args, lambda _: MockClient())
 
 
 def test_mock_matrix_eight_conditions_two_repeats(tmp_path):

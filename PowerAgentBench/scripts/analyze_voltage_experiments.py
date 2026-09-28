@@ -57,8 +57,16 @@ def analyze(csv_path: Path, output: Path, *, allow_incomplete: bool = False, boo
     complete = data[data.status == "complete"].copy()
     if not len(complete):
         raise ValueError("no completed episodes")
-    expected = 8 * complete.scenario_id.nunique() * complete.repetition_index.nunique()
-    if not allow_incomplete and (errors or len(data) != expected or set(complete.condition) != set(CONDITIONS)):
+    run_path = csv_path.parent / "run.json"
+    run = json.loads(run_path.read_text(encoding="utf-8")) if run_path.exists() else {}
+    planned = {tuple(task) for task in run.get("planned_tasks", [])}
+    observed = set(data[["condition", "scenario_id", "repetition_index"]].itertuples(index=False, name=None))
+    if planned and (run.get("run_id") != data.run_id.iloc[0] or observed - planned):
+        raise ValueError("episode data differs from planned run")
+    if not planned and not allow_incomplete:
+        raise ValueError("official analysis requires run.json with planned_tasks; use --allow-incomplete for legacy debug")
+    expected = len(planned) if planned else 8 * complete.scenario_id.nunique() * complete.repetition_index.nunique()
+    if not allow_incomplete and (errors or observed != planned or len(data) != expected or set(complete.condition) != set(CONDITIONS)):
         raise ValueError(f"incomplete matrix: {len(complete)} complete, {errors} errors, expected {expected}")
     output.mkdir(parents=True, exist_ok=True)
     rng = np.random.default_rng(2026)
@@ -94,7 +102,7 @@ def analyze(csv_path: Path, output: Path, *, allow_incomplete: bool = False, boo
         writer.writeheader()
         writer.writerows(effects + coefficients)
     summary = {"run_ids": sorted(complete.run_id.unique().tolist()), "complete": len(complete), "errors": errors,
-               "expected": expected, "missing_tokens": int(complete.total_tokens.isna().sum()), "dataset_sha256": sorted(complete.dataset_sha256.dropna().unique().tolist()) if "dataset_sha256" in complete else []}
+               "expected": expected, "coverage_verified": bool(planned), "missing_tasks": len(planned - observed) if planned else None, "missing_tokens": int(complete.total_tokens.isna().sum()), "dataset_sha256": sorted(complete.dataset_sha256.dropna().unique().tolist()) if "dataset_sha256" in complete else []}
     (output / "analysis_summary.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
     figures(main_df, diff_df, output)
     contract_figures(output, summary)

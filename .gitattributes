@@ -1,0 +1,2 @@
+# Published record hashes must remain identical across Windows/Linux checkouts.
+research_records/** text eol=lf

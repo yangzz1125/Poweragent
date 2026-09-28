@@ -46,11 +46,25 @@ Choose an output directory inaccessible to the tested agent. A different environ
 - Offline P10/P11 preparation: `scripts/analyze_voltage_experiments.py` generates scenario-cluster bootstrap CIs, paired factor differences, factorial logit (or separation warning), Figures 1–6 and Tables 1–4. Mock-data test only; no real analysis claims. Full offline suite previously passed (24 tests including 8-condition × 2-repeat mock execution).
 - P6 **Responses smoke only**, not pilot: user supplied DeepSeek official API `.env`; default API mode changed to `responses` for all conditions. On one Dev D0005, I0-V0-R0, max 6 turns: success=1, 5 LLM turns, 1 submit, 2 actual PF, input/output tokens=21093/6328, total=27421, latency=35.7 s; tool sequence included one parse error. No 8-condition smoke or full Dev pilot yet. Results at git-ignored `results/voltage_control/responses_smoke/`; no Test used. Protocol choice alone does not prove Responses is more reliable than Chat. P7–P12 pending.
 
-## Corpus review blocks freeze
+## CNY campaign implementation (new protocol)
+
+Approved limits: ¥0.20 per episode, ¥10 across all development calls/Pilot, smoke stage ¥1 included. Request-level Decimal/cache accounting, off-peak checks on retries, shared durable campaign ledger, paid-response/checkpoint recovery and behavioral analysis are implemented. **59 offline tests passed.** See [measurement contract](RMB_MEASUREMENT_SPEC.md) and [behavior analysis](RMB_BEHAVIOR_ANALYSIS.md). At the 2026-09-28 afternoon preflight the real runner paused before any HTTP call: ¥0, 0 requests, next window 18:00 UTC+8. New-schema paid smoke/Pilot are not yet complete; no scheduled wake is installed.
+
+## v2 live Dev smoke update
+
+Responses on v2 D0005 has completed 8/8 conditions (6 final successes), with preview and recovery paths exercised. Recorded total usage 164961 tokens; the last episode completed after an authorized continuation with a 150000-token episode-boundary soft gate. This is 8/192 planned Dev episodes, not a complete Pilot. New-run provenance (root commit/source SHA), seeded condition ordering and planned-task coverage checks have since been added; do not mix old smoke with the new runner. See [`V2_RESPONSES_SMOKE.md`](V2_RESPONSES_SMOKE.md) for raw summary and confirmed pre-freeze gaps (nested-repo commit, dirty-source identity, fixed condition order, incomplete failure usage, analysis coverage and freeze checks). No Test run performed.
+
+## v2 candidate update (not frozen)
+
+The generator now uses spatial load/PV sampling and bounded nonuniform coordinate search, with seeded within-stratum splitting. A separate 24/96 candidate corpus was generated and every witness independently replayed. New Dev baselines: nearest 22/24, sensitivity 24/24. See [`CORPUS_V2_CANDIDATE.md`](CORPUS_V2_CANDIDATE.md) for hashes, counts, search limits and reproduction. Existing v1 data untouched. The following review describes the **old v1** filter; broader search still introduces search-method selection bias, not a completeness guarantee.
+
+## Historical v1 corpus review (freeze remains pending)
 
 Dev greedy success alone does not establish LLM difficulty. More importantly, `generate_voltage_corpus.py::candidate` only retains cases solvable by one of six uniform same-direction BESS dispatches: this is explicit selection bias. Current 24/96 data is a **development candidate corpus**, not validated paper Test. Severity thirds describe voltage exceedance, not control difficulty. Within each bin the current split also assigns the low-severity prefix to Dev; a revised generator should use a seeded within-stratum split instead.
 
 Do not overwrite the current corpus or select Test cases for low baseline success. Before any freeze, use Dev-only studies to define broader spatial load/PV sampling and discrete witness search independent of the uniform heuristic, document search failures/budgets, compare fixed one-shot and simulator-guided strategies with their PF costs, then generate a separate version under a predeclared protocol. This methodological work is **pending**, not fixed by relabeling existing cases.
+
+Dev-only follow-up: [`DEV_DIFFICULTY_AUDIT.md`](DEV_DIFFICULTY_AUDIT.md) reports a separate 40-candidate spatial-load/PV study: 34 converged violations, 21 uniform successes, 29 independent greedy witnesses; 8 search successes had no uniform solution. Existing corpus untouched. This demonstrates the selection bias but does not complete a balanced replacement corpus or establish LLM difficulty.
 
 ## Compact observation change (pre-freeze)
 

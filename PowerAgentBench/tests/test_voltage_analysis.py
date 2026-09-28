@@ -1,4 +1,5 @@
 import csv
+import json
 
 import pytest
 
@@ -22,10 +23,11 @@ def test_analysis_counts_scenarios_and_refuses_incomplete(tmp_path):
     with path.open('w', newline='', encoding='utf-8') as handle:
         writer = csv.DictWriter(handle, fieldnames=rows[0])
         writer.writeheader(); writer.writerows(rows)
+    (tmp_path / 'run.json').write_text(json.dumps({'run_id': 'mock', 'planned_tasks': [[r['condition'], r['scenario_id'], r['repetition_index']] for r in rows]}), encoding='utf-8')
     report = analyze(path, tmp_path / 'figures', bootstrap=60)
     assert report['complete'] == report['expected'] == 96
     assert (tmp_path / 'figures' / 'figure3_success.png').is_file()
     with path.open('w', newline='', encoding='utf-8') as handle:
-        writer = csv.DictWriter(handle, fieldnames=rows[0]); writer.writeheader(); writer.writerows(rows[:-1])
+        writer = csv.DictWriter(handle, fieldnames=rows[0]); writer.writeheader(); writer.writerows([row for row in rows if row['scenario_id'] != 'D0005'])
     with pytest.raises(ValueError, match='incomplete matrix'):
         analyze(path, tmp_path / 'incomplete', bootstrap=10)

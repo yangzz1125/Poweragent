@@ -14,9 +14,9 @@
 
 ## 当前最高优先级：corpus 方法学
 
-生成脚本 `scripts/generate_voltage_corpus.py::candidate` 对每个候选只试 6 个四 BESS 同向等功率档位。失败就抛弃；因此现有 corpus **按简单均匀策略可解性筛选**，不能声称代表一般 BESS 可行任务。三档 severity 是越限幅度排序，不是控制难度。
+旧 v1 按 6 个同向均匀动作筛选，存在选择偏差。generator 现已改为空间负荷/PV + bounded coordinate search，生成独立的 `E:/work/voltage_corpus_v2_candidate`（24/96，全部 witness 重放通过），详情见 `PowerAgentBench/docs/CORPUS_V2_CANDIDATE.md`。仍有 coordinate 搜索偏差；三档 severity 不是控制难度。新 Dev nearest 22/24，sensitivity 24/24；不要再为了压低 baseline 成绩调整采样。
 
-分层还有一个已知偏差：每档按 severity 排序后，前部选作 Dev、后部作 Test，Dev 在每档内偏轻。不要用现有 Dev 100% 给 Test 作定论，也不要查看 Test 成绩后调场景。
+现有 v1 数据有分层偏差：每档前部选作 Dev、后部作 Test，Dev 在每档内偏轻。生成代码现已改为每档固定 seed shuffle，并记录 split_policy/generator hash；v2 候选集已独立生成，旧 v1 未覆盖。不要用现有 Dev 100% 给 Test 作定论。独立 Dev 分层诊断已得到 20 欠压/17 过压/3 正常候选，单次策略成功 8/37、非均匀搜索 28/37；见 `PowerAgentBench/docs/DEV_DIFFICULTY_AUDIT.md`，不是正式实验。
 
 下一步应在独立 Dev 候选池进行：
 
@@ -26,7 +26,7 @@
 4. 比較固定均匀动作、单次简单策略与多次 simulator-guided baseline 的成功和成本；报告是否有控制余量紧、局部动作相互制约的任务。不能只追求基线低分。
 5. 分层后使用固定 seed 在每档随机划分 Dev/Test，避免前低后高；所有方法学选择在新 Test 冻结前完成。用新目录和版本记录生成器/配置/solver，不覆写 v1 候选。
 
-这是尚未实施/验收的研究工作；不要把本次文档更正当成已修好 corpus。
+上述更广采样、非均匀 witness 和随机分层已在 v2 候选集实现并验收；搜索完备性和 LLM 难度仍未建立，禁止宣称已完成 freeze 或正式研究。
 
 ## Observation 约定（已精简）
 
@@ -50,12 +50,18 @@ DeepSeek Responses 无状态，LLM 仍收到历史文本 JSON；减少重复 obs
 | `poweragentbench/openai_chat_client.py` | 兼容 Chat 的备用适配器 |
 | `scripts/run_voltage_agent_eval.py` | `.env`/客户端构造、旧单条件 runner |
 | `scripts/run_voltage_experiment_matrix.py` | 8 条件、恢复、标准 CSV；通过 `python -m scripts.run_voltage_experiment_matrix` 执行 |
-| `scripts/generate_voltage_corpus.py` | 候选 generator，存在上述筛选偏差 |
+| `scripts/generate_voltage_corpus.py` | v2 空间候选 generator、bounded coordinate search；保留搜索偏差说明 |
 | `scripts/build_voltage_cases.py` | 旧 8 个 regression 场景，不是正式 corpus |
 | `scripts/run_voltage_baselines.py` | 3 baseline，默认旧 8 case，Dev 要传 `--scenario-root` |
 | `scripts/analyze_voltage_experiments.py` | 只读 CSV 的分析与图表，正式结果仍待验收 |
 
 `.env` 中 URL/API_KEY/MODEL/API_MODE 与 `.env.example` 一致；默认 Responses。不要读取/回显凭据，不写入 trace、Git 或论文。dry-run 不调用模型。
+
+## 人民币低预算执行（当前优先级）
+
+用户已批准：单局 ¥0.20、整个开发测试+Pilot campaign ¥10，仅 DeepSeek 低谷；Main/跨模型不在授权内。执行 `plans/rmb-budget-and-trajectory-analysis.md`，复用固定 `results/voltage_control/cny_pilot_campaign`，smoke 阶段 ¥1 包含在总额中。新运行目录 `results/voltage_control/v2_cny_pilot`，不能续写旧 smoke，也不能创建新 campaign 绕过花费。
+
+`voltage_costs.py` 与 request hook 已实现请求前/后门控，unknown/orphan 计费会暂停自动重试。高峰前留 timeout 窗口，高峰退出并打印下一低谷时间，不自动预约后台。事件/计费/checkpoint 不能删除来恢复运行；只在身份一致时恢复。新日志协议离线 59 tests 通过，但付费 smoke/Pilot 仍需验收；见 RMB_MEASUREMENT_SPEC.md / RMB_BEHAVIOR_ANALYSIS.md。
 
 ## 不可破坏的合同
 

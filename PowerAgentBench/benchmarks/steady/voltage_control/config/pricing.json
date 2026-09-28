@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "price_version": "deepseek-flash-cny-2026-09-28",
+  "provider": "deepseek",
+  "model": "deepseek-flash",
+  "reported_model_version": "DeepSeek-V4.1-Flash",
+  "currency": "CNY",
+  "unit_tokens": 1000000,
+  "source_url": "https://api-docs.deepseek.com/zh-cn/quick_start/pricing",
+  "retrieved_at": "2026-09-28T07:02:08.794610+00:00",
+  "source_html_sha256": "5a7b1832592387340f2fc456399b34b89b05f3fa167c2e35909e2fa4afe021e3",
+  "rates": {
+    "offpeak": {"input_cached": "0.02", "input_uncached": "1", "output": "4"},
+    "peak": {"input_cached": "0.04", "input_uncached": "2", "output": "8"}
+  },
+  "schedule": {
+    "timezone": "UTC+08:00",
+    "peak_weekdays": [0, 1, 2, 3, 4],
+    "peak_intervals": [["09:00", "12:00"], ["14:00", "18:00"]],
+    "holiday_policy": "conservative: no holiday exceptions without separately verified calendar"
+  },
+  "approved_limits_cny": {"episode": "0.20", "campaign": "10", "smoke_stage": "1"},
+  "billing_note": "Usage-based estimate, not an invoice. Missing cache details use the uncached upper bound. Missing/invalid total usage is unknown, never zero."
+}

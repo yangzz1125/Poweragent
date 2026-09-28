@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 import time
 from collections.abc import Callable, Mapping
-from dataclasses import dataclass, field
+from dataclasses import asdict, dataclass, field
 from pathlib import Path
 from typing import Any
 
@@ -18,7 +18,8 @@ from poweragentbench.voltage_case import (
     load_scenario_metadata,
 )
 from poweragentbench.voltage_evaluator import evaluate_voltage_dispatch
-from poweragentbench.voltage_tools import VoltageToolServer
+from poweragentbench.voltage_tools import VoltageToolServer, VoltageToolState
+from poweragentbench.voltage_costs import BudgetStop, Campaign, atomic_json, read_events
 
 Message = dict[str, str]
 LLMCallable = Callable[[list[Message]], str]
@@ -47,6 +48,8 @@ class VoltageAgentOutput:
     n_submit_calls: int = 0
     n_evaluator_calls: int = 0
     n_actual_power_flows: int = 0
+    termination_reason: str = "unknown"
+    paused: bool = False
 
 
 class LLMVoltageAgent:
@@ -57,6 +60,8 @@ class LLMVoltageAgent:
         name: str,
         system_prompt: str | None = None,
         max_turns: int = 12,
+        checkpoint_path: Path | None = None,
+        event_sink: Callable[[dict], None] | None = None,
         domain_interface: bool = True,
         verification: bool = True,
         recovery: bool = True,
@@ -67,6 +72,8 @@ class LLMVoltageAgent:
         self.name = name
         self.system_prompt = system_prompt or DEFAULT_SYSTEM_PROMPT
         self.max_turns = int(max_turns)
+        self.checkpoint_path = checkpoint_path
+        self.event_sink = event_sink
         self.domain_interface = bool(domain_interface)
         self.verification = bool(verification)
         self.recovery = bool(recovery)
@@ -90,13 +97,74 @@ class LLMVoltageAgent:
         submitted = 0.0
         usages: list[dict[str, Any] | None] = []
         retries = 0
-        for _ in range(self.max_turns):
-            response = self.llm(messages) or ""
+        completed_turns = 0
+        elapsed = 0.0
+        termination = "turn_limit"
+        paused = False
+        hook = getattr(self.llm, "request_hook", None)
+        if self.checkpoint_path and self.checkpoint_path.exists():
+            saved = json.loads(self.checkpoint_path.read_text(encoding="utf-8"))
+            if saved["scenario_id"] != scenario_id:
+                raise ValueError("checkpoint scenario mismatch")
+            server.state = VoltageToolState(**saved["state"])
+            messages, responses, tool_log = saved["messages"], saved["responses"], saved["tool_log"]
+            usages, retries = saved["usages"], saved["retries"]
+            invalid, submitted = saved["invalid"], saved["submitted"]
+            completed_turns, elapsed = saved["completed_turns"], saved["elapsed_seconds"]
+            if saved.get("finished"):
+                termination = saved["termination_reason"]
+        finished = bool(self.checkpoint_path and self.checkpoint_path.exists() and saved.get("finished"))
+
+        def checkpoint(*, finished=False):
+            if self.checkpoint_path:
+                atomic_json(self.checkpoint_path, {"scenario_id": scenario_id, "state": asdict(server.state),
+                    "messages": messages, "responses": responses, "tool_log": tool_log, "usages": usages,
+                    "retries": retries, "invalid": invalid, "submitted": submitted,
+                    "completed_turns": completed_turns, "elapsed_seconds": elapsed + time.monotonic() - started,
+                    "termination_reason": termination, "finished": finished})
+
+        def emit(kind: str, **data):
+            if self.event_sink:
+                self.event_sink({"event": kind, "turn": completed_turns, **data})
+
+        checkpoint(finished=finished)
+        emit("episode_resume" if completed_turns else "episode_start", n_completed_turns=completed_turns)
+        for turn in range(completed_turns, self.max_turns):
+            if finished:
+                break
+            cached = None
+            if isinstance(hook, Campaign):
+                self.llm.request_context["turn"] = turn + 1
+                context = self.llm.request_context
+                # Recover a paid response received before a checkpoint was saved.
+                matches = [e for e in read_events(hook.path) if e["event"] == "finished"
+                           and all(e.get("context", {}).get(k) == context.get(k) for k in ("run_id", "episode_key", "episode_attempt_id", "turn"))]
+                cached = matches[-1] if matches else None
+            try:
+                if cached:
+                    response = cached["visible_text"]
+                    self.llm.last_debug = {"usage": {"input_tokens": cached["input_tokens"], "output_tokens": cached["output_tokens"], "total_tokens": cached["total_tokens"]}}
+                else:
+                    response = self.llm(messages) or ""
+            except BudgetStop as stop:
+                emit("api_policy_stop", reason=stop.reason)
+                termination = stop.reason
+                paused = stop.reason != "episode_cost_limit"
+                checkpoint(finished=not paused)
+                break
+            except Exception as exc:
+                termination = "infrastructure_error"
+                emit("api_error", error_type=type(exc).__name__)
+                checkpoint()
+                raise
             raw_usage = (getattr(self.llm, "last_debug", None) or {}).get("usage")
             usages.append(raw_usage if isinstance(raw_usage, dict) else None)
-            retries += int(getattr(self.llm, "retry_count_last_call", 0))
+            retries += int(cached["retry_index"] if cached else getattr(self.llm, "retry_count_last_call", 0))
             responses.append(response)
             messages.append({"role": "assistant", "content": response})
+            completed_turns = turn + 1
+            emit("model_response", request_id=cached["request_id"] if cached else getattr(self.llm, "last_request_id", None),
+                 text=response, recovered_paid_response=bool(cached))
             try:
                 command = parse_json_command(response)
             except ValueError:
@@ -106,17 +174,38 @@ class LLMVoltageAgent:
                     "instruction": "Return exactly one JSON command with fields 'tool' and 'args'.",
                 }
                 tool_log.append({"tool": "parse_error", "observation": observation})
+                emit("parse_error", error_code="invalid_json_command")
                 messages.append({"role": "user", "content": json.dumps({"observation": observation})})
+                checkpoint()
                 continue
             tool = str(command.get("tool", ""))
-            args = command.get("args", {}) or {}
+            args = command.get("args", {})
             if not isinstance(args, dict):
                 invalid += 1
                 observation = {"error": "args must be a JSON object"}
                 tool_log.append({"tool": "parse_error", "observation": observation})
+                emit("parse_error", error_code="invalid_args")
                 messages.append({"role": "user", "content": json.dumps({"observation": observation})})
+                checkpoint()
                 continue
-            observation, done = server.execute(tool, args)
+            before_pf, before_evaluators = server.state.actual_power_flows, server.state.evaluator_calls
+            emit("tool_started", tool=tool, args=args)
+            try:
+                observation, done = server.execute(tool, args)
+            except Exception as exc:
+                termination = "infrastructure_error"
+                emit("tool_error", tool=tool, error_type=type(exc).__name__)
+                checkpoint()
+                raise
+            feedback = observation.get("preview", observation.get("verification", {}))
+            outcome = ("invalid_dispatch" if feedback.get("valid_action") is False else
+                       "pf_nonconverged" if feedback.get("converged") is False else
+                       "voltage_unresolved" if feedback.get("success") is False else
+                       "unknown_tool" if tool.strip().lower() not in server.allowed_tools and tool.strip().lower() != "preview_bess_dispatch" else
+                       "tool_error" if "error" in observation else "ok")
+            emit("tool_finished", tool=tool, args=args, observation=observation, outcome=outcome, done=done,
+                 n_actual_power_flows=server.state.actual_power_flows - before_pf,
+                 n_evaluator_calls=server.state.evaluator_calls - before_evaluators)
             if "error" in observation:
                 invalid += 1
             if tool.strip().lower() == "submit":
@@ -131,7 +220,25 @@ class LLMVoltageAgent:
                 }
             )
             if done:
+                termination = "success" if observation.get("accepted") else ("first_failure_no_recovery" if not self.recovery else "submit_limit")
+                checkpoint(finished=True)
                 break
+            checkpoint()
+            if isinstance(hook, Campaign):
+                reason = hook.reason(self.llm.request_context)
+                if reason:
+                    termination, paused = reason, reason != "episode_cost_limit"
+                    checkpoint(finished=not paused)
+                    break
+        else:
+            checkpoint(finished=True)
+        if termination == "turn_limit" and isinstance(hook, Campaign):
+            reason = hook.reason(self.llm.request_context, check_window=False)
+            if reason:
+                termination, paused = reason, reason != "episode_cost_limit"
+                checkpoint(finished=not paused)
+        emit("episode_stop", reason=termination, paused=paused, no_submission=not bool(submitted),
+             n_llm_turns=len(responses))
         dispatch = (
             server.state.final_dispatch
             if server.state.final_dispatch is not None
@@ -152,13 +259,15 @@ class LLMVoltageAgent:
         return VoltageAgentOutput(
             name=self.name,
             dispatch=dispatch,
+            termination_reason=termination,
+            paused=paused,
             n_llm_turns=len(responses),
             input_tokens=input_tokens,
             output_tokens=output_tokens,
             total_tokens=total_tokens,
             usage_unavailable=bool(usages and (input_tokens is None or output_tokens is None)),
             api_retries=retries,
-            latency_seconds=time.monotonic() - started,
+            latency_seconds=elapsed + time.monotonic() - started,
             attempts=server.state.attempts,
             tool_log=tool_log,
             raw_responses=responses,

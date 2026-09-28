@@ -10,7 +10,9 @@ import json
 import time
 import urllib.error
 import urllib.request
-from typing import Any, Dict, List
+import uuid
+from datetime import datetime, timezone
+from typing import Any, Callable, Dict, List
 
 Message = Dict[str, str]
 
@@ -58,6 +60,7 @@ class OpenAIResponsesClient:
         timeout: float = 300.0,
         max_retries: int = 3,
         retry_backoff: float = 2.0,
+        request_hook: Callable[[dict], None] | None = None,
     ) -> None:
         if not api_key:
             raise ValueError("OpenAI API key is required.")
@@ -76,6 +79,9 @@ class OpenAIResponsesClient:
         self.last_client_warning: str | None = None
         self.last_error: str | None = None
         self.retry_count_last_call: int = 0
+        self.request_hook = request_hook
+        self.request_context: Dict[str, Any] = {}
+        self.last_request_id: str | None = None
 
     def __call__(self, messages: List[Message]) -> str:
         payload = self._payload(messages)
@@ -122,31 +128,48 @@ class OpenAIResponsesClient:
     def _post(self, payload: Dict[str, Any]) -> Dict[str, Any]:
         self.retry_count_last_call = 0
         self.last_error = None
-        last_exc: BaseException | None = None
-
+        self.last_debug = None
+        self.last_request_id = None
         for attempt in range(self.max_retries + 1):
+            self.retry_count_last_call = attempt
+            started_at = datetime.now(timezone.utc).isoformat()
+            started = time.monotonic()
+            request_id = str(uuid.uuid4())
+            self.last_request_id = request_id
+            context_keys = ("campaign_id", "run_id", "episode_key", "episode_attempt_id", "turn")
+            base = {"request_id": request_id, "started_at": started_at, "retry_index": attempt,
+                    "model": self.model, "context": {k: self.request_context[k] for k in context_keys if k in self.request_context}}
+            # Hooks run outside the HTTP exception handler: accounting/policy
+            # failures must not be mistaken for transport errors and retried.
+            if self.request_hook:
+                self.request_hook({**base, "event": "started", "timeout_seconds": self.timeout})
+            failure = None
             try:
                 out = self._post_once(payload)
-                self.retry_count_last_call = attempt
+                if not isinstance(out, dict):
+                    raise ValueError("API response must be an object")
+            except Exception as exc:
+                failure = exc
+            ended_at = datetime.now(timezone.utc).isoformat()
+            terminal = {**base, "ended_at": ended_at, "latency_seconds": time.monotonic() - started}
+            if failure is None:
                 self.last_debug = out
+                if self.request_hook:
+                    visible = self._extract_text(out).replace(self.api_key, "[REDACTED]")
+                    self.request_hook({**terminal, "event": "finished", "http_status": 200,
+                                       "response_id": out.get("id"), "response_model": out.get("model"),
+                                       "usage": out.get("usage"), "visible_text": visible})
                 return out
-            except urllib.error.HTTPError as exc:
-                body = exc.read().decode("utf-8", errors="replace")
-                last_exc = exc
-                self.last_error = f"HTTP {exc.code}: {body[:500]}"
-                if exc.code not in TRANSIENT_HTTP_STATUS or attempt >= self.max_retries:
-                    raise RuntimeError(f"OpenAI API request failed with HTTP {exc.code}: {body}") from exc
-            except (TimeoutError, urllib.error.URLError) as exc:
-                last_exc = exc
-                self.last_error = f"{type(exc).__name__}: {exc}"
-                if attempt >= self.max_retries:
-                    raise RuntimeError(
-                        f"OpenAI API request failed after {attempt + 1} attempt(s): {self.last_error}"
-                    ) from exc
-
+            status = failure.code if isinstance(failure, urllib.error.HTTPError) else None
+            self.last_error = f"HTTP {status}" if status is not None else type(failure).__name__
+            if self.request_hook:
+                self.request_hook({**terminal, "event": "error", "http_status": status,
+                                   "error_type": type(failure).__name__, "usage": None})
+            transient = status in TRANSIENT_HTTP_STATUS if status is not None else isinstance(failure, (TimeoutError, ConnectionError, urllib.error.URLError))
+            if not transient or attempt >= self.max_retries:
+                raise RuntimeError(f"OpenAI API request failed: {self.last_error}") from failure
             self._sleep_before_retry(attempt)
-
-        raise RuntimeError(f"OpenAI API request failed: {last_exc}") from last_exc
+        raise RuntimeError("API retry loop exhausted")
 
     def _post_once(self, payload: Dict[str, Any]) -> Dict[str, Any]:
         data = json.dumps(payload).encode("utf-8")

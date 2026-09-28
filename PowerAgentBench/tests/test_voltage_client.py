@@ -20,6 +20,10 @@ def test_deepseek_base_url_selects_endpoint(monkeypatch):
     args.api_mode = "responses"
     assert make_client(args).url == "https://api.deepseek.com/responses"
     assert make_client(args)._payload([])["max_output_tokens"] == 16384
+    assert make_client(args)._payload([])["reasoning"] == {"effort": "high"}
+    args.reasoning_effort = "none"
+    assert make_client(args)._payload([])["reasoning"] == {"effort": "none"}
+    args.reasoning_effort = None
     args.max_output_tokens = 8192
     assert make_client(args)._payload([])["max_output_tokens"] == 8192
     args.max_output_tokens = 0

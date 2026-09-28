@@ -46,7 +46,11 @@ Choose an output directory inaccessible to the tested agent. A different environ
 - Offline P10/P11 preparation: `scripts/analyze_voltage_experiments.py` generates scenario-cluster bootstrap CIs, paired factor differences, factorial logit (or separation warning), Figures 1–6 and Tables 1–4. Mock-data test only; no real analysis claims. Full offline suite previously passed (24 tests including 8-condition × 2-repeat mock execution).
 - P6 **Responses smoke only**, not pilot: user supplied DeepSeek official API `.env`; default API mode changed to `responses` for all conditions. On one Dev D0005, I0-V0-R0, max 6 turns: success=1, 5 LLM turns, 1 submit, 2 actual PF, input/output tokens=21093/6328, total=27421, latency=35.7 s; tool sequence included one parse error. No 8-condition smoke or full Dev pilot yet. Results at git-ignored `results/voltage_control/responses_smoke/`; no Test used. Protocol choice alone does not prove Responses is more reliable than Chat. P7–P12 pending.
 
-## Latest: CNY Dev Pilot complete, freeze not approved
+## Latest: explicit model settings and freeze-contract checks
+
+DeepSeek Responses now sends explicit reasoning.effort=high (the documented provider default) with max_output_tokens=16384. Thinking ignores requested temperature=0; the runner records that limitation. A separate one-case Dev check succeeded for ¥0.01251810; it does not replace the original Pilot. Full contract validation now covers source/environment/model/pricing/analysis/planned tasks, requires explicit approval and a matching clean tag before Test, and can emit only an unapproved candidate offline. Absolute factorial interaction contrasts now have scenario-paired bootstrap CIs. **92 offline tests passed.** See [engineering acceptance](EXPLICIT_REASONING_AND_FREEZE.md). Formal tag/Main approval remain separate; provider alias drift and witness-search selection bias remain acknowledged limitations.
+
+## Earlier: CNY Dev Pilot complete, freeze not approved
 
 Full v2 Dev Pilot completed: **192/192**, 170 successes, 22 task failures, no missing episodes. All 985 HTTP attempts were off-peak. Known estimated fees ¥2.67079106 plus five user-approved unknown-charge reserves ¥1.00 consumed ¥3.67079106 of ¥10. Completed ledger totals reconcile. Full offline suite: **61 passed**. Public snapshot: `research_records/voltage_control/cny_pilot_192/` (Dev-only; no hidden Test/witnesses).
 

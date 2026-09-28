@@ -1,0 +1,14 @@
+{
+  "campaign.json": "47d4d93ace260f07b6533b37ba92e4c4cd99a57b709c2c99ec2e5815630ec518",
+  "ENGINEERING_REVIEW.md": "04bc6d6cea8b332aec2a3b55114aafde5b57d7e06f626fbdda1dffdb4701968a",
+  "episodes.csv": "67be404fc4026411b6cbd5d500b3b3bb86e6bc6c6dcf65e386dc9f5c6ab9e456",
+  "events.jsonl": "55dee1a0aa35ac72b86a417968199e209b5ea2969fb381de513401089d00f580",
+  "pilot_factorial_rate_contrasts.csv": "79b3fd0c1ef7ad4aecc90bfd3f267a8a140109dca6904cae27f1cb1dcf7c7b76",
+  "pricing_snapshot.json": "99ce6c0950eb23d2458727e1bed4dd57cad47c7eb3680ccf7a466a58c06b44ff",
+  "README.md": "d63c9c7fba80675589ca9031b42784b022a8a78888652c5895e7472f41bbd1b5",
+  "requests.jsonl": "9e3ddf5552698eb3e9577312ffedef1f81052b6cf20c1c2bf105101dbca8ae09",
+  "reservation_policy.json": "9bf11acbace12919e2047872721c51035fd4efd2495e72a74cbeac3153411a76",
+  "reservations.jsonl": "f1575a8a769a0d62155d808b0bf4f101a36767951a08bbd7c68d6122624cec7b",
+  "run.json": "afcab4ede775b9e41904ac848fc5cf4a665c0fa735663924f6f5c48df9241e34",
+  "summary.json": "8bb14ba4b158b9a30bd6ae8ed187bb19ac45ff6db97addb0d0797bbfcc7f737a"
+}

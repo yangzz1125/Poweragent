@@ -7,6 +7,7 @@ import os
 import re
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlparse
 
 from poweragentbench.llm_agent_adapter import parse_json_command
 from poweragentbench.ollama_client import OllamaGenerateClient
@@ -88,6 +89,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--max-turns", type=int, default=12)
     parser.add_argument("--max-output-tokens", type=int, default=16384)
+    parser.add_argument("--reasoning-effort", choices=["none", "low", "high", "max"])
     parser.add_argument("--repeats", type=int, default=1)
     parser.add_argument(
         "--domain-interface", action=argparse.BooleanOptionalAction, default=True
@@ -107,7 +109,42 @@ def parse_args() -> argparse.Namespace:
     return args
 
 
+def model_request_settings(args: argparse.Namespace) -> dict[str, Any]:
+    """Credential-free effective request settings, shared by execution and freeze."""
+    mode = getattr(args, "api_mode", "responses")
+    if args.provider == "ollama":
+        if getattr(args, "reasoning_effort", None) is not None:
+            raise ValueError("--reasoning-effort currently requires Responses")
+        return {"provider": "ollama", "model": args.model, "temperature": args.temperature,
+                "url": args.url or os.getenv("POWERAGENTBENCH_OLLAMA_URL"), "timeout": args.timeout,
+                "think": False, "schema_format": True}
+    url = (args.url or os.getenv("POWERAGENTBENCH_OPENAI_URL") or "https://api.openai.com/v1").rstrip("/")
+    path = "chat/completions" if mode == "chat" else "responses"
+    if url.endswith(("/chat/completions", "/responses")):
+        if not url.endswith("/" + path):
+            raise ValueError("API URL endpoint does not match --api-mode")
+    else:
+        url += "/" + path
+    max_output_tokens = getattr(args, "max_output_tokens", 16384)
+    if isinstance(max_output_tokens, bool) or not isinstance(max_output_tokens, int) or max_output_tokens < 1:
+        raise ValueError("max_output_tokens must be a positive integer")
+    effort = getattr(args, "reasoning_effort", None)
+    if effort not in (None, "none", "low", "high", "max"):
+        raise ValueError("unsupported reasoning effort")
+    if effort is not None and mode != "responses":
+        raise ValueError("--reasoning-effort currently requires Responses")
+    deepseek = urlparse(url).hostname == "api.deepseek.com"
+    if deepseek and mode == "responses" and effort is None:
+        effort = "high"  # Explicitly preserve the documented DeepSeek default.
+    return {"provider": "openai", "model": args.model, "api_mode": mode, "url": url,
+            "temperature": args.temperature, "timeout": args.timeout, "max_output_tokens": max_output_tokens,
+            "reasoning_effort": effort, "structured_outputs": mode == "responses",
+            "max_retries": 3, "retry_backoff": 2.0,
+            "temperature_policy": "ignored_in_thinking_mode" if deepseek and effort not in (None, "none") else "requested"}
+
+
 def make_client(args: argparse.Namespace):
+    settings = model_request_settings(args)
     if args.provider == "ollama":
         url = args.url or os.getenv("POWERAGENTBENCH_OLLAMA_URL")
         if not url:
@@ -123,27 +160,10 @@ def make_client(args: argparse.Namespace):
     api_key = args.api_key or os.getenv("POWERAGENTBENCH_OPENAI_API_KEY")
     if not api_key:
         raise SystemExit("OpenAI requires --api-key or POWERAGENTBENCH_OPENAI_API_KEY")
-    mode = getattr(args, "api_mode", "responses")
-    client_class = OpenAIChatClient if mode == "chat" else OpenAIResponsesClient
-    default_url = "https://api.openai.com/v1"
-    url = (args.url or os.getenv("POWERAGENTBENCH_OPENAI_URL") or default_url).rstrip("/")
-    path = "chat/completions" if mode == "chat" else "responses"
-    if url.endswith(("/chat/completions", "/responses")):
-        if not url.endswith("/" + path):
-            raise ValueError("API URL endpoint does not match --api-mode")
-    else:
-        url += "/" + path
-    max_output_tokens = getattr(args, "max_output_tokens", 16384)
-    if isinstance(max_output_tokens, bool) or not isinstance(max_output_tokens, int) or max_output_tokens < 1:
-        raise ValueError("max_output_tokens must be a positive integer")
-    return client_class(
-        api_key=api_key,
-        max_output_tokens=max_output_tokens,
-        model=args.model,
-        url=url,
-        temperature=args.temperature,
-        timeout=args.timeout,
-    )
+    client_class = OpenAIChatClient if settings["api_mode"] == "chat" else OpenAIResponsesClient
+    return client_class(api_key=api_key, **{key: settings[key] for key in (
+        "max_output_tokens", "model", "url", "temperature", "timeout", "reasoning_effort",
+        "structured_outputs", "max_retries", "retry_backoff")})
 
 
 def main() -> None:
@@ -204,6 +224,8 @@ def main() -> None:
                     "prompt_sha256": prompt_hash,
                     "benchmark_config_sha256": config_hash,
                     "max_output_tokens": args.max_output_tokens,
+                    "reasoning_effort": model_request_settings(args).get("reasoning_effort"),
+                    "temperature_policy": model_request_settings(args).get("temperature_policy"),
                 }
                 metrics.update(
                     {

@@ -5,6 +5,8 @@ They are not frozen Test data and must not be fed to evaluated agents.
 
 ## Current snapshot
 
+- Latest engineering check: [`voltage_control/explicit_high_freeze_review/`](voltage_control/explicit_high_freeze_review/README.md): explicit high/16384 Dev diagnosis succeeded, CNY 0.01251810; includes the model-settings/environment identity and scenario-paired absolute interaction contrasts from the existing Pilot. Formal freeze/tag/Main remain unapproved. Campaign known estimates + reserves now total CNY 3.69531226/10.
+
 - New focused check: [`voltage_control/output_limit_16384_diagnostic/`](voltage_control/output_limit_16384_diagnostic/README.md), D0015/I1-V0-R1 only, successful with 5 turns and 2 submits; CNY 0.01200310. All provider statuses completed; largest output 987 tokens, so this does **not** prove that raising the cap caused the improvement. This row is not merged into the 192-episode Pilot. The sanitized requests ledger covers the shared Dev campaign for budget reconciliation.
 
 - **Latest: [`voltage_control/cny_pilot_192/`](voltage_control/cny_pilot_192/README.md)**: all 192/192 Dev episodes complete, 170 successful, 22 task failures; no missing/paused episodes. Includes `analysis/` CSVs and figures plus `environment.txt`.

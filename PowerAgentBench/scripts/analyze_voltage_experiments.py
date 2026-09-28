@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+from itertools import combinations
 from pathlib import Path
 
 import numpy as np
@@ -41,6 +42,28 @@ def factorial(rows: pd.DataFrame) -> list[dict]:
         return [{"term": "model", "note": f"optimization failed: {fit.message}"}]
     return [{"term": term, "log_odds": float(value), "odds_ratio": float(np.exp(value))}
             for term, value in zip(("intercept", "I", "V", "R", "IV", "IR", "VR", "IVR"), fit.x)]
+
+
+def absolute_factorial_effects(rows: pd.DataFrame, samples: int = 1000) -> pd.DataFrame:
+    """Scenario-paired rate contrasts; no finite logit coefficient is fabricated."""
+    cells = rows.groupby(["scenario_id", "condition"])["success"].mean().unstack().reindex(columns=CONDITIONS).dropna()
+    rng = np.random.default_rng(2026)
+    records = []
+    for size in (1, 2, 3):
+        for factors in combinations(range(3), size):
+            weights = np.array([np.prod([1 if condition[1 + 3 * f] == "1" else -1 for f in factors])
+                                / (2 ** (3 - size)) for condition in CONDITIONS])
+            values = cells.to_numpy() @ weights
+            low = high = None
+            if len(values) >= 2:
+                draws = values[rng.integers(len(values), size=(samples, len(values)))].mean(axis=1)
+                low, high = map(float, np.quantile(draws, [.025, .975]))
+            records.append({"term": "".join("IVR"[f] for f in factors),
+                            "absolute_rate_contrast": float(values.mean()) if len(values) else None,
+                            "ci_low": low, "ci_high": high, "n_paired_scenarios": len(values),
+                            "excluded_unpaired_scenarios": rows.scenario_id.nunique() - len(values),
+                            "estimand": "main rate difference" if size == 1 else "difference-of-differences" if size == 2 else "triple difference"})
+    return pd.DataFrame(records)
 
 
 def analyze(csv_path: Path, output: Path, *, allow_incomplete: bool = False, bootstrap: int = 1000) -> dict:
@@ -91,10 +114,11 @@ def analyze(csv_path: Path, output: Path, *, allow_incomplete: bool = False, boo
         if factor not in complete:
             continue
         other = [field for field in ("domain_interface", "verification", "recovery") if field != factor]
-        paired = complete.pivot_table(index=["scenario_id", "repetition_index", *other], columns=factor, values="success").dropna(subset=[0, 1])
+        paired = complete.pivot_table(index=["scenario_id", "repetition_index", *other], columns=factor, values="success").reindex(columns=[0, 1]).dropna(subset=[0, 1])
         differences = (paired[1] - paired[0]).rename("difference").reset_index()
         low, high = cluster_ci(differences, "difference", rng, bootstrap)
         effects.append({"term": factor, "absolute_success_difference": differences.difference.mean(), "ci_low": low, "ci_high": high, "n_pairs": len(differences)})
+    absolute_factorial_effects(complete, bootstrap).to_csv(output / "factorial_rate_contrasts.csv", index=False)
     coefficients = factorial(complete)
     with (output / "table4_factorial.csv").open("w", newline="", encoding="utf-8") as stream:
         columns = ["term", "log_odds", "odds_ratio", "absolute_success_difference", "ci_low", "ci_high", "n_pairs", "note"]

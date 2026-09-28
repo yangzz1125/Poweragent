@@ -14,7 +14,7 @@
 4. 连续错误统计以每 episode、每类首次连续错误段为主；下一个相关操作未观察到的行单列 unknown/censored，报告后续操作成功和整个 episode 最终成功两个结局。相同场景多个重复不是独立样本。
 5. 费用和次数截断会影响可观察恢复机会。单局预算/turn/submit 耗尽有明确资源受限终态；campaign/低谷暂停、API 基础设施异常不伪装物理失败。全计划任务量、终态量、暂停/错误量必须并列。
 6. 完整任务集来自 run.json planned_tasks，不从已观察场景数反推。部分运行给已知成功/N 到 (已知成功+未决)/N 的覆盖边界，不叫置信区间。
-7. 单场景 smoke 不报告退化的 CI；零分母为 NA。低样本 logit separation 标注不可估计。交互效应聚类不确定性和完整 freeze 核查仍是 Main 前的单独阻塞，不能因为 Pilot 能画图就算通过。
+7. 单场景 smoke 不报告退化的 CI；零分母为 NA。低样本 logit separation 标注不可估计。已补充场景配对的IV/IR/VR差中差、IVR三重差及scenario bootstrap CI（factorial_rate_contrasts.csv），完整freeze身份核查也已实现。正式批准/tag、Main预算和研究限制仍需确认，不能因为Pilot能画图就当已获Main授权。
 
 ## 已实现的可观察分析
 

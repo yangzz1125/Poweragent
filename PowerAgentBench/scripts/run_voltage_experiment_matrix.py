@@ -20,7 +20,8 @@ from poweragentbench.voltage_costs import Campaign, BudgetStop, PRICING_PATH, le
 
 from poweragentbench.voltage_agentic import LLMVoltageAgent, load_voltage_prompt, score_voltage_output
 from poweragentbench.voltage_case import DEFAULT_CONFIG_PATH, BENCHMARK_DIR, REPO_ROOT, load_manifest, read_json, sha256_file
-from scripts.run_voltage_agent_eval import load_env_file, make_client
+from scripts.run_voltage_agent_eval import load_env_file, make_client, model_request_settings
+from poweragentbench.voltage_freeze import digest, environment_identity, candidate_manifest, validate_freeze
 
 EXPERIMENTS = BENCHMARK_DIR / "config" / "experiments.json"
 PROMPT = BENCHMARK_DIR / "prompts" / "voltage_agent_prompt.json"
@@ -30,7 +31,8 @@ FIELDS = (
     "initial_violation_magnitude final_violation_magnitude action_l1_mw n_llm_turns n_preview_calls n_preview_requests "
     "n_submit_calls n_evaluator_calls n_actual_power_flows input_tokens output_tokens total_tokens usage_unavailable api_retries "
     "latency_seconds prompt_sha256 benchmark_config_sha256 dataset_sha256 dataset_version code_commit source_sha256 temperature "
-    "max_turns max_output_tokens max_preview_calls max_submission_attempts campaign_id episode_attempt termination_reason "
+    "max_turns max_output_tokens reasoning_effort temperature_policy environment_sha256 model_settings_sha256 "
+    "max_preview_calls max_submission_attempts campaign_id episode_attempt termination_reason "
     "accounted_cost_cny unknown_cost_requests cost_status no_submission n_api_requests"
 ).split()
 KEYS = ("condition", "scenario_id", "repetition_index")
@@ -130,12 +132,8 @@ def _run_matrix(args: argparse.Namespace, client_factory=make_client, *, campaig
     split_hash = sha256_file(root / "manifest.json")
     if corpus and (corpus["split_manifest_sha256"].get(args.split) != split_hash or corpus["benchmark_config_sha256"] != manifest["benchmark_config_sha256"]):
         raise ValueError("corpus manifest hash mismatch")
-    if args.split == "test" and not args.dry_run:
-        if not args.freeze_manifest:
-            raise ValueError("Test requires --freeze-manifest after the Dev pilot")
-        freeze = read_json(args.freeze_manifest)
-        if freeze.get("dataset_sha256") != corpus["dataset_sha256"] or freeze.get("prompt_sha256") != sha256_file(args.prompt_template) or freeze.get("benchmark_config_sha256") != manifest["benchmark_config_sha256"]:
-            raise ValueError("freeze manifest does not match dataset/prompt/config")
+    if args.split == "test" and not args.dry_run and not args.freeze_manifest:
+        raise ValueError("Test requires --freeze-manifest after the Dev pilot")
     selected_scenarios = getattr(args, "scenario_ids", None)
     selected_conditions = getattr(args, "condition_ids", None)
     diagnostic = bool(selected_scenarios or selected_conditions)
@@ -151,16 +149,18 @@ def _run_matrix(args: argparse.Namespace, client_factory=make_client, *, campaig
             raise ValueError("unknown diagnostic condition")
         conditions = [c for c in conditions if c["id"] in selected_conditions]
     tasks = ordered_tasks(entries, conditions, args.repeats)
-    if args.dry_run:
-        return {"split": args.split, "tasks": len(tasks), "conditions": [row["id"] for row in conditions], "dataset_sha256": corpus["dataset_sha256"] if corpus else split_hash}
+    write_candidate = getattr(args, "write_freeze_candidate", None)
+    if write_candidate and not args.dry_run:
+        raise ValueError("--write-freeze-candidate requires --dry-run (no API calls)")
     if args.max_cost_usd is not None and (args.max_cost_usd <= 0 or args.input_usd_per_million <= 0 or args.output_usd_per_million <= 0):
         raise ValueError("cost gate requires a positive limit and both positive input/output prices")
     if args.max_total_tokens is not None and args.max_total_tokens < 1:
         raise ValueError("token gate must be positive")
-    out = args.output_dir
-    out.mkdir(parents=True, exist_ok=True)
-    ledger_path = out / "episodes.jsonl"
-    existing = load_ledger(ledger_path)
+    settings = model_request_settings(args)
+    public_settings = {key: value for key, value in settings.items() if key != "url"}
+    public_settings["api_url_sha256"] = hashlib.sha256((settings.get("url") or "").encode()).hexdigest()
+    environment = environment_identity()
+    protocol_paths = [REPO_ROOT / "docs" / name for name in ("BENCHMARK_SPEC.md", "RMB_BEHAVIOR_ANALYSIS.md", "RMB_MEASUREMENT_SPEC.md")]
     try:
         commit = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=REPO_ROOT.parent, text=True, stderr=subprocess.DEVNULL).strip()
     except (OSError, subprocess.CalledProcessError):
@@ -178,8 +178,62 @@ def _run_matrix(args: argparse.Namespace, client_factory=make_client, *, campaig
         "max_submission_attempts": config["agent"]["max_submission_attempts"], "repeats": args.repeats,
         "conditions_sha256": sha256_file(EXPERIMENTS), "api_url_sha256": hashlib.sha256((args.url or os.getenv("POWERAGENTBENCH_OPENAI_URL") or "default").encode()).hexdigest(),
     }
+    identity.update(model_settings=public_settings, model_settings_sha256=digest(public_settings),
+                    reasoning_effort=public_settings.get("reasoning_effort"), temperature_policy=public_settings.get("temperature_policy"),
+                    environment=environment, environment_sha256=digest(environment), split_manifest_sha256=split_hash,
+                    pricing_sha256=sha256_file(getattr(args, "pricing_file", PRICING_PATH)),
+                    analysis_protocol_sha256=digest({path.name: sha256_file(path) for path in protocol_paths}))
+    policy_path = Path(args.campaign_dir) / "reservation_policy.json" if getattr(args, "campaign_dir", None) else None
+    reservation_policy = read_json(policy_path) if policy_path and policy_path.exists() else {}
+    identity["accounting_policy"] = {
+        "currency": "CNY" if getattr(args, "campaign_dir", None) else "legacy",
+        "max_episode_cost_cny": getattr(args, "max_episode_cost_cny", "0.20"),
+        "max_campaign_cost_cny": getattr(args, "max_campaign_cost_cny", "10"),
+        "offpeak_only": bool(getattr(args, "campaign_dir", None)),
+        "unknown_charge_reserve_cny": reservation_policy.get("reserve_per_unknown_request_cny"),
+        "unknown_charge_policy_approved": reservation_policy.get("approved_by") == "user",
+    }
     if campaign:
-        identity.update(schema_version=2, campaign_id=campaign.campaign_id, pricing_sha256=campaign.pricing_sha256)
+        identity.update(schema_version=3, campaign_id=campaign.campaign_id, pricing_sha256=campaign.pricing_sha256)
+    if write_candidate:
+        if diagnostic or not corpus or len(tasks) != 2304:
+            raise ValueError("freeze candidate requires the complete 96-case Test x 8 x 3 matrix")
+        from poweragentbench.voltage_case import load_scenario_metadata
+        for entry in entries:
+            load_scenario_metadata(entry["scenario_id"], root)  # artifact hashes only, no PF/LLM
+        payload = candidate_manifest(identity)
+        payload["environment"] = environment
+        target = Path(write_candidate)
+        target.parent.mkdir(parents=True, exist_ok=True)
+        with target.open("x", encoding="utf-8") as handle:
+            json.dump(payload, handle, indent=2)
+            handle.write("\n")
+    if args.dry_run:
+        return {"split": args.split, "tasks": len(tasks), "conditions": [row["id"] for row in conditions],
+                "dataset_sha256": identity["dataset_sha256"], "model_settings": public_settings,
+                "environment_sha256": identity["environment_sha256"], "freeze_candidate": str(write_candidate) if write_candidate else None}
+    if args.split == "test":
+        freeze = read_json(args.freeze_manifest)
+        validate_freeze(freeze, identity)
+        tag = freeze.get("benchmark_tag")
+        if tag != "benchmark-v1.0":
+            raise ValueError("expected benchmark-v1.0 freeze tag")
+        try:
+            tagged = subprocess.check_output(["git", "rev-list", "-n", "1", tag], cwd=REPO_ROOT.parent, text=True, stderr=subprocess.DEVNULL).strip()
+        except subprocess.CalledProcessError as exc:
+            raise ValueError("freeze tag does not exist") from exc
+        if tagged != commit:
+            raise ValueError("freeze tag does not identify the current code commit")
+        frozen_paths = ["PowerAgentBench/poweragentbench", "PowerAgentBench/scripts", "PowerAgentBench/pyproject.toml",
+                        "PowerAgentBench/benchmarks/steady/voltage_control/config", "PowerAgentBench/benchmarks/steady/voltage_control/prompts", "PowerAgentBench/docs"]
+        dirty = subprocess.run(["git", "diff", "--quiet", "HEAD", "--", *frozen_paths], cwd=REPO_ROOT.parent).returncode
+        untracked = subprocess.check_output(["git", "ls-files", "--others", "--exclude-standard", "--", *frozen_paths], cwd=REPO_ROOT.parent, text=True)
+        if dirty or untracked.strip():
+            raise ValueError("freeze requires committed benchmark sources, config and protocol documents")
+    out = args.output_dir
+    out.mkdir(parents=True, exist_ok=True)
+    ledger_path = out / "episodes.jsonl"
+    existing = load_ledger(ledger_path)
     run_path = out / "run.json"
     if run_path.exists():
         old = read_json(run_path)
@@ -326,9 +380,11 @@ def main() -> None:
     parser.add_argument("--output-dir", type=Path, default=Path("results/voltage_control"))
     parser.add_argument("--prompt-template", type=Path, default=PROMPT)
     parser.add_argument("--freeze-manifest", type=Path)
+    parser.add_argument("--write-freeze-candidate", type=Path, help="Offline Test dry-run only; does not approve/freeze or authorize Main")
     parser.add_argument("--repeats", type=int, default=1)
     parser.add_argument("--max-turns", type=int, default=12)
     parser.add_argument("--max-output-tokens", type=int, default=16384)
+    parser.add_argument("--reasoning-effort", choices=["none", "low", "high", "max"])
     parser.add_argument("--max-episodes", type=int)
     parser.add_argument("--campaign-dir", type=Path, default=Path("results/voltage_control/cny_pilot_campaign"))
     parser.add_argument("--max-episode-cost-cny", default="0.20")

@@ -72,7 +72,7 @@ POWERAGENTBENCH_OPENAI_MODEL=deepseek-flash
 POWERAGENTBENCH_OPENAI_API_MODE=responses
 ```
 
-runner 自动补 `/responses`，也兼容完整端点 URL。Responses 目前承载文本 JSON 命令，不是原生 function-call 循环；DeepSeek Responses 无状态，每回合需传历史。
+runner 自动补 `/responses`，也兼容完整端点 URL。DeepSeek Responses 新请求显式使用 `reasoning.effort=high`，输出上限16384；可用 `--reasoning-effort none|low|high|max` 指定。思考模式下请求temperature=0不生效，运行元数据会标明。Responses目前承载文本JSON命令，不是原生function-call循环；DeepSeek Responses无状态，每回合需传历史。
 
 ### 无 API 成本检查
 
@@ -126,6 +126,10 @@ BESS bus：8/17/24/32；每台 ±1.5 MW、0.25 MW 步长。正功率放电注入
 ```
 
 输出首次失败条件概率、连续错误恢复、preview 改善/重复动作、一阶动作转移、费用分布和终止原因。单场景 smoke 不给假确定性的 CI；暂停和基础设施错误不混作物理失败。详见 [计量合同](PowerAgentBench/docs/RMB_MEASUREMENT_SPEC.md) 与 [行为分析口径](PowerAgentBench/docs/RMB_BEHAVIOR_ANALYSIS.md)。
+
+### 冻结前离线审查
+
+`--dry-run --split test --repeats 3 --write-freeze-candidate <新路径>` 可以生成完整2304任务的**未批准**身份候选；只核对文件hash，不调用模型或潮流，不创建tag。实际Test必须有显式批准/Main授权、完整源码/环境/模型/价格/分析/任务清单合同、匹配的benchmark-v1.0 tag和干净源码。当前只有工程检查与Dev验证，Main尚未获授权。详见[工程验收](PowerAgentBench/docs/EXPLICIT_REASONING_AND_FREEZE.md)。
 
 ## 研究记录与图片
 

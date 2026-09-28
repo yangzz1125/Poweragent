@@ -5,6 +5,8 @@ They are not frozen Test data and must not be fed to evaluated agents.
 
 ## Current snapshot
 
+- New physical difficulty study: [`voltage_control/dev_action_landscape_2030/`](voltage_control/dev_action_landscape_2030/README.md). 24 Dev cases, 19838 local PF evaluations, no model API calls. Median sampled feasible fraction: full grid 3.71%, correct-sign grid 21.88%. Exact correct-sign enumeration for three sparse cases finds 9/2401, 1/2401 and 51/2401 feasible actions, yet all three admit the obvious all-BESS-full-discharge solution and were solved by both no-feedback LLM conditions. This distinguishes physical tightness from reasoning difficulty. Only per-case summaries/protocols are published, not private sampled dispatches or witnesses.
+
 - Latest engineering check: [`voltage_control/explicit_high_freeze_review/`](voltage_control/explicit_high_freeze_review/README.md): explicit high/16384 Dev diagnosis succeeded, CNY 0.01251810; includes the model-settings/environment identity and scenario-paired absolute interaction contrasts from the existing Pilot. Formal freeze/tag/Main remain unapproved. Campaign known estimates + reserves now total CNY 3.69531226/10.
 
 - New focused check: [`voltage_control/output_limit_16384_diagnostic/`](voltage_control/output_limit_16384_diagnostic/README.md), D0015/I1-V0-R1 only, successful with 5 turns and 2 submits; CNY 0.01200310. All provider statuses completed; largest output 987 tokens, so this does **not** prove that raising the cap caused the improvement. This row is not merged into the 192-episode Pilot. The sanitized requests ledger covers the shared Dev campaign for budget reconciliation.

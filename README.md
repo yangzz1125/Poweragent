@@ -20,6 +20,8 @@
 
 完整实验记录供云端Agent读取：[`research_records/voltage_control/cny_pilot_192/`](research_records/voltage_control/cny_pilot_192/README.md)。已知费用约¥2.67、五笔未知费预留¥1，合计占用¥3.67/¥10；原始异常和预留均保留，密钥/隐藏Test/witness不发布。回归61 tests通过。详见[冻结前审查](PowerAgentBench/docs/PILOT_PREFREEZE_REVIEW.md)，不要将Dev结果冒充Test结论。
 
+最新难度研究：[Dev动作空间诊断](PowerAgentBench/docs/DEV_PHYSICAL_DIFFICULTY_STUDY.md)。可行域并非普遍宽松，但部分极窄Hard场景存在明显的满功率边界解，物理严重度不等于Agent推理难度。24个Dev的抽样和3个方向子空间穷举合计19838次本地潮流，无API费用；暂不因此启动Main或改写Test。
+
 ## 目录用途
 
 ```text

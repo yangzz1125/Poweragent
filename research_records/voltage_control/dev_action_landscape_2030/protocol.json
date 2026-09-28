@@ -1,0 +1,15 @@
+{
+  "benchmark_config_sha256": "0ba76e089757af12ffb712732f1a06c838c63c857f00433f1b5c39d316048ecd",
+  "case_count": 24,
+  "dataset_sha256": "8642cae21141b22af062eb47d6c4fc8b9aeec9a981246678e1be3e05148545c3",
+  "dev_manifest_sha256": "294fba7e72bde69092f299231850df3bdef0344ac56bfe7d34c164824e6aefc1",
+  "interval": "per-case Wilson approximation for sampled feasible-action fraction, not LLM success probability",
+  "local_test": "each legal +/- one-step neighbor of the existing Dev witness; not optimized robustness",
+  "purpose": "Dev-only physical difficulty diagnosis; not a Test filter",
+  "samples_per_space": 256,
+  "sampling": "uniform without replacement over full legal grid and separately over correct-sign grid including zero",
+  "script_sha256": "05d18eb6b5e84d346f34f8563a98b0527170daaeae3c9b0c1cf20b6032e08dde",
+  "seed": 2030,
+  "selection": "all Dev cases retained; no baseline-success filtering",
+  "uniform_strategy": "all BESS at correct-sign 0.25, 0.50, ... 1.50 MW; predetermined ascending order"
+}

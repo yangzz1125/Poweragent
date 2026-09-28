@@ -1,0 +1,14 @@
+{
+  "actual_power_flows": 12587,
+  "cases": 24,
+  "directional_density_median": 0.21875,
+  "full_density_median": 0.037109375,
+  "neighbor_success_fraction_median": 0.625,
+  "note": "Sampling estimates, not exhaustive feasible volume; neighborhood only around construction witnesses. No LLM calls.",
+  "one_shot_025_successes": 2,
+  "one_shot_050_successes": 4,
+  "one_shot_100_successes": 12,
+  "uniform_any_successes": 19,
+  "uniform_within_2_successes": 4,
+  "uniform_within_4_successes": 14
+}

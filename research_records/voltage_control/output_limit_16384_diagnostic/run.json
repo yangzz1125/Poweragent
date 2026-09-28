@@ -1,0 +1,33 @@
+{
+  "provider": "openai",
+  "model": "deepseek-flash",
+  "api_mode": "responses",
+  "split": "dev",
+  "prompt_sha256": "f03defe839e5e1a51063ec8c92013added51277b0d7b0f6d30c144af67b645b3",
+  "benchmark_config_sha256": "0ba76e089757af12ffb712732f1a06c838c63c857f00433f1b5c39d316048ecd",
+  "dataset_sha256": "8642cae21141b22af062eb47d6c4fc8b9aeec9a981246678e1be3e05148545c3",
+  "dataset_version": "ieee33-bess-voltage-v1",
+  "code_commit": "c9c5cbe58bab8a95df3abdbd25511c7156ed71a2",
+  "source_sha256": "7f006c1aba7825f1ee6263e51d85f5611a689de1d3a13975ef06d0c810c8884a",
+  "temperature": 0.0,
+  "task_order_version": "seeded-case-and-condition-v2",
+  "run_scope": "dev_diagnostic_subset",
+  "planned_tasks": [
+    [
+      "I1-V0-R1",
+      "D0015",
+      0
+    ]
+  ],
+  "max_turns": 12,
+  "max_output_tokens": 16384,
+  "max_preview_calls": 4,
+  "max_submission_attempts": 3,
+  "repeats": 1,
+  "conditions_sha256": "1020e4e94e2ae30acb58a6fe22774b5fbff776e34b8b2caf0a7db2a0b480815a",
+  "api_url_sha256": "a34e2a4708ed1c61008a151688838dcf1c44d4e7f08054633e72ba7c0b16cfc1",
+  "schema_version": 2,
+  "campaign_id": "75672523-ca3b-418d-a0b4-e52466e0e8f8",
+  "pricing_sha256": "33313ab5a15bb501e4d563596cc8accc429b0dd98946b72ede202a2808dd2beb",
+  "run_id": "8f75f248-ef96-4677-89d7-d2161a5a7994"
+}

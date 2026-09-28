@@ -77,11 +77,11 @@ def analyze(run_dir: Path, campaign_dir: Path, output_dir: Path) -> dict:
         key = json.dumps([episode.condition, episode.scenario_id, int(episode.repetition_index)], separators=(",", ":"))
         attempt = int(episode.episode_attempt)
         trajectory = [e for e in event_rows if e.get("episode_key") == key and int(e["episode_attempt"]) == attempt]
-        operations = [e for e in trajectory if e["event"] in ("tool_finished", "parse_error")]
+        operations = [e for e in trajectory if e["event"] in ("tool_finished", "parse_error", "output_truncated")]
         if len({e["turn"] for e in operations}) != len(operations):
             raise ValueError("duplicate operations per turn: reconcile checkpoint events before analysis")
         for event in operations:
-            error = "parse_error" if event["event"] == "parse_error" else event.get("outcome")
+            error = event["event"] if event["event"] in ("parse_error", "output_truncated") else event.get("outcome")
             if error and error != "ok":
                 failure_types[(episode.condition, error)] += 1
         done = episode.status == "complete"
@@ -98,7 +98,7 @@ def analyze(run_dir: Path, campaign_dir: Path, output_dir: Path) -> dict:
                                       "final_success": success, "final_failure": 1 - success if success is not None else None,
                                       "censored": not done, "termination_reason": episode.termination_reason})
         for category in ("command", "physical"):
-            relevant = operations if category == "command" else [e for e in tools if e["tool"] in ("submit", "preview_bess_dispatch") and e.get("outcome") not in ("invalid_dispatch", "tool_error")]
+            relevant = [e for e in operations if e["event"] != "output_truncated"] if category == "command" else [e for e in tools if e["tool"] in ("submit", "preview_bess_dispatch") and e.get("outcome") not in ("invalid_dispatch", "tool_error")]
             def failed(e):
                 return (e["event"] == "parse_error" or e.get("outcome") in ("invalid_dispatch", "unknown_tool", "tool_error")) if category == "command" else e.get("outcome") in ("voltage_unresolved", "pf_nonconverged")
             start = next((i for i, e in enumerate(relevant) if failed(e)), None)

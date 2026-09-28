@@ -87,6 +87,7 @@ def parse_args() -> argparse.Namespace:
         "--output-dir", type=Path, default=Path("results/voltage_control")
     )
     parser.add_argument("--max-turns", type=int, default=12)
+    parser.add_argument("--max-output-tokens", type=int, default=16384)
     parser.add_argument("--repeats", type=int, default=1)
     parser.add_argument(
         "--domain-interface", action=argparse.BooleanOptionalAction, default=True
@@ -132,8 +133,12 @@ def make_client(args: argparse.Namespace):
             raise ValueError("API URL endpoint does not match --api-mode")
     else:
         url += "/" + path
+    max_output_tokens = getattr(args, "max_output_tokens", 16384)
+    if isinstance(max_output_tokens, bool) or not isinstance(max_output_tokens, int) or max_output_tokens < 1:
+        raise ValueError("max_output_tokens must be a positive integer")
     return client_class(
         api_key=api_key,
+        max_output_tokens=max_output_tokens,
         model=args.model,
         url=url,
         temperature=args.temperature,
@@ -198,6 +203,7 @@ def main() -> None:
                     "repetition_index": repetition_index,
                     "prompt_sha256": prompt_hash,
                     "benchmark_config_sha256": config_hash,
+                    "max_output_tokens": args.max_output_tokens,
                 }
                 metrics.update(
                     {

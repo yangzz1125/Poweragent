@@ -29,6 +29,17 @@ class MockClient:
         return json.dumps({'tool': 'submit', 'args': {'dispatch': []}})
 
 
+def test_dev_diagnostic_subset_is_explicit_and_invalid_ids_rejected(tmp_path):
+    args = options(tmp_path, scenario_ids=['V0001'], condition_ids=['I1-V0-R1'], dry_run=True)
+    assert run_matrix(args)['tasks'] == 1
+    args.scenario_ids=['NO_SUCH_CASE']
+    with pytest.raises(ValueError, match='unknown diagnostic scenario'):
+        run_matrix(args)
+    args.scenario_ids=['V0001']; args.condition_ids=['I2-V0-R1']
+    with pytest.raises(ValueError, match='unknown diagnostic condition'):
+        run_matrix(args)
+
+
 def test_factorial_repeats_cover_all_cells():
     conditions = read_json(BENCHMARK_DIR / 'config' / 'experiments.json')['conditions']
     tasks = ordered_tasks([{'scenario_id': 'V0001'}], conditions, 2)
@@ -59,6 +70,9 @@ def test_matrix_resume_and_metadata(tmp_path):
     identity = read_json(args.output_dir / 'run.json')
     assert len(identity['planned_tasks']) == 64
     assert len(identity['source_sha256']) == 64
+    assert identity['max_output_tokens'] == 16384
+    with pytest.raises(ValueError, match='metadata mismatch'):
+        run_matrix(options(tmp_path, max_output_tokens=8192), lambda _: MockClient())
     with pytest.raises(ValueError, match='metadata mismatch'):
         run_matrix(options(tmp_path, temperature=0.4), lambda _: MockClient())
 

@@ -9,6 +9,10 @@
 - 脱敏记录已可由GitHub外部agent读取，未发布隐藏Test/full/witness或密钥；导出内容提供SHA256，文本固定LF、PNG保留二进制以保证Windows/Linux一致。
 - 保存 `environment.txt` 作为本地环境快照，但它不等于已经在干净环境中复现通过的正式lockfile。
 
+## 输出预算更新（Pilot 后，未重跑）
+
+按用户要求，电压实验 runner 的新运行默认 `--max-output-tokens 16384`，显式传给 Responses/Chat 客户端并记录到 run.json / episodes.csv；单条件 runner 同步。修改此值拒绝续写同一 run。共享客户端用于其他轨道的原默认值不改。原192条Pilot仍对应4096，不回填或覆盖。之后在D0015/I1-V0-R1完成一次独立Dev复测：5轮、2次提交后成功，花费¥0.01200310；5次provider状态均为completed，无截断，单轮最大输出987（小于原4096），所以不能把成功归因于扩容。账本已增加provider完成状态/截断原因，见 [诊断记录](OUTPUT_LIMIT_16384_DIAGNOSTIC.md)。人民币单局/campaign与工具预算不变。
+
 ## Main 前的阻塞
 
 1. **输出上限导致的潜在截断需要在Dev澄清。** 唯一R1失败D0015/I1-V0-R1在第3、5–11轮的output_tokens恰好都是4096，visible_text为空，随后被标记parse_error；当前客户端max_output_tokens默认4096。这与输出上限耗尽一致，不能简单归因为“模型不会JSON”。日志未持久化provider status/incomplete_details和显式thinking参数，尚不能确认内部原因；先补这类元数据，并在单独Dev诊断协议中验证，不能改完后无声并入这192条。

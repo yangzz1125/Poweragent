@@ -22,10 +22,17 @@ def export_run(run_dir: Path, campaign_dir: Path, target: Path) -> dict:
     rows = list(csv.DictReader((run_dir / "episodes.csv").open(encoding="utf-8")))
     events = read_events(run_dir / "events.jsonl")
     requests = read_events(campaign_dir / "requests.jsonl")
+    # The campaign spans several Dev runs. Publish its sanitized usage ledger
+    # intact so reservations and the cumulative budget remain reconstructible.
+    dev_runs = {run["run_id"]}
+    for path in run_dir.parent.glob("*/run.json"):
+        metadata = json.loads(path.read_text(encoding="utf-8"))
+        if metadata.get("split") == "dev":
+            dev_runs.add(metadata["run_id"])
     public_requests = []
     for event in requests:
-        if event.get("context", {}).get("run_id") != run["run_id"]:
-            continue
+        if event.get("context", {}).get("run_id") not in dev_runs:
+            raise ValueError("campaign includes unverified/non-Dev requests; publication refused")
         public_requests.append({k: v for k, v in event.items() if k not in ("visible_text",)})
     totals = ledger_totals(campaign_dir / "requests.jsonl")
     artifact = {
@@ -53,7 +60,9 @@ def export_run(run_dir: Path, campaign_dir: Path, target: Path) -> dict:
 This immutable snapshot is exported from the local run. Read `summary.json` first.
 `run.json` contains the full planned task set; `episodes.csv` is the active episode
 summary. `events.jsonl` contains model-visible commands/tool feedback (no hidden
-reasoning); `requests.jsonl` contains sanitized per-request usage and timing.
+reasoning); `requests.jsonl` contains sanitized per-request usage and timing for the entire
+shared Dev campaign (possibly multiple run IDs), so the campaign budget and
+reserves can be reconstructed. Filter its context.run_id for this run's costs.
 
 Missing/paused episodes are not physical failures. Do not select only successful
 rows or treat conditions with different completion counts as a controlled result.

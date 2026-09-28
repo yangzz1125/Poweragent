@@ -138,7 +138,10 @@ class OpenAIResponsesClient:
             self.last_request_id = request_id
             context_keys = ("campaign_id", "run_id", "episode_key", "episode_attempt_id", "turn")
             base = {"request_id": request_id, "started_at": started_at, "retry_index": attempt,
-                    "model": self.model, "context": {k: self.request_context[k] for k in context_keys if k in self.request_context}}
+                    "model": self.model, "context": {k: self.request_context[k] for k in context_keys if k in self.request_context},
+                    "max_output_tokens_requested": payload.get("max_output_tokens", payload.get("max_tokens")),
+                    "temperature_requested": payload.get("temperature"),
+                    "reasoning_effort_requested": (payload.get("reasoning") or {}).get("effort", "provider_default")}
             # Hooks run outside the HTTP exception handler: accounting/policy
             # failures must not be mistaken for transport errors and retried.
             if self.request_hook:
@@ -158,6 +161,7 @@ class OpenAIResponsesClient:
                     visible = self._extract_text(out).replace(self.api_key, "[REDACTED]")
                     self.request_hook({**terminal, "event": "finished", "http_status": 200,
                                        "response_id": out.get("id"), "response_model": out.get("model"),
+                                       **self.completion_metadata(out),
                                        "usage": out.get("usage"), "visible_text": visible})
                 return out
             status = failure.code if isinstance(failure, urllib.error.HTTPError) else None
@@ -190,6 +194,20 @@ class OpenAIResponsesClient:
             return
         delay = self.retry_backoff * (2 ** attempt)
         time.sleep(delay)
+
+    @staticmethod
+    def completion_metadata(payload: Dict[str, Any]) -> Dict[str, Any]:
+        """Provider-declared stop status only; never infer truncation from token count."""
+        status = payload.get("status")
+        details = payload.get("incomplete_details")
+        reason = details.get("reason") if isinstance(details, dict) else None
+        choices = payload.get("choices") or []
+        finish = choices[0].get("finish_reason") if choices and isinstance(choices[0], dict) else None
+        return {
+            "response_status": status if status in ("completed", "incomplete", "failed", "cancelled", "queued", "in_progress") else "unknown",
+            "incomplete_reason": reason if reason in ("max_output_tokens", "content_filter") else ("unknown" if reason is not None else None),
+            "finish_reason": finish if finish in ("stop", "length", "tool_calls", "function_call", "content_filter") else ("unknown" if finish is not None else None),
+        }
 
     @staticmethod
     def _extract_text(payload: Dict[str, Any]) -> str:

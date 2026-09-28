@@ -30,7 +30,7 @@ FIELDS = (
     "initial_violation_magnitude final_violation_magnitude action_l1_mw n_llm_turns n_preview_calls n_preview_requests "
     "n_submit_calls n_evaluator_calls n_actual_power_flows input_tokens output_tokens total_tokens usage_unavailable api_retries "
     "latency_seconds prompt_sha256 benchmark_config_sha256 dataset_sha256 dataset_version code_commit source_sha256 temperature "
-    "max_turns max_preview_calls max_submission_attempts campaign_id episode_attempt termination_reason "
+    "max_turns max_output_tokens max_preview_calls max_submission_attempts campaign_id episode_attempt termination_reason "
     "accounted_cost_cny unknown_cost_requests cost_status no_submission n_api_requests"
 ).split()
 KEYS = ("condition", "scenario_id", "repetition_index")
@@ -136,7 +136,21 @@ def _run_matrix(args: argparse.Namespace, client_factory=make_client, *, campaig
         freeze = read_json(args.freeze_manifest)
         if freeze.get("dataset_sha256") != corpus["dataset_sha256"] or freeze.get("prompt_sha256") != sha256_file(args.prompt_template) or freeze.get("benchmark_config_sha256") != manifest["benchmark_config_sha256"]:
             raise ValueError("freeze manifest does not match dataset/prompt/config")
-    tasks = ordered_tasks(manifest["scenarios"], conditions, args.repeats)
+    selected_scenarios = getattr(args, "scenario_ids", None)
+    selected_conditions = getattr(args, "condition_ids", None)
+    diagnostic = bool(selected_scenarios or selected_conditions)
+    if diagnostic and args.split != "dev":
+        raise ValueError("subset diagnostics are allowed only on Dev")
+    entries = manifest["scenarios"]
+    if selected_scenarios:
+        if set(selected_scenarios) - {e["scenario_id"] for e in entries}:
+            raise ValueError("unknown diagnostic scenario")
+        entries = [e for e in entries if e["scenario_id"] in selected_scenarios]
+    if selected_conditions:
+        if set(selected_conditions) - {c["id"] for c in conditions}:
+            raise ValueError("unknown diagnostic condition")
+        conditions = [c for c in conditions if c["id"] in selected_conditions]
+    tasks = ordered_tasks(entries, conditions, args.repeats)
     if args.dry_run:
         return {"split": args.split, "tasks": len(tasks), "conditions": [row["id"] for row in conditions], "dataset_sha256": corpus["dataset_sha256"] if corpus else split_hash}
     if args.max_cost_usd is not None and (args.max_cost_usd <= 0 or args.input_usd_per_million <= 0 or args.output_usd_per_million <= 0):
@@ -157,8 +171,10 @@ def _run_matrix(args: argparse.Namespace, client_factory=make_client, *, campaig
         "dataset_sha256": corpus["dataset_sha256"] if corpus else split_hash,
         "dataset_version": manifest["dataset_version"], "code_commit": commit, "source_sha256": source_identity(), "temperature": args.temperature,
         "task_order_version": "seeded-case-and-condition-v2",
+        "run_scope": "dev_diagnostic_subset" if diagnostic else "full_matrix",
         "planned_tasks": [[c["id"], e["scenario_id"], r] for e, c, r in tasks],
-        "max_turns": args.max_turns, "max_preview_calls": config["agent"]["max_preview_calls"],
+        "max_turns": args.max_turns, "max_output_tokens": getattr(args, "max_output_tokens", 16384),
+        "max_preview_calls": config["agent"]["max_preview_calls"],
         "max_submission_attempts": config["agent"]["max_submission_attempts"], "repeats": args.repeats,
         "conditions_sha256": sha256_file(EXPERIMENTS), "api_url_sha256": hashlib.sha256((args.url or os.getenv("POWERAGENTBENCH_OPENAI_URL") or "default").encode()).hexdigest(),
     }
@@ -305,11 +321,14 @@ def main() -> None:
     parser.add_argument("--api-mode", choices=["chat", "responses"], default=os.getenv("POWERAGENTBENCH_OPENAI_API_MODE", "responses"))
     parser.add_argument("--split", choices=["dev", "test"], required=True)
     parser.add_argument("--scenario-root", type=Path, required=True, help="Evaluator-only split root")
+    parser.add_argument("--scenario-id", dest="scenario_ids", action="append", help="Dev-only diagnostic subset; recorded in planned_tasks")
+    parser.add_argument("--condition", dest="condition_ids", action="append", help="Dev-only diagnostic condition, e.g. I1-V0-R1")
     parser.add_argument("--output-dir", type=Path, default=Path("results/voltage_control"))
     parser.add_argument("--prompt-template", type=Path, default=PROMPT)
     parser.add_argument("--freeze-manifest", type=Path)
     parser.add_argument("--repeats", type=int, default=1)
     parser.add_argument("--max-turns", type=int, default=12)
+    parser.add_argument("--max-output-tokens", type=int, default=16384)
     parser.add_argument("--max-episodes", type=int)
     parser.add_argument("--campaign-dir", type=Path, default=Path("results/voltage_control/cny_pilot_campaign"))
     parser.add_argument("--max-episode-cost-cny", default="0.20")

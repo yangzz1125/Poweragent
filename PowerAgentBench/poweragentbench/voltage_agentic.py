@@ -12,6 +12,7 @@ from typing import Any
 import numpy as np
 
 from poweragentbench.llm_agent_adapter import load_prompt_template, parse_json_command
+from poweragentbench.openai_client import OpenAIResponsesClient
 from poweragentbench.voltage_case import (
     DEFAULT_CONFIG_PATH,
     DEFAULT_SCENARIO_ROOT,
@@ -143,7 +144,9 @@ class LLMVoltageAgent:
             try:
                 if cached:
                     response = cached["visible_text"]
-                    self.llm.last_debug = {"usage": {"input_tokens": cached["input_tokens"], "output_tokens": cached["output_tokens"], "total_tokens": cached["total_tokens"]}}
+                    self.llm.last_debug = {"usage": {"input_tokens": cached["input_tokens"], "output_tokens": cached["output_tokens"], "total_tokens": cached["total_tokens"]},
+                                           "status": cached.get("response_status"), "incomplete_details": {"reason": cached.get("incomplete_reason")},
+                                           "choices": [{"finish_reason": cached.get("finish_reason")}]}
                 else:
                     response = self.llm(messages) or ""
             except BudgetStop as stop:
@@ -163,8 +166,9 @@ class LLMVoltageAgent:
             responses.append(response)
             messages.append({"role": "assistant", "content": response})
             completed_turns = turn + 1
+            completion = OpenAIResponsesClient.completion_metadata(getattr(self.llm, "last_debug", None) or {})
             emit("model_response", request_id=cached["request_id"] if cached else getattr(self.llm, "last_request_id", None),
-                 text=response, recovered_paid_response=bool(cached))
+                 text=response, recovered_paid_response=bool(cached), **completion)
             try:
                 command = parse_json_command(response)
             except ValueError:
@@ -173,8 +177,10 @@ class LLMVoltageAgent:
                     "error": "invalid JSON command",
                     "instruction": "Return exactly one JSON command with fields 'tool' and 'args'.",
                 }
-                tool_log.append({"tool": "parse_error", "observation": observation})
-                emit("parse_error", error_code="invalid_json_command")
+                truncated = completion["incomplete_reason"] == "max_output_tokens" or completion["finish_reason"] == "length"
+                error_kind = "output_truncated" if truncated else "parse_error"
+                tool_log.append({"tool": error_kind, "observation": observation})
+                emit(error_kind, error_code="max_output_tokens" if truncated else "invalid_json_command", **completion)
                 messages.append({"role": "user", "content": json.dumps({"observation": observation})})
                 checkpoint()
                 continue

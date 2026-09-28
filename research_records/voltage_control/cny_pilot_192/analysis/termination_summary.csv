@@ -1,0 +1,12 @@
+condition,status,termination_reason,count
+I0-V0-R0,complete,first_failure_no_recovery,10
+I0-V0-R0,complete,success,14
+I0-V0-R1,complete,success,24
+I0-V1-R0,complete,success,24
+I0-V1-R1,complete,success,24
+I1-V0-R0,complete,first_failure_no_recovery,11
+I1-V0-R0,complete,success,13
+I1-V0-R1,complete,success,23
+I1-V0-R1,complete,turn_limit,1
+I1-V1-R0,complete,success,24
+I1-V1-R1,complete,success,24

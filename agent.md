@@ -1,5 +1,11 @@
 # Poweragent 开发交接
 
+## 最新交接：Pilot 已完成，暂不跑 Main
+
+v2 Dev 192/192终态，170成功；全低谷985 HTTP尝试，已知估算¥2.67079106、未知费用预留¥1，共¥3.67079106/¥10。五次ConnectionResetError保留在账本，用户已授权后续每笔未知预留¥0.20并有限重试，不再逐笔人工暂停。注意这不是确认收费，绝不绕过campaign总额。
+
+完整脱敏公开记录 `research_records/voltage_control/cny_pilot_192/`（含analysis/、环境快照和SHA256）供其他云端Agent分析。全套离线61 tests通过。第9步完成、第10步未通过：见 `PowerAgentBench/docs/PILOT_PREFREEZE_REVIEW.md`。D0015/I1-V0-R1的8次空文本parse_error都对应4096 output_tokens，需审查输出上限/思考参数；不按Test调参。没有Main授权，不创建tag；下文部分段落保留旧阶段背景，以此最新交接和审查为准。
+
 ## 目标与边界
 
 研究 IEEE 33-bus BESS 电压控制任务中 I/V/R Harness 的可靠性与成本，主实验只使用 PowerAgentBench + pandapower + hosted LLM API。PowerMCP/PowerSkills 作参考，不扩展 SOC、无功、多周期、MCP transport 或 Coding Agent 沙箱。公开入口和运行命令见 [README](README.md)，物理合同见 [BENCHMARK_SPEC](PowerAgentBench/docs/BENCHMARK_SPEC.md)。

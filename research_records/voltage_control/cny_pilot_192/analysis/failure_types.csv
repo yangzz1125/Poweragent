@@ -1,0 +1,16 @@
+condition,failure_type,count
+I1-V1-R0,voltage_unresolved,10
+I1-V0-R0,voltage_unresolved,11
+I1-V1-R1,voltage_unresolved,13
+I0-V1-R0,voltage_unresolved,11
+I1-V0-R1,voltage_unresolved,14
+I0-V0-R0,voltage_unresolved,10
+I0-V1-R1,voltage_unresolved,12
+I0-V0-R1,voltage_unresolved,11
+I1-V0-R0,parse_error,11
+I0-V0-R0,parse_error,5
+I1-V0-R1,parse_error,14
+I0-V1-R1,parse_error,2
+I0-V0-R1,parse_error,10
+I1-V1-R1,parse_error,1
+I1-V1-R0,parse_error,1

@@ -1,0 +1,12 @@
+condition,status,termination_reason,n,accounted_cost_mean_cny,accounted_cost_median_cny,accounted_cost_p90_cny,unknown_requests,mean_turns,mean_actual_pf,note
+I0-V0-R0,complete,first_failure_no_recovery,10,0.014957066,0.011620120000000001,0.025609843999999996,1,4.3,2.0,known estimates/upper bounds; not invoice; unknown charges excluded
+I0-V0-R0,complete,success,14,0.012990785714285715,0.01224412,0.023185104000000012,0,4.0,2.0,known estimates/upper bounds; not invoice; unknown charges excluded
+I0-V0-R1,complete,success,24,0.0194177925,0.011353120000000001,0.043605464,1,4.833333333333333,2.4583333333333335,known estimates/upper bounds; not invoice; unknown charges excluded
+I0-V1-R0,complete,success,24,0.009042993333333334,0.008197920000000001,0.013712872,1,5.375,3.5,known estimates/upper bounds; not invoice; unknown charges excluded
+I0-V1-R1,complete,success,24,0.012321051666666666,0.009316479999999999,0.020783599999999996,0,5.625,3.5833333333333335,known estimates/upper bounds; not invoice; unknown charges excluded
+I1-V0-R0,complete,first_failure_no_recovery,11,0.010661863636363638,0.00803,0.019283,0,4.090909090909091,2.0,known estimates/upper bounds; not invoice; unknown charges excluded
+I1-V0-R0,complete,success,13,0.02522712461538462,0.01885856,0.026925944000000004,1,5.0,2.0,known estimates/upper bounds; not invoice; unknown charges excluded
+I1-V0-R1,complete,success,23,0.016320564347826087,0.0117698,0.02929812,1,4.739130434782608,2.5217391304347827,known estimates/upper bounds; not invoice; unknown charges excluded
+I1-V0-R1,complete,turn_limit,1,0.17491032,0.17491032,0.17491032,0,12.0,3.0,known estimates/upper bounds; not invoice; unknown charges excluded
+I1-V1-R0,complete,success,24,0.007236458333333332,0.00682958,0.010190712,0,5.5,3.5416666666666665,known estimates/upper bounds; not invoice; unknown charges excluded
+I1-V1-R1,complete,success,24,0.007974745,0.0078058599999999995,0.011376875999999998,0,5.75,3.7083333333333335,known estimates/upper bounds; not invoice; unknown charges excluded

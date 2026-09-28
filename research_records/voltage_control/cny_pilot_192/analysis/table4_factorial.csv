@@ -1,0 +1,5 @@
+term,log_odds,odds_ratio,absolute_success_difference,ci_low,ci_high,n_pairs,note
+domain_interface,,,-0.020833333333333332,-0.0625,0.03125,96,
+verification,,,0.22916666666666666,0.13541666666666666,0.3229166666666667,96,
+recovery,,,0.20833333333333334,0.125,0.2916666666666667,96,
+model,,,,,,,complete/quasi separation: coefficient not estimable

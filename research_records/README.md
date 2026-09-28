@@ -5,12 +5,15 @@ They are not frozen Test data and must not be fed to evaluated agents.
 
 ## Current snapshot
 
-- [`voltage_control/cny_pilot_066/`](voltage_control/cny_pilot_066/README.md): 66/192 completed Dev episodes, 61 successful, 1 paused, 125 not started.
-- Known usage-based cost: CNY 0.81203662; two unknown-charge reserves total CNY 0.40; campaign budget consumed CNY 1.21203662 of the approved CNY 10.
+- **Latest: [`voltage_control/cny_pilot_192/`](voltage_control/cny_pilot_192/README.md)**: all 192/192 Dev episodes complete, 170 successful, 22 task failures; no missing/paused episodes. Includes `analysis/` CSVs and figures plus `environment.txt`.
+- Known usage-based cost: **CNY 2.67079106**; five unknown-charge reserves total **CNY 1.00**; campaign budget consumed **CNY 3.67079106** of the approved CNY 10. All 985 HTTP attempts were off-peak; 5 ConnectionResetErrors were retained and resumed/retried.
+- Earlier snapshot: [`voltage_control/cny_pilot_066/`](voltage_control/cny_pilot_066/README.md), retained as progress evidence.
 - Reserves are precautionary, **not confirmed provider charges**. Errors and missing outcomes are retained.
 
 Read `summary.json`, `run.json`, `episodes.csv`, `events.jsonl`, `requests.jsonl`, `reservations.jsonl`, and `metadata_migrations.jsonl` together. `SHA256.json` identifies exported file bytes. Later snapshots supersede progress counts but do not erase earlier evidence.
 
 No API keys, environment files, checkpoints, hidden full/Test cases, or reference witnesses are included. Model commands and tool observations for Dev are intentionally published. Keep analysis outputs separate from original snapshots.
+
+Per-condition success (24 cases each): I0-V0-R0 14; I0-V0-R1 24; I0-V1-R0 24; I0-V1-R1 24; I1-V0-R0 13; I1-V0-R1 23; I1-V1-R0 24; I1-V1-R1 24. These are **Dev-only, one repeat** diagnostics, not frozen Test claims. Several cells are separated (all-success), so logistic coefficients are not estimable; do not fabricate p-values. The 22 R1 first-submit failures include 21 recovered episodes, a selected descriptive denominator, not a causal recovery effect.
 
 The local runner is supervised under per-episode CNY 0.20 and campaign CNY 10 limits, off-peak only. Connection resets caused earlier manual pauses; the user subsequently authorized CNY 0.20 reserves for unknown charges and continued bounded retry under the same total cap. This is an accounting-policy change during development, not a frozen benchmark protocol.

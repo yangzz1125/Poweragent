@@ -11,12 +11,14 @@
 | 回归场景 | 仓库内 V0001–V0008，供 sanity/regression 使用 |
 | 候选 corpus | 本地 24 Dev + 96 Test，Test 每个欠压/过压×severity 三档格子 16 个；不是已冻结论文数据 |
 | 基线 | 24 Dev：No-action 0/24，nearest 和 sensitivity greedy 各 24/24 |
-| 模型 | DeepSeek 官方 `deepseek-flash`，Responses；只跑过 1 个真实 Dev 冒烟 episode |
+| 模型 | DeepSeek 官方 `deepseek-flash`，Responses；v2 Dev Pilot 已完成 192/192，170成功 |
 | 工程 | 8 组矩阵、断点续跑、CSV/JSONL、逐回合 token、实际 PF 计数已有实现及离线测试 |
-| 分析 | 聚类 bootstrap、factorial 和图表脚本只通过合成数据检查，不代表已获得科研结果 |
-| 尚未完成 | 完整 Pilot、难度有效性审查、freeze/tag、2304 次主实验、跨模型验证、正式分析 |
+| 分析 | Dev 统计/事件日志已公开供独立分析；部分条件全成功导致logit分离，不代表论文Test结果 |
+| 尚未完成 | freeze前审查（输出上限/模型参数/完整冻结校验）、freeze/tag、2304次Test、跨模型、论文结论 |
 
 **候选集更新：** generator 已用空间负荷/PV 采样和非均匀 coordinate witness 搜索替换均匀策略过滤。新 v2 候选集位于 `E:/work/voltage_corpus_v2_candidate`，24 Dev / 96 Test、全 witness 重放通过；新 Dev nearest 为 22/24、sensitivity 为 24/24。仍有搜索方法筛选偏差，不能把 severity 标签当控制难度。旧 v1 保留，尚未冻结；详见 [v2 验收](PowerAgentBench/docs/CORPUS_V2_CANDIDATE.md)。
+
+完整实验记录供云端Agent读取：[`research_records/voltage_control/cny_pilot_192/`](research_records/voltage_control/cny_pilot_192/README.md)。已知费用约¥2.67、五笔未知费预留¥1，合计占用¥3.67/¥10；原始异常和预留均保留，密钥/隐藏Test/witness不发布。回归61 tests通过。详见[冻结前审查](PowerAgentBench/docs/PILOT_PREFREEZE_REVIEW.md)，不要将Dev结果冒充Test结论。
 
 ## 目录用途
 

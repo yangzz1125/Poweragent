@@ -1,0 +1,20 @@
+{
+  "split": "dev",
+  "run_id": "83efca53-9f99-4d06-aeed-97b560e50aa1",
+  "planned": 192,
+  "complete": 192,
+  "success": 170,
+  "paused": 0,
+  "errors": 0,
+  "not_started": 0,
+  "campaign": {
+    "accounted_cost_cny": "2.67079106",
+    "unknown_requests": 5,
+    "reserved_unknown_cost_cny": "1.00",
+    "budget_consumed_cny": "3.67079106",
+    "unreserved_unknown_requests": 0,
+    "request_count": 985,
+    "orphan_requests": 0
+  },
+  "scope": "Dev diagnostic snapshot; not frozen Test or paper results. Unknown charges are not zero."
+}

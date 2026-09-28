@@ -1,0 +1,20 @@
+{
+  "run_id": "83efca53-9f99-4d06-aeed-97b560e50aa1",
+  "planned": 192,
+  "recorded": 192,
+  "known_success": 170,
+  "unresolved": 0,
+  "success_lower_bound": 0.8854166666666666,
+  "success_upper_bound": 0.8854166666666666,
+  "n_scenarios": 24,
+  "campaign_cost": {
+    "accounted_cost_cny": "2.67079106",
+    "unknown_requests": 5,
+    "reserved_unknown_cost_cny": "1.00",
+    "budget_consumed_cny": "3.67079106",
+    "unreserved_unknown_requests": 0,
+    "request_count": 985,
+    "orphan_requests": 0
+  },
+  "note": "Dev diagnostics; bounds are coverage bounds, not confidence intervals"
+}

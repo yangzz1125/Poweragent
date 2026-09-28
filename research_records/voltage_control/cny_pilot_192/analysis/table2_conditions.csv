@@ -1,0 +1,9 @@
+condition,interface,verification,recovery
+I0-V0-R0,0,0,0
+I0-V0-R1,0,0,1
+I0-V1-R0,0,1,0
+I0-V1-R1,0,1,1
+I1-V0-R0,1,0,0
+I1-V0-R1,1,0,1
+I1-V1-R0,1,1,0
+I1-V1-R1,1,1,1

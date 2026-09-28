@@ -1,0 +1,17 @@
+condition,metric,eligible,unobserved,n,positive,rate,ci_low,ci_high,n_scenarios
+I0-V1-R0,next_preview_success,11,0,11,10,0.9090909090909091,0.7692307692307693,1.0,10
+I0-V1-R0,repeated_next_dispatch,36,24,12,0,0.0,0.0,0.0,11
+I0-V1-R0,same_following_submit,25,0,25,24,0.96,0.8888888888888888,1.0,24
+I0-V1-R0,following_submit_success,25,0,25,25,1.0,1.0,1.0,24
+I0-V1-R1,next_preview_success,12,0,12,9,0.75,0.6,0.9,9
+I0-V1-R1,repeated_next_dispatch,38,24,14,1,0.07142857142857142,0.0,0.25,11
+I0-V1-R1,same_following_submit,26,0,26,25,0.9615384615384616,0.8888888888888888,1.0,24
+I0-V1-R1,following_submit_success,26,0,26,26,1.0,1.0,1.0,24
+I1-V1-R0,next_preview_success,10,0,10,9,0.9,0.75,1.0,9
+I1-V1-R0,repeated_next_dispatch,37,24,13,0,0.0,0.0,0.0,11
+I1-V1-R0,same_following_submit,27,0,27,24,0.8888888888888888,0.75,1.0,24
+I1-V1-R0,following_submit_success,27,0,27,27,1.0,1.0,1.0,24
+I1-V1-R1,next_preview_success,13,1,12,10,0.8333333333333334,0.7142857142857143,1.0,10
+I1-V1-R1,repeated_next_dispatch,41,24,17,0,0.0,0.0,0.0,14
+I1-V1-R1,same_following_submit,28,0,28,24,0.8571428571428571,0.7272727272727273,1.0,24
+I1-V1-R1,following_submit_success,28,0,28,28,1.0,1.0,1.0,24

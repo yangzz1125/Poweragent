@@ -1,0 +1,15 @@
+{
+  "case_count": 24,
+  "config_sha256": "0ba76e089757af12ffb712732f1a06c838c63c857f00433f1b5c39d316048ecd",
+  "dataset_sha256": "8642cae21141b22af062eb47d6c4fc8b9aeec9a981246678e1be3e05148545c3",
+  "dev_manifest_sha256": "294fba7e72bde69092f299231850df3bdef0344ac56bfe7d34c164824e6aefc1",
+  "fixed_feedback_policy": "uniform bisection on magnitude indices 1..6, floor midpoint, 0.25 MW step, at most 4 PF queries; stop on mixed violation/nonconvergence",
+  "full_power_policy": "all 4 BESS +1.5 MW for under or -1.5 MW for over",
+  "interpretation": "template existence is an oracle coverage result, not a 4-query controller success rate; no witness used",
+  "ordering": "feedback policy runs before template enumeration; no template/witness lookahead",
+  "purpose": "Dev structural coverage diagnosis, no Test filtering",
+  "script_sha256": "24d7a91ecb4c31bf6ab85e4b62a4893e79f967a3596f04b4ce2b1e3b8a169574",
+  "single_bess_templates": "one BESS at any of 12 nonzero levels; remaining BESS zero",
+  "uniform_templates": "all 12 nonzero common signed levels in [-1.5,1.5]",
+  "zero_full_templates": "all 3^4 combinations with each BESS in {-1.5,0,+1.5}"
+}

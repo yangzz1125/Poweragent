@@ -22,6 +22,8 @@
 
 最新难度研究：[Dev动作空间诊断](PowerAgentBench/docs/DEV_PHYSICAL_DIFFICULTY_STUDY.md)。可行域并非普遍宽松，但部分极窄Hard场景存在明显的满功率边界解，物理严重度不等于Agent推理难度。24个Dev的抽样和3个方向子空间穷举合计19838次本地潮流，无API费用；暂不因此启动Main或改写Test。
 
+进一步的[结构覆盖审查](PowerAgentBench/docs/DEV_STRUCTURAL_COVERAGE.md)发现：固定均匀二分策略解决19/24，另外4局存在单台BESS解，24/24都存在三档零/满功率组合解。这是当前benchmark对精细协调要求覆盖不足的证据；模板存在性不等于LLM能在4次preview内找到它，仍需区分控制结构与搜索成本。
+
 ## 目录用途
 
 ```text

@@ -1,0 +1,17 @@
+{
+  "actual_power_flows": 3168,
+  "all_full_successes": 8,
+  "bisection_query_count": 48,
+  "bisection_successes": 19,
+  "cases": 24,
+  "note": "All Dev cases retained. Failure of tested templates does not prove intrinsic complexity. No model API calls.",
+  "single_bess_coverage": 7,
+  "structure_counts": {
+    "all_bess_full_power": 8,
+    "single_bess_nonuniform": 4,
+    "uniform_interior": 11,
+    "zero_full_combination": 1
+  },
+  "uniform_coverage": 19,
+  "zero_full_coverage": 24
+}

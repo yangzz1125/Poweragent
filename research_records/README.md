@@ -5,6 +5,8 @@ They are not frozen Test data and must not be fed to evaluated agents.
 
 ## Current snapshot
 
+**Cloud review entry point:** [项目进度与审阅问题](../PowerAgentBench/docs/CLOUD_REVIEW_HANDOFF_ZH.md). Read this before comparing snapshots: the original Pilot and later explicit-high/16384 diagnostics use different request settings. Main is not authorized; no new experiments are requested by this handoff.
+
 - Latest structural audit: [`voltage_control/dev_structural_coverage/`](voltage_control/dev_structural_coverage/README.md). All 24 Dev cases have a feasible {-1.5,0,+1.5} MW combination; 19 are solved by a fixed uniform bisection policy with at most 3 observed PF queries, 4 additional cases have single-BESS solutions, and 1 requires a multi-BESS coarse template among these tested families. Template existence is an exhaustive oracle coverage result, NOT a fair 4-query controller score. 3168 local PF calls, zero API cost, no Test changes.
 
 - New physical difficulty study: [`voltage_control/dev_action_landscape_2030/`](voltage_control/dev_action_landscape_2030/README.md). 24 Dev cases, 19838 local PF evaluations, no model API calls. Median sampled feasible fraction: full grid 3.71%, correct-sign grid 21.88%. Exact correct-sign enumeration for three sparse cases finds 9/2401, 1/2401 and 51/2401 feasible actions, yet all three admit the obvious all-BESS-full-discharge solution and were solved by both no-feedback LLM conditions. This distinguishes physical tightness from reasoning difficulty. Only per-case summaries/protocols are published, not private sampled dispatches or witnesses.

@@ -73,7 +73,6 @@ def append_jsonl(path: Path, payload: dict[str, Any]) -> None:
 
 def parse_args() -> argparse.Namespace:
     load_env_file(Path(".env"))
-    load_env_file(Path("benchmarks/steady/level_2/.env"))
     parser = argparse.ArgumentParser(
         description="Evaluate an LLM on IEEE 33-bus BESS voltage correction."
     )

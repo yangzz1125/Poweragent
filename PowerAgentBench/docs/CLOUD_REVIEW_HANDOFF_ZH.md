@@ -86,11 +86,11 @@
 | 用途 | 路径 |
 |---|---|
 | 实验规范 | `PowerAgentBench/docs/BENCHMARK_SPEC.md` |
-| v2构造方法与限制 | `PowerAgentBench/docs/CORPUS_V2_CANDIDATE.md` |
-| Pilot解释 | `PowerAgentBench/docs/DEV_PILOT_RESULT_ANALYSIS_ZH.md` |
+| v2构造方法与限制 | `PowerAgentBench/docs/archive/v2/CORPUS_V2_CANDIDATE.md` |
+| Pilot解释 | `PowerAgentBench/docs/archive/v2/DEV_PILOT_RESULT_ANALYSIS_ZH.md` |
 | Pilot公开CSV、事件与轨迹 | `research_records/voltage_control/cny_pilot_192/` |
 | 绝对因子效应表 | `research_records/voltage_control/explicit_high_freeze_review/pilot_factorial_rate_contrasts.csv` |
-| 参数诊断/冻结工程 | `PowerAgentBench/docs/EXPLICIT_REASONING_AND_FREEZE.md` |
+| 参数诊断/冻结工程 | `PowerAgentBench/docs/archive/v2/EXPLICIT_REASONING_AND_FREEZE.md` |
 | 动作空间诊断 | `research_records/voltage_control/dev_action_landscape_2030/` |
 | 固定策略/模板覆盖 | `research_records/voltage_control/dev_structural_coverage/` |
 | 费用定义 | `PowerAgentBench/docs/RMB_MEASUREMENT_SPEC.md` |

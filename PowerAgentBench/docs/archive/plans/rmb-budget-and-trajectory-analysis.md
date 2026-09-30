@@ -2,7 +2,7 @@
 
 ## Context
 
-本计划接续 `plans/voltage-benchmark-completion.md`，只补齐正式实验前缺失的人民币计费、逐事件日志、恢复分析和验收关卡，不重写现有 Harness，也不改变 v2 corpus。
+本计划接续 `voltage-benchmark-completion.md`（同目录），只补齐正式实验前缺失的人民币计费、逐事件日志、恢复分析和验收关卡，不重写现有 Harness，也不改变 v2 corpus。
 
 已核对代码：
 - `openai_client.py::_post` 负责 HTTP 重试，但只有最后一次 `last_debug`；每次请求和失败请求没有独立持久化账本。新调用失败时还可能保留上次成功响应。
@@ -60,7 +60,7 @@
 - [x] 9. 在 campaign 剩余额度及低谷时间内跑 24×8 Dev Pilot；沿用 12 turns/4 previews/3 submits，不同时扩大动作预算。报告费用分布、预算/turn/preview/submit 触发率、错误分类、恢复链覆盖。低谷窗口关闭时记录安全 checkpoint 并退出；恢复保持同一任务进度、计费账本，不能从头免费重置。明确每个任务 completed/paused/error/cost-limited 状态；不足 192 条时报告部分结果而不是删失败样本。
 - [x] 10. freeze 前验收：协议、源码/环境、价格、模型参数、计划任务集及分析规则完整；随后按单独授权启动 Main，不自动花完整主实验预算。
 
-当前状态说明：上述第10项勾选表示冻结前的工程检查与候选清单已实现，不代表正式freeze/tag、研究设计审批或Main执行完成。Main仍未授权；任务覆盖与论文主张正在审查。最新进度见 [云端交接](../PowerAgentBench/docs/CLOUD_REVIEW_HANDOFF_ZH.md)。
+当前状态说明：上述第10项勾选表示冻结前的工程检查与候选清单已实现，不代表正式freeze/tag、研究设计审批或Main执行完成。Main仍未授权；任务覆盖与论文主张正在审查。最新进度见 [云端交接](../../CLOUD_REVIEW_HANDOFF_ZH.md)。
 
 ## 数据与实现合同
 

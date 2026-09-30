@@ -1,0 +1,309 @@
+{
+  "actual_pf_calls": 4225,
+  "checks": [
+    {
+      "all_eight_tool_conditions_no_leakage": true,
+      "fragile": false,
+      "independent_templates": 131,
+      "scenario_id": "D0001",
+      "serialization_max_roundoff": 1.1102230246251565e-16,
+      "structure_class": "S2",
+      "witness_success": true
+    },
+    {
+      "all_eight_tool_conditions_no_leakage": true,
+      "fragile": false,
+      "independent_templates": 131,
+      "scenario_id": "D0002",
+      "serialization_max_roundoff": 5.551115123125783e-17,
+      "structure_class": "S3",
+      "witness_success": true
+    },
+    {
+      "all_eight_tool_conditions_no_leakage": true,
+      "fragile": false,
+      "independent_templates": 131,
+      "scenario_id": "D0003",
+      "serialization_max_roundoff": 1.1102230246251565e-16,
+      "structure_class": "S1",
+      "witness_success": true
+    },
+    {
+      "all_eight_tool_conditions_no_leakage": true,
+      "fragile": false,
+      "independent_templates": 131,
+      "scenario_id": "D0004",
+      "serialization_max_roundoff": 1.1102230246251565e-16,
+      "structure_class": "S4",
+      "witness_success": true
+    },
+    {
+      "all_eight_tool_conditions_no_leakage": true,
+      "fragile": false,
+      "independent_templates": 131,
+      "scenario_id": "D0005",
+      "serialization_max_roundoff": 1.1102230246251565e-16,
+      "structure_class": "S1",
+      "witness_success": true
+    },
+    {
+      "all_eight_tool_conditions_no_leakage": true,
+      "fragile": false,
+      "independent_templates": 131,
+      "scenario_id": "D0006",
+      "serialization_max_roundoff": 2.220446049250313e-16,
+      "structure_class": "S3",
+      "witness_success": true
+    },
+    {
+      "all_eight_tool_conditions_no_leakage": true,
+      "fragile": false,
+      "independent_templates": 131,
+      "scenario_id": "D0007",
+      "serialization_max_roundoff": 1.1102230246251565e-16,
+      "structure_class": "S4",
+      "witness_success": true
+    },
+    {
+      "all_eight_tool_conditions_no_leakage": true,
+      "fragile": false,
+      "independent_templates": 131,
+      "scenario_id": "D0008",
+      "serialization_max_roundoff": 5.551115123125783e-17,
+      "structure_class": "S1",
+      "witness_success": true
+    },
+    {
+      "all_eight_tool_conditions_no_leakage": true,
+      "fragile": false,
+      "independent_templates": 131,
+      "scenario_id": "D0009",
+      "serialization_max_roundoff": 5.551115123125783e-17,
+      "structure_class": "S4",
+      "witness_success": true
+    },
+    {
+      "all_eight_tool_conditions_no_leakage": true,
+      "fragile": false,
+      "independent_templates": 131,
+      "scenario_id": "D0010",
+      "serialization_max_roundoff": 1.1102230246251565e-16,
+      "structure_class": "S1",
+      "witness_success": true
+    },
+    {
+      "all_eight_tool_conditions_no_leakage": true,
+      "fragile": false,
+      "independent_templates": 131,
+      "scenario_id": "D0011",
+      "serialization_max_roundoff": 2.7755575615628914e-17,
+      "structure_class": "S2",
+      "witness_success": true
+    },
+    {
+      "all_eight_tool_conditions_no_leakage": true,
+      "fragile": false,
+      "independent_templates": 131,
+      "scenario_id": "D0012",
+      "serialization_max_roundoff": 1.1102230246251565e-16,
+      "structure_class": "S1",
+      "witness_success": true
+    },
+    {
+      "all_eight_tool_conditions_no_leakage": true,
+      "fragile": false,
+      "independent_templates": 131,
+      "scenario_id": "D0013",
+      "serialization_max_roundoff": 5.551115123125783e-17,
+      "structure_class": "S2",
+      "witness_success": true
+    },
+    {
+      "all_eight_tool_conditions_no_leakage": true,
+      "fragile": false,
+      "independent_templates": 131,
+      "scenario_id": "D0014",
+      "serialization_max_roundoff": 2.7755575615628914e-17,
+      "structure_class": "S1",
+      "witness_success": true
+    },
+    {
+      "all_eight_tool_conditions_no_leakage": true,
+      "fragile": false,
+      "independent_templates": 131,
+      "scenario_id": "D0015",
+      "serialization_max_roundoff": 2.7755575615628914e-17,
+      "structure_class": "S3",
+      "witness_success": true
+    },
+    {
+      "all_eight_tool_conditions_no_leakage": true,
+      "fragile": false,
+      "independent_templates": 131,
+      "scenario_id": "D0016",
+      "serialization_max_roundoff": 5.551115123125783e-17,
+      "structure_class": "S2",
+      "witness_success": true
+    },
+    {
+      "all_eight_tool_conditions_no_leakage": true,
+      "fragile": true,
+      "independent_templates": 131,
+      "scenario_id": "D0017",
+      "serialization_max_roundoff": 2.7755575615628914e-17,
+      "structure_class": "S4",
+      "witness_success": true
+    },
+    {
+      "all_eight_tool_conditions_no_leakage": true,
+      "fragile": false,
+      "independent_templates": 131,
+      "scenario_id": "D0018",
+      "serialization_max_roundoff": 1.1102230246251565e-16,
+      "structure_class": "S2",
+      "witness_success": true
+    },
+    {
+      "all_eight_tool_conditions_no_leakage": true,
+      "fragile": false,
+      "independent_templates": 131,
+      "scenario_id": "D0019",
+      "serialization_max_roundoff": 2.7755575615628914e-17,
+      "structure_class": "S1",
+      "witness_success": true
+    },
+    {
+      "all_eight_tool_conditions_no_leakage": true,
+      "fragile": false,
+      "independent_templates": 131,
+      "scenario_id": "D0020",
+      "serialization_max_roundoff": 2.7755575615628914e-17,
+      "structure_class": "S2",
+      "witness_success": true
+    },
+    {
+      "all_eight_tool_conditions_no_leakage": true,
+      "fragile": false,
+      "independent_templates": 131,
+      "scenario_id": "D0021",
+      "serialization_max_roundoff": 5.551115123125783e-17,
+      "structure_class": "S4",
+      "witness_success": true
+    },
+    {
+      "all_eight_tool_conditions_no_leakage": true,
+      "fragile": false,
+      "independent_templates": 131,
+      "scenario_id": "D0022",
+      "serialization_max_roundoff": 1.1102230246251565e-16,
+      "structure_class": "S2",
+      "witness_success": true
+    },
+    {
+      "all_eight_tool_conditions_no_leakage": true,
+      "fragile": false,
+      "independent_templates": 131,
+      "scenario_id": "D0023",
+      "serialization_max_roundoff": 1.1102230246251565e-16,
+      "structure_class": "S4",
+      "witness_success": true
+    },
+    {
+      "all_eight_tool_conditions_no_leakage": true,
+      "fragile": false,
+      "independent_templates": 131,
+      "scenario_id": "D0024",
+      "serialization_max_roundoff": 2.7755575615628914e-17,
+      "structure_class": "S4",
+      "witness_success": true
+    },
+    {
+      "all_eight_tool_conditions_no_leakage": true,
+      "fragile": false,
+      "independent_templates": 131,
+      "scenario_id": "D0025",
+      "serialization_max_roundoff": 2.220446049250313e-16,
+      "structure_class": "S2",
+      "witness_success": true
+    },
+    {
+      "all_eight_tool_conditions_no_leakage": true,
+      "fragile": false,
+      "independent_templates": 131,
+      "scenario_id": "D0026",
+      "serialization_max_roundoff": 2.220446049250313e-16,
+      "structure_class": "S3",
+      "witness_success": true
+    },
+    {
+      "all_eight_tool_conditions_no_leakage": true,
+      "fragile": false,
+      "independent_templates": 131,
+      "scenario_id": "D0027",
+      "serialization_max_roundoff": 5.551115123125783e-17,
+      "structure_class": "S4",
+      "witness_success": true
+    },
+    {
+      "all_eight_tool_conditions_no_leakage": true,
+      "fragile": false,
+      "independent_templates": 131,
+      "scenario_id": "D0028",
+      "serialization_max_roundoff": 5.551115123125783e-17,
+      "structure_class": "S3",
+      "witness_success": true
+    },
+    {
+      "all_eight_tool_conditions_no_leakage": true,
+      "fragile": false,
+      "independent_templates": 131,
+      "scenario_id": "D0029",
+      "serialization_max_roundoff": 2.7755575615628914e-17,
+      "structure_class": "S3",
+      "witness_success": true
+    },
+    {
+      "all_eight_tool_conditions_no_leakage": true,
+      "fragile": false,
+      "independent_templates": 131,
+      "scenario_id": "D0030",
+      "serialization_max_roundoff": 2.7755575615628914e-17,
+      "structure_class": "S1",
+      "witness_success": true
+    },
+    {
+      "all_eight_tool_conditions_no_leakage": true,
+      "fragile": false,
+      "independent_templates": 131,
+      "scenario_id": "D0031",
+      "serialization_max_roundoff": 2.7755575615628914e-17,
+      "structure_class": "S3",
+      "witness_success": true
+    },
+    {
+      "all_eight_tool_conditions_no_leakage": true,
+      "fragile": false,
+      "independent_templates": 131,
+      "scenario_id": "D0032",
+      "serialization_max_roundoff": 5.551115123125783e-17,
+      "structure_class": "S3",
+      "witness_success": true
+    }
+  ],
+  "counts": {
+    "S1": 8,
+    "S2": 8,
+    "S3": 8,
+    "S4": 8
+  },
+  "model_api_requests": 0,
+  "pf_by_phase": {
+    "validation_fragile": 1,
+    "validation_templates": 4192,
+    "validation_witness": 32
+  },
+  "s4_spatial_families": 8,
+  "status": "PASS",
+  "test_run": false,
+  "warning": "PASS is offline structure/data validation, not Pilot/Main authorization"
+}

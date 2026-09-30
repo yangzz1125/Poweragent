@@ -1,0 +1,12 @@
+{
+  "status": "INTERRUPTED",
+  "cause": "180-second command timeout during legacy corpus regression",
+  "completed_prior_tests": 22,
+  "completed_legacy_candidates": 113,
+  "completed_legacy_candidate_pf": 9074,
+  "unrecorded_current_candidate_pf_upper_bound": 385,
+  "note": "No final PF hook report survived. Do not report an exact total for this interrupted test invocation.",
+  "reproduced_prefix_pf": 18,
+  "interrupted_pf_lower_bound": 9092,
+  "interrupted_pf_upper_bound": 9477
+}

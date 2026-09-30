@@ -31,11 +31,18 @@ FREEZE_FIELDS = (
 )
 
 
+STRUCTURAL_FREEZE_FIELDS = (
+    "corpus_version", "physical_schema_version", "generator_version", "structure_definition_version",
+    "observation_protocol_version", "template_definition_sha256", "structure_evidence_sha256",
+)
+
+
 def freeze_contract(identity: dict) -> dict:
-    missing = [key for key in FREEZE_FIELDS if key not in identity or identity[key] is None]
+    fields = FREEZE_FIELDS + (STRUCTURAL_FREEZE_FIELDS if identity.get("corpus_version") == "structure-v3" else ())
+    missing = [key for key in fields if key not in identity or identity[key] is None]
     if missing:
         raise ValueError(f"freeze identity missing fields: {missing}")
-    return {key: identity[key] for key in FREEZE_FIELDS}
+    return {key: identity[key] for key in fields}
 
 
 def candidate_manifest(identity: dict) -> dict:
@@ -55,6 +62,6 @@ def validate_freeze(manifest: dict, identity: dict) -> None:
     if not isinstance(contract, dict) or manifest.get("contract_sha256") != digest(contract):
         raise ValueError("freeze contract digest mismatch")
     current = freeze_contract(identity)
-    mismatches = [key for key in FREEZE_FIELDS if contract.get(key) != current[key]]
+    mismatches = [key for key in set(current) | set(contract) if contract.get(key) != current.get(key)]
     if mismatches:
         raise ValueError(f"freeze identity mismatch: {', '.join(mismatches)}")

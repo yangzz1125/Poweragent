@@ -21,7 +21,7 @@ from poweragentbench.voltage_costs import Campaign, BudgetStop, PRICING_PATH, le
 from poweragentbench.voltage_agentic import LLMVoltageAgent, load_voltage_prompt, score_voltage_output
 from poweragentbench.voltage_case import DEFAULT_CONFIG_PATH, BENCHMARK_DIR, REPO_ROOT, load_manifest, read_json, sha256_file
 from scripts.run_voltage_agent_eval import load_env_file, make_client, model_request_settings
-from poweragentbench.voltage_freeze import digest, environment_identity, candidate_manifest, validate_freeze
+from poweragentbench.voltage_freeze import digest, environment_identity, candidate_manifest, validate_freeze, STRUCTURAL_FREEZE_FIELDS
 
 EXPERIMENTS = BENCHMARK_DIR / "config" / "experiments.json"
 PROMPT = BENCHMARK_DIR / "prompts" / "voltage_agent_prompt.json"
@@ -178,6 +178,9 @@ def _run_matrix(args: argparse.Namespace, client_factory=make_client, *, campaig
         "max_submission_attempts": config["agent"]["max_submission_attempts"], "repeats": args.repeats,
         "conditions_sha256": sha256_file(EXPERIMENTS), "api_url_sha256": hashlib.sha256((args.url or os.getenv("POWERAGENTBENCH_OPENAI_URL") or "default").encode()).hexdigest(),
     }
+    if manifest.get("corpus_version") == "structure-v3":
+        identity.update({key: manifest[key] for key in STRUCTURAL_FREEZE_FIELDS})
+        protocol_paths.extend(REPO_ROOT / "docs" / name for name in ("STRUCTURAL_BENCHMARK_V3_SPEC.md", "V3_GENERATION_PROTOCOL.md"))
     identity.update(model_settings=public_settings, model_settings_sha256=digest(public_settings),
                     reasoning_effort=public_settings.get("reasoning_effort"), temperature_policy=public_settings.get("temperature_policy"),
                     environment=environment, environment_sha256=digest(environment), split_manifest_sha256=split_hash,

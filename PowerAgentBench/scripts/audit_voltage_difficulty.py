@@ -7,6 +7,7 @@ import json
 import random
 from pathlib import Path
 
+from poweragentbench.voltage_storage import evaluator_output_root
 from poweragentbench.voltage_agentic import VoltageSensitivityGreedyAgent
 from poweragentbench.voltage_case import (
     DEFAULT_CONFIG_PATH, REPO_ROOT, build_ieee33_network, load_benchmark_config,
@@ -21,9 +22,7 @@ def write_json(path: Path, value: object) -> None:
 
 
 def audit(root: Path, seed: int = 2027, count: int = 40, profile: str = "exploratory") -> dict:
-    root = root.resolve()
-    if root == REPO_ROOT.parent or REPO_ROOT.parent in root.parents:
-        raise ValueError("study artifacts must be outside the agent workspace")
+    root = evaluator_output_root(root)
     if profile not in ("exploratory", "stratified"):
         raise ValueError("unknown sampling profile")
     if count < 1 or (root.exists() and any(root.iterdir())):

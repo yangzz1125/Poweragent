@@ -1,0 +1,17 @@
+{
+  "baseline_per_case.csv": "fab3ef75257672c57a62321e3e06b7833345109492b22189578255d7253a1648",
+  "baseline_protocol.json": "232d2410288453f550da7b2214cbbaa2f3a528fbaa1a4e7071b7bc21766099f5",
+  "baseline_summary.json": "1eeb2aa987bd670f6a08db844575e6c02b0537491b32a51c88a4905acdb47aec",
+  "candidate_audit_summary.csv": "d1625b3620cd56234ab498d3e416925c23d966e096f6e75d79e8ca5d1a3f0f1e",
+  "dev_structure_summary.csv": "df0ca39eab42c0b9436d79df3708511b5ce036bb37dfa795d9c9a673c2b39dfd",
+  "final_verification.json": "5b38b97f4994500e7a3b49da07f72f7e6aaf8b7405ae8c4789e3fbf725f20ce9",
+  "generation_protocol.json": "f3ca68eb8483ef0c70d690ee3b69b10b290f9e422b622dd8ad1f701ae7c968f2",
+  "generation_summary.json": "5f3d632ba1152fe158a34e1c37fe80511c2ec71e2553b6174edb360326230245",
+  "interrupted_test_accounting.json": "caf0a11a19e23ecbae63c38d4a2373ddd63975ee6ac3b8b58c9ffcdb76ca5f98",
+  "README.md": "8a0ce2c201a8c28a3f4f73b5c7d6807d1392fb548cf19cfa6a595a842461458f",
+  "resume_check.json": "32b55a6d1fc318690c68438932ed65bf28c0a9ed68ae4ba31aea3977e031d1e0",
+  "source_hashes.json": "0050503186264c57acedf5cf87a7fdbff7e578e785a9a810af9f5135226ac09c",
+  "tests_final.json": "65294fad1c759ffdbddc3276da1d346f4a66f66f909c80f536f0b04d4cb1557e",
+  "tests_final.log": "f67d3ff5f483b01cb1d4649943269008f8ffa955f61e5b2cf7b8e5cc1c117ff7",
+  "validation_report.json": "a127946b585c0cf7b410e7788a9da910f8217a11304ed2ab4d853e3cb919f590"
+}

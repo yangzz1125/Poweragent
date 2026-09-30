@@ -42,6 +42,7 @@ class VoltageToolServer:
         recovery: bool = True,
         max_attempts: int | None = None,
         max_previews: int | None = None,
+        evaluation_fn: Any = None,
     ) -> None:
         self.scenario_id = scenario_id
         self.scenario_root = Path(scenario_root)
@@ -57,6 +58,8 @@ class VoltageToolServer:
         self.max_previews = int(
             max_previews or self.config["agent"]["max_preview_calls"]
         )
+        # Trusted offline runners may inject durable accounting, never agent args.
+        self.evaluation_fn = evaluation_fn
         self.state = VoltageToolState()
 
     @property
@@ -103,7 +106,7 @@ class VoltageToolServer:
                     "max_preview_calls": self.max_previews,
                 }, False
             self.state.preview_calls += 1
-            report = evaluate_voltage_dispatch(
+            report = (self.evaluation_fn or evaluate_voltage_dispatch)(
                 self.scenario_id,
                 args.get("dispatch"),
                 scenario_root=self.scenario_root,
@@ -120,7 +123,7 @@ class VoltageToolServer:
             if len(self.state.attempts) >= self.max_attempts:
                 return {"error": "submission budget exhausted"}, True
             self.state.final_dispatch = args.get("dispatch")
-            report = evaluate_voltage_dispatch(
+            report = (self.evaluation_fn or evaluate_voltage_dispatch)(
                 self.scenario_id,
                 args.get("dispatch"),
                 scenario_root=self.scenario_root,

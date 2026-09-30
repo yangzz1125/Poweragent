@@ -4,31 +4,33 @@
 
 主任务：IEEE 33-bus 配电网中，Agent 仅调节 4 台 BESS 有功功率，让所有节点电压回到 0.95–1.05 pu。使用完整 **2×2×2** 设计比较领域接口（I）、真实潮流预验证（V）、失败恢复（R），不以“LLM 打败传统控制器”为目标。
 
-**云端分析请从这里开始：[项目进度与审阅问题](PowerAgentBench/docs/CLOUD_REVIEW_HANDOFF_ZH.md)**。汇总研究目标、已完成实验、参数变更、费用、结构覆盖问题及原始证据入口；当前暂停扩大实验，等待研究设计判断。
+**最新本地进度：[路线B离线验收（B0–B4 PASS）](PowerAgentBench/docs/V3_OFFLINE_ACCEPTANCE.md)**。已生成独立v3 Dev，S1–S4各8个；完成结构认证、受限基线和111项测试。无新模型调用、无新Test、未freeze/tag；本轮不自动push。历史研究问题与v2证据见[云端交接](PowerAgentBench/docs/CLOUD_REVIEW_HANDOFF_ZH.md)。
 
 ## 当前状态：开发中，尚未冻结
 
 | 项目 | 已验证范围 |
 |---|---|
 | 回归场景 | 仓库内 V0001–V0008，供 sanity/regression 使用 |
-| 候选 corpus | 本地 24 Dev + 96 Test，Test 每个欠压/过压×severity 三档格子 16 个；不是已冻结论文数据 |
-| 基线 | v2的24 Dev：No-action 0/24，nearest 22/24，sensitivity greedy 24/24 |
+| 候选 corpus | v3本地32 Dev（四结构各8），未生成Test；旧v2的24 Dev + 96 Test原样保留，均非已批准论文数据 |
+| 基线 | v3同预算：No-action 0/32、全满功率1/32、均匀二分8/32、有界局部搜索14/32；v2旧基线另存 |
 | 模型 | DeepSeek 官方 `deepseek-flash`，Responses；v2 Dev Pilot 已完成 192/192，170成功 |
 | 工程 | 8 组矩阵、断点续跑、CSV/JSONL、逐回合 token、实际 PF 计数已有实现及离线测试 |
 | 分析 | Dev 统计/事件日志已公开供独立分析；部分条件全成功导致logit分离，不代表论文Test结果 |
-| 尚未完成 | 研究设计与任务覆盖决策、正式freeze/tag、2304次Test、跨模型、论文结论；参数/冻结校验工程已实现，Main未授权 |
+| 尚未完成 | 获准的v3模型smoke/Pilot、独立sealed Test、正式freeze/tag、Main与论文结论；离线PASS不自动批准这些步骤 |
 
-**候选集更新：** generator 已用空间负荷/PV 采样和非均匀 coordinate witness 搜索替换均匀策略过滤。新 v2 候选集位于 `E:/work/voltage_corpus_v2_candidate`，24 Dev / 96 Test、全 witness 重放通过；新 Dev nearest 为 22/24、sensitivity 为 24/24。仍有搜索方法筛选偏差，不能把 severity 标签当控制难度。旧 v1 保留，尚未冻结；详见 [v2 验收](PowerAgentBench/docs/CORPUS_V2_CANDIDATE.md)。
+**候选集更新：** generator 已用空间负荷/PV 采样和非均匀 coordinate witness 搜索替换均匀策略过滤。v2 候选集现位于 `.local-data/voltage_corpus_v2_candidate`，24 Dev / 96 Test、全 witness 重放通过；新 Dev nearest 为 22/24、sensitivity 为 24/24。仍有搜索方法筛选偏差，不能把 severity 标签当控制难度。旧 v1 保留，尚未冻结；详见 [v2 验收](PowerAgentBench/docs/archive/v2/CORPUS_V2_CANDIDATE.md)。
 
-完整实验记录供云端Agent读取：[`research_records/voltage_control/cny_pilot_192/`](research_records/voltage_control/cny_pilot_192/README.md)。含后续两次独立诊断的共享campaign已知费用估算¥2.69531226、五笔未知费预留¥1，合计占用¥3.69531226/¥10；原始异常和预留均保留，密钥/隐藏Test/witness不发布。冻结工程阶段92项测试通过，随后新增动作空间2项、结构策略4项检查分别通过；不将其冒称一次新的全量测试结果。详见[冻结前审查](PowerAgentBench/docs/PILOT_PREFREEZE_REVIEW.md)，不要将Dev结果冒充Test结论。
+完整实验记录供云端Agent读取：[`research_records/voltage_control/cny_pilot_192/`](research_records/voltage_control/cny_pilot_192/README.md)。含后续两次独立诊断的共享campaign已知费用估算¥2.69531226、五笔未知费预留¥1，合计占用¥3.69531226/¥10；原始异常和预留均保留，密钥/隐藏Test/witness不发布。冻结工程阶段92项测试通过，随后新增动作空间2项、结构策略4项检查分别通过；不将其冒称一次新的全量测试结果。详见[冻结前审查](PowerAgentBench/docs/archive/v2/PILOT_PREFREEZE_REVIEW.md)，不要将Dev结果冒充Test结论。
 
-最新难度研究：[Dev动作空间诊断](PowerAgentBench/docs/DEV_PHYSICAL_DIFFICULTY_STUDY.md)。可行域并非普遍宽松，但部分极窄Hard场景存在明显的满功率边界解，物理严重度不等于Agent推理难度。24个Dev的抽样和3个方向子空间穷举合计19838次本地潮流，无API费用；暂不因此启动Main或改写Test。
+最新难度研究：[Dev动作空间诊断](PowerAgentBench/docs/archive/v2/DEV_PHYSICAL_DIFFICULTY_STUDY.md)。可行域并非普遍宽松，但部分极窄Hard场景存在明显的满功率边界解，物理严重度不等于Agent推理难度。24个Dev的抽样和3个方向子空间穷举合计19838次本地潮流，无API费用；暂不因此启动Main或改写Test。
 
-进一步的[结构覆盖审查](PowerAgentBench/docs/DEV_STRUCTURAL_COVERAGE.md)发现：固定均匀二分策略解决19/24，另外4局存在单台BESS解，24/24都存在三档零/满功率组合解。这是当前benchmark对精细协调要求覆盖不足的证据；模板存在性不等于LLM能在4次preview内找到它，仍需区分控制结构与搜索成本。
+进一步的[结构覆盖审查](PowerAgentBench/docs/archive/v2/DEV_STRUCTURAL_COVERAGE.md)发现：固定均匀二分策略解决19/24，另外4局存在单台BESS解，24/24都存在三档零/满功率组合解。这是当前benchmark对精细协调要求覆盖不足的证据；模板存在性不等于LLM能在4次preview内找到它，仍需区分控制结构与搜索成本。
 
 ## 目录用途
 
 ```text
+.local-data/                     完整数据、witness和构造缓存；Git忽略
+.local-archive/                  历史诊断及测试记录；Git忽略
 PowerAgentBench/                  主实验代码和本地 .venv
   poweragentbench/                Agent loop、工具、独立 evaluator、模型客户端
   benchmarks/steady/voltage_control/
@@ -38,14 +40,15 @@ PowerAgentBench/                  主实验代码和本地 .venv
   scripts/                       生成、运行、分析入口
   tests/                         离线回归与 mock 测试
   results/                       本地日志/结果，git-ignored
-  docs/                          研究规范与验收记录
+  docs/                          研究规范与验收记录（索引见 docs/README.md）
+  legacy_upstream/               上游旧内容归档（N-1/N-2/RestoreBench/动态），不再使用
 PowerMCP/                        电力软件 MCP 连接器；当前主实验不依赖
 PowerSkills/                     领域技能/工作流参考；当前主实验不导入
-plans/                           项目执行计划（历史步骤不替代最新验收状态）
+plans/                           预留给新的执行计划（旧计划已归档到 PowerAgentBench/docs/archive/plans/）
 agent.md                         开发交接与操作注意事项
 ```
 
-当前候选 corpus 位于 `E:/work/voltage_corpus_v2_candidate`，旧v1另存，不随 GitHub 上传。仓库之外的目录**不是**操作系统隔离：当前只测无 shell/文件权限的托管 LLM，Coding Agent 评测尚未获隔离验收。
+v1/v2/v3 主数据已统一迁入项目根目录 `.local-data/`，历史辅助记录在 `.local-archive/`，完整网络与witness不上传GitHub。迁移逐文件核对了5685个文件的SHA256，内容不变；见[本地数据布局与复现路径](PowerAgentBench/docs/LOCAL_DATA_LAYOUT.md)。Git忽略不是操作系统隔离：当前只测无shell/文件权限的托管LLM；将来若测Coding Agent，必须另做文件访问隔离。以下历史v2示例不代表本轮付费授权。
 
 ## 本机运行
 
@@ -85,8 +88,8 @@ runner 自动补 `/responses`，也兼容完整端点 URL。DeepSeek Responses �
 以下命令从 `PowerAgentBench/` 执行：
 
 ```powershell
-.venv\Scripts\python.exe -m scripts.run_voltage_experiment_matrix --split dev --scenario-root E:/work/voltage_corpus_v2_candidate/dev --dry-run
-.venv\Scripts\python.exe scripts/run_voltage_baselines.py --scenario-root E:/work/voltage_corpus_v2_candidate/dev --output-dir results/voltage_control/new_dev_baselines
+.venv\Scripts\python.exe -m scripts.run_voltage_experiment_matrix --split dev --scenario-root ../.local-data/voltage_corpus_v2_candidate/dev --dry-run
+.venv\Scripts\python.exe scripts/run_voltage_baselines.py --scenario-root ../.local-data/voltage_corpus_v2_candidate/dev --output-dir results/voltage_control/new_dev_baselines
 ```
 
 Dev dry-run 应列出 192 个任务；`--split test --repeats 3` 对应 2304 个任务，但不要因此运行正式 Test。
@@ -94,7 +97,7 @@ Dev dry-run 应列出 192 个任务；`--split test --repeats 3` 对应 2304 个
 本次用户授权：单局 ¥0.20、开发测试和 Pilot 共用 ¥10，仅 DeepSeek 低谷。新接口必须用新输出目录，不能续写旧 smoke 数据；默认 campaign 固定为 `results/voltage_control/cny_pilot_campaign`，不要换目录重置花费。下面是历史Pilot命令，仅供理解参数；当前配置已变更，不能续写旧Pilot。新实验需另行确认并使用新输出目录：
 
 ```powershell
-.venv\Scripts\python.exe -m scripts.run_voltage_experiment_matrix --split dev --scenario-root E:/work/voltage_corpus_v2_candidate/dev --output-dir results/voltage_control/v2_cny_pilot --max-episodes 8 --campaign-stage smoke
+.venv\Scripts\python.exe -m scripts.run_voltage_experiment_matrix --split dev --scenario-root ../.local-data/voltage_corpus_v2_candidate/dev --output-dir results/voltage_control/v2_cny_pilot --max-episodes 8 --campaign-stage smoke
 ```
 
 默认人民币模式在每次实际 HTTP 请求结束后核算（含重试），允许最后一次请求少量超额；smoke 阶段限 ¥1，包含在 campaign ¥10 中。只有 smoke 账本验收后才用 `--campaign-stage pilot` 继续；`--max-episodes` 是本次新增 episode 的上限，不改变计划任务集。高峰/总额暂停保存 checkpoint，失败重试保留旧费用。API usage 未知、orphan 请求或损坏账本会阻止自动收费续跑，需人工核对，不可删日志绕过。token/USD 旧参数不能与默认人民币 campaign 混用。历史结果目录保留但不能混入新的分析。
@@ -135,7 +138,7 @@ BESS bus：8/17/24/32；每台 ±1.5 MW、0.25 MW 步长。正功率放电注入
 
 ### 冻结前离线审查
 
-`--dry-run --split test --repeats 3 --write-freeze-candidate <新路径>` 可以生成完整2304任务的**未批准**身份候选；只核对文件hash，不调用模型或潮流，不创建tag。实际Test必须有显式批准/Main授权、完整源码/环境/模型/价格/分析/任务清单合同、匹配的benchmark-v1.0 tag和干净源码。当前只有工程检查与Dev验证，Main尚未获授权。详见[工程验收](PowerAgentBench/docs/EXPLICIT_REASONING_AND_FREEZE.md)。
+`--dry-run --split test --repeats 3 --write-freeze-candidate <新路径>` 可以生成完整2304任务的**未批准**身份候选；只核对文件hash，不调用模型或潮流，不创建tag。实际Test必须有显式批准/Main授权、完整源码/环境/模型/价格/分析/任务清单合同、匹配的benchmark-v1.0 tag和干净源码。当前只有工程检查与Dev验证，Main尚未获授权。详见[工程验收](PowerAgentBench/docs/archive/v2/EXPLICIT_REASONING_AND_FREEZE.md)。
 
 ## 研究记录与图片
 
@@ -144,7 +147,9 @@ AI 在本项目中使用 Markdown（`.md`）记录研究问题、方法、实验
 ## 文档与来源
 
 - [开发交接](agent.md) / [研究规范与验收](PowerAgentBench/docs/BENCHMARK_SPEC.md)
-- [执行计划](plans/voltage-benchmark-completion.md)
+- [文档索引（现行 / 归档）](PowerAgentBench/docs/README.md)
+- [路线 B 执行方案（当前计划）](PowerAgentBench/docs/ROUTE_B_PLAN.md)
+- 旧计划（已被取代）：[docs/archive/plans/](PowerAgentBench/docs/archive/plans/)
 - 上游：[PowerAgentBench](https://github.com/Power-Agent/PowerAgentBench)、[PowerMCP](https://github.com/Power-Agent/PowerMCP)、[PowerSkills](https://github.com/Power-Agent/PowerSkills)
 - 仓库：<https://github.com/yangzz1125/Poweragent>
 

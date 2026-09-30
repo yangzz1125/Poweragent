@@ -17,6 +17,9 @@ from poweragentbench.voltage_case import (
 )
 
 
+EVALUATOR_VERSION = "voltage-replay-v2-finite-buses"
+
+
 def normalize_dispatch(raw: Any) -> list[dict[str, Any]]:
     if isinstance(raw, Mapping):
         if "dispatch" in raw:
@@ -108,9 +111,15 @@ def run_locked_power_flow(
             max_iteration=int(solver["max_iteration"]),
             tolerance_mva=float(solver["tolerance_mva"]),
         )
-        return bool(
-            net.converged
-        ), None if net.converged else "power flow did not converge"
+        if net.converged:
+            # This benchmark evaluates every frozen bus; disconnected/inactive or
+            # missing/non-finite results must not disappear from violation sums.
+            if (not net.bus.index.is_unique or not net.bus.in_service.all()
+                    or not net.res_bus.index.is_unique
+                    or set(net.res_bus.index) != set(net.bus.index)
+                    or not all(math.isfinite(float(v)) for v in net.res_bus.vm_pu)):
+                return False, "invalid voltage results: missing, inactive or non-finite bus"
+        return bool(net.converged), None if net.converged else "power flow did not converge"
     except Exception as exc:  # noqa: BLE001 - solver failures are scored, not process-fatal
         return False, str(exc)
 
@@ -232,6 +241,7 @@ def evaluate_voltage_dispatch(
         "error": error,
         "artifact_hash": metadata["artifact_hash"],
         "dataset_version": metadata["dataset_version"],
+        "evaluator_version": EVALUATOR_VERSION,
         "pandapower_version": __import__("pandapower").__version__,
         "solver": config["solver"],
     }

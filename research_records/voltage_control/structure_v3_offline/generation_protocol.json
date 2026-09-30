@@ -1,0 +1,64 @@
+{
+  "api_calls_allowed": false,
+  "candidates_per_round": 512,
+  "corpus_version": "structure-v3",
+  "dev_per_structure": 8,
+  "envelope": {
+    "global_load_scale": [
+      0.3,
+      1.5
+    ],
+    "local_multiplier": [
+      0.3,
+      2.5
+    ],
+    "pv_buses": [
+      5,
+      32
+    ],
+    "pv_count": [
+      0,
+      4
+    ],
+    "pv_mw": [
+      0.1,
+      3.5
+    ]
+  },
+  "full_scan_candidates_per_round": 2,
+  "generator_sha256": "eafa08340fb21f1f407b0353c79ff9041f4186135fbe6aae391f0f480a39a266",
+  "generator_version": "structure-v3-recipes-v1",
+  "initial_acceptance": "finite/converged, nonzero pure under OR pure over; no severity or margin acceptance cutoff",
+  "jitter": "B/C/D U(.9,1.1) multiplied per group, clipped to [.3,2.5]; P,Q same multiplier",
+  "numerical_identity": {
+    "case_sha256": "1955e3d957386a85436eafeb80992a5c397909247150a5203d82c6baaefb94cd",
+    "config_sha256": "ec5deb43b1f472c44953da834f2f3c5d53a00aedc1acd9a44494ca384d5c6806",
+    "environment_sha256": "fb9f81d77e8f5dd8a6ff44c3891b90410d60eedd54ffa7f3402c2b142b0f6ff4",
+    "evaluator_sha256": "eda0c78e4fb73a0c2499b6bb32bf8d53181a05a5cd3ae221329e2a21ce5f4ada",
+    "evaluator_version": "voltage-replay-v2-finite-buses",
+    "solver": {
+      "algorithm": "bfsw",
+      "calculate_voltage_angles": false,
+      "init": "flat",
+      "max_iteration": 100,
+      "tolerance_mva": 1e-08
+    },
+    "structure_definition_version": "usc-131-v1",
+    "structure_sha256": "83001d897dabd0993e26ca5031a0a41eeac5ecad717fae4fb5a064f0d35fc651",
+    "template_definition_sha256": "eb5bef76592761a5cfbe97a655a5270d2b465f00b6c1e4f903cd1a6e21b9de25"
+  },
+  "observation_protocol_version": "existing-raw-vs-domain-summary-v1",
+  "pf_per_round_limit": 250000,
+  "physical_schema_version": "ieee33-bess-voltage-v1",
+  "recipes": "A v2 envelope; B branch-correlated; C PV in one electrical group; D low-load PV group/high-load other groups",
+  "rounds": 2,
+  "scan_selection": "seeded hash order among complete-template numerically clean search_unresolved, list saved before scanning",
+  "search_calls": 384,
+  "seed": 2031,
+  "selection": "seeded priorities, direction/spatial-family round-robin; one per operating family; reject max bus power difference<.10 MW OR relative L2<.10",
+  "source_commit": "e6ecb37118195f536d09ea6ef308516ac6e2c05b",
+  "structure_definition_version": "usc-131-v1",
+  "template_definition_sha256": "eb5bef76592761a5cfbe97a655a5270d2b465f00b6c1e4f903cd1a6e21b9de25",
+  "test_allowed": false,
+  "total_pf_limit": 500000
+}

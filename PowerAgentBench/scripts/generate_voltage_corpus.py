@@ -1,7 +1,7 @@
 """Generate a reproducible, evaluator-only IEEE 33-bus Dev/Test corpus.
 
-Keep --output-dir outside any agent-visible workspace. Give agents only the public
-cards (through the tool server); the full snapshots and witnesses stay here.
+Keep --output-dir external or under the Git-ignored .local-data directory.
+Give hosted agents only tool-visible public cards, never filesystem access.
 """
 
 from __future__ import annotations
@@ -28,6 +28,8 @@ from poweragentbench.voltage_evaluator import (
     state_metrics,
     validate_dispatch,
 )
+
+from poweragentbench.voltage_storage import evaluator_output_root
 
 GENERATOR_VERSION = "spatial-coordinate-v2"
 
@@ -107,10 +109,8 @@ def candidate(rng: random.Random, config: dict, index: int, audit: list | None =
 
 
 def generate(seed: int, num_candidates: int, num_dev: int, num_test: int, root: Path, config_path: Path) -> dict:
-    root = root.resolve()
-    # A directory name 'private' in a public checkout is not an access boundary.
-    if root == REPO_ROOT.parent or REPO_ROOT.parent in root.parents:
-        raise ValueError("output-dir must be outside PowerAgentBench (agent-visible checkout)")
+    root = evaluator_output_root(root)
+    # Git-ignore is not an OS access boundary; hosted agents have no file tools.
     if root.exists() and any(root.iterdir()):
         raise ValueError(f"output-dir must be empty: {root}")
     if num_candidates <= 0 or num_test <= 0 or num_dev < 0 or num_test % 6 or num_dev % 6:

@@ -1,10 +1,12 @@
 # Poweragent 开发交接
 
+> **注意（文档整理后）：** 本文件写于 v2 Pilot 阶段（2026-09-28），之后项目已进入 v3/路线B。当前状态以 [README](README.md)、[V3 离线验收](PowerAgentBench/docs/V3_OFFLINE_ACCEPTANCE.md) 和 [路线 B 方案](PowerAgentBench/docs/ROUTE_B_PLAN.md) 为准；文档索引见 [docs/README.md](PowerAgentBench/docs/README.md)。v2 时代的文档已移入 `PowerAgentBench/docs/archive/`，下文路径已相应更新。
+
 ## 最新交接：Pilot 已完成，暂不跑 Main
 
 v2 Dev 192/192终态，170成功；全低谷985 HTTP尝试，已知估算¥2.67079106、未知费用预留¥1，共¥3.67079106/¥10。五次ConnectionResetError保留在账本，用户已授权后续每笔未知预留¥0.20并有限重试，不再逐笔人工暂停。注意这不是确认收费，绝不绕过campaign总额。
 
-完整脱敏公开记录 `research_records/voltage_control/cny_pilot_192/`（含analysis/、环境快照和SHA256）供其他云端Agent分析。全套离线61 tests通过。第9步完成、第10步未通过：见 `PowerAgentBench/docs/PILOT_PREFREEZE_REVIEW.md`。D0015/I1-V0-R1的8次空文本parse_error都对应4096 output_tokens，需审查输出上限/思考参数；不按Test调参。没有Main授权，不创建tag；下文部分段落保留旧阶段背景，以此最新交接和审查为准。
+完整脱敏公开记录 `research_records/voltage_control/cny_pilot_192/`（含analysis/、环境快照和SHA256）供其他云端Agent分析。全套离线61 tests通过。第9步完成、第10步未通过：见 `PowerAgentBench/docs/archive/v2/PILOT_PREFREEZE_REVIEW.md`。D0015/I1-V0-R1的8次空文本parse_error都对应4096 output_tokens，需审查输出上限/思考参数；不按Test调参。没有Main授权，不创建tag；下文部分段落保留旧阶段背景，以此最新交接和审查为准。
 
 ## 目标与边界
 
@@ -20,9 +22,9 @@ v2 Dev 192/192终态，170成功；全低谷985 HTTP尝试，已知估算¥2.670
 
 ## 当前最高优先级：corpus 方法学
 
-旧 v1 按 6 个同向均匀动作筛选，存在选择偏差。generator 现已改为空间负荷/PV + bounded coordinate search，生成独立的 `E:/work/voltage_corpus_v2_candidate`（24/96，全部 witness 重放通过），详情见 `PowerAgentBench/docs/CORPUS_V2_CANDIDATE.md`。仍有 coordinate 搜索偏差；三档 severity 不是控制难度。新 Dev nearest 22/24，sensitivity 24/24；不要再为了压低 baseline 成绩调整采样。
+旧 v1 按 6 个同向均匀动作筛选，存在选择偏差。generator 现已改为空间负荷/PV + bounded coordinate search，生成独立的 `E:/work/voltage_corpus_v2_candidate`（24/96，全部 witness 重放通过），详情见 `PowerAgentBench/docs/archive/v2/CORPUS_V2_CANDIDATE.md`。仍有 coordinate 搜索偏差；三档 severity 不是控制难度。新 Dev nearest 22/24，sensitivity 24/24；不要再为了压低 baseline 成绩调整采样。
 
-现有 v1 数据有分层偏差：每档前部选作 Dev、后部作 Test，Dev 在每档内偏轻。生成代码现已改为每档固定 seed shuffle，并记录 split_policy/generator hash；v2 候选集已独立生成，旧 v1 未覆盖。不要用现有 Dev 100% 给 Test 作定论。独立 Dev 分层诊断已得到 20 欠压/17 过压/3 正常候选，单次策略成功 8/37、非均匀搜索 28/37；见 `PowerAgentBench/docs/DEV_DIFFICULTY_AUDIT.md`，不是正式实验。
+现有 v1 数据有分层偏差：每档前部选作 Dev、后部作 Test，Dev 在每档内偏轻。生成代码现已改为每档固定 seed shuffle，并记录 split_policy/generator hash；v2 候选集已独立生成，旧 v1 未覆盖。不要用现有 Dev 100% 给 Test 作定论。独立 Dev 分层诊断已得到 20 欠压/17 过压/3 正常候选，单次策略成功 8/37、非均匀搜索 28/37；见 `PowerAgentBench/docs/archive/v2/DEV_DIFFICULTY_AUDIT.md`，不是正式实验。
 
 下一步应在独立 Dev 候选池进行：
 
@@ -65,7 +67,7 @@ DeepSeek Responses 无状态，LLM 仍收到历史文本 JSON；减少重复 obs
 
 ## 人民币低预算执行（当前优先级）
 
-用户已批准：单局 ¥0.20、整个开发测试+Pilot campaign ¥10，仅 DeepSeek 低谷；Main/跨模型不在授权内。执行 `plans/rmb-budget-and-trajectory-analysis.md`，复用固定 `results/voltage_control/cny_pilot_campaign`，smoke 阶段 ¥1 包含在总额中。新运行目录 `results/voltage_control/v2_cny_pilot`，不能续写旧 smoke，也不能创建新 campaign 绕过花费。
+用户已批准：单局 ¥0.20、整个开发测试+Pilot campaign ¥10，仅 DeepSeek 低谷；Main/跨模型不在授权内。执行 `PowerAgentBench/docs/archive/plans/rmb-budget-and-trajectory-analysis.md`（已归档），复用固定 `results/voltage_control/cny_pilot_campaign`，smoke 阶段 ¥1 包含在总额中。新运行目录 `results/voltage_control/v2_cny_pilot`，不能续写旧 smoke，也不能创建新 campaign 绕过花费。
 
 `voltage_costs.py` 与 request hook 已实现请求前/后门控，unknown/orphan 计费会暂停自动重试。高峰前留 timeout 窗口，高峰退出并打印下一低谷时间，不自动预约后台。事件/计费/checkpoint 不能删除来恢复运行；只在身份一致时恢复。新日志协议离线 59 tests 通过，但付费 smoke/Pilot 仍需验收；见 RMB_MEASUREMENT_SPEC.md / RMB_BEHAVIOR_ANALYSIS.md。
 

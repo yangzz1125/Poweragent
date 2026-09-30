@@ -9,3 +9,7 @@
 **/results/
 **/.env
 **/.DS_Store
+
+# Evaluator-only local data and historical artifacts; never publish to Git.
+/.local-data/
+/.local-archive/

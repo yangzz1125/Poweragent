@@ -1,0 +1,18 @@
+{
+  "audit_per_episode": 1,
+  "dataset_sha256": "8a84bc05bc5d98469158cbdf8e49bcc5e0c20c6bd029ff942331f8e840c900cd",
+  "local_policy": "midpoint then greedy +/- one step at graph-nearest untried BESS; every probe charged",
+  "max_previews": 4,
+  "max_submit": 1,
+  "model_api_requests": 0,
+  "oracle_inputs": false,
+  "policies": [
+    "no_action",
+    "all_full",
+    "uniform_bisection",
+    "bounded_local"
+  ],
+  "policy_sha256": "57587a3ed5133199552cf4b0c6b7be367564f61c792d26b19b9d6f9db187c63b",
+  "tools_sha256": "aa713e2cb9c320db45960863e409c3160319a7c5990ce3ed4b9ea3fc5d0008e7",
+  "uniform_helper_sha256": "24d7a91ecb4c31bf6ab85e4b62a4893e79f967a3596f04b4ce2b1e3b8a169574"
+}

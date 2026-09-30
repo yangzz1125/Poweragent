@@ -1,0 +1,75 @@
+{
+  "actual_pf_calls": 253122,
+  "by_recipe": {
+    "A": {
+      "candidates": 256,
+      "status_counts": {
+        "S1": 122,
+        "S2": 9,
+        "S3": 13,
+        "S4": 3,
+        "initial_rejected": 17,
+        "search_unresolved": 31,
+        "structure_unresolved": 61
+      }
+    },
+    "B": {
+      "candidates": 256,
+      "status_counts": {
+        "S1": 117,
+        "S2": 15,
+        "S3": 9,
+        "S4": 1,
+        "initial_rejected": 63,
+        "search_unresolved": 16,
+        "structure_unresolved": 35
+      }
+    },
+    "C": {
+      "candidates": 256,
+      "status_counts": {
+        "S1": 79,
+        "S2": 14,
+        "S3": 11,
+        "S4": 4,
+        "initial_rejected": 77,
+        "search_unresolved": 24,
+        "structure_unresolved": 47
+      }
+    },
+    "D": {
+      "candidates": 256,
+      "status_counts": {
+        "S1": 61,
+        "S2": 16,
+        "S3": 14,
+        "S4": 3,
+        "initial_rejected": 58,
+        "search_unresolved": 15,
+        "structure_unresolved": 89
+      }
+    }
+  },
+  "candidates_completed": 1024,
+  "certified_counts": {
+    "S1": 379,
+    "S2": 54,
+    "S3": 47,
+    "S4": 11
+  },
+  "corpus_status": "DEV_BUILT",
+  "model_api_requests": 0,
+  "pf_by_phase": {
+    "construction": 251668,
+    "dev_replay": 32,
+    "independent_replay": 1422
+  },
+  "selected_counts": {
+    "S1": 8,
+    "S2": 8,
+    "S3": 8,
+    "S4": 8
+  },
+  "selection_rejections": [],
+  "test_generated": false
+}

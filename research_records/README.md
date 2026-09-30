@@ -5,6 +5,10 @@ They are not frozen Test data and must not be fed to evaluated agents.
 
 ## Current snapshot
 
+**Local path migration:** full data now lives in project-root `.local-data/`, auxiliary history in `.local-archive/`, both Git-ignored. Historical snapshots below retain their original paths and hashes; use [the migration map and current commands](../PowerAgentBench/docs/LOCAL_DATA_LAYOUT.md). Hosted agent tool visibility is unchanged.
+
+- **New local Route B offline delivery:** [`voltage_control/structure_v3_offline/`](voltage_control/structure_v3_offline/README.md). 32 Dev cases, 8 per certified structure; 257766 data-pipeline PF calls; 111 final tests passed. Includes all 1024 candidate statuses, sanitized Dev certificate summaries, bounded-policy results and accounting limitations. No paid model run, Test, freeze/tag or automatic push. Private networks/witnesses remain outside the checkout.
+
 **Cloud review entry point:** [项目进度与审阅问题](../PowerAgentBench/docs/CLOUD_REVIEW_HANDOFF_ZH.md). Read this before comparing snapshots: the original Pilot and later explicit-high/16384 diagnostics use different request settings. Main is not authorized; no new experiments are requested by this handoff.
 
 - Latest structural audit: [`voltage_control/dev_structural_coverage/`](voltage_control/dev_structural_coverage/README.md). All 24 Dev cases have a feasible {-1.5,0,+1.5} MW combination; 19 are solved by a fixed uniform bisection policy with at most 3 observed PF queries, 4 additional cases have single-BESS solutions, and 1 requires a multi-BESS coarse template among these tested families. Template existence is an exhaustive oracle coverage result, NOT a fair 4-query controller score. 3168 local PF calls, zero API cost, no Test changes.

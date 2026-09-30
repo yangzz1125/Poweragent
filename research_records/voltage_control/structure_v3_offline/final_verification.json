@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "dataset_sha256": "8a84bc05bc5d98469158cbdf8e49bcc5e0c20c6bd029ff942331f8e840c900cd",
+  "actual_data_pipeline_pf": 257766,
+  "final_tests": {
+    "actual_pf_calls": 10567,
+    "network_connect_attempts": 0,
+    "exitstatus": 0,
+    "collected": 111
+  },
+  "fee_ledger_unchanged_since_offline_snapshot": true,
+  "fee_totals": {
+    "accounted_cost_cny": "2.69531226",
+    "unknown_requests": 5,
+    "reserved_unknown_cost_cny": "1.00",
+    "budget_consumed_cny": "3.69531226",
+    "unreserved_unknown_requests": 0,
+    "request_count": 995,
+    "orphan_requests": 0
+  },
+  "test_run": false,
+  "freeze_approved": false,
+  "tag_created": false,
+  "pushed": false,
+  "source_commit_base": "6f8f4a81cf3e4c60de77ff1f2807d85084a88254",
+  "working_tree_changes_not_committed": true
+}

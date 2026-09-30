@@ -115,6 +115,14 @@ def run_matrix(args: argparse.Namespace, client_factory=make_client) -> dict[str
         return _run_matrix(args, client_factory, campaign=campaign)
 
 
+def protocol_documents(corpus_version: str | None) -> list[Path]:
+    """Hash-pinned documents whose SHA256 enters analysis_protocol_sha256."""
+    names = ["BENCHMARK_SPEC.md", "RMB_BEHAVIOR_ANALYSIS.md", "RMB_MEASUREMENT_SPEC.md"]
+    if corpus_version == "structure-v3":
+        names += ["STRUCTURAL_BENCHMARK_V3_SPEC.md", "V3_GENERATION_PROTOCOL.md", "V3_PILOT_PREREGISTRATION.md"]
+    return [REPO_ROOT / "docs" / name for name in names]
+
+
 def _run_matrix(args: argparse.Namespace, client_factory=make_client, *, campaign=None) -> dict[str, Any]:
     config = read_json(DEFAULT_CONFIG_PATH)
     experiments = read_json(EXPERIMENTS)
@@ -160,7 +168,7 @@ def _run_matrix(args: argparse.Namespace, client_factory=make_client, *, campaig
     public_settings = {key: value for key, value in settings.items() if key != "url"}
     public_settings["api_url_sha256"] = hashlib.sha256((settings.get("url") or "").encode()).hexdigest()
     environment = environment_identity()
-    protocol_paths = [REPO_ROOT / "docs" / name for name in ("BENCHMARK_SPEC.md", "RMB_BEHAVIOR_ANALYSIS.md", "RMB_MEASUREMENT_SPEC.md")]
+    protocol_paths = protocol_documents(manifest.get("corpus_version"))
     try:
         commit = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=REPO_ROOT.parent, text=True, stderr=subprocess.DEVNULL).strip()
     except (OSError, subprocess.CalledProcessError):
@@ -180,7 +188,6 @@ def _run_matrix(args: argparse.Namespace, client_factory=make_client, *, campaig
     }
     if manifest.get("corpus_version") == "structure-v3":
         identity.update({key: manifest[key] for key in STRUCTURAL_FREEZE_FIELDS})
-        protocol_paths.extend(REPO_ROOT / "docs" / name for name in ("STRUCTURAL_BENCHMARK_V3_SPEC.md", "V3_GENERATION_PROTOCOL.md"))
     identity.update(model_settings=public_settings, model_settings_sha256=digest(public_settings),
                     reasoning_effort=public_settings.get("reasoning_effort"), temperature_policy=public_settings.get("temperature_policy"),
                     environment=environment, environment_sha256=digest(environment), split_manifest_sha256=split_hash,

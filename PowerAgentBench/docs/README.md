@@ -10,6 +10,7 @@
 | [V3_OFFLINE_ACCEPTANCE.md](V3_OFFLINE_ACCEPTANCE.md) | v3 离线验收（B0–B4 PASS） | 最新进度 |
 | [STRUCTURAL_BENCHMARK_V3_SPEC.md](STRUCTURAL_BENCHMARK_V3_SPEC.md) | v3 离线认证规范 | 哈希固定 |
 | [V3_GENERATION_PROTOCOL.md](V3_GENERATION_PROTOCOL.md) | v3 离线生成协议 | 哈希固定 |
+| [V3_PILOT_PREREGISTRATION.md](V3_PILOT_PREREGISTRATION.md) | v3 Dev Pilot 预登记（范围、对比、天花板规则、smoke 场景） | 哈希固定（仅 structure-v3 运行） |
 | [LOCAL_DATA_LAYOUT.md](LOCAL_DATA_LAYOUT.md) | `.local-data/` 布局与复现路径 | |
 | [BENCHMARK_SPEC.md](BENCHMARK_SPEC.md) | IEEE 33-bus BESS 研究合同 | 哈希固定 |
 | [RMB_MEASUREMENT_SPEC.md](RMB_MEASUREMENT_SPEC.md) | 人民币计量合同 | 哈希固定 |
@@ -19,6 +20,8 @@
 ### 为什么这些文件不能移动或编辑
 
 “哈希固定”的 5 个文件被 `scripts/run_voltage_experiment_matrix.py` 按 `docs/<文件名>` 读取，其 SHA256 写入运行身份中的 `analysis_protocol_sha256`。移动或改动它们会使已有运行无法续跑，也会破坏冻结身份校验。**需要修改时，应作为有意的协议变更处理，并开新的运行目录。**
+
+`V3_PILOT_PREREGISTRATION.md` 自预登记提交起同样入列，但只在 structure-v3 运行中读取（追加到 v3 的两个文档之后），其哈希同样写入 `analysis_protocol_sha256`；改动它会使 v3 运行无法续跑。
 
 ### 已知的失效相对链接（不修复，以免改变哈希）
 

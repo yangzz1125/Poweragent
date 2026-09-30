@@ -111,3 +111,20 @@ def test_matrix_errors_and_explicit_retry(tmp_path):
     recovered = run_matrix(options(tmp_path, max_episodes=1, retry_errors=True), lambda _: MockClient())
     assert recovered['complete'] == unchanged['complete'] + 1
     assert (args.output_dir / 'retries.jsonl').exists()
+
+
+def test_v3_preregistration_is_part_of_analysis_protocol_identity(tmp_path, monkeypatch):
+    from scripts import run_voltage_experiment_matrix as matrix
+    v3 = [path.name for path in matrix.protocol_documents("structure-v3")]
+    assert "V3_PILOT_PREREGISTRATION.md" in v3 and all(path.exists() for path in matrix.protocol_documents("structure-v3"))
+    assert "V3_PILOT_PREREGISTRATION.md" not in [path.name for path in matrix.protocol_documents("structure-v2")]
+    assert [path.name for path in matrix.protocol_documents(None)] == v3[:3]
+    docs = tmp_path / "docs"
+    docs.mkdir()
+    monkeypatch.setattr(matrix, "REPO_ROOT", tmp_path)
+    for name in v3:
+        (docs / name).write_text(name)
+    digest = lambda: matrix.digest({path.name: matrix.sha256_file(path) for path in matrix.protocol_documents("structure-v3")})
+    before = digest()
+    (docs / "V3_PILOT_PREREGISTRATION.md").write_text("edited")
+    assert digest() != before

@@ -229,9 +229,9 @@ class Campaign(RequestRecorder):
         self.root = Path(root)
         super().__init__(self.root / "requests.jsonl", pricing_path)
         self.episode_limit, self.campaign_limit = Decimal(episode_limit), Decimal(campaign_limit)
-        for amount, maximum in ((self.episode_limit, Decimal("0.20")), (self.campaign_limit, Decimal("10"))):
+        for amount, maximum in ((self.episode_limit, Decimal("0.20")), (self.campaign_limit, Decimal("22"))):
             if not amount.is_finite() or not 0 < amount <= maximum:
-                raise ValueError("CNY limits must be positive and within approved 0.20/10 limits")
+                raise ValueError("CNY limits must be positive and within approved 0.20/22 limits")
         if stage not in ("smoke", "pilot"):
             raise ValueError("invalid campaign stage")
         self.stage = stage

@@ -132,8 +132,8 @@ uv pip install --python .venv\Scripts\python.exe -e . pytest
 
 **跑完后的分析**（预登记的口径；未跑完只能加 `--allow-incomplete` 并标注“探索”）：
 ```powershell
-.venv\Scripts\python.exe -m scripts.analyze_voltage_trajectories --run-dir resultsoltage_control3_pilot_dev --campaign-dir resultsoltage_control\cny_pilot_campaign --output-dir resultsoltage_control3_pilot_devnalysis
-.venv\Scripts\python.exe -m scripts.analyze_voltage_mechanisms --run-dir resultsoltage_control3_pilot_dev --output-dir resultsoltage_control3_pilot_dev\mechanisms --manifest ..\.local-dataoltage_structure_v3\dev\manifest.json
+.venv\Scripts\python.exe -m scripts.analyze_voltage_trajectories --run-dir results/voltage_control/v3_pilot_dev --campaign-dir results/voltage_control/cny_pilot_campaign --output-dir results/voltage_control/v3_pilot_dev/analysis
+.venv\Scripts\python.exe -m scripts.analyze_voltage_mechanisms --run-dir results/voltage_control/v3_pilot_dev --output-dir results/voltage_control/v3_pilot_dev/mechanisms --manifest ../.local-data/voltage_structure_v3/dev/manifest.json
 ```
 然后：按预登记第 7 节判 S3∪S4 的天花板，按第 8 节查协议阻断（截断/解析/传输错误无效局 >5% 先处理协议）。汇报格式：“状态 / 模型 API 调用 / 测试 / 提交”，中文。
 

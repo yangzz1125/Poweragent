@@ -11,6 +11,7 @@
 | [STRUCTURAL_BENCHMARK_V3_SPEC.md](STRUCTURAL_BENCHMARK_V3_SPEC.md) | v3 离线认证规范 | 哈希固定 |
 | [V3_GENERATION_PROTOCOL.md](V3_GENERATION_PROTOCOL.md) | v3 离线生成协议 | 哈希固定 |
 | [V3_PILOT_PREREGISTRATION.md](V3_PILOT_PREREGISTRATION.md) | v3 Dev Pilot 预登记（范围、对比、天花板规则、smoke 场景） | 哈希固定（仅 structure-v3 运行） |
+| [V3_DEV_PILOT_RESULT.md](V3_DEV_PILOT_RESULT.md) | v3 Dev Pilot 结果（256 局，开发诊断） | 最新结果，不在哈希固定列表 |
 | [LOCAL_DATA_LAYOUT.md](LOCAL_DATA_LAYOUT.md) | `.local-data/` 布局与复现路径 | |
 | [BENCHMARK_SPEC.md](BENCHMARK_SPEC.md) | IEEE 33-bus BESS 研究合同 | 哈希固定 |
 | [RMB_MEASUREMENT_SPEC.md](RMB_MEASUREMENT_SPEC.md) | 人民币计量合同 | 哈希固定 |

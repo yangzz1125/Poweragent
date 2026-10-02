@@ -145,3 +145,11 @@ def test_test_split_accepts_only_registered_reduced_matrix(tmp_path):
             setattr(bad, key, value)
         with pytest.raises(ValueError, match='registered reduced matrix|only on Dev'):
             run_matrix(bad)
+
+
+def test_main_preregistration_is_pinned_only_for_v3_test():
+    import scripts.run_voltage_experiment_matrix as matrix
+    names = lambda split: [path.name for path in matrix.protocol_documents('structure-v3', split)]
+    assert 'V3_MAIN_PREREGISTRATION.md' in names('test') and 'V3_TEST_GENERATION_PROTOCOL.md' in names('test')
+    assert 'V3_MAIN_PREREGISTRATION.md' not in names('dev') and 'V3_MAIN_PREREGISTRATION.md' not in names(None)
+    assert all(path.exists() for path in matrix.protocol_documents('structure-v3', 'test'))

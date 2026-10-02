@@ -118,11 +118,13 @@ def run_matrix(args: argparse.Namespace, client_factory=make_client) -> dict[str
         return _run_matrix(args, client_factory, campaign=campaign)
 
 
-def protocol_documents(corpus_version: str | None) -> list[Path]:
+def protocol_documents(corpus_version: str | None, split: str | None = None) -> list[Path]:
     """Hash-pinned documents whose SHA256 enters analysis_protocol_sha256."""
     names = ["BENCHMARK_SPEC.md", "RMB_BEHAVIOR_ANALYSIS.md", "RMB_MEASUREMENT_SPEC.md"]
     if corpus_version == "structure-v3":
         names += ["STRUCTURAL_BENCHMARK_V3_SPEC.md", "V3_GENERATION_PROTOCOL.md", "V3_PILOT_PREREGISTRATION.md"]
+        if split == "test":
+            names += ["V3_TEST_GENERATION_PROTOCOL.md", "V3_MAIN_PREREGISTRATION.md"]
     return [REPO_ROOT / "docs" / name for name in names]
 
 
@@ -175,7 +177,7 @@ def _run_matrix(args: argparse.Namespace, client_factory=make_client, *, campaig
     public_settings = {key: value for key, value in settings.items() if key != "url"}
     public_settings["api_url_sha256"] = hashlib.sha256((settings.get("url") or "").encode()).hexdigest()
     environment = environment_identity()
-    protocol_paths = protocol_documents(manifest.get("corpus_version"))
+    protocol_paths = protocol_documents(manifest.get("corpus_version"), args.split)
     try:
         commit = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=REPO_ROOT.parent, text=True, stderr=subprocess.DEVNULL).strip()
     except (OSError, subprocess.CalledProcessError):

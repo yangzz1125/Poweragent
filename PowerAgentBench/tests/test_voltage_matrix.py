@@ -128,3 +128,20 @@ def test_v3_preregistration_is_part_of_analysis_protocol_identity(tmp_path, monk
     before = digest()
     (docs / "V3_PILOT_PREREGISTRATION.md").write_text("edited")
     assert digest() != before
+
+
+TEST_ROOT = Path(__file__).resolve().parents[2] / '.local-data' / 'voltage_structure_v3_test' / 'test'
+REDUCED = ['I0-V0-R0', 'I0-V0-R1', 'I0-V1-R0', 'I0-V1-R1']
+
+
+@pytest.mark.skipif(not TEST_ROOT.exists(), reason='private v3 Test corpus is not on this machine')
+def test_test_split_accepts_only_registered_reduced_matrix(tmp_path):
+    args = options(tmp_path, split='test', scenario_root=TEST_ROOT, condition_ids=REDUCED, repeats=3, dry_run=True, max_episodes=None)
+    assert run_matrix(args)['tasks'] == 96 * 4 * 3
+    for changes in ({'condition_ids': ['I1-V0-R0'] + REDUCED[1:]}, {'condition_ids': REDUCED[:3]},
+                    {'repeats': 1}, {'scenario_ids': ['T0001']}):
+        bad = options(tmp_path, split='test', scenario_root=TEST_ROOT, condition_ids=REDUCED, repeats=3, dry_run=True, max_episodes=None)
+        for key, value in changes.items():
+            setattr(bad, key, value)
+        with pytest.raises(ValueError, match='registered reduced matrix|only on Dev'):
+            run_matrix(bad)

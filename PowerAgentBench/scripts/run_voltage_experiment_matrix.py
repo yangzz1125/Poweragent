@@ -97,6 +97,9 @@ def source_identity() -> str:
     return digest.hexdigest()
 
 
+MAIN_REDUCED_CONDITIONS = frozenset({"I0-V0-R0", "I0-V0-R1", "I0-V1-R0", "I0-V1-R1"})
+
+
 def run_matrix(args: argparse.Namespace, client_factory=make_client) -> dict[str, Any]:
     campaign_dir = getattr(args, "campaign_dir", None)
     if campaign_dir is None or args.dry_run:
@@ -144,7 +147,11 @@ def _run_matrix(args: argparse.Namespace, client_factory=make_client, *, campaig
         raise ValueError("Test requires --freeze-manifest after the Dev pilot")
     selected_scenarios = getattr(args, "scenario_ids", None)
     selected_conditions = getattr(args, "condition_ids", None)
-    diagnostic = bool(selected_scenarios or selected_conditions)
+    # Main matrix B (pre-registered in V3_MAIN_PREREGISTRATION): Test with the four I0 conditions only, all scenarios, 3 repeats.
+    reduced = args.split == "test" and bool(selected_conditions)
+    if reduced and (set(selected_conditions) != MAIN_REDUCED_CONDITIONS or selected_scenarios or args.repeats != 3):
+        raise ValueError("Test accepts only the registered reduced matrix: the four I0 conditions, all scenarios, three repeats")
+    diagnostic = bool(selected_scenarios or selected_conditions) and not reduced
     if diagnostic and args.split != "dev":
         raise ValueError("subset diagnostics are allowed only on Dev")
     entries = manifest["scenarios"]
@@ -179,7 +186,7 @@ def _run_matrix(args: argparse.Namespace, client_factory=make_client, *, campaig
         "dataset_sha256": corpus["dataset_sha256"] if corpus else split_hash,
         "dataset_version": manifest["dataset_version"], "code_commit": commit, "source_sha256": source_identity(), "temperature": args.temperature,
         "task_order_version": "seeded-case-and-condition-v2",
-        "run_scope": "dev_diagnostic_subset" if diagnostic else "full_matrix",
+        "run_scope": "dev_diagnostic_subset" if diagnostic else ("main_reduced_i0_vr" if reduced else "full_matrix"),
         "planned_tasks": [[c["id"], e["scenario_id"], r] for e, c, r in tasks],
         "max_turns": args.max_turns, "max_output_tokens": getattr(args, "max_output_tokens", 16384),
         "max_preview_calls": config["agent"]["max_preview_calls"],
@@ -206,8 +213,9 @@ def _run_matrix(args: argparse.Namespace, client_factory=make_client, *, campaig
     if campaign:
         identity.update(schema_version=3, campaign_id=campaign.campaign_id, pricing_sha256=campaign.pricing_sha256)
     if write_candidate:
-        if diagnostic or not corpus or len(tasks) != 2304:
-            raise ValueError("freeze candidate requires the complete 96-case Test x 8 x 3 matrix")
+        expected_tasks = 1152 if reduced else 2304
+        if diagnostic or not corpus or len(tasks) != expected_tasks:
+            raise ValueError("freeze candidate requires the complete 96-case Test x 8 x 3 matrix or the registered 96 x 4 (I0) x 3 matrix")
         from poweragentbench.voltage_case import load_scenario_metadata
         for entry in entries:
             load_scenario_metadata(entry["scenario_id"], root)  # artifact hashes only, no PF/LLM

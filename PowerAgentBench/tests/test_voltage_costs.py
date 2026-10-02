@@ -49,6 +49,7 @@ def test_bad_usage_is_unknown_never_zero(usage):
     ("2026-09-28T18:00:00+08:00", False), ("2026-10-03T10:00:00+08:00", False),
     # Statutory holiday listed in the pricing schedule is off-peak; the next weekday is peak again.
     ("2026-10-01T10:00:00+08:00", False), ("2026-10-02T10:00:00+08:00", False),
+    ("2026-10-05T10:00:00+08:00", False), ("2026-10-07T15:00:00+08:00", False),
     ("2026-10-08T10:00:00+08:00", True),
 ])
 def test_price_windows(stamp, peak):

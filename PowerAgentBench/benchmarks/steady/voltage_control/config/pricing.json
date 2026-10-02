@@ -17,8 +17,8 @@
     "timezone": "UTC+08:00",
     "peak_weekdays": [0, 1, 2, 3, 4],
     "peak_intervals": [["09:00", "12:00"], ["14:00", "18:00"]],
-    "holidays": ["2026-10-01", "2026-10-02", "2026-10-03"],
-    "holiday_policy": "only dates listed in holidays are off-peak all day (provider page, retrieved 2026-10-02: statutory holidays are off-peak); any other date follows the weekday rule"
+    "holidays": ["2026-10-01", "2026-10-02", "2026-10-03", "2026-10-04", "2026-10-05", "2026-10-06", "2026-10-07"],
+    "holiday_policy": "only dates listed in holidays are off-peak all day (provider page, retrieved 2026-10-02: statutory holidays are off-peak; 2026 National Day holiday 10-01 to 10-07 per State Council notice guo-ban-fa-ming-dian [2025] No.7); any other date follows the weekday rule"
   },
   "approved_limits_cny": {"episode": "0.20", "campaign": "10", "smoke_stage": "1"},
   "billing_note": "Usage-based estimate, not an invoice. Missing cache details use the uncached upper bound. Missing/invalid total usage is unknown, never zero."

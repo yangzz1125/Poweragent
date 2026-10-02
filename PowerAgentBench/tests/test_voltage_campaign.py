@@ -175,3 +175,13 @@ def test_campaign_ceiling_counts_other_runs(tmp_path):
         with pytest.raises(BudgetStop, match='campaign_cost_limit'):
             c([])
         assert ledger_totals(campaign.path)['request_count'] == 1
+
+
+def test_approved_campaign_maximum_is_enforced(tmp_path):
+    with Campaign(tmp_path / 'ok', campaign_limit='80'):
+        pass
+    for limit in ('80.01', '0', '-1'):
+        with pytest.raises(ValueError, match='approved 0.20/80 limits'):
+            Campaign(tmp_path / ('bad' + limit), campaign_limit=limit)
+    with pytest.raises(ValueError, match='approved 0.20/80 limits'):
+        Campaign(tmp_path / 'ep', episode_limit='0.21')

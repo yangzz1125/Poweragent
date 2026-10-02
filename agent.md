@@ -1,6 +1,6 @@
 # Poweragent 开发交接
 
-最后更新：2026-10-02。**接手先读第 10 节**。先读 [README](README.md)（进度与运行）和 [docs/README.md](PowerAgentBench/docs/README.md)（文档索引）；本文件只写**接手时容易踩坑的事**。
+最后更新：2026-10-02。**接手先读第 10 节**。先读 [README](README.md)（进度与运行）和 [docs/README.md](PowerAgentBench/docs/README.md)（文档索引）；本文件只写**接手时容易踩坑的事**。论文写作（CSEE 规范、图片风格、编译、内容口径）见 [paper/CLAUDE.md](paper/CLAUDE.md)。
 
 ## 1. 当前状态（不要误报）
 
@@ -99,7 +99,7 @@ DeepSeek Responses 无状态，LLM 仍收到历史文本 JSON。不做激进截�
 
 - **Pilot 已完成：256/256 局**，分析在被忽略的 `PowerAgentBench/results/voltage_control/v3_pilot_dev/{analysis,mechanisms}`。**结果与方法偏差以 [V3_DEV_PILOT_RESULT](PowerAgentBench/docs/V3_DEV_PILOT_RESULT.md) 为准。**
 - 结论摘要：V 与 R 各自显著提高成功率（MACRO `dV` +36.7、`dR_V0` +60.9 个百分点），`VR` 为 −51.6（重叠而非互补），I 无可辨别效果；天花板判定不成立，不启用小预算实验。
-- 费用：账本占用 ¥15.38 / 上限 ¥22（已计费 ¥10.18，未知用量预留 ¥5.20）。**不要再续跑这个目录**，它已完成。
+- 费用：本次 Pilot 运行自身已计费 ¥7.12，21 个未知用量请求预留 ¥4.20，合计 ¥11.32（1477 个请求）。`cny_pilot_campaign` 账本由早期 v2 运行和 smoke 共用，整本账本合计 ¥15.38 / 上限 ¥22（已计费 ¥10.18，预留 ¥5.20，共 2518 个请求）；不要把整本账本当成本次 Pilot 的费用。**不要再续跑这个目录**，它已完成。
 - 运行身份中途手工更新过两次（`code_commit`；以及节假日低谷价后的 `code_commit`/`source_sha256`/`pricing_sha256`），备份在 `v3_pilot_dev/run.json.bak_*` 和 `cny_pilot_campaign/*.bak_*`，说明见结果文档第 6 节。
 - 输出截断集中在 D0007、D0021、D0026，16384 上限不够；连接层错误（约 1%，周期性）根因未查（须用户同意才能检查本机网络）。
 - **换电脑**：代码已推送 GitHub；`.local-data/` 和 `results/` 用 U 盘拷，`.venv` 不要拷，用 `uv venv --python 3.13 .venv; uv pip install --python .venv\Scripts\python.exe -e . pytest` 重建。

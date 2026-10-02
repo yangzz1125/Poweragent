@@ -85,7 +85,7 @@ def peak_during(start: datetime, end: datetime, pricing: dict) -> bool:
         raise ValueError("request end precedes start")
     day = start.date()
     while day <= end.date():
-        if day.weekday() in pricing["schedule"]["peak_weekdays"]:
+        if day.weekday() in pricing["schedule"]["peak_weekdays"] and day.isoformat() not in pricing["schedule"].get("holidays", []):
             for first, last in pricing["schedule"]["peak_intervals"]:
                 lower = datetime.combine(day, time.fromisoformat(first), BEIJING)
                 upper = datetime.combine(day, time.fromisoformat(last), BEIJING)

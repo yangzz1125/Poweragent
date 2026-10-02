@@ -1,6 +1,6 @@
 # Poweragent 开发交接
 
-最后更新：2026-10-01。**换电脑接手先读第 10 节**。先读 [README](README.md)（进度与运行）和 [docs/README.md](PowerAgentBench/docs/README.md)（文档索引）；本文件只写**接手时容易踩坑的事**。
+最后更新：2026-10-02。**接手先读第 10 节**。先读 [README](README.md)（进度与运行）和 [docs/README.md](PowerAgentBench/docs/README.md)（文档索引）；本文件只写**接手时容易踩坑的事**。
 
 ## 1. 当前状态（不要误报）
 
@@ -95,48 +95,13 @@ DeepSeek Responses 无状态，LLM 仍收到历史文本 JSON。不做激进截�
 
 研究交付以 Markdown 记录为主，供人工写 LaTeX/PPT；入口文档必须同步真实代码与实际验收结果，不写未经验证的完成声明。
 
-## 10. v3 Dev Pilot 进度与换机交接（2026-10-01）
+## 10. v3 Dev Pilot 完成状态与后续（2026-10-02）
 
-**目标**：完成 `results/voltage_control/v3_pilot_dev`（256 局 = 32 场景 × 8 条件），然后做分析并汇报。预登记见 `docs/V3_PILOT_PREREGISTRATION.md`。
+- **Pilot 已完成：256/256 局**，分析在被忽略的 `PowerAgentBench/results/voltage_control/v3_pilot_dev/{analysis,mechanisms}`。**结果与方法偏差以 [V3_DEV_PILOT_RESULT](PowerAgentBench/docs/V3_DEV_PILOT_RESULT.md) 为准。**
+- 结论摘要：V 与 R 各自显著提高成功率（MACRO `dV` +36.7、`dR_V0` +60.9 个百分点），`VR` 为 −51.6（重叠而非互补），I 无可辨别效果；天花板判定不成立，不启用小预算实验。
+- 费用：账本占用 ¥15.38 / 上限 ¥22（已计费 ¥10.18，未知用量预留 ¥5.20）。**不要再续跑这个目录**，它已完成。
+- 运行身份中途手工更新过两次（`code_commit`；以及节假日低谷价后的 `code_commit`/`source_sha256`/`pricing_sha256`），备份在 `v3_pilot_dev/run.json.bak_*` 和 `cny_pilot_campaign/*.bak_*`，说明见结果文档第 6 节。
+- 输出截断集中在 D0007、D0021、D0026，16384 上限不够；连接层错误（约 1%，周期性）根因未查（须用户同意才能检查本机网络）。
+- **换电脑**：代码已推送 GitHub；`.local-data/` 和 `results/` 用 U 盘拷，`.venv` 不要拷，用 `uv venv --python 3.13 .venv; uv pip install --python .venv\Scripts\python.exe -e . pytest` 重建。
+- **待用户决定（均未授权）：** Main 阶段规模与预算、是否提高输出上限（须新运行身份并重做 smoke）、是否切换 OpenCode Go、`templates/` 的许可。没有这些决定不要启动任何新的模型调用。
 
-**进度（只读核对于 2026-10-01）**：`episodes.csv` 147/256 局，全部 `complete`。smoke（`v3_smoke_8`，8 局）已完成并报告。费用账本：`requests.jsonl` 共 1919 条 started、1898 条 finished、19 条 error，其余为孤儿请求。
-- 孤儿请求 2 个：`c55d01f0-5249-4d2d-bc1b-752afce840de`（**已**由用户批准预留 ¥0.20）和 `a25414ca-cdc6-4275-9449-f090567f864e`（**新**，尚未预留，须用户批准才能续跑）。
-- `campaign.lock` 残留，内容 `pid=7580`，该进程已不存在（陈旧锁）。锁**绝不会**被程序自动删除，须用户同意后手动删。
-- 此前总账（早前核对）：已记账约 ¥5.50，预留未知约 ¥2.80；最新数以重新核对为准。
-
-**为什么停了**：旧电脑内存太小，Claude Code 的后台内存保护把实验进程强杀了两次，与代码、模型无关。强杀会留下陈旧锁和孤儿请求。
-
-**换机需要手动拷的（均被 Git 忽略，GitHub 上没有）**：
-1. `.local-data/voltage_structure_v3/`（评估端数据，不得公开）。位置必须与 `PowerAgentBench/` 同级。
-2. `PowerAgentBench/.env`（API key，用私下渠道传，别走公开渠道）。
-3. `PowerAgentBench/results/`（含 `v3_pilot_dev` 与 `cny_pilot_campaign`）。**账本必须原样带过去**；新建账本等于把 ¥22 上限重置，是被禁止的。拷贝前确认旧电脑没有实验在跑。
-
-**新电脑环境**：
-```powershell
-git clone https://github.com/yangzz1125/Poweragent.git power_agent
-cd power_agent\PowerAgentBench
-uv venv --python 3.13 .venv
-uv pip install --python .venv\Scripts\python.exe -e . pytest
-.venv\Scripts\python.exe -m pytest -q tests
-```
-
-**续跑前必须做的（按顺序）**：
-1. 只读核对：`episodes.csv` 局数、`requests.jsonl` 里的孤儿请求（started 无 end）、`campaign.lock`、`reservations.jsonl`。读 `requests.jsonl` 时要 `encoding='utf-8'`（Windows 默认 gbk 会报错）。
-2. 向用户汇报，**得到明确批准后**才：(a) 确认锁里的 pid 不在运行，再删陈旧锁；(b) 在 `reservations.jsonl` 为每个未预留的孤儿请求追加预留记录（`reserve_cny: "0.20"`、`approved_by: "user"`、写明原因，格式参照已有记录）。不得自行批准。
-3. 用与之前**完全一致**的参数续跑（运行身份才对得上；同一输出目录）：
-```powershell
-.venv\Scripts\python.exe -m scripts.run_voltage_experiment_matrix --split dev --scenario-root ../.local-data/voltage_structure_v3/dev --output-dir results/voltage_control/v3_pilot_dev --reasoning-effort high --max-output-tokens 16384 --campaign-stage pilot --max-campaign-cost-cny 22
-```
-- `voltage_costs.py` 里写死的批准上限已改为 ¥0.20/¥22（提交 `e44ab25`）；`campaign.json` 和 `reservation_policy.json` 里的上限也是 22（在 `results/`，随拷贝带走）。runner 的 CLI 默认 `--max-campaign-cost-cny` 仍是 10，所以必须显式传 22。
-- 低谷时段由 runner 按价格配置自动暂停，不需要也不要去查系统时区；也不要查代理配置（用户隐私偏好）。
-
-**跑完后的分析**（预登记的口径；未跑完只能加 `--allow-incomplete` 并标注“探索”）：
-```powershell
-.venv\Scripts\python.exe -m scripts.analyze_voltage_trajectories --run-dir results/voltage_control/v3_pilot_dev --campaign-dir results/voltage_control/cny_pilot_campaign --output-dir results/voltage_control/v3_pilot_dev/analysis
-.venv\Scripts\python.exe -m scripts.analyze_voltage_mechanisms --run-dir results/voltage_control/v3_pilot_dev --output-dir results/voltage_control/v3_pilot_dev/mechanisms --manifest ../.local-data/voltage_structure_v3/dev/manifest.json
-```
-然后：按预登记第 7 节判 S3∪S4 的天花板，按第 8 节查协议阻断（截断/解析/传输错误无效局 >5% 先处理协议）。汇报格式：“状态 / 模型 API 调用 / 测试 / 提交”，中文。
-
-**待查**：约 9–10 个连接层错误（`ConnectionResetError`/`URLError`，集中在 2026-09-30 13:02–13:41）尚未定位根因；D0026 有输出截断风险（16384 tokens 对 V1R1 偏紧）；未决：是否换 OpenCode Go（需新增 Chat Completions 客户端、新运行目录、新 smoke，用户尚未决定）、Main 阶段规模。
-
-**Git 提醒**：根目录才是发布仓库（见第 8 节）。推送前先问用户。
